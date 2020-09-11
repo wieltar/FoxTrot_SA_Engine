@@ -1,6 +1,20 @@
 #pragma once
 #include "IParticleFacade.h"
-class ParticleFacade: public IParticleFacade
+
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
+
+class ParticleFacade : public IParticleFacade
 {
+public:
+	ParticleFacade();
+	~ParticleFacade();
+
+private:
+
 };
+
+
+
 

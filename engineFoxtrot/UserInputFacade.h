@@ -2,7 +2,21 @@
 
 #include "IUserInputFacade.h"
 
-class UserInputFacade: public IUserInputFacade
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
+
+class UserInputFacade : public IUserInputFacade
 {
+public:
+	UserInputFacade();
+	~UserInputFacade();
+
+private:
+
 };
+
+
+
+
 

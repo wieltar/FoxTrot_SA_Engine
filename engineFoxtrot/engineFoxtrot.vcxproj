@@ -145,6 +145,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FileParser.cpp" />
+    <ClCompile Include="GeneralHelperFunctions.cpp" />
     <ClCompile Include="IJsonFacade.cpp" />
     <ClCompile Include="IParticleFacade.cpp" />
     <ClCompile Include="IPhysicsFacade.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="IVideoFacade.cpp" />
     <ClCompile Include="JsonFacade.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="ParticleEngine.cpp" />
     <ClCompile Include="ParticleFacade.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
@@ -171,7 +173,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="ErrorCodes.h" />
     <ClInclude Include="FileParser.h" />
     <ClInclude Include="IJsonFacade.h" />
     <ClInclude Include="IParticleFacade.h" />

@@ -1,10 +1,21 @@
 #pragma once
-#include "PhysicsFacade.h"
+
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
 #include "IPhysicsFacade.h"
 
 class PhysicsEngine
 {
+public:
+	PhysicsEngine();
+	~PhysicsEngine();
+
 private:
-	IPhysicsFacade* physicsFacade;
+
 };
+
+
+
+
 

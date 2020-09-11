@@ -34,6 +34,9 @@
     <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{2d60673c-c8e9-4964-981a-505abd032f56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\General">
+      <UniqueIdentifier>{f1c55ea4-7bc1-4225-9d63-1ca1c3b81cb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,9 +96,6 @@
     <ClCompile Include="UserInputFacade.cpp">
       <Filter>Header Files\UserInput</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
@@ -103,6 +103,15 @@
       <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralHelperFunctions.cpp">
+      <Filter>Header Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,13 +179,19 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorCodes.h">
+      <Filter>Header Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>

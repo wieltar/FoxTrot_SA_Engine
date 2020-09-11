@@ -1,5 +1,16 @@
 #pragma once
+
+#ifndef ENGINE__H
+#define ENGINE__H
+
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
+
 #include <vector> 
+#include <iostream>
+#include <math.h>
+
 #include "Scene.h"
 #include "FileParser.h"
 #include "UserInput.h"
@@ -10,6 +21,10 @@
 
 class Engine
 {
+public:
+
+
+
 private:
 	FileParser* fileParser;
 	UserInput* userInput;
@@ -21,3 +36,6 @@ private:
 	std::vector<Component*> Components;
 };
 
+
+
+#endif

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
-#include "SDL.h"
+
+#include "../SDL2/include/SDL.h"
 #undef main
 using namespace std;
 
