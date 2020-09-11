@@ -8,3 +8,8 @@ Video::Video()
 Video::~Video()
 {
 }
+
+void Video::testLoop()
+{
+	videoFacade->testLoopFacade();
+}

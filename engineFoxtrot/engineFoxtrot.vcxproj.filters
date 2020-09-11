@@ -194,5 +194,8 @@
     <ClInclude Include="Object.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Version.h">
+      <Filter>Header Files\General</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

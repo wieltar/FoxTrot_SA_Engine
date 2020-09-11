@@ -25,7 +25,8 @@ public:
 	Engine();
 	~Engine();
 
-private:
+	// Set to private after testing
+public:
 
 	std::vector<Component*> Components;
 

@@ -6,7 +6,7 @@
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
-#include "IVideoFacade.h"
+#include "VideoFacade.h"
 
 class Video
 {
@@ -14,6 +14,11 @@ public:
 	Video();
 	~Video();
 
+	void testLoop();
+
+	//Set to private after testing
+public:
+	IVideoFacade * videoFacade = new VideoFacade;
 private:
 
 };

@@ -12,11 +12,14 @@ class IVideoFacade
 {
 public:
 	IVideoFacade();
-	~IVideoFacade();
+	virtual ~IVideoFacade();
 
+	virtual void testLoopFacade() = 0;
 private:
 
 };
+
+
 
 
 
