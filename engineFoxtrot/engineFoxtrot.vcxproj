@@ -142,7 +142,57 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="FileParser.cpp" />
+    <ClCompile Include="IJsonFacade.cpp" />
+    <ClCompile Include="IParticleFacade.cpp" />
+    <ClCompile Include="IPhysicsFacade.cpp" />
+    <ClCompile Include="ISoundFacade.cpp" />
+    <ClCompile Include="IUserInputFacade.cpp" />
+    <ClCompile Include="IVideoFacade.cpp" />
+    <ClCompile Include="JsonFacade.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ParticleEngine.cpp" />
+    <ClCompile Include="ParticleFacade.cpp" />
+    <ClCompile Include="PhysicsEngine.cpp" />
+    <ClCompile Include="PhysicsFacade.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundFacade.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="UserInput.cpp" />
+    <ClCompile Include="UserInputFacade.cpp" />
+    <ClCompile Include="Video.cpp" />
+    <ClCompile Include="VideoFacade.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="FileParser.h" />
+    <ClInclude Include="IJsonFacade.h" />
+    <ClInclude Include="IParticleFacade.h" />
+    <ClInclude Include="IPhysicsFacade.h" />
+    <ClInclude Include="ISoundFacade.h" />
+    <ClInclude Include="IUserInputFacade.h" />
+    <ClInclude Include="IVideoFacade.h" />
+    <ClInclude Include="JsonFacade.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="ParticleEngine.h" />
+    <ClInclude Include="ParticleFacade.h" />
+    <ClInclude Include="PhysicsEngine.h" />
+    <ClInclude Include="PhysicsFacade.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SoundFacade.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="UserInput.h" />
+    <ClInclude Include="UserInputFacade.h" />
+    <ClInclude Include="Video.h" />
+    <ClInclude Include="VideoFacade.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
