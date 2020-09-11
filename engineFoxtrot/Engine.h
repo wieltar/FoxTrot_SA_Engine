@@ -22,19 +22,22 @@
 class Engine
 {
 public:
-
-
+	Engine();
+	~Engine();
 
 private:
-	FileParser* fileParser;
-	UserInput* userInput;
-	Sound* sound;
-	PhysicsEngine* physicsEngine;
-	Video* video;
-	ParticleEngine* particleEngine;
 
 	std::vector<Component*> Components;
+
+
+	FileParser fileParser;
+	UserInput userInput;
+	Sound sound;
+	PhysicsEngine physicsEngine;
+	Video video;
+	ParticleEngine particleEngine;
 };
+
 
 
 
