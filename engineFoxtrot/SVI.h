@@ -1,0 +1,60 @@
+#pragma once
+
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
+#include "SDL.h"
+#include <string>
+#include <memory>
+#include <iostream>
+#include "../SDL2/include/SDL_mixer.h"
+#include "../SDL2/include/SDL.h"
+#undef main
+
+using namespace std;
+
+#define Example_File1 "../Assets/Sound/b423b42.wav"
+
+class SVI
+{
+// General stuff
+public:
+	SVI();
+	~SVI();
+
+	SDL_Renderer* ren;
+	SDL_Window* win;
+
+private:
+
+
+
+// Sound functions
+public:
+	void load(const char* filename);
+	void play();
+private:
+	SDL_AudioSpec wavSpec;
+	Uint32 wavLength;
+	Uint8* wavBuffer;
+	SDL_AudioDeviceID deviceId;
+
+
+// Video functions
+public:
+	void testLoopVideo();
+
+private:
+
+
+// Input functions
+public:
+	void input();
+
+private:
+	int mousex = 0;
+	int mousey = 0;
+};
+
+
+

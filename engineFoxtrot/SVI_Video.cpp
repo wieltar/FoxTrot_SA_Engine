@@ -1,14 +1,9 @@
-#include "VideoFacade.h"
+#include "SVI.h"
 
-VideoFacade::VideoFacade()
-{
-}
+// Functions in this cpp file may only call functions in this file. And global SDL2 definitions
 
-VideoFacade::~VideoFacade()
-{
-}
 
-void VideoFacade::testLoopFacade()
+void SVI::testLoopVideo()
 {
 	cout << "This is the engine project" << endl;
 

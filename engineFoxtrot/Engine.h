@@ -13,12 +13,11 @@
 
 #include "Scene.h"
 #include "FileParser.h"
-#include "UserInput.h"
-#include "Sound.h"
 #include "PhysicsEngine.h"
-#include "Video.h"
+#include "SVI.h"
 #include "ParticleEngine.h"
 
+/// @brief 
 class Engine
 {
 public:
@@ -32,10 +31,8 @@ public:
 
 
 	FileParser fileParser;
-	UserInput userInput;
-	Sound sound;
 	PhysicsEngine physicsEngine;
-	Video video;
+	SVI svi;
 	ParticleEngine particleEngine;
 };
 
