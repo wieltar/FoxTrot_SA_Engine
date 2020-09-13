@@ -15,6 +15,7 @@ int main() {
 
 	engine.svi.load("../Assets/Sound/b423b42.wav");
 	engine.svi.play();
+	engine.svi.testLoopVideo();
 	
 	while (1)
 	{
