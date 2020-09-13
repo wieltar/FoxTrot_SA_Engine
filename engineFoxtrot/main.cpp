@@ -13,11 +13,6 @@ Engine engine;
 
 int main() {
 
-
-	//SDL_SetWindowTitle(win, "Our First Game!!!");
-	//TTF_Init();
-	//running = true;
-	//font = TTF_OpenFont("Sans.ttf", 24);
 	engine.svi.load("../Assets/Sound/b423b42.wav");
 	engine.svi.play();
 	
