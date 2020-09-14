@@ -3,7 +3,7 @@
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
-#include "IPhysicsFacade.h"
+#include "PhysicsFacade.h"
 
 class PhysicsEngine
 {
@@ -11,6 +11,8 @@ public:
 	PhysicsEngine();
 	~PhysicsEngine();
 
+	//Set to private after testing!!!
+	IPhysicsFacade * physicsEngine = new PhysicsFacade;
 private:
 
 };

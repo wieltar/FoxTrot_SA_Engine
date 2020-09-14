@@ -1,5 +1,5 @@
 #pragma once
-#include "IParticleFacade.h"
+#include "ParticleFacade.h"
 
 #include "Debug.h"
 #include "ErrorCodes.h"
@@ -11,6 +11,8 @@ public:
 	ParticleEngine();
 	~ParticleEngine();
 
+	// Set to Private after testing!!!
+	IParticleFacade* particleEngine = new ParticleFacade;
 private:
 
 };

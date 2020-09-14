@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ISVI.h"
+
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
@@ -15,7 +17,7 @@ using namespace std;
 
 #define Example_File1 "../Assets/Sound/b423b42.wav"
 
-class SVI
+class SVI : public ISVI
 {
 // General stuff
 public:

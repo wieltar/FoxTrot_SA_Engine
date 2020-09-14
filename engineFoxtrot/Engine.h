@@ -14,7 +14,7 @@
 #include "Scene.h"
 #include "FileParser.h"
 #include "PhysicsEngine.h"
-#include "SVI.h"
+#include "SVIEngine.h"
 #include "ParticleEngine.h"
 
 /// @brief 
@@ -32,7 +32,7 @@ public:
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
-	SVI svi;
+	SVIEngine svi;
 	ParticleEngine particleEngine;
 };
 
