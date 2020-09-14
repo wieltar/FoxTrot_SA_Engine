@@ -11,11 +11,13 @@
 #include <iostream>
 #include "../SDL2/include/SDL_mixer.h"
 #include "../SDL2/include/SDL.h"
+#include "../SDL2/include/SDL_image.h"
 #undef main
 
 using namespace std;
 
-#define Example_File1 "../Assets/Sound/b423b42.wav"
+#define Example_Sound	"../Assets/Sound/b423b42.wav"
+#define Example_Sprite  "../Assets/Sprites/simple.png"
 
 class SVI : public ISVI
 {
@@ -24,8 +26,8 @@ public:
 	SVI();
 	~SVI();
 
-	SDL_Renderer* ren;
-	SDL_Window* win;
+	SDL_Renderer* rendererSDL2;
+	SDL_Window* windowSDL2;
 
 private:
 
