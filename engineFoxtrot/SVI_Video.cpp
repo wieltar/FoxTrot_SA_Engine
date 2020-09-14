@@ -5,7 +5,7 @@
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
 
-void SVI::testLoopVideo()
+void SVI::testLoopVideo(int x, int y)
 {
 	SDL_SetRenderDrawColor(rendererSDL2, 0, 0, 255, 255);
 
@@ -13,12 +13,11 @@ void SVI::testLoopVideo()
 	SDL_Surface* surface = IMG_Load(Example_Sprite);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(rendererSDL2, surface);
 	
-
 	SDL_Rect destination;
-	destination.x = 0;
-	destination.y = 0;
-	destination.w = surface->w;
-	destination.h = surface->h;
+	destination.x = x;
+	destination.y = y;
+	destination.w = 320;
+	destination.h = 320;
 	SDL_FreeSurface(surface);
 
 	SDL_RenderCopy(rendererSDL2, texture, NULL, &destination);

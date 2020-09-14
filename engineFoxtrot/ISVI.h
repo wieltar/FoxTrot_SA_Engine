@@ -11,7 +11,7 @@ public:
 	virtual void play() = 0;
 
 	// Video Functions
-	virtual void testLoopVideo() = 0;
+	virtual void testLoopVideo(int x, int y) = 0;
 
 	// Input Functions
 	virtual void input() = 0;

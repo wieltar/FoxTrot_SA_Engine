@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-//#include "Engine.h"
+#include "Engine.h"
 
 #include "box2d/box2d.h"
 using namespace std;
@@ -13,15 +13,15 @@ using namespace std;
 
 // TODO : Set object folder up with interface route
 
-//Engine engine;
+Engine engine;
 
 int main() {
 
-	b2Vec2 gravity(0.0f, -10.0f);
+	b2Vec2 gravity(0.0f, 10.0f);
 	b2World world(gravity);
 
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, -10.0f);
+	groundBodyDef.position.Set(0.0f, 130.0f);
 
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
@@ -30,9 +30,12 @@ int main() {
 
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
+
+
+
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(0.0f, 4.0f);
+	bodyDef.position.Set(0.0f, 0.0f);
 	b2Body* body = world.CreateBody(&bodyDef);
 
 	b2PolygonShape dynamicBox;
@@ -40,8 +43,10 @@ int main() {
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &dynamicBox;
-	fixtureDef.density = 1.0f;
+	fixtureDef.density = 100.0f;
 	fixtureDef.friction = 0.3f;
+
+	fixtureDef.restitution = 0.9f;
 
 	body->CreateFixture(&fixtureDef);
 
@@ -50,12 +55,14 @@ int main() {
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 
-	for (int32 i = 0; i < 60; ++i)
+	for (int32 i = 0; i < 1000; ++i)
 	{
 		world.Step(timeStep, velocityIterations, positionIterations);
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+		engine.svi.testLoopVideo((int)position.x, (int)position.y);
+		SDL_Delay(10);
 	}
 
 	cout << "Hello world!" << endl;
@@ -65,7 +72,7 @@ int main() {
 
 	//engine.svi.load("../Assets/Sound/b423b42.wav");
 	//engine.svi.play();
-	//engine.svi.testLoopVideo();
+	
 	//
 	//while (1)
 	//{

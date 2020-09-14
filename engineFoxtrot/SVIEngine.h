@@ -12,7 +12,7 @@ public:
 	void play();
 
 	// Video Functions
-	void testLoopVideo();
+	void testLoopVideo(int x, int y);
 
 	// Input Functions
 	void input();

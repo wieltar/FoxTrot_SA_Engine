@@ -18,9 +18,9 @@ void SVIEngine::play()
 	sviEngine->play();
 }
 
-void SVIEngine::testLoopVideo()
+void SVIEngine::testLoopVideo(int x, int y)
 {
-	sviEngine->testLoopVideo();
+	sviEngine->testLoopVideo(x,y);
 }
 
 void SVIEngine::input()
