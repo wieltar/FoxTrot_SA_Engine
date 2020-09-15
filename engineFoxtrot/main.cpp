@@ -43,7 +43,7 @@ int main() {
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &dynamicBox;
-	fixtureDef.density = 100.0f;
+	fixtureDef.density = 10.0f;
 	fixtureDef.friction = 0.3f;
 
 	fixtureDef.restitution = 0.9f;
