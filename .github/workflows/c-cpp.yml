@@ -11,13 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Enable Developer Command Prompt
-      # You may pin to the exact commit or the version.
-      # uses: ilammy/msvc-dev-cmd@6bcb337df208f9bc118b2e54c39ccb359e681537
-      uses: ilammy/msvc-dev-cmd@v1.3.0
-      with:
-        # Target architecture
-        arch: x64 # optional, default is x64
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1.0.1
     - name: build foxtrot engine  
