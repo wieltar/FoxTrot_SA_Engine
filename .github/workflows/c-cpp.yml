@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Enable Developer Command Prompt
@@ -20,14 +18,6 @@ jobs:
       with:
         # Target architecture
         arch: x64 # optional, default is x64
-        # Windows SDK number to build for
-        sdk: 10 # optional
-        # Enable Specre mitigations
-        # spectre:  # optional
-        # VC++ compiler toolset version
-        # toolset: # optional
-        # Build for Universal Windows Platform
-        #uwp: # optional
-    - name: build  
+    - name: build foxtrot engine  
       run :
         msbuild.exe  
