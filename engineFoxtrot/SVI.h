@@ -46,7 +46,7 @@ private:
 
 // Video functions
 public:
-	void testLoopVideo();
+	void testLoopVideo(int x, int y);
 
 private:
 
