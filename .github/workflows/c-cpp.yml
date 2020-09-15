@@ -30,4 +30,4 @@ jobs:
         #uwp: # optional
     - name: build  
       run :
-        mxbuild.exe  
+        msbuild.exe  
