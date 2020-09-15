@@ -12,10 +12,29 @@ using namespace std;
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
 // TODO : Set object folder up with interface route
+#include <nlohmann/json.hpp>
 
 Engine engine;
 
 int main() {
+	using json = nlohmann::json;
+
+	json j = {
+		  {"pi", 3.141},
+		  {"happy", true},
+		  {"name", "Niels"},
+		  {"nothing", nullptr},
+		  {"answer", {
+			{"everything", 42}
+		  }},
+		  {"list", {1, 0, 2}},
+		  {"object", {
+			{"currency", "USD"},
+			{"value", 42.99}
+		  }}
+	};
+	std::string s = j.dump();
+	std::cout << j.dump() << endl;
 
 	b2Vec2 gravity(0.0f, 10.0f);
 	b2World world(gravity);
@@ -30,9 +49,6 @@ int main() {
 
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
-
-
-
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(0.0f, 0.0f);
@@ -45,7 +61,6 @@ int main() {
 	fixtureDef.shape = &dynamicBox;
 	fixtureDef.density = 10.0f;
 	fixtureDef.friction = 0.3f;
-
 	fixtureDef.restitution = 0.9f;
 
 	body->CreateFixture(&fixtureDef);
@@ -55,6 +70,8 @@ int main() {
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 
+
+
 	for (int32 i = 0; i < 1000; ++i)
 	{
 		world.Step(timeStep, velocityIterations, positionIterations);
@@ -62,7 +79,7 @@ int main() {
 		float angle = body->GetAngle();
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
 		engine.svi.testLoopVideo((int)position.x, (int)position.y);
-		SDL_Delay(10);
+		SDL_Delay(1);
 	}
 
 	cout << "Hello world!" << endl;
