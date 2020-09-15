@@ -1,7 +1,19 @@
 #pragma once
+
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
+
 class IPhysicsFacade
 {
 public:
-	virtual void doPhysics() = 0;
+	IPhysicsFacade();
+	~IPhysicsFacade();
+
+private:
+
 };
+
+
+
 

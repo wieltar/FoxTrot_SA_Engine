@@ -1,9 +1,21 @@
 #pragma once
+
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
 #include "IPhysicsFacade.h"
 
-class PhysicsFacade: public IPhysicsFacade
+
+class PhysicsFacade : public IPhysicsFacade
 {
 public:
-	void doPhysics();
+	PhysicsFacade();
+	~PhysicsFacade();
+
+private:
+
 };
+
+
+
 
