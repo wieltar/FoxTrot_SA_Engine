@@ -85,11 +85,36 @@ int main() {
 		SDL_Event event;
 
 
+		void goUp() {
+			velocityY = 1;
+			updatePos();
+		}
+		void goDown() {
+			velocityY = -1;
+			updatePos();
+		}
+		void goLeft() {
+			velocityX = -1;
+			updatePos();
+		}
+		void goRight() {
+			velocityX = 1;
+			updatePos();
+		}
+		void jump() {
+			cout << "JUMP" << endl;
+		}
+		void inventory() {
+			cout << "INVENTORY" << endl;
+		}
+
 		void pos() {
-			const int up = 119;
-			const int down = 115;
-			const int left = 97;
-			const int right = 100;
+			const int keyUp = 119; //W
+			const int keyDown = 115; //S
+			const int keyLeft = 97;//A
+			const int keyRight = 100;//D
+			const int keyJump = 32; //{spatie}
+			const int keyInventory = 105; //I
 
 			while (true) {
 				while (SDL_PollEvent(&event)) {
@@ -97,22 +122,12 @@ int main() {
 					case SDL_KEYDOWN:
 						switch (event.key.keysym.sym)
 						{
-						case up:
-							velocityY = 1;
-							updatePos();
-							break;
-						case down:
-							velocityY = -1;
-							updatePos();
-							break;
-						case left:
-							velocityX = -1;
-							updatePos();
-							break;
-						case right:
-							velocityX = 1;
-							updatePos();
-							break;
+						case keyUp: goUp(); break;
+						case keyDown: goDown(); break;
+						case keyLeft: goLeft(); break;
+						case keyRight: goRight(); break; 
+						case keyJump: jump(); break;
+						case keyInventory: inventory(); break;
 						default:
 							break;
 						}
