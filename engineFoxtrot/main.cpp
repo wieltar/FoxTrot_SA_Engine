@@ -65,61 +65,85 @@ int main() {
 	//	engine.svi.testLoopVideo((int)position.x, (int)position.y);
 	//	SDL_Delay(10);
 	//}
+	class Movement {
+	public:
+		int posX = 0;
+		int posY = 0;
+		int speed = 3;
 
-	SDL_Event event;
-	int velocityY = 0;
-	int velocityX = 0;
+		int velocityX = 0;
+		int velocityY = 0;
 
-	while (true) {
-		while (SDL_PollEvent(&event)) {
-			switch (event.type) {
-			case SDL_KEYDOWN:
-				cout << "KEYDOWN" << endl;
-				switch (event.key.keysym.sym)
-				{
-				case SDLK_w:
-					velocityY = 1;
-					break;
-				case SDLK_s:
-					velocityY = -1;
-					break;
-				case SDLK_a:
-					velocityX = -1;
-					break;
-				case SDLK_d:
-					velocityX = 1;
-					break;
-				default:
-					break;
+
+		void updatePos() {
+			cout << "X = " << posX << " += " << velocityX << " * " << speed << endl;
+			cout << "Y = " << posY << " += " << velocityY << " * " << speed << endl;
+			posX += velocityX * speed;
+			posY += velocityY * speed;
+			cout << "POS X: " << posX << " POS Y: " << posY << endl;
+		};
+		SDL_Event event;
+
+		void pos() {
+			while (true) {
+				while (SDL_PollEvent(&event)) {
+					switch (event.type) {
+					case SDL_KEYDOWN:
+						switch (event.key.keysym.sym)
+						{
+						case SDLK_w:
+							velocityY = 1;
+							updatePos();
+							break;
+						case SDLK_s:
+							velocityY = -1;
+							updatePos();
+							break;
+						case SDLK_a:
+							velocityX = -1;
+							updatePos();
+							break;
+						case SDLK_d:
+							velocityX = 1;
+							updatePos();
+							break;
+						default:
+							break;
+						}
+						break;
+					case SDL_KEYUP:
+						switch (event.key.keysym.sym)
+						{
+						case SDLK_w:
+							velocityY = 0;
+							break;
+						case SDLK_s:
+							velocityY = 0;
+							break;
+						case SDLK_a:
+							velocityX = 0;
+							break;
+						case SDLK_d:
+							velocityX = 0;
+							break;
+						default:
+							break;
+						}
+						break;
+					default:
+						break;
+					}
 				}
-				break;
-			case SDL_KEYUP:
-				cout << "KEYUP" << endl;
-				switch (event.key.keysym.sym)
-				{
-				case SDLK_w:
-					velocityY = 0;
-					break;
-				case SDLK_s:
-					velocityY = 0;
-					break;
-				case SDLK_a:
-					velocityX = 0;
-					break;
-				case SDLK_d:
-					velocityX = 0;
-					break;
-				default:
-					break;
-				}
-				break;
-			default:
-				break;
+
 			}
-			cout << "X " << velocityX << " Y " << velocityY << endl;
 		}
 
-	}
+	};
+
+	Movement m;
+
+	m.pos();
+	
 
 	cout << "Hello world!" << endl;
 	return 0;
