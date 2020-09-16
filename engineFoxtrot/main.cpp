@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Engine.h"
-
+#include "SDL.h"
 #include "box2d/box2d.h"
 using namespace std;
 
@@ -55,14 +55,70 @@ int main() {
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 
-	for (int32 i = 0; i < 1000; ++i)
-	{
-		world.Step(timeStep, velocityIterations, positionIterations);
-		b2Vec2 position = body->GetPosition();
-		float angle = body->GetAngle();
-		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-		engine.svi.testLoopVideo((int)position.x, (int)position.y);
-		SDL_Delay(10);
+
+	//for (int32 i = 0; i < 1000; ++i)
+	//{
+	//	world.Step(timeStep, velocityIterations, positionIterations);
+	//	b2Vec2 position = body->GetPosition();
+	//	float angle = body->GetAngle();
+	//	printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+	//	engine.svi.testLoopVideo((int)position.x, (int)position.y);
+	//	SDL_Delay(10);
+	//}
+
+	SDL_Event event;
+	int velocityY = 0;
+	int velocityX = 0;
+
+	while (true) {
+		while (SDL_PollEvent(&event)) {
+			switch (event.type) {
+			case SDL_KEYDOWN:
+				cout << "KEYDOWN" << endl;
+				switch (event.key.keysym.sym)
+				{
+				case SDLK_w:
+					velocityY = 1;
+					break;
+				case SDLK_s:
+					velocityY = -1;
+					break;
+				case SDLK_a:
+					velocityX = -1;
+					break;
+				case SDLK_d:
+					velocityX = 1;
+					break;
+				default:
+					break;
+				}
+				break;
+			case SDL_KEYUP:
+				cout << "KEYUP" << endl;
+				switch (event.key.keysym.sym)
+				{
+				case SDLK_w:
+					velocityY = 0;
+					break;
+				case SDLK_s:
+					velocityY = 0;
+					break;
+				case SDLK_a:
+					velocityX = 0;
+					break;
+				case SDLK_d:
+					velocityX = 0;
+					break;
+				default:
+					break;
+				}
+				break;
+			default:
+				break;
+			}
+			cout << "X " << velocityX << " Y " << velocityY << endl;
+		}
+
 	}
 
 	cout << "Hello world!" << endl;
@@ -72,7 +128,7 @@ int main() {
 
 	//engine.svi.load("../Assets/Sound/b423b42.wav");
 	//engine.svi.play();
-	
+
 	//
 	//while (1)
 	//{
