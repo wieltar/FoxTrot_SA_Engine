@@ -84,26 +84,32 @@ int main() {
 		};
 		SDL_Event event;
 
+
 		void pos() {
+			const int up = 119;
+			const int down = 115;
+			const int left = 97;
+			const int right = 100;
+
 			while (true) {
 				while (SDL_PollEvent(&event)) {
 					switch (event.type) {
 					case SDL_KEYDOWN:
 						switch (event.key.keysym.sym)
 						{
-						case SDLK_w:
+						case up:
 							velocityY = 1;
 							updatePos();
 							break;
-						case SDLK_s:
+						case down:
 							velocityY = -1;
 							updatePos();
 							break;
-						case SDLK_a:
+						case left:
 							velocityX = -1;
 							updatePos();
 							break;
-						case SDLK_d:
+						case right:
 							velocityX = 1;
 							updatePos();
 							break;
