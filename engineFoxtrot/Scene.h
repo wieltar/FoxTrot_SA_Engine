@@ -1,16 +1,25 @@
 #pragma once
-#include "Component.h"
+#include <vector>
+#include <string>
+#include <memory>
+#include <iostream>
 
-class Scene : public Component
+#include "Object.h"
+
+using namespace std;
+
+class Scene
 {
 public:
 	Scene();
 	~Scene();
 
+	void getObject(int ObjectID);
+	vector<Object*> returnCurrentObjects();
+
 private:
-	uint16_t positionY = 0;
-	uint16_t rotation = 0;
-	uint16_t scale = 0;
+	int sceneID;
+	vector<Object*> Objects;
 };
 
 

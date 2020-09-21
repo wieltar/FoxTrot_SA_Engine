@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="GeneralHelperFunctions.cpp" />
@@ -163,7 +162,7 @@
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="PhysicsFacade.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SVI.cpp" />
     <ClCompile Include="SVIEngine.cpp" />
     <ClCompile Include="SVI_Input.cpp" />
@@ -174,7 +173,6 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ErrorCodes.h" />
@@ -190,7 +188,7 @@
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="PhysicsFacade.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SVI.h" />
     <ClInclude Include="SVIEngine.h" />
     <ClInclude Include="Version.h" />

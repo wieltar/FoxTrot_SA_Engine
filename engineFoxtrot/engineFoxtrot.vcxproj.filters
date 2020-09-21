@@ -75,12 +75,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
     <ClCompile Include="GeneralHelperFunctions.cpp">
       <Filter>Header Files\General</Filter>
     </ClCompile>
@@ -107,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="SVIEngine.cpp">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,12 +143,6 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
@@ -172,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="SVIEngine.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
