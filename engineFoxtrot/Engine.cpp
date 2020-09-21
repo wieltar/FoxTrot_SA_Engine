@@ -9,8 +9,8 @@ Engine::~Engine()
 {
 }
 
-void Engine::init()
+void Engine::initScene()
 {
-	// Todo
+	// TODO: Set object list to other object list
 }
 

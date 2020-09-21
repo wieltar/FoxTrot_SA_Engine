@@ -16,14 +16,25 @@ Engine engine;
 
 int main() {
 
+	//engine.svi.testLoopVideo(10,10);
+	engine.svi.clearScreen();
+	engine.svi.loadImage(1, "../Assets/Sprites/Simple.png");
+	engine.svi.loadImage(2, "../Assets/Sprites/Simple.png");
+	engine.svi.loadImage(3, "../Assets/Sprites/Simple.png");
+	engine.svi.renderCopy(1, 10, 10, 100, 100);
+	engine.svi.renderCopy(2, 110, 10, 100, 100);
+	engine.svi.renderCopy(3, 10, 110, 100, 100);
+	engine.svi.updateScreen();
+
+
 	//engine.svi.load("../Assets/Sound/b423b42.wav");
 	//engine.svi.play();
 	
-	//
-	//while (1)
-	//{
-	//	engine.svi.input();
-	//}
+	
+	while (1)
+	{
+		engine.svi.input();
+	}
 }
 
 

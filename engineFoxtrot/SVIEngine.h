@@ -3,6 +3,7 @@
 #include "Object.h"
 #include <vector>
 
+
 using namespace std;
 
 class SVIEngine
@@ -17,6 +18,14 @@ public:
 
 	// Video Functions
 	void testLoopVideo(int x, int y);
+
+	void initSDL();
+
+	void clearScreen();
+	void updateScreen();
+	void loadImage(int spriteID, const char* filename);
+
+	void renderCopy(int spriteID, int xPos, int yPos, int width, int height);
 
 	// Input Functions
 	void input();

@@ -9,6 +9,7 @@
 #include <string>
 #include <memory>
 #include <iostream>
+#include <unordered_map>
 #include "../SDL2/include/SDL_mixer.h"
 #include "../SDL2/include/SDL.h"
 #include "../SDL2/include/SDL_image.h"
@@ -26,10 +27,10 @@ public:
 	SVI();
 	~SVI();
 
-	SDL_Renderer* rendererSDL2;
-	SDL_Window* windowSDL2;
 
 private:
+	SDL_Renderer* renderer;
+	SDL_Window* window;
 
 
 
@@ -47,6 +48,17 @@ private:
 // Video functions
 public:
 	void testLoopVideo(int x, int y);
+
+	void initSDL();
+
+	void clearScreen();
+	void updateScreen();
+	void loadImage(int spriteID, const char* filename);
+
+	void renderCopy(int spriteID, int xPos, int yPos, int width, int height);
+
+
+	unordered_map<int, SDL_Texture*> textureMap;
 
 private:
 

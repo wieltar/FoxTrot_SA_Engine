@@ -24,9 +24,9 @@ public:
 	Engine();
 	~Engine();
 
-	void init();
+	void initScene();
 
-	// Set to private after testing
+	// TODO: Set to private after testing
 public:
 
 
