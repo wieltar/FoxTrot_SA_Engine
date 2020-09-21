@@ -9,3 +9,8 @@ Engine::~Engine()
 {
 }
 
+void Engine::init()
+{
+	// Todo
+}
+

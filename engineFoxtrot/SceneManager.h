@@ -19,6 +19,8 @@ public:
 private:
 
 	vector<Scene*> Scenes;
+
+	vector <int*> pointerToCurrentObjectVector;
 	
 	Scene* currentScene;
 };

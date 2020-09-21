@@ -24,6 +24,8 @@ public:
 	Engine();
 	~Engine();
 
+	void init();
+
 	// Set to private after testing
 public:
 

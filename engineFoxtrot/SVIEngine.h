@@ -1,5 +1,9 @@
 #pragma once
 #include "SVI.h"
+#include "Object.h"
+#include <vector>
+
+using namespace std;
 
 class SVIEngine
 {
@@ -16,6 +20,9 @@ public:
 
 	// Input Functions
 	void input();
+
+	vector <int*> pointerToObjectVector;
+	vector <Object> objects;
 
 
 	//Set to private after testing!!!
