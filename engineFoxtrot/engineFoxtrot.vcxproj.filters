@@ -40,6 +40,9 @@
     <Filter Include="Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper">
       <UniqueIdentifier>{199fce93-79d1-4d55-aaf0-2e65e807cc41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Event-Based">
+      <UniqueIdentifier>{2c0b3274-a0ba-4383-b721-a1eff3a7ef93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -172,6 +175,42 @@
     </ClInclude>
     <ClInclude Include="SVIEngine.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Enemy.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Engine.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventListener.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventManager.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventType.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Game.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\GameObject.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Input.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Object.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Physics.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Player.h">
+      <Filter>Event-Based</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Scene.h">
+      <Filter>Event-Based</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Engine.h"
 
+#include "Game.h"
 #include "box2d/box2d.h"
 using namespace std;
 
@@ -16,6 +17,8 @@ using namespace std;
 Engine engine;
 
 int main() {
+	Game g = Game();
+	g.run();
 
 	b2Vec2 gravity(0.0f, 10.0f);
 	b2World world(gravity);
@@ -61,8 +64,8 @@ int main() {
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-		engine.svi.testLoopVideo((int)position.x, (int)position.y);
-		SDL_Delay(10);
+		/*engine.svi.testLoopVideo((int)position.x, (int)position.y);
+		SDL_Delay(10);*/
 	}
 
 	cout << "Hello world!" << endl;

@@ -174,6 +174,18 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Enemy.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Engine.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventListener.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventManager.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventType.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Game.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\GameObject.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Input.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Object.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Physics.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Player.h" />
+    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Scene.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Engine.h" />

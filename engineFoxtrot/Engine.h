@@ -1,42 +1,50 @@
 #pragma once
 
-#ifndef ENGINE__H
-#define ENGINE__H
-
-#include "Debug.h"
-#include "ErrorCodes.h"
-#include "GeneralHelperFunctions.cpp"
-
-#include <vector> 
 #include <iostream>
-#include <math.h>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include "Object.h"
+#include "EventManager.h"
+#include "Physics.h"
+#include "Input.h"
 
-#include "Scene.h"
-#include "FileParser.h"
-#include "PhysicsEngine.h"
-#include "SVIEngine.h"
-#include "ParticleEngine.h"
+class Engine {
+private:
+    std::vector<Object*> objects = std::vector<Object*>();
+    EventManager manager = EventManager();
 
-/// @brief 
-class Engine
-{
+    Physics* p;
+    Input* i;
 public:
-	Engine();
-	~Engine();
+    Engine() {
+        EventManager* e = &manager;
+        std::vector<Object*>* ob = &objects;
+        
+        p = new Physics(e, ob);
+        i = new Input(e, ob);
 
-	// Set to private after testing
-public:
+        manager.subscribe(MOVE, p);
+        manager.subscribe(MOVE, i);
+    }
 
-	std::vector<Component*> Components;
+    void addObject(Object* o) {
+        objects.push_back(o);
+    }
 
+    std::vector<Object*>* getObj() {
+        return &this->objects;
+    }
 
-	FileParser fileParser;
-	PhysicsEngine physicsEngine;
-	SVIEngine svi;
-	ParticleEngine particleEngine;
+    void run() {
+        while (true) {
+                // Update physics
+            p->update();
+                // Wait user input
+
+                // Update screen
+            //video->update();
+                // Etc.
+        }
+    }
 };
-
-
-
-
-#endif
