@@ -6,6 +6,12 @@
 
 using namespace std;
 
+struct Sprite
+{
+	int spriteID = 0;
+	const char* filename = "";
+};
+
 class SVIEngine
 {
 public:
@@ -26,7 +32,7 @@ public:
 	void loadImage(int spriteID, const char* filename);
 	void renderCopy(int spriteID, int xPos, int yPos, int width, int height);
 
-	void updateScreen(vector<Object> objects);
+	void updateScreen();
 
 	// Input Functions
 	void input();

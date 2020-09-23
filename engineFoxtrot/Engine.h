@@ -39,6 +39,12 @@ public:
 	SceneManager sceneManager;
 
 	void registerSceneManagerPointerWithSVIPointer();
+	void loadSpriteArray(vector<Sprite> spriteVector);
+
+
+	void TESTfillSpriteVector(); // TODO: remove after testing.
+	vector<Sprite> sprites;
+
 };
 
 

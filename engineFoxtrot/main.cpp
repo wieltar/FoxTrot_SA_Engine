@@ -25,10 +25,76 @@ int main() {
 	engine.sceneManager.scenes.push_back(&scene);
 
 	scene.sceneID = 10;
+	// Object testing purpose
+	// TODO: remove after testing
+	{
+		Object object1;
+		object1.spriteID = 1;
+		object1.positionX = 50;
+		object1.positionY = 5;
+		scene.Objects.push_back(&object1);
 
-	scene.Objects.push_back(&object);
+		Object object2;
+		object2.spriteID = 2;
+		object2.positionX = 100;
+		object2.positionY = 5;
+		scene.Objects.push_back(&object2);
+
+		Object object3;
+		object3.spriteID = 3;
+		object3.positionX = 150;
+		object3.positionY = 5;
+		scene.Objects.push_back(&object3);
+
+		Object object4;
+		object4.spriteID = 4;
+		object4.positionX = 5;
+		object4.positionY = 50;
+		scene.Objects.push_back(&object4);
+
+		Object object5;
+		object5.spriteID = 5;
+		object5.positionX = 50;
+		object5.positionY = 5;
+		scene.Objects.push_back(&object5);
+
+		Object object6;
+		object6.spriteID = 6;
+		object6.positionX = 100;
+		object6.positionY = 50;
+		scene.Objects.push_back(&object6);
+
+		Object object7;
+		object7.spriteID = 7;
+		object7.positionX = 150;
+		object7.positionY = 50;
+		scene.Objects.push_back(&object7);
+
+		Object object8;
+		object8.spriteID = 8;
+		object8.positionX = 5;
+		object8.positionY = 5;
+		scene.Objects.push_back(&object8);
+
+		Object object9;
+		object9.spriteID = 9;
+		object9.positionX = 5;
+		object9.positionY = 100;
+		scene.Objects.push_back(&object9);
+
+		Object object10;
+		object10.spriteID = 10;
+		object10.positionX = 50;
+		object10.positionY = 100;
+		scene.Objects.push_back(&object10);
+
+	}
+
+	for (auto obj : scene.Objects) {
+		cout << obj->spriteID << endl;
+	}
+
 	cout << "Address: " << (int*)&(engine.svi.pointerToObjectVector) << endl;
-
 	try
 	{
 		engine.sceneManager.setCurrentScene(10);
@@ -43,12 +109,11 @@ int main() {
 
 	//engine.svi.testLoopVideo(10,10);
 	engine.svi.clearScreen();
-	engine.svi.loadImage(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-run-00.png");
-	engine.svi.loadImage(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
-	engine.svi.loadImage(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
-	engine.svi.renderCopy(1, 10, 10, 100, 100);
-	engine.svi.renderCopy(2, 110, 10, 100, 100);
-	engine.svi.renderCopy(3, 10, 110, 100, 100);
+
+	engine.TESTfillSpriteVector();
+	engine.loadSpriteArray(engine.sprites);
+
+	engine.svi.updateScreen();
 	engine.svi.drawScreen();
 
 

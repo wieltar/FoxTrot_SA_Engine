@@ -48,10 +48,12 @@ void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int heig
 	sviEngine->renderCopy(spriteID, xPos, yPos, width, height);
 }
 
-void SVIEngine::updateScreen(vector<Object> objects)
+void SVIEngine::updateScreen()
 {
+	cout << objects.size() << endl;
 	for (auto obj : objects) {
-		renderCopy(obj.spriteID, obj.positionX, obj.positionY, obj.width, obj.height);
+		cout << obj.spriteID << " " << obj.positionX << endl;
+		sviEngine->renderCopy(obj.spriteID, obj.positionX, obj.positionY, obj.width, obj.height);
 	}
 }
 
