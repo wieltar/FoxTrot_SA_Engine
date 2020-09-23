@@ -4,11 +4,30 @@
 
 class Enemy : public GameObject {
 public:
-    void move() override {
-        std::cout << "Enemy move" << std::endl;
-    }
-
     std::string get_name() override {
         return "ENEMY";
+    }
+
+    void move() override {
+        std::cout << "ENEMY move" << std::endl;
+    }
+
+    virtual void interact() {
+    }
+
+    void onCollision() override {
+        std::cout << "ENEMY COLLIDED" << std::endl;
+    }
+
+    virtual void draw() override {
+
+    }
+
+    virtual void animate() override {
+
+    }
+
+    virtual void playSound() override {
+
     }
 };

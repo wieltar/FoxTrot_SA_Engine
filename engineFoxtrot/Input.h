@@ -1,33 +1,36 @@
 #pragma once
 
-#include "EventListener.h";
-#include "EventManager.h";
-#include "Object.h";
+#include "EventListener.h"
+#include "EventManager.h"
+#include "mObject.h"
 #include <iostream>
+#include "KeyEvent.h"
 
 class Input : public EventListener {
 private:
     EventManager* e;
-    std::vector<Object*>* objects;
+    std::vector<mObject*>* objects;
 public:
-    Input(EventManager* e, std::vector<Object*>* objects) {
+    Input(EventManager* e, std::vector<mObject*>* objects) {
         this->e = e;
         this->objects = objects;
     }
 
     void runInput() {
-        char ch;
+        int ch;
         while (true) {
             ch = std::getchar();
 
-            if (ch == 'a')
+            if (ch == (int)KeyEvent::UP)
             {
-                //this->e->notify(MOVE);
+                std::cout << "=====INPUT!\n";
+                //this->e->notify(MOVE, objects->at(0));
+                ch = ' ';
             }
         }
     }
 
-    void update(Object* o) override {
+    void update(mObject* o) override {
         std::cout << "=====INPUT!\n";
     }
 };

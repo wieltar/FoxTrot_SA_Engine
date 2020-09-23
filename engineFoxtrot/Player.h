@@ -4,16 +4,36 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-#include "Object.h"
 #include "GameObject.h"
 
 class Player : public GameObject {
 public:
-    void move() override {
-        std::cout << "Player move" << std::endl;
-    }
-
     std::string get_name() override {
         return "PLAYER";
     }
+
+    void move() override {
+        std::cout << "PLAYER move" << std::endl;
+    }
+
+    virtual void interact() {
+        std::cout << "PLAYER interact" << std::endl;
+    }
+
+    void onCollision() override {
+        std::cout << "PLAYER COLLIDED" << std::endl;
+    }
+
+    virtual void draw() override {
+
+    }
+
+    virtual void animate() override {
+
+    }
+
+    virtual void playSound() override {
+
+    }
 };
+

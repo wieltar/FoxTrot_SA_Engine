@@ -4,8 +4,9 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-#include "EventType.h";
-#include "EventListener.h";
+#include "EventType.h"
+#include "EventListener.h"
+#include "mObject.h"
 
 class EventManager {
 private:
@@ -34,7 +35,7 @@ public:
         }
     }
 
-    void notify(EventType t, Object* data) {
+    void notify(EventType t, mObject* data) {
         if (listeners.count(t) > 0) {
             auto size = listeners.find(t)->second->size();
             auto vec = listeners.find(t)->second;

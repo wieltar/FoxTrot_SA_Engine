@@ -40,8 +40,17 @@
     <Filter Include="Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper">
       <UniqueIdentifier>{199fce93-79d1-4d55-aaf0-2e65e807cc41}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Event-Based">
-      <UniqueIdentifier>{2c0b3274-a0ba-4383-b721-a1eff3a7ef93}</UniqueIdentifier>
+    <Filter Include="PoC/Event-based">
+      <UniqueIdentifier>{881c73ee-4456-4db7-9b83-d2b5685c5202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PoC/Event-based\Game">
+      <UniqueIdentifier>{cd492dc8-188b-427f-a135-2dad52752a7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PoC/Event-based\Engine">
+      <UniqueIdentifier>{fb8ab61a-63a5-45e7-8ec7-249b55d2edb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PoC/Event-based\Engine\Enums">
+      <UniqueIdentifier>{200fd3ed-2003-4fd4-913b-f068ca1876ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -176,41 +185,47 @@
     <ClInclude Include="SVIEngine.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Enemy.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="Enemy.h">
+      <Filter>PoC/Event-based\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Engine.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>PoC/Event-based\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventListener.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="GameObject.h">
+      <Filter>PoC/Event-based\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventManager.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="Player.h">
+      <Filter>PoC/Event-based\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\EventType.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="EventType.h">
+      <Filter>PoC/Event-based\Engine\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Game.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="KeyEvent.h">
+      <Filter>PoC/Event-based\Engine\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\GameObject.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="EventListener.h">
+      <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Input.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="EventManager.h">
+      <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Object.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="Input.h">
+      <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Physics.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="mEngine.h">
+      <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Player.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="mObject.h">
+      <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\source\repos\ConsoleApplication6\ConsoleApplication6\Scene.h">
-      <Filter>Event-Based</Filter>
+    <ClInclude Include="mPhysics.h">
+      <Filter>PoC/Event-based\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Video.h">
+      <Filter>PoC/Event-based\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>PoC/Event-based\Engine\Enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

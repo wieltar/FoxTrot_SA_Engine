@@ -6,45 +6,60 @@
 #include <algorithm>
 #include "Object.h"
 #include "EventManager.h"
-#include "Physics.h"
+#include "mPhysics.h"
 #include "Input.h"
+#include <thread>
+#include <iostream>
+#include <chrono>
+#include <thread>
 
 class Engine {
 private:
-    std::vector<Object*> objects = std::vector<Object*>();
+    std::vector<mObject*> objects = std::vector<mObject*>();
     EventManager manager = EventManager();
 
-    Physics* p;
+    mPhysics* p;
     Input* i;
 public:
     Engine() {
         EventManager* e = &manager;
-        std::vector<Object*>* ob = &objects;
-        
-        p = new Physics(e, ob);
+        std::vector<mObject*>* ob = &objects;
+
+        p = new mPhysics(e, ob);
         i = new Input(e, ob);
 
-        manager.subscribe(MOVE, p);
-        manager.subscribe(MOVE, i);
+        manager.subscribe(EventType::MOVE, p);
+        manager.subscribe(EventType::MOVE, i);
     }
 
-    void addObject(Object* o) {
+    void registerEventListener(EventType t, EventListener* l) {
+        manager.subscribe(t, l);
+    }
+
+    void addObject(mObject* o) {
         objects.push_back(o);
     }
 
-    std::vector<Object*>* getObj() {
+    std::vector<mObject*>* getObj() {
         return &this->objects;
     }
 
-    void run() {
-        while (true) {
-                // Update physics
-            p->update();
-                // Wait user input
+    void input() {
+        i->runInput();
+    }
 
-                // Update screen
-            //video->update();
-                // Etc.
+    void run() {
+        //std::thread([this] { this->input(); }).detach();
+
+        while (true) {
+            // Update physics
+            p->update();
+            // Wait user input
+
+            // Update screen
+        //video->update();
+            // Etc.
+        //std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
     }
 };

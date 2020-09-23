@@ -3,28 +3,33 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "Engine.h"
+#include "mEngine.h"
 #include "GameObject.h"
 #include "Enemy.h"
 #include "Player.h"
 
+class OnCollisionListener : public EventListener {
+public:
+    OnCollisionListener() { }
+    void update(mObject* object) {
+        object->onCollision();
+    }
+};
+
 class Game {
 private:
-    Engine engine = Engine();
+    mEngine engine = mEngine();
 public:
     Game() {
+        engine.addEventListener(new OnCollisionListener(), EventType::COLLISION);
+
         engine.addObject({ new Enemy() });
-        engine.addObject({ new Player() });
+
+        auto player = new Player();
+        engine.addObject(player);
     }
 
     void run() {
         engine.run();
-        /*while (true) {
-            for (std::vector<int>::size_type i = 0; i != e.size(); i++) {
-                auto x = enemies[i];
-                x->move();
-                e.manager.notify(MOVE, x);
-            }
-        }*/
     }
 };

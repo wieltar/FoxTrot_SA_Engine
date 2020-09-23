@@ -2,14 +2,14 @@
 
 #include "EventListener.h";
 #include "EventManager.h";
-#include "Object.h";
+#include "mObject.h";
 
 class Physics : public EventListener {
 private:
     EventManager* e;
-    std::vector<Object*>* objects;
+    std::vector<mObject*>* objects;
 public:
-    Physics(EventManager* e, std::vector<Object*>* objects) {
+    Physics(EventManager* e, std::vector<mObject*>* objects) {
         this->e = e;
         this->objects = objects;
     }
@@ -22,18 +22,22 @@ public:
             int newX = 0;
             int newY = 0;
 
-            objects->at(1)->X = newX;
-            objects->at(1)->X = newY;
+            objects->at(1)->setX(newX);
+            objects->at(1)->setY(newY);
 
-            e->notify(MOVE, objects->at(i));
+            // e->notify(MOVE, objects->at(i));
+
+
+            bool onColl = true;
+            if (onColl) {
+                // Event will be created by game
+                e->notify(EventType::COLLISION, objects->at(i));
+            }
         }
         // logic on collision detection
-
-        // e->notify(MOVE, objects->at(10));
     }
 
-    void update(Object* o) override {
+    void update(mObject* o) override {
         std::cout << "=====Physics!\n";
-        std::cout << o->get_name() << std::endl;
     }
 };
