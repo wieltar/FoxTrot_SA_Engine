@@ -74,7 +74,6 @@ int main() {
 		int velocityX = 0;
 		int velocityY = 0;
 
-
 		void updatePos() {
 			cout << "X = " << posX << " += " << velocityX << " * " << speed << endl;
 			cout << "Y = " << posY << " += " << velocityY << " * " << speed << endl;
@@ -135,16 +134,16 @@ int main() {
 					case SDL_KEYUP:
 						switch (event.key.keysym.sym)
 						{
-						case SDLK_w:
+						case keyUp:
 							velocityY = 0;
 							break;
-						case SDLK_s:
+						case keyDown:
 							velocityY = 0;
 							break;
-						case SDLK_a:
+						case keyLeft:
 							velocityX = 0;
 							break;
-						case SDLK_d:
+						case keyRight:
 							velocityX = 0;
 							break;
 						default:
