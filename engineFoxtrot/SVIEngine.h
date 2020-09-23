@@ -40,8 +40,6 @@ public:
 	void input();
 
 	vector <Object*> *pointerToObjectVector;
-	vector <Object> objects;
-	// TODO: in de wrapper een foreach maken om door de vector te lopen en de sprites te tekenen.
 
 
 	//Set to private after testing!!!
