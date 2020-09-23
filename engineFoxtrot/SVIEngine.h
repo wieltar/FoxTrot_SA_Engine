@@ -22,16 +22,18 @@ public:
 	void initSDL();
 
 	void clearScreen();
-	void updateScreen();
+	void drawScreen();
 	void loadImage(int spriteID, const char* filename);
-
 	void renderCopy(int spriteID, int xPos, int yPos, int width, int height);
+
+	void updateScreen(vector<Object> objects);
 
 	// Input Functions
 	void input();
 
 	vector <int*> pointerToObjectVector;
 	vector <Object> objects;
+	// TODO: in de wrapper een foreach maken om door de vector te lopen en de sprites te tekenen.
 
 
 	//Set to private after testing!!!

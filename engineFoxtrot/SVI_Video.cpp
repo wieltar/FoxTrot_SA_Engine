@@ -64,7 +64,7 @@ void SVI::clearScreen()
 	SDL_RenderClear(renderer);
 }
 
-void SVI::updateScreen()
+void SVI::drawScreen()
 {
 	SDL_RenderPresent(renderer);
 }

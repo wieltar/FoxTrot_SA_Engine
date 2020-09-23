@@ -9,16 +9,18 @@ public:
 	Object();
 	~Object();
 
-private:
-
-	uint16_t spriteID = 0;
-	uint16_t positionX = 0;
-	uint16_t positionY = 0;
-	uint16_t rotation = 0;
-	uint16_t scale = 0;
-	uint16_t direction = 0;
+	// TODO: Set to private after testing
+	int spriteID = 0;
+	int positionX = 0;
+	int positionY = 0;
+	int rotation = 0;
+	int scale = 0;
+	int direction = 0;
+	int height = 0;
+	int width = 0;
 	bool staticObject = false;
 	bool changed = false;
+private:
 
 };
 

@@ -33,9 +33,9 @@ void SVIEngine::clearScreen()
 	sviEngine->clearScreen();
 }
 
-void SVIEngine::updateScreen()
+void SVIEngine::drawScreen()
 {
-	sviEngine->updateScreen();
+	sviEngine->drawScreen();
 }
 
 void SVIEngine::loadImage(int spriteID, const char* filename)
@@ -46,6 +46,13 @@ void SVIEngine::loadImage(int spriteID, const char* filename)
 void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int height)
 {
 	sviEngine->renderCopy(spriteID, xPos, yPos, width, height);
+}
+
+void SVIEngine::updateScreen(vector<Object> objects)
+{
+	for (auto obj : objects) {
+		renderCopy(obj.spriteID, obj.positionX, obj.positionY, obj.width, obj.height);
+	}
 }
 
 void SVIEngine::input()
