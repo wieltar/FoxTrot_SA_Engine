@@ -2,34 +2,40 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <list>
 #include "input_commands.cpp"
 #include "SDL.h"
 
 class InputHandler {
 	SDL_Event e;
-	std::map <int, Command*> commands;
+	int mouseX;
+	int mouseY;
+	std::map <int, Command*> keyCommands;
+	std::map<int, Command*> mouseCommands;
 
 public:
 	InputHandler() {
-		commands[SDLK_d] = new MoveRight();
-		commands[SDLK_a] = new MoveLeft();
-		commands[SDLK_w] = new Jump();
-		commands[SDLK_SPACE] = new Roll();
-		commands[SDLK_q] = new Attack();
-		commands[SDLK_e] = new Block();
+		keyCommands[SDLK_d] = new MoveRight();
+		keyCommands[SDLK_a] = new MoveLeft();
+		keyCommands[SDLK_w] = new Jump();
+		keyCommands[SDLK_SPACE] = new Roll();
+
+		mouseCommands[MouseButton::Left] = new Attack();
+		mouseCommands[MouseButton::Right] = new Block();
 	}
 
 	void configureKey(int key, Command* command) {
-		commands[key] = command;
+		keyCommands[key] = command;
 	}
 
 	void removeKey(int key) {
-		if (commands[key] != NULL) {
-			commands.erase(key);
+		if (keyCommands[key] != NULL) {
+			keyCommands.erase(key);
 		}
 	}
 
 	void handle() {
+		SDL_GetMouseState(&mouseX, &mouseY);
 		while (SDL_PollEvent(&e)) {
 			handlePressed(e);
 		}
@@ -37,20 +43,33 @@ public:
 	}
 
 	void handlePressed(SDL_Event e) {
-		std::cout << e.key.keysym.sym << std::endl;
-		Command* command = commands[e.key.keysym.sym];
+		if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP) {
+			Command* command = mouseCommands[e.button.button];
+			if (command != NULL) {
+				command->isActive = !command->isActive;
+				command->event = *(new InputEvent(InputType::Key, 0, &mouseX, &mouseY));
+			}
+		}
+		Command* command = keyCommands[e.key.keysym.sym];
 		if (command != NULL) {
 			if (e.type == SDL_KEYUP) {
 				command->isActive = false;
 			}
 			else if (e.type == SDL_KEYDOWN) {
 				command->isActive = true;
+				command->event = *(new InputEvent(InputType::Key, e.key.keysym.sym));
 			}
 		}
 	}
 
 	void handleCommands() {
-		for (std::map<int, Command*>::iterator it = commands.begin(); it != commands.end(); ++it)
+		for (std::map<int, Command*>::iterator it = keyCommands.begin(); it != keyCommands.end(); ++it)
+		{
+			if (it->second != NULL && it->second->isActive) {
+				it->second->execute();
+			}
+		}
+		for (std::map<int, Command*>::iterator it = mouseCommands.begin(); it != mouseCommands.end(); ++it)
 		{
 			if (it->second != NULL && it->second->isActive) {
 				it->second->execute();

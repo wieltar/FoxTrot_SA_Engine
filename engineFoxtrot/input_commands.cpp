@@ -1,9 +1,43 @@
 #include <iostream>
+#include <string>
+
+enum MouseButton {
+	None,
+	Left,
+	Middle,
+	Right
+};
+
+enum class InputType {
+	Key,
+	Button
+};
+
+class InputEvent {
+public:
+	InputType type;
+	int value;
+	int *x;
+	int *y;
+	InputEvent(InputType t, int v, int *px = 0, int *py = 0) {
+		type = t;
+		value = v;
+		x = px;
+		y = py;
+	};
+	InputEvent() {
+		type = InputType::Key;
+		value = 0;
+		x = 0;
+		y = 0;
+	}
+};
 
 class Command {
 public:
 	Command() {};
 	bool isActive = false;
+	InputEvent event;
 	virtual ~Command() {}
 	virtual void execute() = 0;
 };
@@ -74,6 +108,6 @@ public:
 	}
 
 	void execute() {
-		std::cout << "Attack!" << std::endl;
+		std::cout << "Attack at " << *event.x << ", " << *event.y << std::endl;
 	}
 };

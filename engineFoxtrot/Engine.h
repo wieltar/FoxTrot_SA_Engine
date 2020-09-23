@@ -26,17 +26,10 @@ public:
 
 	// Set to private after testing
 public:
-
 	std::vector<Component*> Components;
-
-
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
 	SVIEngine svi;
 	ParticleEngine particleEngine;
 };
-
-
-
-
 #endif
