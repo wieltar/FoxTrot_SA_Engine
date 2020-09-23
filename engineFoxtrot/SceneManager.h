@@ -19,6 +19,8 @@ public:
 
 	void setCurrentScene(int sceneID);
 
+	void receiveTick();
+
 	//Todo
 	// Set private
 public:

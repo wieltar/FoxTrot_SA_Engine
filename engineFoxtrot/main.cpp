@@ -2,6 +2,9 @@
 #include <iostream>
 #include "Engine.h"
 #include "Scene.h"
+#include <chrono>
+#include <thread>
+#include <vector>
 
 using namespace std;
 
@@ -15,13 +18,23 @@ using namespace std;
 
 Engine engine;
 
+void engineTick(Engine & engine) {
+	while (1) {
+		this_thread::sleep_for(chrono::milliseconds(17));
+
+		engine.receiveTick();
+	}
+}
+
 int main() {
-	
 	
 	engine.initScene();
 	Scene scene;
 	Object object;
 
+	thread t1(engineTick,std::ref(engine));
+	t1.detach();
+	
 	engine.sceneManager.scenes.push_back(&scene);
 
 	scene.sceneID = 10;
@@ -60,6 +73,7 @@ int main() {
 	{
 		engine.svi.input();
 	}
+	t1.join();
 }
 
 

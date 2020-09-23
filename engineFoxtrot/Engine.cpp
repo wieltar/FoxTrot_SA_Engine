@@ -20,3 +20,11 @@ void Engine::registerSceneManagerPointerWithSVIPointer()
 	svi.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 }
 
+void Engine::receiveTick()
+{
+	// Todo
+	// Maybe position doesnt need to update every 60s?
+	sceneManager.receiveTick();
+	svi.receiveTick();
+
+}

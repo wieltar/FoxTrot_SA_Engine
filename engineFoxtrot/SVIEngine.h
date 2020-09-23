@@ -28,6 +28,8 @@ public:
 
 	void updateScreen(vector<Object> objects);
 
+	void receiveTick();
+
 	// Input Functions
 	void input();
 

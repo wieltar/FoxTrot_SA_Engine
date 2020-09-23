@@ -55,6 +55,11 @@ void SVIEngine::updateScreen(vector<Object> objects)
 	}
 }
 
+void SVIEngine::receiveTick()
+{
+
+}
+
 void SVIEngine::input()
 {
 	sviEngine->input();
