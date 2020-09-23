@@ -57,6 +57,11 @@ void SVIEngine::updateScreen()
 	}
 }
 
+void SVIEngine::receiveTick()
+{
+
+}
+
 void SVIEngine::input()
 {
 	sviEngine->input();

@@ -27,6 +27,8 @@ public:
 
 	void initScene();
 
+	void receiveTick();
+
 	// TODO: Set to private after testing
 	
 //public:

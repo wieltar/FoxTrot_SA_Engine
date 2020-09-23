@@ -34,6 +34,8 @@ public:
 
 	void updateScreen();
 
+	void receiveTick();
+
 	// Input Functions
 	void input();
 
