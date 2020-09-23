@@ -28,7 +28,7 @@ public:
 	Engine();
 	~Engine();
 
-	EventManager *eventManager;
+	EventManager eventManager;
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
