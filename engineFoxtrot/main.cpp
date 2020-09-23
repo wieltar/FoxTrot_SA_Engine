@@ -3,6 +3,7 @@
 #include "Engine.h"
 
 #include "box2d/box2d.h"
+#include "input.cpp"
 using namespace std;
 
 // Doxygen
@@ -16,7 +17,6 @@ using namespace std;
 Engine engine;
 
 int main() {
-
 	b2Vec2 gravity(0.0f, 10.0f);
 	b2World world(gravity);
 
@@ -29,9 +29,6 @@ int main() {
 	groundBox.SetAsBox(50.0f, 10.0f);
 
 	groundBody->CreateFixture(&groundBox, 0.0f);
-
-
-
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -55,7 +52,7 @@ int main() {
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 
-	for (int32 i = 0; i < 1000; ++i)
+	/*for (int32 i = 0; i < 1000; ++i)
 	{
 		world.Step(timeStep, velocityIterations, positionIterations);
 		b2Vec2 position = body->GetPosition();
@@ -63,21 +60,14 @@ int main() {
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
 		engine.svi.testLoopVideo((int)position.x, (int)position.y);
 		SDL_Delay(10);
+	}*/
+
+	InputHandler i = *(new InputHandler());
+	while (1)
+	{
+		i.handle();
 	}
-
-	cout << "Hello world!" << endl;
 	return 0;
-
-
-
-	//engine.svi.load("../Assets/Sound/b423b42.wav");
-	//engine.svi.play();
-	
-	//
-	//while (1)
-	//{
-	//	engine.svi.input();
-	//}
 }
 
 

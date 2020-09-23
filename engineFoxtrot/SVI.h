@@ -54,6 +54,7 @@ private:
 // Input functions
 public:
 	void input();
+	class UserUnput;
 
 private:
 	int mousex = 0;

@@ -1,3 +1,4 @@
+#include <map>
 #include "SVI.h"
 
 // Functions in this cpp file may only call functions in this file. And global SDL2 definitions
@@ -15,7 +16,7 @@ void SVI::input()
 		if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_w) { cout << "w up" << endl; }
 		}
-		SDL_GetMouseState(&mousex, &mousey);
+		//SDL_GetMouseState(&mousex, &mousey);
 
 
 	}

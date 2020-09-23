@@ -152,6 +152,8 @@
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="GeneralHelperFunctions.cpp" />
     <ClCompile Include="IJsonFacade.cpp" />
+    <ClCompile Include="input.cpp" />
+    <ClCompile Include="input_commands.cpp" />
     <ClCompile Include="IParticleFacade.cpp" />
     <ClCompile Include="IPhysicsFacade.cpp" />
     <ClCompile Include="ISVI.cpp" />
