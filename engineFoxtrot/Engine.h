@@ -1,65 +1,38 @@
+
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <algorithm>
-#include "Object.h"
-#include "EventManager.h"
-#include "mPhysics.h"
-#include "Input.h"
-#include <thread>
-#include <iostream>
-#include <chrono>
-#include <thread>
+#ifndef ENGINE__H
+#define ENGINE__H
 
-class Engine {
-private:
-    std::vector<mObject*> objects = std::vector<mObject*>();
-    EventManager manager = EventManager();
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
 
-    mPhysics* p;
-    Input* i;
+#include <vector> 
+#include <iostream>
+#include <math.h>
+
+#include "Scene.h"
+#include "FileParser.h"
+#include "PhysicsEngine.h"
+#include "SVIEngine.h"
+#include "ParticleEngine.h"
+
+/// @brief 
+class Engine
+{
 public:
-    Engine() {
-        EventManager* e = &manager;
-        std::vector<mObject*>* ob = &objects;
+	Engine() { };
+	~Engine() {};
 
-        p = new mPhysics(e, ob);
-        i = new Input(e, ob);
 
-        manager.subscribe(EventType::MOVE, p);
-        manager.subscribe(EventType::MOVE, i);
-    }
-
-    void registerEventListener(EventType t, EventListener* l) {
-        manager.subscribe(t, l);
-    }
-
-    void addObject(mObject* o) {
-        objects.push_back(o);
-    }
-
-    std::vector<mObject*>* getObj() {
-        return &this->objects;
-    }
-
-    void input() {
-        i->runInput();
-    }
-
-    void run() {
-        //std::thread([this] { this->input(); }).detach();
-
-        while (true) {
-            // Update physics
-            p->update();
-            // Wait user input
-
-            // Update screen
-        //video->update();
-            // Etc.
-        //std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        }
-    }
+	FileParser fileParser;
+	PhysicsEngine physicsEngine;
+	SVIEngine svi;
+	ParticleEngine particleEngine;
 };
+
+
+
+
+#endif
