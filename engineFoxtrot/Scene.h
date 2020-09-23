@@ -5,6 +5,9 @@
 #include <iostream>
 
 #include "Object.h"
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
 
 using namespace std;
 
@@ -17,7 +20,10 @@ public:
 	void getObject(int ObjectID);
 	vector<Object*> returnCurrentObjects();
 
-private:
+	//Todo
+	// Set private:
+	// private:
+public:
 	int sceneID;
 	vector<Object*> Objects;
 };

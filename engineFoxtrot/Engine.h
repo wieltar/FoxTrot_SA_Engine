@@ -16,6 +16,7 @@
 #include "PhysicsEngine.h"
 #include "SVIEngine.h"
 #include "ParticleEngine.h"
+#include "SceneManager.h"
 
 /// @brief 
 class Engine
@@ -27,13 +28,17 @@ public:
 	void initScene();
 
 	// TODO: Set to private after testing
-public:
+	
+//public:
 
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
 	SVIEngine svi;
 	ParticleEngine particleEngine;
+	SceneManager sceneManager;
+
+	void registerSceneManagerPointerWithSVIPointer();
 };
 
 

@@ -31,7 +31,7 @@ public:
 	// Input Functions
 	void input();
 
-	vector <int*> pointerToObjectVector;
+	vector <Object*> *pointerToObjectVector;
 	vector <Object> objects;
 	// TODO: in de wrapper een foreach maken om door de vector te lopen en de sprites te tekenen.
 

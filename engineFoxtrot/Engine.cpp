@@ -12,5 +12,11 @@ Engine::~Engine()
 void Engine::initScene()
 {
 	// TODO: Set object list to other object list
+	registerSceneManagerPointerWithSVIPointer();
+}
+
+void Engine::registerSceneManagerPointerWithSVIPointer()
+{
+	svi.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 }
 
