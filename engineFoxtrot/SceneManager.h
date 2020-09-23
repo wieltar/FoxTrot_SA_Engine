@@ -2,6 +2,9 @@
 #include "Scene.h"
 
 #include <iostream>
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
 
 using namespace std;
 
@@ -16,13 +19,19 @@ public:
 
 	void setCurrentScene(int sceneID);
 
-private:
+	//Todo
+	// Set private
+public:
+//private:
 
-	vector<Scene*> Scenes;
+	Scene* findSceneWithID(int sceneID);
 
-	vector <int*> pointerToCurrentObjectVector;
+	vector<Scene*> scenes;
+
+	vector <Object*> pointerToCurrentObjectVector;
 	
 	Scene* currentScene;
+
 };
 
 

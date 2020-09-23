@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
 
 using namespace std;
 

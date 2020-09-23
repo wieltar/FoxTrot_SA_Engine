@@ -30,7 +30,7 @@ public:
 	// Input Functions
 	void input();
 
-	vector <int*> pointerToObjectVector;
+	vector <Object*> *pointerToObjectVector;
 	vector <Object> objects;
 
 

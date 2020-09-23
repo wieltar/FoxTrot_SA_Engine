@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Engine.h"
+#include "Scene.h"
 
 using namespace std;
 
@@ -15,6 +16,30 @@ using namespace std;
 Engine engine;
 
 int main() {
+	
+	
+	engine.initScene();
+	Scene scene;
+	Object object;
+
+	engine.sceneManager.scenes.push_back(&scene);
+
+	scene.sceneID = 10;
+
+	scene.Objects.push_back(&object);
+	cout << "Address: " << (int*)&(engine.svi.pointerToObjectVector) << endl;
+
+	try
+	{
+		engine.sceneManager.setCurrentScene(10);
+	}
+	catch (int e)
+	{
+		cout << "An exception occurred. Exception Nr. " << e << '\n';
+	}
+	cout << "Address: " << (int*)&(engine.svi.pointerToObjectVector) << endl;
+	cout << "Size: " << engine.svi.pointerToObjectVector->size() << endl;
+
 
 	//engine.svi.testLoopVideo(10,10);
 	engine.svi.clearScreen();
