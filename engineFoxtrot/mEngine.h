@@ -19,33 +19,34 @@ private:
     EventManager manager = EventManager();
 
     mPhysics* physics;
-    Input* inp;
+    Input* input;
     Video* video;
 public:
     mEngine() {
-        EventManager* e = &manager;
-        std::vector<mObject*>* ob = &objects;
+        physics = new mPhysics(&manager, &objects);
+        input = new Input(&manager, &objects);
+        video = new Video(&manager, &objects);
 
-        physics = new mPhysics(e, ob);
-        inp = new Input(e, ob);
-        video = new Video(e, ob);
-
+        // TODO event categorien toevoegen en registratie afhandelen in automatische loop?
         manager.subscribe(EventType::MOVE, physics);
-        manager.subscribe(EventType::MOVE, inp);
+        manager.subscribe(EventType::MOVE, input);
+    }
+
+    ~mEngine() {
+        delete physics;
+        delete input;
+        delete video;
     }
 
     void addEventListener(EventListener* listener, EventType t) {
         manager.subscribe(t, listener);
     }
 
-    void addObject(mObject* o) {
+    void registerGameObject(mObject* o) {
         objects.push_back(o);
     }
 
     void run() {
-        // Wait user input
-        std::thread([this] { this->inp->runInput(); }).detach();
-
         while (true) {
             // Update physics
             physics->update();

@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Object">
-      <UniqueIdentifier>{dc5ebff8-c42f-49dd-90ab-8ec2303bb001}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Particle">
       <UniqueIdentifier>{c141fdb4-5d33-489f-8b3b-96dd20a5678d}</UniqueIdentifier>
     </Filter>
@@ -49,8 +46,14 @@
     <Filter Include="PoC/Event-based\Engine">
       <UniqueIdentifier>{fb8ab61a-63a5-45e7-8ec7-249b55d2edb8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PoC/Event-based\Engine\Enums">
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{e92540a3-ad08-4b30-a09f-b1e3215ae7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events\Enums">
       <UniqueIdentifier>{200fd3ed-2003-4fd4-913b-f068ca1876ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{dc5ebff8-c42f-49dd-90ab-8ec2303bb001}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -197,25 +200,10 @@
     <ClInclude Include="Player.h">
       <Filter>PoC/Event-based\Game</Filter>
     </ClInclude>
-    <ClInclude Include="EventType.h">
-      <Filter>PoC/Event-based\Engine\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyEvent.h">
-      <Filter>PoC/Event-based\Engine\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="EventListener.h">
-      <Filter>PoC/Event-based\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>PoC/Event-based\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
     <ClInclude Include="mEngine.h">
-      <Filter>PoC/Event-based\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="mObject.h">
       <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
     <ClInclude Include="mPhysics.h">
@@ -224,8 +212,23 @@
     <ClInclude Include="Video.h">
       <Filter>PoC/Event-based\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>PoC/Event-based\Engine\Enums</Filter>
+    <ClInclude Include="mObjectVisitor.h">
+      <Filter>PoC/Event-based\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEvent.h">
+      <Filter>Header Files\Events\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventType.h">
+      <Filter>Header Files\Events\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="mObject.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

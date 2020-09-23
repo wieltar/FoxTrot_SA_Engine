@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include "mEngine.h"
+#include "mObject.h"
 #include "GameObject.h"
 #include "Enemy.h"
 #include "Player.h"
@@ -20,13 +21,16 @@ class Game {
 private:
     mEngine engine = mEngine();
 public:
+    void EngineEventHandler(mObject* objects) {
+    }
+
     Game() {
         engine.addEventListener(new OnCollisionListener(), EventType::COLLISION);
 
-        engine.addObject({ new Enemy() });
+        engine.registerGameObject({ new Enemy() });
 
         auto player = new Player();
-        engine.addObject(player);
+        engine.registerGameObject(player);
     }
 
     void run() {

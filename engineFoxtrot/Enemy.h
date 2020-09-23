@@ -9,7 +9,7 @@ public:
     }
 
     void move() override {
-        std::cout << "ENEMY move" << std::endl;
+        std::cout << "ENEMY Loopt" << std::endl;
     }
 
     virtual void interact() {

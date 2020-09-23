@@ -21,12 +21,7 @@ public:
         while (true) {
             ch = std::getchar();
 
-            if (ch == (int)KeyEvent::UP)
-            {
-                std::cout << "=====INPUT!\n";
-                //this->e->notify(MOVE, objects->at(0));
-                ch = ' ';
-            }
+            
         }
     }
 

@@ -14,6 +14,10 @@ public:
         this->e = e;
         this->objects = objects;
     }
+    ~mPhysics() {
+        delete e;
+        delete objects;
+    }
 
     void update() {
         // Update every listener with new coordinates
@@ -22,21 +26,6 @@ public:
         for (std::vector<int>::size_type i = 0; i != size; i++) {
             auto objectPtr = objects->at(i);
             if (!objectPtr->getIsStatic()) {
-                switch (objectPtr->getDirection())
-                {
-                case Direction::UP:
-                    // Move up
-                    break;
-                case Direction::LEFT:
-                    // Move left
-                    break;
-                case Direction::RIGHT:
-                    // Move right
-                    break;
-                default:
-                    // Check wether object should fall and move accordingly
-                    break;
-                }
 
                 // Notify when a collision happend
                 bool onColl = true;

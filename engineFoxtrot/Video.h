@@ -13,7 +13,10 @@ public:
         this->e = e;
         this->objects = objects;
     }
-
+    ~Video() {
+        delete e;
+        delete objects;
+    }
     void update() {
         auto size = objects->size();
         // Logic for moving 

@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "Direction.h"
 
 class mObject {
 protected:
@@ -8,7 +7,6 @@ protected:
 
     std::string name;
     std::string path;
-    Direction direction;
     bool isStatic;
     int x;
     int y;
@@ -21,7 +19,6 @@ public:
     virtual void animate() = 0;
     virtual void playSound() = 0;
 
-    Direction getDirection() const { return this->direction; }
     std::string getPath() const { return this->path; }
     bool getIsStatic() const { return this->isStatic; }
     int getX() const { return this->x; }

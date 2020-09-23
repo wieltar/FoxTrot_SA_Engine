@@ -29,9 +29,6 @@ enum EventCategory
 };
 
 enum class EventType {
-	KEYBOARD_UP,
-	KEYBOARD_LEFT,
-
 	MOVE,
 	INTERACT,
 	INPUT,
