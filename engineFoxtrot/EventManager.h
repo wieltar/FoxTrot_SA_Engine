@@ -6,7 +6,7 @@
 #include <algorithm>
 #include "EventType.h"
 #include "EventListener.h"
-#include "mObject.h"
+#include "Object.h"
 
 class EventManager {
 private:
@@ -34,7 +34,7 @@ public:
         }
     }
 
-    void notify(EventType t, mObject* data) {
+    void notify(EventType t, Object* data) {
         if (listeners.count(t) > 0) {
             for (auto listeners : listeners.at(t)) 
                 listeners->update(data);

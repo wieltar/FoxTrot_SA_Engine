@@ -1,7 +1,7 @@
 #pragma once
-#include "mObject.h"
+#include "Object.h"
 
 class EventListener {
 public:
-    virtual void update(mObject* o) = 0;
+    virtual void update(Object* o) = 0;
 };

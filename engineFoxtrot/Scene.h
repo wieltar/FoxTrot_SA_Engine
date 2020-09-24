@@ -5,5 +5,8 @@
 
 class Scene {
 public:
+    Scene();
+    ~Scene();
+
     std::vector<Object*> objects = std::vector<Object*>();
 };

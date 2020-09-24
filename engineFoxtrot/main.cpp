@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "Engine.h"
-#include "Game.h"
 
 #include "box2d/box2d.h"
 using namespace std;
@@ -66,8 +65,6 @@ int main() {
 		SDL_Delay(10);
 	}
 
-	Game g = Game();
-	g.run();
 	cout << "Hello world!" << endl;
 	return 0;
 
