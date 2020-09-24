@@ -16,6 +16,7 @@ public:
 
 	// Input Functions
 	void input();
+	void RegisterCommand(void(*callback), int inputType, int key, int mouseBtn);
 
 
 	//Set to private after testing!!!

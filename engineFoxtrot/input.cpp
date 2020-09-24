@@ -6,7 +6,7 @@
 #include "input_commands.cpp"
 #include "SDL.h"
 
-class InputHandler {
+class input {
 	SDL_Event e;
 	int mouseX;
 	int mouseY;
@@ -14,7 +14,7 @@ class InputHandler {
 	std::map<int, Command*> mouseCommands;
 
 public:
-	InputHandler() {
+	input() {
 		keyCommands[SDLK_d] = new MoveRight();
 		keyCommands[SDLK_a] = new MoveLeft();
 		keyCommands[SDLK_w] = new Jump();

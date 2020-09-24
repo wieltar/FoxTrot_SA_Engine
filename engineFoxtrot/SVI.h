@@ -53,8 +53,8 @@ private:
 
 // Input functions
 public:
-	void RegisterCommand(std::function<void> *callback, int inputType, int key, int mouseBtn);
-	void InputHandle();
+	void RegisterCommand(void (*callback), int inputType, int key, int mouseBtn);
+	void input();
 private:
 };
 

@@ -4,6 +4,7 @@
 
 #include "box2d/box2d.h"
 #include "input.cpp"
+#include <functional>
 using namespace std;
 
 // Doxygen
@@ -61,21 +62,16 @@ int main() {
 		engine.svi.testLoopVideo((int)position.x, (int)position.y);
 		SDL_Delay(10);
 	}*/
-	class Player {
-	public:
-		Player() {
 
-		}
-		void WalkRight() {
+	void PlayerMoveRight(void); {
+		std::cout << "Move right!" << std::endl;
+	}
 
-		}
-	};
-	Player p;
 
-	engine.RegsiterCommand(*p->WalkRight(), 1, 115, 0);
-	engine.InputHandle();
+	engine.RegsiterCommand(PlayerMoveRight, 1, 100, 0);
+	engine.input();
 	/*
-	InputHandler i = *(new InputHandler());
+	inputr i = *(new inputr());
 	while (1)
 	{
 		i.handle();
