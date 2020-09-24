@@ -24,7 +24,7 @@ public:
 	Engine();
 	~Engine();
 
-	void RegsiterCommand(void(*callback), int inputType, int key, int mouseBtn);
+	void RegsiterCommand(void(*callback)(), int inputType, int key, int mouseBtn);
 	void input();
 	// TODO Set to private after testing
 

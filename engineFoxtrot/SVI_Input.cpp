@@ -102,7 +102,7 @@ void handleCommands() {
 	}
 }
 
-void SVI::RegisterCommand(void(*callback), int inputType, int key, int mouseBtn) {
+void SVI::RegisterCommand(void(*callback)(), int inputType, int key, int mouseBtn) {
 	Command* command = new Command;
 	command->callback = &callback;
 	saveCommand(command, inputType, key, mouseBtn);

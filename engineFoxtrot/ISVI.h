@@ -14,7 +14,7 @@ public:
 	virtual void testLoopVideo(int x, int y) = 0;
 
 	// Input Functions
-	virtual void RegisterCommand(void(*callback), int inputType, int key, int mouseBtn) = 0;
+	virtual void RegisterCommand(void(*callback)(), int inputType, int key, int mouseBtn) = 0;
 	virtual void input() = 0;
 private:
 

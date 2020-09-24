@@ -53,7 +53,7 @@ private:
 
 // Input functions
 public:
-	void RegisterCommand(void (*callback), int inputType, int key, int mouseBtn);
+	void RegisterCommand(void (*callback)(), int inputType, int key, int mouseBtn);
 	void input();
 private:
 };

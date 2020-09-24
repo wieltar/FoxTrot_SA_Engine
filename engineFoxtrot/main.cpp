@@ -17,6 +17,11 @@ using namespace std;
 
 Engine engine;
 
+void PlayerMoveRight(){
+	std::cout << "Move right!" << std::endl;
+}
+
+
 int main() {
 	b2Vec2 gravity(0.0f, 10.0f);
 	b2World world(gravity);
@@ -63,15 +68,13 @@ int main() {
 		SDL_Delay(10);
 	}*/
 
-	void PlayerMoveRight(void); {
-		std::cout << "Move right!" << std::endl;
+	engine.RegsiterCommand(PlayerMoveRight, 1, 100, 0);
+	while (1) {
+		engine.input();
 	}
 
-
-	engine.RegsiterCommand(PlayerMoveRight, 1, 100, 0);
-	engine.input();
 	/*
-	inputr i = *(new inputr());
+	inputr i = *(new InputHandler());
 	while (1)
 	{
 		i.handle();
