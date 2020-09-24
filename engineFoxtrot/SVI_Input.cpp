@@ -35,7 +35,9 @@ public:
 };
 class Command {
 public:
-	Command() {};
+	Command() {
+		isActive = false;
+	};
 	virtual ~Command() {}
 	void(*callback);
 	bool isActive = false;
@@ -49,7 +51,7 @@ SDL_Event e;
 int mouseX;
 int mouseY;
 
-void saveCommand(Command* command, int inputType, int key, int mouseBtn) {
+void saveCommand(Command *command, int inputType, int key, int mouseBtn) {
 	if (inputType == InputType::Key) {
 		keyCommands[key] = command;
 	}
@@ -91,7 +93,10 @@ void handleCommands() {
 	for (std::map<int, Command*>::iterator it = keyCommands.begin(); it != keyCommands.end(); ++it)
 	{
 		if (it->second != NULL && it->second->isActive) {
-			it->second->callback;
+			Command c = *(it->second);
+			auto* b = &c.callback;
+			cout << b << endl;
+			&b();
 		}
 	}
 	for (std::map<int, Command*>::iterator it = mouseCommands.begin(); it != mouseCommands.end(); ++it)

@@ -19,6 +19,7 @@ Engine engine;
 
 void PlayerMoveRight(){
 	std::cout << "Move right!" << std::endl;
+	cout << "test" << endl;
 }
 
 
@@ -67,8 +68,7 @@ int main() {
 		engine.svi.testLoopVideo((int)position.x, (int)position.y);
 		SDL_Delay(10);
 	}*/
-
-	engine.RegsiterCommand(PlayerMoveRight, 1, 100, 0);
+	engine.RegsiterCommand(PlayerMoveRight, 0, 100, 0);
 	while (1) {
 		engine.input();
 	}
