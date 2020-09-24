@@ -10,5 +10,6 @@ public:
     int X;
     int Y;
 
-    virtual std::string get_name() = 0;
+    Object();
+    ~Object();
 };
