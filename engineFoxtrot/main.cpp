@@ -61,12 +61,25 @@ int main() {
 		engine.svi.testLoopVideo((int)position.x, (int)position.y);
 		SDL_Delay(10);
 	}*/
+	class Player {
+	public:
+		Player() {
 
+		}
+		void WalkRight() {
+
+		}
+	};
+	Player p;
+
+	engine.RegsiterCommand(*p->WalkRight(), 1, 115, 0);
+	engine.InputHandle();
+	/*
 	InputHandler i = *(new InputHandler());
 	while (1)
 	{
 		i.handle();
-	}
+	}*/
 	return 0;
 }
 

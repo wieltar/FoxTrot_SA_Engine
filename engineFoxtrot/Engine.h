@@ -24,7 +24,10 @@ public:
 	Engine();
 	~Engine();
 
-	// Set to private after testing
+	void RegsiterCommand(std::function<void> *callback, int inputType, int key, int mouseBtn);
+	void InputHandle();
+	// TODO Set to private after testing
+
 public:
 	std::vector<Component*> Components;
 	FileParser fileParser;

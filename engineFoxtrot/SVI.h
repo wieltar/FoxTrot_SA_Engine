@@ -53,12 +53,9 @@ private:
 
 // Input functions
 public:
-	void input();
-	class UserUnput;
-
+	void RegisterCommand(std::function<void> *callback, int inputType, int key, int mouseBtn);
+	void InputHandle();
 private:
-	int mousex = 0;
-	int mousey = 0;
 };
 
 

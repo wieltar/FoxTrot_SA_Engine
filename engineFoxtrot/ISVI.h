@@ -1,5 +1,5 @@
 #pragma once
-
+#include <functional>
 class ISVI
 {
 public:
@@ -14,8 +14,8 @@ public:
 	virtual void testLoopVideo(int x, int y) = 0;
 
 	// Input Functions
-	virtual void input() = 0;
-
+	virtual void RegisterCommand(std::function<void> callback, int inputType, int key, int mouseBtn) = 0;
+	virtual void InputHandle() = 0;
 private:
 
 };
