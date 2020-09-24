@@ -3,5 +3,5 @@
 
 class EventListener {
 public:
-    virtual void update(Object* o) = 0;
+    virtual void update(Object* object) = 0;
 };

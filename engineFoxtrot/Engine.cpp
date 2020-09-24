@@ -9,6 +9,6 @@ Engine::~Engine()
 {
 }
 
-void Engine::addEventListener(EventListener* listener, EventType t) {
-    eventManager.subscribe(t, listener);
+void Engine::addEventListener(EventListener* listener, EventType eventType) {
+    eventManager.subscribe(eventType, listener);
 }

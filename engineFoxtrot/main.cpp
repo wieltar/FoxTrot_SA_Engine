@@ -65,6 +65,10 @@ int main() {
 		SDL_Delay(10);
 	}
 
+	Engine* engine{ new Engine };
+	engine->addEventListener(new PhysicsEngine, EventType::MOVE);
+	engine->eventManager.notify(EventType::MOVE, new Object);
+
 	cout << "Hello world!" << endl;
 	return 0;
 
@@ -79,8 +83,5 @@ int main() {
 	//	engine.svi.input();
 	//}
 }
-
-
-
 
 

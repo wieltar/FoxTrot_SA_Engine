@@ -1,29 +1,28 @@
 #include "EventManager.h"
 
-void EventManager::subscribe(EventType t, EventListener* l) {
+void EventManager::subscribe(EventType eventType, EventListener* listener) {
     // Contains element 
-    if (listeners.count(t) > 0) {
-        listeners.at(t).push_back(l);
+    if (listeners.count(eventType) > 0) {
+        listeners.at(eventType).push_back(listener);
     }
     // Create new vector
     else {
-        // mymap.insert(pair<int, vector<int> > (10, {1, 2, 3}));
-        listeners.insert(std::pair<EventType, std::vector<EventListener*>>(t, { l }));
+        listeners.insert(std::pair<EventType, std::vector<EventListener*>>(eventType, { listener }));
     }
 }
 
-void EventManager::unsubscribe(EventType t, EventListener* l) {
-    if (listeners.count(t) > 0) {
-        auto itt = listeners.at(t);
-        auto it = std::find(itt.begin(), itt.end(), l);
+void EventManager::unsubscribe(EventType eventType, EventListener* listener) {
+    if (listeners.count(eventType) > 0) {
+        auto itt = listeners.at(eventType);
+        auto it = std::find(itt.begin(), itt.end(), listener);
         itt.erase(it);
     }
 }
 
 
-void EventManager::notify(EventType t, Object* data) {
-    if (listeners.count(t) > 0) {
-        for (auto listeners : listeners.at(t))
+void EventManager::notify(EventType eventType, Object* data) {
+    if (listeners.count(eventType) > 0) {
+        for (auto listeners : listeners.at(eventType))
             listeners->update(data);
     }
 }

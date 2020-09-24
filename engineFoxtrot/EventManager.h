@@ -14,7 +14,7 @@ private:
 public:
     EventManager() { }
 
-    void subscribe(EventType t, EventListener* l);
-    void unsubscribe(EventType t, EventListener* l);
-    void notify(EventType t, Object* data);
+    void subscribe(EventType eventType, EventListener* listener);
+    void unsubscribe(EventType eventType, EventListener* listener);
+    void notify(EventType eventType, Object* data);
 };
