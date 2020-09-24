@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="GeneralHelperFunctions.cpp" />
     <ClCompile Include="IJsonFacade.cpp" />
