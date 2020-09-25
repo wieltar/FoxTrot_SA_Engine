@@ -19,9 +19,16 @@ Engine engine;
 
 void PlayerMoveRight(){
 	std::cout << "Move right!" << std::endl;
-	cout << "test" << endl;
 }
-
+void PlayerMoveLeft() {
+	std::cout << "Move left!" << std::endl;
+}
+void PlayerAttack() {
+	std::cout << "Player attack!" << std::endl;
+}
+void PlayerJump() {
+	std::cout << "Player jump!" << std::endl;
+}
 
 int main() {
 	b2Vec2 gravity(0.0f, 10.0f);
@@ -68,17 +75,14 @@ int main() {
 		engine.svi.testLoopVideo((int)position.x, (int)position.y);
 		SDL_Delay(10);
 	}*/
-	engine.RegsiterCommand(PlayerMoveRight, 0, 100, 0);
+	engine.RegsiterCommand(PlayerMoveRight, 0, 100, 0);//d
+	engine.RegsiterCommand(PlayerMoveLeft, 0, 97, 0); //a
+	engine.RegsiterCommand(PlayerAttack, 0, 119, 0); //w
+	engine.RegsiterCommand(PlayerJump, 0, 32, 0); //spatie
 	while (1) {
 		engine.input();
 	}
 
-	/*
-	inputr i = *(new InputHandler());
-	while (1)
-	{
-		i.handle();
-	}*/
 	return 0;
 }
 

@@ -39,7 +39,7 @@ public:
 		isActive = false;
 	};
 	virtual ~Command() {}
-	void(*callback);
+	void(*callback)();
 	bool isActive = false;
 	InputEvent event;
 };
@@ -52,6 +52,7 @@ int mouseX;
 int mouseY;
 
 void saveCommand(Command *command, int inputType, int key, int mouseBtn) {
+	command->callback();
 	if (inputType == InputType::Key) {
 		keyCommands[key] = command;
 	}
@@ -93,24 +94,21 @@ void handleCommands() {
 	for (std::map<int, Command*>::iterator it = keyCommands.begin(); it != keyCommands.end(); ++it)
 	{
 		if (it->second != NULL && it->second->isActive) {
-			Command c = *(it->second);
-			auto* b = &c.callback;
-			cout << b << endl;
-			&b();
+			it->second->callback();
 		}
 	}
 	for (std::map<int, Command*>::iterator it = mouseCommands.begin(); it != mouseCommands.end(); ++it)
 	{
 		if (it->second != NULL && it->second->isActive) {
-			it->second->callback;
+			it->second->callback();
 		}
 	}
 }
 
 void SVI::RegisterCommand(void(*callback)(), int inputType, int key, int mouseBtn) {
 	Command* command = new Command;
-	command->callback = &callback;
-	saveCommand(command, inputType, key, mouseBtn);
+	command->callback = *callback;
+	saveCommand(command, inputType, key, mouseBtn);	
 }
 
 void SVI::input() {
