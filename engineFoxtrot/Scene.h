@@ -3,10 +3,14 @@
 #include <vector>
 #include "Object.h"
 
-class Scene {
+class Scene 
+{
 public:
     Scene();
     ~Scene();
 
-    std::vector<Object*> objects = std::vector<Object*>();
+private:
+    uint16_t positionY = 0;
+    uint16_t rotation = 0;
+    uint16_t scale = 0;
 };
