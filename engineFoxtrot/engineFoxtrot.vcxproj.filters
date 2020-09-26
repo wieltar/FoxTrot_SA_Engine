@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Object">
-      <UniqueIdentifier>{dc5ebff8-c42f-49dd-90ab-8ec2303bb001}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Particle">
       <UniqueIdentifier>{c141fdb4-5d33-489f-8b3b-96dd20a5678d}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,15 @@
     </Filter>
     <Filter Include="Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper">
       <UniqueIdentifier>{199fce93-79d1-4d55-aaf0-2e65e807cc41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{e92540a3-ad08-4b30-a09f-b1e3215ae7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events\Enums">
+      <UniqueIdentifier>{200fd3ed-2003-4fd4-913b-f068ca1876ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{dc5ebff8-c42f-49dd-90ab-8ec2303bb001}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +114,9 @@
     <ClCompile Include="SVIEngine.cpp">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
     </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Header Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -172,6 +181,18 @@
     </ClInclude>
     <ClInclude Include="SVIEngine.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEvent.h">
+      <Filter>Header Files\Events\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventType.h">
+      <Filter>Header Files\Events\Enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

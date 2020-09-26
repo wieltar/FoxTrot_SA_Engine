@@ -51,7 +51,7 @@ int main() {
 	body->CreateFixture(&fixtureDef);
 
 	float timeStep = 1.0f / 60.0f;
-
+	
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 
@@ -64,6 +64,10 @@ int main() {
 		engine.svi.testLoopVideo((int)position.x, (int)position.y);
 		SDL_Delay(10);
 	}
+
+	Engine* engine{ new Engine };
+	engine->addEventListener(new PhysicsEngine, EventType::MOVE);
+	engine->eventManager.notify(EventType::MOVE, new Object);
 
 	cout << "Hello world!" << endl;
 	return 0;
@@ -79,8 +83,5 @@ int main() {
 	//	engine.svi.input();
 	//}
 }
-
-
-
 
 

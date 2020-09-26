@@ -1,3 +1,4 @@
+
 #pragma once
 
 #ifndef ENGINE__H
@@ -16,6 +17,9 @@
 #include "PhysicsEngine.h"
 #include "SVIEngine.h"
 #include "ParticleEngine.h"
+#include "EventManager.h"
+
+#include "EventListener.h"
 
 /// @brief 
 class Engine
@@ -24,16 +28,14 @@ public:
 	Engine();
 	~Engine();
 
-	// Set to private after testing
-public:
-
-	std::vector<Component*> Components;
-
+	EventManager eventManager;
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
 	SVIEngine svi;
 	ParticleEngine particleEngine;
+
+	void addEventListener(EventListener* listener, EventType eventType);
 };
 
 
