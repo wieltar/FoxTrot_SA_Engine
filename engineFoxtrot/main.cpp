@@ -144,8 +144,8 @@ int main() {
 	engine.svi.clearScreen();
 	float timeStep = 1.0f / 60.0f;
 	
-	int32 velocityIterations = 6;
-	int32 positionIterations = 2;
+	int velocityIterations = 6;
+	int positionIterations = 2;
 
 
 	//engine.svi.loadImage(100, "../Assets/Sprites/Project assets/Assets/icons/48x48/fruit_01a.png");
@@ -154,14 +154,15 @@ int main() {
 	engine.TESTfillSpriteVector();
 	engine.loadSpriteArray(engine.sprites);
 
-	Engine* engine{ new Engine };
-	engine->addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine->eventManager.notify(EventType::MOVE, new Object);
+	engine.svi.updateScreen();
+	engine.svi.drawScreen();
+
+	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
+	engine.eventManager.notify(EventType::MOVE, new Object);
 
 	cout << "Hello world!" << endl;
 
-	engine.svi.updateScreen();
-	engine.svi.drawScreen();
+
 
 
 	//engine.svi.load("../Assets/Sound/b423b42.wav");
