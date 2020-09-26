@@ -86,3 +86,8 @@ void Engine::TESTfillSpriteVector()
 	//}
 
 }
+
+void Engine::addEventListener(EventListener* listener, EventType eventType) {
+    eventManager.subscribe(eventType, listener);
+}
+

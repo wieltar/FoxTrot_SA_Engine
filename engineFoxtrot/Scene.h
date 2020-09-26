@@ -11,11 +11,14 @@
 
 using namespace std;
 
-class Scene
+#include <vector>
+#include "Object.h"
+
+class Scene 
 {
 public:
-	Scene();
-	~Scene();
+    Scene();
+    ~Scene();
 
 	void getObject(int ObjectID);
 	vector<Object*> returnCurrentObjects();
@@ -26,9 +29,9 @@ public:
 public:
 	int sceneID;
 	vector<Object*> Objects;
+
+    uint16_t positionY = 0;
+    uint16_t rotation = 0;
+    uint16_t scale = 0;
+
 };
-
-
-
-
-

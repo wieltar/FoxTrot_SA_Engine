@@ -1,3 +1,4 @@
+
 #pragma once
 
 #ifndef ENGINE__H
@@ -17,6 +18,9 @@
 #include "SVIEngine.h"
 #include "ParticleEngine.h"
 #include "SceneManager.h"
+#include "EventManager.h"
+#include "EventListener.h"
+
 
 /// @brief 
 class Engine
@@ -33,6 +37,7 @@ public:
 	
 //public:
 
+	EventManager eventManager;
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
@@ -47,6 +52,8 @@ public:
 	void TESTfillSpriteVector(); // TODO: remove after testing.
 	vector<Sprite> sprites;
 
+
+	void addEventListener(EventListener* listener, EventType eventType);
 };
 
 

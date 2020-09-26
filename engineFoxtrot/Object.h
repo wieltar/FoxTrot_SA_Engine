@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
@@ -12,6 +13,8 @@ public:
 	Object();
 	~Object();
 
+	std::string name;
+
 	// TODO: Set to private after testing
 	int spriteID = 0;
 	int positionX = 0;
@@ -23,9 +26,9 @@ public:
 	int width = 0;
 	bool staticObject = false;
 	bool changed = false;
+
+	int X;
+	int Y;
 private:
 
 };
-
-
-
