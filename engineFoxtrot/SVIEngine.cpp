@@ -50,6 +50,8 @@ void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int heig
 
 void SVIEngine::updateScreen()
 {
+	if (pointerToObjectVector->capacity() <= 0) return;
+	if (pointerToObjectVector->size() <= 0) return;
 	for (auto obj : *pointerToObjectVector) {
 		sviEngine->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(),obj->getRotation());
 	}

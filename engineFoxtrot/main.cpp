@@ -26,19 +26,13 @@ void engineTick(Engine & engine) {
 }
 
 int main() {
-	
-	//thread t1(engineTick,std::ref(engine));
-	//t1.detach();
-	
 	engine.startTickThreads();
-
-
 	
 	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(1);
 
 	engine.createNewObjectWithSceneID(1, 1, 50, 5, 40, 40);
-
+	
 	engine.createNewObjectWithSceneID(2, 1, 50, 5, 40, 40);
 	engine.createNewObjectWithSceneID(2, 2, 100, 5, 40, 40);
 	engine.createNewObjectWithSceneID(2, 3, 150, 5, 40, 40);
@@ -63,13 +57,19 @@ int main() {
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
 	
 	engine.setCurrentScene(2);
+	this_thread::sleep_for(chrono::milliseconds(250));
+	engine.createNewSceneWithSceneID(10);
+	engine.setCurrentScene(10);
+	this_thread::sleep_for(chrono::milliseconds(1000));
+	engine.setCurrentScene(2);
+	cout << "Engine filled" << endl;
 	
-	SDL_Delay(5000);
-	for (int i = 0; i < 100; i++)
+	this_thread::sleep_for(chrono::milliseconds(2500));
+	for (int i = 0; i < 10; i++)
 	{
 		if(i % 2)engine.setCurrentScene(1);
 		else engine.setCurrentScene(2);
-		SDL_Delay(50);
+		this_thread::sleep_for(chrono::milliseconds(50));
 	}
 	
 	engine.setCurrentScene(1);
@@ -77,14 +77,16 @@ int main() {
 	for (int i = 0; i < 100; i++)
 	{
 		engine.moveObjectTo(1, i, 10);
-		SDL_Delay(10);
+		this_thread::sleep_for(chrono::milliseconds(10));
 	}
 
 	for (int i = 0; i < 360; i++)
 	{
 		engine.setObjectRotation(1, i);
-		SDL_Delay(10);
+		this_thread::sleep_for(chrono::milliseconds(10));
 	}
+	engine.setCurrentScene(1);
+	engine.stopTickThreads();
 
 
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);

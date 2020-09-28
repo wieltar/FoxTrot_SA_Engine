@@ -86,7 +86,7 @@ void Engine::receiveTick()
 {
 	// Todo
 	// Maybe position doesnt need to update every 60s?
-	svi.receiveTick();
+	//svi.receiveTick();
 	//svi.clearScreen();
 	//svi.updateScreen();
 	//svi.drawScreen();
@@ -108,11 +108,11 @@ void Engine::engineTick60()
 	while (!stopThreadTick60){
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
-		//this_thread::sleep_for(chrono::milliseconds(17));
+		this_thread::sleep_for(chrono::milliseconds(17));
 		svi.receiveTick();
 	}
 
-	cout << "Thread killed" << endl;
+	cout << "Thread killed 60" << endl;
 }
 
 void Engine::engineTick30()
@@ -124,7 +124,7 @@ void Engine::engineTick30()
 		//eventManager.notify(EventType::ENGINE30, new Object);
 
 	}
-	cout << "Thread killed" << endl;
+	cout << "Thread killed 30" << endl;
 }
 
 void Engine::startTickThreads()
