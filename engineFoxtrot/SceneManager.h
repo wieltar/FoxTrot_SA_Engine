@@ -17,6 +17,7 @@ public:
 	void moveObject(int ObjectID, int X, int Y);
 	void moveObjectRelative(int ObjectID, int moveXby, int moveYby);
 
+	void createNewScene(int sceneID);
 	void setCurrentScene(int sceneID);
 
 	void receiveTick();

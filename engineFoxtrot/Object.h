@@ -11,6 +11,7 @@ class Object
 {
 public:
 	Object();
+	Object(int id, int xPos, int yPos, int height, int width);
 	~Object();
 
 	std::string name;
@@ -27,8 +28,6 @@ public:
 	bool staticObject = false;
 	bool changed = false;
 
-	int X;
-	int Y;
 private:
 
 };

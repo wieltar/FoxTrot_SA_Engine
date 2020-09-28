@@ -29,15 +29,16 @@ public:
 	Engine();
 	~Engine();
 
-	void initScene();
-
 	void receiveTick();
 
-	// TODO: Set to private after testing
-	
-//public:
+	void setCurrentScene(int sceneID);
+	void createNewSceneWithSceneID(int sceneID);
+	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width);
+	void linkSpriteIDWithAssetPath(int spriteID, const char* assetPath);
 
+	void addEventListener(EventListener* listener, EventType eventType);
 	EventManager eventManager;
+private:
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
@@ -45,15 +46,9 @@ public:
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 
-	void registerSceneManagerPointerWithSVIPointer();
 	void loadSpriteArray(vector<Sprite> spriteVector);
 
-
-	void TESTfillSpriteVector(); // TODO: remove after testing.
-	vector<Sprite> sprites;
-
-
-	void addEventListener(EventListener* listener, EventType eventType);
+	
 };
 
 

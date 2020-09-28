@@ -23,12 +23,17 @@ void SceneManager::receiveTick()
 
 }
 
+void SceneManager::createNewScene(int sceneID)
+{
+	scenes.push_back(new Scene(sceneID));
+}
+
 void SceneManager::setCurrentScene(int sceneID)
 {
 	if (scenes.empty()) throw ERROR_CODE_SETTING_CURRENTSCENE_WHEN_SCENES_IS_EMPTY;
 
 	currentScene = findSceneWithID(sceneID);
-	pointerToCurrentObjectVector = currentScene->Objects;
+	pointerToCurrentObjectVector = currentScene->objects;
 }
 
 Scene* SceneManager::findSceneWithID(int sceneID)

@@ -18,8 +18,10 @@ class Scene
 {
 public:
     Scene();
+	Scene(int);
     ~Scene();
 
+	void addNewObject(int id, int xPos, int yPos, int height, int width);
 	void getObject(int ObjectID);
 	vector<Object*> returnCurrentObjects();
 
@@ -28,7 +30,7 @@ public:
 	// private:
 public:
 	int sceneID;
-	vector<Object*> Objects;
+	vector<Object*> objects;
 
     uint16_t positionY = 0;
     uint16_t rotation = 0;
