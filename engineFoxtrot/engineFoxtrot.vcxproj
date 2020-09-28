@@ -181,6 +181,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="EventType.h" />
     <ClInclude Include="FileParser.h" />
+    <ClInclude Include="GeneralDefines.h" />
     <ClInclude Include="IJsonFacade.h" />
     <ClInclude Include="IParticleFacade.h" />
     <ClInclude Include="IPhysicsFacade.h" />

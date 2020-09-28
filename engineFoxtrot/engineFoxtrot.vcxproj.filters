@@ -110,7 +110,7 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Header Files\Object</Filter>
-	  </ClCompile>
+    </ClCompile>
     <ClCompile Include="EventManager.cpp">
       <Filter>Header Files\Events</Filter>
     </ClCompile>
@@ -175,7 +175,7 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Header Files\Object</Filter>
-	  </ClInclude>
+    </ClInclude>
     <ClInclude Include="EventManager.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
@@ -187,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="EventType.h">
       <Filter>Header Files\Events\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralDefines.h">
+      <Filter>Header Files\General</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
