@@ -38,6 +38,7 @@ public:
 
 	void addEventListener(EventListener* listener, EventType eventType);
 	EventManager eventManager;
+
 private:
 
 	FileParser fileParser;
@@ -47,8 +48,6 @@ private:
 	SceneManager sceneManager;
 
 	void loadSpriteArray(vector<Sprite> spriteVector);
-
-	
 };
 
 

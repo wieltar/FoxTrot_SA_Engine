@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "Engine.h"
-#include "Scene.h"
 #include <chrono>
 #include <thread>
 #include <vector>
@@ -30,12 +29,9 @@ int main() {
 	thread t1(engineTick,std::ref(engine));
 	t1.detach();
 	
-	
 	engine.createNewSceneWithSceneID(10);
 	engine.createNewSceneWithSceneID(1);
 
-	// Object testing purpose
-	// TODO: remove after testing
 	engine.createNewObjectWithSceneID(1, 1, 50, 5, 40, 40);
 
 	engine.createNewObjectWithSceneID(10, 1, 50, 5, 40, 40);
@@ -70,9 +66,6 @@ int main() {
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
 	engine.eventManager.notify(EventType::MOVE, new Object);
 
-	//engine.svi.load("../Assets/Sound/b423b42.wav");
-	//engine.svi.play();
-	
 	while (1) {}
 	t1.join();
 }

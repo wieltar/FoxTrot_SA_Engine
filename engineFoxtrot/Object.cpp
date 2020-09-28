@@ -1,10 +1,16 @@
 #include "Object.h"
 
-
+/// @brief 
 Object::Object()
 {
 }
 
+/// @brief 
+/// @param id 
+/// @param xPos 
+/// @param yPos 
+/// @param height 
+/// @param width 
 Object::Object(int id, int xPos, int yPos, int height, int width)
 {
 	spriteID = id;
@@ -14,6 +20,7 @@ Object::Object(int id, int xPos, int yPos, int height, int width)
 	this->width = width;
 }
 
+/// @brief 
 Object::~Object()
 {
 }

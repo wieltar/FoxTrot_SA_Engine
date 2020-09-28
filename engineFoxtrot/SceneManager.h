@@ -22,10 +22,13 @@ public:
 	void createNewScene(int sceneID);
 	void setCurrentScene(int sceneID);
 
-	Scene* findSceneWithID(int sceneID);
+	Scene* getSceneWithID(int sceneID);
 
 	vector <Object*> pointerToCurrentObjectVector;
 private:
+
+	bool checkIfSceneExists(int);
+
 	Scene* currentScene = nullptr;
 	vector<Scene*> scenes;
 

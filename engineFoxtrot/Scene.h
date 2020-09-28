@@ -14,6 +14,9 @@ using namespace std;
 #include <vector>
 #include "Object.h"
 
+/// @brief 
+/// Scene Class
+/// Contains all the objects that should be drawn in this scene.
 class Scene 
 {
 public:

@@ -7,6 +7,8 @@
 
 using namespace std;
 
+/// @brief 
+/// Object class. Object is linked with a sprite id in SVI. 
 class Object
 {
 public:
