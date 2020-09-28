@@ -22,7 +22,7 @@ void Engine::createNewSceneWithSceneID(int sceneID)
 
 void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width)
 {
-	sceneManager.getSceneWithSceneID(sceneID)->addNewObject(id, xPos, yPos, height, width);
+	sceneManager.findSceneWithID(sceneID)->addNewObject(id, xPos, yPos, height, width);
 }
 
 void Engine::linkSpriteIDWithAssetPath(int spriteID, const char * assetPath)

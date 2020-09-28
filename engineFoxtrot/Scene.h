@@ -17,19 +17,17 @@ using namespace std;
 class Scene 
 {
 public:
-    Scene();
 	Scene(int);
     ~Scene();
 
 	void addNewObject(int id, int xPos, int yPos, int height, int width);
 	Object * getObject(int ObjectID);
 
-public:
-	int sceneID;
-	vector<Object*> objects;
+	int getSceneID() { return sceneID; }
+	vector<Object*> getPtrToObjects() { return objects; }
 
-    uint16_t positionY = 0;
-    uint16_t rotation = 0;
-    uint16_t scale = 0;
+private:
+	int sceneID = 0;
+	vector<Object*> objects;
 
 };

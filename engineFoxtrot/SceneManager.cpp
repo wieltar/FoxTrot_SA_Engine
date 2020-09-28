@@ -29,15 +29,6 @@ void SceneManager::moveObjectRelative(int ObjectID, int moveXby, int moveYby)
 	currentScene->getObject(ObjectID)->setPositionX(currentScene->getObject(ObjectID)->getPositionY() + moveYby);
 }
 
-Scene* SceneManager::getSceneWithSceneID(int sceneID)
-{
-	for (Scene* s : scenes)
-	{
-		if (s->sceneID == sceneID) return s;
-	}
-}
-
-
 void SceneManager::createNewScene(int sceneID)
 {
 	scenes.push_back(new Scene(sceneID));
@@ -48,7 +39,7 @@ void SceneManager::setCurrentScene(int sceneID)
 	if (scenes.empty()) throw ERROR_CODE_SETTING_CURRENTSCENE_WHEN_SCENES_IS_EMPTY;
 
 	currentScene = findSceneWithID(sceneID);
-	pointerToCurrentObjectVector = currentScene->objects;
+	pointerToCurrentObjectVector = currentScene->getPtrToObjects();
 }
 
 Scene* SceneManager::findSceneWithID(int sceneID)
@@ -56,7 +47,7 @@ Scene* SceneManager::findSceneWithID(int sceneID)
 	if (scenes.empty()) throw ERROR_CODE_SETTING_CURRENTSCENE_WHEN_SCENES_IS_EMPTY;
 	for (auto s : scenes)
 	{
-		if (s->sceneID == sceneID)
+		if (s->getSceneID() == sceneID)
 		{
 			return s;
 		}

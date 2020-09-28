@@ -2,10 +2,6 @@
 #include "Scene.h"
 
 
-Scene::Scene()
-{
-}
-
 Scene::Scene(int sceneID)
 {
 	this->sceneID = sceneID;
@@ -29,4 +25,5 @@ Object * Scene::getObject(int ObjectID)
 			return obj;
 		}
 	}
+	throw ERROR_CODE_UNKNOWN_OBJECT;
 }

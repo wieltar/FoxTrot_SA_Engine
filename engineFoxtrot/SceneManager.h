@@ -22,16 +22,12 @@ public:
 	void createNewScene(int sceneID);
 	void setCurrentScene(int sceneID);
 
-	Scene* getSceneWithSceneID(int);
-
-	vector <Object*> pointerToCurrentObjectVector;
-
-private:
-
 	Scene* findSceneWithID(int sceneID);
 
+	vector <Object*> pointerToCurrentObjectVector;
+private:
+	Scene* currentScene = nullptr;
 	vector<Scene*> scenes;
-	Scene* currentScene;
 
 };
 
