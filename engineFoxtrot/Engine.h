@@ -11,6 +11,10 @@
 #include <vector> 
 #include <iostream>
 #include <math.h>
+#include <thread>
+#include <assert.h>
+#include <chrono>
+#include <future>
 
 #include "Scene.h"
 #include "FileParser.h"
@@ -30,6 +34,28 @@ public:
 	~Engine();
 
 	void receiveTick();
+
+	// TODO: Set to private after testing
+	
+//private:
+	void engineTick60();
+	void engineTick30();
+	void startTickThreads();
+	void stopTickThreads();
+
+	atomic_bool stopThreadTick60 = false;
+	atomic_bool stopThreadTick30 = false;
+
+	thread *engineTick60Thread = nullptr;
+	thread *engineTick30Thread = nullptr;
+
+
+
+
+
+
+
+
 
 	void setCurrentScene(int sceneID);
 	void createNewSceneWithSceneID(int sceneID);
@@ -57,8 +83,5 @@ private:
 
 	void loadSpriteArray(vector<Sprite> spriteVector);
 };
-
-
-
 
 #endif

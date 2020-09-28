@@ -14,5 +14,7 @@ enum class EventType {
 	INTERACT		= 0x02,
 	INPUT			= 0x03,
 	MOVE_UPDATED	= 0x04,
-	COLLISION		= 0x05
+	COLLISION		= 0x05,
+	ENGINE60		= 0x06,
+	ENGINE30		= 0x07
 };

@@ -20,14 +20,19 @@ Engine engine;
 void engineTick(Engine & engine) {
 	while (1) {
 		this_thread::sleep_for(chrono::milliseconds(17));
+
 		engine.receiveTick();
 	}
 }
 
 int main() {
 	
-	thread t1(engineTick,std::ref(engine));
-	t1.detach();
+	//thread t1(engineTick,std::ref(engine));
+	//t1.detach();
+	
+	engine.startTickThreads();
+
+
 	
 	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(1);
@@ -38,12 +43,13 @@ int main() {
 	engine.createNewObjectWithSceneID(2, 2, 100, 5, 40, 40);
 	engine.createNewObjectWithSceneID(2, 3, 150, 5, 40, 40);
 	engine.createNewObjectWithSceneID(2, 4, 5, 50, 40, 40);
-	engine.createNewObjectWithSceneID(2, 5, 50, 5, 40, 40);
+	engine.createNewObjectWithSceneID(2, 5, 50, 50, 40, 40);
 	engine.createNewObjectWithSceneID(2, 6, 100, 50, 40, 40);
 	engine.createNewObjectWithSceneID(2, 7, 150, 50, 40, 40);
-	engine.createNewObjectWithSceneID(2, 8, 5, 6, 40, 40);
+	engine.createNewObjectWithSceneID(2, 8, 5, 100, 40, 40);
 	engine.createNewObjectWithSceneID(2, 9, 5, 100, 40, 40);
 	engine.createNewObjectWithSceneID(2, 10, 50, 100, 40, 40);
+	
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
@@ -82,10 +88,10 @@ int main() {
 
 
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object);
+	//engine.eventManager.notify(EventType::MOVE, new Object);
 
 	while (1) {}
-	t1.join();
+
 }
 
 

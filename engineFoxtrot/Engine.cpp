@@ -87,10 +87,73 @@ void Engine::receiveTick()
 	// Todo
 	// Maybe position doesnt need to update every 60s?
 	svi.receiveTick();
-	svi.clearScreen();
-	svi.updateScreen();
-	svi.drawScreen();
+	//svi.clearScreen();
+	//svi.updateScreen();
+	//svi.drawScreen();
 }
+
+
+
+
+
+
+
+
+
+
+
+void Engine::engineTick60()
+{
+	cout << "Thread started" << endl;
+	while (!stopThreadTick60){
+		//eventManager.notify(EventType::ENGINE60, new Object);
+
+		//this_thread::sleep_for(chrono::milliseconds(17));
+		svi.receiveTick();
+	}
+
+	cout << "Thread killed" << endl;
+}
+
+void Engine::engineTick30()
+{
+	cout << "Thread started" << endl;
+	while (!stopThreadTick30) {
+		this_thread::sleep_for(chrono::milliseconds(33));
+
+		//eventManager.notify(EventType::ENGINE30, new Object);
+
+	}
+	cout << "Thread killed" << endl;
+}
+
+void Engine::startTickThreads()
+{
+	engineTick60Thread = new thread(&Engine::engineTick60, this);
+	engineTick30Thread = new thread(&Engine::engineTick30, this);
+
+	engineTick60Thread->detach();
+	engineTick30Thread->detach();
+}
+
+void Engine::stopTickThreads()
+{
+	//engineTick60Thread->join();
+	//engineTick30Thread->join();
+	stopThreadTick60 = true;
+	stopThreadTick30 = true;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /// @brief 
 /// @param listener 

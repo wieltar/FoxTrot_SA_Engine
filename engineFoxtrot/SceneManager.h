@@ -38,5 +38,3 @@ private:
 	vector<Scene*> scenes;
 
 };
-
-

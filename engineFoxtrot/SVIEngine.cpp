@@ -57,7 +57,9 @@ void SVIEngine::updateScreen()
 
 void SVIEngine::receiveTick()
 {
-
+	clearScreen();
+	updateScreen();
+	drawScreen();
 }
 
 void SVIEngine::input()
