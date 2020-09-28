@@ -22,12 +22,8 @@ public:
     ~Scene();
 
 	void addNewObject(int id, int xPos, int yPos, int height, int width);
-	void getObject(int ObjectID);
-	vector<Object*> returnCurrentObjects();
+	Object * getObject(int ObjectID);
 
-	//Todo
-	// Set private:
-	// private:
 public:
 	int sceneID;
 	vector<Object*> objects;

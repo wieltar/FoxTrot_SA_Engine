@@ -8,6 +8,8 @@
 
 using namespace std;
 
+/// @brief 
+/// Contains all scenes. Manages all scenes and objects. All calls from engine containing object movements should be handled in the scene manager. 
 class SceneManager
 {
 public:
@@ -20,19 +22,15 @@ public:
 	void createNewScene(int sceneID);
 	void setCurrentScene(int sceneID);
 
-	void receiveTick();
+	Scene* getSceneWithSceneID(int);
 
-	//Todo
-	// Set private
-public:
-//private:
+	vector <Object*> pointerToCurrentObjectVector;
+
+private:
 
 	Scene* findSceneWithID(int sceneID);
 
 	vector<Scene*> scenes;
-
-	vector <Object*> pointerToCurrentObjectVector;
-	
 	Scene* currentScene;
 
 };

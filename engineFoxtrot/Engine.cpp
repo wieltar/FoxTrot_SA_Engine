@@ -22,13 +22,7 @@ void Engine::createNewSceneWithSceneID(int sceneID)
 
 void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width)
 {
-	for (Scene * s : sceneManager.scenes)
-	{
-		if (s->sceneID == sceneID)
-		{
-			s->addNewObject(id, xPos, yPos, height, width);
-		}
-	}
+	sceneManager.getSceneWithSceneID(sceneID)->addNewObject(id, xPos, yPos, height, width);
 }
 
 void Engine::linkSpriteIDWithAssetPath(int spriteID, const char * assetPath)
@@ -48,7 +42,6 @@ void Engine::receiveTick()
 {
 	// Todo
 	// Maybe position doesnt need to update every 60s?
-	sceneManager.receiveTick();
 	svi.receiveTick();
 	svi.clearScreen();
 	svi.updateScreen();

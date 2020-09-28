@@ -21,7 +21,6 @@ Engine engine;
 void engineTick(Engine & engine) {
 	while (1) {
 		this_thread::sleep_for(chrono::milliseconds(17));
-
 		engine.receiveTick();
 	}
 }
