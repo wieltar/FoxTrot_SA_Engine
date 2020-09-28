@@ -44,8 +44,6 @@ int main() {
 	engine.createNewObjectWithSceneID(10, 8, 5, 6, 40, 40);
 	engine.createNewObjectWithSceneID(10, 9, 5, 100, 40, 40);
 	engine.createNewObjectWithSceneID(10, 10, 50, 100, 40, 40);
-	
-	engine.setCurrentScene(10);
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
@@ -57,10 +55,24 @@ int main() {
 	engine.linkSpriteIDWithAssetPath(8, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-03.png");
 	engine.linkSpriteIDWithAssetPath(9, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-04.png");
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
-
+	
+	engine.setCurrentScene(10);
 	
 	SDL_Delay(5000);
 	engine.setCurrentScene(1);
+	SDL_Delay(1000);
+	
+	for (int i = 0; i < 100; i++)
+	{
+		engine.moveObjectTo(1, i, 10);
+		SDL_Delay(10);
+	}
+
+	for (int i = 0; i < 360; i++)
+	{
+		engine.setObjectRotation(1, i);
+		SDL_Delay(50);
+	}
 
 
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);

@@ -16,15 +16,20 @@ public:
 	SceneManager();
 	~SceneManager();
 
-	void moveObject(int ObjectID, int X, int Y);
-	void moveObjectRelative(int ObjectID, int moveXby, int moveYby);
-
+	// Scene modifiers
 	void createNewScene(int sceneID);
 	void setCurrentScene(int sceneID);
-
 	Scene* getSceneWithID(int sceneID);
-
 	vector <Object*> pointerToCurrentObjectVector;
+
+	// Object Modifiers
+	void moveObject(int ObjectID, int X, int Y);
+	void moveObjectRelative(int ObjectID, int moveXby, int moveYby);
+	void rotateObject(int ObjectID, int rotation);
+	void setObjectScale(int ObjectID, int scale);
+	void setObjectDirection(int ObjectID, int dir);
+	void setObjectStatic(int ObjectID, bool stat);
+
 private:
 
 	bool checkIfSceneExists(int);

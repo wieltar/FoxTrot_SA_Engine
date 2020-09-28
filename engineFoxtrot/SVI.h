@@ -55,7 +55,7 @@ public:
 	void drawScreen();
 	void loadImage(int spriteID, const char* filename);
 
-	void renderCopy(int spriteID, int xPos, int yPos, int width, int height);
+	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
 
 
 	unordered_map<int, SDL_Texture*> textureMap;

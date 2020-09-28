@@ -114,6 +114,12 @@
     <ClCompile Include="EventManager.cpp">
       <Filter>Header Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="SceneManager+ObjectModifiers.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine+ObjectModifiers.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

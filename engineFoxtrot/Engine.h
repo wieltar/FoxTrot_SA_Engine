@@ -39,6 +39,14 @@ public:
 	void addEventListener(EventListener* listener, EventType eventType);
 	EventManager eventManager;
 
+	// Object Modifiers
+	void moveObjectTo(int objId, int x, int y);
+	void moveObjectBy(int objId, int withX, int withY);
+	void setObjectRotation(int objId, int rotation);
+	void setObjectScale(int objId, int scale);
+	void setObjectDirection(int objId, int dir);
+	void setObjectStatic(int objId, bool stat);
+
 private:
 
 	FileParser fileParser;

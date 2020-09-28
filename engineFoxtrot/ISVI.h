@@ -19,7 +19,7 @@ public:
 	virtual void drawScreen() = 0;
 	virtual void loadImage(int spriteID, const char* filename) = 0;
 
-	virtual void renderCopy(int spriteID, int xPos, int yPos, int width, int height) = 0;
+	virtual void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation) = 0;
 
 
 	// Input Functions

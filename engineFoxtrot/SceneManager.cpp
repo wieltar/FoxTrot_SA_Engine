@@ -12,28 +12,6 @@ SceneManager::~SceneManager()
 }
 
 /// @brief 
-/// @param ObjectID 
-/// @param X 
-/// @param Y 
-void SceneManager::moveObject(int ObjectID, int X, int Y)
-{
-	if (!currentScene) throw ERROR_CODE_SCENEMANAGER_NO_CURRENT_SCENE;
-	currentScene->getObject(ObjectID)->setPositionX(X);
-	currentScene->getObject(ObjectID)->setPositionY(Y);
-}
-
-/// @brief 
-/// @param ObjectID 
-/// @param moveXby 
-/// @param moveYby 
-void SceneManager::moveObjectRelative(int ObjectID, int moveXby, int moveYby)
-{
-	if (!currentScene) throw ERROR_CODE_SCENEMANAGER_NO_CURRENT_SCENE;
-	currentScene->getObject(ObjectID)->setPositionX(currentScene->getObject(ObjectID)->getPositionX() + moveXby);
-	currentScene->getObject(ObjectID)->setPositionX(currentScene->getObject(ObjectID)->getPositionY() + moveYby);
-}
-
-/// @brief 
 /// @param sceneID 
 /// @return 
 bool SceneManager::checkIfSceneExists(int sceneID)

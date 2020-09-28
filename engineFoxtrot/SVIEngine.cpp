@@ -43,15 +43,15 @@ void SVIEngine::loadImage(int spriteID, const char* filename)
 	sviEngine->loadImage(spriteID, filename);
 }
 
-void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int height)
+void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
 {
-	sviEngine->renderCopy(spriteID, xPos, yPos, width, height);
+	sviEngine->renderCopy(spriteID, xPos, yPos, width, height, rotation);
 }
 
 void SVIEngine::updateScreen()
 {
 	for (auto obj : *pointerToObjectVector) {
-		sviEngine->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight());
+		sviEngine->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(),obj->getRotation());
 	}
 }
 

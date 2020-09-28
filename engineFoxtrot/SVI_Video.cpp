@@ -77,14 +77,14 @@ void SVI::loadImage(int spriteID, const char* filename)
 }
 
 
-void SVI::renderCopy(int spriteID, int xPos, int yPos, int width, int height)
+void SVI::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
 {
 	SDL_Rect destination;
 	destination.x = xPos;
 	destination.y = yPos;
 	destination.w = width;
 	destination.h = height;
-	SDL_RenderCopy(renderer, textureMap[spriteID], NULL, &destination);
+	SDL_RenderCopyEx(renderer, textureMap[spriteID], NULL, &destination, rotation,NULL, SDL_FLIP_NONE);
 }
 
 

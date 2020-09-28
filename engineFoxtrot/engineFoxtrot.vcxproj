@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine+ObjectModifiers.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileParser.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="PhysicsFacade.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager+ObjectModifiers.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SVI.cpp" />
     <ClCompile Include="SVIEngine.cpp" />
