@@ -53,7 +53,9 @@ void SVIEngine::updateScreen()
 	if (pointerToObjectVector->capacity() <= 0) return;
 	if (pointerToObjectVector->size() <= 0) return;
 	for (auto obj : *pointerToObjectVector) {
-		sviEngine->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(),obj->getRotation());
+		if (obj != nullptr) {
+			sviEngine->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(), obj->getRotation());
+		}
 	}
 }
 

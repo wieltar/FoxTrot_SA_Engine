@@ -17,13 +17,6 @@ using namespace std;
 
 Engine engine;
 
-void engineTick(Engine & engine) {
-	while (1) {
-		this_thread::sleep_for(chrono::milliseconds(17));
-
-		engine.receiveTick();
-	}
-}
 
 int main() {
 	engine.startTickThreads();
@@ -45,6 +38,8 @@ int main() {
 	engine.createNewObjectWithSceneID(2, 10, 50, 100, 40, 40);
 	
 
+
+	
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
 	engine.linkSpriteIDWithAssetPath(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-02.png");
@@ -71,8 +66,9 @@ int main() {
 		else engine.setCurrentScene(2);
 		this_thread::sleep_for(chrono::milliseconds(50));
 	}
-	
+	cout << "about to set" << endl;
 	engine.setCurrentScene(1);
+	cout << "setted" << endl;
 	
 	for (int i = 0; i < 100; i++)
 	{
@@ -89,7 +85,7 @@ int main() {
 	engine.stopTickThreads();
 
 
-	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
+	//engine.addEventListener(new PhysicsEngine, EventType::MOVE);
 	//engine.eventManager.notify(EventType::MOVE, new Object);
 
 	while (1) {}

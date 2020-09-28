@@ -66,7 +66,7 @@ void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos,
 /// @param spriteID 
 /// @param assetPath 
 void Engine::linkSpriteIDWithAssetPath(int spriteID, const char * assetPath)
-{
+ {
 	svi.loadImage(spriteID, assetPath);
 }
 
@@ -86,10 +86,7 @@ void Engine::receiveTick()
 {
 	// Todo
 	// Maybe position doesnt need to update every 60s?
-	//svi.receiveTick();
-	//svi.clearScreen();
-	//svi.updateScreen();
-	//svi.drawScreen();
+	svi.receiveTick();
 }
 
 
