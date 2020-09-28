@@ -14,6 +14,30 @@ using namespace std;
 // TODO : Set object folder up with interface route
 
 Engine engine;
+int speed =1 ;
+
+void moveLeft(b2Body* body) {
+	b2Vec2 position = body->GetPosition();
+	position.x -= speed;
+	body->SetTransform(position, body->GetAngle());
+}
+void moveRight(b2Body* body) {
+	b2Vec2 position = body->GetPosition();
+	position.x += speed;
+	body->SetTransform(position, body->GetAngle());
+}
+
+void moveStep(int i, b2Body* body) {
+	if (i > 300 && i < 400) {
+		moveRight(body);
+	}
+	else if (i > 401 && i < 600) {
+		moveLeft(body);
+	}
+	else if (i > 601 && i < 900) {
+		moveRight(body);
+	}
+}
 
 int main() {
 
@@ -44,9 +68,9 @@ int main() {
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &dynamicBox;
 	fixtureDef.density = 10.0f;
-	fixtureDef.friction = 0.3f;
+	fixtureDef.friction = 0.0f;
 
-	fixtureDef.restitution = 0.9f;
+	fixtureDef.restitution = 0.0f;
 
 	body->CreateFixture(&fixtureDef);
 
@@ -58,10 +82,11 @@ int main() {
 	for (int32 i = 0; i < 1000; ++i)
 	{
 		world.Step(timeStep, velocityIterations, positionIterations);
+		moveStep(i, body);
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
 		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-		engine.svi.testLoopVideo((int)position.x, (int)position.y);
+		engine.svi.testLoopVideo(position.x, position.y);
 		SDL_Delay(10);
 	}
 
