@@ -52,7 +52,6 @@ int mouseX;
 int mouseY;
 
 void saveCommand(Command *command, int inputType, int key, int mouseBtn) {
-	command->callback();
 	if (inputType == InputType::Key) {
 		keyCommands[key] = command;
 	}
