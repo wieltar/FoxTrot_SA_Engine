@@ -18,6 +18,7 @@ Engine engine;
 int main() {
 	engine.svi.load("piano2.wav", "piano");
 	engine.svi.load("organfinale.wav", "organ");
+	engine.svi.unload("organ");
 	engine.svi.play("piano");
 	engine.svi.play("organ");
 	while (true) {

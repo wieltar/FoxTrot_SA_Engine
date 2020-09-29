@@ -43,7 +43,7 @@ public:
 	void unload(string identifier);
 	void flush();
 private:
-	map<string, Sound> devices;
+	map<string, Sound*> devices;
 
 
 // Video functions
