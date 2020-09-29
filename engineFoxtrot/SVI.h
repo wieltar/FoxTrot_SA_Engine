@@ -6,7 +6,9 @@
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
 #include "SDL.h"
+#include "Sound.h"
 #include <string>
+#include <map>
 #include <memory>
 #include <iostream>
 #include "../SDL2/include/SDL_mixer.h"
@@ -35,13 +37,13 @@ private:
 
 // Sound functions
 public:
-	void load(const char* filename);
-	void play();
+	void load(string filename, string identifier);
+	void play(string identifier);
+	void stop(string identifier);
+	void unload(string identifier);
+	void flush();
 private:
-	SDL_AudioSpec wavSpec;
-	Uint32 wavLength;
-	Uint8* wavBuffer;
-	SDL_AudioDeviceID deviceId;
+	map<string, Sound> devices;
 
 
 // Video functions
