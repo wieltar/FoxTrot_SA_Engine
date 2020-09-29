@@ -5,6 +5,9 @@
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
 
+/// @brief TO BE REMOVED
+/// @param x 
+/// @param y
 void SVI::testLoopVideo(int x, int y)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
@@ -27,6 +30,8 @@ void SVI::testLoopVideo(int x, int y)
 	//SDL_Delay(5000);
 }
 
+/// @brief 
+/// Inits SDL2
 void SVI::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -58,17 +63,25 @@ void SVI::initSDL()
 	}
 }
 
+/// @brief 
+/// Clears SDL screen
 void SVI::clearScreen()
 {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
 }
 
+/// @brief 
+/// Draws SDL screen
 void SVI::drawScreen()
 {
 	SDL_RenderPresent(renderer);
 }
 
+/// @brief 
+/// Loads PNG files and makes them textures to be added to the unordered map
+/// @param spriteID 
+/// @param filename 
 void SVI::loadImage(int spriteID, const char* filename)
 {
 	SDL_Surface* surface = IMG_Load(filename);
@@ -76,7 +89,14 @@ void SVI::loadImage(int spriteID, const char* filename)
 	textureMap[spriteID] = texture;
 }
 
-
+/// @brief 
+/// Takes the sprites from the Textuture map and copys them to the screen
+/// @param spriteID 
+/// @param xPos 
+/// @param yPos 
+/// @param width 
+/// @param height 
+/// @param rotation 
 void SVI::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
 {
 	if (textureMap[spriteID] == NULL) return;

@@ -10,7 +10,11 @@ using namespace std;
 
 /// @brief 
 /// Contains all scenes. Manages all scenes and objects. All calls from engine containing object movements should be handled in the scene manager. 
+#if(EXPORT)
+class DLLEXPORT SceneManager
+#else
 class SceneManager
+#endif
 {
 public:
 	SceneManager();

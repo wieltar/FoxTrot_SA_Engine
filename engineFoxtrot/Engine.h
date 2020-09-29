@@ -6,6 +6,7 @@
 
 #include "Debug.h"
 #include "ErrorCodes.h"
+#include "GeneralDefines.h"
 #include "GeneralHelperFunctions.cpp"
 
 #include <vector> 
@@ -27,7 +28,11 @@
 
 
 /// @brief 
+#if(EXPORT)
+class DLLEXPORT Engine
+#else
 class Engine
+#endif
 {
 public:
 	Engine();

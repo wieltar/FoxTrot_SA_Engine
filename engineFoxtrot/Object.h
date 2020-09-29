@@ -9,7 +9,12 @@ using namespace std;
 
 /// @brief 
 /// Object class. Object is linked with a sprite id in SVI. 
+
+#if(EXPORT)
+class DLLEXPORT Object
+#else
 class Object
+#endif
 {
 public:
 	Object();

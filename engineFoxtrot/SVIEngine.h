@@ -6,13 +6,24 @@
 
 using namespace std;
 
+#if(EXPORT)
+struct DLLEXPORT Sprite
+#else
 struct Sprite
+#endif
 {
 	int spriteID = 0;
 	const char* filename = "";
 };
 
+/// @brief 
+/// SVIEngine is the SDL2 wrapper
+
+#if(EXPORT)
+class DLLEXPORT SVIEngine
+#else
 class SVIEngine
+#endif
 {
 public:
 	SVIEngine();

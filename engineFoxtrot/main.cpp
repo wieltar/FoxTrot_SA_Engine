@@ -14,17 +14,19 @@ using namespace std;
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
 // TODO : Set object folder up with interface route
+// TODO : Add checks in SVI
+// TODO : notify threads
 
 Engine engine;
 
 
 int main() {
-	engine.startTickThreads();
 	
 	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(1);
 
 	engine.createNewObjectWithSceneID(1, 1, 50, 5, 40, 40);
+	engine.startTickThreads();
 	
 	engine.createNewObjectWithSceneID(2, 1, 50, 5, 40, 40);
 	engine.createNewObjectWithSceneID(2, 2, 100, 5, 40, 40);
@@ -34,11 +36,8 @@ int main() {
 	engine.createNewObjectWithSceneID(2, 6, 100, 50, 40, 40);
 	engine.createNewObjectWithSceneID(2, 7, 150, 50, 40, 40);
 	engine.createNewObjectWithSceneID(2, 8, 5, 100, 40, 40);
-	engine.createNewObjectWithSceneID(2, 9, 5, 100, 40, 40);
+	engine.createNewObjectWithSceneID(2, 9, 100, 100, 40, 40);
 	engine.createNewObjectWithSceneID(2, 10, 50, 100, 40, 40);
-	
-
-
 	
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");

@@ -8,7 +8,12 @@
 #include "EventListener.h"
 #include "Object.h"
 
-class EventManager {
+#if(EXPORT)
+class DLLEXPORT EventManager
+#else
+class EventManager 
+#endif
+{
 private:
     std::map<EventType, std::vector<EventListener*>> listeners = std::map<EventType, std::vector<EventListener*>>();
 public:

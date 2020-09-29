@@ -17,7 +17,12 @@ using namespace std;
 /// @brief 
 /// Scene Class
 /// Contains all the objects that should be drawn in this scene.
+
+#if(EXPORT)
+class DLLEXPORT Scene
+#else
 class Scene 
+#endif
 {
 public:
 	Scene(int);

@@ -1,6 +1,11 @@
 #pragma once
 
+/// @brief Interface class for SDL2 facade
+#if(EXPORT)
+class DLLEXPORT ISVI
+#else
 class ISVI
+#endif
 {
 public:
 	ISVI();

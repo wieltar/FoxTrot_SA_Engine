@@ -20,7 +20,13 @@ using namespace std;
 #define Example_Sound	"../Assets/Sound/b423b42.wav"
 #define Example_Sprite  "../Assets/Sprites/simple.png"
 
+#if(EXPORT)
+class DLLEXPORT SVI : public ISVI
+#else
+/// @brief 
+/// SVI is de SDL2 facade
 class SVI : public ISVI
+#endif
 {
 // General stuff
 public:

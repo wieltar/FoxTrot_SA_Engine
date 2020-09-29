@@ -1,6 +1,11 @@
 #pragma once
 #include "JsonFacade.h"
+
+#if(EXPORT)
+class DLLEXPORT FileParser
+#else
 class FileParser
+#endif
 {
 public:
 	void Load();

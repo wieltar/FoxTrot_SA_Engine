@@ -1,6 +1,11 @@
 #pragma once
 
+
+#if(EXPORT)
+enum DLLEXPORT EventCategry
+#else
 enum EventCategory
+#endif
 {
 	None			= 0x01,
 	MOUSE_EVENT		= 0x02,
@@ -9,7 +14,12 @@ enum EventCategory
 	ENGINE_EVENT	= 0x05
 };
 
-enum class EventType {
+#if(EXPORT)
+enum class EventType
+#else
+enum class EventType
+#endif
+{
 	MOVE			= 0x01,
 	INTERACT		= 0x02,
 	INPUT			= 0x03,
