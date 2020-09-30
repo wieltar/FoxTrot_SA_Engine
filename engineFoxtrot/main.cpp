@@ -13,15 +13,18 @@ using namespace std;
 // Installing
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
-// TODO : Set object folder up with interface route
-// TODO : Add checks in SVI
+
 // TODO : notify threads
 
 Engine engine;
 
 
 int main() {
+
+	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
+	engine.eventManager.notify(EventType::MOVE, new Object);
 	
+
 	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(1);
 
@@ -65,9 +68,8 @@ int main() {
 		else engine.setCurrentScene(2);
 		this_thread::sleep_for(chrono::milliseconds(50));
 	}
-	cout << "about to set" << endl;
+
 	engine.setCurrentScene(1);
-	cout << "setted" << endl;
 	
 	for (int i = 0; i < 100; i++)
 	{
@@ -84,8 +86,7 @@ int main() {
 	engine.stopTickThreads();
 
 
-	//engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	//engine.eventManager.notify(EventType::MOVE, new Object);
+	
 
 	while (1) {}
 

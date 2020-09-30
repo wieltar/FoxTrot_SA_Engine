@@ -67,17 +67,31 @@ void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos,
 /// @param assetPath 
 void Engine::linkSpriteIDWithAssetPath(int spriteID, const char * assetPath)
  {
+	try
+	{
 	svi.loadImage(spriteID, assetPath);
+	}
+	catch (int e)
+	{
+		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
+	}
 }
 
 /// @brief 
 /// @param spritesVector 
 void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 {
-	cout << spritesVector.size() << endl;
+	try
+	{
+	cout << spritesVector.size() << endl; // TODO REMOVE
 	for (auto sprite : spritesVector) {
 		cout << sprite.spriteID << "," << sprite.filename << endl;
 		svi.loadImage(sprite.spriteID, sprite.filename);
+	}
+	}
+	catch (int e)
+	{
+		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
 	}
 }
 
@@ -86,7 +100,7 @@ void Engine::receiveTick()
 {
 	// Todo
 	// Maybe position doesnt need to update every 60s?
-	svi.receiveTick();
+	//svi.receiveTick();
 }
 
 
@@ -106,6 +120,7 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(17));
+		//eventManager.notify(EventType::ENGINE60, new Object);
 		svi.receiveTick();
 	}
 

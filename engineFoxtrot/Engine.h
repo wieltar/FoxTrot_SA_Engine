@@ -83,6 +83,7 @@ private:
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
 	SVIEngine svi;
+	//SVIEngine svi = SVIEngine::SVIEngine(eventManager);
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "EventManager.h"
 #include "SVI.h"
 #include "Object.h"
 #include <vector>
@@ -22,12 +23,15 @@ struct Sprite
 #if(EXPORT)
 class DLLEXPORT SVIEngine
 #else
-class SVIEngine
+class SVIEngine : public EventListener
 #endif
 {
 public:
 	SVIEngine();
+	//SVIEngine(EventManager eventManagerPtr);
 	~SVIEngine();
+
+	//void registerEventManager(EventManager eventManagerPtr);
 	
 	// Sound Functions
 	void load(const char* filename);
@@ -45,6 +49,7 @@ public:
 
 	void updateScreen();
 
+	void update(Object* object) override;
 	void receiveTick();
 
 	// Input Functions
@@ -54,6 +59,7 @@ public:
 
 
 	//Set to private after testing!!!
+	EventManager* eventManager = nullptr;
 	ISVI * sviEngine = new SVI;
 private:
 };
