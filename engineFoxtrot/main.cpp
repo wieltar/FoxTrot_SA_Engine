@@ -26,39 +26,19 @@ bool movingRight = false;
 
 
 void moveLeft(b2Body* body) {
-	b2Vec2 position = body->GetPosition();
-	if (remainingLeftSteps < 40) {
-		//position.x -= speed;
-		body->ApplyForce(b2Vec2(0.0f, 10.0f), position, true); 
-	}
-	else {
-		position.x -= speed * 2;
-	}
-	body->SetTransform(position, body->GetAngle());
-	remainingLeftSteps++;
+	body->ApplyLinearImpulse(b2Vec2(speed * 10 * -1, 0.0f), body->GetWorldCenter(), true);	
 }
 void moveRight(b2Body* body) {
-	b2Vec2 position = body->GetPosition();
-	if (remainingRightSteps < 40) {
-		position.x += speed;
-
-		//body->ApplyLinearImpulse(b2Vec2(0, 0.0), position, true);
-	}
-	else {
-		position.x += speed * 2;
-		//body->ApplyLinearImpulse(b2Vec2(20.0, 0.0), position, true);
-	}
-	body->SetTransform(position, body->GetAngle());
-	remainingRightSteps++;
+	body->ApplyLinearImpulse(b2Vec2(speed * 10, 0.0f), body->GetWorldCenter(), true);
 }
 void moveJump(b2Body* body) {
 	body->ApplyLinearImpulse(b2Vec2(0, -400), body->GetWorldCenter() , true);
 }
 void moveJumpLeft(b2Body* body) {
-	body->ApplyLinearImpulse(b2Vec2(-50, -400), body->GetWorldCenter(), true);
+	body->ApplyLinearImpulse(b2Vec2(-100, -400), body->GetWorldCenter(), true);
 }
 void moveJumpRight(b2Body* body) {
-	body->ApplyLinearImpulse(b2Vec2(50, -400), body->GetWorldCenter(), true);
+	body->ApplyLinearImpulse(b2Vec2(100, -400), body->GetWorldCenter(), true);
 }
 void stopJump(b2Body* body) {
 	body->ApplyLinearImpulse(b2Vec2(0, 0), body->GetWorldCenter(), true);
@@ -73,10 +53,11 @@ jump right
 jump left
 */
 void moveCommandos(int i) {
-	if (i == 200) {
+
+	if (i == 100) {
 		movingRight = true;
 	}
-	if (i == 300) {
+	if (i == 150) {
 		movingRight = false;
 	}
 	
@@ -122,20 +103,10 @@ void move(b2Body* body) {
 
 		if (movingLeft)
 			moveLeft(body);
-		else if (remainingLeftSteps > 0) {
-			moveLeft(body);
-			remainingLeftSteps = remainingLeftSteps - 2;
-		}
-
+		
 		if (movingRight)
 			moveRight(body);
-		else if (remainingRightSteps > 0) {
-			if (remainingRightSteps > 40) {
-				remainingRightSteps = 40;
-			}
-			moveRight(body);
-			remainingRightSteps = remainingRightSteps - 2;
-		}
+		
 	}
 
 }
@@ -145,15 +116,27 @@ int main() {
 	b2Vec2 gravity(0.0f, 80.0f);
 	b2World world(gravity);
 
+	//ground 1
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 130.0f);
+	groundBodyDef.position.Set(0.0f, 50);
 
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
 	b2PolygonShape groundBox;
-	groundBox.SetAsBox(50.0f, 10.0f);
-
+	groundBox.SetAsBox(50, 10.0f);
 	groundBody->CreateFixture(&groundBox, 0.0f);
+
+	//ground 2
+	b2BodyDef groundBodyDef2;
+	groundBodyDef2.position.Set(0.0f, 130);
+
+	b2Body* groundBody2 = world.CreateBody(&groundBodyDef2);
+
+	b2PolygonShape groundBox2;
+	groundBox2.SetAsBox(1000.0f, 10.0f);
+	groundBody2->CreateFixture(&groundBox2, 0.0f);
+
+
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
