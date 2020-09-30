@@ -1,4 +1,4 @@
-
+#pragma once
 #include "SoundManager.h"
 
 SoundManager::SoundManager() {

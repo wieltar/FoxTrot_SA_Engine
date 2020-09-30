@@ -21,7 +21,6 @@ int main() {
 	SoundManager soundManager;
 
 	soundManager.AddFile("test", "piano2.wav");
-
 	soundManager.PlayEffect("test");
 
 	while (1) {
