@@ -8,14 +8,29 @@ SVIEngine::~SVIEngine()
 {
 }
 
-void SVIEngine::load(const char* filename)
+void SVIEngine::load(string filename, string identifier)
 {
-	sviEngine->load(filename);
+	sviEngine->load(filename, identifier);
 }
 
-void SVIEngine::play()
+void SVIEngine::play(string identifier)
 {
-	sviEngine->play();
+	sviEngine->play(identifier);
+}
+
+void SVIEngine::stop(string identifier)
+{
+	sviEngine->stop(identifier);
+}
+
+void SVIEngine::unload(string identifier)
+{
+	sviEngine->unload(identifier);
+}
+
+void SVIEngine::flush()
+{
+	sviEngine->flush();
 }
 
 void SVIEngine::testLoopVideo(int x, int y)

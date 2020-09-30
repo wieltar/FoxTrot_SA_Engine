@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class ISVI
 {
@@ -7,8 +8,11 @@ public:
 	~ISVI();
 
 	// Sound Functions
-	virtual void load(const char* filename) = 0;
-	virtual void play() = 0;
+	virtual void load(std::string filename, std::string identifier) = 0;
+	virtual void play(std::string identifier) = 0;
+	virtual void stop(std::string identifier) = 0;
+	virtual void unload(std::string identifier) = 0;
+	virtual void flush() = 0;
 
 	// Video Functions
 	virtual void testLoopVideo(int x, int y) = 0;

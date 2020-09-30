@@ -35,6 +35,6 @@ SVI::SVI()
 
 SVI::~SVI()
 {
-	SDL_CloseAudioDevice(deviceId);
-	SDL_FreeWAV(wavBuffer);
+	/*SDL_CloseAudioDevice(deviceId);
+	SDL_FreeWAV(wavBuffer);*/
 }

@@ -164,6 +164,8 @@
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="PhysicsFacade.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SVI.cpp" />
     <ClCompile Include="SVIEngine.cpp" />
@@ -195,6 +197,9 @@
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="PhysicsFacade.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Sound.h" />
+    <ClInclude Include="SoundManager.hpp" />
+    <ClInclude Include="SoundType.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SVI.h" />
     <ClInclude Include="SVIEngine.h" />
