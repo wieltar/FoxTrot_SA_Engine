@@ -52,17 +52,18 @@ void moveRight(b2Body* body) {
 	remainingRightSteps++;
 }
 void moveJump(b2Body* body) {
-	body->ApplyLinearImpulse(b2Vec2(0, -400), body->GetPosition(), true);
+	body->ApplyLinearImpulse(b2Vec2(0, -400), body->GetWorldCenter() , true);
 }
 void moveJumpLeft(b2Body* body) {
-	body->ApplyLinearImpulse(b2Vec2(-100, -400), body->GetPosition(), true);
+	body->ApplyLinearImpulse(b2Vec2(-50, -400), body->GetWorldCenter(), true);
 }
 void moveJumpRight(b2Body* body) {
-	body->ApplyLinearImpulse(b2Vec2(100, -400), body->GetPosition(), true);
+	body->ApplyLinearImpulse(b2Vec2(50, -400), body->GetWorldCenter(), true);
 }
 void stopJump(b2Body* body) {
-	body->ApplyLinearImpulse(b2Vec2(0, 0), body->GetPosition(), true);
+	body->ApplyLinearImpulse(b2Vec2(0, 0), body->GetWorldCenter(), true);
 }
+
 
 
 /*
@@ -78,7 +79,7 @@ void moveCommandos(int i) {
 	if (i == 300) {
 		movingRight = false;
 	}
-
+	
 	if (i == 400) {
 		movingJump = true;
 	}
@@ -90,20 +91,18 @@ void moveCommandos(int i) {
 		movingJump = true;
 		movingLeft = true;
 	}
-	if (i == 1100) {
+	if (i == 1010) {
 		movingJump = false;
 		movingLeft = false;
 	}
-
-	/*
-	if (i == 1100) {
+	if (i == 1300) {
 		movingJump = true;
 		movingRight = true;
 	}
-	if (i == 1200) {
+	if (i == 1310) {
 		movingJump = false;
 		movingRight = false;
-	}*/
+	}
 }
 
 void move(b2Body* body) {
@@ -166,8 +165,9 @@ int main() {
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &dynamicBox;
-	fixtureDef.density = 10.0f;
-	fixtureDef.friction = 0.0f;
+	fixtureDef.density = 1.0f;
+	fixtureDef.friction = 0.2f;
+	fixtureDef.restitution = 0.01f;
 
 	fixtureDef.restitution = 0.0f;
 
