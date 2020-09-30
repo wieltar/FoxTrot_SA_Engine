@@ -120,9 +120,6 @@
     <ClCompile Include="EventManager.cpp">
       <Filter>Header Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>Header Files\Sound</Filter>
-    </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>Header Files\Sound</Filter>
     </ClCompile>
@@ -203,13 +200,7 @@
     <ClInclude Include="EventType.h">
       <Filter>Header Files\Events\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundManager.hpp">
-      <Filter>Header Files\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundType.h">
+    <ClInclude Include="SoundManager.h">
       <Filter>Header Files\Sound</Filter>
     </ClInclude>
   </ItemGroup>

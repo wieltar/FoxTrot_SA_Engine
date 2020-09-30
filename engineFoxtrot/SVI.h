@@ -36,14 +36,6 @@ private:
 
 
 	// Sound functions
-public:
-	void load(string filename, string identifier);
-	void play(string identifier);
-	void stop(string identifier);
-	void unload(string identifier);
-	void flush();
-private:
-	map<string, Sound*> devices;
 
 
 // Video functions

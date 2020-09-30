@@ -3,6 +3,7 @@
 #include "Engine.h"
 
 #include "box2d/box2d.h"
+#include "SoundManager.h"
 using namespace std;
 
 // Doxygen
@@ -17,17 +18,17 @@ Engine engine;
 
 int main() {
 
-	Engine* engine{ new Engine };
-	engine->addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine->eventManager.notify(EventType::MOVE, new Object);
+	SoundManager soundManager;
 
-	engine->svi.load("BGM.wav", "piano");
-	engine->svi.play("piano");
+	soundManager.AddFile("test", "piano2.wav");
+
+	soundManager.PlayEffect("test");
 
 	while (1) {
 		
 	}
 	return 0;
 }
+
 
 
