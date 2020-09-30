@@ -118,27 +118,27 @@ int main() {
 	b2Vec2 gravity(0.0f, 80.0f);
 	b2World world(gravity);
 
-	//ground 1
+	//ground 1 - small
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 50);
+	groundBodyDef.position.Set(0.0f, 50.0f);
 
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
 	
 
 	b2PolygonShape groundBox;
-	groundBox.SetAsBox(50, 10.0f);
+	groundBox.SetAsBox(50.0f, 10.0f);
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
 
 	GroundData g;
-	g.x = 0;
-	g.y = 320;
-	g.hx = 100.0f;
+	g.x = 0.0f;
+	g.y = 320.f;//50.0f
+	g.hx = 100.0f;//50.0f
 	g.hy = 10.0f;
 
 	//ground 2
 	b2BodyDef groundBodyDef2;
-	groundBodyDef2.position.Set(0.0f, 130);
+	groundBodyDef2.position.Set(0.0f, 130.0f);
 
 	b2Body* groundBody2 = world.CreateBody(&groundBodyDef2);
 
@@ -147,10 +147,12 @@ int main() {
 	groundBody2->CreateFixture(&groundBox2, 0.0f);
 
 	GroundData g2;
-	g.x = 0;
-	g.y = 130;
-	g.hx = 1000.0f;
-	g.hy = 10.0f;
+	g2.x = 0.0f;
+	g2.y = 130.0f;
+	g2.hx = 1000.0f;
+	g2.hy = 10.0f;
+
+	//house
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -166,7 +168,6 @@ int main() {
 	fixtureDef.friction = 0.2f;
 	fixtureDef.restitution = 0.01f;
 
-	fixtureDef.restitution = 0.0f;
 
 	body->CreateFixture(&fixtureDef);
 
