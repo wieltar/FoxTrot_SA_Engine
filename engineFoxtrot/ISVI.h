@@ -1,4 +1,5 @@
 #pragma once
+#include "GroundData.h"
 
 class ISVI
 {
@@ -11,7 +12,7 @@ public:
 	virtual void play() = 0;
 
 	// Video Functions
-	virtual void testLoopVideo(int x, int y) = 0;
+	virtual void testLoopVideo(int x, int y, GroundData g) = 0;
 
 	// Input Functions
 	virtual void input() = 0;

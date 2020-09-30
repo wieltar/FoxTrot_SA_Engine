@@ -5,7 +5,7 @@
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
 
-void SVI::testLoopVideo(int x, int y)
+void SVI::testLoopVideo(int x, int y, GroundData g)
 {
 	SDL_SetRenderDrawColor(rendererSDL2, 0, 0, 255, 255);
 
@@ -24,6 +24,16 @@ void SVI::testLoopVideo(int x, int y)
 
 	SDL_RenderPresent(rendererSDL2);
 
+	SDL_SetRenderDrawColor(rendererSDL2, 255, 0, 0, 255); // the rect color (solid red)
+	SDL_Rect rect;
+	rect.x = g.x;
+	rect.y = g.y;
+	rect.w = g.hx;
+	rect.h = g.hy;
+
+	SDL_RenderFillRect(rendererSDL2, &rect);
+
+	SDL_RenderPresent(rendererSDL2);
 	//SDL_Delay(5000);
 }
 

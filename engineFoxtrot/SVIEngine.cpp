@@ -1,4 +1,5 @@
 #include "SVIEngine.h"
+#include "GroundData.h"
 
 SVIEngine::SVIEngine()
 {
@@ -18,9 +19,9 @@ void SVIEngine::play()
 	sviEngine->play();
 }
 
-void SVIEngine::testLoopVideo(int x, int y)
+void SVIEngine::testLoopVideo(int x, int y, GroundData g)
 {
-	sviEngine->testLoopVideo(x,y);
+	sviEngine->testLoopVideo(x,y, g);
 }
 
 void SVIEngine::input()

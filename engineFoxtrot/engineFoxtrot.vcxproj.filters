@@ -173,5 +173,8 @@
     <ClInclude Include="SVIEngine.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
     </ClInclude>
+    <ClInclude Include="GroundData.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

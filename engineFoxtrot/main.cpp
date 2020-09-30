@@ -4,6 +4,7 @@
 
 #include "box2d/box2d.h"
 #include <chrono>
+#include "GroundData.h"
 using namespace std;
 
 // Doxygen
@@ -111,6 +112,7 @@ void move(b2Body* body) {
 
 }
 
+
 int main() {
 
 	b2Vec2 gravity(0.0f, 80.0f);
@@ -121,6 +123,7 @@ int main() {
 	groundBodyDef.position.Set(0.0f, 50);
 
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
+	
 
 	b2PolygonShape groundBox;
 	groundBox.SetAsBox(50, 10.0f);
@@ -136,7 +139,11 @@ int main() {
 	groundBox2.SetAsBox(1000.0f, 10.0f);
 	groundBody2->CreateFixture(&groundBox2, 0.0f);
 
-
+	GroundData g;
+	g.x = 0;
+	g.y = 130;
+	g.hx = 1000.0f;
+	g.hy = 10.0f;
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -173,7 +180,7 @@ int main() {
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
 		printf("%4.2f %4.2f %4.2f \n", position.x, position.y, angle);
-		engine.svi.testLoopVideo(position.x, position.y);
+		engine.svi.testLoopVideo(position.x, position.y, g);
 		SDL_Delay(10);
 	}
 
