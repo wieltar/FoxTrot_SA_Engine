@@ -129,6 +129,13 @@ int main() {
 	groundBox.SetAsBox(50, 10.0f);
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
+
+	GroundData g;
+	g.x = 0;
+	g.y = 320;
+	g.hx = 100.0f;
+	g.hy = 10.0f;
+
 	//ground 2
 	b2BodyDef groundBodyDef2;
 	groundBodyDef2.position.Set(0.0f, 130);
@@ -139,7 +146,7 @@ int main() {
 	groundBox2.SetAsBox(1000.0f, 10.0f);
 	groundBody2->CreateFixture(&groundBox2, 0.0f);
 
-	GroundData g;
+	GroundData g2;
 	g.x = 0;
 	g.y = 130;
 	g.hx = 1000.0f;
