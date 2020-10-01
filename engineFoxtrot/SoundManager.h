@@ -14,27 +14,34 @@ public:
 	SoundManager();
 	~SoundManager();
 
-	void AddFiles(map<string, string> files);
+	void SetFiles(map<string, string> files);
 
-	void AddFile(string identifier, string file);
+	void AddFile(const string& identifier, const string& file);
 
 	void PlayEffect(const string& effect);
 
-	void LoadEffect(string identifier, string path);
+	void LoadEffect(const string& identifier);
 
-	int StartLoopedEffect(const string& effect);
+	void UnloadEffect(const string& identifier);
 
-	void StopLoopedEffect(int channel);
+	void StartLoopedEffect(const string& effect);
 
-	void LoadMusic(const string file);
+	void StopLoopedEffect(const string& identifier);
+
+	void LoadMusic(const string& identifier);
+
+	void PlayMusic();
+
+	void StopMusic();
 
 	// TODO create a way to subscribe to events 
 	
 	void Init();
-	void FlushBuffer();
+	void Flush();
 private:
 	// identifier, path
-	map<string, string> musicDictionary;
+	map<string, string> soundPaths;
+	map<string, int> loopChannels;
 
 private:
 	Mix_Music* music;

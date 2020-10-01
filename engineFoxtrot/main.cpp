@@ -4,6 +4,7 @@
 
 #include "box2d/box2d.h"
 #include "SoundManager.h"
+#include "Windows.h"
 using namespace std;
 
 // Doxygen
@@ -20,14 +21,14 @@ int main() {
 
 	SoundManager soundManager;
 
-	soundManager.AddFile("test", "piano2.wav");
-	soundManager.PlayEffect("test");
-
+	soundManager.AddFile("bgm", "music.wav");
+	soundManager.AddFile("fx", "fx.wav");
+	soundManager.LoadEffect("fx");
+	soundManager.LoadMusic("bgm");
+	soundManager.PlayEffect("fx");
+	soundManager.PlayMusic();
 	while (1) {
 		
 	}
 	return 0;
 }
-
-
-

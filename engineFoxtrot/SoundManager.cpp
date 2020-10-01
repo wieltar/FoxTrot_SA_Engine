@@ -6,17 +6,16 @@ SoundManager::SoundManager() {
 }
 
 SoundManager::~SoundManager() {
-	FlushBuffer();
+	Flush();
 }
 
-void SoundManager::AddFiles(map<string, string> files)
+void SoundManager::SetFiles(map<string, string> files)
 {
-	// TODO add validation
-	this->musicDictionary = files;
+	this->soundPaths = files;
 }
 
-void SoundManager::AddFile(string identifier, string file) {
-	this->musicDictionary[identifier] = file;
+void SoundManager::AddFile(const string& identifier, const string& file) {
+	this->soundPaths[identifier] = file;
 }
 
 
@@ -38,68 +37,77 @@ void SoundManager::Init()
 	}
 }
 
-void SoundManager::FlushBuffer()
+void SoundManager::Flush()
 {
-	for (auto it = musicDictionary.begin(); it != musicDictionary.end(); /* don't increment here*/) {
-		delete &it->second;
-		it = musicDictionary.erase(it);  // update here
-	}
-
-
 	for (auto it = sfx.begin(); it != sfx.end(); /* don't increment here*/) {
-		delete it->second;
 		it = sfx.erase(it);  // update here
 	}
-
-	delete music;
+	for (auto it = loopChannels.begin(); it != loopChannels.end(); /* don't increment here*/) {
+		it = loopChannels.erase(it);  // update here
+	}
 }
-
 
 void SoundManager::PlayEffect(const string& identifier) {
 	//Play sound (first parameter is the channel, the last one the amount of loops)
 	Mix_PlayChannel(-1, sfx[identifier], 0);
 }
 
-void SoundManager::LoadEffect(string identifier, string path) {
-	/*
-	  Check whether an effect is already loaded, otherwise, load it
-		Iterate over all effects that need to be loaded
-	*/
-	//If the pool doesn't contain the effect, load it
+//Check whether an effect is already loaded, otherwise, load it.
+void SoundManager::LoadEffect(const string& identifier) {
 	if (sfx.find(identifier) == sfx.end()) {
-		sfx[identifier] = Mix_LoadWAV(path.c_str());
+		sfx[identifier] = Mix_LoadWAV(soundPaths.at(identifier).c_str());
 		if (!sfx[identifier]) {
 			std::cerr << "Mix_LoadWAV Error: " << Mix_GetError() << std::endl;
 		}
 	}
 }
 
-int SoundManager::StartLoopedEffect(const string& effect) {
-	//Play sound forever, and return it's channel
-	return Mix_PlayChannel(-1, sfx[effect], -1);
+void SoundManager::UnloadEffect(const string& identifier) {
+	if (sfx.find(identifier) == sfx.end()) {
+		return;
+	}
+	StopLoopedEffect(identifier);
+	sfx.erase(identifier);
 }
 
-void SoundManager::StopLoopedEffect(int channel) {
+void SoundManager::StartLoopedEffect(const string& identifier) {
+	//Play sound forever and save it in the loopChannels map
+	if (sfx.find(identifier) != sfx.end()) {
+		int channel = Mix_PlayChannel(-1, sfx[identifier], -1);
+		loopChannels.insert(pair<string, int>(identifier, channel));
+	}
+}
+
+void SoundManager::StopLoopedEffect(const string& identifier) {
 	//Stop the channel the looped effect is playing on
-	Mix_HaltChannel(channel);
+	if (loopChannels.find(identifier) != loopChannels.end()) {
+		Mix_HaltChannel(loopChannels[identifier]);
+		loopChannels.erase(identifier);
+	}
 }
 
-
-void SoundManager::LoadMusic(const string identifier) {
+void SoundManager::LoadMusic(const string& identifier) {
 	//If old music is loaded (!= NULL), free it
 	if (music) {
 		Mix_FreeMusic(music);
 	}
 
 	// TODO add fade between music
-	if (musicDictionary.find(identifier) != musicDictionary.end())
+	if (soundPaths.find(identifier) != soundPaths.end())
 	{
 		//Load new music and play it infinitely
-		music = Mix_LoadMUS(musicDictionary[identifier].c_str());
+		music = Mix_LoadMUS(soundPaths[identifier].c_str());
 		if (!music) {
 			std::cerr << "Mix_LoadMUS Error: " << Mix_GetError() << std::endl;
 			return;
 		}
-		Mix_PlayMusic(music, -1);
 	}
+}
+
+void SoundManager::PlayMusic() {
+	Mix_PlayMusic(music, -1);
+}
+
+void SoundManager::StopMusic() {
+	Mix_PauseMusic();
 }
