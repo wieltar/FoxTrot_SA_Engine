@@ -5,7 +5,7 @@
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
 
-void SVI::testLoopVideo(int x, int y, GroundData g)
+void SVI::testLoopVideo(GroundData b, GroundData g)
 {
 	SDL_SetRenderDrawColor(rendererSDL2, 0, 0, 255, 255);
 
@@ -13,16 +13,9 @@ void SVI::testLoopVideo(int x, int y, GroundData g)
 	SDL_Surface* surface = IMG_Load(Example_Sprite);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(rendererSDL2, surface);
 	
-	SDL_Rect destination;
-	destination.x = x;
-	destination.y = y;
-	destination.w = 320;
-	destination.h = 320;
-	SDL_FreeSurface(surface);
 
-	SDL_RenderCopy(rendererSDL2, texture, NULL, &destination);
 
-	SDL_RenderPresent(rendererSDL2);
+
 
 	SDL_SetRenderDrawColor(rendererSDL2, 255, 0, 0, 255); // the rect color (solid red)
 	SDL_Rect rect;
@@ -32,6 +25,23 @@ void SVI::testLoopVideo(int x, int y, GroundData g)
 	rect.h = g.hy;
 
 	SDL_RenderFillRect(rendererSDL2, &rect);
+
+
+
+	SDL_Rect destination;
+	destination.x = b.x;
+	destination.y = b.y;
+	destination.w = b.hx;
+	destination.h = b.hy;
+	SDL_FreeSurface(surface);
+
+	//SDL_RenderCopy(rendererSDL2, texture, NULL, &destination);
+	SDL_SetRenderDrawColor(rendererSDL2, 0, 255, 0, 255);
+	SDL_RenderFillRect(rendererSDL2, &destination);
+
+
+
+
 
 	SDL_RenderPresent(rendererSDL2);
 	//SDL_Delay(5000);

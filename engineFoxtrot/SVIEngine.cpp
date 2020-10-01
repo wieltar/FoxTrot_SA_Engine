@@ -19,9 +19,9 @@ void SVIEngine::play()
 	sviEngine->play();
 }
 
-void SVIEngine::testLoopVideo(int x, int y, GroundData g)
+void SVIEngine::testLoopVideo(GroundData box, GroundData g)
 {
-	sviEngine->testLoopVideo(x,y, g);
+	sviEngine->testLoopVideo(box, g);
 }
 
 void SVIEngine::input()

@@ -55,7 +55,7 @@ jump left
 */
 void moveCommandos(int i) {
 
-	if (i == 100) {
+	/*if (i == 100) {
 		movingRight = true;
 	}
 	if (i == 150) {
@@ -68,23 +68,23 @@ void moveCommandos(int i) {
 	if (i == 500) {
 		movingJump = false;
 	}
-
-	if (i == 1000) {
+	if (i == 400) {
 		movingJump = true;
 		movingLeft = true;
 	}
-	if (i == 1010) {
+	if (i == 410) {
 		movingJump = false;
 		movingLeft = false;
 	}
-	if (i == 1300) {
+	if (i == 100) {
 		movingJump = true;
 		movingRight = true;
 	}
-	if (i == 1310) {
+	if (i == 110) {
 		movingJump = false;
 		movingRight = false;
 	}
+	*/
 }
 
 void move(b2Body* body) {
@@ -120,75 +120,59 @@ int main() {
 
 	//ground 1 - small
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 50.0f);
-
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
 	
 
 	b2PolygonShape groundBox;
-	groundBox.SetAsBox(50.0f, 10.0f);
+	groundBox.SetAsBox(50,50, b2Vec2(200,200), 0);
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
 
+
 	GroundData g;
-	g.x = 0.0f;
-	g.y = 320.f;//50.0f
-	g.hx = 100.0f;//50.0f
-	g.hy = 10.0f;
-
-	//ground 2
-	b2BodyDef groundBodyDef2;
-	groundBodyDef2.position.Set(0.0f, 130.0f);
-
-	b2Body* groundBody2 = world.CreateBody(&groundBodyDef2);
-
-	b2PolygonShape groundBox2;
-	groundBox2.SetAsBox(1000.0f, 10.0f);
-	groundBody2->CreateFixture(&groundBox2, 0.0f);
-
-	GroundData g2;
-	g2.x = 0.0f;
-	g2.y = 130.0f;
-	g2.hx = 1000.0f;
-	g2.hy = 10.0f;
+	g.x = 200 - 50;
+	g.y = 200 - 50;
+	g.hx = 100;
+	g.hy = 100;
 
 	//house
 
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(0.0f, 0.0f);
 	b2Body* body = world.CreateBody(&bodyDef);
 
-	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(1.0f, 1.0f);
+	b2PolygonShape bodyBox;
+	bodyBox.SetAsBox(40, 40, b2Vec2(200, 0), 45);
 
 	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;
+	fixtureDef.shape = &bodyBox;
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.2f;
 	fixtureDef.restitution = 0.01f;
 
-
 	body->CreateFixture(&fixtureDef);
+
+
 
 	float timeStep = 1.0f / 60.0f;
 
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
-	b2Body* temp;
 	for (int32 i = 0; i < 10000; ++i)
 	{
 		world.Step(timeStep, velocityIterations, positionIterations);
-		moveCommandos(i);//input handlings
-		temp = world.GetBodyList();
-		while (temp) {
-			move(temp);
-			temp = temp->GetNext();
-		}
-		b2Vec2 position = body->GetPosition();
+		//moveCommandos(i);//input handlings
+		//move(body);
+		b2Vec2 position = body->GetWorldCenter();
 		float angle = body->GetAngle();
-		printf("%4.2f %4.2f %4.2f \n", position.x, position.y, angle);
-		engine.svi.testLoopVideo(position.x, position.y, g);
+		printf("%4.2f %4.2f \n", position.x, position.y);
+		GroundData box;
+		box.hx = 40;
+		box.hy = 40;
+		box.x = position.x;
+		box.y = position.y;
+
+		engine.svi.testLoopVideo(box, g);
 		SDL_Delay(10);
 	}
 

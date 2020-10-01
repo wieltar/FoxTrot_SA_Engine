@@ -47,7 +47,7 @@ private:
 
 // Video functions
 public:
-	void testLoopVideo(int x, int y, GroundData g);
+	void testLoopVideo(GroundData box, GroundData g);
 
 private:
 
