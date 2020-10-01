@@ -28,10 +28,10 @@ class SVIEngine : public EventListener
 {
 public:
 	SVIEngine();
-	//SVIEngine(EventManager eventManagerPtr);
+	SVIEngine(EventManager eventManagerPtr);
 	~SVIEngine();
 
-	//void registerEventManager(EventManager eventManagerPtr);
+	void registerEventManager(EventManager eventManagerPtr);
 	
 	// Sound Functions
 	void load(const char* filename);

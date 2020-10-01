@@ -4,21 +4,21 @@ SVIEngine::SVIEngine()
 {
 }
 
-//SVIEngine::SVIEngine(EventManager eventManagerPtr)
-//{
-//	
-//	registerEventManager(eventManagerPtr);
-//	eventManager->subscribe(EventType::ENGINE60, this);
-//}
+SVIEngine::SVIEngine(EventManager eventManagerPtr)
+{
+	
+	registerEventManager(eventManagerPtr);
+	eventManager->subscribe(EventType::ENGINE60, this);
+}
 
 SVIEngine::~SVIEngine()
 {
 }
 
-//void SVIEngine::registerEventManager(EventManager eventManagerPtr)
-//{
-//	eventManager = &eventManagerPtr;
-//}
+void SVIEngine::registerEventManager(EventManager eventManagerPtr)
+{
+	eventManager = &eventManagerPtr;
+}
 
 /// @brief Loads audio files
 /// @param filename 

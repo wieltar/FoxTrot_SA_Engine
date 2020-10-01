@@ -120,8 +120,8 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(17));
-		//eventManager.notify(EventType::ENGINE60, new Object);
-		svi.receiveTick();
+		eventManager.notify(EventType::ENGINE60, new Object);
+		//svi.receiveTick();
 	}
 
 	cout << "Thread killed 60" << endl;
