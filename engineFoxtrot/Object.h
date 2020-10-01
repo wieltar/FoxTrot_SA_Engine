@@ -1,13 +1,15 @@
 #pragma once
-class Object
-{
-public:
-	Object();
-	~Object();
 
+#include <iostream>
+#include <string>
+
+class Object {
 private:
+    std::string name;
+public:
+    int X;
+    int Y;
 
+    Object();
+    ~Object();
 };
-
-
-

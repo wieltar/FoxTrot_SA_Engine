@@ -155,7 +155,7 @@ int main() {
 
 
 	float timeStep = 1.0f / 60.0f;
-
+	
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	for (int32 i = 0; i < 10000; ++i)
@@ -177,6 +177,10 @@ int main() {
 		SDL_Delay(10);
 	}
 
+	Engine* engine{ new Engine };
+	engine->addEventListener(new PhysicsEngine, EventType::MOVE);
+	engine->eventManager.notify(EventType::MOVE, new Object);
+
 	cout << "Hello world!" << endl;
 	return 0;
 
@@ -191,8 +195,5 @@ int main() {
 	//	engine.svi.input();
 	//}
 }
-
-
-
 
 
