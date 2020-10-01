@@ -21,12 +21,8 @@ int main() {
 
 	SoundManager soundManager;
 
-	soundManager.AddFile("bgm", "music.wav");
-	soundManager.AddFile("fx", "fx.wav");
-	soundManager.LoadEffect("fx");
-	soundManager.LoadMusic("bgm");
-	soundManager.PlayEffect("fx");
-	soundManager.PlayMusic();
+	soundManager.AddFile("bgm", "BGM.wav");
+	soundManager.PlayMusic("bgm", 20);
 	while (1) {
 		
 	}

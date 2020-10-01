@@ -49,7 +49,24 @@ void SoundManager::Flush()
 
 void SoundManager::PlayEffect(const string& identifier) {
 	//Play sound (first parameter is the channel, the last one the amount of loops)
-	Mix_PlayChannel(-1, sfx[identifier], 0);
+	if (soundPaths.find(identifier) != soundPaths.end() && sfx.find(identifier) == sfx.end()) {
+		LoadEffect(identifier);
+	}
+	if (sfx.find(identifier) != sfx.end()) {
+		int channel = Mix_PlayChannel(-1, sfx[identifier], 0);
+		Mix_Volume(channel, MIX_MAX_VOLUME);
+	}
+}
+
+void SoundManager::PlayEffect(const string& identifier, int volume) {
+	//Play sound (first parameter is the channel, the last one the amount of loops)
+	if (soundPaths.find(identifier) != soundPaths.end() && sfx.find(identifier) == sfx.end()) {
+		LoadEffect(identifier);
+	}
+	if (sfx.find(identifier) != sfx.end()) {
+		int channel = Mix_PlayChannel(-1, sfx[identifier], 0);
+		Mix_Volume(channel, volume);
+	}
 }
 
 //Check whether an effect is already loaded, otherwise, load it.
@@ -68,6 +85,7 @@ void SoundManager::UnloadEffect(const string& identifier) {
 	}
 	StopLoopedEffect(identifier);
 	sfx.erase(identifier);
+	loopChannels.erase(identifier);
 }
 
 void SoundManager::StartLoopedEffect(const string& identifier) {
@@ -105,9 +123,68 @@ void SoundManager::LoadMusic(const string& identifier) {
 }
 
 void SoundManager::PlayMusic() {
+	Mix_VolumeMusic(MIX_MAX_VOLUME);
 	Mix_PlayMusic(music, -1);
+}
+
+void SoundManager::PlayMusic(int volume) {
+	Mix_VolumeMusic(volume);
+	Mix_PlayMusic(music, -1);
+}
+
+void SoundManager::PlayMusic(const string& identifier) {
+	if (soundPaths.find(identifier) != soundPaths.end()) {
+		LoadMusic(identifier);
+		Mix_VolumeMusic(MIX_MAX_VOLUME);
+		Mix_PlayMusic(music, -1);
+	}
+}
+
+void SoundManager::PlayMusic(const string& identifier, int volume) {
+	if (soundPaths.find(identifier) != soundPaths.end()) {
+		LoadMusic(identifier);
+		Mix_VolumeMusic(volume);
+		Mix_PlayMusic(music, -1);
+	}
+}
+
+void SoundManager::ChangeMusic(const string& identifier) {
+	StopMusic();
+	LoadMusic(identifier);
+	PlayMusic();
+}
+
+void SoundManager::FadeOutMusic(int fadeTime) {
+	Mix_FadeOutMusic(fadeTime);
+}
+
+void SoundManager::FadeInMusic(int fadeTime) {
+	RewindMusic();
+	Mix_FadeInMusic(music, -1, fadeTime);
+}
+
+void SoundManager::FadeInMusic(const string& identifier, int fadeTime) {
+	StopMusic();
+	LoadMusic(identifier);
+	Mix_FadeInMusic(music, -1, fadeTime);
+}
+
+void SoundManager::RewindMusic() {
+	Mix_RewindMusic();
 }
 
 void SoundManager::StopMusic() {
 	Mix_PauseMusic();
+}
+
+void SoundManager::PauseMusic() {
+	Mix_PauseMusic();
+}
+
+void SoundManager::ResumeMusic() {
+	Mix_ResumeMusic();
+}
+
+void SoundManager::IsPlayingMusic() {
+	Mix_PlayingMusic();
 }
