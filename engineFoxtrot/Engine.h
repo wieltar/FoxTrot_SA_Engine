@@ -38,8 +38,6 @@ public:
 	Engine();
 	~Engine();
 
-	void receiveTick();
-
 	// TODO: Set to private after testing
 	
 //private:
@@ -82,7 +80,6 @@ private:
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
-	//SVIEngine svi;
 	SVIEngine svi;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;

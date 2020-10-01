@@ -4,7 +4,6 @@
 Engine::Engine()
 {
 	svi.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
-	svi = SVIEngine::SVIEngine(eventManager);
 
 	eventManager.subscribe(EventType::ENGINE60, &svi);
 }
@@ -98,24 +97,6 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 	}
 }
 
-/// @brief 
-void Engine::receiveTick()
-{
-	// Todo
-	// Maybe position doesnt need to update every 60s?
-	//svi.receiveTick();
-}
-
-
-
-
-
-
-
-
-
-
-
 void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
@@ -158,17 +139,6 @@ void Engine::stopTickThreads()
 	stopThreadTick60 = true;
 	stopThreadTick30 = true;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /// @brief 
 /// @param listener 

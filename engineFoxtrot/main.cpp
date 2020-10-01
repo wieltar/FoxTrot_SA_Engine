@@ -13,11 +13,7 @@ using namespace std;
 // Installing
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
-
-// TODO : notify threads
-
 Engine engine;
-
 
 int main() {
 

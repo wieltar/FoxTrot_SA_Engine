@@ -4,20 +4,8 @@ SVIEngine::SVIEngine()
 {
 }
 
-SVIEngine::SVIEngine(EventManager eventManagerPtr)
-{
-	
-	/*registerEventManager(eventManagerPtr);
-	eventManager->subscribe(EventType::ENGINE60, this);*/
-}
-
 SVIEngine::~SVIEngine()
 {
-}
-
-void SVIEngine::registerEventManager(EventManager eventManagerPtr)
-{
-	eventManager = &eventManagerPtr;
 }
 
 /// @brief Loads audio files
@@ -124,7 +112,8 @@ void SVIEngine::updateScreen()
 {
 	try
 	{
-		if (pointerToObjectVector->capacity() <= 0) return;
+		if (pointerToObjectVector == nullptr) return;
+		//if (pointerToObjectVector->capacity() <= 0) return;
 		if (pointerToObjectVector->size() <= 0) return;
 		for (auto obj : *pointerToObjectVector) {
 			if (obj != nullptr) {

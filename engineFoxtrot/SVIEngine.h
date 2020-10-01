@@ -28,10 +28,7 @@ class SVIEngine : public EventListener
 {
 public:
 	SVIEngine();
-	SVIEngine(EventManager eventManagerPtr);
 	~SVIEngine();
-
-	void registerEventManager(EventManager eventManagerPtr);
 	
 	// Sound Functions
 	void load(const char* filename);
@@ -55,7 +52,7 @@ public:
 	// Input Functions
 	void input();
 
-	vector <Object*> *pointerToObjectVector;
+	vector <Object*> *pointerToObjectVector = nullptr;
 
 
 	//Set to private after testing!!!
