@@ -4,6 +4,9 @@
 Engine::Engine()
 {
 	svi.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
+	svi = SVIEngine::SVIEngine(eventManager);
+
+	eventManager.subscribe(EventType::ENGINE60, &svi);
 }
 
 /// @brief 

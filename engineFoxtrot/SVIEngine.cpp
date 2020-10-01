@@ -7,8 +7,8 @@ SVIEngine::SVIEngine()
 SVIEngine::SVIEngine(EventManager eventManagerPtr)
 {
 	
-	registerEventManager(eventManagerPtr);
-	eventManager->subscribe(EventType::ENGINE60, this);
+	/*registerEventManager(eventManagerPtr);
+	eventManager->subscribe(EventType::ENGINE60, this);*/
 }
 
 SVIEngine::~SVIEngine()
