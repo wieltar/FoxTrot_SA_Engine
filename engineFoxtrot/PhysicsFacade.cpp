@@ -15,6 +15,7 @@ PhysicsFacade::~PhysicsFacade()
 
 
 //TODO update method position for each object
+//TODO mapping between id and object
 
 Object PhysicsFacade::getObject(int objectId) {
 	for (const auto& value : temp) {
