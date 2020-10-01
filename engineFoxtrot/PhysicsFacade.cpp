@@ -13,6 +13,9 @@ PhysicsFacade::~PhysicsFacade()
 	// Delete world
 }
 
+
+//TODO update method position for each object
+
 Object PhysicsFacade::getObject(int objectId) {
 	for (const auto& value : temp) {
 		if (value.getId() == objectId) {
