@@ -191,6 +191,7 @@
     <ClInclude Include="JsonFacade.h" />
     <ClInclude Include="KeyEvent.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectData.h" />
     <ClInclude Include="ParticleEngine.h" />
     <ClInclude Include="ParticleFacade.h" />
     <ClInclude Include="PhysicsEngine.h" />
