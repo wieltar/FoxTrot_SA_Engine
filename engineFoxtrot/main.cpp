@@ -130,10 +130,10 @@ int main() {
 
 
 	GroundData g;
-	g.x = 200 - 50;
-	g.y = 200 - 50;
 	g.hx = 100;
 	g.hy = 100;
+	g.x = 200 - (g.hx/2);
+	g.y = 200 - (g.hy/2);
 
 	//house
 
@@ -142,7 +142,7 @@ int main() {
 	b2Body* body = world.CreateBody(&bodyDef);
 
 	b2PolygonShape bodyBox;
-	bodyBox.SetAsBox(40, 40, b2Vec2(200, 0), 45);
+	bodyBox.SetAsBox(40, 40, b2Vec2(200, 0), 0);
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &bodyBox;
@@ -165,12 +165,13 @@ int main() {
 		//move(body);
 		b2Vec2 position = body->GetWorldCenter();
 		float angle = body->GetAngle();
-		printf("%4.2f %4.2f \n", position.x, position.y);
+		printf("%4.2f %4.2f %4.2f \n", position.x, position.y, angle);
 		GroundData box;
 		box.hx = 40;
 		box.hy = 40;
 		box.x = position.x;
 		box.y = position.y;
+		box.angle = angle;
 
 		engine.svi.testLoopVideo(box, g);
 		SDL_Delay(10);
