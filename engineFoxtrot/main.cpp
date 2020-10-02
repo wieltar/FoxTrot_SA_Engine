@@ -26,12 +26,13 @@ PhysicsFacade phy;
 
 int main() {
 
-	//ground 1 - small
+	//house
 	Object* o = new Object(1);
+	o->setName("house");
 	o->setHeight(80);
 	o->setWidth(80);
-	o->setX(160);
-	o->setY(0);
+	o->setX(40);
+	o->setY(50);
 
 	o->setSpeed(10);
 	o->setJumpHeight(400);
@@ -41,23 +42,24 @@ int main() {
 
 	phy.temp.push_back(o);
 	phy.registerRectangle(o);
-	phy.addGround();
 
 	GroundData g;
-	g.hx = 200;
-	g.hy = 100;
-	g.x = 200 - (g.hx/2);
-	g.y = 200 - (g.hy/2);
+	g.hx = 300;
+	g.hy = 10;
+	g.x = 0;
+	g.y = 300;
+	phy.addGround(g);
+
 
 
 	Object* z = phy.getObject(1);
-	for (int32 i = 0; i < 10000; ++i)
+	for (int32 i = 0; i < 1000; ++i)
 	{
 		phy.update();
 		Object* z = phy.getObject(1);
 		GroundData box;
-		box.hx = z->getHeight()/2;
-		box.hy = z->getWidth()/2;
+		box.hx = z->getWidth()/2;
+		box.hy = z->getHeight()/2;
 		box.x = z->getX();
 		box.y = z->getY();
 		box.angle = 0;
@@ -71,9 +73,9 @@ int main() {
 		SDL_Delay(10);
 	}
 
-	Engine* engine{ new Engine };
-	engine->addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine->eventManager.notify(EventType::MOVE, new Object);
+	//Engine* engine{ new Engine };
+	//engine->addEventListener(new PhysicsEngine, EventType::MOVE);
+	//engine->eventManager.notify(EventType::MOVE, new Object);
 
 	cout << "Hello world!" << endl;
 	return 0;

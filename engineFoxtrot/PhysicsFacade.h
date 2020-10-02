@@ -8,6 +8,7 @@
 #include <map>
 #include "box2d/box2d.h"
 #include "Object.h"
+#include "GroundData.h"
 
 class PhysicsFacade : public IPhysicsFacade
 {
@@ -18,7 +19,7 @@ public:
 
 	std::map<int, b2Body*> bodies = std::map<int, b2Body*>();
 
-	void addGround();
+	void addGround(GroundData g);
 	void registerRectangle(Object* object);
 
 	b2Body* findBody(int objectId);

@@ -27,14 +27,15 @@ Object* PhysicsFacade::getObject(int objectId) {
 	return NULL;
 }
 
-void PhysicsFacade::addGround() {
+void PhysicsFacade::addGround(GroundData g) {
 	b2BodyDef groundBodyDef;
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
 
 	b2PolygonShape groundBox;
-	groundBox.SetAsBox(50, 50, b2Vec2(200, 200), 0);
+	groundBox.SetAsBox(g.hx/2, g.hy/2, b2Vec2(g.x, g.y), 0);
 	groundBody->CreateFixture(&groundBox, 0.0f);
+
 }
 
 void PhysicsFacade::registerRectangle(Object* object) {
@@ -44,12 +45,15 @@ void PhysicsFacade::registerRectangle(Object* object) {
 
 	b2PolygonShape bodyBox;
 	bodyBox.SetAsBox(object->getWidth() / 2, 
-		object->getHeight() /2, 
-		b2Vec2(object->getX() - object->getWidth()/2, object->getY() - object->getHeight()), 0);
+					object->getHeight() / 2, 
+						b2Vec2(
+								object->getX() - object->getWidth()/2, 
+								object->getY() - object->getHeight()/2
+						),
+					0);
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &bodyBox;
-	object->setDensity(10000000);
 	fixtureDef.density = object->getDensity();
 	fixtureDef.friction = object->getFriction();
 	fixtureDef.restitution = object->getRestitution();
@@ -64,15 +68,6 @@ b2Body* PhysicsFacade::findBody(int objectId) {
 	if (bodies.count(objectId) > 0) {
 		return bodies.at(objectId);
 	}
-
-	//b2Body* temp = this->world.GetBodyList();
-	//while (temp)
-	//{
-	//	objectData* data = (objectData*)temp->GetUserData().pointer;
-	//	if (data->id == objectId) {
-	//		return temp;
-	//	}
-	//}
 }
 
 void PhysicsFacade::update() {
@@ -84,25 +79,12 @@ void PhysicsFacade::update() {
 	{
 		b2Body* b = it->second;
 
-		auto result = b->GetPosition();
-		auto wo = b->GetWorldCenter();
 		Object* ob = this->getObject(it->first);
 
-		ob->setX(b->GetPosition().x);
-		ob->setY(b->GetPosition().y);
+		ob->setX(b->GetWorldCenter().x);
+		ob->setY(b->GetWorldCenter().y);
 	}
 
-	//std::map<int, b2Body*>::iterator it;
-
-	//for (it = bodies.begin(); it != bodies.end(); it++)
-	//{
-	//	Object* ob = this->getObject(it->first);
-	//	b2Body* b = it->second;
-
-	//	/*auto result = b->GetPosition();
-	//	ob->setX(ob->getX() - b->GetPosition().x);
-	//	ob->setY(ob->getY() + b->GetPosition().y);*/
-	//}
 }
 
 void PhysicsFacade::MoveLeft(int objectId)
