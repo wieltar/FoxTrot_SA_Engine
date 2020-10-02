@@ -5,6 +5,11 @@ SVI::SVI()
 {
 
 	SDL_Init(SDL_INIT_EVERYTHING);
+    //Initialize SDL_mixer
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+    {
+        printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+    }
 	windowSDL2 = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
 	if (windowSDL2 == NULL)
 	{

@@ -19,10 +19,9 @@ Engine engine;
 
 int main() {
 
-	SoundManager soundManager;
-
-	soundManager.AddFile("bgm", "BGM.wav");
-	soundManager.PlayMusic("bgm", 20);
+	engine.svi.AddFile("piano", "piano2.wav");
+	engine.svi.LoadMusic("piano");
+	engine.svi.PlayMusic();
 	while (1) {
 		
 	}
