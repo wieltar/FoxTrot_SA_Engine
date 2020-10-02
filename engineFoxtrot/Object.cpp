@@ -10,66 +10,62 @@ Object::~Object()
 }
 
 
-int Object::getId() const {
-    return id;
-};
-void Object::setName(std::string val) {
-    name = val;
-}
-std::string Object::getName() {
-    return name;
-}
+int Object::getId() const {  return this->id; };
+void Object::setName(std::string val) { this->name = val; }
+std::string Object::getName() { return this->name; }
+
+// TODO seperate classes
 float Object::getX() const {
-    return x;
+    return this->x;
 }
 void Object::setX(float val) {
-    x = val;
+    this->x = val;
 }
 float Object::getY() const {
-    return y;
+    return this->y;
 }
 void Object::setY(float val) {
-    y = val;
+    this->y = val;
 }
 float Object::getWidth() const {
-    return width;
+    return this->width;
 }
 void Object::setWidth(float val) {
-    width = val;
+    this->width = val;
 }
 float Object::getHeight() const {
-    return height;
+    return this->height;
 }
 void Object::setHeight(float val) {
-    height = val;
+    this->height = val;
 }
 float Object::getRestitution() const {
-    return restitution;
+    return this->restitution;
 }
 void Object::setRestitution(float val) {
-    restitution = val;
+    this->restitution = val;
 }
 float Object::getFriction() const {
-    return friction;
+    return this->friction;
 }
 void Object::setFriction(float val) {
-    friction = val;
+    this->friction = val;
 }
 float Object::getDensity() const {
-    return density;
+    return this->density;
 }
 void Object::setDensity(float val) {
-    density = val;
+    this->density = val;
 }
 float Object::getSpeed() const {
-    return speed;
+    return this->speed;
 }
 void Object::setSpeed(float val) {
-    speed = val;
+    this->speed = val;
 }
 float Object::getJumpHeight() const {
-    return jumpHeight;
+    return this->jumpHeight;
 }
 void Object::setJumpHeight(float val) {
-    jumpHeight = val;
+    this->jumpHeight = val;
 }

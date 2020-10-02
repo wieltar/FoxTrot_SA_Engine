@@ -16,6 +16,7 @@ public:
 	void Jump(int objectId);
 	void JumpLeft(int objectId);
 	void JumpRight(int objectId);
+	void update();
 private:
 
 };

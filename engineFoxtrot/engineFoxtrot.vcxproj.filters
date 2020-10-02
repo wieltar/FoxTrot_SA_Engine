@@ -182,9 +182,6 @@
     <ClInclude Include="SVIEngine.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="GroundData.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
     <ClInclude Include="EventManager.h">
       <Filter>Header Files\Events</Filter>
     </ClInclude>
@@ -197,7 +194,7 @@
     <ClInclude Include="EventType.h">
       <Filter>Header Files\Events\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectData.h">
+    <ClInclude Include="GroundData.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>

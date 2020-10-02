@@ -48,5 +48,4 @@ public:
     void setSpeed(float val);
     float getJumpHeight() const;
     void setJumpHeight(float val);
-
 };
