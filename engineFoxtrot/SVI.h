@@ -14,7 +14,6 @@
 #include "../SDL2/include/SDL_mixer.h"
 #include "../SDL2/include/SDL.h"
 #include "../SDL2/include/SDL_image.h"
-#include "SoundManager.h"
 #undef main
 
 using namespace std;
