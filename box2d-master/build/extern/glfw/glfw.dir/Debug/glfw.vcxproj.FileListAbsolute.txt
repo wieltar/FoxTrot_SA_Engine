@@ -1,2 +1,0 @@
-D:\Github\Game\FoxTrot_SA_Engine\box2d-master\build\extern\glfw\Debug\glfw.pdb
-D:\Github\Game\FoxTrot_SA_Engine\box2d-master\build\extern\glfw\glfw.dir\Debug\glfw.pdb

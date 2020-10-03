@@ -1,2 +1,0 @@
-D:\Github\Game\FoxTrot_SA_Engine\box2d-master\build\extern\glad\Debug\glad.pdb
-D:\Github\Game\FoxTrot_SA_Engine\box2d-master\build\extern\glad\glad.dir\Debug\glad.pdb
