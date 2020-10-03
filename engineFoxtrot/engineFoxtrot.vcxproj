@@ -157,12 +157,8 @@
     <ClCompile Include="IPhysicsFacade.cpp" />
     <ClCompile Include="ISVI.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Object.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="PhysicsFacade.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneManager+ObjectModifiers.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SVI.cpp" />
     <ClCompile Include="SVIEngine.cpp" />
     <ClCompile Include="SVI_Input.cpp" />
@@ -187,11 +183,8 @@
     <ClInclude Include="ISVI.h" />
     <ClInclude Include="JsonFacade.h" />
     <ClInclude Include="KeyEvent.h" />
-    <ClInclude Include="Object.h" />
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="PhysicsFacade.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SVI.h" />
     <ClInclude Include="SVIEngine.h" />
     <ClInclude Include="Version.h" />

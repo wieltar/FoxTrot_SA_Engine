@@ -1,6 +1,6 @@
 #pragma once
 #include "Core.h"
-#include "Renderer/window.h"
+#include "Glitch/Renderer/window.h"
 
 namespace Glitch {
 	class GLITCH_API Application

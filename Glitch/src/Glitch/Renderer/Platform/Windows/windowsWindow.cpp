@@ -1,3 +1,5 @@
+#include "windowsWindow.h"
+
 namespace Glitch {
 	
 	WindowsWindow::WindowData WindowsWindow::m_data;

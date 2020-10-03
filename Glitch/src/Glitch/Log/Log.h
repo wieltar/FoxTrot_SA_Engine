@@ -1,6 +1,6 @@
 #pragma once
 #include "glpch.h"
-#include "Glitch/Core.h"
+#include "Glitch/Core/Core.h"
 #include "spdlog/spdlog.h"
 #include <spdlog/fmt/ostr.h>
 

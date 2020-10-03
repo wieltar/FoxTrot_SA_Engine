@@ -1,6 +1,4 @@
-#include "glpch.h"
 #include "Application.h"
-#include "SDL.h"
 
 namespace Glitch {
 

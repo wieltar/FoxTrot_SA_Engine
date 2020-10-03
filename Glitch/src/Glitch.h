@@ -1,5 +1,6 @@
 #pragma once
-#include "Glitch/Application.h"
+#include "Glitch/Core/Application.h"
+#include "Glitch//Core/Object.h"
 #include "Glitch/Log/Log.h"
 #include "Glitch/Events/Event.h"
 

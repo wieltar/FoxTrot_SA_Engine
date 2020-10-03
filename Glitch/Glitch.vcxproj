@@ -153,10 +153,13 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glitch\Core\Object.h" />
+    <ClInclude Include="src\Glitch\Renderer\SceneManager\Scene.h" />
+    <ClInclude Include="src\Glitch\Renderer\SceneManager\SceneManager.h" />
     <ClInclude Include="src\Glitch\Sound\SoundEngine.h" />
     <ClInclude Include="src\Glitch.h" />
-    <ClInclude Include="src\Glitch\Application.h" />
-    <ClInclude Include="src\Glitch\Core.h" />
+    <ClInclude Include="src\Glitch\Core\Application.h" />
+    <ClInclude Include="src\Glitch\Core\Core.h" />
     <ClInclude Include="src\Glitch\EntryPoint.h" />
     <ClInclude Include="src\Glitch\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Glitch\Events\Event.h" />
@@ -164,8 +167,7 @@
     <ClInclude Include="src\Glitch\Events\KeyEvent.h" />
     <ClInclude Include="src\Glitch\Events\MouseCodes.h" />
     <ClInclude Include="src\Glitch\Events\MouseEvent.h" />
-    <ClInclude Include="src\Glitch\General\Debug.h" />
-    <ClInclude Include="src\Glitch\General\ErrorCodes.h" />
+    <ClInclude Include="src\Glitch\Core\ErrorCodes.h" />
     <ClInclude Include="src\Glitch\General\Version.h" />
     <ClInclude Include="src\Glitch\Log\Log.h" />
     <ClInclude Include="src\Glitch\Renderer\Platform\Windows\windowsWindow.h" />
@@ -173,9 +175,13 @@
     <ClInclude Include="src\glpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glitch\Core\Object.cpp" />
+    <ClCompile Include="src\Glitch\Renderer\SceneManager\Scene.cpp" />
+    <ClCompile Include="src\Glitch\Renderer\SceneManager\SceneManager+ObjectModifiers.cpp" />
+    <ClCompile Include="src\Glitch\Renderer\SceneManager\SceneManager.cpp" />
     <ClCompile Include="src\Glitch\Sound\SoundEngine.cpp" />
-    <ClCompile Include="src\Glitch\Application.cpp" />
-    <ClCompile Include="src\Glitch\General\GeneralHelperFunctions.cpp" />
+    <ClCompile Include="src\Glitch\Core\Application.cpp" />
+    <ClCompile Include="src\Glitch\General\HelperFunctions.cpp" />
     <ClCompile Include="src\Glitch\Log\Log.cpp" />
     <ClCompile Include="src\Glitch\Renderer\Platform\Windows\windowsWindow.cpp" />
     <ClCompile Include="src\glpch.cpp">

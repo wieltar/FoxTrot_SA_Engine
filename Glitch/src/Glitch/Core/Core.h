@@ -1,4 +1,6 @@
 #pragma once
+#include "ErrorCodes.h"
+
 #ifdef GL_PLATFORM_WINDOWS
 	#ifdef GL_BUILD_DLL
 		#define GLITCH_API __declspec(dllexport)

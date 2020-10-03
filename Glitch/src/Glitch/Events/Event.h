@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Glitch/Core.h"
+#include "Glitch/Core/Core.h"
 
 namespace Glitch {
 	// events zijn nu blocking, zodra er een event wordt afgevuurd stopt de main code

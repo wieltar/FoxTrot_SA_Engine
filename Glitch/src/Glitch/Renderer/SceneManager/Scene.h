@@ -1,8 +1,5 @@
 #pragma once
-#include <vector>
-#include <string>
-#include <memory>
-#include <iostream>
+#include "glpch.h"
 
 #include "Object.h"
 #include "Debug.h"
