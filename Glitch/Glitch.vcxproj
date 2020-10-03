@@ -97,8 +97,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Glitch\vendor\SDL2-2.0.12\lib\x64\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Glitch\Glitch.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Glitch\Glitch.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Glitch\Glitch.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)
-IF EXIST \vendor\SDL2-2.0.12\lib\x64\SDL2.DLL (xcopy /Q /E /Y /I \vendor\SDL2-2.0.12\lib\x64\SDL2.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I \vendor\SDL2-2.0.12\lib\x64\SDL2.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Glitch\Glitch.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Glitch\Glitch.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Glitch\Glitch.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
