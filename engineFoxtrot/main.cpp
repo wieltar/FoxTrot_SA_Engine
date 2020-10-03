@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include "Engine.h"
+#include <chrono>
+#include <thread>
+#include <vector>
 
-#include "box2d/box2d.h"
 using namespace std;
 
 // Doxygen
@@ -11,77 +13,79 @@ using namespace std;
 // Installing
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
-// TODO : Set object folder up with interface route
-
 Engine engine;
 
 int main() {
 
-	b2Vec2 gravity(0.0f, 10.0f);
-	b2World world(gravity);
-
-	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 130.0f);
-
-	b2Body* groundBody = world.CreateBody(&groundBodyDef);
-
-	b2PolygonShape groundBox;
-	groundBox.SetAsBox(50.0f, 10.0f);
-
-	groundBody->CreateFixture(&groundBox, 0.0f);
-
-
-
-
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(0.0f, 0.0f);
-	b2Body* body = world.CreateBody(&bodyDef);
-
-	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(1.0f, 1.0f);
-
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;
-	fixtureDef.density = 10.0f;
-	fixtureDef.friction = 0.3f;
-
-	fixtureDef.restitution = 0.9f;
-
-	body->CreateFixture(&fixtureDef);
-
-	float timeStep = 1.0f / 60.0f;
+	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
+	engine.eventManager.notify(EventType::MOVE, new Object);
 	
-	int32 velocityIterations = 6;
-	int32 positionIterations = 2;
 
-	for (int32 i = 0; i < 1000; ++i)
+	engine.createNewSceneWithSceneID(2);
+	engine.createNewSceneWithSceneID(1);
+
+	engine.createNewObjectWithSceneID(1, 1, 50, 5, 40, 40);
+	engine.startTickThreads();
+	
+	engine.createNewObjectWithSceneID(2, 1, 50, 5, 40, 40);
+	engine.createNewObjectWithSceneID(2, 2, 100, 5, 40, 40);
+	engine.createNewObjectWithSceneID(2, 3, 150, 5, 40, 40);
+	engine.createNewObjectWithSceneID(2, 4, 5, 50, 40, 40);
+	engine.createNewObjectWithSceneID(2, 5, 50, 50, 40, 40);
+	engine.createNewObjectWithSceneID(2, 6, 100, 50, 40, 40);
+	engine.createNewObjectWithSceneID(2, 7, 150, 50, 40, 40);
+	engine.createNewObjectWithSceneID(2, 8, 5, 100, 40, 40);
+	engine.createNewObjectWithSceneID(2, 9, 100, 100, 40, 40);
+	engine.createNewObjectWithSceneID(2, 10, 50, 100, 40, 40);
+	
+	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
+	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
+	engine.linkSpriteIDWithAssetPath(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-02.png");
+	engine.linkSpriteIDWithAssetPath(4, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-03.png");
+	engine.linkSpriteIDWithAssetPath(5, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-00.png");
+	engine.linkSpriteIDWithAssetPath(6, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-01.png");
+	engine.linkSpriteIDWithAssetPath(7, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-02.png");
+	engine.linkSpriteIDWithAssetPath(8, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-03.png");
+	engine.linkSpriteIDWithAssetPath(9, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-04.png");
+	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
+	
+	engine.setCurrentScene(2);
+	this_thread::sleep_for(chrono::milliseconds(250));
+	engine.createNewSceneWithSceneID(10);
+	engine.setCurrentScene(10);
+	this_thread::sleep_for(chrono::milliseconds(1000));
+	engine.setCurrentScene(2);
+	cout << "Engine filled" << endl;
+	
+	this_thread::sleep_for(chrono::milliseconds(2500));
+	for (int i = 0; i < 10; i++)
 	{
-		world.Step(timeStep, velocityIterations, positionIterations);
-		b2Vec2 position = body->GetPosition();
-		float angle = body->GetAngle();
-		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-		engine.svi.testLoopVideo((int)position.x, (int)position.y);
-		SDL_Delay(10);
+		if(i % 2)engine.setCurrentScene(1);
+		else engine.setCurrentScene(2);
+		this_thread::sleep_for(chrono::milliseconds(50));
 	}
 
-	Engine* engine{ new Engine };
-	engine->addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine->eventManager.notify(EventType::MOVE, new Object);
-
-	cout << "Hello world!" << endl;
-	return 0;
-
-
-
-	//engine.svi.load("../Assets/Sound/b423b42.wav");
-	//engine.svi.play();
+	engine.setCurrentScene(1);
 	
-	//
-	//while (1)
-	//{
-	//	engine.svi.input();
-	//}
+	for (int i = 0; i < 100; i++)
+	{
+		engine.moveObjectTo(1, i, 10);
+		this_thread::sleep_for(chrono::milliseconds(10));
+	}
+
+	for (int i = 0; i < 360; i++)
+	{
+		engine.setObjectRotation(1, i);
+		this_thread::sleep_for(chrono::milliseconds(10));
+	}
+	engine.setCurrentScene(1);
+	engine.stopTickThreads();
+
+
+	
+
+	while (1) {}
+
 }
 
 

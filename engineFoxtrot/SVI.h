@@ -9,6 +9,7 @@
 #include <string>
 #include <memory>
 #include <iostream>
+#include <unordered_map>
 #include "../SDL2/include/SDL_mixer.h"
 #include "../SDL2/include/SDL.h"
 #include "../SDL2/include/SDL_image.h"
@@ -19,17 +20,23 @@ using namespace std;
 #define Example_Sound	"../Assets/Sound/b423b42.wav"
 #define Example_Sprite  "../Assets/Sprites/simple.png"
 
+#if(EXPORT)
+class DLLEXPORT SVI : public ISVI
+#else
+/// @brief 
+/// SVI is de SDL2 facade
 class SVI : public ISVI
+#endif
 {
 // General stuff
 public:
 	SVI();
 	~SVI();
 
-	SDL_Renderer* rendererSDL2;
-	SDL_Window* windowSDL2;
 
 private:
+	SDL_Renderer* renderer;
+	SDL_Window* window;
 
 
 
@@ -47,6 +54,17 @@ private:
 // Video functions
 public:
 	void testLoopVideo(int x, int y);
+
+	void initSDL();
+
+	void clearScreen();
+	void drawScreen();
+	void loadImage(int spriteID, const char* filename);
+
+	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
+
+
+	unordered_map<int, SDL_Texture*> textureMap;
 
 private:
 

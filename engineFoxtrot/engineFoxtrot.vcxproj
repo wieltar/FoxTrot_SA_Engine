@@ -127,7 +127,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)..\box2d-master\build\src\Debug;$(ProjectDir)..\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>box2d.lib;SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>box2d.lib;SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,7 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Engine+ObjectModifiers.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileParser.cpp" />
@@ -164,7 +164,8 @@
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="PhysicsFacade.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SceneManager+ObjectModifiers.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SVI.cpp" />
     <ClCompile Include="SVIEngine.cpp" />
     <ClCompile Include="SVI_Input.cpp" />
@@ -175,7 +176,6 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ErrorCodes.h" />
@@ -183,6 +183,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="EventType.h" />
     <ClInclude Include="FileParser.h" />
+    <ClInclude Include="GeneralDefines.h" />
     <ClInclude Include="IJsonFacade.h" />
     <ClInclude Include="IParticleFacade.h" />
     <ClInclude Include="IPhysicsFacade.h" />
@@ -195,7 +196,7 @@
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="PhysicsFacade.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SVI.h" />
     <ClInclude Include="SVIEngine.h" />
     <ClInclude Include="Version.h" />

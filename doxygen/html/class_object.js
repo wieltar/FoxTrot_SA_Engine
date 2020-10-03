@@ -1,0 +1,27 @@
+var class_object =
+[
+    [ "Object", "class_object.html#a40860402e64d8008fb42329df7097cdb", null ],
+    [ "Object", "class_object.html#a065f657051de00cb7381f96c31d1a7eb", null ],
+    [ "~Object", "class_object.html#ae8f5483f459e46687bd01e6f9977afd3", null ],
+    [ "getChanged", "class_object.html#a887c5c1be4fc57704ad02d354abe7aa2", null ],
+    [ "getDirection", "class_object.html#a4841a24cd684ec7fb3cd3b281d1b8523", null ],
+    [ "getHeight", "class_object.html#a6292c1ec0f9b89b6e4e51c3f9c685de8", null ],
+    [ "getName", "class_object.html#ac63fc97e60a9b5772afd9adefc337928", null ],
+    [ "getPositionX", "class_object.html#a9a1c5aced34de08186ae4e429e9cc77e", null ],
+    [ "getPositionY", "class_object.html#aba09fe9dcb64d88ceb556618f7323abe", null ],
+    [ "getRotation", "class_object.html#a5a2e87f53f3ace170e9105afe21aa4c5", null ],
+    [ "getScale", "class_object.html#aaccf8a2f8697e5d8d69161ed7e58a628", null ],
+    [ "getSpriteID", "class_object.html#ac384c5531a2456965d835922bc8cda89", null ],
+    [ "getStatic", "class_object.html#a1555a879cda4a2ac7c826ac7111a043b", null ],
+    [ "getWidth", "class_object.html#a579c8d20e0d8916856276adde4790fb1", null ],
+    [ "setDirection", "class_object.html#a3c9172d61065d5c56f455d70a62fecd0", null ],
+    [ "setHeight", "class_object.html#ad412f28f75b3aa36b3277f5c4398e1c9", null ],
+    [ "setName", "class_object.html#adfe447b87a863c577496cf0fb4502cd3", null ],
+    [ "setPositionX", "class_object.html#a5f606da15de87dc1bbc6e53b72a801de", null ],
+    [ "setPositionY", "class_object.html#a18e34665927b3a4cd14c7a3621f9cabd", null ],
+    [ "setRotation", "class_object.html#ae5cde9745b6ba2d84a53c21b91dfa55e", null ],
+    [ "setScale", "class_object.html#a6b85a4466bf15eaf33af1d9ec746771c", null ],
+    [ "setSpriteID", "class_object.html#ab53d7b2b38438357cb62673c0d16b674", null ],
+    [ "setStatic", "class_object.html#a9a4a60123bae6e6a5fc9ce7fbc83dc0f", null ],
+    [ "setWidth", "class_object.html#a4a3a708fa88c940aadbb7d7d6f39c2f6", null ]
+];
