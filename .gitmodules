@@ -4,3 +4,6 @@
 [submodule "Glitch/vendor/box2d"]
 	path = Glitch/vendor/box2d
 	url = https://github.com/erincatto/box2d
+[submodule "vendor/doxygen"]
+	path = vendor/doxygen
+	url = https://github.com/doxygen/doxygen

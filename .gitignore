@@ -6,6 +6,7 @@
 # custom 
 bin/
 bin-int/
+vendor
 
 # User-specific files
 *.rsuser
