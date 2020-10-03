@@ -133,11 +133,6 @@
   <ItemGroup>
     <ClCompile Include="src\Game.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Glitch\Glitch.vcxproj">
-      <Project>{402E5BB5-2CD0-858B-158B-99DF01CC0CDC}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
