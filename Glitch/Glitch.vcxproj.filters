@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Glitch">
+      <UniqueIdentifier>{402E5BB5-2CD0-858B-158B-99DF01CC0CDC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glitch\Events">
+      <UniqueIdentifier>{24522671-9012-A2A7-594D-EB24C5CCE683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glitch\Log">
+      <UniqueIdentifier>{1166E32F-FD1D-257D-6625-FED852FCBF6D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glitch\Platform">
+      <UniqueIdentifier>{94722170-00FE-8E34-090F-12297519EB34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glitch\Platform\Windows">
+      <UniqueIdentifier>{CE707249-3AA8-BAE0-43B2-1E04AF68E1D9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Glitch.h" />
+    <ClInclude Include="src\Glitch\Application.h">
+      <Filter>Glitch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Core.h">
+      <Filter>Glitch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\EntryPoint.h">
+      <Filter>Glitch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Events\ApplicationEvent.h">
+      <Filter>Glitch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Events\Event.h">
+      <Filter>Glitch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Events\KeyCodes.h">
+      <Filter>Glitch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Events\KeyEvent.h">
+      <Filter>Glitch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Events\MouseCodes.h">
+      <Filter>Glitch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Events\MouseEvent.h">
+      <Filter>Glitch\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Log\Log.h">
+      <Filter>Glitch\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\Platform\Windows\windowsWindow.h">
+      <Filter>Glitch\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glitch\window.h">
+      <Filter>Glitch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\glpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Glitch\Application.cpp">
+      <Filter>Glitch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glitch\Log\Log.cpp">
+      <Filter>Glitch\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glitch\Platform\Windows\windowsWindow.cpp">
+      <Filter>Glitch\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glpch.cpp" />
+  </ItemGroup>
+</Project>
