@@ -26,6 +26,8 @@
 #include "EventManager.h"
 #include "EventListener.h"
 
+#define	ENGINE_TICK60	 17
+#define ENGINE_TICK30	 33
 
 /// @brief 
 #if(EXPORT)

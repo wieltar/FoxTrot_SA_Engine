@@ -27,11 +27,11 @@ void Scene::addNewObject(int id, int xPos, int yPos, int height, int width)
 /// @brief 
 /// @param ObjectID 
 /// @return 
-Object * Scene::getObject(int ObjectID)
+Object * Scene::getObject(int spriteID)
 {
 	for (Object * obj : objects)
 	{
-		if (obj->getSpriteID() == ObjectID)
+		if (obj->getSpriteID() == spriteID)
 		{
 			return obj;
 		}

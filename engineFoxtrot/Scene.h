@@ -29,7 +29,7 @@ public:
     ~Scene();
 
 	void addNewObject(int id, int xPos, int yPos, int height, int width);
-	Object * getObject(int ObjectID);
+	Object * getObject(int spriteID);
 
 	int getSceneID() { return sceneID; }
 	vector<Object*> getPtrToObjects() { return objects; }

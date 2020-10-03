@@ -105,6 +105,7 @@ void SVI::loadImage(int spriteID, const char* filename)
 /// @param rotation 
 void SVI::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
 {
+	// TODO
 	//if (textureMap[spriteID] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
 	//if (xPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
 	//if (yPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;

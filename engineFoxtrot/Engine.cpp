@@ -85,9 +85,7 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 {
 	try
 	{
-	cout << spritesVector.size() << endl; // TODO REMOVE
 	for (auto sprite : spritesVector) {
-		cout << sprite.spriteID << "," << sprite.filename << endl;
 		svi.loadImage(sprite.spriteID, sprite.filename);
 	}
 	}
@@ -103,7 +101,7 @@ void Engine::engineTick60()
 	while (!stopThreadTick60){
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
-		this_thread::sleep_for(chrono::milliseconds(17));
+		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
 		eventManager.notify(EventType::ENGINE60, new Object);
 		//svi.receiveTick();
 	}
@@ -115,7 +113,7 @@ void Engine::engineTick30()
 {
 	cout << "Thread started" << endl;
 	while (!stopThreadTick30) {
-		this_thread::sleep_for(chrono::milliseconds(33));
+		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
 
 		//eventManager.notify(EventType::ENGINE30, new Object);
 
