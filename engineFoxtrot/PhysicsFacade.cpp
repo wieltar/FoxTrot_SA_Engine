@@ -33,7 +33,13 @@ void PhysicsFacade::addGround(GroundData g) {
 
 
 	b2PolygonShape groundBox;
-	groundBox.SetAsBox(g.hx/2, g.hy/2, b2Vec2(g.x, g.y), 0);
+	float halfH = g.hy / 2;
+	float halfW = g.hx / 2;
+	float posX = g.x - halfW / 2;
+	float posY = g.y - halfH / 2;
+
+	groundBox.SetAsBox(halfH, halfW, b2Vec2(posX, posY), 0);
+
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
 }

@@ -31,8 +31,8 @@ int main() {
 	o->setName("house");
 	o->setHeight(80);
 	o->setWidth(80);
-	o->setX(40);
-	o->setY(50);
+	o->setX(100);
+	o->setY(0);
 
 	o->setSpeed(10);
 	o->setJumpHeight(400);
@@ -44,29 +44,31 @@ int main() {
 	phy.registerRectangle(o);
 
 	GroundData g;
-	g.hx = 300;
-	g.hy = 10;
-	g.x = 0;
-	g.y = 300;
+	g.hx = 100;
+	g.hy = 100;
+	g.x = 100;
+	g.y = 225;
+	
 	phy.addGround(g);
 
 
 
+
 	Object* z = phy.getObject(1);
-	for (int32 i = 0; i < 1000; ++i)
+	for (int32 i = 0; i < 10000; ++i)
 	{
 		phy.update();
 		Object* z = phy.getObject(1);
 		GroundData box;
-		box.hx = z->getWidth()/2;
-		box.hy = z->getHeight()/2;
-		box.x = z->getX();
-		box.y = z->getY();
+		box.hx = z->getWidth();
+		box.hy = z->getHeight();
+		box.x = z->getX() + (z->getWidth() / 2);
+		box.y = z->getY() + (z->getHeight() / 2);
 		box.angle = 0;
-
-
 		float x = i;
+
 		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, box.x, box.y);
+
 
 		engine.svi.testLoopVideo(box, g);
 
