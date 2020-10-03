@@ -1,10 +1,3 @@
-#include "glpch.h"
-#include "Glitch/Log/Log.h"
-#include "windowsWindow.h"
-#include "Glitch/Events/ApplicationEvent.h"
-#include "Glitch/Events/KeyEvent.h"
-#include "Glitch/Events/MouseEvent.h"
-
 namespace Glitch {
 	
 	WindowsWindow::WindowData WindowsWindow::m_data;

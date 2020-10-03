@@ -1,5 +1,12 @@
 #pragma once
-#include "Glitch\window.h"
+#include "Glitch\Renderer\window.h"
+#include "glpch.h"
+#include "Glitch/Log/Log.h"
+#include "windowsWindow.h"
+#include "Glitch/Events/ApplicationEvent.h"
+#include "Glitch/Events/KeyEvent.h"
+#include "Glitch/Events/MouseEvent.h"
+
 #include "SDL.h"
 namespace Glitch {
 	class WindowsWindow : public Window
