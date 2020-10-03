@@ -1,38 +1,30 @@
 #pragma once
 #include "glpch.h"
 
-#include "Object.h"
-#include "Debug.h"
-#include "ErrorCodes.h"
-#include "GeneralHelperFunctions.cpp"
+#include "Glitch/Core/Object.h"
+#include "Glitch/Core/Core.h"
 
 using namespace std;
-
-#include <vector>
-#include "Object.h"
 
 /// @brief 
 /// Scene Class
 /// Contains all the objects that should be drawn in this scene.
+namespace Glitch {
+	class GLITCH_API Scene
+	{
+	public:
+		Scene(int);
+		~Scene();
 
-#if(EXPORT)
-class DLLEXPORT Scene
-#else
-class Scene 
-#endif
-{
-public:
-	Scene(int);
-    ~Scene();
+		void addNewObject(int id, int xPos, int yPos, int height, int width);
+		Object* getObject(int spriteID);
 
-	void addNewObject(int id, int xPos, int yPos, int height, int width);
-	Object * getObject(int spriteID);
+		int getSceneID() { return sceneID; }
+		vector<Object*> getPtrToObjects() { return objects; }
 
-	int getSceneID() { return sceneID; }
-	vector<Object*> getPtrToObjects() { return objects; }
+	private:
+		int sceneID = 0;
+		vector<Object*> objects;
 
-private:
-	int sceneID = 0;
-	vector<Object*> objects;
-
-};
+	};
+}
