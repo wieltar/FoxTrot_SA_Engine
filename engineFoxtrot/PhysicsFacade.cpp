@@ -35,10 +35,10 @@ void PhysicsFacade::addGround(GroundData g) {
 	b2PolygonShape groundBox;
 	float halfH = g.hy / 2;
 	float halfW = g.hx / 2;
-	float posX = g.x - halfW / 2;
-	float posY = g.y - halfH / 2;
+	float posY = g.y - halfH;
+	float posX = g.x + halfW;
 
-	groundBox.SetAsBox(halfH, halfW, b2Vec2(posX, posY), 0);
+	groundBox.SetAsBox(halfW, halfH, b2Vec2(posX, posY), 0);
 
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
@@ -53,7 +53,7 @@ void PhysicsFacade::registerRectangle(Object* object) {
 	bodyBox.SetAsBox(object->getWidth() / 2, 
 					object->getHeight() / 2, 
 						b2Vec2(
-								object->getX() - object->getWidth()/2, 
+								object->getX() + object->getWidth()/2, 
 								object->getY() - object->getHeight()/2
 						),
 					0);
@@ -77,6 +77,8 @@ b2Body* PhysicsFacade::findBody(int objectId) {
 }
 
 void PhysicsFacade::update() {
+	auto z = this->getObject(1);
+	
 	this->world.Step(timeStep, velocityIterations, positionIterations);
 
 	std::map<int, b2Body*>::iterator it;
@@ -86,9 +88,11 @@ void PhysicsFacade::update() {
 		b2Body* b = it->second;
 
 		Object* ob = this->getObject(it->first);
+		auto k = b->GetWorldCenter();
 
-		ob->setX(b->GetWorldCenter().x);
-		ob->setY(b->GetWorldCenter().y);
+		ob->setX(b->GetWorldCenter().x - ob->getWidth() / 2);
+		ob->setY(b->GetWorldCenter().y + ob->getHeight() / 2);
+		ob->getX();
 	}
 
 }

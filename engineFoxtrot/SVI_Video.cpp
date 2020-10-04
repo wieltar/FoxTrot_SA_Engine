@@ -16,10 +16,10 @@ void SVI::testLoopVideo(GroundData b, GroundData g)
 	//ground
 	SDL_SetRenderDrawColor(rendererSDL2, 255, 0, 0, 255); // the rect color (solid red)
 	SDL_Rect rect;
-	rect.x = g.x;
-	rect.y = g.y;
 	rect.w = g.hx;
 	rect.h = g.hy;
+	rect.x = g.x;
+	rect.y = g.y-g.hx;
 
 	SDL_RenderFillRect(rendererSDL2, &rect);
 
@@ -32,10 +32,10 @@ void SVI::testLoopVideo(GroundData b, GroundData g)
 
 
 	SDL_Rect destination;
-	destination.x = b.x;
-	destination.y = b.y;
 	destination.w = b.hx;
 	destination.h = b.hy;
+	destination.x = b.x;
+	destination.y = b.y - b.hy;
 	SDL_FreeSurface(surface);
 	//SDL_RenderCopyEx(rendererSDL2, texture, NULL, &destination, b.angle, NULL, SDL_FLIP_NONE);
 	//SDL_RenderCopy(rendererSDL2, texture, NULL, &destination);

@@ -31,23 +31,23 @@ int main() {
 	o->setName("house");
 	o->setHeight(80);
 	o->setWidth(80);
-	o->setX(100);
+	o->setX(20);
 	o->setY(0);
 
 	o->setSpeed(10);
 	o->setJumpHeight(400);
 	o->setDensity(1);
-	o->setFriction(0.2);
-	o->setRestitution(0.01);
+	o->setFriction(0);
+	o->setRestitution(0);
 
 	phy.temp.push_back(o);
 	phy.registerRectangle(o);
 
 	GroundData g;
-	g.hx = 100;
-	g.hy = 100;
-	g.x = 100;
-	g.y = 225;
+	g.hx = 100; // width
+	g.hy = 100; // height
+	g.x = 20; // x 20 left down
+	g.y = 300; // y 300 left down
 	
 	phy.addGround(g);
 
@@ -62,15 +62,19 @@ int main() {
 		GroundData box;
 		box.hx = z->getWidth();
 		box.hy = z->getHeight();
-		box.x = z->getX() + (z->getWidth() / 2);
-		box.y = z->getY() + (z->getHeight() / 2);
+		box.x = z->getX();
+		box.y = z->getY();
 		box.angle = 0;
 		float x = i;
 
 		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, box.x, box.y);
+		GroundData paint;
+		paint.hx = g.hx;
+		paint.hy = g.hy;
+		paint.x = g.x;
+		paint.y = g.y;
 
-
-		engine.svi.testLoopVideo(box, g);
+		engine.svi.testLoopVideo(box, paint);
 
 		SDL_Delay(10);
 	}
