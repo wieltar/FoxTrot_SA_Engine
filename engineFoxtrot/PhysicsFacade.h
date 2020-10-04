@@ -1,13 +1,5 @@
 #pragma once
-
-#include "Debug.h"
-#include "ErrorCodes.h"
-#include "GeneralHelperFunctions.cpp"
 #include "IPhysicsFacade.h"
-#include <vector>
-#include <map>
-#include "box2d/box2d.h"
-#include "Object.h"
 
 #if(EXPORT)
 class DLLEXPORT PhysicsFacade : public IPhysicsFacade
@@ -19,23 +11,21 @@ public:
 
 	PhysicsFacade();
 	~PhysicsFacade();
-	//TODO load from engine objects
-	std::vector<Object*> temp = std::vector<Object*>();
+
 	std::map<int, b2Body*> bodies = std::map<int, b2Body*>();
 
-	void addGround(Object& g);
-	void registerRectangle(Object& object);
+	void addGround(Object& g) override;
+	void registerRectangle(Object& object) override;
+	
+	Object* getObject(int objectId) override;
 
-	b2Body* findBody(int objectId);
-	Object* getObject(int objectId);
+	void MoveLeft(int objectId) override;
+	void MoveRight(int objectId) override;
+	void Jump(int objectId) override;
+	void JumpLeft(int objectId) override;
+	void JumpRight(int objectId) override;
 
-	void MoveLeft(int objectId);
-	void MoveRight(int objectId);
-	void Jump(int objectId);
-	void JumpLeft(int objectId);
-	void JumpRight(int objectId);
-
-	void update();
+	void update() override;
 
 private:
 	b2World world = b2World(b2Vec2(0.0f, 80.0f));
@@ -45,7 +35,9 @@ private:
 	int32 positionIterations = 2;
 	
 	b2Body* currentBody = nullptr;
-	Object* currentObject = nullptr;
+	Object* currentObject = nullptr; 
+	
+	b2Body* findBody(int objectId);
 };
 
 

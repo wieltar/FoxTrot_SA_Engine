@@ -69,9 +69,6 @@
     <ClCompile Include="FileParser.cpp">
       <Filter>Header Files\FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="IPhysicsFacade.cpp">
-      <Filter>Header Files\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicsEngine.cpp">
       <Filter>Header Files\Physics</Filter>
     </ClCompile>

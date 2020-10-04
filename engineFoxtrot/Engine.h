@@ -73,7 +73,7 @@ public:
 
 	//TODO make private
 	SVIEngine svi;
-	PhysicsFacade phy;
+	IPhysicsFacade* phy = new PhysicsFacade;
 private:
 
 	FileParser fileParser;

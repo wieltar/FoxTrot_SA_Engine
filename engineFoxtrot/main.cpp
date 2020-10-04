@@ -30,8 +30,8 @@ int main() {
 	o->setFriction(0);
 	o->setRestitution(0);
 
-	engine.phy.temp.push_back(o);
-	engine.phy.registerRectangle(*o);
+	engine.phy->temp.push_back(o);
+	engine.phy->registerRectangle(*o);
 
 	Object* g = new Object();
 	g->setWidth(500); // width
@@ -39,13 +39,13 @@ int main() {
 	g->setPositionX(20); // x 20 left down
 	g->setPositionY(300);// y 300 left down
 
-	engine.phy.addGround(*g);
+	engine.phy->addGround(*g);
 
 
 	for (int32 i = 0; i < 1000; ++i)
 	{
-		engine.phy.MoveRight(1);
-		engine.phy.update();
+		engine.phy->MoveRight(1);
+		engine.phy->update();
 
 		float x = i;
 		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, o->getPositionX(), o->getPositionY());
