@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Glitch/Core/Core.h"
 
 using namespace std;
