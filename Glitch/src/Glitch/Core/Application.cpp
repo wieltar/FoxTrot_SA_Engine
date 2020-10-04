@@ -23,7 +23,6 @@ namespace Glitch {
 	}
 	void Application::OnEvent(Event& e)
 	{
-		std::cout << e.ToString() << std::endl;
-		//GL_INFO(e.ToString());
+		GL_INFO(e.ToString());
 	}
 }
