@@ -10,12 +10,7 @@
 #include "Object.h"
 #include "GroundData.h"
 
-
-#if(EXPORT)
-class DLLEXPORT PhysicsFacade : public IPhysicsFacade
-#else
 class PhysicsFacade : public IPhysicsFacade
-#endif
 {
 public:
 	PhysicsFacade();

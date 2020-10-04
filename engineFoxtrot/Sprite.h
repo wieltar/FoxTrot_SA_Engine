@@ -1,18 +1,17 @@
 #pragma once
+#include "Component.h"
+
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
+#include <string>
 
-class IParticleFacade
+class Sprite
 {
 public:
-	IParticleFacade();
-	~IParticleFacade();
+	Sprite();
+	~Sprite();
 
 private:
 
 };
-
-
-
-

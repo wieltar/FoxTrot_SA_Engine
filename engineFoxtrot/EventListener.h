@@ -1,12 +1,7 @@
 #pragma once
 #include "Object.h"
 
-#if(EXPORT)
-class DLLEXPORT EventListener
-#else
-class EventListener
-#endif
-{
+class EventListener {
 public:
     virtual void update(Object* object) = 0;
 };

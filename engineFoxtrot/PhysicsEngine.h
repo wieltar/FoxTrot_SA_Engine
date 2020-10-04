@@ -6,11 +6,7 @@
 #include "PhysicsFacade.h"
 #include "EventManager.h"
 
-#if(EXPORT)
-class DLLEXPORT PhysicsEngine : public EventListener
-#else
 class PhysicsEngine : public EventListener
-#endif
 {
 public:
 	EventManager* eventManager{ new EventManager };
