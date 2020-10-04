@@ -26,6 +26,7 @@ PhysicsFacade phy;
 
 int main() {
 
+
 	//house
 	Object* o = new Object(1);
 	o->setName("house");
@@ -50,7 +51,7 @@ int main() {
 	g.y = 300; // y 300 left down
 	
 	phy.addGround(g);
-
+	
 
 
 
@@ -65,7 +66,6 @@ int main() {
 		box.hy = z->getHeight();
 		box.x = z->getX();
 		box.y = z->getY();
-		box.angle = z->getAngle();
 		float x = i;
 
 		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, box.x, box.y);
@@ -76,6 +76,7 @@ int main() {
 		paint.y = g.y;
 
 		engine.svi.testLoopVideo(box, paint);
+		
 
 		SDL_Delay(10);
 	}

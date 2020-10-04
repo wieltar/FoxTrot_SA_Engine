@@ -21,14 +21,11 @@ void SVI::testLoopVideo(GroundData b, GroundData g)
 	rect.x = g.x;
 	rect.y = g.y-g.hy;
 
-	SDL_RenderFillRect(rendererSDL2, &rect);
-
 	SDL_Surface* surface = IMG_Load(Example_Sprite);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(rendererSDL2, surface);
-	
 
+	SDL_RenderFillRect(rendererSDL2, &rect);
 
-	//gArrowTexture.render((SCREEN_WIDTH - gArrowTexture.getWidth()) / 2, (SCREEN_HEIGHT - gArrowTexture.getHeight()) / 2, NULL, degrees, NULL, flipType);
 
 
 	SDL_Rect destination;
@@ -38,11 +35,10 @@ void SVI::testLoopVideo(GroundData b, GroundData g)
 	destination.y = b.y - b.hy;
 	SDL_FreeSurface(surface);
 	//SDL_RenderCopyEx(rendererSDL2, texture, NULL, &destination, b.angle, NULL, SDL_FLIP_NONE);
+
 	//SDL_RenderCopy(rendererSDL2, texture, NULL, &destination);
 	SDL_SetRenderDrawColor(rendererSDL2, 0, 255, 0, 255);
 	SDL_RenderFillRect(rendererSDL2, &destination);
-
-
 
 	SDL_RenderPresent(rendererSDL2);
 	//SDL_Delay(5000);
