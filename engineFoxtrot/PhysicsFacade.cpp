@@ -25,16 +25,21 @@ Object* PhysicsFacade::getObject(int objectId) {
 	return NULL;
 }
 
+b2PolygonShape createShape(Object& o) {
+	b2PolygonShape shape;
+	//BOX2D needs coordinates off LEFT TOP position
+	float halfH = o.getHeight() / 2;
+	float halfW = o.getWidth() / 2;
+	float posY = o.getPositionY() - o.getHeight() / 2;
+	float posX = o.getPositionX() + o.getWidth() / 2;
+	shape.SetAsBox(halfW, halfH, b2Vec2(posX, posY), o.getAngle());
+	return shape;
+}
+
 void PhysicsFacade::addGround(Object& g) {
 	b2BodyDef groundBodyDef;
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
-
-	b2PolygonShape groundBox;
-	float halfH = g.getHeight() / 2;
-	float halfW = g.getWidth() / 2;
-	float posY = g.getPositionY() - halfH;
-	float posX = g.getPositionX() + halfW;
-	groundBox.SetAsBox(halfW, halfH, b2Vec2(posX, posY), g.getAngle());
+	b2PolygonShape groundBox = createShape(g);
 	groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
@@ -43,14 +48,7 @@ void PhysicsFacade::registerRectangle(Object& object) {
 	bodyDef.type = b2_dynamicBody;
 	b2Body* body = world.CreateBody(&bodyDef);
 
-	b2PolygonShape bodyBox;
-	bodyBox.SetAsBox(object.getWidth() / 2,
-					object.getHeight() / 2,
-						b2Vec2(
-							object.getPositionX() + object.getWidth() / 2,
-							object.getPositionY() - object.getHeight() / 2
-						),
-					object.getAngle());
+	b2PolygonShape bodyBox = createShape(object);
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &bodyBox;
