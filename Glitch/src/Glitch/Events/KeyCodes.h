@@ -1,144 +1,148 @@
 #pragma once
-#include "glpch.h"
-
+// -------------------
+// -- SDL SCANCODES --
+// -------------------
+// SOURCED FROM SDL KEYCODES FILE
+// https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf 
+// PAG. 53
 namespace Glitch
 {
-	using KeyCode = uint16_t;
 
-	namespace Key
+	enum KeyCode
 	{
-		enum : KeyCode
-		{
-			Space = 32,
-			Apostrophe = 39, /* ' */
-			Comma = 44, /* , */
-			Minus = 45, /* - */
-			Period = 46, /* . */
-			Slash = 47, /* / */
+		KEY_UNKNOWN = 0,
+		KEY_A = 4,
+		KEY_B = 5,
+		KEY_C = 6,
+		KEY_D = 7,
+		KEY_E = 8,
+		KEY_F = 9,
+		KEY_G = 10,
+		KEY_H = 11,
+		KEY_I = 12,
+		KEY_J = 13,
+		KEY_K = 14,
+		KEY_L = 15,
+		KEY_M = 16,
+		KEY_N = 17,
+		KEY_O = 18,
+		KEY_P = 19,
+		KEY_Q = 20,
+		KEY_R = 21,
+		KEY_S = 22,
+		KEY_T = 23,
+		KEY_U = 24,
+		KEY_V = 25,
+		KEY_W = 26,
+		KEY_X = 27,
+		KEY_Y = 28,
+		KEY_Z = 29,
 
-			D0 = 48, /* 0 */
-			D1 = 49, /* 1 */
-			D2 = 50, /* 2 */
-			D3 = 51, /* 3 */
-			D4 = 52, /* 4 */
-			D5 = 53, /* 5 */
-			D6 = 54, /* 6 */
-			D7 = 55, /* 7 */
-			D8 = 56, /* 8 */
-			D9 = 57, /* 9 */
+		KEY_1 = 30,
+		KEY_2 = 31,
+		KEY_3 = 32,
+		KEY_4 = 33,
+		KEY_5 = 34,
+		KEY_6 = 35,
+		KEY_7 = 36,
+		KEY_8 = 37,
+		KEY_9 = 38,
+		KEY_0 = 39,
 
-			Semicolon = 59, /* ; */
-			Equal = 61, /* = */
+		KEY_RETURN = 40,
+		KEY_ESCAPE = 41,
+		KEY_BACKSPACE = 42,
+		KEY_TAB = 43,
+		KEY_SPACE = 44,
 
-			A = 65,
-			B = 66,
-			C = 67,
-			D = 68,
-			E = 69,
-			F = 70,
-			G = 71,
-			H = 72,
-			I = 73,
-			J = 74,
-			K = 75,
-			L = 76,
-			M = 77,
-			N = 78,
-			O = 79,
-			P = 80,
-			Q = 81,
-			R = 82,
-			S = 83,
-			T = 84,
-			U = 85,
-			V = 86,
-			W = 87,
-			X = 88,
-			Y = 89,
-			Z = 90,
+		KEY_MINUS = 45,
+		KEY_EQUALS = 46,
+		KEY_LEFTBRACKET = 47,
+		KEY_RIGHTBRACKET = 48,
+		KEY_BACKSLASH = 49,	/**< Located at the lower left of the return
+		*   key on ISO keyboards and at the right end
+		*   of the QWERTY row on ANSI keyboards.
+		*   Produces REVERSE SOLIDUS (backslash) and
+		*   VERTICAL LINE in a US layout, REVERSE
+		*   SOLIDUS and VERTICAL LINE in a UK Mac
+		*   layout, NUMBER SIGN and TILDE in a UK
+		*   Windows layout, DOLLAR SIGN and POUND SIGN
+		*   in a Swiss German layout, NUMBER SIGN and
+		*   APOSTROPHE in a German layout, GRAVE
+		*   ACCENT and POUND SIGN in a French Mac
+		*   layout, and ASTERISK and MICRO SIGN in a
+		*   French Windows layout.
+		*/
+		KEY_SEMICOLON = 51,
+		KEY_APOSTROPHE = 52,
+		KEY_GRAVE = 53, /**< Located in the top left corner (on both ANSI
+		*   and ISO keyboards). Produces GRAVE ACCENT and
+		*   TILDE in a US Windows layout and in US and UK
+		*   Mac layouts on ANSI keyboards, GRAVE ACCENT
+		*   and NOT SIGN in a UK Windows layout, SECTION
+		*   SIGN and PLUS-MINUS SIGN in US and UK Mac
+		*   layouts on ISO keyboards, SECTION SIGN and
+		*   DEGREE SIGN in a Swiss German layout (Mac:
+		*   only on ISO keyboards), CIRCUMFLEX ACCENT and
+		*   DEGREE SIGN in a German layout (Mac: only on
+		*   ISO keyboards), SUPERSCRIPT TWO and TILDE in a
+		*   French Windows layout, COMMERCIAL AT and
+		*   NUMBER SIGN in a French Mac layout on ISO
+		*   keyboards, and LESS-THAN SIGN and GREATER-THAN
+		*   SIGN in a Swiss German, German, or French Mac
+		*   layout on ANSI keyboards.
+		*/
+		KEY_COMMA = 54,
+		KEY_PERIOD = 55,
+		KEY_SLASH = 56,
 
-			LeftBracket = 91,  /* [ */
-			Backslash = 92,  /* \ */
-			RightBracket = 93,  /* ] */
-			GraveAccent = 96,  /* ` */
+		KEY_CAPSLOCK = 57,
 
-			World1 = 161, /* non-US #1 */
-			World2 = 162, /* non-US #2 */
+		KEY_F1 = 58,
+		KEY_F2 = 59,
+		KEY_F3 = 60,
+		KEY_F4 = 61,
+		KEY_F5 = 62,
+		KEY_F6 = 63,
+		KEY_F7 = 64,
+		KEY_F8 = 65,
+		KEY_F9 = 66,
+		KEY_F10 = 67,
+		KEY_F11 = 68,
+		KEY_F12 = 69,
 
-			/* Function keys */
-			Escape = 256,
-			Enter = 257,
-			Tab = 258,
-			Backspace = 259,
-			Insert = 260,
-			Delete = 261,
-			Right = 262,
-			Left = 263,
-			Down = 264,
-			Up = 265,
-			PageUp = 266,
-			PageDown = 267,
-			Home = 268,
-			End = 269,
-			CapsLock = 280,
-			ScrollLock = 281,
-			NumLock = 282,
-			PrintScreen = 283,
-			Pause = 284,
-			F1 = 290,
-			F2 = 291,
-			F3 = 292,
-			F4 = 293,
-			F5 = 294,
-			F6 = 295,
-			F7 = 296,
-			F8 = 297,
-			F9 = 298,
-			F10 = 299,
-			F11 = 300,
-			F12 = 301,
-			F13 = 302,
-			F14 = 303,
-			F15 = 304,
-			F16 = 305,
-			F17 = 306,
-			F18 = 307,
-			F19 = 308,
-			F20 = 309,
-			F21 = 310,
-			F22 = 311,
-			F23 = 312,
-			F24 = 313,
-			F25 = 314,
+		KEY_PRINTSCREEN = 70,
+		KEY_SCROLLLOCK = 71,
+		KEY_PAUSE = 72,
+		KEY_INSERT = 73,
+		KEY_HOME = 74,
+		KEY_PAGEUP = 75,
+		KEY_DELETE = 76,
+		KEY_END = 77,
+		KEY_PAGEDOWN = 78,
+		KEY_RIGHT = 79,
+		KEY_LEFT = 80,
+		KEY_DOWN = 81,
+		KEY_UP = 82,
 
-			/* Keypad */
-			KP0 = 320,
-			KP1 = 321,
-			KP2 = 322,
-			KP3 = 323,
-			KP4 = 324,
-			KP5 = 325,
-			KP6 = 326,
-			KP7 = 327,
-			KP8 = 328,
-			KP9 = 329,
-			KPDecimal = 330,
-			KPDivide = 331,
-			KPMultiply = 332,
-			KPSubtract = 333,
-			KPAdd = 334,
-			KPEnter = 335,
-			KPEqual = 336,
+		KEY_THOUSANDSSEPARATOR = 178,
+		KEY_DECIMALSEPARATOR = 179,
+		KEY_CURRENCYUNIT = 180,
+		KEY_CURRENCYSUBUNIT = 181,
+		KEY_KP_LEFTPAREN = 182,
+		KEY_KP_RIGHTPAREN = 183,
+		KEY_KP_LEFTBRACE = 184,
+		KEY_KP_RIGHTBRACE = 185,
+		KEY_KP_TAB = 186,
+		KEY_KP_BACKSPACE = 187,
 
-			LeftShift = 340,
-			LeftControl = 341,
-			LeftAlt = 342,
-			LeftSuper = 343,
-			RightShift = 344,
-			RightControl = 345,
-			RightAlt = 346,
-			RightSuper = 347,
-			Menu = 348
-		};
-	}
+		KEY_LCTRL = 224,
+		KEY_LSHIFT = 225,
+		KEY_LALT = 226, /**< alt, option */
+		KEY_LGUI = 227, /**< windows, command (apple), meta */
+		KEY_RCTRL = 228,
+		KEY_RSHIFT = 229,
+		KEY_RALT = 230, /**< alt gr, option */
+		KEY_RGUI = 231, /**< windows, command (apple), meta */
+	};
 }

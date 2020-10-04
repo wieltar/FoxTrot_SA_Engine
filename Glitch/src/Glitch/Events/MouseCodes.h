@@ -1,27 +1,18 @@
 #pragma once
-
+#include "SDL_mouse.h"
 namespace Glitch
 {
-	using MouseCode = uint16_t;
+	using MouseCode = Uint8;
 
 	namespace Mouse
 	{
 		enum : MouseCode
 		{
-			// From glfw3.h
-			Button0                = 0,
-			Button1                = 1,
-			Button2                = 2,
-			Button3                = 3,
-			Button4                = 4,
-			Button5                = 5,
-			Button6                = 6,
-			Button7                = 7,
-
-			ButtonLast             = Button7,
-			ButtonLeft             = Button0,
-			ButtonRight            = Button1,
-			ButtonMiddle           = Button2
+			MOUSE_BTN_LEFT = SDL_BUTTON_LEFT, 
+			MOUSE_BTN_MIDDLE = SDL_BUTTON_MIDDLE,
+			MOUSE_BTN_RIGHT = SDL_BUTTON_RIGHT,
+			MOUSE_BTN_1 = SDL_BUTTON_X1,
+			MOUSE_BTN_2 = SDL_BUTTON_X2,
 		};
 	}
 }
