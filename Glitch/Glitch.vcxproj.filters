@@ -45,9 +45,6 @@
     </ClInclude>
     <ClInclude Include="src\glpch.h" />
     <ClInclude Include="src\Glitch\General\Version.h" />
-    <ClInclude Include="src\Glitch\Renderer\Platform\Windows\windowsWindow.h">
-      <Filter>Glitch\Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\Glitch\Renderer\window.h">
       <Filter>Glitch</Filter>
     </ClInclude>
@@ -62,15 +59,15 @@
       <Filter>Glitch</Filter>
     </ClInclude>
     <ClInclude Include="src\Glitch\Core\ErrorCodes.h" />
+    <ClInclude Include="src\Glitch\Renderer\Windows\windowsWindow.h">
+      <Filter>Glitch\Platform\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Glitch\Log\Log.cpp">
       <Filter>Glitch\Log</Filter>
     </ClCompile>
     <ClCompile Include="src\glpch.cpp" />
-    <ClCompile Include="src\Glitch\Renderer\Platform\Windows\windowsWindow.cpp">
-      <Filter>Glitch\Platform\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="src\Glitch\Sound\SoundEngine.cpp" />
     <ClCompile Include="src\Glitch\Renderer\SceneManager\Scene.cpp" />
     <ClCompile Include="src\Glitch\Renderer\SceneManager\SceneManager.cpp" />
@@ -79,6 +76,9 @@
     <ClCompile Include="src\Glitch\Core\Object.cpp" />
     <ClCompile Include="src\Glitch\Core\Application.cpp">
       <Filter>Glitch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glitch\Renderer\Windows\windowsWindow.cpp">
+      <Filter>Glitch\Platform\Windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

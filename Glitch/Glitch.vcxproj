@@ -170,7 +170,7 @@
     <ClInclude Include="src\Glitch\Core\ErrorCodes.h" />
     <ClInclude Include="src\Glitch\General\Version.h" />
     <ClInclude Include="src\Glitch\Log\Log.h" />
-    <ClInclude Include="src\Glitch\Renderer\Platform\Windows\windowsWindow.h" />
+    <ClInclude Include="src\Glitch\Renderer\Windows\windowsWindow.h" />
     <ClInclude Include="src\Glitch\Renderer\window.h" />
     <ClInclude Include="src\glpch.h" />
   </ItemGroup>
@@ -183,7 +183,7 @@
     <ClCompile Include="src\Glitch\Core\Application.cpp" />
     <ClCompile Include="src\Glitch\General\HelperFunctions.cpp" />
     <ClCompile Include="src\Glitch\Log\Log.cpp" />
-    <ClCompile Include="src\Glitch\Renderer\Platform\Windows\windowsWindow.cpp" />
+    <ClCompile Include="src\Glitch\Renderer\Windows\windowsWindow.cpp" />
     <ClCompile Include="src\glpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
