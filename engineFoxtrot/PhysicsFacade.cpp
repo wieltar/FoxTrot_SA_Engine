@@ -1,5 +1,6 @@
 #include "PhysicsFacade.h"
 
+
 PhysicsFacade::PhysicsFacade()
 {
 
@@ -37,8 +38,6 @@ void PhysicsFacade::addGround(Object& g) {
 	groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
-
-
 void PhysicsFacade::registerRectangle(Object& object) {
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -65,8 +64,6 @@ void PhysicsFacade::registerRectangle(Object& object) {
 	this->bodies.insert(std::pair<int, b2Body*>(object.getId(), body));
 }
 
-
-
 b2Body* PhysicsFacade::findBody(int objectId) {
 	if (bodies.count(objectId) > 0) {
 		return bodies.at(objectId);
@@ -78,46 +75,46 @@ void PhysicsFacade::update() {
 
 	for (auto const& it : bodies)
 	{
-		this->currentBody = it.second;
-		this->currentObject = this->getObject(it.first);
+		b2Body* body = it.second;
+		Object* ob = this->getObject(it.first);
 
-		this->currentObject->setPositionX(this->currentBody->GetWorldCenter().x - this->currentObject->getWidth() / 2);
-		this->currentObject->setPositionY(this->currentBody->GetWorldCenter().y + this->currentObject->getHeight() / 2);
-		this->currentObject->setAngle(this->currentBody->GetAngle());
+		ob->setPositionX(body->GetWorldCenter().x - ob->getWidth() / 2);
+		ob->setPositionY(body->GetWorldCenter().y + ob->getHeight() / 2);
+		ob->setAngle(body->GetAngle());
 	}
 }
 
 void PhysicsFacade::MoveLeft(int objectId)
 {
-	this->currentBody = findBody(objectId);
-	this->currentObject = getObject(objectId);
-	this->currentBody->ApplyLinearImpulse(b2Vec2(this->currentObject->getSpeed() * -1, 0.0f), this->currentBody->GetWorldCenter(), true);
+	b2Body* body = findBody(objectId);
+	Object* ob = getObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, 0.0f), body->GetWorldCenter(), true);
 };
 
 void PhysicsFacade::MoveRight(int objectId)
 {
-	this->currentBody = findBody(objectId);
-	this->currentObject = getObject(objectId);
-	this->currentBody->ApplyLinearImpulse(b2Vec2(this->currentObject->getSpeed(), 0.0f), this->currentBody->GetWorldCenter(), true);
+	b2Body* body = findBody(objectId);
+	Object* ob = getObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), 0.0f), body->GetWorldCenter(), true);
 };
 
 void PhysicsFacade::Jump(int objectId)
 {
-	this->currentBody = findBody(objectId);
-	this->currentObject = getObject(objectId);
-	this->currentBody->ApplyLinearImpulse(b2Vec2(0, this->currentObject->getJumpHeight() * -1), this->currentBody->GetWorldCenter(), true);
+	b2Body* body = findBody(objectId);
+	Object* ob = getObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(0, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
 
 void PhysicsFacade::JumpLeft(int objectId)
 {
-	this->currentBody = findBody(objectId);
-	this->currentObject = getObject(objectId);
-	this->currentBody->ApplyLinearImpulse(b2Vec2(this->currentObject->getSpeed() * 10 * -1, this->currentObject->getJumpHeight() * -1), this->currentBody->GetWorldCenter(), true);
+	b2Body* body = findBody(objectId);
+	Object* ob = getObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED * -1, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
 
 void PhysicsFacade::JumpRight(int objectId)
 {
-	this->currentBody = findBody(objectId);
-	this->currentObject = getObject(objectId);
-	this->currentBody->ApplyLinearImpulse(b2Vec2(this->currentObject->getSpeed() * 10, this->currentObject->getJumpHeight() * -1), this->currentBody->GetWorldCenter(), true);
+	b2Body* body = findBody(objectId);
+	Object* ob = getObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };

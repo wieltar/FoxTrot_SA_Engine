@@ -8,7 +8,6 @@ class PhysicsFacade : public IPhysicsFacade
 #endif
 {
 public:
-
 	PhysicsFacade();
 	~PhysicsFacade();
 
@@ -28,15 +27,13 @@ public:
 	void update() override;
 
 private:
+	const int INCREASE_JUMP_SPEED = 10;
 	b2World world = b2World(b2Vec2(0.0f, 80.0f));
 	float timeStep = 1.0f / 60.0f;
 
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
-	
-	b2Body* currentBody = nullptr;
-	Object* currentObject = nullptr; 
-	
+		
 	b2Body* findBody(int objectId);
 };
 
