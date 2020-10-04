@@ -13,6 +13,7 @@
 #include "../SDL2/include/SDL_mixer.h"
 #include "../SDL2/include/SDL.h"
 #include "../SDL2/include/SDL_image.h"
+#include "Object.h"
 #undef main
 
 using namespace std;
@@ -53,7 +54,7 @@ private:
 
 // Video functions
 public:
-	void testLoopVideo(int x, int y);
+	void testLoopVideo(Object& ground, Object& box);
 
 	void initSDL();
 

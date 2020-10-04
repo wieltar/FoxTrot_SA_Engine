@@ -1,7 +1,6 @@
 #pragma once
 #include "EventManager.h"
 #include "SVI.h"
-#include "Object.h"
 #include <vector>
 
 
@@ -35,7 +34,7 @@ public:
 	void play();
 
 	// Video Functions
-	void testLoopVideo(int x, int y);
+	void testLoopVideo(Object& g, Object& b);
 
 	void initSDL();
 

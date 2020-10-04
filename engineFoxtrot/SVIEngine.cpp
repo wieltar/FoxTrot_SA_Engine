@@ -25,9 +25,9 @@ void SVIEngine::play()
 /// @brief TO BE REMOVED
 /// @param x 
 /// @param y 
-void SVIEngine::testLoopVideo(int x, int y)
+void SVIEngine::testLoopVideo(Object& g, Object& b)
 {
-	sviEngine->testLoopVideo(x,y);
+	sviEngine->testLoopVideo(g,b);
 }
 
 /// @brief 

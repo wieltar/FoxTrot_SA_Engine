@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Object.h"
 /// @brief Interface class for SDL2 facade
 #if(EXPORT)
 class DLLEXPORT ISVI
@@ -16,7 +16,7 @@ public:
 	virtual void play() = 0;
 
 	// Video Functions
-	virtual void testLoopVideo(int x, int y) = 0;
+	virtual void testLoopVideo(Object& g, Object& b) = 0;
 
 	virtual void initSDL() = 0;
 

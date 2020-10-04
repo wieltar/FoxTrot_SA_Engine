@@ -1,33 +1,44 @@
 #include "SVI.h"
 
+SDL_Rect renderRectangle(Object& g) {
+	SDL_Rect rect;
+	rect.w = g.getWidth();
+	rect.h = g.getHeight();
+	rect.x = g.getPositionX();
+	rect.y = g.getPositionY() - g.getHeight();
+	return rect;
+}
+
 // Functions in this cpp file may only call functions in this file. And global SDL2 definitions
 
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
 
 /// @brief TO BE REMOVED
-/// @param x 
-/// @param y
-void SVI::testLoopVideo(int x, int y)
+/// @param ground 
+/// @param box
+void SVI::testLoopVideo(Object& b, Object& g)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-
 	SDL_RenderClear(renderer);
-	SDL_Surface* surface = IMG_Load(Example_Sprite);
-	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-	
-	SDL_Rect destination;
-	destination.x = x;
-	destination.y = y;
-	destination.w = 320;
-	destination.h = 320;
-	SDL_FreeSurface(surface);
 
-	SDL_RenderCopy(renderer, texture, NULL, &destination);
+	//ground
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // the rect color (solid red)
+	SDL_Rect rect = renderRectangle(b);
+
+	SDL_Surface* surface = IMG_Load(Example_Sprite);
+
+	SDL_RenderFillRect(renderer, &rect);
+
+	SDL_Rect destination = renderRectangle(g);
+	SDL_FreeSurface(surface);
+	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+	SDL_RenderFillRect(renderer, &destination);
 
 	SDL_RenderPresent(renderer);
 
 	//SDL_Delay(5000);
+
 }
 
 /// @brief 

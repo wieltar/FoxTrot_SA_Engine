@@ -54,14 +54,6 @@ public:
 	thread *engineTick60Thread = nullptr;
 	thread *engineTick30Thread = nullptr;
 
-
-
-
-
-
-
-
-
 	void setCurrentScene(int sceneID);
 	void createNewSceneWithSceneID(int sceneID);
 	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width);
@@ -78,11 +70,14 @@ public:
 	void setObjectDirection(int objId, int dir);
 	void setObjectStatic(int objId, bool stat);
 
+
+	//TODO make private
+	SVIEngine svi;
+	PhysicsFacade phy;
 private:
 
 	FileParser fileParser;
 	PhysicsEngine physicsEngine;
-	SVIEngine svi;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 

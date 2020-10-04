@@ -16,10 +16,46 @@ using namespace std;
 Engine engine;
 
 int main() {
+	//house
+	Object* o = new Object(1);
+	o->setName("house");
+	o->setHeight(80);
+	o->setWidth(80);
+	o->setPositionX(30);
+	o->setPositionY(0);
+
+	o->setSpeed(100);
+	o->setJumpHeight(400);
+	o->setDensity(1);
+	o->setFriction(0);
+	o->setRestitution(0);
+
+	engine.phy.temp.push_back(o);
+	engine.phy.registerRectangle(*o);
+
+	Object* g = new Object();
+	g->setWidth(500); // width
+	g->setHeight(10);// height
+	g->setPositionX(20); // x 20 left down
+	g->setPositionY(300);// y 300 left down
+
+	engine.phy.addGround(*g);
+
+
+	for (int32 i = 0; i < 1000; ++i)
+	{
+		engine.phy.MoveRight(1);
+		engine.phy.update();
+
+		float x = i;
+		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, o->getPositionX(), o->getPositionY());
+		engine.svi.testLoopVideo(*o, *g);
+
+		SDL_Delay(10);
+	}
 
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
 	engine.eventManager.notify(EventType::MOVE, new Object);
-	
 
 	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(1);
