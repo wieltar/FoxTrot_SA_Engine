@@ -1,7 +1,12 @@
 #pragma once
 #include "GroundData.h"
 
+/// @brief Interface class for SDL2 facade
+#if(EXPORT)
+class DLLEXPORT ISVI
+#else
 class ISVI
+#endif
 {
 public:
 	ISVI();
@@ -13,6 +18,15 @@ public:
 
 	// Video Functions
 	virtual void testLoopVideo(GroundData box, GroundData g) = 0;
+
+	virtual void initSDL() = 0;
+
+	virtual void clearScreen() = 0;
+	virtual void drawScreen() = 0;
+	virtual void loadImage(int spriteID, const char* filename) = 0;
+
+	virtual void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation) = 0;
+
 
 	// Input Functions
 	virtual void input() = 0;
