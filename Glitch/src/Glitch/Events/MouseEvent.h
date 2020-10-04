@@ -17,7 +17,8 @@ namespace Glitch {
 		{
 			std::stringstream ss;
 			ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
-			return ss.str();
+			auto string = ss.str();
+			return string;
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)

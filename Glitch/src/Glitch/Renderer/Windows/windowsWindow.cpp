@@ -42,63 +42,60 @@ namespace Glitch {
 
 				switch (sdl_event.type)
 				{
-				// ------ KEYBOARD COMMANDS --------------------------------
-				case SDL_KEYDOWN: {
-					int sdl_int = (int) to_underlying(sdl_event.key.keysym.scancode);
-					KeyPressedEvent event(static_cast<KeyCode>(sdl_int), 0);
-					winData.EventCallback(event);
-					break;
-				}
-				case SDL_KEYUP: {
-					int sdl_int = (int)to_underlying(sdl_event.key.keysym.scancode);
-					KeyReleasedEvent event(static_cast<KeyCode>(sdl_int));
-					winData.EventCallback(event);
-					break;
-				}
-				// ------ MOUSE COMMANDS ------------------------------------
-				case SDL_MOUSEBUTTONDOWN: {
-					MouseButtonPressedEvent event(sdl_event.button.button);
-					winData.EventCallback(event);
-					break;
-				}
-				case SDL_MOUSEBUTTONUP: {
-					MouseButtonReleasedEvent event(sdl_event.button.button);
-					winData.EventCallback(event);
-					break;
-				}
-				case SDL_MOUSEWHEEL: {
-					MouseScrolledEvent event(sdl_event.wheel.x, sdl_event.wheel.y);
-					winData.EventCallback(event);
-					break;
-				}
-				case SDL_MOUSEMOTION: {
-					int mouseX, mouseY;
-					SDL_GetGlobalMouseState(&mouseX, &mouseY);
+					// ------ KEYBOARD COMMANDS --------------------------------
+					case SDL_KEYDOWN: {
+						int sdl_int = (int) to_underlying(sdl_event.key.keysym.scancode);
+						KeyPressedEvent event(static_cast<KeyCode>(sdl_int), 0);
+						winData.EventCallback(event);
+						break;
+					}
+					case SDL_KEYUP: {
+						int sdl_int = (int)to_underlying(sdl_event.key.keysym.scancode);
+						KeyReleasedEvent event(static_cast<KeyCode>(sdl_int));
+						winData.EventCallback(event);
+						break;
+					}
+					// ------ MOUSE COMMANDS ------------------------------------
+					case SDL_MOUSEBUTTONDOWN: {
+						MouseButtonPressedEvent event(sdl_event.button.button);
+						winData.EventCallback(event);
+						break;
+					}
+					case SDL_MOUSEBUTTONUP: {
+						MouseButtonReleasedEvent event(sdl_event.button.button);
+						winData.EventCallback(event);
+						break;
+					}
+					case SDL_MOUSEWHEEL: {
+						MouseScrolledEvent event(sdl_event.wheel.x, sdl_event.wheel.y);
+						winData.EventCallback(event);
+						break;
+					}
+					case SDL_MOUSEMOTION: {
+						int mouseX, mouseY;
+						SDL_GetGlobalMouseState(&mouseX, &mouseY);
 
-					MouseMovedEvent event(mouseX, mouseY);
-					winData.EventCallback(event);
-					break;
-				}
-				// ------ WINDOW COMMANDS --------------------------------
-				case SDL_QUIT:
-					Shutdown();
-					break;
-				case SDL_WINDOWEVENT: {
-					if (sdl_event.window.event == SDL_WINDOWEVENT_CLOSE)
-					{
-						WindowCloseEvent event;
+						MouseMovedEvent event(mouseX, mouseY);
 						winData.EventCallback(event);
+						break;
 					}
-					else if (sdl_event.window.event == SDL_WINDOWEVENT_RESIZED) {
-						WindowResizeEvent event(winData.Width, winData.Height);
-						SDL_SetWindowSize(window, winData.Width, winData.Height);
-						winData.EventCallback(event);
+					// ------ WINDOW COMMANDS --------------------------------
+					case SDL_QUIT:
+						Shutdown();
+						break;
+					case SDL_WINDOWEVENT: {
+						if (sdl_event.window.event == SDL_WINDOWEVENT_CLOSE)
+						{
+							WindowCloseEvent event;
+							winData.EventCallback(event);
+						}
+						else if (sdl_event.window.event == SDL_WINDOWEVENT_RESIZED) {
+							WindowResizeEvent event(winData.Width, winData.Height);
+							SDL_SetWindowSize(window, winData.Width, winData.Height);
+							winData.EventCallback(event);
+						}
+						break;
 					}
-					break;
-				}
-				default:
-					
-					break;
 				}
 
 			}
