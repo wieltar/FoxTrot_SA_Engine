@@ -19,7 +19,7 @@ void SVI::testLoopVideo(GroundData b, GroundData g)
 	rect.w = g.hx;
 	rect.h = g.hy;
 	rect.x = g.x;
-	rect.y = g.y-g.hx;
+	rect.y = g.y-g.hy;
 
 	SDL_RenderFillRect(rendererSDL2, &rect);
 
