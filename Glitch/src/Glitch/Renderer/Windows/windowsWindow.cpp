@@ -29,6 +29,8 @@ namespace Glitch {
 	void WindowsWindow::OnUpdate()
 	{
 		PollEvents();
+		// render update stuff
+
 	}
 
 	void WindowsWindow::PollEvents()
@@ -45,7 +47,7 @@ namespace Glitch {
 					// ------ KEYBOARD COMMANDS --------------------------------
 					case SDL_KEYDOWN: {
 						int sdl_int = (int) to_underlying(sdl_event.key.keysym.scancode);
-						KeyPressedEvent event(static_cast<KeyCode>(sdl_int), 0);
+						KeyPressedEvent event(static_cast<KeyCode>(sdl_int), sdl_event.key.repeat);
 						winData.EventCallback(event);
 						break;
 					}

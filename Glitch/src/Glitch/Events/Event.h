@@ -13,6 +13,8 @@ namespace Glitch {
 		AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled,
+		
+		Engine30, Engine60
 	};
 
 	enum EventCategory

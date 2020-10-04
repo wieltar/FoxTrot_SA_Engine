@@ -1,5 +1,5 @@
 #pragma once
-#include "Object.h"
+#include "Glitch/Core/Object.h"
 
 #if(EXPORT)
 class DLLEXPORT EventListener

@@ -62,6 +62,8 @@
     <ClInclude Include="src\Glitch\Renderer\Windows\windowsWindow.h">
       <Filter>Glitch\Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Glitch\Events\ObjectEventCodes.h" />
+    <ClInclude Include="src\Glitch\Events\ObjectEvents.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Glitch\Log\Log.cpp">

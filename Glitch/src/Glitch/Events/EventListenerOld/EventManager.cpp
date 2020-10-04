@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "EventManager.h"
 
 void EventManager::subscribe(EventType eventType, EventListener* listener) {

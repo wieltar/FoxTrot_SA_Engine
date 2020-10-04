@@ -154,6 +154,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Glitch\Core\Object.h" />
+    <ClInclude Include="src\Glitch\Events\ObjectEventCodes.h" />
+    <ClInclude Include="src\Glitch\Events\ObjectEvents.h" />
     <ClInclude Include="src\Glitch\Renderer\SceneManager\Scene.h" />
     <ClInclude Include="src\Glitch\Renderer\SceneManager\SceneManager.h" />
     <ClInclude Include="src\Glitch\Sound\SoundEngine.h" />
