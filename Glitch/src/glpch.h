@@ -14,11 +14,10 @@
 
 #include <unordered_set>
 #include <unordered_map>
+#include <type_traits>
 
 #include "Glitch/Log/log.h"
 
-
 #ifdef GL_PLATFORM_WINDOWS
 	#include <Windows.h>
-
 #endif // GL_PLATFORM_WINDOWS

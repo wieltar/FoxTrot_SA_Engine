@@ -1,6 +1,6 @@
 #pragma once
 #include "Glitch/Core/Core.h"
-
+#include "glpch.h"
 using namespace std;
 namespace Glitch {
 	/// @brief 

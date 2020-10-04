@@ -1,5 +1,5 @@
+#include "glpch.h"
 #include "SceneManager.h"
-
 namespace Glitch {
 	/// @brief Constructor
 	SceneManager::SceneManager()

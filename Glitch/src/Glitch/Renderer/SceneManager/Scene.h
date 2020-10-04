@@ -1,8 +1,5 @@
 #pragma once
-#include "glpch.h"
-
 #include "Glitch/Core/Object.h"
-#include "Glitch/Core/Core.h"
 
 using namespace std;
 

@@ -1,5 +1,5 @@
-#include "Object.h"
 #include "glpch.h"
+#include "Object.h"
 namespace Glitch {
 /// @brief 
 	Object::Object()

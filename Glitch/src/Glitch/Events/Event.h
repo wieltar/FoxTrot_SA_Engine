@@ -1,5 +1,5 @@
 #pragma once
-
+#include "glpch.h"
 #include "Glitch/Core/Core.h"
 
 namespace Glitch {

@@ -1,6 +1,5 @@
 #pragma once
-#include "glpch.h"
-#include <Glitch\Events\ApplicationEvent.h>
+#include "Glitch\Events\ApplicationEvent.h"
 
 namespace Glitch {
 	struct WindowProps

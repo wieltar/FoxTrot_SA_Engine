@@ -1,3 +1,4 @@
+#include "glpch.h"
 #include "SceneManager.h"
 namespace Glitch {
 	/// @brief 

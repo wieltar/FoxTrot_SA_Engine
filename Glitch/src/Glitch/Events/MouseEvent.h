@@ -1,5 +1,4 @@
 #pragma once
-#include "glpch.h"
 #include "Glitch/Events/Event.h"
 #include "Glitch/Events/MouseCodes.h"
 
