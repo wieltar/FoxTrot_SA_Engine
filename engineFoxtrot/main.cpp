@@ -31,10 +31,10 @@ int main() {
 	o->setName("house");
 	o->setHeight(80);
 	o->setWidth(80);
-	o->setX(20);
+	o->setX(30);
 	o->setY(0);
 
-	o->setSpeed(10);
+	o->setSpeed(100);
 	o->setJumpHeight(400);
 	o->setDensity(1);
 	o->setFriction(0);
@@ -44,8 +44,8 @@ int main() {
 	phy.registerRectangle(o);
 
 	GroundData g;
-	g.hx = 100; // width
-	g.hy = 100; // height
+	g.hx = 500; // width
+	g.hy = 10; // height
 	g.x = 20; // x 20 left down
 	g.y = 300; // y 300 left down
 	
@@ -57,6 +57,7 @@ int main() {
 	Object* z = phy.getObject(1);
 	for (int32 i = 0; i < 10000; ++i)
 	{
+		phy.MoveRight(1);
 		phy.update();
 		Object* z = phy.getObject(1);
 		GroundData box;
@@ -64,7 +65,7 @@ int main() {
 		box.hy = z->getHeight();
 		box.x = z->getX();
 		box.y = z->getY();
-		box.angle = 0;
+		box.angle = z->getAngle();
 		float x = i;
 
 		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, box.x, box.y);
