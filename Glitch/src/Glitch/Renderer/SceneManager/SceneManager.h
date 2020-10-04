@@ -1,8 +1,6 @@
 #pragma once
 #include "Scene.h"
-#include "glpch.h"
 #include "Glitch/Core/ErrorCodes.h"
-//#include "Glitch/General/HelperFunctions.cpp" helper functions is empty, unnecesary?
 
 using namespace std;
 
