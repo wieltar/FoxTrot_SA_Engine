@@ -77,6 +77,7 @@ b2Body* PhysicsFacade::findBody(int objectId) {
 }
 
 void PhysicsFacade::update() {
+	auto z = this->getObject(1);
 	
 	this->world.Step(timeStep, velocityIterations, positionIterations);
 
@@ -87,10 +88,10 @@ void PhysicsFacade::update() {
 		b2Body* b = it->second;
 
 		Object* ob = this->getObject(it->first);
+		auto k = b->GetWorldCenter();
 
 		ob->setX(b->GetWorldCenter().x - ob->getWidth() / 2);
 		ob->setY(b->GetWorldCenter().y + ob->getHeight() / 2);
-		ob->setAngle(b->GetAngle());
 		ob->getX();
 	}
 
