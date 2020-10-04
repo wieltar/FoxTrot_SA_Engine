@@ -1,12 +1,10 @@
 #pragma once
 #include "Scene.h"
-#include "Glitch/Core/ErrorCodes.h"
 
-using namespace std;
-
-/// @brief 
-/// Contains all scenes. Manages all scenes and objects. All calls from engine containing object movements should be handled in the scene manager. 
 namespace Glitch {
+	using namespace std;
+	/// @brief 
+	/// Contains all scenes. Manages all scenes and objects. All calls from engine containing object movements should be handled in the scene manager. 
 	class GLITCH_API SceneManager
 	{
 	public:
