@@ -1,4 +1,12 @@
+#include "glpch.h"
 #include "windowsWindow.h"
+
+
+template <typename E>
+constexpr auto to_underlying(E e) noexcept
+{
+	return static_cast<std::underlying_type_t<E>>(e);
+}
 
 namespace Glitch {
 	
@@ -13,6 +21,16 @@ namespace Glitch {
 		Shutdown();
 	}
 
+	WindowsWindow::WindowsWindow(const WindowProps& props)
+	{
+		Init(props);
+	}
+
+	void WindowsWindow::OnUpdate()
+	{
+		PollEvents();
+	}
+
 	void WindowsWindow::PollEvents()
 	{
 		SDL_Event sdl_event;
@@ -24,25 +42,27 @@ namespace Glitch {
 
 				switch (sdl_event.type)
 				{
-					// ------ KEYBOARD COMMANDS --------------------------------
+				// ------ KEYBOARD COMMANDS --------------------------------
 				case SDL_KEYDOWN: {
-					KeyPressedEvent event(sdl_event.key.keysym.scancode, 0);
+					int sdl_int = (int) to_underlying(sdl_event.key.keysym.scancode);
+					KeyPressedEvent event(static_cast<KeyCode>(sdl_int), 0);
 					winData.EventCallback(event);
 					break;
 				}
 				case SDL_KEYUP: {
-					KeyReleasedEvent event(sdl_event.key.keysym.scancode);
+					int sdl_int = (int)to_underlying(sdl_event.key.keysym.scancode);
+					KeyReleasedEvent event(static_cast<KeyCode>(sdl_int));
 					winData.EventCallback(event);
 					break;
 				}
-				  // ------ MOUSE COMMANDS ------------------------------------
+				// ------ MOUSE COMMANDS ------------------------------------
 				case SDL_MOUSEBUTTONDOWN: {
-					MouseButtonPressedEvent event(sdl_event.button.type);
+					MouseButtonPressedEvent event(sdl_event.button.button);
 					winData.EventCallback(event);
 					break;
 				}
 				case SDL_MOUSEBUTTONUP: {
-					MouseButtonReleasedEvent event(sdl_event.button.type);
+					MouseButtonReleasedEvent event(sdl_event.button.button);
 					winData.EventCallback(event);
 					break;
 				}
@@ -59,7 +79,7 @@ namespace Glitch {
 					winData.EventCallback(event);
 					break;
 				}
-									// ------ WINDOW COMMANDS --------------------------------
+				// ------ WINDOW COMMANDS --------------------------------
 				case SDL_QUIT:
 					Shutdown();
 					break;
@@ -83,16 +103,6 @@ namespace Glitch {
 
 			}
 		}
-	}
-
-	WindowsWindow::WindowsWindow(const WindowProps& props)
-	{
-		Init(props);
-	}
-
-	void WindowsWindow::OnUpdate()
-	{
-		//PollEvents();
 	}
 
 	void WindowsWindow::SetVsync(bool enabled)
@@ -135,13 +145,6 @@ namespace Glitch {
 		}
 
 		SDL_SetWindowData(window,m_data.Title, &m_data);
-		/*
-		SDL_AddEventWatch(ResizingEventWatcher, window);
-		SDL_AddEventWatch(WindowCloseWatcher, window);
-		SDL_AddEventWatch(KeyEventWatcher, window);
-		SDL_AddEventWatch(MouseButtonEventWatcher, window);
-		SDL_AddEventWatch(CursorPositionWatcher, window);
-		*/
 	}
 
 	void WindowsWindow::Shutdown()

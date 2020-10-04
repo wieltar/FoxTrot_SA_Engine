@@ -1,6 +1,5 @@
 #pragma once
 #include "Glitch\Renderer\window.h"
-#include "glpch.h"
 #include "Glitch/Log/Log.h"
 #include "windowsWindow.h"
 #include "Glitch/Events/ApplicationEvent.h"
