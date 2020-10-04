@@ -27,7 +27,8 @@ Object* PhysicsFacade::getObject(int objectId) {
 
 b2PolygonShape createShape(Object& o) {
 	b2PolygonShape shape;
-	//BOX2D needs coordinates off LEFT TOP position
+	//BOX2D needs coordinates off CENTER CENTER position and you get the LEFT BOTTOM
+	//SDL2 needs coordinates off LEFT TOP position and you get the LEFT BOTTOM
 	float halfH = o.getHeight() / 2;
 	float halfW = o.getWidth() / 2;
 	float posY = o.getPositionY() - o.getHeight() / 2;
