@@ -1,6 +1,5 @@
 #include "glpch.h"
 #include "Log.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
 namespace Glitch {
 
 	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;

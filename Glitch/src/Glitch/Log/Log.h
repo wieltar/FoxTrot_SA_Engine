@@ -1,8 +1,8 @@
 #pragma once
-#include "glpch.h"
 #include "Glitch/Core/Core.h"
 #include "spdlog/spdlog.h"
 #include <spdlog/fmt/ostr.h>
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Glitch {
 	class GLITCH_API Log
