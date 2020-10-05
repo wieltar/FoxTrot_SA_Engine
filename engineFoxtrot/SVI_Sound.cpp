@@ -12,8 +12,8 @@ void SVI::AddFile(const string& identifier, const string& file) {
 
 void SVI::Flush()
 {
-	for (auto it = sfx.begin(); it != sfx.end(); /* don't increment here*/) {
-		it = sfx.erase(it);  // update here
+	for (auto it = loadedSoundEffects.begin(); it != loadedSoundEffects.end(); /* don't increment here*/) {
+		it = loadedSoundEffects.erase(it);  // update here
 	}
 	for (auto it = loopChannels.begin(); it != loopChannels.end(); /* don't increment here*/) {
 		it = loopChannels.erase(it);  // update here
@@ -22,49 +22,49 @@ void SVI::Flush()
 
 void SVI::PlayEffect(const string& identifier) {
 	//Play sound (first parameter is the channel, the last one the amount of loops)
-	if (soundPaths.find(identifier) != soundPaths.end() && sfx.find(identifier) == sfx.end()) {
+	if (soundPaths.find(identifier) != soundPaths.end() && loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		LoadEffect(identifier);
 	}
-	if (sfx.find(identifier) != sfx.end()) {
-		int channel = Mix_PlayChannel(-1, sfx[identifier], 0);
+	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
+		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], DONT_LOOP);
 		Mix_Volume(channel, MIX_MAX_VOLUME);
 	}
 }
 
 void SVI::PlayEffect(const string& identifier, int volume) {
 	//Play sound (first parameter is the channel, the last one the amount of loops)
-	if (soundPaths.find(identifier) != soundPaths.end() && sfx.find(identifier) == sfx.end()) {
+	if (soundPaths.find(identifier) != soundPaths.end() && loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		LoadEffect(identifier);
 	}
-	if (sfx.find(identifier) != sfx.end()) {
-		int channel = Mix_PlayChannel(-1, sfx[identifier], 0);
+	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
+		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], DONT_LOOP);
 		Mix_Volume(channel, volume);
 	}
 }
 
 //Check whether an effect is already loaded, otherwise, load it.
 void SVI::LoadEffect(const string& identifier) {
-	if (sfx.find(identifier) == sfx.end()) {
-		sfx[identifier] = Mix_LoadWAV(soundPaths.at(identifier).c_str());
-		if (!sfx[identifier]) {
+	if (loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
+		loadedSoundEffects[identifier] = Mix_LoadWAV(soundPaths.at(identifier).c_str());
+		if (!loadedSoundEffects[identifier]) {
 			std::cerr << "Mix_LoadWAV Error: " << Mix_GetError() << std::endl;
 		}
 	}
 }
 
 void SVI::UnloadEffect(const string& identifier) {
-	if (sfx.find(identifier) == sfx.end()) {
+	if (loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		return;
 	}
 	StopLoopedEffect(identifier);
-	sfx.erase(identifier);
+	loadedSoundEffects.erase(identifier);
 	loopChannels.erase(identifier);
 }
 
 void SVI::StartLoopedEffect(const string& identifier) {
 	//Play sound forever and save it in the loopChannels map
-	if (sfx.find(identifier) != sfx.end()) {
-		int channel = Mix_PlayChannel(-1, sfx[identifier], -1);
+	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
+		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], LOOP_INDEFINITELY);
 		loopChannels.insert(pair<string, int>(identifier, channel));
 	}
 }
@@ -97,19 +97,19 @@ void SVI::LoadMusic(const string& identifier) {
 
 void SVI::PlayMusic() {
 	Mix_VolumeMusic(MIX_MAX_VOLUME);
-	Mix_PlayMusic(music, -1);
+	Mix_PlayMusic(music, LOOP_INDEFINITELY);
 }
 
 void SVI::PlayMusic(int volume) {
 	Mix_VolumeMusic(volume);
-	Mix_PlayMusic(music, -1);
+	Mix_PlayMusic(music, LOOP_INDEFINITELY);
 }
 
 void SVI::PlayMusic(const string& identifier) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		LoadMusic(identifier);
 		Mix_VolumeMusic(MIX_MAX_VOLUME);
-		Mix_PlayMusic(music, -1);
+		Mix_PlayMusic(music, LOOP_INDEFINITELY);
 	}
 }
 
@@ -117,7 +117,7 @@ void SVI::PlayMusic(const string& identifier, int volume) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		LoadMusic(identifier);
 		Mix_VolumeMusic(volume);
-		Mix_PlayMusic(music, -1);
+		Mix_PlayMusic(music, LOOP_INDEFINITELY);
 	}
 }
 
@@ -133,13 +133,13 @@ void SVI::FadeOutMusic(int fadeTime) {
 
 void SVI::FadeInMusic(int fadeTime) {
 	RewindMusic();
-	Mix_FadeInMusic(music, -1, fadeTime);
+	Mix_FadeInMusic(music, LOOP_INDEFINITELY, fadeTime);
 }
 
 void SVI::FadeInMusic(const string& identifier, int fadeTime) {
 	StopMusic();
 	LoadMusic(identifier);
-	Mix_FadeInMusic(music, -1, fadeTime);
+	Mix_FadeInMusic(music, LOOP_INDEFINITELY, fadeTime);
 }
 
 void SVI::RewindMusic() {

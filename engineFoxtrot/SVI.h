@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ISVI.h"
-
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
@@ -11,9 +10,9 @@
 #include <map>
 #include <memory>
 #include <iostream>
-#include "../SDL2/include/SDL_mixer.h"
-#include "../SDL2/include/SDL.h"
-#include "../SDL2/include/SDL_image.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_image.h>
 #undef main
 
 using namespace std;
@@ -116,7 +115,11 @@ private:
 	Mix_Music* music;
 
 	// Identifier, Mix_Chunk*
-	std::map<std::string, Mix_Chunk*> sfx;
+	std::map<std::string, Mix_Chunk*> loadedSoundEffects;
+
+	int FIRST_AVAILABLE_CHANNEL = -1;
+	int DONT_LOOP = 0;
+	int LOOP_INDEFINITELY = -1;
 
 // Video functions
 public:
