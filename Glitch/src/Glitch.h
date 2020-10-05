@@ -17,6 +17,7 @@
 #include "Glitch/EntryPoint.h"
 // ---------------------------------------------
 
+// TODO Renderer apart zetten van window
 // TODO Physics implementeren
 // TODO Sound overzetten
 // TODO add things to export here
