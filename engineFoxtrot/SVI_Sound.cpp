@@ -33,30 +33,12 @@ void SVI::Flush()
 }
 
 /// @brief 
-/// Plays the effect that belongs to the given identifier at max volume
-/// @param identifier 
-/// The sound identifier saved when the file has been added
-void SVI::PlayEffect(const string& identifier) {
-	///Play sound (first parameter is the channel, the last one the amount of loops)
-	if (soundPaths.find(identifier) != soundPaths.end() && loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
-		LoadEffect(identifier);
-	}
-	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
-		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], DONT_LOOP);
-		Mix_Volume(channel, MIX_MAX_VOLUME);
-	}
-	else {
-		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
-	}
-}
-
-/// @brief 
 /// Plays the effect that belongs to the given identifier at the given volume
 /// @param identifier 
 /// The sound identifier saved when the file has been added
 /// @param volume
-/// The volume to play the effect at. Ranges from 1 to 128
-void SVI::PlayEffect(const string& identifier, int volume) {
+/// The volume to play the effect at. Ranges from 1 to 128. Defaults to 128 if not given
+void SVI::PlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME) {
 	///Play sound (first parameter is the channel, the last one the amount of loops)
 	if (soundPaths.find(identifier) != soundPaths.end() && loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		LoadEffect(identifier);
@@ -153,24 +135,11 @@ void SVI::LoadMusic(const string& identifier) {
 	}
 }
 
-
-/// @brief 
-/// Plays the currently loaded music
-void SVI::PlayMusic() {
-	if (music != NULL) {
-		Mix_VolumeMusic(MIX_MAX_VOLUME);
-		Mix_PlayMusic(music, LOOP_INDEFINITELY);
-	}
-	else {
-		throw ERROR_CODE_SVIFACADE_NO_MUSIC_LOADED;
-	}
-}
-
 /// @brief 
 /// Plays the currently loaded music at the given volume
 /// @param volume 
-/// The volume to play the music at. Ranges from 0 to 128
-void SVI::PlayMusic(int volume) {
+/// The volume to play the music at. Ranges from 0 to 128. Defaults to 128 if not given
+void SVI::PlayMusic(int volume = MIX_MAX_VOLUME) {
 	if (music != NULL) {
 		Mix_VolumeMusic(volume);
 		Mix_PlayMusic(music, LOOP_INDEFINITELY);
@@ -181,27 +150,12 @@ void SVI::PlayMusic(int volume) {
 }
 
 /// @brief 
-/// Loads and plays music that belongs to the given identifier
-/// @param identifier 
-/// The sound identifier saved when the file has been added
-void SVI::PlayMusic(const string& identifier) {
-	if (soundPaths.find(identifier) != soundPaths.end()) {
-		LoadMusic(identifier);
-		Mix_VolumeMusic(MIX_MAX_VOLUME);
-		Mix_PlayMusic(music, LOOP_INDEFINITELY);
-	}
-	else {
-		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
-	}
-}
-
-/// @brief 
 /// Loads and plays music that belongs to the given identifier at the given volume
 /// @param identifier 
 /// The sound identifier saved when the file has been added
 /// @param volume
-/// The volume to play the music at. Ranges from 0 to 128
-void SVI::PlayMusic(const string& identifier, int volume) {
+/// The volume to play the music at. Ranges from 0 to 128. Defaults to 128 if not given
+void SVI::PlayMusic(const string& identifier, int volume = MIX_MAX_VOLUME) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		LoadMusic(identifier);
 		Mix_VolumeMusic(volume);
@@ -288,4 +242,39 @@ void SVI::PauseMusic() {
 /// Resumes the currently playing music
 void SVI::ResumeMusic() {
 	Mix_ResumeMusic();
+}
+
+void SVI::onChangeBackgroundMusic(const string& identifier, int volume = MIX_MAX_VOLUME) {
+	if (IdentifierExists(identifier)) {
+		if (Mix_PlayingMusic()) {
+			ChangeMusic(identifier);
+		}
+		else {
+			LoadMusic(identifier);
+			PlayMusic();
+		}
+	}
+}
+
+void SVI::onPlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME) {
+	if (IdentifierExists(identifier)) {
+		if (IdentifierIsLoaded(identifier)) {
+			PlayEffect(identifier);
+		}
+		else {
+			LoadEffect(identifier);
+			PlayEffect(identifier);
+		}
+	}
+}
+
+bool SVI::IdentifierExists(const string& identifier) {
+	if (soundPaths.find(identifier) != soundPaths.end()) {
+		return true;
+	}
+	throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
+}
+
+bool SVI::IdentifierIsLoaded(const string& identifier) {
+	return (loadedSoundEffects.find(identifier) != loadedSoundEffects.end());
 }

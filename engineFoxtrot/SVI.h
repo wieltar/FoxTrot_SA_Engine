@@ -56,16 +56,13 @@ private:
 public:
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
-	void PlayEffect(const string& effect);
 	void PlayEffect(const string& identifier, int volume);
 	void LoadEffect(const string& identifier);
 	void UnloadEffect(const string& identifier);
 	void StartLoopedEffect(const string& effect);
 	void StopLoopedEffect(const string& identifier);
 	void LoadMusic(const string& identifier);
-	void PlayMusic();
 	void PlayMusic(int volume);
-	void PlayMusic(const string& identifier);
 	void PlayMusic(const string& identifier, int volume);
 	void ChangeMusic(const string& identifier);
 	void FadeOutMusic(int fadeTime);
@@ -76,6 +73,11 @@ public:
 	void PauseMusic();
 	void ResumeMusic();
 	void Flush();
+	bool IdentifierExists(const string& identifier);
+	bool IdentifierIsLoaded(const string& identifier);
+
+	void onChangeBackgroundMusic(const string& identifier, int volume);
+	void onPlayEffect(const string& identifier, int volume);
 private:
 	map<string, string> soundPaths;
 	map<string, int> loopChannels;
