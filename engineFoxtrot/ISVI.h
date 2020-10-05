@@ -16,7 +16,7 @@ public:
 	virtual void play() = 0;
 
 	// Video Functions
-	virtual void testLoopVideo(Object& g, Object& b) = 0;
+	virtual void testLoopVideo(Object& ground, Object& box) = 0;
 
 	virtual void initSDL() = 0;
 

@@ -13,7 +13,7 @@ public:
 
 	std::map<int, b2Body*> bodies = std::map<int, b2Body*>();
 
-	void addGround(Object& g) override;
+	void addGround(Object& ground) override;
 	void registerRectangle(Object& object) override;
 	
 	Object* getObject(int objectId) override;
@@ -28,6 +28,8 @@ public:
 
 private:
 	const int INCREASE_JUMP_SPEED = 10;
+	const int NO_MOVE_Y_LEVEL = 0;
+	const int NO_MOVE_X_LEVEL = 0;
 	b2World world = b2World(b2Vec2(0.0f, 80.0f));
 	float timeStep = 1.0f / 60.0f;
 

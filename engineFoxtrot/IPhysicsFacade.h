@@ -20,7 +20,7 @@ public:
 	//TODO load from engine objects
 	std::vector<Object*> temp = std::vector<Object*>();
 
-	virtual void addGround(Object& g) = 0;
+	virtual void addGround(Object& ground) = 0;
 	virtual void registerRectangle(Object& object) = 0;
 
 	virtual Object* getObject(int objectId) = 0;

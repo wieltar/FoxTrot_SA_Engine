@@ -21,57 +21,57 @@ public:
 	Object(int id) : id(id) { }
 	Object(int id, int xPos, int yPos, int height, int width);
 	~Object();
-	int getId();
+	int getId() const;
 
 	void setName(string);
-	string getName();
+	string getName() const;
 
 	void setSpriteID(int);
-	int getSpriteID();
+	int getSpriteID() const;
 
 	void setPositionX(int);
-	float getPositionX();
+	float getPositionX() const;
 
 	void setPositionY(int);
-	float getPositionY();
+	float getPositionY() const;
 
 	void setRotation(int);
-	float getRotation();
+	float getRotation() const;
 
 	void setScale(int);
-	float getScale();
+	float getScale() const;
 
 	void setDirection(int);
-	int getDirection();
+	int getDirection() const;
 
 	void setHeight(int);
-	float getHeight();
+	float getHeight() const;
 
 	void setWidth(int);
-	float getWidth();
+	float getWidth() const;
 
 	void setStatic(bool);
-	bool getStatic();
+	bool getStatic() const;
 
-	float getRestitution() const;
 	void setRestitution(float val);
+	float getRestitution() const;
 
-	float getFriction() const;
 	void setFriction(float val);
+	float getFriction() const;
 
+	void setDensity(float val);
 	float getDensity() const;
-	void setDensity(float val); 
 
-	float getSpeed() const;
 	void setSpeed(float val);
+	float getSpeed() const;
 
-	float getJumpHeight() const;
 	void setJumpHeight(float val);
+	float getJumpHeight() const;
 
-	float getAngle() const;
 	void setAngle(float val);
+	float getAngle() const;
 
-	bool getChanged();
+	bool getChanged() const;
 private:
 
 	std::string name;
