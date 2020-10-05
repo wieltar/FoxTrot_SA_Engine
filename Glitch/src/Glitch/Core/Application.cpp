@@ -21,8 +21,19 @@ namespace Glitch {
 			m_window->OnUpdate();
 		}
 	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e) {
+		isRunning = false;
+		// TODO shutdown all other systems
+		return true;
+
+	}
+
 	void Application::OnEvent(Event& e)
 	{
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
+
 		GL_INFO(e.ToString());
 	}
 }

@@ -1,13 +1,12 @@
 #pragma once
-// -------------------
-// -- SDL SCANCODES --
-// -------------------
-// SOURCED FROM SDL KEYCODES FILE
+// ----------------------------
+// -- USB STANDARD SCANCODES --
+// ----------------------------
 // https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf 
 // PAG. 53
+// SOURCED FROM SDL KEYCODES FILE
 namespace Glitch
 {
-
 	enum KeyCode
 	{
 		KEY_UNKNOWN = 0,
