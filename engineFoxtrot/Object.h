@@ -18,7 +18,7 @@ class Object
 {
 public:
 	Object(); 
-	Object(int id) : id(id) { }
+	Object(int id);
 	Object(int id, int xPos, int yPos, int height, int width);
 	~Object();
 	int getId() const;
@@ -29,25 +29,25 @@ public:
 	void setSpriteID(int);
 	int getSpriteID() const;
 
-	void setPositionX(int);
+	void setPositionX(float);
 	float getPositionX() const;
 
-	void setPositionY(int);
+	void setPositionY(float);
 	float getPositionY() const;
 
-	void setRotation(int);
+	void setRotation(float);
 	float getRotation() const;
 
-	void setScale(int);
+	void setScale(float);
 	float getScale() const;
 
-	void setDirection(int);
-	int getDirection() const;
+	void setDirection(float);
+	float getDirection() const;
 
-	void setHeight(int);
+	void setHeight(float);
 	float getHeight() const;
 
-	void setWidth(int);
+	void setWidth(float);
 	float getWidth() const;
 
 	void setStatic(bool);
@@ -76,7 +76,6 @@ private:
 
 	std::string name;
 
-	int id = 0;
 	int spriteID = 0;
 	float positionX = 0;
 	float positionY = 0;
