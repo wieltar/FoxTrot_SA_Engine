@@ -26,7 +26,7 @@ void SVI::PlayEffect(const string& identifier) {
 		LoadEffect(identifier);
 	}
 	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
-		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], DONT_LOOP);
+		int channel = Mix_PlayChannel(First_Available_Channel, loadedSoundEffects[identifier], Dont_Loop);
 		Mix_Volume(channel, MIX_MAX_VOLUME);
 	}
 }
@@ -37,7 +37,7 @@ void SVI::PlayEffect(const string& identifier, int volume) {
 		LoadEffect(identifier);
 	}
 	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
-		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], DONT_LOOP);
+		int channel = Mix_PlayChannel(First_Available_Channel, loadedSoundEffects[identifier], Dont_Loop);
 		Mix_Volume(channel, volume);
 	}
 }
@@ -64,7 +64,7 @@ void SVI::UnloadEffect(const string& identifier) {
 void SVI::StartLoopedEffect(const string& identifier) {
 	//Play sound forever and save it in the loopChannels map
 	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
-		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], LOOP_INDEFINITELY);
+		int channel = Mix_PlayChannel(First_Available_Channel, loadedSoundEffects[identifier], Loop_Indefinitely);
 		loopChannels.insert(pair<string, int>(identifier, channel));
 	}
 }
@@ -97,19 +97,19 @@ void SVI::LoadMusic(const string& identifier) {
 
 void SVI::PlayMusic() {
 	Mix_VolumeMusic(MIX_MAX_VOLUME);
-	Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	Mix_PlayMusic(music, Loop_Indefinitely);
 }
 
 void SVI::PlayMusic(int volume) {
 	Mix_VolumeMusic(volume);
-	Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	Mix_PlayMusic(music, Loop_Indefinitely);
 }
 
 void SVI::PlayMusic(const string& identifier) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		LoadMusic(identifier);
 		Mix_VolumeMusic(MIX_MAX_VOLUME);
-		Mix_PlayMusic(music, LOOP_INDEFINITELY);
+		Mix_PlayMusic(music, Loop_Indefinitely);
 	}
 }
 
@@ -117,7 +117,7 @@ void SVI::PlayMusic(const string& identifier, int volume) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		LoadMusic(identifier);
 		Mix_VolumeMusic(volume);
-		Mix_PlayMusic(music, LOOP_INDEFINITELY);
+		Mix_PlayMusic(music, Loop_Indefinitely);
 	}
 }
 
@@ -133,13 +133,13 @@ void SVI::FadeOutMusic(int fadeTime) {
 
 void SVI::FadeInMusic(int fadeTime) {
 	RewindMusic();
-	Mix_FadeInMusic(music, LOOP_INDEFINITELY, fadeTime);
+	Mix_FadeInMusic(music, Loop_Indefinitely, fadeTime);
 }
 
 void SVI::FadeInMusic(const string& identifier, int fadeTime) {
 	StopMusic();
 	LoadMusic(identifier);
-	Mix_FadeInMusic(music, LOOP_INDEFINITELY, fadeTime);
+	Mix_FadeInMusic(music, Loop_Indefinitely, fadeTime);
 }
 
 void SVI::RewindMusic() {

@@ -21,6 +21,10 @@ using namespace std;
 #define Example_Sound	"../Assets/Sound/b423b42.wav"
 #define Example_Sprite  "../Assets/Sprites/simple.png"
 
+#define First_Available_Channel -1
+#define Dont_Loop 0
+#define Loop_Indefinitely -1
+
 #if(EXPORT)
 class DLLEXPORT SVI : public ISVI
 #else
@@ -123,10 +127,6 @@ private:
 
 	// Identifier, Mix_Chunk*
 	std::map<std::string, Mix_Chunk*> loadedSoundEffects;
-
-	int FIRST_AVAILABLE_CHANNEL = -1;
-	int DONT_LOOP = 0;
-	int LOOP_INDEFINITELY = -1;
 
 // Video functions
 public:
