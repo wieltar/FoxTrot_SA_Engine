@@ -8,20 +8,6 @@ SVIEngine::~SVIEngine()
 {
 }
 
-/// @brief Loads audio files
-/// @param filename 
-void SVIEngine::load(const char* filename)
-{
-	sviEngine->load(filename);
-}
-
-/// @brief 
-/// Plays sounds
-void SVIEngine::play()
-{
-	sviEngine->play();
-}
-
 /// @brief TO BE REMOVED
 /// @param x 
 /// @param y 
