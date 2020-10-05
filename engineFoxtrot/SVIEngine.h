@@ -70,8 +70,8 @@ public:
 	void PauseMusic();
 	void ResumeMusic();
 	void Flush();
-	void onPlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME);
-	void onChangeBackgroundMusic(const string& identifier, int volume = MIX_MAX_VOLUME);
+	void onPlayEffect(const string& identifier, int volume);
+	void onChangeBackgroundMusic(const string& identifier, int volume);
 
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);

@@ -49,8 +49,8 @@ public:
 	virtual void ResumeMusic() = 0;
 	virtual void Flush() = 0;
 
-	virtual bool IdentifierExists(const string& identifier) = 0;
-	virtual bool IdentifierIsLoaded(const string& identifier) = 0;
+	virtual bool IdentifierExists(const std::string& identifier) = 0;
+	virtual bool IdentifierIsLoaded(const std::string& identifier) = 0;
 
 private:
 
