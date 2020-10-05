@@ -146,13 +146,9 @@ void SVIEngine::AddFile(const string& identifier, const string& file)
 {
 	sviEngine->AddFile(identifier, file);
 }
-void SVIEngine::PlayEffect(const string& effect)
+void SVIEngine::PlayEffect(const string& effect, int volume = MAX_VOLUME)
 {
-	sviEngine->PlayEffect(effect);
-}
-void SVIEngine::PlayEffect(const string& identifier, int volume)
-{
-	sviEngine->PlayEffect(identifier, volume);
+	sviEngine->PlayEffect(effect, volume);
 }
 void SVIEngine::LoadEffect(const string& identifier)
 {
@@ -174,21 +170,13 @@ void SVIEngine::LoadMusic(const string& identifier)
 {
 	sviEngine->LoadMusic(identifier);
 }
-void SVIEngine::PlayMusic()
-{
-	sviEngine->PlayMusic();
-}
-void SVIEngine::PlayMusic(int volume)
+void SVIEngine::PlayMusic(int volume = MAX_VOLUME)
 {
 	sviEngine->PlayMusic(volume);
 }
-void SVIEngine::PlayMusic(const string& identifier)
+void SVIEngine::PlayMusic(const string& identifier, int volume = MAX_VOLUME)
 {
-	sviEngine->PlayMusic();
-}
-void SVIEngine::PlayMusic(const string& identifier, int volume)
-{
-	sviEngine->PlayMusic();
+	sviEngine->PlayMusic(identifier, volume);
 }
 void SVIEngine::ChangeMusic(const string& identifier)
 {

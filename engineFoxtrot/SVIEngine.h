@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define MAX_VOLUME 128
+
 #if(EXPORT)
 struct DLLEXPORT Sprite
 #else
@@ -51,16 +53,13 @@ public:
 	// Sound functions
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
-	void PlayEffect(const string& effect);
 	void PlayEffect(const string& identifier, int volume);
 	void LoadEffect(const string& identifier);
 	void UnloadEffect(const string& identifier);
 	void StartLoopedEffect(const string& effect);
 	void StopLoopedEffect(const string& identifier);
 	void LoadMusic(const string& identifier);
-	void PlayMusic();
 	void PlayMusic(int volume);
-	void PlayMusic(const string& identifier);
 	void PlayMusic(const string& identifier, int volume);
 	void ChangeMusic(const string& identifier);
 	void FadeOutMusic(int fadeTime);
