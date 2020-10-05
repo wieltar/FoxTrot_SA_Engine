@@ -17,13 +17,13 @@
 #include "Glitch/EntryPoint.h"
 // ---------------------------------------------
 
-// TODO Renderer apart zetten van window
-// TODO input afhandeling uit window halen
 // TODO Physics implementeren
 // TODO Sound overzetten
 // TODO add things to export here
 // TODO Alles nalopen
 // TODO netcode onderzoeken van tlc
+// TODO Renderer apart zetten van window
+// TODO input afhandeling uit window halen
 
 // TODO vsync 30/60 trekt de engine verder naar beneden als hij slecht preformed omdat dit geen rekening houdt met de executietijden binnen de engine (delta time)
 // https://gamedev.net/forums/topic/685960-the-39perfect39-game-loop-fix-your-time-step-by-step/5330446/
