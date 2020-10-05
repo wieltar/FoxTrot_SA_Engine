@@ -25,6 +25,13 @@ using namespace std;
 #define Dont_Loop 0
 #define Loop_Indefinitely -1
 
+#define Audio_Frequency 44100
+#define Audio_Channel_Amount 2
+#define Audio_Chunk_Size 2048
+
+#define Window_Width 600
+#define Window_Height 400
+
 #if(EXPORT)
 class DLLEXPORT SVI : public ISVI
 #else
