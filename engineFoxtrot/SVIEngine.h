@@ -70,6 +70,12 @@ public:
 	void PauseMusic();
 	void ResumeMusic();
 	void Flush();
+	void onPlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME);
+	void onChangeBackgroundMusic(const string& identifier, int volume = MIX_MAX_VOLUME);
+
+	bool IdentifierExists(const string& identifier);
+	bool IdentifierIsLoaded(const string& identifier);
+
 	vector <Object*> *pointerToObjectVector = nullptr;
 
 

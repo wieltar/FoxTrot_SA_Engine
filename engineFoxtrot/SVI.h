@@ -75,9 +75,6 @@ public:
 	void Flush();
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
-
-	void onChangeBackgroundMusic(const string& identifier, int volume);
-	void onPlayEffect(const string& identifier, int volume);
 private:
 	map<string, string> soundPaths;
 	map<string, int> loopChannels;

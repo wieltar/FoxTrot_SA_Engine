@@ -244,30 +244,6 @@ void SVI::ResumeMusic() {
 	Mix_ResumeMusic();
 }
 
-void SVI::onChangeBackgroundMusic(const string& identifier, int volume = MIX_MAX_VOLUME) {
-	if (IdentifierExists(identifier)) {
-		if (Mix_PlayingMusic()) {
-			ChangeMusic(identifier);
-		}
-		else {
-			LoadMusic(identifier);
-			PlayMusic();
-		}
-	}
-}
-
-void SVI::onPlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME) {
-	if (IdentifierExists(identifier)) {
-		if (IdentifierIsLoaded(identifier)) {
-			PlayEffect(identifier);
-		}
-		else {
-			LoadEffect(identifier);
-			PlayEffect(identifier);
-		}
-	}
-}
-
 bool SVI::IdentifierExists(const string& identifier) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		return true;

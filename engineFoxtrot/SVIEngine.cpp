@@ -214,3 +214,37 @@ void SVIEngine::Flush()
 {
 	sviEngine->Flush();
 }
+
+void SVIEngine::onChangeBackgroundMusic(const string& identifier, int volume = MIX_MAX_VOLUME) {
+	if (IdentifierExists(identifier)) {
+		if (Mix_PlayingMusic()) {
+			ChangeMusic(identifier);
+		}
+		else {
+			LoadMusic(identifier);
+			PlayMusic(volume);
+		}
+	}
+}
+
+void SVIEngine::onPlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME) {
+	if (IdentifierExists(identifier)) {
+		if (IdentifierIsLoaded(identifier)) {
+			PlayEffect(identifier, volume);
+		}
+		else {
+			LoadEffect(identifier);
+			PlayEffect(identifier, volume);
+		}
+	}
+}
+
+bool SVIEngine::IdentifierExists(const string& identifier)
+{
+	return sviEngine->IdentifierExists(identifier);
+}
+
+bool SVIEngine::IdentifierIsLoaded(const string& identifier)
+{
+	return sviEngine->IdentifierIsLoaded(identifier);
+}
