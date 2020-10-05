@@ -13,6 +13,8 @@ PhysicsFacade::~PhysicsFacade()
 	// https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html#autotoc_md113
 }
 
+/// @brief 
+/// @param objectId 
 Object* PhysicsFacade::getObject(int objectId) {
 	for (const auto& value : temp) {
 		if (value->getId() == objectId) {
@@ -22,6 +24,8 @@ Object* PhysicsFacade::getObject(int objectId) {
 	return NULL;
 }
 
+/// @brief 
+/// @param objectId 
 b2PolygonShape createShape(Object& object) {
 	b2PolygonShape shape;
 	//BOX2D needs coordinates off CENTER CENTER position and you get the LEFT BOTTOM
@@ -34,6 +38,8 @@ b2PolygonShape createShape(Object& object) {
 	return shape;
 }
 
+/// @brief 
+/// @param Object 
 void PhysicsFacade::addGround(Object& ground) {
 	b2BodyDef groundBodyDef;
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
@@ -41,6 +47,8 @@ void PhysicsFacade::addGround(Object& ground) {
 	groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
+/// @brief 
+/// @param Object 
 void PhysicsFacade::registerRectangle(Object& object) {
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -60,12 +68,15 @@ void PhysicsFacade::registerRectangle(Object& object) {
 	this->bodies.insert(std::pair<int, b2Body*>(object.getId(), body));
 }
 
+/// @brief 
+/// @param objectId 
 b2Body* PhysicsFacade::findBody(int objectId) {
 	if (bodies.count(objectId) > 0) {
 		return bodies.at(objectId);
 	}
 }
 
+/// @brief 
 void PhysicsFacade::update() {
 	this->world.Step(timeStep, velocityIterations, positionIterations);
 
@@ -80,6 +91,8 @@ void PhysicsFacade::update() {
 	}
 }
 
+/// @brief 
+/// @param objectId 
 void PhysicsFacade::MoveLeft(int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -87,6 +100,8 @@ void PhysicsFacade::MoveLeft(int objectId)
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, NO_MOVE_Y_LEVEL), body->GetWorldCenter(), true);
 };
 
+/// @brief 
+/// @param objectId 
 void PhysicsFacade::MoveRight(int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -94,6 +109,8 @@ void PhysicsFacade::MoveRight(int objectId)
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), NO_MOVE_Y_LEVEL), body->GetWorldCenter(), true);
 };
 
+/// @brief 
+/// @param objectId 
 void PhysicsFacade::Jump(int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -101,6 +118,8 @@ void PhysicsFacade::Jump(int objectId)
 	body->ApplyLinearImpulse(b2Vec2(NO_MOVE_X_LEVEL, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
 
+/// @brief 
+/// @param objectId 
 void PhysicsFacade::JumpLeft(int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -108,6 +127,8 @@ void PhysicsFacade::JumpLeft(int objectId)
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED * -1, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
 
+/// @brief 
+/// @param objectId 
 void PhysicsFacade::JumpRight(int objectId)
 {
 	b2Body* body = findBody(objectId);
