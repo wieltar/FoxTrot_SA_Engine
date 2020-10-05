@@ -50,7 +50,6 @@ public:
 	virtual void StopMusic() = 0;
 	virtual void PauseMusic() = 0;
 	virtual void ResumeMusic() = 0;
-	virtual void IsPlayingMusic() = 0;
 	virtual void Flush() = 0;
 
 private:

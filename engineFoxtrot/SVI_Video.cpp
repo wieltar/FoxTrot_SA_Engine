@@ -13,7 +13,7 @@ void SVI::testLoopVideo(int x, int y)
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
 	SDL_RenderClear(renderer);
-	SDL_Surface* surface = IMG_Load(Example_Sprite);
+	SDL_Surface* surface = IMG_Load(EXAMPLE_SPRITE);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 	
 	SDL_Rect destination;
@@ -35,7 +35,7 @@ void SVI::testLoopVideo(int x, int y)
 void SVI::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Window_Width, Window_Height, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
 

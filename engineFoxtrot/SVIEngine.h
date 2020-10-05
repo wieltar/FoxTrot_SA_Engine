@@ -70,7 +70,6 @@ public:
 	void StopMusic();
 	void PauseMusic();
 	void ResumeMusic();
-	void IsPlayingMusic();
 	void Flush();
 	vector <Object*> *pointerToObjectVector = nullptr;
 

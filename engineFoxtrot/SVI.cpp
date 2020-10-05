@@ -7,7 +7,7 @@ SVI::SVI()
 
 	SDL_Init(SDL_INIT_EVERYTHING);
     //Initialize SDL_mixer
-    if (Mix_OpenAudio(Audio_Frequency, MIX_DEFAULT_FORMAT, Audio_Channel_Amount, Audio_Chunk_Size) < 0)
+    if (Mix_OpenAudio(AUDIO_FREQUENCY, MIX_DEFAULT_FORMAT, AUDIO_CHANNEL_AMOUNT, AUDIO_CHUNK_SIZE) < 0)
     {
         printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
     }

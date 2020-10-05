@@ -222,10 +222,6 @@ void SVIEngine::ResumeMusic()
 {
 	sviEngine->ResumeMusic();
 }
-void SVIEngine::IsPlayingMusic()
-{
-	sviEngine->IsPlayingMusic();
-}
 void SVIEngine::Flush()
 {
 	sviEngine->Flush();
