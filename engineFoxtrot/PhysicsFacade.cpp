@@ -15,79 +15,97 @@ PhysicsFacade::~PhysicsFacade()
 
 /// @brief 
 /// @param objectId 
-Object* PhysicsFacade::getObject(int objectId) {
-	for (const auto& value : temp) {
-		if (value->getId() == objectId) {
-			return value;
+PhysicsBody* PhysicsFacade::getPhysicsObject(int objectId)
+{
+	for (PhysicsBody * phyBody : physicsBodyVector)
+	{
+		if (phyBody->objectID == objectId)
+		{
+			return phyBody;
 		}
 	}
 	return NULL;
+	// throw error?
 }
 
 /// @brief 
 /// @param objectId 
-b2PolygonShape createShape(Object& object) {
+b2PolygonShape createShape(PhysicsBody& object) {
 	b2PolygonShape shape;
 	//BOX2D needs coordinates off CENTER CENTER position and you get the LEFT BOTTOM
 	//SDL2 needs coordinates off LEFT TOP position and you get the LEFT BOTTOM
-	float halfH = object.getHeight() / 2;
-	float halfW = object.getWidth() / 2;
-	float posY = object.getPositionY() - object.getHeight() / 2;
-	float posX = object.getPositionX() + object.getWidth() / 2;
-	shape.SetAsBox(halfW, halfH, b2Vec2(posX, posY), object.getAngle());
+	float halfH = object.height / 2;
+	float halfW = object.width / 2;
+	float posY = object.posY - object.height / 2;
+	float posX = object.posX + object.width / 2;
+	shape.SetAsBox(halfW, halfH, b2Vec2(posX, posY), object.angle);
 	return shape;
 }
 
 /// @brief 
 /// @param Object 
-void PhysicsFacade::addGround(Object& ground) {
+void PhysicsFacade::addGround(PhysicsBody* ground) {
 	b2BodyDef groundBodyDef;
 	b2Body* groundBody = world.CreateBody(&groundBodyDef);
-	b2PolygonShape groundBox = createShape(ground);
+	b2PolygonShape groundBox = createShape(*ground);
 	groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
 /// @brief 
 /// @param Object 
-void PhysicsFacade::registerRectangle(Object& object) {
+void PhysicsFacade::registerRectangle(PhysicsBody* object) 
+{
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	b2Body* body = world.CreateBody(&bodyDef);
 
-	b2PolygonShape bodyBox = createShape(object);
+	b2PolygonShape bodyBox = createShape(*object);
 
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &bodyBox;
-	fixtureDef.density = object.getDensity();
-	fixtureDef.friction = object.getFriction();
-	fixtureDef.restitution = object.getRestitution();
+	fixtureDef.density = object->density;
+	fixtureDef.friction = object->friction;
+	fixtureDef.restitution = object->restitution;
 
 	body->CreateFixture(&fixtureDef);
 	auto x = body->GetPosition();
 
-	this->bodies.insert(std::pair<int, b2Body*>(object.getId(), body));
+	bodyDef.position.Set(object->posX, object->posY);
+
+	object->body = body;
+	cout << "Pushing back obj: spriteid: " << object->objectID << endl;
+	physicsBodyVector.push_back(object);
 }
 
 /// @brief 
 /// @param objectId 
-b2Body* PhysicsFacade::findBody(int objectId) {
-	if (bodies.count(objectId) > 0) {
-		return bodies.at(objectId);
+b2Body* PhysicsFacade::findBody(int objectId) 
+{
+	for (PhysicsBody* phyBody : physicsBodyVector)
+	{
+		if (phyBody->objectID == objectId)
+		{
+			return phyBody->body;
+		}
 	}
+	return NULL;
+	// throw error?
 }
 
 /// @brief 
 void PhysicsFacade::update() {
 	this->world.Step(timeStep, velocityIterations, positionIterations);
 
-	for (auto const& it : bodies)
+	for (PhysicsBody * ob : physicsBodyVector)
 	{
-		b2Body* body = it.second;
-		Object* ob = this->getObject(it.first);
-
-		ob->setPositionX(body->GetWorldCenter().x - ob->getWidth() / 2);
-		ob->setPositionY(body->GetWorldCenter().y + ob->getHeight() / 2);
-		ob->setAngle(body->GetAngle());
+		b2Body* body = ob->body;
+		b2Vec2 position = body->GetPosition();
+		float angle = body->GetAngle();
+		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+		ob->posX = body->GetWorldCenter().x - ob->width / 2;
+		ob->posY = body->GetWorldCenter().y + ob->height / 2;
+		ob->angle = body->GetAngle();
+		MoveRight(ob->objectID);
 	}
 }
 
@@ -96,8 +114,8 @@ void PhysicsFacade::update() {
 void PhysicsFacade::MoveLeft(int objectId)
 {
 	b2Body* body = findBody(objectId);
-	Object* ob = getObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, NO_MOVE_Y_LEVEL), body->GetWorldCenter(), true);
+	PhysicsBody* ob = getPhysicsObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->speed * -1, NO_MOVE_Y_LEVEL), body->GetWorldCenter(), true);
 };
 
 /// @brief 
@@ -105,8 +123,8 @@ void PhysicsFacade::MoveLeft(int objectId)
 void PhysicsFacade::MoveRight(int objectId)
 {
 	b2Body* body = findBody(objectId);
-	Object* ob = getObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), NO_MOVE_Y_LEVEL), body->GetWorldCenter(), true);
+	PhysicsBody* ob = getPhysicsObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->speed, NO_MOVE_Y_LEVEL), body->GetWorldCenter(), true);
 };
 
 /// @brief 
@@ -114,8 +132,8 @@ void PhysicsFacade::MoveRight(int objectId)
 void PhysicsFacade::Jump(int objectId)
 {
 	b2Body* body = findBody(objectId);
-	Object* ob = getObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(NO_MOVE_X_LEVEL, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
+	PhysicsBody* ob = getPhysicsObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(NO_MOVE_X_LEVEL, ob->jumpHeight * -1), body->GetWorldCenter(), true);
 };
 
 /// @brief 
@@ -123,8 +141,8 @@ void PhysicsFacade::Jump(int objectId)
 void PhysicsFacade::JumpLeft(int objectId)
 {
 	b2Body* body = findBody(objectId);
-	Object* ob = getObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED * -1, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
+	PhysicsBody* ob = getPhysicsObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->speed * INCREASE_JUMP_SPEED * -1, ob->jumpHeight * -1), body->GetWorldCenter(), true);
 };
 
 /// @brief 
@@ -132,6 +150,6 @@ void PhysicsFacade::JumpLeft(int objectId)
 void PhysicsFacade::JumpRight(int objectId)
 {
 	b2Body* body = findBody(objectId);
-	Object* ob = getObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
+	PhysicsBody* ob = getPhysicsObject(objectId);
+	body->ApplyLinearImpulse(b2Vec2(ob->speed * INCREASE_JUMP_SPEED, ob->jumpHeight * -1), body->GetWorldCenter(), true);
 };

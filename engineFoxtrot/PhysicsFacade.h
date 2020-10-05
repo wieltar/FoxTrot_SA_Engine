@@ -1,10 +1,20 @@
 #pragma once
 #include "IPhysicsFacade.h"
 
-#define INCREASE_JUMP_SPEED = 10;
-#define NO_MOVE_Y_LEVEL = 0;
-#define NO_MOVE_X_LEVEL = 0;
+#include "Debug.h"
+#include "ErrorCodes.h"
+#include "GeneralHelperFunctions.cpp"
+#include <unordered_map>
+#include "PhysicsBody.h"
+#include "string"
+#include <iostream>
 
+
+using namespace std;
+
+#define INCREASE_JUMP_SPEED		10
+#define NO_MOVE_Y_LEVEL			0
+#define NO_MOVE_X_LEVEL			0
 
 /// @brief 
 /// PhysicsFacade class. Class for update physics off objects
@@ -18,12 +28,11 @@ public:
 	PhysicsFacade();
 	~PhysicsFacade();
 
-	std::map<int, b2Body*> bodies = std::map<int, b2Body*>();
+	void addGround(PhysicsBody* ground) override;
+	void registerRectangle(PhysicsBody* object) override;
 
-	void addGround(Object& ground) override;
-	void registerRectangle(Object& object) override;
 	
-	Object* getObject(int objectId) override;
+	PhysicsBody* getPhysicsObject(int objectId) override;
 
 	void MoveLeft(int objectId) override;
 	void MoveRight(int objectId) override;
@@ -34,9 +43,9 @@ public:
 	void update() override;
 
 private:
-	const int INCREASE_JUMP_SPEED = 10;
-	const int NO_MOVE_Y_LEVEL = 0;
-	const int NO_MOVE_X_LEVEL = 0;
+
+	vector <PhysicsBody*> physicsBodyVector;
+
 	b2World world = b2World(b2Vec2(0.0f, 80.0f));
 	float timeStep = 1.0f / 60.0f;
 

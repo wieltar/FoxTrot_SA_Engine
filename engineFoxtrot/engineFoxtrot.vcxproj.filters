@@ -194,5 +194,8 @@
     <ClInclude Include="GeneralDefines.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicsBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

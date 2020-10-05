@@ -56,7 +56,9 @@ public:
 
 	void setCurrentScene(int sceneID);
 	void createNewSceneWithSceneID(int sceneID);
-	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width);
+
+	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat);
+	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat, int speed, int jumpHeight, int density, int friction, int restitution);
 	void linkSpriteIDWithAssetPath(int spriteID, const char* assetPath);
 
 	void addEventListener(EventListener* listener, EventType eventType);
@@ -72,12 +74,12 @@ public:
 
 
 	//TODO make private
-	SVIEngine svi;
-	IPhysicsFacade* phy = new PhysicsFacade;
+
+	PhysicsEngine physicsEngine;
 private:
 
+	SVIEngine sviEngine;
 	FileParser fileParser;
-	PhysicsEngine physicsEngine;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 

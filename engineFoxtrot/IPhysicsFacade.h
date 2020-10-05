@@ -1,12 +1,6 @@
 #pragma once
 
-#include "Debug.h"
-#include "ErrorCodes.h"
-#include "GeneralHelperFunctions.cpp"
-#include <vector>
-#include <map>
-#include "box2d/box2d.h"
-#include "Object.h"
+#include "PhysicsBody.h"
 
 #if(EXPORT)
 class DLLEXPORT IPhysicsFacade
@@ -17,13 +11,11 @@ class IPhysicsFacade
 public:
 	IPhysicsFacade() {};
 	virtual ~IPhysicsFacade() {};
-	//TODO load from engine objects
-	std::vector<Object*> temp = std::vector<Object*>();
 
-	virtual void addGround(Object& ground) = 0;
-	virtual void registerRectangle(Object& object) = 0;
+	virtual void addGround(PhysicsBody* ground) = 0;
+	virtual void registerRectangle(PhysicsBody* object) = 0;
 
-	virtual Object* getObject(int objectId) = 0;
+	virtual PhysicsBody* getPhysicsObject(int objectId) = 0;
 
 	virtual void MoveLeft(int objectId) = 0;
 	virtual void MoveRight(int objectId) = 0;

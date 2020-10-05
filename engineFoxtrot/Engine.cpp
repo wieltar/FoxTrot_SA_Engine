@@ -3,9 +3,11 @@
 /// @brief 
 Engine::Engine()
 {
-	svi.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
+	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
+	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	eventManager.subscribe(EventType::ENGINE60, &svi);
+	eventManager.subscribe(EventType::ENGINE60, &sviEngine);
+	//sviEngine.initSDL();
 }
 
 /// @brief 
@@ -45,6 +47,11 @@ void Engine::createNewSceneWithSceneID(int sceneID)
 	}
 }
 
+void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat)
+{
+	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
+}
+
 /// @brief 
 /// @param sceneID 
 /// @param id 
@@ -52,11 +59,12 @@ void Engine::createNewSceneWithSceneID(int sceneID)
 /// @param yPos 
 /// @param height 
 /// @param width 
-void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width)
+void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat,  int speed, int jumpHeight, int density, int friction, int restitution)
 {
 	try
 	{
-		sceneManager.getSceneWithID(sceneID)->addNewObject(id, xPos, yPos, height, width);
+		cout << "creating new obj sceneID: " << sceneID << endl;
+		sceneManager.getSceneWithID(sceneID)->addNewObject(id, xPos, yPos, height, width,speed,jumpHeight, density, friction,restitution, stat);
 	}
 	catch (int e)
 	{
@@ -71,7 +79,7 @@ void Engine::linkSpriteIDWithAssetPath(int spriteID, const char * assetPath)
  {
 	try
 	{
-	svi.loadImage(spriteID, assetPath);
+		sviEngine.loadImage(spriteID, assetPath);
 	}
 	catch (int e)
 	{
@@ -85,9 +93,9 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 {
 	try
 	{
-	for (auto sprite : spritesVector) {
-		svi.loadImage(sprite.spriteID, sprite.filename);
-	}
+		for (auto sprite : spritesVector) {
+			sviEngine.loadImage(sprite.spriteID, sprite.filename);
+		}
 	}
 	catch (int e)
 	{
@@ -113,9 +121,10 @@ void Engine::engineTick30()
 {
 	cout << "Thread started" << endl;
 	while (!stopThreadTick30) {
-		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
+		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
 
 		//eventManager.notify(EventType::ENGINE30, new Object);
+		physicsEngine.update30();
 
 	}
 	cout << "Thread killed 30" << endl;

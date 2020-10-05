@@ -56,6 +56,6 @@ public:
 
 	//Set to private after testing!!!
 	EventManager* eventManager = nullptr;
-	ISVI * sviEngine = new SVI;
+	ISVI * sviFacade = new SVI;
 private:
 };

@@ -12,14 +12,14 @@ SVIEngine::~SVIEngine()
 /// @param filename 
 void SVIEngine::load(const char* filename)
 {
-	sviEngine->load(filename);
+	sviFacade->load(filename);
 }
 
 /// @brief 
 /// Plays sounds
 void SVIEngine::play()
 {
-	sviEngine->play();
+	sviFacade->play();
 }
 
 /// @brief TO BE REMOVED
@@ -27,7 +27,7 @@ void SVIEngine::play()
 /// @param y 
 void SVIEngine::testLoopVideo(Object& g, Object& b)
 {
-	sviEngine->testLoopVideo(g,b);
+	sviFacade->testLoopVideo(g,b);
 }
 
 /// @brief 
@@ -36,7 +36,7 @@ void SVIEngine::initSDL()
 {
 	try
 	{
-	sviEngine->initSDL();
+		sviFacade->initSDL();
 	}
 	catch (int e)
 	{
@@ -50,7 +50,7 @@ void SVIEngine::clearScreen()
 {
 	try
 	{
-	sviEngine->clearScreen();
+	sviFacade->clearScreen();
 	}
 	catch (int e)
 	{
@@ -64,7 +64,7 @@ void SVIEngine::drawScreen()
 {
 	try
 	{
-	sviEngine->drawScreen();
+	sviFacade->drawScreen();
 	}
 	catch (int e)
 	{
@@ -79,7 +79,7 @@ void SVIEngine::loadImage(int spriteID, const char* filename)
 {
 	try
 	{
-	sviEngine->loadImage(spriteID, filename);
+	sviFacade->loadImage(spriteID, filename);
 	}
 	catch (int e)
 	{
@@ -98,7 +98,7 @@ void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int heig
 {
 	try
 	{
-	sviEngine->renderCopy(spriteID, xPos, yPos, width, height, rotation);
+	sviFacade->renderCopy(spriteID, xPos, yPos, width, height, rotation);
 	}
 	catch (int e)
 	{
@@ -117,7 +117,7 @@ void SVIEngine::updateScreen()
 		if (pointerToObjectVector->size() <= 0) return;
 		for (auto obj : *pointerToObjectVector) {
 			if (obj != nullptr) {
-				sviEngine->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(), obj->getRotation());
+				sviFacade->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(), obj->getRotation());
 			}
 		}
 	}
@@ -148,5 +148,5 @@ void SVIEngine::receiveTick()
 /// Receives input
 void SVIEngine::input()
 {
-	sviEngine->input();
+	sviFacade->input();
 }

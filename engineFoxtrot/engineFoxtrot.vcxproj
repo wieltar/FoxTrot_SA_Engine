@@ -192,6 +192,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ParticleEngine.h" />
     <ClInclude Include="ParticleFacade.h" />
+    <ClInclude Include="PhysicsBody.h" />
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="PhysicsFacade.h" />
     <ClInclude Include="Scene.h" />
