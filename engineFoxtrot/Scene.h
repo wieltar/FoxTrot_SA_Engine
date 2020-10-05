@@ -3,6 +3,7 @@
 #include <string>
 #include <memory>
 #include <iostream>
+#include "LayerSelection.h"
 
 #include "Object.h"
 #include "Debug.h"

@@ -3,6 +3,7 @@
 #include <string>
 #include "Debug.h"
 #include "ErrorCodes.h"
+#include "LayerSelection.h"
 #include "GeneralHelperFunctions.cpp"
 
 using namespace std;
@@ -53,6 +54,8 @@ public:
 
 	bool getChanged();
 private:
+
+	LayerSelection layerSelection = LAYER_SELECTION__UNKNOWN;
 
 	std::string name;
 
