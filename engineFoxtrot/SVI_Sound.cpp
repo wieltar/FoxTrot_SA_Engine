@@ -24,12 +24,12 @@ void SVI::AddFile(const string& identifier, const string& file) {
 /// Flushes the audio buffers
 void SVI::Flush()
 {
-	for (auto it = loadedSoundEffects.begin(); it != loadedSoundEffects.end(); /* don't increment here*/) {
-		it = loadedSoundEffects.erase(it);  /// update here
-	}
-	for (auto it = loopChannels.begin(); it != loopChannels.end(); /* don't increment here*/) {
-		it = loopChannels.erase(it);  /// update here
-	}
+		for (auto it = loadedSoundEffects.begin(); it != loadedSoundEffects.end(); /* don't increment here*/) {
+			it = loadedSoundEffects.erase(it);  /// update here
+		}
+		for (auto it = loopChannels.begin(); it != loopChannels.end(); /* don't increment here*/) {
+			it = loopChannels.erase(it);  /// update here
+		}
 }
 
 /// @brief 
@@ -44,6 +44,9 @@ void SVI::PlayEffect(const string& identifier) {
 	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
 		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], DONT_LOOP);
 		Mix_Volume(channel, MIX_MAX_VOLUME);
+	}
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
 	}
 }
 
@@ -62,22 +65,25 @@ void SVI::PlayEffect(const string& identifier, int volume) {
 		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], DONT_LOOP);
 		Mix_Volume(channel, volume);
 	}
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
+	}
 }
 
 /// @brief 
 /// Loads the effect that belongs to the given identifier into the buffer
 /// @param identifier 
 /// The sound identifier saved when the file has been added
-bool SVI::LoadEffect(const string& identifier) {
+void SVI::LoadEffect(const string& identifier) {
 	if (loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		loadedSoundEffects[identifier] = Mix_LoadWAV(soundPaths.at(identifier).c_str());
 		if (!loadedSoundEffects[identifier]) {
 			std::cerr << "Mix_LoadWAV Error: " << Mix_GetError() << std::endl;
-			return false;
 		}
-		return true;
 	}
-	return false;
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
+	}
 }
 
 /// @brief 
@@ -86,7 +92,7 @@ bool SVI::LoadEffect(const string& identifier) {
 /// The sound identifier saved when the file has been added
 void SVI::UnloadEffect(const string& identifier) {
 	if (loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
-		return;
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
 	}
 	StopLoopedEffect(identifier);
 	loadedSoundEffects.erase(identifier);
@@ -103,6 +109,9 @@ void SVI::StartLoopedEffect(const string& identifier) {
 		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], LOOP_INDEFINITELY);
 		loopChannels.insert(pair<string, int>(identifier, channel));
 	}
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
+	}
 }
 
 /// @brief 
@@ -115,13 +124,16 @@ void SVI::StopLoopedEffect(const string& identifier) {
 		Mix_HaltChannel(loopChannels[identifier]);
 		loopChannels.erase(identifier);
 	}
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
+	}
 }
 
 /// @brief 
 /// Loads the music that belongs to the given identifier into the buffer
 /// @param identifier 
 /// The sound identifier saved when the file has been added
-bool SVI::LoadMusic(const string& identifier) {
+void SVI::LoadMusic(const string& identifier) {
 	///If old music is loaded (!= NULL), free it
 	if (music) {
 		Mix_FreeMusic(music);
@@ -134,19 +146,24 @@ bool SVI::LoadMusic(const string& identifier) {
 		music = Mix_LoadMUS(soundPaths[identifier].c_str());
 		if (!music) {
 			std::cerr << "Mix_LoadMUS Error: " << Mix_GetError() << std::endl;
-			return false;
 		}
-		return true;
 	}
-	return false;
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
+	}
 }
 
 
 /// @brief 
 /// Plays the currently loaded music
 void SVI::PlayMusic() {
-	Mix_VolumeMusic(MIX_MAX_VOLUME);
-	Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	if (music != NULL) {
+		Mix_VolumeMusic(MIX_MAX_VOLUME);
+		Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	}
+	else {
+		throw ERROR_CODE_SVIFACADE_NO_MUSIC_LOADED;
+	}
 }
 
 /// @brief 
@@ -154,8 +171,13 @@ void SVI::PlayMusic() {
 /// @param volume 
 /// The volume to play the music at. Ranges from 0 to 128
 void SVI::PlayMusic(int volume) {
-	Mix_VolumeMusic(volume);
-	Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	if (music != NULL) {
+		Mix_VolumeMusic(volume);
+		Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	}
+	else {
+		throw ERROR_CODE_SVIFACADE_NO_MUSIC_LOADED;
+	}
 }
 
 /// @brief 
@@ -164,10 +186,12 @@ void SVI::PlayMusic(int volume) {
 /// The sound identifier saved when the file has been added
 void SVI::PlayMusic(const string& identifier) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
-		if (LoadMusic(identifier)) {
-			Mix_VolumeMusic(MIX_MAX_VOLUME);
-			Mix_PlayMusic(music, LOOP_INDEFINITELY);
-		}
+		LoadMusic(identifier);
+		Mix_VolumeMusic(MIX_MAX_VOLUME);
+		Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	}
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
 	}
 }
 
@@ -179,10 +203,12 @@ void SVI::PlayMusic(const string& identifier) {
 /// The volume to play the music at. Ranges from 0 to 128
 void SVI::PlayMusic(const string& identifier, int volume) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
-		if (LoadMusic(identifier)) {
-			Mix_VolumeMusic(volume);
-			Mix_PlayMusic(music, LOOP_INDEFINITELY);
-		}
+		LoadMusic(identifier);
+		Mix_VolumeMusic(volume);
+		Mix_PlayMusic(music, LOOP_INDEFINITELY);
+	}
+	else {
+		throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
 	}
 }
 
@@ -192,9 +218,8 @@ void SVI::PlayMusic(const string& identifier, int volume) {
 /// The sound identifier saved when the file has been added
 void SVI::ChangeMusic(const string& identifier) {
 	StopMusic();
-	if (LoadMusic(identifier)) {
-		PlayMusic();
-	}
+	LoadMusic(identifier);
+	PlayMusic();
 }
 
 /// @brief 
@@ -202,6 +227,9 @@ void SVI::ChangeMusic(const string& identifier) {
 /// @param fadeTime 
 /// The amount of time it takes for the music to fade in ms
 void SVI::FadeOutMusic(int fadeTime) {
+	if (fadeTime < 0) {
+		throw ERROR_CODE_SVIFACADE_INVALID_FADETIME;
+	}
 	Mix_FadeOutMusic(fadeTime);
 }
 
@@ -210,6 +238,12 @@ void SVI::FadeOutMusic(int fadeTime) {
 /// @param fadeTime 
 /// The amount of time it takes for the music to fade in ms
 void SVI::FadeInMusic(int fadeTime) {
+	if (music == NULL) {
+		throw ERROR_CODE_SVIFACADE_NO_MUSIC_LOADED;
+	}
+	if (fadeTime < 0) {
+		throw ERROR_CODE_SVIFACADE_INVALID_FADETIME;
+	}
 	RewindMusic();
 	Mix_FadeInMusic(music, LOOP_INDEFINITELY, fadeTime);
 }
@@ -221,10 +255,15 @@ void SVI::FadeInMusic(int fadeTime) {
 /// @param fadeTime 
 /// The amount of time it takes for the music to fade in ms
 void SVI::FadeInMusic(const string& identifier, int fadeTime) {
-	StopMusic();
-	if (LoadMusic(identifier)) {
-		Mix_FadeInMusic(music, LOOP_INDEFINITELY, fadeTime);
+	if (music == NULL) {
+		throw ERROR_CODE_SVIFACADE_NO_MUSIC_LOADED;
 	}
+	if (fadeTime < 0) {
+		throw ERROR_CODE_SVIFACADE_INVALID_FADETIME;
+	}
+	StopMusic();
+	LoadMusic(identifier);
+	Mix_FadeInMusic(music, LOOP_INDEFINITELY, fadeTime);
 }
 
 /// @brief 

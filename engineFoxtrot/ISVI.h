@@ -33,11 +33,11 @@ public:
 	virtual void AddFile(const std::string& identifier, const std::string& file) = 0;
 	virtual void PlayEffect(const std::string& effect) = 0;
 	virtual void PlayEffect(const std::string& identifier, int volume) = 0;
-	virtual bool LoadEffect(const std::string& identifier) = 0;
+	virtual void LoadEffect(const std::string& identifier) = 0;
 	virtual void UnloadEffect(const std::string& identifier) = 0;
 	virtual void StartLoopedEffect(const std::string& effect) = 0;
 	virtual void StopLoopedEffect(const std::string& identifier) = 0;
-	virtual bool LoadMusic(const std::string& identifier) = 0;
+	virtual void LoadMusic(const std::string& identifier) = 0;
 	virtual void PlayMusic() = 0;
 	virtual void PlayMusic(int volume) = 0;
 	virtual void PlayMusic(const std::string& identifier) = 0;
