@@ -1,6 +1,11 @@
 #pragma once
 #include "IPhysicsFacade.h"
 
+#define INCREASE_JUMP_SPEED = 10;
+#define NO_MOVE_Y_LEVEL = 0;
+#define NO_MOVE_X_LEVEL = 0;
+
+
 /// @brief 
 /// PhysicsFacade class. Class for update physics off objects
 #if(EXPORT)
