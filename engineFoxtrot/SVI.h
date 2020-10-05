@@ -67,7 +67,7 @@ public:
 	void PlayEffect(const string& identifier, int volume);
 
 	// Loads a sound effect into the buffer
-	void LoadEffect(const string& identifier);
+	bool LoadEffect(const string& identifier);
 
 	// Unloads a sound effect from the buffer
 	void UnloadEffect(const string& identifier);
@@ -79,7 +79,7 @@ public:
 	void StopLoopedEffect(const string& identifier);
 
 	// Loads a music file into the buffer
-	void LoadMusic(const string& identifier);
+	bool LoadMusic(const string& identifier);
 
 	// Plays the currently loaded music at max volume (128)
 	void PlayMusic();

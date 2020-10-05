@@ -43,13 +43,16 @@ void SVI::PlayEffect(const string& identifier, int volume) {
 }
 
 //Check whether an effect is already loaded, otherwise, load it.
-void SVI::LoadEffect(const string& identifier) {
+bool SVI::LoadEffect(const string& identifier) {
 	if (loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		loadedSoundEffects[identifier] = Mix_LoadWAV(soundPaths.at(identifier).c_str());
 		if (!loadedSoundEffects[identifier]) {
 			std::cerr << "Mix_LoadWAV Error: " << Mix_GetError() << std::endl;
+			return false;
 		}
+		return true;
 	}
+	return false;
 }
 
 void SVI::UnloadEffect(const string& identifier) {
@@ -77,7 +80,7 @@ void SVI::StopLoopedEffect(const string& identifier) {
 	}
 }
 
-void SVI::LoadMusic(const string& identifier) {
+bool SVI::LoadMusic(const string& identifier) {
 	//If old music is loaded (!= NULL), free it
 	if (music) {
 		Mix_FreeMusic(music);
@@ -90,9 +93,11 @@ void SVI::LoadMusic(const string& identifier) {
 		music = Mix_LoadMUS(soundPaths[identifier].c_str());
 		if (!music) {
 			std::cerr << "Mix_LoadMUS Error: " << Mix_GetError() << std::endl;
-			return;
+			return false;
 		}
+		return true;
 	}
+	return false;
 }
 
 void SVI::PlayMusic() {
@@ -107,24 +112,27 @@ void SVI::PlayMusic(int volume) {
 
 void SVI::PlayMusic(const string& identifier) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
-		LoadMusic(identifier);
-		Mix_VolumeMusic(MIX_MAX_VOLUME);
-		Mix_PlayMusic(music, Loop_Indefinitely);
+		if (LoadMusic(identifier)) {
+			Mix_VolumeMusic(MIX_MAX_VOLUME);
+			Mix_PlayMusic(music, Loop_Indefinitely);
+		}
 	}
 }
 
 void SVI::PlayMusic(const string& identifier, int volume) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
-		LoadMusic(identifier);
-		Mix_VolumeMusic(volume);
-		Mix_PlayMusic(music, Loop_Indefinitely);
+		if (LoadMusic(identifier)) {
+			Mix_VolumeMusic(volume);
+			Mix_PlayMusic(music, Loop_Indefinitely);
+		}
 	}
 }
 
 void SVI::ChangeMusic(const string& identifier) {
 	StopMusic();
-	LoadMusic(identifier);
-	PlayMusic();
+	if (LoadMusic(identifier)) {
+		PlayMusic();
+	}
 }
 
 void SVI::FadeOutMusic(int fadeTime) {
@@ -138,8 +146,9 @@ void SVI::FadeInMusic(int fadeTime) {
 
 void SVI::FadeInMusic(const string& identifier, int fadeTime) {
 	StopMusic();
-	LoadMusic(identifier);
-	Mix_FadeInMusic(music, Loop_Indefinitely, fadeTime);
+	if (LoadMusic(identifier)) {
+		Mix_FadeInMusic(music, Loop_Indefinitely, fadeTime);
+	}
 }
 
 void SVI::RewindMusic() {
