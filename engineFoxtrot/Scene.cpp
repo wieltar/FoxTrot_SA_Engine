@@ -13,6 +13,10 @@ Scene::~Scene()
 {
 }
 
+void Scene::addNewObject(Object* object) {
+	objects.push_back(object);
+}
+
 /// @brief 
 /// @param id 
 /// @param xPos 

@@ -12,7 +12,7 @@ public:
 	IPhysicsFacade() {};
 	virtual ~IPhysicsFacade() {};
 
-	virtual void addGround(PhysicsBody* ground) = 0;
+	virtual void addStaticObject(PhysicsBody* ground) = 0;
 	virtual void registerRectangle(PhysicsBody* object) = 0;
 
 	virtual PhysicsBody* getPhysicsObject(int objectId) = 0;

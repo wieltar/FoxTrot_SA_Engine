@@ -160,6 +160,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ParticleEngine.cpp" />
     <ClCompile Include="ParticleFacade.cpp" />
+    <ClCompile Include="PhysicsBody.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="PhysicsFacade.cpp" />
     <ClCompile Include="Scene.cpp" />

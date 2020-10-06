@@ -96,6 +96,7 @@ public:
 	void loadImage(int spriteID, const char* filename);
 
 	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
+	void renderCopy(Object* object);
 
 
 	unordered_map<int, SDL_Texture*> textureMap;

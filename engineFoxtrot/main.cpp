@@ -22,6 +22,7 @@ int main() {
 
 	engine.createNewSceneWithSceneID(1);
 	engine.createNewSceneWithSceneID(2);
+	//engine.createNewSceneWithSceneID(3);
 	engine.createNewSceneWithSceneID(20);
 
 	engine.createNewObjectWithSceneID(1, 1, 50, 5, 40, 40, false);
@@ -55,9 +56,30 @@ int main() {
 	engine.createNewObjectWithSceneID(20, 2, 20, 300, 40, 40, true);
 	engine.setCurrentScene(20);
 	////engine.createNewObjectWithSceneID(20, 1, 30, 0, 40, 40, false,100,400,1,0,0);
-	
-
 	//engine.createNewObjectWithSceneID(20, 1, 50, 5, 40, 40, false);
+
+
+	/*Object* object = new Object(10);
+	object->setName("house");
+	object->setHeight(80);
+	object->setWidth(80);
+	object->setPositionX(30);
+	object->setPositionY(0); 
+	object->setSpeed(100);
+	object->setJumpHeight(400);
+	object->setDensity(1);
+	object->setFriction(0);
+	object->setRestitution(0);
+	object->setStatic(false);
+	engine.createObject(3, object);
+
+	Object* staticGround = new Object(11);
+	staticGround->setWidth(500); // width
+	staticGround->setHeight(10);// height
+	staticGround->setPositionX(20); // x 20 left down
+	staticGround->setPositionY(300);// y 300 left down
+	staticGround->setStatic(true);
+	engine.createObject(3, staticGround);*/
 
 	//engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-00.png");
 	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
@@ -87,10 +109,6 @@ int main() {
 	////	SDL_Delay(10);
 	////}
 	this_thread::sleep_for(chrono::milliseconds(5000));
-
-
-
-
 
 	engine.setCurrentScene(2);
 	this_thread::sleep_for(chrono::milliseconds(250));

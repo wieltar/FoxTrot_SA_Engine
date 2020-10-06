@@ -68,9 +68,6 @@ public:
 	void setJumpHeight(float val);
 	float getJumpHeight() const;
 
-	void setAngle(float val);
-	float getAngle() const;
-
 	bool getChanged() const;
 private:
 
@@ -85,7 +82,6 @@ private:
 	float height = 0;
 	float width = 0;
 	float speed = 0;
-	float angle = 0;
 	float jumpHeight = 0;
 	float density = 0;
 	float friction = 0;

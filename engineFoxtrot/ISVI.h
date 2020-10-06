@@ -22,6 +22,7 @@ public:
 	virtual void loadImage(int spriteID, const char* filename) = 0;
 
 	virtual void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation) = 0;
+	virtual void renderCopy(Object* object) = 0;
 
 
 	// Input Functions

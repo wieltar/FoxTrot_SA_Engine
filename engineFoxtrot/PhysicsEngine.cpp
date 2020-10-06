@@ -7,6 +7,7 @@ PhysicsEngine::PhysicsEngine()
 
 PhysicsEngine::~PhysicsEngine()
 {
+	delete physicsFacade;
 }
 
 Object* PhysicsEngine::getObject(int objectId)
@@ -24,25 +25,14 @@ Object* PhysicsEngine::getObject(int objectId)
 void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 {
 	cout << "Size pointertoObj: " << pointerToObjectVector->size() << endl;
-	for (Object* obj : *pointerToObjectVector)
+	for (Object* object : *pointerToObjectVector)
 	{
-		PhysicsBody * phyObj = new PhysicsBody;
-		phyObj->angle = obj->getAngle();
-		phyObj->density = obj->getDensity();
-		phyObj->friction = obj->getFriction();
-		phyObj->height = obj->getHeight();
-		phyObj->width = obj->getWidth();
-		phyObj->posX = obj->getPositionX();
-		phyObj->posY = obj->getPositionY();
-		phyObj->jumpHeight = obj->getJumpHeight();
-		phyObj->objectID = obj->getId();
-		phyObj->restitution = obj->getRestitution();
-		phyObj->speed = obj->getSpeed();
-		cout << "Registering object : " << phyObj->objectID << endl;
+		PhysicsBody * phyObj = new PhysicsBody(object);
+		cout << "Registering object : " << phyObj->getId() << endl;
 
-		if (obj->getStatic())
+		if (object->getStatic())
 		{
-			physicsFacade->addGround(phyObj);
+			physicsFacade->addStaticObject(phyObj);
 		}
 		else
 		{
@@ -57,30 +47,24 @@ void PhysicsEngine::update30()
 	physicsFacade->update();
 
 }
-
-void PhysicsEngine::MoveLeft(int objectId)
-{
-
+void PhysicsEngine::MoveLeft(int objectId) {
+	this->physicsFacade->MoveLeft(objectId);
 }
 
-void PhysicsEngine::MoveRight(int objectId)
-{
-
+void PhysicsEngine::MoveRight(int objectId) {
+	this->physicsFacade->MoveRight(objectId);
 }
 
-void PhysicsEngine::Jump(int objectId)
-{
-
+void PhysicsEngine::Jump(int objectId) {
+	this->physicsFacade->Jump(objectId);
 }
 
-void PhysicsEngine::JumpLeft(int objectId)
-{
-
+void PhysicsEngine::JumpLeft(int objectId) {
+	this->physicsFacade->JumpLeft(objectId);
 }
 
-void PhysicsEngine::JumpRight(int objectId)
-{
-
+void PhysicsEngine::JumpRight(int objectId) {
+	this->physicsFacade->JumpRight(objectId);
 }
 
 

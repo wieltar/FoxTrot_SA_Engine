@@ -57,6 +57,7 @@ public:
 	void setCurrentScene(int sceneID);
 	void createNewSceneWithSceneID(int sceneID);
 
+	void createObject(int sceneID, Object* object);
 	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat);
 	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat, int speed, int jumpHeight, int density, int friction, int restitution);
 	void linkSpriteIDWithAssetPath(int spriteID, const char* assetPath);

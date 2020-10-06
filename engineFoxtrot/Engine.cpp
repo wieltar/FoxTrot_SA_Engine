@@ -47,6 +47,7 @@ void Engine::createNewSceneWithSceneID(int sceneID)
 	}
 }
 
+
 void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat)
 {
 	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
@@ -72,6 +73,17 @@ void Engine::createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos,
 	}
 }
 
+void Engine::createObject(int sceneID, Object* object) {
+	try
+	{
+		cout << "creating new obj sceneID: " << sceneID << endl;
+		sceneManager.getSceneWithID(sceneID)->addNewObject(object);
+	}
+	catch (int e)
+	{
+		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
+	}
+}
 /// @brief 
 /// @param spriteID 
 /// @param assetPath 
@@ -110,7 +122,7 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		eventManager.notify(EventType::ENGINE60, new Object);
+		//eventManager.notify(EventType::ENGINE60, new Object);
 		//svi.receiveTick();
 	}
 

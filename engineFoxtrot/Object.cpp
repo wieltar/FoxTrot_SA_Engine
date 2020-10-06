@@ -77,7 +77,4 @@ void Object::setSpeed(float val) { this->speed = val; }
 float Object::getJumpHeight() const {return this->jumpHeight;}
 void Object::setJumpHeight(float val) {	this->jumpHeight = val;}
 
-float Object::getAngle() const {return this->angle;}
-void Object::setAngle(float val) {this->angle = val;}
-
 bool Object::getChanged() const { return changed; }

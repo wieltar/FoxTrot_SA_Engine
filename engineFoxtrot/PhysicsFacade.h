@@ -8,13 +8,23 @@
 #include "PhysicsBody.h"
 #include "string"
 #include <iostream>
+#include <map>
 
 
 using namespace std;
 
-#define INCREASE_JUMP_SPEED		10
-#define NO_MOVE_Y_LEVEL			0
-#define NO_MOVE_X_LEVEL			0
+#define VELOCITY_ITERATIONS 8
+#define POSITION_ITERATIONS 3
+
+#define TIMESTEP_SEC 1.0f
+#define TIMESTEP_FRAMES 60.0f
+
+#define INCREASE_JUMP_SPEED 10
+#define GRAVITY_FALL 80.0f // So when I said gravity is (0,80) that means gravity is applied at a rate of 80 pixels along the y axis per second.
+#define GRAVITY_SCALE 0.0f
+
+#define X_AXIS_STATIC 0
+#define Y_AXIS_STATIC 0
 
 /// @brief 
 /// PhysicsFacade class. Class for update physics off objects
@@ -28,7 +38,7 @@ public:
 	PhysicsFacade();
 	~PhysicsFacade();
 
-	void addGround(PhysicsBody* ground) override;
+	void addStaticObject(PhysicsBody* ground) override;
 	void registerRectangle(PhysicsBody* object) override;
 
 	
@@ -43,14 +53,14 @@ public:
 	void update() override;
 
 private:
+	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
+	float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
+
+	int32 velocityIterations = VELOCITY_ITERATIONS;
+	int32 positionIterations = POSITION_ITERATIONS;
 
 	vector <PhysicsBody*> physicsBodyVector;
-
-	b2World world = b2World(b2Vec2(0.0f, 80.0f));
-	float timeStep = 1.0f / 60.0f;
-
-	int32 velocityIterations = 6;
-	int32 positionIterations = 2;
+	map <PhysicsBody*, b2Body*> bodies;
 		
 	b2Body* findBody(int objectId);
 };

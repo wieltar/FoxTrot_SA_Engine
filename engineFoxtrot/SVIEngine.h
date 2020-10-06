@@ -40,6 +40,7 @@ public:
 	void drawScreen();
 	void loadImage(int spriteID, const char* filename);
 	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
+	void renderCopy(Object object);
 
 	void updateScreen();
 
