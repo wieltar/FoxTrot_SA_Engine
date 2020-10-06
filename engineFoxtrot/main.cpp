@@ -39,7 +39,7 @@ int main() {
 	g->setPositionX(20); // x 20 left down
 	g->setPositionY(300);// y 300 left down
 
-	engine.phy->addGround(*g);
+	engine.phy->addStaticObject(*g);
 
 
 	for (int32 i = 0; i < 1000; ++i)
