@@ -17,7 +17,6 @@ namespace Glitch {
 		}
 
 		screenSurface = SDL_GetWindowSurface(window);
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
 		//Initialize PNG loading
 		int imgFlags = IMG_INIT_PNG;
@@ -46,7 +45,7 @@ namespace Glitch {
 	/// Clears SDL screen
 	void Renderer2d::clearScreen()
 	{
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+		SDL_SetRenderDrawColor(renderer, 2, 200, 80, 6);
 		SDL_RenderClear(renderer);
 	}
 
