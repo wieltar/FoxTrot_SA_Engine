@@ -1,6 +1,6 @@
 #include "SVI.h"
 
-SDL_Rect renderRectangle(Object& g) {
+SDL_Rect SVI::renderRectangle(Object& g) {
 	//BOX2D needs coordinates off CENTER CENTER position and you get the LEFT BOTTOM
 	//SDL2 needs coordinates off LEFT TOP position and you get the LEFT BOTTOM
 	SDL_Rect rect;

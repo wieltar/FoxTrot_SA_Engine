@@ -32,25 +32,25 @@ string Object::getName() const { return name; }
 void Object::setSpriteID(int s) { this->spriteID = s; }
 int Object::getSpriteID() const { return spriteID; }
 
-void Object::setPositionX(int x) { this->positionX = x; }
+void Object::setPositionX(float x) { this->positionX = x; }
 float Object::getPositionX() const { return positionX; }
 
-void Object::setPositionY(int y) { this->positionY = y; }
+void Object::setPositionY(float y) { this->positionY = y; }
 float Object::getPositionY() const { return positionY; }
 
-void Object::setRotation(int r) { this->rotation = r; }
+void Object::setRotation(float r) { this->rotation = r; }
 float Object::getRotation() const { return rotation; }
 
-void Object::setScale(int s) { this->scale = s; }
+void Object::setScale(float s) { this->scale = s; }
 float Object::getScale() const { return scale; }
 
-void Object::setDirection(int d) { this->direction = d; }
-int Object::getDirection() const { return direction; }
+void Object::setDirection(float d) { this->direction = d; }
+float Object::getDirection() const { return direction; }
 
-void Object::setHeight(int h) { this->height = h; }
+void Object::setHeight(float h) { this->height = h; }
 float Object::getHeight() const { return height; }
 
-void Object::setWidth(int w) { this->width = w; }
+void Object::setWidth(float w) { this->width = w; }
 float Object::getWidth() const { return width; }
 
 void Object::setStatic(bool s) { this->staticObject = s; }

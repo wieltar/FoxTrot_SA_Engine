@@ -68,7 +68,7 @@ public:
 	unordered_map<int, SDL_Texture*> textureMap;
 
 private:
-
+	SDL_Rect renderRectangle(Object& g);
 
 // Input functions
 public:

@@ -29,25 +29,25 @@ public:
 	void setSpriteID(int);
 	int getSpriteID() const;
 
-	void setPositionX(int);
+	void setPositionX(float);
 	float getPositionX() const;
 
-	void setPositionY(int);
+	void setPositionY(float);
 	float getPositionY() const;
 
-	void setRotation(int);
+	void setRotation(float);
 	float getRotation() const;
 
-	void setScale(int);
+	void setScale(float);
 	float getScale() const;
 
-	void setDirection(int);
-	int getDirection() const;
+	void setDirection(float);
+	float getDirection() const;
 
-	void setHeight(int);
+	void setHeight(float);
 	float getHeight() const;
 
-	void setWidth(int);
+	void setWidth(float);
 	float getWidth() const;
 
 	void setStatic(bool);
