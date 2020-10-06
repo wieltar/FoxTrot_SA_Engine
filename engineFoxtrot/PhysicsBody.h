@@ -7,7 +7,7 @@ class PhysicsBody
 {
 public:
 	PhysicsBody(Object* object) :
-		objectID(object->getId()),
+		objectID(object->getSpriteID()),
 		height(object->getHeight()),
 		width(object->getWidth()),
 		posX(object->getPositionX()),
@@ -22,7 +22,7 @@ public:
 		};	
 	~PhysicsBody() {
 	}
-	int getId() const;
+	int getSpriteID() const;
 
 	void setPositionX(float);
 	float getPositionX() const;

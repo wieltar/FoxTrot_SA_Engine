@@ -1,6 +1,6 @@
 #include "PhysicsBody.h"
 
-int PhysicsBody::getId() const { return this->objectID; }
+int PhysicsBody::getSpriteID() const { return this->objectID; }
 
 
 void PhysicsBody::setPositionX(float x) { this->posX = x; this->object->setPositionX(x); }

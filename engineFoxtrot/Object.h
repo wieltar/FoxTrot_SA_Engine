@@ -19,9 +19,8 @@ class Object
 public:
 	Object(); 
 	Object(int id);
-	Object(int id, int xPos, int yPos, int height, int width);
+	Object(int id, float xPos, float yPos, float height, float width);
 	~Object();
-	int getId() const;
 
 	void setName(string);
 	string getName() const;
