@@ -16,11 +16,13 @@ namespace Glitch {
 
 		// Inherited via Window
 		virtual void OnUpdate() override;
-		virtual unsigned int GetWidth() const override { return m_data.Width; }
-		virtual unsigned int GetHeight() const override { return m_data.Height; }
-		virtual void SetEventCallback(const EventCallbackFn& callback) override { m_data.EventCallback = callback; }
+		virtual unsigned int GetWidth() const override { return m_data->Width; }
+		virtual unsigned int GetHeight() const override { return m_data->Height; }
+		virtual void SetEventCallback(const EventCallbackFn& callback) override { m_data->EventCallback = callback; }
 		virtual void SetVsync(bool enabled) override;
 		virtual bool IsVsync() const override;
+
+		WindowProps* GetProperties() const override { return m_data; }
 
 	private:
 		virtual void Init(const WindowProps& props);
@@ -28,21 +30,8 @@ namespace Glitch {
 
 		void PollEvents();
 
-		struct WindowData {
-			const char* Title;
-			int Width;
-			int Height;
-			bool vSync;
-
-			EventCallbackFn EventCallback;
-		};
-
-		SDL_Window* window = nullptr;
-		SDL_Surface* screenSurface;
-		SDL_Renderer* renderer;
-		
-		static WindowData m_data;
-
+		SDL_Window* window = nullptr;		
+		WindowProps* m_data;
 	};
 }
 

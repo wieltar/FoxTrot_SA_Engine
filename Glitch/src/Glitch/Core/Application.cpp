@@ -16,9 +16,14 @@ namespace Glitch {
 
 	void Application::Run() {
 		
+		sceneManager = new SceneManager();
+		renderer = new Renderer2d(m_window->GetProperties());
+
 		while (isRunning)
 		{
 			m_window->OnUpdate();
+			renderer->OnUpdate();
+			// etc. OnUpdate();
 		}
 	}
 
@@ -26,6 +31,7 @@ namespace Glitch {
 		isRunning = false;
 		// TODO shutdown all other systems
 		return true;
+
 
 	}
 

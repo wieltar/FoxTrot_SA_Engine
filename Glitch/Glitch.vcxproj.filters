@@ -64,6 +64,8 @@
     </ClInclude>
     <ClInclude Include="src\Glitch\Events\ObjectEventCodes.h" />
     <ClInclude Include="src\Glitch\Events\ObjectEvents.h" />
+    <ClInclude Include="src\Glitch\Renderer\Renderer2d.h" />
+    <ClInclude Include="src\Glitch\ISystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Glitch\Log\Log.cpp">
@@ -82,5 +84,6 @@
     <ClCompile Include="src\Glitch\Renderer\Windows\windowsWindow.cpp">
       <Filter>Glitch\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Glitch\Renderer\Renderer2d.cpp" />
   </ItemGroup>
 </Project>

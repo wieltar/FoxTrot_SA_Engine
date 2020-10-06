@@ -1,6 +1,8 @@
 #pragma once
 #include "Core.h"
 #include "Glitch/Renderer/window.h"
+#include <Glitch\Renderer\SceneManager\SceneManager.h>
+#include <Glitch\Renderer\Renderer2d.h>
 
 namespace Glitch {
 	class GLITCH_API Application
@@ -14,6 +16,9 @@ namespace Glitch {
 		void OnEvent(Event& e);
 
 	private:
+		SceneManager* sceneManager;
+		Renderer2d* renderer;
+
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_window;
 		bool isRunning = true;

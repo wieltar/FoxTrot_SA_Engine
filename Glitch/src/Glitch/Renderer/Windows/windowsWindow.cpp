@@ -1,7 +1,6 @@
 #include "glpch.h"
 #include "windowsWindow.h"
 
-
 template <typename E>
 constexpr auto to_underlying(E e) noexcept
 {
@@ -10,7 +9,6 @@ constexpr auto to_underlying(E e) noexcept
 
 namespace Glitch {
 	
-	WindowsWindow::WindowData WindowsWindow::m_data;
 	static bool p_isSDLInitialized = false;
 
 	Window* Window::Create(const WindowProps& props) {
@@ -23,6 +21,7 @@ namespace Glitch {
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		m_data = new WindowProps();
 		Init(props);
 	}
 
@@ -40,7 +39,7 @@ namespace Glitch {
 		{
 			while (SDL_PollEvent(&sdl_event))
 			{
-				WindowData& winData = *(WindowData*)SDL_GetWindowData(window, m_data.Title);
+				WindowProps& winData = *(WindowProps*)SDL_GetWindowData(window, m_data->Title);
 
 				switch (sdl_event.type)
 				{
@@ -107,14 +106,14 @@ namespace Glitch {
 	void WindowsWindow::SetVsync(bool enabled)
 	{
 		// TODO Implement vsync enabeling
-		m_data.vSync = enabled;
+		m_data->vSync = enabled;
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
-		m_data.Title = props.Title;
-		m_data.Width = props.Width;
-		m_data.Height = props.Height;
+		m_data->Title = props.Title;
+		m_data->Width = props.Width;
+		m_data->Height = props.Height;
 
 		GL_CORE_INFO("Intialized window {0}, ({1}, {2})", props.Title, props.Width, props.Height);
 
@@ -128,30 +127,27 @@ namespace Glitch {
 			p_isSDLInitialized = true;
 		}
 		window = SDL_CreateWindow(
-			m_data.Title,   // window title
+			m_data->Title,			// window title
 			SDL_WINDOWPOS_CENTERED,	// initial x position
 			SDL_WINDOWPOS_CENTERED,	// initial y position
-			m_data.Width,			// width, in pixels
-			m_data.Height,			// height, in pixels
+			m_data->Width,			// width, in pixels
+			m_data->Height,			// height, in pixels
 			0
 		);
 
-		if (window != nullptr)
+		if (window == NULL)
 		{
-			renderer = SDL_CreateRenderer(window, -1, 0);
-			screenSurface = SDL_GetWindowSurface(window);
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+			GL_CORE_ERROR("Window could not be created! SDL Error: %s\n", SDL_GetError());
+			throw ERROR_CODE_SVIFACADE_CANT_CREATE_WINDOW;
 		}
 
-		SDL_SetWindowData(window,m_data.Title, &m_data);
+		// set the window id in the window props struct
+		m_data->Id = SDL_GetWindowID(window);
+		SDL_SetWindowData(window, m_data->Title, m_data);
 	}
 
 	void WindowsWindow::Shutdown()
 	{
-		//Deallocate surface
-		SDL_FreeSurface(screenSurface);
-		screenSurface = NULL;
-
 		// Close and destroy the window
 		SDL_DestroyWindow(window);
 		window = NULL;
@@ -161,6 +157,6 @@ namespace Glitch {
 	}
 
 	bool WindowsWindow::IsVsync() const {
-		return m_data.vSync;
+		return m_data->vSync;
 	}
 }
