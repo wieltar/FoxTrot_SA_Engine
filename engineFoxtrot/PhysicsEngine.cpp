@@ -14,7 +14,7 @@ Object* PhysicsEngine::getObject(int objectId)
 {
 	for (Object * obj : *pointerToObjectVector)
 	{
-		if (obj->getId() == objectId) 
+		if (obj->getSpriteID() == objectId)
 		{
 			return obj;
 		}
@@ -28,7 +28,7 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 	for (Object* object : *pointerToObjectVector)
 	{
 		PhysicsBody * phyObj = new PhysicsBody(object);
-		cout << "Registering object : " << phyObj->getId() << endl;
+		cout << "Registering object : " << phyObj->getSpriteID() << endl;
 
 		if (object->getStatic())
 		{

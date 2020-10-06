@@ -18,7 +18,7 @@ PhysicsFacade::~PhysicsFacade()
 PhysicsBody* PhysicsFacade::getPhysicsObject(int objectId)
 {
 	for (const auto& value : bodies) {
-		if (value.first->getId() == objectId)
+		if (value.first->getSpriteID() == objectId)
 		{
 			return value.first;
 		}
@@ -71,7 +71,7 @@ void PhysicsFacade::registerRectangle(PhysicsBody* object)
 
 	bodyDef.position.Set(object->getPositionX(), object->getPositionY());
 
-	cout << "Pushing back obj: spriteid: " << object->getId() << endl;
+	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
 	//physicsBodyVector.push_back(object);
 	bodies.insert(std::pair<PhysicsBody*, b2Body*>(object, body));
 }
@@ -80,7 +80,7 @@ void PhysicsFacade::registerRectangle(PhysicsBody* object)
 /// @param objectId 
 b2Body* PhysicsFacade::findBody(int objectId) {
 	for (const auto& value : bodies) {
-		if (value.first->getId() == objectId)
+		if (value.first->getSpriteID() == objectId)
 		{
 			return value.second;
 		}
