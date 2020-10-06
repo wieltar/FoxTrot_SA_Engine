@@ -1,11 +1,13 @@
 #include "PhysicsFacade.h"
 
 
+/// @brief Constructor
 PhysicsFacade::PhysicsFacade()
 {
 
 }
 
+/// @brief Destructor
 PhysicsFacade::~PhysicsFacade()
 {
 	// When a world leaves scope or is deleted by calling delete on a pointer, all the memory reserved for bodies, fixtures, and joints is freed.This is done to improve performanceand make your life easier.
