@@ -1,14 +1,18 @@
 #pragma once
 
 #include "ISVI.h"
-
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
 #include "SDL.h"
+#include "Sound.h"
 #include <string>
+#include <map>
 #include <memory>
 #include <iostream>
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_image.h>
 #include <unordered_map>
 #include "../SDL2/include/SDL_mixer.h"
 #include "../SDL2/include/SDL.h"
@@ -18,8 +22,19 @@
 
 using namespace std;
 
-#define Example_Sound	"../Assets/Sound/b423b42.wav"
-#define Example_Sprite  "../Assets/Sprites/simple.png"
+#define EXAMPLE_SOUND	"../Assets/Sound/b423b42.wav"
+#define EXAMPLE_SPRITE  "../Assets/Sprites/simple.png"
+
+#define FIRST_AVAILABLE_CHANNEL -1
+#define DONT_LOOP 0
+#define LOOP_INDEFINITELY -1
+
+#define AUDIO_FREQUENCY 44100
+#define AUDIO_CHANNEL_AMOUNT 2
+#define AUDIO_CHUNK_SIZE 2048
+
+#define WINDOW_WIDTH 600
+#define WINDOW_HEIGHT 400
 
 #if(EXPORT)
 class DLLEXPORT SVI : public ISVI
@@ -43,14 +58,32 @@ private:
 
 // Sound functions
 public:
-	void load(const char* filename);
-	void play();
+	void SetFiles(map<string, string> files);
+	void AddFile(const string& identifier, const string& file);
+	void PlayEffect(const string& identifier, int volume);
+	void LoadEffect(const string& identifier);
+	void UnloadEffect(const string& identifier);
+	void StartLoopedEffect(const string& effect);
+	void StopLoopedEffect(const string& identifier);
+	void LoadMusic(const string& identifier);
+	void PlayMusic(int volume);
+	void PlayMusic(const string& identifier, int volume);
+	void ChangeMusic(const string& identifier);
+	void FadeOutMusic(int fadeTime);
+	void FadeInMusic(int fadeTime);
+	void FadeInMusic(const string& identifier, int fadeTime);
+	void RewindMusic();
+	void StopMusic();
+	void PauseMusic();
+	void ResumeMusic();
+	void Flush();
+	bool IdentifierExists(const string& identifier);
+	bool IdentifierIsLoaded(const string& identifier);
 private:
-	SDL_AudioSpec wavSpec;
-	Uint32 wavLength;
-	Uint8* wavBuffer;
-	SDL_AudioDeviceID deviceId;
-
+	map<string, string> soundPaths;
+	map<string, int> loopChannels;
+	Mix_Music* music;
+	std::map<std::string, Mix_Chunk*> loadedSoundEffects;
 
 // Video functions
 public:
@@ -78,6 +111,3 @@ private:
 	int mousex = 0;
 	int mousey = 0;
 };
-
-
-
