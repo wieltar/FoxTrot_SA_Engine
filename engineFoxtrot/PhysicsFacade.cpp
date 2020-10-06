@@ -25,8 +25,7 @@ PhysicsBody* PhysicsFacade::getPhysicsObject(int objectId)
 			return value.first;
 		}
 	}
-	return NULL;
-	// throw error?
+	throw PHYSICS_FACADE_OBJECT_DOESNT_EXIST;
 }
 
 /// @brief 
@@ -87,8 +86,7 @@ b2Body* PhysicsFacade::findBody(int objectId) {
 			return value.second;
 		}
 	}
-	return NULL;
-	// throw error?
+	throw PHYSICS_FACADE_BODY_DOESNT_EXIST;
 }
 
 /// @brief 
