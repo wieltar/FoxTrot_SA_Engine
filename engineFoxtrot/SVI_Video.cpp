@@ -28,12 +28,12 @@ void SVI::testLoopVideo(Object& b, Object& g)
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // the rect color (solid red)
 	SDL_Rect rect = renderRectangle(b);
 
-	SDL_Surface* surface = IMG_Load(Example_Sprite);
+	//SDL_Surface* surface = IMG_Load(Example_Sprite);
 
 	SDL_RenderFillRect(renderer, &rect);
 
 	SDL_Rect destination = renderRectangle(g);
-	SDL_FreeSurface(surface);
+	//SDL_FreeSurface(surface);
 	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 	SDL_RenderFillRect(renderer, &destination);
 

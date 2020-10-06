@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include <map>;
 /// @brief Interface class for SDL2 facade
 #if(EXPORT)
 class DLLEXPORT ISVI
