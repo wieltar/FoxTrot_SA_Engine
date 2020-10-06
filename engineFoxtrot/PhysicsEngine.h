@@ -9,7 +9,7 @@
 #if(EXPORT)
 class DLLEXPORT PhysicsEngine : public EventListener
 #else
-class PhysicsEngine : public EventListener
+class PhysicsEngine
 #endif
 {
 public:
@@ -17,12 +17,24 @@ public:
 	PhysicsEngine();
 	~PhysicsEngine();
 
-	//Set to private after testing!!!
-	IPhysicsFacade * physicsEngine = new PhysicsFacade;
 
-	void update(Object* object) override {
-		std::cout << "Handle notification " << std::endl;
-	}
+
+
+	void addStaticObject(Object& ground);
+	void registerRectangle(Object& object);
+
+	Object* getObject(int objectId);
+
+	void MoveLeft(int objectId);
+	void MoveRight(int objectId);
+	void Jump(int objectId);
+	void JumpLeft(int objectId);
+	void JumpRight(int objectId);
+
+	void update();
+
+	// TODO set private when objects work according to plan
+	IPhysicsFacade* physicsFacade = new PhysicsFacade;
 private:
 };
 

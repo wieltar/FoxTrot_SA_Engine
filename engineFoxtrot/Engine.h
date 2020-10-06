@@ -73,11 +73,10 @@ public:
 
 	//TODO make private
 	SVIEngine svi;
-	IPhysicsFacade* phy = new PhysicsFacade;
+	PhysicsEngine physicsEngine;
 private:
 
 	FileParser fileParser;
-	PhysicsEngine physicsEngine;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 

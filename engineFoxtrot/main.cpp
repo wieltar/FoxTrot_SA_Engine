@@ -30,22 +30,23 @@ int main() {
 	object->setFriction(0);
 	object->setRestitution(0);
 
-	engine.phy->temp.push_back(object);
-	engine.phy->registerRectangle(*object);
+	engine.physicsEngine.physicsFacade->temp.push_back(object);
+	engine.physicsEngine.registerRectangle(*object);
 
-	Object* staticGround = new Object();
+	Object* staticGround = new Object(2);
 	staticGround->setWidth(500); // width
 	staticGround->setHeight(10);// height
 	staticGround->setPositionX(20); // x 20 left down
 	staticGround->setPositionY(300);// y 300 left down
 
-	engine.phy->addStaticObject(*staticGround);
+	engine.physicsEngine.physicsFacade->temp.push_back(staticGround);
+	engine.physicsEngine.addStaticObject(*staticGround);
 
 
 	for (int32 i = 0; i < 1000; ++i)
 	{
-		engine.phy->MoveRight(1);
-		engine.phy->update();
+		engine.physicsEngine.MoveRight(1);
+		engine.physicsEngine.update();
 
 		float x = i;
 		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, object->getPositionX(), object->getPositionY());
@@ -54,8 +55,8 @@ int main() {
 		SDL_Delay(10);
 	}
 
-	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object);
+	/*engine.addEventListener(new PhysicsEngine, EventType::MOVE);
+	engine.eventManager.notify(EventType::MOVE, new Object);*/
 
 	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(1);
