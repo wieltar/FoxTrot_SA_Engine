@@ -7,13 +7,6 @@ SVIEngine::SVIEngine()
 SVIEngine::~SVIEngine()
 {
 }
-/// @brief TO BE REMOVED
-/// @param x 
-/// @param y 
-void SVIEngine::testLoopVideo(Object& g, Object& b)
-{
-	sviFacade->testLoopVideo(g,b);
-}
 
 /// @brief 
 /// Inits SDL2 and creates the window

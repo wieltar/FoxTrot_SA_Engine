@@ -87,8 +87,6 @@ private:
 
 // Video functions
 public:
-	void testLoopVideo(Object& ground, Object& box);
-
 	void initSDL();
 
 	void clearScreen();

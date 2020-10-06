@@ -18,7 +18,7 @@ public:
 		density(object->getDensity()),
 		rotation(object->getRotation()),
 		jumpHeight(object->getJumpHeight()) {
-			this->object = *object;
+			this->object = object;
 		};	
 	~PhysicsBody() {
 	}
@@ -67,5 +67,5 @@ private:
 	float density = 0;
 	float rotation = 0;
 	float jumpHeight = 0;
-	Object object;
+	Object* object;
 };

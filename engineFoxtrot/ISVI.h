@@ -13,8 +13,6 @@ public:
 	~ISVI();
 
 	// Video Functions
-	virtual void testLoopVideo(Object& ground, Object& box) = 0;
-
 	virtual void initSDL() = 0;
 
 	virtual void clearScreen() = 0;

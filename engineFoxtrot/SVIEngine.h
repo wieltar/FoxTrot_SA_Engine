@@ -32,7 +32,6 @@ public:
 	~SVIEngine();
 	
 	// Video Functions
-	void testLoopVideo(Object& g, Object& b);
 
 	void initSDL();
 
