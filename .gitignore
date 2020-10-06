@@ -2,6 +2,7 @@
 .vs
 engineFoxtrot/Debug
 engineFoxtrot/x64/Debug
+engineFoxtrot/engineFoxtrot.vcxproj.user
 x64/Debug/engineFoxtrot.exe
 x64/Debug/engineFoxtrot.ilk
 x64/Debug/engineFoxtrot.pdb

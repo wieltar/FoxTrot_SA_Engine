@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define MAX_VOLUME 128
+
 #if(EXPORT)
 struct DLLEXPORT Sprite
 #else
@@ -30,10 +32,6 @@ public:
 	SVIEngine();
 	~SVIEngine();
 	
-	// Sound Functions
-	void load(const char* filename);
-	void play();
-
 	// Video Functions
 	void testLoopVideo(int x, int y);
 
@@ -51,6 +49,32 @@ public:
 
 	// Input Functions
 	void input();
+
+	// Sound functions
+	void SetFiles(map<string, string> files);
+	void AddFile(const string& identifier, const string& file);
+	void PlayEffect(const string& identifier, int volume);
+	void LoadEffect(const string& identifier);
+	void UnloadEffect(const string& identifier);
+	void StartLoopedEffect(const string& effect);
+	void StopLoopedEffect(const string& identifier);
+	void LoadMusic(const string& identifier);
+	void PlayMusic(int volume);
+	void PlayMusic(const string& identifier, int volume);
+	void ChangeMusic(const string& identifier);
+	void FadeOutMusic(int fadeTime);
+	void FadeInMusic(int fadeTime);
+	void FadeInMusic(const string& identifier, int fadeTime);
+	void RewindMusic();
+	void StopMusic();
+	void PauseMusic();
+	void ResumeMusic();
+	void Flush();
+	void onPlayEffect(const string& identifier, int volume);
+	void onChangeBackgroundMusic(const string& identifier, int volume);
+
+	bool IdentifierExists(const string& identifier);
+	bool IdentifierIsLoaded(const string& identifier);
 
 	vector <Object*> *pointerToObjectVector = nullptr;
 
