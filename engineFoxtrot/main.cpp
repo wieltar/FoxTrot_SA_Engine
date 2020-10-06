@@ -17,29 +17,29 @@ Engine engine;
 
 int main() {
 	//house
-	Object* o = new Object(1);
-	o->setName("house");
-	o->setHeight(80);
-	o->setWidth(80);
-	o->setPositionX(30);
-	o->setPositionY(0);
+	Object* object = new Object(1);
+	object->setName("house");
+	object->setHeight(80);
+	object->setWidth(80);
+	object->setPositionX(30);
+	object->setPositionY(0);
 
-	o->setSpeed(100);
-	o->setJumpHeight(400);
-	o->setDensity(1);
-	o->setFriction(0);
-	o->setRestitution(0);
+	object->setSpeed(100);
+	object->setJumpHeight(400);
+	object->setDensity(1);
+	object->setFriction(0);
+	object->setRestitution(0);
 
-	engine.phy->temp.push_back(o);
-	engine.phy->registerRectangle(*o);
+	engine.phy->temp.push_back(object);
+	engine.phy->registerRectangle(*object);
 
-	Object* g = new Object();
-	g->setWidth(500); // width
-	g->setHeight(10);// height
-	g->setPositionX(20); // x 20 left down
-	g->setPositionY(300);// y 300 left down
+	Object* staticGround = new Object();
+	staticGround->setWidth(500); // width
+	staticGround->setHeight(10);// height
+	staticGround->setPositionX(20); // x 20 left down
+	staticGround->setPositionY(300);// y 300 left down
 
-	engine.phy->addStaticObject(*g);
+	engine.phy->addStaticObject(*staticGround);
 
 
 	for (int32 i = 0; i < 1000; ++i)
@@ -48,8 +48,8 @@ int main() {
 		engine.phy->update();
 
 		float x = i;
-		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, o->getPositionX(), o->getPositionY());
-		engine.svi.testLoopVideo(*o, *g);
+		printf("counter: %4.2f xPos: %4.2f yPos: %4.2f \n", x, object->getPositionX(), object->getPositionY());
+		engine.svi.testLoopVideo(*object, *staticGround);
 
 		SDL_Delay(10);
 	}
