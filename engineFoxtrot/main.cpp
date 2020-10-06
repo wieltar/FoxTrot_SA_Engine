@@ -29,34 +29,34 @@ int main() {
 	engine.setCurrentScene(1);
 
 	engine.createNewObjectWithSceneID(2, 1, 50, 50, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 2, 100, 5, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 3, 150, 5, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 4, 5, 50, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 5, 50, 50, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 6, 100, 50, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 7, 150, 50, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 8, 5, 100, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 9, 100, 100, 40, 40, false);
-	//engine.createNewObjectWithSceneID(2, 10, 50, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 2, 100, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 3, 150, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 4, 5, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 5, 50, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 6, 100, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 7, 150, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 8, 5, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 9, 100, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 10, 50, 100, 40, 40, false);
 
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
-	//engine.linkSpriteIDWithAssetPath(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-02.png");
-	//engine.linkSpriteIDWithAssetPath(4, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-03.png");
-	//engine.linkSpriteIDWithAssetPath(5, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-00.png");
-	//engine.linkSpriteIDWithAssetPath(6, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-01.png");
-	//engine.linkSpriteIDWithAssetPath(7, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-02.png");
-	//engine.linkSpriteIDWithAssetPath(8, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-03.png");
-	//engine.linkSpriteIDWithAssetPath(9, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-04.png");
-	//engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
+	engine.linkSpriteIDWithAssetPath(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-02.png");
+	engine.linkSpriteIDWithAssetPath(4, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-03.png");
+	engine.linkSpriteIDWithAssetPath(5, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-00.png");
+	engine.linkSpriteIDWithAssetPath(6, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-01.png");
+	engine.linkSpriteIDWithAssetPath(7, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-02.png");
+	engine.linkSpriteIDWithAssetPath(8, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-03.png");
+	engine.linkSpriteIDWithAssetPath(9, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-04.png");
+	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
 
-	//engine.createNewSceneWithSceneID(20);
+	engine.createNewSceneWithSceneID(20);
 	engine.createNewObjectWithSceneID(20, 1, 50, 150, 40, 40, false);
 	engine.createNewObjectWithSceneID(20, 2, 20, 300, 40, 40, true);
 	engine.setCurrentScene(20);
-	////engine.createNewObjectWithSceneID(20, 1, 30, 0, 40, 40, false,100,400,1,0,0);
-	//engine.createNewObjectWithSceneID(20, 1, 50, 5, 40, 40, false);
+	engine.createNewObjectWithSceneID(20, 1, 30, 50, 40, 40, false,100,400,1,0,0);
+	engine.createNewObjectWithSceneID(20, 1, 50, 55, 40, 40, false);
 
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
 	Object* object = new Object(10);
@@ -67,7 +67,7 @@ int main() {
 	object->setPositionY(80); 
 	object->setSpeed(100);
 	object->setJumpHeight(400);
-	object->setDensity(1);
+	object->setDensity(10);
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
