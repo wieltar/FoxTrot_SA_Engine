@@ -59,7 +59,6 @@ private:
 	int32 velocityIterations = VELOCITY_ITERATIONS;
 	int32 positionIterations = POSITION_ITERATIONS;
 
-	vector <PhysicsBody*> physicsBodyVector;
 	map <PhysicsBody*, b2Body*> bodies;
 		
 	b2Body* findBody(int objectId);
