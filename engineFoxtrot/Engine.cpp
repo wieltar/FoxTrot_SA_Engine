@@ -122,7 +122,7 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		//eventManager.notify(EventType::ENGINE60, new Object);
+		eventManager.notify(EventType::ENGINE60, new Object);
 		//svi.receiveTick();
 	}
 
