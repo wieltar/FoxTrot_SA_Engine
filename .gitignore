@@ -6,6 +6,7 @@
 # custom 
 bin/
 bin-int/
+/Debug/
     
 # User-specific files
 *.rsuser
