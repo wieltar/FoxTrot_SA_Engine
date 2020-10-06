@@ -39,7 +39,7 @@ public:
 	~PhysicsFacade();
 
 	void addStaticObject(PhysicsBody* ground) override;
-	void registerRectangle(PhysicsBody* object) override;
+	void addNonStaticObject(PhysicsBody* object) override;
 
 	
 	PhysicsBody* getPhysicsObject(int objectId) override;
