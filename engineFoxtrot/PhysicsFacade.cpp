@@ -74,7 +74,6 @@ void PhysicsFacade::registerRectangle(PhysicsBody* object)
 	bodyDef.position.Set(object->getPositionX(), object->getPositionY());
 
 	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
-	//physicsBodyVector.push_back(object);
 	bodies.insert(std::pair<PhysicsBody*, b2Body*>(object, body));
 }
 
