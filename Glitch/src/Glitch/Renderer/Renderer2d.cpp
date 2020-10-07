@@ -7,7 +7,7 @@ namespace Glitch {
 	/// Inits SDL2 renderer on window
 	void Renderer2d::Init()
 	{
-		//Create renderer for window
+		//Create renderer for window -- kan naar facade
 		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 		if (renderer == NULL)
@@ -16,9 +16,9 @@ namespace Glitch {
 			throw ERROR_CODE_SVIFACADE_CANT_CREATE_RENDERER;
 		}
 
-		screenSurface = SDL_GetWindowSurface(window);
+		screenSurface = SDL_GetWindowSurface(window); // ?
 
-		//Initialize PNG loading
+		//Initialize PNG loading -- kan naar facade
 		int imgFlags = IMG_INIT_PNG;
 		if (!(IMG_Init(imgFlags) & imgFlags))
 		{
@@ -37,6 +37,7 @@ namespace Glitch {
 	void Renderer2d::Shutdown()
 	{
 		//Deallocate surface
+		// roept facade aan voor shutdown van renderer functies via interface
 		SDL_FreeSurface(screenSurface);
 		screenSurface = NULL;
 	}
@@ -45,6 +46,7 @@ namespace Glitch {
 	/// Clears SDL screen
 	void Renderer2d::clearScreen()
 	{
+		// set draw color -> facade etc.
 		SDL_SetRenderDrawColor(renderer, 2, 200, 80, 6);
 		SDL_RenderClear(renderer);
 	}
@@ -64,9 +66,11 @@ namespace Glitch {
 	{
 		if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 		if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+		// naar facade
 		SDL_Surface* surface = IMG_Load(filename);
 		SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 		textureMap[spriteID] = texture;
+		// ----
 	}
 
 	/// @brief 

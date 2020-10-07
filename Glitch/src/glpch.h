@@ -16,6 +16,7 @@
 #include <unordered_map>
 #include <type_traits>
 
+#include "Glitch/Core/ErrorCodes.h"
 #include "Glitch/Log/log.h"
 
 #ifdef GL_PLATFORM_WINDOWS

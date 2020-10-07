@@ -31,8 +31,6 @@ namespace Glitch {
 		isRunning = false;
 		// TODO shutdown all other systems
 		return true;
-
-
 	}
 
 	void Application::OnEvent(Event& e)

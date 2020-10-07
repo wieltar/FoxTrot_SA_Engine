@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include "Object.h"
 #include <map>
 
 /// @brief Interface class for SDL2 facade
@@ -14,8 +14,6 @@ public:
 	~ISVI();
 
 	// Video Functions
-	virtual void testLoopVideo(int x, int y) = 0;
-
 	virtual void initSDL() = 0;
 
 	virtual void clearScreen() = 0;
@@ -23,6 +21,7 @@ public:
 	virtual void loadImage(int spriteID, const char* filename) = 0;
 
 	virtual void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation) = 0;
+	virtual void renderCopy(Object* object) = 0;
 
 
 	// Input Functions

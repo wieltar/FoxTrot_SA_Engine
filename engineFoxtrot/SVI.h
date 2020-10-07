@@ -14,6 +14,10 @@
 #include <SDL_mixer.h>
 #include <SDL_image.h>
 #include <unordered_map>
+#include "../SDL2/include/SDL_mixer.h"
+#include "../SDL2/include/SDL.h"
+#include "../SDL2/include/SDL_image.h"
+#include "Object.h"
 #undef main
 
 using namespace std;
@@ -83,8 +87,6 @@ private:
 
 // Video functions
 public:
-	void testLoopVideo(int x, int y);
-
 	void initSDL();
 
 	void clearScreen();
@@ -92,6 +94,7 @@ public:
 	void loadImage(int spriteID, const char* filename);
 
 	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
+	void renderCopy(Object* object);
 
 
 	unordered_map<int, SDL_Texture*> textureMap;
