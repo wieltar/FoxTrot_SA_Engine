@@ -1,7 +1,6 @@
 #pragma once
 #include "EventManager.h"
 #include "SVI.h"
-#include "Object.h"
 #include <vector>
 
 
@@ -33,7 +32,6 @@ public:
 	~SVIEngine();
 	
 	// Video Functions
-	void testLoopVideo(int x, int y);
 
 	void initSDL();
 
@@ -41,6 +39,7 @@ public:
 	void drawScreen();
 	void loadImage(int spriteID, const char* filename);
 	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
+	void renderCopy(Object object);
 
 	void updateScreen();
 
@@ -81,6 +80,6 @@ public:
 
 	//Set to private after testing!!!
 	EventManager* eventManager = nullptr;
-	ISVI * sviEngine = new SVI;
+	ISVI * sviFacade = new SVI;
 private:
 };

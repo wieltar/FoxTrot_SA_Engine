@@ -13,15 +13,26 @@ Scene::~Scene()
 {
 }
 
+void Scene::addNewObject(Object* object) {
+	objects.push_back(object);
+}
+
 /// @brief 
 /// @param id 
 /// @param xPos 
 /// @param yPos 
 /// @param height 
 /// @param width 
-void Scene::addNewObject(int id, int xPos, int yPos, int height, int width)
+void Scene::addNewObject(int id, int xPos, int yPos, int height, int width,int speed, int jumpHeight, int density, int friction, int restitution, bool stat)
 {
-	objects.push_back(new Object(id, xPos, yPos, height, width));
+	Object* obj = new Object(id, xPos, yPos, height, width);
+	obj->setDensity(density);
+	obj->setFriction(friction);
+	obj->setRestitution(restitution);
+	obj->setJumpHeight(jumpHeight);
+	obj->setSpeed(speed);
+	obj->setStatic(stat);
+	objects.push_back(obj);
 }
 
 /// @brief 

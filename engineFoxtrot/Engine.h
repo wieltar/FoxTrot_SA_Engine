@@ -54,17 +54,12 @@ public:
 	thread *engineTick60Thread = nullptr;
 	thread *engineTick30Thread = nullptr;
 
-
-
-
-
-
-
-
-
 	void setCurrentScene(int sceneID);
 	void createNewSceneWithSceneID(int sceneID);
-	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width);
+
+	void createObject(int sceneID, Object* object);
+	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat);
+	void createNewObjectWithSceneID(int sceneID, int id, int xPos, int yPos, int height, int width, bool stat, int speed, int jumpHeight, int density, int friction, int restitution);
 	void linkSpriteIDWithAssetPath(int spriteID, const char* assetPath);
 
 	void addEventListener(EventListener* listener, EventType eventType);
@@ -78,11 +73,14 @@ public:
 	void setObjectDirection(int objId, int dir);
 	void setObjectStatic(int objId, bool stat);
 
+
+	//TODO make private
+
+	PhysicsEngine physicsEngine;
 private:
 
+	SVIEngine sviEngine;
 	FileParser fileParser;
-	PhysicsEngine physicsEngine;
-	SVIEngine svi;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 

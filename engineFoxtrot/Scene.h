@@ -27,8 +27,8 @@ class Scene
 public:
 	Scene(int);
     ~Scene();
-
-	void addNewObject(int id, int xPos, int yPos, int height, int width);
+	void addNewObject(Object* object);
+	void addNewObject(int id, int xPos, int yPos, int height, int width, int speed, int jumpHeight, int density, int friction, int restitution, bool stat);
 	Object * getObject(int spriteID);
 
 	int getSceneID() { return sceneID; }
