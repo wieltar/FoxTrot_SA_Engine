@@ -15,6 +15,14 @@ namespace Glitch {
 		return new WindowsWindow(props);
 	}
 
+	void Window::Init()
+	{
+	}
+
+	void Window::Shutdown()
+	{
+	}
+
 	WindowsWindow::~WindowsWindow() {
 		Shutdown();
 	}
@@ -22,7 +30,10 @@ namespace Glitch {
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
 		m_data = new WindowProps();
-		Init(props);
+		m_data->Title = props.Title;
+		m_data->Width = props.Width;
+		m_data->Height = props.Height;
+		//Init(props);
 	}
 
 	void WindowsWindow::OnUpdate()
@@ -39,7 +50,7 @@ namespace Glitch {
 		{
 			while (SDL_PollEvent(&sdl_event))
 			{
-				WindowProps& winData = *(WindowProps*)SDL_GetWindowData(window, m_data->Title);
+				WindowProps& winData = *(WindowProps*)SDL_GetWindowData(facade->getWindow(), m_data->Title);
 
 				switch (sdl_event.type)
 				{
@@ -92,7 +103,7 @@ namespace Glitch {
 						}
 						else if (sdl_event.window.event == SDL_WINDOWEVENT_RESIZED) {
 							WindowResizeEvent event(winData.Width, winData.Height);
-							SDL_SetWindowSize(window, winData.Width, winData.Height);
+							SDL_SetWindowSize(facade->getWindow(), winData.Width, winData.Height);
 							winData.EventCallback(event);
 						}
 						break;
@@ -109,51 +120,16 @@ namespace Glitch {
 		m_data->vSync = enabled;
 	}
 
-	void WindowsWindow::Init(const WindowProps& props)
+	void WindowsWindow::Init()
 	{
-		m_data->Title = props.Title;
-		m_data->Width = props.Width;
-		m_data->Height = props.Height;
-
-		GL_CORE_INFO("Intialized window {0}, ({1}, {2})", props.Title, props.Width, props.Height);
-
-		// Initialize SDL2
-		if (!p_isSDLInitialized)
-		{
-			int success = SDL_Init(SDL_INIT_VIDEO);
-			const char* err = SDL_GetError();
-
-			//GL_CORE_ASSERT(success, "Could not initialize SDL2 Error: {0}");
-			p_isSDLInitialized = true;
-		}
-		window = SDL_CreateWindow(
-			m_data->Title,			// window title
-			SDL_WINDOWPOS_CENTERED,	// initial x position
-			SDL_WINDOWPOS_CENTERED,	// initial y position
-			m_data->Width,			// width, in pixels
-			m_data->Height,			// height, in pixels
-			0
-		);
-
-		if (window == NULL)
-		{
-			GL_CORE_ERROR("Window could not be created! SDL Error: %s\n", SDL_GetError());
-			throw ERROR_CODE_SVIFACADE_CANT_CREATE_WINDOW;
-		}
-
-		// set the window id in the window props struct
-		m_data->Id = SDL_GetWindowID(window);
-		SDL_SetWindowData(window, m_data->Title, m_data);
+		
+		GL_CORE_INFO("Intialized window {0}, ({1}, {2})", m_data->Title, m_data->Width, m_data->Height);
+		facade->createWindow(m_data);
 	}
 
 	void WindowsWindow::Shutdown()
 	{
-		// Close and destroy the window
-		SDL_DestroyWindow(window);
-		window = NULL;
-
-		// Clean up
-		SDL_Quit();
+		facade->destroyScreen();
 	}
 
 	bool WindowsWindow::IsVsync() const {

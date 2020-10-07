@@ -1,37 +1,17 @@
 #pragma once
 #include "Glitch\Events\ApplicationEvent.h"
-
+#include <Glitch\Facades\SDL2Facade.h>
+#include "Glitch/Renderer/WindowProps.h"
+#include "Glitch/ISystem.h"
 namespace Glitch {
 
-	using EventCallbackFn = std::function<void(Event&)>;
-	struct WindowProps
-	{
-		int Id;
-		const char* Title;
-		unsigned int Width;
-		unsigned int Height;
-		bool vSync;
-		EventCallbackFn EventCallback;
-
-		WindowProps(
-			const char* title = "Glitch engine",
-			unsigned int width = 1280,
-			unsigned int height = 720
-		) : Title{ title }, Width{ width }, Height{ height }
-		{
-			vSync = false;
-			Id = 0;
-		}
-	};
-
-	class GLITCH_API Window
+	class GLITCH_API Window : public ISystem
 	{
 	public:
-		
+		virtual void SetFacade(SDL2Facade* windowFacade) = 0;
 
 		virtual ~Window() {};
 
-		virtual void OnUpdate() = 0;
 
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;
@@ -43,5 +23,10 @@ namespace Glitch {
 		virtual WindowProps* GetProperties() const = 0;
 
 		static Window* Create(const WindowProps& props = WindowProps());
+
+		// Inherited via ISystem
+		virtual void OnUpdate() = 0;
+		virtual void Init() = 0;
+		virtual void Shutdown() = 0;
 	};
 }

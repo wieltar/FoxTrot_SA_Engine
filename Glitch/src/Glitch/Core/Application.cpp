@@ -6,8 +6,16 @@ namespace Glitch {
 
 	Application::Application()
 	{
+		sdlFacade = new SDL2Facade();
+		renderer = new Renderer2d(sdlFacade);
+
 		m_window = std::unique_ptr<Window>(Window::Create());
+
+		m_window->SetFacade(sdlFacade);
 		m_window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+
+		m_window->Init();
+		renderer->Init();
 	}
 
 	Application::~Application()
@@ -16,8 +24,6 @@ namespace Glitch {
 
 	void Application::Run() {
 		
-		sceneManager = new SceneManager();
-		renderer = new Renderer2d(m_window->GetProperties());
 
 		while (isRunning)
 		{

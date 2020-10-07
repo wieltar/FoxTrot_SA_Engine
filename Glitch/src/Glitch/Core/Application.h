@@ -16,8 +16,11 @@ namespace Glitch {
 		void OnEvent(Event& e);
 
 	private:
+		SDL2Facade* sdlFacade;
+		
 		SceneManager* sceneManager;
 		Renderer2d* renderer;
+
 
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_window;

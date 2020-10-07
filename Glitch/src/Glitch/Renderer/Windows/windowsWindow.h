@@ -24,14 +24,15 @@ namespace Glitch {
 
 		WindowProps* GetProperties() const override { return m_data; }
 
+		virtual void SetFacade(SDL2Facade* _facade) { this->facade = _facade; }
+
+		virtual void Init() override;
+		virtual void Shutdown() override;
 	private:
-		virtual void Init(const WindowProps& props);
-		virtual void Shutdown();
 
-		void PollEvents();
-
-		SDL_Window* window = nullptr;		
+		void PollEvents();	
 		WindowProps* m_data;
+		SDL2Facade* facade;
 	};
 }
 

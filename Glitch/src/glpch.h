@@ -19,6 +19,8 @@
 #include "Glitch/Core/ErrorCodes.h"
 #include "Glitch/Log/log.h"
 
+using namespace std;
+
 #ifdef GL_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif // GL_PLATFORM_WINDOWS

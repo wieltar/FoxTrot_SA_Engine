@@ -153,6 +153,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glitch\Facades\SDL2Facade.h" />
     <ClInclude Include="src\Glitch\Core\Object.h" />
     <ClInclude Include="src\Glitch\Events\ObjectEventCodes.h" />
     <ClInclude Include="src\Glitch\Events\ObjectEvents.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="src\Glitch\Renderer\Renderer2d.h" />
     <ClInclude Include="src\Glitch\Renderer\SceneManager\Scene.h" />
     <ClInclude Include="src\Glitch\Renderer\SceneManager\SceneManager.h" />
+    <ClInclude Include="src\Glitch\Renderer\WindowProps.h" />
     <ClInclude Include="src\Glitch\Sound\SoundEngine.h" />
     <ClInclude Include="src\Glitch.h" />
     <ClInclude Include="src\Glitch\Core\Application.h" />
@@ -179,6 +181,7 @@
     <ClInclude Include="src\glpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glitch\Facades\SDL2Facade.cpp" />
     <ClCompile Include="src\Glitch\Core\Object.cpp" />
     <ClCompile Include="src\Glitch\Renderer\Renderer2d.cpp" />
     <ClCompile Include="src\Glitch\Renderer\SceneManager\Scene.cpp" />
