@@ -1,6 +1,6 @@
 #pragma once
 #include "Glitch\Events\ApplicationEvent.h"
-#include <Glitch\Facades\SDL2Facade.h>
+#include <Glitch\Facades\SDL2\SDL2Facade.h>
 #include "Glitch/Renderer/WindowProps.h"
 #include "Glitch/ISystem.h"
 namespace Glitch {
@@ -8,7 +8,7 @@ namespace Glitch {
 	class GLITCH_API Window : public ISystem
 	{
 	public:
-		virtual void SetFacade(SDL2Facade* windowFacade) = 0;
+		virtual void SetFacade(ISDL2Facade* windowFacade) = 0;
 
 		virtual ~Window() {};
 
@@ -27,6 +27,6 @@ namespace Glitch {
 		// Inherited via ISystem
 		virtual void OnUpdate() = 0;
 		virtual void Init() = 0;
-		virtual void Shutdown() = 0;
+		virtual void Shutdown();
 	};
 }

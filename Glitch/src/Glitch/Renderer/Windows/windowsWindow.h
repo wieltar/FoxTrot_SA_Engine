@@ -24,7 +24,7 @@ namespace Glitch {
 
 		WindowProps* GetProperties() const override { return m_data; }
 
-		virtual void SetFacade(SDL2Facade* _facade) { this->facade = _facade; }
+		virtual void SetFacade(ISDL2Facade* _facade) { this->facade = _facade; }
 
 		virtual void Init() override;
 		virtual void Shutdown() override;
@@ -32,7 +32,7 @@ namespace Glitch {
 
 		void PollEvents();	
 		WindowProps* m_data;
-		SDL2Facade* facade;
+		ISDL2Facade* facade;
 	};
 }
 

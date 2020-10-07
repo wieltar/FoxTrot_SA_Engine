@@ -4,15 +4,15 @@
 #include "SDL_image.h"
 #include "Glitch\ISystem.h"
 #include <Glitch\Renderer\window.h>
-#include "Glitch\Facades\SDL2Facade.h"
+#include "Glitch\Facades\SDL2\SDL2Facade.h"
 
 namespace Glitch {
 	class GLITCH_API Renderer2d : public ISystem
 	{
 	public:
-		SDL2Facade* facadeTest;
+		ISDL2Facade* facadeTest;
 
-		Renderer2d(SDL2Facade* rendererFacade) : facadeTest { rendererFacade } {};
+		Renderer2d(ISDL2Facade* rendererFacade) : facadeTest { rendererFacade } {};
 		~Renderer2d() {};
 
 		vector <Object*>* pointerToObjectVector = nullptr;

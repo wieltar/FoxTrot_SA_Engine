@@ -3,9 +3,10 @@
 #include "SDL_image.h"
 #include <unordered_map>
 #include "Glitch/Renderer/WindowProps.h"
+#include "Glitch/Facades/SDL2/ISDL2Facade.h"
 
 namespace Glitch {
-	class GLITCH_API SDL2Facade
+	class GLITCH_API SDL2Facade : public ISDL2Facade
 	{
 	public:
 		SDL2Facade() {

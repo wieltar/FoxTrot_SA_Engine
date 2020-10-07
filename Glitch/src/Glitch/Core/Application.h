@@ -16,7 +16,7 @@ namespace Glitch {
 		void OnEvent(Event& e);
 
 	private:
-		SDL2Facade* sdlFacade;
+		ISDL2Facade* sdlFacade;
 		
 		SceneManager* sceneManager;
 		Renderer2d* renderer;

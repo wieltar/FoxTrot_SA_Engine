@@ -66,8 +66,9 @@
     <ClInclude Include="src\Glitch\Events\ObjectEvents.h" />
     <ClInclude Include="src\Glitch\Renderer\Renderer2d.h" />
     <ClInclude Include="src\Glitch\ISystem.h" />
-    <ClInclude Include="src\Glitch\Facades\SDL2Facade.h" />
     <ClInclude Include="src\Glitch\Renderer\WindowProps.h" />
+    <ClInclude Include="src\Glitch\Facades\SDL2\SDL2Facade.h" />
+    <ClInclude Include="src\Glitch\Facades\SDL2\ISDL2Facade.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Glitch\Log\Log.cpp">
@@ -87,6 +88,6 @@
       <Filter>Glitch\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Glitch\Renderer\Renderer2d.cpp" />
-    <ClCompile Include="src\Glitch\Facades\SDL2Facade.cpp" />
+    <ClCompile Include="src\Glitch\Facades\SDL2\SDL2Facade.cpp" />
   </ItemGroup>
 </Project>
