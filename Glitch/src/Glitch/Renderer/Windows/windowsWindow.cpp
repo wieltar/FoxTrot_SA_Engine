@@ -111,10 +111,11 @@ namespace Glitch {
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		// window krijgt van facade een gevulde WindowProp struct
 		m_data->Title = props.Title;
 		m_data->Width = props.Width;
 		m_data->Height = props.Height;
-
+		// kan naar facade ---------------------------------------
 		GL_CORE_INFO("Intialized window {0}, ({1}, {2})", props.Title, props.Width, props.Height);
 
 		// Initialize SDL2
@@ -154,6 +155,7 @@ namespace Glitch {
 
 		// Clean up
 		SDL_Quit();
+		// -------------------------------
 	}
 
 	bool WindowsWindow::IsVsync() const {
