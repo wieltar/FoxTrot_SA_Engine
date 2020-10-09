@@ -10,8 +10,8 @@ class ISVI
 #endif
 {
 public:
-	ISVI();
-	~ISVI();
+	ISVI() {};
+	~ISVI() {};
 
 	// Video Functions
 	virtual void initSDL() = 0;

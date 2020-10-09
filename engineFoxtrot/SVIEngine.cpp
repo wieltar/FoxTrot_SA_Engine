@@ -93,10 +93,10 @@ void SVIEngine::updateScreen()
 		if (pointerToObjectVector == nullptr) return;
 		//if (pointerToObjectVector->capacity() <= 0) return;
 		if (pointerToObjectVector->size() <= 0) return;
-		for (auto obj : *pointerToObjectVector) {
+		for (Object * obj : *pointerToObjectVector) {
 			if (obj != nullptr) {
 				//sviFacade->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(), obj->getRotation());
-				sviFacade->renderCopy(obj);
+				sviFacade->renderCopy(*obj);
 			}
 		}
 	}
