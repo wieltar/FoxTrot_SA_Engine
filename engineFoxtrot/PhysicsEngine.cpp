@@ -58,35 +58,35 @@ void PhysicsEngine::update30()
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for moving to left
-void PhysicsEngine::MoveLeft(int const objectId) {
+void PhysicsEngine::MoveLeft(const int objectId) {
 	this->physicsFacade->MoveLeft(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for moving to right 
-void PhysicsEngine::MoveRight(int const objectId) {
+void PhysicsEngine::MoveRight(const int objectId) {
 	this->physicsFacade->MoveRight(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping
-void PhysicsEngine::Jump(int const objectId) {
+void PhysicsEngine::Jump(const int objectId) {
 	this->physicsFacade->Jump(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the left
-void PhysicsEngine::JumpLeft(int const objectId) {
+void PhysicsEngine::JumpLeft(const int objectId) {
 	this->physicsFacade->JumpLeft(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the right
-void PhysicsEngine::JumpRight(int const objectId) {
+void PhysicsEngine::JumpRight(const int objectId) {
 	this->physicsFacade->JumpRight(objectId);
 }
 

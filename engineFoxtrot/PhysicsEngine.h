@@ -21,11 +21,11 @@ public:
 
 	void registerObjectInCurrentVectorWithPhysicsEngine();
 
-	void MoveLeft(int const objectId);
-	void MoveRight(int const objectId);
-	void Jump(int const objectId);
-	void JumpLeft(int const objectId);
-	void JumpRight(int const objectId);
+	void MoveLeft(const int objectId);
+	void MoveRight(const int objectId);
+	void Jump(const int objectId);
+	void JumpLeft(const int objectId);
+	void JumpRight(const int objectId);
 
 	void update30();
 
@@ -37,7 +37,7 @@ public:
 	IPhysicsFacade * physicsFacade = new PhysicsFacade;
 private:
 
-	Object* getObject(int objectId);
+	Object* getObject(const int objectId);
 };
 
 
