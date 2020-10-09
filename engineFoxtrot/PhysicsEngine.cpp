@@ -16,7 +16,7 @@ PhysicsEngine::~PhysicsEngine()
 /// @param objectId 
 /// A function to search a object with the ObjectId
 /// If a object is not found throw PHYSICS_ENGINE_OBJECT_DOESNT_EXIST
-Object* PhysicsEngine::getObject(int objectId)
+Object* PhysicsEngine::getObject(const int objectId)
 {
 	for (Object * obj : *pointerToObjectVector)
 	{
@@ -46,47 +46,47 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 		{
 			physicsFacade->addNonStaticObject(phyObj);
 		}
-		
 	}
 }
+
 /// @brief 
 void PhysicsEngine::update30()
 {
 	physicsFacade->update();
-
 }
+
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for moving to left
-void PhysicsEngine::MoveLeft(int objectId) {
+void PhysicsEngine::MoveLeft(int const objectId) {
 	this->physicsFacade->MoveLeft(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for moving to right 
-void PhysicsEngine::MoveRight(int objectId) {
+void PhysicsEngine::MoveRight(int const objectId) {
 	this->physicsFacade->MoveRight(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping
-void PhysicsEngine::Jump(int objectId) {
+void PhysicsEngine::Jump(int const objectId) {
 	this->physicsFacade->Jump(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the left
-void PhysicsEngine::JumpLeft(int objectId) {
+void PhysicsEngine::JumpLeft(int const objectId) {
 	this->physicsFacade->JumpLeft(objectId);
 }
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the right
-void PhysicsEngine::JumpRight(int objectId) {
+void PhysicsEngine::JumpRight(int const objectId) {
 	this->physicsFacade->JumpRight(objectId);
 }
 

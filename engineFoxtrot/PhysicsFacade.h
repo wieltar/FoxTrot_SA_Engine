@@ -10,7 +10,6 @@
 #include <iostream>
 #include <map>
 
-
 using namespace std;
 
 #define VELOCITY_ITERATIONS 8
@@ -38,17 +37,16 @@ public:
 	PhysicsFacade();
 	~PhysicsFacade();
 
-	void addStaticObject(PhysicsBody* ground) override;
+	void addStaticObject(const PhysicsBody* object) override;
 	void addNonStaticObject(PhysicsBody* object) override;
 
-	
-	PhysicsBody* getPhysicsObject(int objectId) override;
+	PhysicsBody* getPhysicsObject(const int objectId) override;
 
-	void MoveLeft(int objectId) override;
-	void MoveRight(int objectId) override;
-	void Jump(int objectId) override;
-	void JumpLeft(int objectId) override;
-	void JumpRight(int objectId) override;
+	void MoveLeft(const int objectId) override;
+	void MoveRight(const int objectId) override;
+	void Jump(const int objectId) override;
+	void JumpLeft(const int objectId) override;
+	void JumpRight(const int objectId) override;
 
 	void update() override;
 

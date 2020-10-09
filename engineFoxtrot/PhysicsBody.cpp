@@ -2,7 +2,6 @@
 
 int PhysicsBody::getSpriteID() const { return this->objectID; }
 
-
 void PhysicsBody::setPositionX(float x) { this->posX = x; this->object->setPositionX(x); }
 float PhysicsBody::getPositionX() const { return posX; }
 

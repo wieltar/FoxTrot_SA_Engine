@@ -26,7 +26,7 @@ using namespace std;
 // Use unique_ptr when you want to have single ownership(Exclusive) of the resource. Only one unique_ptr can point to one resource. 
 // Since there can be one unique_ptr for single resource its not possible to copy one unique_ptr to another.
 
-//  Shared_ptr
+// Shared_ptr
 // A shared_ptr is a container for raw pointers. It is a reference counting ownership model i.e. it maintains the reference count of its contained pointer in cooperation with all copies of the shared_ptr.
 // So, the counter is incremented each time a new pointer points to the resource and decremented when the destructor of the object is called.
 // Use shared_ptr if you want to share ownership of a resource. Many shared_ptr can point to a single resource.

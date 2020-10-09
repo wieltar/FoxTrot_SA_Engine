@@ -19,7 +19,7 @@ PhysicsFacade::~PhysicsFacade()
 /// @param objectId 
 /// A function to search a physicsObject with the ObjectId
 /// If a body is not found throw PHYSICS_FACADE_OBJECT_DOESNT_EXIST
-PhysicsBody* PhysicsFacade::getPhysicsObject(int objectId)
+PhysicsBody* PhysicsFacade::getPhysicsObject(const int objectId)
 {
 	for (const auto& value : bodies) {
 		if (value.first->getSpriteID() == objectId)
@@ -34,14 +34,12 @@ PhysicsBody* PhysicsFacade::getPhysicsObject(int objectId)
 /// @param objectId 
 /// A (private) function for create a shape
 /// The position is set to the bottom left
-b2PolygonShape createShape(PhysicsBody& object) {
+b2PolygonShape createShape(const PhysicsBody& object) {
 	b2PolygonShape shape;
-	//BOX2D needs coordinates off CENTER CENTER position and you get the LEFT BOTTOM
-	//SDL2 needs coordinates off LEFT TOP position and you get the LEFT BOTTOM
-	float halfH = object.getHeight()/ 2;
-	float halfW = object.getWidth() / 2;
-	float posY = object.getPositionY() - object.getHeight() / 2;
-	float posX = object.getPositionX() + object.getWidth() / 2;
+	float halfH = object.getHeight()/ 2; //Box2D needs the half height of a object
+	float halfW = object.getWidth() / 2; //Box2D needs the half width of a object
+	float posY = object.getPositionY() - object.getHeight() / 2; //Box2d needs the middle position
+	float posX = object.getPositionX() + object.getWidth() / 2; //Box2d needs the middle position
 	shape.SetAsBox(halfW, halfH, b2Vec2(posX, posY), object.getRotation());
 	return shape;
 }
@@ -49,7 +47,7 @@ b2PolygonShape createShape(PhysicsBody& object) {
 /// @brief 
 /// @param Object 
 /// A function for register a non static object
-void PhysicsFacade::addStaticObject(PhysicsBody* object) {
+void PhysicsFacade::addStaticObject(const PhysicsBody* object) {
 	b2BodyDef groundBodyDef;
 	b2Body* body = world.CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox = createShape(*object);
@@ -76,7 +74,9 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	body->CreateFixture(&fixtureDef);
 	auto x = body->GetPosition();
 
-	bodyDef.position.Set(object->getPositionX(), object->getPositionY());
+	float posY = object->getPositionY() - object->getHeight() / 2; //Box2d needs the middle position
+	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
+	bodyDef.position.Set(posX, posY);
 
 	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
 	bodies.insert(std::pair<PhysicsBody*, b2Body*>(object, body));
@@ -86,7 +86,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 /// @param objectId 
 /// A function to search a body with the ObjectId
 /// If a body is not found throw PHYSICS_FACADE_BODY_DOESNT_EXIST
-b2Body* PhysicsFacade::findBody(int objectId) {
+b2Body* PhysicsFacade::findBody(const int objectId) {
 	for (const auto& value : bodies) {
 		if (value.first->getSpriteID() == objectId)
 		{
@@ -106,9 +106,6 @@ void PhysicsFacade::update() {
 	{
 		b2Body* body = it.second;
 		PhysicsBody* object = it.first;
-		b2Vec2 position = body->GetPosition();
-		float angle = body->GetAngle();
-		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
 		//TODO from radiant to radius/angle???
@@ -119,49 +116,49 @@ void PhysicsFacade::update() {
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for moving to left
-void PhysicsFacade::MoveLeft(int objectId)
+void PhysicsFacade::MoveLeft(const int objectId)
 {
 	b2Body* body = findBody(objectId);
-	PhysicsBody* ob = getPhysicsObject(objectId);
+	const PhysicsBody* ob = getPhysicsObject(objectId);
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, Y_AXIS_STATIC), body->GetWorldCenter(), true);
 };
 
 /// @brief 
 /// @param objectId
 /// A function to add a linearImpulse to a object for moving to right 
-void PhysicsFacade::MoveRight(int objectId)
+void PhysicsFacade::MoveRight(const int objectId)
 {
 	b2Body* body = findBody(objectId);
-	PhysicsBody* ob = getPhysicsObject(objectId);
+	const PhysicsBody* ob = getPhysicsObject(objectId);
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), Y_AXIS_STATIC), body->GetWorldCenter(), true);
 };
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping
-void PhysicsFacade::Jump(int objectId)
+void PhysicsFacade::Jump(const int objectId)
 {
 	b2Body* body = findBody(objectId);
-	PhysicsBody* ob = getPhysicsObject(objectId);
+	const PhysicsBody* ob = getPhysicsObject(objectId);
 	body->ApplyLinearImpulse(b2Vec2(X_AXIS_STATIC, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the left
-void PhysicsFacade::JumpLeft(int objectId)
+void PhysicsFacade::JumpLeft(const int objectId)
 {
 	b2Body* body = findBody(objectId);
-	PhysicsBody* ob = getPhysicsObject(objectId);
+	const PhysicsBody* ob = getPhysicsObject(objectId);
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED * -1, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
 
 /// @brief 
 /// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the right
-void PhysicsFacade::JumpRight(int objectId)
+void PhysicsFacade::JumpRight(const int objectId)
 {
 	b2Body* body = findBody(objectId);
-	PhysicsBody* ob = getPhysicsObject(objectId);
+	const PhysicsBody* ob = getPhysicsObject(objectId);
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
