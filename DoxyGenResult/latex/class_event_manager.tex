@@ -1,0 +1,71 @@
+\hypertarget{class_event_manager}{}\doxysection{Event\+Manager Class Reference}
+\label{class_event_manager}\index{EventManager@{EventManager}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_event_manager_a7193027e0b43497da76ba9c8344d9ffa}{subscribe}} (const Event\+Type event\+Type, \mbox{\hyperlink{class_event_listener}{Event\+Listener}} $\ast$listener)
+\begin{DoxyCompactList}\small\item\em a subscribe function for all other classes \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_event_manager_a1b76f82ad25cee486939bec99db701b2}{unsubscribe}} (const Event\+Type event\+Type, \mbox{\hyperlink{class_event_listener}{Event\+Listener}} $\ast$listener)
+\begin{DoxyCompactList}\small\item\em a unsubscribe function for all other classes \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_event_manager_a5be44b4cf2e298af40c5a13cea6fd96c}{notify}} (const Event\+Type event\+Type, \mbox{\hyperlink{class_object}{Object}} $\ast$data)
+\begin{DoxyCompactList}\small\item\em a notify function for other classes so they can notify events \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_manager_a5be44b4cf2e298af40c5a13cea6fd96c}\label{class_event_manager_a5be44b4cf2e298af40c5a13cea6fd96c}} 
+\index{EventManager@{EventManager}!notify@{notify}}
+\index{notify@{notify}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily void Event\+Manager\+::notify (\begin{DoxyParamCaption}\item[{const Event\+Type}]{event\+Type,  }\item[{\mbox{\hyperlink{class_object}{Object}} $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+a notify function for other classes so they can notify events 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+Type} & \\
+\hline
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_event_manager_a7193027e0b43497da76ba9c8344d9ffa}\label{class_event_manager_a7193027e0b43497da76ba9c8344d9ffa}} 
+\index{EventManager@{EventManager}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{subscribe()}{subscribe()}}
+{\footnotesize\ttfamily void Event\+Manager\+::subscribe (\begin{DoxyParamCaption}\item[{const Event\+Type}]{event\+Type,  }\item[{\mbox{\hyperlink{class_event_listener}{Event\+Listener}} $\ast$}]{listener }\end{DoxyParamCaption})}
+
+
+
+a subscribe function for all other classes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+Type} & \\
+\hline
+{\em listener} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_event_manager_a1b76f82ad25cee486939bec99db701b2}\label{class_event_manager_a1b76f82ad25cee486939bec99db701b2}} 
+\index{EventManager@{EventManager}!unsubscribe@{unsubscribe}}
+\index{unsubscribe@{unsubscribe}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{unsubscribe()}{unsubscribe()}}
+{\footnotesize\ttfamily void Event\+Manager\+::unsubscribe (\begin{DoxyParamCaption}\item[{const Event\+Type}]{event\+Type,  }\item[{\mbox{\hyperlink{class_event_listener}{Event\+Listener}} $\ast$}]{listener }\end{DoxyParamCaption})}
+
+
+
+a unsubscribe function for all other classes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+Type} & \\
+\hline
+{\em listener} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Event\+Manager.\+h\item 
+Event\+Manager.\+cpp\end{DoxyCompactItemize}

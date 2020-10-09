@@ -1,0 +1,112 @@
+\hypertarget{class_i_s_v_i}{}\doxysection{I\+S\+VI Class Reference}
+\label{class_i_s_v_i}\index{ISVI@{ISVI}}
+
+
+Interface class for S\+D\+L2 facade.  
+
+
+
+
+{\ttfamily \#include $<$I\+S\+V\+I.\+h$>$}
+
+Inheritance diagram for I\+S\+VI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_s_v_i}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a6c89f809ad73014d9ee722a4c7afb38f}\label{class_i_s_v_i_a6c89f809ad73014d9ee722a4c7afb38f}} 
+virtual void {\bfseries init\+S\+DL} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_ad87e06b9d87ef73091193ab87529e101}\label{class_i_s_v_i_ad87e06b9d87ef73091193ab87529e101}} 
+virtual void {\bfseries clear\+Screen} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a10c8b8de583b4653bb2b332910834c68}\label{class_i_s_v_i_a10c8b8de583b4653bb2b332910834c68}} 
+virtual void {\bfseries draw\+Screen} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a43b8443011f099001ffff3be3f90d580}\label{class_i_s_v_i_a43b8443011f099001ffff3be3f90d580}} 
+virtual void {\bfseries load\+Image} (const int sprite\+ID, const char $\ast$filename)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a76c80a892e3685962c09e242528229f4}\label{class_i_s_v_i_a76c80a892e3685962c09e242528229f4}} 
+virtual void {\bfseries render\+Copy} (const int sprite\+ID, const int x\+Pos, const int y\+Pos, const int width, const int height, const int rotation)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a1b72316dcc352477dff134a8018bb241}\label{class_i_s_v_i_a1b72316dcc352477dff134a8018bb241}} 
+virtual void {\bfseries render\+Copy} (\mbox{\hyperlink{class_object}{Object}} \&object)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a870be5951bab83cb5a5527954e0d01b2}\label{class_i_s_v_i_a870be5951bab83cb5a5527954e0d01b2}} 
+virtual void {\bfseries input} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_aeab9bf3efa1d20f253577a4db854dbcc}\label{class_i_s_v_i_aeab9bf3efa1d20f253577a4db854dbcc}} 
+virtual void {\bfseries Set\+Files} (std\+::map$<$ std\+::string, std\+::string $>$ files)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_af3c0bfaa8045f3325207c28f13d9816e}\label{class_i_s_v_i_af3c0bfaa8045f3325207c28f13d9816e}} 
+virtual void {\bfseries Add\+File} (const std\+::string \&identifier, const std\+::string \&file)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_ad73cba33df43aba9aa9cc632636662bc}\label{class_i_s_v_i_ad73cba33df43aba9aa9cc632636662bc}} 
+virtual void {\bfseries Play\+Effect} (const std\+::string \&identifier, const int volume)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_aee17fc89ec81996c3d80a74cc1b9a4ce}\label{class_i_s_v_i_aee17fc89ec81996c3d80a74cc1b9a4ce}} 
+virtual void {\bfseries Load\+Effect} (const std\+::string \&identifier)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_aefd9e791bc125e3dd6d0ad459c27a53a}\label{class_i_s_v_i_aefd9e791bc125e3dd6d0ad459c27a53a}} 
+virtual void {\bfseries Unload\+Effect} (const std\+::string \&identifier)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a4ce2e718048928af35bd56ba96ebd3d4}\label{class_i_s_v_i_a4ce2e718048928af35bd56ba96ebd3d4}} 
+virtual void {\bfseries Start\+Looped\+Effect} (const std\+::string \&effect)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_af7b67319b2ddcf4f2f71828f785fad6e}\label{class_i_s_v_i_af7b67319b2ddcf4f2f71828f785fad6e}} 
+virtual void {\bfseries Stop\+Looped\+Effect} (const std\+::string \&identifier)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a057eaab749e2395bff63f8b05266538a}\label{class_i_s_v_i_a057eaab749e2395bff63f8b05266538a}} 
+virtual void {\bfseries Load\+Music} (const std\+::string \&identifier)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a67b3b48c1a02f27680fc0acbfc053c3b}\label{class_i_s_v_i_a67b3b48c1a02f27680fc0acbfc053c3b}} 
+virtual void {\bfseries Play\+Music} (const int volume)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a51e19e48c361a98a05d16afe6d8440b3}\label{class_i_s_v_i_a51e19e48c361a98a05d16afe6d8440b3}} 
+virtual void {\bfseries Play\+Music} (const std\+::string \&identifier, const int volume)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a64d56be8764c13f6ca652125ba1ef043}\label{class_i_s_v_i_a64d56be8764c13f6ca652125ba1ef043}} 
+virtual void {\bfseries Change\+Music} (const std\+::string \&identifier)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_ae10b19fc799eb2bec2bfba27f3e66078}\label{class_i_s_v_i_ae10b19fc799eb2bec2bfba27f3e66078}} 
+virtual void {\bfseries Fade\+Out\+Music} (const int fade\+Time)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a7aa5ea3ed876dad6e595219e06181254}\label{class_i_s_v_i_a7aa5ea3ed876dad6e595219e06181254}} 
+virtual void {\bfseries Fade\+In\+Music} (const int fade\+Time)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a035feb27d618af3eca230d130f687699}\label{class_i_s_v_i_a035feb27d618af3eca230d130f687699}} 
+virtual void {\bfseries Fade\+In\+Music} (const std\+::string \&identifier, const int fade\+Time)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_ac045e589970af89efa8506adabb485d9}\label{class_i_s_v_i_ac045e589970af89efa8506adabb485d9}} 
+virtual void {\bfseries Rewind\+Music} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_ae698b3f112946aad2b9eb5d6ee1d8e7b}\label{class_i_s_v_i_ae698b3f112946aad2b9eb5d6ee1d8e7b}} 
+virtual void {\bfseries Stop\+Music} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a08c25bf2719ba30c34bd8e3815f376bc}\label{class_i_s_v_i_a08c25bf2719ba30c34bd8e3815f376bc}} 
+virtual void {\bfseries Pause\+Music} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a322b183c5046fe5e85ada87503ef31d0}\label{class_i_s_v_i_a322b183c5046fe5e85ada87503ef31d0}} 
+virtual void {\bfseries Resume\+Music} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a595ec6a87cdb6fbc47a956875f99c50f}\label{class_i_s_v_i_a595ec6a87cdb6fbc47a956875f99c50f}} 
+virtual void {\bfseries Flush} ()=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_afe5d43c057503dde734b3ea724ac795c}\label{class_i_s_v_i_afe5d43c057503dde734b3ea724ac795c}} 
+virtual bool {\bfseries Identifier\+Exists} (const std\+::string \&identifier)=0
+\item 
+\mbox{\Hypertarget{class_i_s_v_i_a894aaa0cf8f5a03a05b599c1aef5bfdd}\label{class_i_s_v_i_a894aaa0cf8f5a03a05b599c1aef5bfdd}} 
+virtual bool {\bfseries Identifier\+Is\+Loaded} (const std\+::string \&identifier)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface class for S\+D\+L2 facade. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+I\+S\+V\+I.\+h\end{DoxyCompactItemize}

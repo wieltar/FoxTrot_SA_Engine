@@ -1,0 +1,178 @@
+\hypertarget{class_physics_facade}{}\doxysection{Physics\+Facade Class Reference}
+\label{class_physics_facade}\index{PhysicsFacade@{PhysicsFacade}}
+
+
+\mbox{\hyperlink{class_physics_facade}{Physics\+Facade}} class. Class for update physics off objects.  
+
+
+
+
+{\ttfamily \#include $<$Physics\+Facade.\+h$>$}
+
+Inheritance diagram for Physics\+Facade\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_physics_facade}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_physics_facade_a560e69df94f6f55dfb1b560510e6b1e1}\label{class_physics_facade_a560e69df94f6f55dfb1b560510e6b1e1}} 
+\mbox{\hyperlink{class_physics_facade_a560e69df94f6f55dfb1b560510e6b1e1}{Physics\+Facade}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physics_facade_a77a8bc8eb762008b176ad8ecb7a8debf}\label{class_physics_facade_a77a8bc8eb762008b176ad8ecb7a8debf}} 
+\mbox{\hyperlink{class_physics_facade_a77a8bc8eb762008b176ad8ecb7a8debf}{$\sim$\+Physics\+Facade}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_physics_facade_a4f7d3fddce2620ec5a45844823314424}{add\+Static\+Object}} (const \mbox{\hyperlink{class_physics_body}{Physics\+Body}} $\ast$object) override
+\item 
+void \mbox{\hyperlink{class_physics_facade_a59fed05d919471a83b5908ac6f32343c}{add\+Non\+Static\+Object}} (\mbox{\hyperlink{class_physics_body}{Physics\+Body}} $\ast$object) override
+\item 
+\mbox{\hyperlink{class_physics_body}{Physics\+Body}} $\ast$ \mbox{\hyperlink{class_physics_facade_ad75ac7ca0679788123d87d8fe88b537d}{get\+Physics\+Object}} (const int object\+Id) override
+\item 
+void \mbox{\hyperlink{class_physics_facade_a007c3c74101d15854182eafe77d51134}{Move\+Left}} (const int object\+Id) override
+\item 
+void \mbox{\hyperlink{class_physics_facade_a986be15be922656f6a43513ff177b181}{Move\+Right}} (const int object\+Id) override
+\item 
+void \mbox{\hyperlink{class_physics_facade_ada17497182472bf05707ce261fa2cdad}{Jump}} (const int object\+Id) override
+\item 
+void \mbox{\hyperlink{class_physics_facade_a54ffdc194ea18c5715d90a7ff343bccb}{Jump\+Left}} (const int object\+Id) override
+\item 
+void \mbox{\hyperlink{class_physics_facade_aa5b13be00395277001ee9b48c601a197}{Jump\+Right}} (const int object\+Id) override
+\item 
+\mbox{\Hypertarget{class_physics_facade_a385afe67398479d31386edfc92371bd2}\label{class_physics_facade_a385afe67398479d31386edfc92371bd2}} 
+void \mbox{\hyperlink{class_physics_facade_a385afe67398479d31386edfc92371bd2}{update}} () override
+\begin{DoxyCompactList}\small\item\em A function to update the position information of all objects The position is set to the bottom left. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_physics_facade}{Physics\+Facade}} class. Class for update physics off objects. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_physics_facade_a59fed05d919471a83b5908ac6f32343c}\label{class_physics_facade_a59fed05d919471a83b5908ac6f32343c}} 
+\index{PhysicsFacade@{PhysicsFacade}!addNonStaticObject@{addNonStaticObject}}
+\index{addNonStaticObject@{addNonStaticObject}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{addNonStaticObject()}{addNonStaticObject()}}
+{\footnotesize\ttfamily void Physics\+Facade\+::add\+Non\+Static\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_physics_body}{Physics\+Body}} $\ast$}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_object}{Object}}} & A function for register a non static object \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+\mbox{\Hypertarget{class_physics_facade_a4f7d3fddce2620ec5a45844823314424}\label{class_physics_facade_a4f7d3fddce2620ec5a45844823314424}} 
+\index{PhysicsFacade@{PhysicsFacade}!addStaticObject@{addStaticObject}}
+\index{addStaticObject@{addStaticObject}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{addStaticObject()}{addStaticObject()}}
+{\footnotesize\ttfamily void Physics\+Facade\+::add\+Static\+Object (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_physics_body}{Physics\+Body}} $\ast$}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_object}{Object}}} & A function for register a non static object \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+\mbox{\Hypertarget{class_physics_facade_ad75ac7ca0679788123d87d8fe88b537d}\label{class_physics_facade_ad75ac7ca0679788123d87d8fe88b537d}} 
+\index{PhysicsFacade@{PhysicsFacade}!getPhysicsObject@{getPhysicsObject}}
+\index{getPhysicsObject@{getPhysicsObject}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{getPhysicsObject()}{getPhysicsObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_physics_body}{Physics\+Body}} $\ast$ Physics\+Facade\+::get\+Physics\+Object (\begin{DoxyParamCaption}\item[{const int}]{object\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & A function to search a physics\+Object with the Object\+Id If a body is not found throw P\+H\+Y\+S\+I\+C\+S\+\_\+\+F\+A\+C\+A\+D\+E\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+D\+O\+E\+S\+N\+T\+\_\+\+E\+X\+I\+ST \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+\mbox{\Hypertarget{class_physics_facade_ada17497182472bf05707ce261fa2cdad}\label{class_physics_facade_ada17497182472bf05707ce261fa2cdad}} 
+\index{PhysicsFacade@{PhysicsFacade}!Jump@{Jump}}
+\index{Jump@{Jump}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{Jump()}{Jump()}}
+{\footnotesize\ttfamily void Physics\+Facade\+::\+Jump (\begin{DoxyParamCaption}\item[{const int}]{object\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & A function to add a linear\+Impulse to a object for jumping \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+\mbox{\Hypertarget{class_physics_facade_a54ffdc194ea18c5715d90a7ff343bccb}\label{class_physics_facade_a54ffdc194ea18c5715d90a7ff343bccb}} 
+\index{PhysicsFacade@{PhysicsFacade}!JumpLeft@{JumpLeft}}
+\index{JumpLeft@{JumpLeft}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{JumpLeft()}{JumpLeft()}}
+{\footnotesize\ttfamily void Physics\+Facade\+::\+Jump\+Left (\begin{DoxyParamCaption}\item[{const int}]{object\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & A function to add a linear\+Impulse to a object for jumping to the left \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+\mbox{\Hypertarget{class_physics_facade_aa5b13be00395277001ee9b48c601a197}\label{class_physics_facade_aa5b13be00395277001ee9b48c601a197}} 
+\index{PhysicsFacade@{PhysicsFacade}!JumpRight@{JumpRight}}
+\index{JumpRight@{JumpRight}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{JumpRight()}{JumpRight()}}
+{\footnotesize\ttfamily void Physics\+Facade\+::\+Jump\+Right (\begin{DoxyParamCaption}\item[{const int}]{object\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & A function to add a linear\+Impulse to a object for jumping to the right \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+\mbox{\Hypertarget{class_physics_facade_a007c3c74101d15854182eafe77d51134}\label{class_physics_facade_a007c3c74101d15854182eafe77d51134}} 
+\index{PhysicsFacade@{PhysicsFacade}!MoveLeft@{MoveLeft}}
+\index{MoveLeft@{MoveLeft}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{MoveLeft()}{MoveLeft()}}
+{\footnotesize\ttfamily void Physics\+Facade\+::\+Move\+Left (\begin{DoxyParamCaption}\item[{const int}]{object\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & A function to add a linear\+Impulse to a object for moving to left \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+\mbox{\Hypertarget{class_physics_facade_a986be15be922656f6a43513ff177b181}\label{class_physics_facade_a986be15be922656f6a43513ff177b181}} 
+\index{PhysicsFacade@{PhysicsFacade}!MoveRight@{MoveRight}}
+\index{MoveRight@{MoveRight}!PhysicsFacade@{PhysicsFacade}}
+\doxysubsubsection{\texorpdfstring{MoveRight()}{MoveRight()}}
+{\footnotesize\ttfamily void Physics\+Facade\+::\+Move\+Right (\begin{DoxyParamCaption}\item[{const int}]{object\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em object\+Id} & A function to add a linear\+Impulse to a object for moving to right ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_physics_facade}{I\+Physics\+Facade}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Physics\+Facade.\+h\item 
+Physics\+Facade.\+cpp\end{DoxyCompactItemize}
