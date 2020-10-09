@@ -13,8 +13,26 @@ Scene::~Scene()
 {
 }
 
-void Scene::addNewObject(Object* object) {
+/// @brief 
+/// @param object 
+void Scene::addNewObject(Object* object) 
+{
 	objects.push_back(object);
+}
+
+/// @brief 
+/// @param objectID 
+/// @return 
+bool Scene::checkIfObjectExists(int objectID)
+{
+	for (Object* obj : objects)
+	{
+		if (obj->getSpriteID() == objectID)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 /// @brief 
@@ -38,11 +56,11 @@ void Scene::addNewObject(int id, int xPos, int yPos, int height, int width,int s
 /// @brief 
 /// @param ObjectID 
 /// @return 
-Object * Scene::getObject(int spriteID)
+Object * Scene::getObject(int objectID)
 {
 	for (Object * obj : objects)
 	{
-		if (obj->getSpriteID() == spriteID)
+		if (obj->getSpriteID() == objectID)
 		{
 			return obj;
 		}

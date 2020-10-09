@@ -27,9 +27,11 @@ class Scene
 public:
 	Scene(int);
     ~Scene();
+
+	bool checkIfObjectExists(int objectID);
 	void addNewObject(Object* object);
 	void addNewObject(int id, int xPos, int yPos, int height, int width, int speed, int jumpHeight, int density, int friction, int restitution, bool stat);
-	Object * getObject(int spriteID);
+	Object * getObject(int objectID);
 
 	int getSceneID() { return sceneID; }
 	vector<Object*> getPtrToObjects() { return objects; }

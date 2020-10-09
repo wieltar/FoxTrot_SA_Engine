@@ -75,7 +75,7 @@ public:
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
 
-	vector <Object*> *pointerToObjectVector = nullptr;
+	vector <Object*>*pointerToObjectVector = nullptr;
 
 
 	//Set to private after testing!!!

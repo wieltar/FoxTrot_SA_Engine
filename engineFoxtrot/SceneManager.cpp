@@ -17,7 +17,7 @@ SceneManager::~SceneManager()
 /// Identifier to a SceneID. 
 /// @return 
 /// If SceneID has a valid scene returns true else false
-bool SceneManager::checkIfSceneExists(int sceneID)
+bool SceneManager::checkIfSceneExists(const int sceneID)
 {
 	for (Scene* s : scenes)
 	{
@@ -30,7 +30,7 @@ bool SceneManager::checkIfSceneExists(int sceneID)
 /// A function to create a new scene, if a scene already exists throw ERROR_CODE_SCENEMANAGER_SCENE_ALREADY_EXISTS
 /// @param sceneID 
 /// Identifier to a SceneID.
-void SceneManager::createNewScene(int sceneID)
+void SceneManager::createNewScene(const int sceneID)
 {
 	cout << "Trying to create scene with id: " << sceneID << endl;
 	if (checkIfSceneExists(sceneID))
@@ -45,7 +45,7 @@ void SceneManager::createNewScene(int sceneID)
 /// If a scene does not exists throw ERROR_CODE_SCENEMANAGER_SCENES_IS_EMPTY
 /// @param sceneID 
 /// Identifier to a SceneID.
-void SceneManager::setCurrentScene(int sceneID)
+void SceneManager::setCurrentScene(const int sceneID)
 {
 	if (scenes.empty()) throw ERROR_CODE_SCENEMANAGER_SCENES_IS_EMPTY;
 
@@ -61,7 +61,7 @@ void SceneManager::setCurrentScene(int sceneID)
 /// Identifier to a SceneID.
 /// @return
 /// Returns pointer to the found Scene. 
-Scene* SceneManager::getSceneWithID(int sceneID)
+Scene* SceneManager::getSceneWithID(const int sceneID)
 {
 	if (scenes.empty()) throw ERROR_CODE_SCENEMANAGER_SCENES_IS_EMPTY;
 	for (Scene * s : scenes)
