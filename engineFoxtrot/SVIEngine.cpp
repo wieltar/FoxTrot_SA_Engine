@@ -66,7 +66,7 @@ void SVIEngine::loadImage(int spriteID, const char* filename)
 }
 
 //TODO delete this is only for POC
-void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
+void SVIEngine::renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation)
 {
 	try
 	{

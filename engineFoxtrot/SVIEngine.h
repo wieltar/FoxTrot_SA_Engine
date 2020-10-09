@@ -37,10 +37,10 @@ public:
 
 	void clearScreen();
 	void drawScreen();
-	void loadImage(int spriteID, const char* filename);
+	void loadImage(const int spriteID, const char* filename);
 
 	//TODO delete this is only for POC
-	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
+	void renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation);
 
 	void renderCopy(Object object);
 
