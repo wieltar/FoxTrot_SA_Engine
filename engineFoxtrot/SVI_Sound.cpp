@@ -38,7 +38,7 @@ void SVI::Flush()
 /// The sound identifier saved when the file has been added
 /// @param volume
 /// The volume to play the effect at. Ranges from 1 to 128. Defaults to 128 if not given
-void SVI::PlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME) {
+void SVI::PlayEffect(const string& identifier, const int volume = MIX_MAX_VOLUME) {
 	///Play sound (first parameter is the channel, the last one the amount of loops)
 	if (soundPaths.find(identifier) != soundPaths.end() && loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		LoadEffect(identifier);
@@ -139,7 +139,7 @@ void SVI::LoadMusic(const string& identifier) {
 /// Plays the currently loaded music at the given volume
 /// @param volume 
 /// The volume to play the music at. Ranges from 0 to 128. Defaults to 128 if not given
-void SVI::PlayMusic(int volume = MIX_MAX_VOLUME) {
+void SVI::PlayMusic(const int volume = MIX_MAX_VOLUME) {
 	if (music != NULL) {
 		Mix_VolumeMusic(volume);
 		Mix_PlayMusic(music, LOOP_INDEFINITELY);
@@ -155,7 +155,7 @@ void SVI::PlayMusic(int volume = MIX_MAX_VOLUME) {
 /// The sound identifier saved when the file has been added
 /// @param volume
 /// The volume to play the music at. Ranges from 0 to 128. Defaults to 128 if not given
-void SVI::PlayMusic(const string& identifier, int volume = MIX_MAX_VOLUME) {
+void SVI::PlayMusic(const string& identifier, const int volume = MIX_MAX_VOLUME) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		LoadMusic(identifier);
 		Mix_VolumeMusic(volume);
@@ -180,7 +180,7 @@ void SVI::ChangeMusic(const string& identifier) {
 /// Fades out the currently playing music over the given time
 /// @param fadeTime 
 /// The amount of time it takes for the music to fade in ms
-void SVI::FadeOutMusic(int fadeTime) {
+void SVI::FadeOutMusic(const int fadeTime) {
 	if (fadeTime < 0) {
 		throw ERROR_CODE_SVIFACADE_INVALID_FADETIME;
 	}
@@ -191,7 +191,7 @@ void SVI::FadeOutMusic(int fadeTime) {
 /// Fades in the currently playing music over the given time
 /// @param fadeTime 
 /// The amount of time it takes for the music to fade in ms
-void SVI::FadeInMusic(int fadeTime) {
+void SVI::FadeInMusic(const int fadeTime) {
 	if (music == NULL) {
 		throw ERROR_CODE_SVIFACADE_NO_MUSIC_LOADED;
 	}
@@ -208,7 +208,7 @@ void SVI::FadeInMusic(int fadeTime) {
 /// The sound identifier saved when the file has been added
 /// @param fadeTime 
 /// The amount of time it takes for the music to fade in ms
-void SVI::FadeInMusic(const string& identifier, int fadeTime) {
+void SVI::FadeInMusic(const string& identifier, const int fadeTime) {
 	if (music == NULL) {
 		throw ERROR_CODE_SVIFACADE_NO_MUSIC_LOADED;
 	}
