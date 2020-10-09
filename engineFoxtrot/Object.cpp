@@ -6,9 +6,8 @@ Object::Object()
 }
 
 /// @brief 
-Object::Object(int id)
+Object::Object(int id) : spriteID(id)
 {
-	spriteID = id;
 }
 
 /// @brief 
@@ -17,9 +16,8 @@ Object::Object(int id)
 /// @param yPos 
 /// @param height 
 /// @param width 
-Object::Object(int id, float xPos, float yPos, float height, float width)
+Object::Object(int id, float xPos, float yPos, float height, float width) : spriteID(id)
 {
-	spriteID = id;
 	positionX = xPos;
 	positionY = yPos;
 	this->height = height;
@@ -33,7 +31,6 @@ Object::~Object()
 void Object::setName(string n) { this->name = n; }
 string Object::getName() const { return name; }
 
-void Object::setSpriteID(int s) { this->spriteID = s; }
 int Object::getSpriteID() const { return spriteID; }
 
 void Object::setPositionX(float x) { this->positionX = x; }

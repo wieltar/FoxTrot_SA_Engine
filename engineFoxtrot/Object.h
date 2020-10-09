@@ -25,7 +25,6 @@ public:
 	void setName(string);
 	string getName() const;
 
-	void setSpriteID(int);
 	int getSpriteID() const;
 
 	void setPositionX(float);
@@ -70,9 +69,9 @@ public:
 	bool getChanged() const;
 private:
 
-	std::string name;
+	string name;
 
-	int spriteID = 0;
+	const int spriteID = 0;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;
