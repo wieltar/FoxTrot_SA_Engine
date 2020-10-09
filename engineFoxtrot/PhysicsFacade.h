@@ -52,14 +52,11 @@ public:
 
 private:
 	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
-	float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
-
-	int32 velocityIterations = VELOCITY_ITERATIONS;
-	int32 positionIterations = POSITION_ITERATIONS;
-
-	map <PhysicsBody*, b2Body*> bodies;
+	const float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
 		
 	b2Body* findBody(int objectId);
+	map <PhysicsBody*, b2Body*> bodies;
+
 };
 
 

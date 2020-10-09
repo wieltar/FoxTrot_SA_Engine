@@ -100,7 +100,7 @@ b2Body* PhysicsFacade::findBody(const int objectId) {
 /// A function to update the position information of all objects
 /// The position is set to the bottom left
 void PhysicsFacade::update() {
-	this->world.Step(timeStep, velocityIterations, positionIterations);
+	this->world.Step(timeStep, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
 	for (auto const& it : bodies)
 	{
