@@ -31,7 +31,7 @@ jobs:
       uses: mattnotmitt/doxygen-action@v1.1.0
       with:
         # Path to Doxyfile
-        doxyfile-path: "./doxfile" # default is ./Doxyfile
+        doxyfile-path: "./doxfile/Doxyfile" # default is ./Doxyfile
         # Working directory
         working-directory: "./engineFoxtrot" # default is .
     
