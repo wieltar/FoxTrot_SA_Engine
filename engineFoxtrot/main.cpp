@@ -42,6 +42,9 @@ using namespace std;
 
 // Gebruikt references in plaats van pointers. Dit zorgt ervoor dat je niet perongeluk de pointer aanpast. 
 
+// Const correctness
+// https://www.studytonight.com/cpp/const-keyword.php
+
 
 // Doxygen
 // Cntrl + / above function or class to generate Doxygen
