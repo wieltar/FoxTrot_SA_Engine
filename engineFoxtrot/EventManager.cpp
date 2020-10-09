@@ -1,5 +1,8 @@
 #include "EventManager.h"
 
+/// @brief a subscribe function for all other classes
+/// @param eventType
+/// @param listener
 void EventManager::subscribe(EventType eventType, EventListener* listener) {
     // Contains element 
     if (listeners.count(eventType) > 0) {
@@ -10,7 +13,9 @@ void EventManager::subscribe(EventType eventType, EventListener* listener) {
         listeners.insert(std::pair<EventType, std::vector<EventListener*>>(eventType, { listener }));
     }
 }
-
+/// @brief a unsubscribe function for all other classes
+/// @param eventType
+/// @param listener
 void EventManager::unsubscribe(EventType eventType, EventListener* listener) {
     if (listeners.count(eventType) > 0) {
         auto itt = listeners.at(eventType);
@@ -19,7 +24,9 @@ void EventManager::unsubscribe(EventType eventType, EventListener* listener) {
     }
 }
 
-
+/// @brief a notify function for other classes so they can notify events
+/// @param eventType
+/// @param data
 void EventManager::notify(EventType eventType, Object* data) {
     if (listeners.count(eventType) > 0) {
         for (auto listeners : listeners.at(eventType))
