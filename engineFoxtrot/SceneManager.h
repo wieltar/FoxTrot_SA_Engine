@@ -21,9 +21,9 @@ public:
 	~SceneManager();
 
 	// Scene modifiers
-	void createNewScene(int sceneID);
-	void setCurrentScene(int sceneID);
-	Scene* getSceneWithID(int sceneID);
+	void createNewScene(const int sceneID);
+	void setCurrentScene(const int sceneID);
+	Scene* getSceneWithID(const int sceneID);
 
 	// Object Modifiers
 	void moveObject(const int ObjectID,const int X, const int Y);
@@ -41,8 +41,8 @@ protected:
 
 private:
 
-
-	bool checkIfSceneExists(int);
+	// Helper Functions
+	bool checkIfSceneExists(const int);
 
 	Scene* currentScene = nullptr;
 	vector<Scene*> scenes;
