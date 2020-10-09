@@ -71,7 +71,7 @@ void Scene::addNewObject(const int id, const int xPos, const int yPos, const int
 /// Identifier for objectID
 /// @return 
 /// Returns pointer to the found Object
-Object * Scene::getObject(int objectID)
+Object * Scene::getObject(const int objectID)
 {
 	for (Object * obj : objects)
 	{
