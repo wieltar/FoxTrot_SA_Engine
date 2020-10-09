@@ -25,10 +25,10 @@ void SVI::AddFile(const string& identifier, const string& file) {
 void SVI::Flush()
 {
 		for (auto it = loadedSoundEffects.begin(); it != loadedSoundEffects.end(); /* don't increment here*/) {
-			it = loadedSoundEffects.erase(it);  /// update here
+			it = loadedSoundEffects.erase(it);
 		}
 		for (auto it = loopChannels.begin(); it != loopChannels.end(); /* don't increment here*/) {
-			it = loopChannels.erase(it);  /// update here
+			it = loopChannels.erase(it);
 		}
 }
 
@@ -39,7 +39,6 @@ void SVI::Flush()
 /// @param volume
 /// The volume to play the effect at. Ranges from 1 to 128. Defaults to 128 if not given
 void SVI::PlayEffect(const string& identifier, const int volume = MIX_MAX_VOLUME) {
-	///Play sound (first parameter is the channel, the last one the amount of loops)
 	if (soundPaths.find(identifier) != soundPaths.end() && loadedSoundEffects.find(identifier) == loadedSoundEffects.end()) {
 		LoadEffect(identifier);
 	}
@@ -86,7 +85,6 @@ void SVI::UnloadEffect(const string& identifier) {
 /// @param identifier 
 /// The sound identifier saved when the file has been added
 void SVI::StartLoopedEffect(const string& identifier) {
-	///Play sound forever and save it in the loopChannels map
 	if (loadedSoundEffects.find(identifier) != loadedSoundEffects.end()) {
 		int channel = Mix_PlayChannel(FIRST_AVAILABLE_CHANNEL, loadedSoundEffects[identifier], LOOP_INDEFINITELY);
 		loopChannels.insert(pair<string, int>(identifier, channel));
@@ -101,7 +99,6 @@ void SVI::StartLoopedEffect(const string& identifier) {
 /// @param identifier 
 /// The sound identifier saved when the file has been added
 void SVI::StopLoopedEffect(const string& identifier) {
-	///Stop the channel the looped effect is playing on
 	if (loopChannels.find(identifier) != loopChannels.end()) {
 		Mix_HaltChannel(loopChannels[identifier]);
 		loopChannels.erase(identifier);
@@ -116,7 +113,6 @@ void SVI::StopLoopedEffect(const string& identifier) {
 /// @param identifier 
 /// The sound identifier saved when the file has been added
 void SVI::LoadMusic(const string& identifier) {
-	///If old music is loaded (!= NULL), free it
 	if (music) {
 		Mix_FreeMusic(music);
 	}
@@ -124,7 +120,6 @@ void SVI::LoadMusic(const string& identifier) {
 	/// TODO add fade between music
 	if (soundPaths.find(identifier) != soundPaths.end())
 	{
-		///Load new music and play it infinitely
 		music = Mix_LoadMUS(soundPaths[identifier].c_str());
 		if (!music) {
 			std::cerr << "Mix_LoadMUS Error: " << Mix_GetError() << std::endl;
