@@ -65,18 +65,24 @@ void SVIEngine::loadImage(int spriteID, const char* filename)
 	}
 }
 
-/// @brief Sets the sprite on the screen
-/// @param spriteID 
-/// @param xPos 
-/// @param yPos 
-/// @param width 
-/// @param height 
-/// @param rotation 
+//TODO delete this is only for POC
 void SVIEngine::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
 {
 	try
 	{
 	sviFacade->renderCopy(spriteID, xPos, yPos, width, height, rotation);
+	}
+	catch (int e)
+	{
+		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
+	}
+}
+/// @brief Sets the sprite on the screen
+/// @param Object 
+void SVIEngine::renderCopy(Object object) {
+	try
+	{
+		sviFacade->renderCopy(object);
 	}
 	catch (int e)
 	{
@@ -95,7 +101,6 @@ void SVIEngine::updateScreen()
 		if (pointerToObjectVector->size() <= 0) return;
 		for (Object * obj : *pointerToObjectVector) {
 			if (obj != nullptr) {
-				//sviFacade->renderCopy(obj->getSpriteID(), obj->getPositionX(), obj->getPositionY(), obj->getWidth(), obj->getHeight(), obj->getRotation());
 				sviFacade->renderCopy(*obj);
 			}
 		}

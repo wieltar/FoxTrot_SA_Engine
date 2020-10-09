@@ -67,14 +67,8 @@ void SVI::loadImage(const int spriteID, const char* filename)
 	textureMap[spriteID] = texture;
 }
 
-/// @brief 
-/// Takes the sprites from the Textuture map and copys them to the screen
-/// @param spriteID 
-/// @param xPos 
-/// @param yPos 
-/// @param width 
-/// @param height 
-/// @param rotation 
+
+//TODO delete this is only for POC
 void SVI::renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation)
 {
 	SDL_Rect destination;

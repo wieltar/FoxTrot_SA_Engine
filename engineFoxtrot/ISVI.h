@@ -20,7 +20,9 @@ public:
 	virtual void drawScreen() = 0;
 	virtual void loadImage(const int spriteID, const char* filename) = 0;
 
+	//TODO delete this is only for POC
 	virtual void renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation) = 0;
+
 	virtual void renderCopy(Object& object) = 0;
 
 
