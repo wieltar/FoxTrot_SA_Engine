@@ -213,6 +213,12 @@ void SVIEngine::Flush()
 	sviFacade->Flush();
 }
 
+/// @brief
+/// Event listener for when the music has to be changed
+/// @param identifier
+/// The identifier of the music to play
+/// @param volume
+/// The volume to play the music at. Ranges from 0 to 128
 void SVIEngine::onChangeBackgroundMusic(const string& identifier, int volume = MIX_MAX_VOLUME) {
 	if (IdentifierExists(identifier)) {
 		if (Mix_PlayingMusic()) {
@@ -225,6 +231,12 @@ void SVIEngine::onChangeBackgroundMusic(const string& identifier, int volume = M
 	}
 }
 
+/// @brief
+/// Event listener for when an effect has to be played
+/// @param identifier
+/// The identifier of the effect to play
+/// @param volume
+/// The volume to play the effect at. Ranges from 0 to 128
 void SVIEngine::onPlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME) {
 	if (IdentifierExists(identifier)) {
 		if (IdentifierIsLoaded(identifier)) {

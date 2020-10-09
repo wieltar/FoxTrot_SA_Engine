@@ -244,6 +244,10 @@ void SVI::ResumeMusic() {
 	Mix_ResumeMusic();
 }
 
+/// @brief
+/// Checks whether the given identifier exists in the list of sounds
+/// @param identifier
+/// The identifer to check for
 bool SVI::IdentifierExists(const string& identifier) {
 	if (soundPaths.find(identifier) != soundPaths.end()) {
 		return true;
@@ -251,6 +255,10 @@ bool SVI::IdentifierExists(const string& identifier) {
 	throw ERROR_CODE_SVIFACADE_SOUND_IDENTIFIER_NOT_FOUND;
 }
 
+/// @brief
+/// Checks whether the given identifier has a sound loaded in a stream
+/// @param identifier
+/// The identifier to check for
 bool SVI::IdentifierIsLoaded(const string& identifier) {
 	return (loadedSoundEffects.find(identifier) != loadedSoundEffects.end());
 }
