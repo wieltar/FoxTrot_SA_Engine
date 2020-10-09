@@ -57,7 +57,7 @@ Engine engine;
 int main() {
 
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object);
+	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
 	engine.createNewSceneWithSceneID(1);
 	engine.createNewSceneWithSceneID(2);
@@ -91,7 +91,7 @@ int main() {
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
 
-	Object* object = new Object(10);
+	Object* object = new Object(1);
 	object->setName("house");
 	object->setHeight(80);
 	object->setWidth(80);
@@ -103,16 +103,14 @@ int main() {
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
-	object->setSpriteID(1);
 	engine.createObject(3, object);
 
-	Object* staticGround = new Object(11);
+	Object* staticGround = new Object(101);
 	staticGround->setWidth(500); // width
 	staticGround->setHeight(10);// height
 	staticGround->setPositionX(20); // x 20 left down
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
-	staticGround->setSpriteID(101);
 	engine.createObject(3, staticGround);
 
 

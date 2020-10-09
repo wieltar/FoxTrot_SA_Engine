@@ -1,11 +1,6 @@
 #include "Object.h"
 
 /// @brief 
-Object::Object()
-{
-}
-
-/// @brief 
 Object::Object(int id) : spriteID(id)
 {
 }
@@ -16,7 +11,7 @@ Object::Object(int id) : spriteID(id)
 /// @param yPos 
 /// @param height 
 /// @param width 
-Object::Object(int id, float xPos, float yPos, float height, float width) : spriteID(id)
+Object::Object(const int id, const float xPos, const float yPos, const float height, const float width) : spriteID(id)
 {
 	positionX = xPos;
 	positionY = yPos;
@@ -28,7 +23,9 @@ Object::Object(int id, float xPos, float yPos, float height, float width) : spri
 Object::~Object()
 {
 }
-void Object::setName(string n) { this->name = n; }
+
+// Getters and setters
+void Object::setName(const string n) { this->name = n; }
 string Object::getName() const { return name; }
 
 int Object::getSpriteID() const { return spriteID; }

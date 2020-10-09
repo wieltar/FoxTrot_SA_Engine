@@ -17,53 +17,52 @@ class Object
 #endif
 {
 public:
-	Object(); 
-	Object(int id);
-	Object(int id, float xPos, float yPos, float height, float width);
+	Object(const int id);
+	Object(const int id, const float xPos, const float yPos, const float height, const float width);
 	~Object();
 
-	void setName(string);
+	void setName(const string);
 	string getName() const;
 
 	int getSpriteID() const;
 
-	void setPositionX(float);
+	void setPositionX(const float);
 	float getPositionX() const;
 
-	void setPositionY(float);
+	void setPositionY(const float);
 	float getPositionY() const;
 
-	void setRotation(float);
+	void setRotation(const float);
 	float getRotation() const;
 
-	void setScale(float);
+	void setScale(const float);
 	float getScale() const;
 
-	void setDirection(float);
+	void setDirection(const float);
 	float getDirection() const;
 
-	void setHeight(float);
+	void setHeight(const float);
 	float getHeight() const;
 
-	void setWidth(float);
+	void setWidth(const float);
 	float getWidth() const;
 
-	void setStatic(bool);
+	void setStatic(const bool);
 	bool getStatic() const;
 
-	void setRestitution(float val);
+	void setRestitution(const float val);
 	float getRestitution() const;
 
-	void setFriction(float val);
+	void setFriction(const float val);
 	float getFriction() const;
 
-	void setDensity(float val);
+	void setDensity(const float val);
 	float getDensity() const;
 
-	void setSpeed(float val);
+	void setSpeed(const float val);
 	float getSpeed() const;
 
-	void setJumpHeight(float val);
+	void setJumpHeight(const float val);
 	float getJumpHeight() const;
 
 	bool getChanged() const;
