@@ -4,7 +4,6 @@ namespace Glitch {
 	/// @brief Constructor
 	SceneManager::SceneManager()
 	{
-
 	}
 
 	/// @brief Destructor

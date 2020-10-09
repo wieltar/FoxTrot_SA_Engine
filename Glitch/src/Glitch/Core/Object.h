@@ -44,7 +44,6 @@ namespace Glitch {
 
 		bool getChanged();
 	private:
-
 		std::string name;
 
 		int spriteID = 0;

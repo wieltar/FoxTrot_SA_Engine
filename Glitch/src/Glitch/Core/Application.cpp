@@ -18,13 +18,9 @@ namespace Glitch {
 		renderer->Init();
 	}
 
-	Application::~Application()
-	{
-	}
+	Application::~Application() {}
 
 	void Application::Run() {
-		
-
 		while (isRunning)
 		{
 			m_window->OnUpdate();
@@ -35,7 +31,8 @@ namespace Glitch {
 
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		isRunning = false;
-		// TODO shutdown all other systems
+		m_window->Shutdown();
+		renderer->Shutdown();
 		return true;
 	}
 
