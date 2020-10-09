@@ -17,10 +17,10 @@ enum EventCategory
 };
 
 #if(EXPORT)
-/// This is a enum for all differnt EventTypes
+/// This is a enum for all different EventTypes
 enum class EventType
 #else
-/// This is a enum for all differnt EventTypes
+/// This is a enum for all different EventTypes
 enum class EventType
 #endif
 {
