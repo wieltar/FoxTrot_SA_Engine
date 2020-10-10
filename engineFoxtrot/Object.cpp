@@ -11,7 +11,7 @@ Object::Object(int id) : spriteID(id)
 /// @param yPos 
 /// @param height 
 /// @param width 
-Object::Object(const int id, const float xPos, const float yPos, const float height, const float width) : spriteID(id), positionX(xPos), positionY(yPos), height(height), width(width)
+Object::Object(const int id, const float xPos, const float yPos, const float _height, const float _width) : spriteID(id), positionX(xPos), positionY(yPos), height(_height), width(_width)
 {
 }
 
@@ -26,43 +26,43 @@ string Object::getName() const { return name; }
 
 int Object::getSpriteID() const { return spriteID; }
 
-void Object::setPositionX(float x) { this->positionX = x; }
+void Object::setPositionX(const float x) { this->positionX = x; }
 float Object::getPositionX() const { return positionX; }
 
-void Object::setPositionY(float y) { this->positionY = y; }
+void Object::setPositionY(const float y) { this->positionY = y; }
 float Object::getPositionY() const { return positionY; }
 
-void Object::setRotation(float r) { this->rotation = r; }
+void Object::setRotation(const float r) { this->rotation = r; }
 float Object::getRotation() const { return rotation; }
 
-void Object::setScale(float s) { this->scale = s; }
+void Object::setScale(const float s) { this->scale = s; }
 float Object::getScale() const { return scale; }
 
-void Object::setDirection(float d) { this->direction = d; }
+void Object::setDirection(const float d) { this->direction = d; }
 float Object::getDirection() const { return direction; }
 
-void Object::setHeight(float h) { this->height = h; }
+void Object::setHeight(const float h) { this->height = h; }
 float Object::getHeight() const { return height; }
 
-void Object::setWidth(float w) { this->width = w; }
+void Object::setWidth(const float w) { this->width = w; }
 float Object::getWidth() const { return width; }
 
-void Object::setStatic(bool s) { this->staticObject = s; }
+void Object::setStatic(const bool s) { this->staticObject = s; }
 bool Object::getStatic() const { return staticObject; }
 
 float Object::getRestitution() const { return this->restitution;}
-void Object::setRestitution(float val) {this->restitution = val;}
+void Object::setRestitution(const float val) {this->restitution = val;}
 
 float Object::getFriction() const {return this->friction;}
-void Object::setFriction(float val) {this->friction = val;}
+void Object::setFriction(const float val) {this->friction = val;}
 
 float Object::getDensity() const {	return this->density;}
-void Object::setDensity(float val) {this->density = val;}
+void Object::setDensity(const float val) {this->density = val;}
 
 float Object::getSpeed() const {return this->speed;}
-void Object::setSpeed(float val) { this->speed = val; }
+void Object::setSpeed(const float val) { this->speed = val; }
 
 float Object::getJumpHeight() const {return this->jumpHeight;}
-void Object::setJumpHeight(float val) {	this->jumpHeight = val;}
+void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
 bool Object::getChanged() const { return changed; }
