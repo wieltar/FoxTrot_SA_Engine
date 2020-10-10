@@ -14,31 +14,30 @@ class PhysicsEngine : public EventListener
 {
 public:
 	EventManager* eventManager{ new EventManager };
+	vector <Object*>* pointerToObjectVector = nullptr;
+
 	PhysicsEngine();
 	~PhysicsEngine();
 
 	void registerObjectInCurrentVectorWithPhysicsEngine();
 
-	vector <Object*>* pointerToObjectVector = nullptr;
-
-	void MoveLeft(int objectId);
-	void MoveRight(int objectId);
-	void Jump(int objectId);
-	void JumpLeft(int objectId);
-	void JumpRight(int objectId);
+	void MoveLeft(const int objectId);
+	void MoveRight(const int objectId);
+	void Jump(const int objectId);
+	void JumpLeft(const int objectId);
+	void JumpRight(const int objectId);
 
 	void update30();
-
-	//Set to private after testing!!!
-	IPhysicsFacade * physicsFacade = new PhysicsFacade;
 
 	void update(Object* object) override {
 		std::cout << "Handle notification " << std::endl;
 	}
 
+	//Set to private after testing!!!
+	IPhysicsFacade * physicsFacade = new PhysicsFacade;
 private:
 
-	Object* getObject(int objectId);
+	Object* getObject(const int objectId);
 };
 
 

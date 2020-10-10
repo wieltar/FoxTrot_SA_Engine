@@ -2,7 +2,8 @@
 
 // Functions in this cpp file may only call functions in this file. And global SDL2 definitions
 
-
+/// @brief 
+/// Test function for input
 void SVI::input() 
 {
 	SDL_Event e;

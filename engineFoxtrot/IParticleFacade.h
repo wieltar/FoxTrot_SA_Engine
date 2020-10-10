@@ -11,8 +11,8 @@ class IParticleFacade
 #endif
 {
 public:
-	IParticleFacade();
-	~IParticleFacade();
+	IParticleFacade() {};
+	~IParticleFacade() {};
 
 private:
 

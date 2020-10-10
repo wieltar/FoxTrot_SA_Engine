@@ -2,8 +2,10 @@
 
 
 #if(EXPORT)
+/// This is a enum for all EventCategories
 enum DLLEXPORT EventCategry
 #else
+/// This is a enum for all EventCategories
 enum EventCategory
 #endif
 {
@@ -15,8 +17,10 @@ enum EventCategory
 };
 
 #if(EXPORT)
+/// This is a enum for all different EventTypes
 enum class EventType
 #else
+/// This is a enum for all different EventTypes
 enum class EventType
 #endif
 {

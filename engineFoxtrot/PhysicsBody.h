@@ -6,54 +6,41 @@
 class PhysicsBody
 {
 public:
-	PhysicsBody(Object* object) :
-		objectID(object->getSpriteID()),
-		height(object->getHeight()),
-		width(object->getWidth()),
-		posX(object->getPositionX()),
-		posY(object->getPositionY()),
-		speed(object->getSpeed()),
-		friction(object->getFriction()),
-		restitution(object->getRestitution()),
-		density(object->getDensity()),
-		rotation(object->getRotation()),
-		jumpHeight(object->getJumpHeight()) {
-			this->object = object;
-		};	
-	~PhysicsBody() {
-	}
+	PhysicsBody(Object* object);
+	~PhysicsBody();
+
 	int getSpriteID() const;
 
-	void setPositionX(float);
+	void setPositionX(const float);
 	float getPositionX() const;
 
-	void setPositionY(float);
+	void setPositionY(const float);
 	float getPositionY() const;
 
 	//TODO same as angle??
 
-	void setRotation(float);
+	void setRotation(const float);
 	float getRotation() const;
 
-	void setHeight(float);
+	void setHeight(const float);
 	float getHeight() const;
 
-	void setWidth(float);
+	void setWidth(const float);
 	float getWidth() const;
 
-	void setRestitution(float val);
+	void setRestitution(const float);
 	float getRestitution() const;
 
-	void setFriction(float val);
+	void setFriction(const float);
 	float getFriction() const;
 
-	void setDensity(float val);
+	void setDensity(const float);
 	float getDensity() const;
 
-	void setSpeed(float val);
+	void setSpeed(const float);
 	float getSpeed() const;
 
-	void setJumpHeight(float val);
+	void setJumpHeight(const float);
 	float getJumpHeight() const;
 private:
 	int objectID = 0;

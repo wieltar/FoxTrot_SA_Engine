@@ -58,7 +58,7 @@ void SVI::drawScreen()
 /// Loads PNG files and makes them textures to be added to the unordered map
 /// @param spriteID 
 /// @param filename 
-void SVI::loadImage(int spriteID, const char* filename)
+void SVI::loadImage(const int spriteID, const char* filename)
 {
 	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
@@ -67,15 +67,16 @@ void SVI::loadImage(int spriteID, const char* filename)
 	textureMap[spriteID] = texture;
 }
 
+
 /// @brief 
-/// Takes the sprites from the Textuture map and copys them to the screen
+/// Test function used for POC
 /// @param spriteID 
 /// @param xPos 
 /// @param yPos 
 /// @param width 
 /// @param height 
 /// @param rotation 
-void SVI::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
+void SVI::renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation)
 {
 	SDL_Rect destination;
 	destination.x = xPos;
@@ -89,13 +90,13 @@ void SVI::renderCopy(int spriteID, int xPos, int yPos, int width, int height, in
 /// @brief 
 /// Takes the sprites from the Textuture map and copys them to the screen
 /// @param Object 
-void SVI::renderCopy(Object* object)
+void SVI::renderCopy(Object& object)
 {
 	SDL_Rect destination;
-	destination.w = object->getWidth();
-	destination.h = object->getHeight();
-	destination.x = object->getPositionX();
-	destination.y = object->getPositionY() - object->getHeight();
+	destination.w = object.getWidth();
+	destination.h = object.getHeight();
+	destination.x = object.getPositionX();
+	destination.y = object.getPositionY() - object.getHeight();
 
-	SDL_RenderCopyEx(renderer, textureMap[object->getSpriteID()], NULL, &destination, object->getRotation(), NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
 }

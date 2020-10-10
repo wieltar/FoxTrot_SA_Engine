@@ -9,7 +9,7 @@
 using namespace std;
 
 /// @brief 
-/// Contains all scenes. Manages all scenes and objects. All calls from engine containing object movements should be handled in the scene manager. 
+/// Contains all scenes. Manages all scenes and objects.
 #if(EXPORT)
 class DLLEXPORT SceneManager
 #else
@@ -21,22 +21,28 @@ public:
 	~SceneManager();
 
 	// Scene modifiers
-	void createNewScene(int sceneID);
-	void setCurrentScene(int sceneID);
-	Scene* getSceneWithID(int sceneID);
-	vector <Object*> pointerToCurrentObjectVector;
+	void createNewScene(const int sceneID);
+	void setCurrentScene(const int sceneID);
+	Scene* getSceneWithID(const int sceneID);
 
 	// Object Modifiers
-	void moveObject(int ObjectID, int X, int Y);
-	void moveObjectRelative(int ObjectID, int moveXby, int moveYby);
-	void rotateObject(int ObjectID, int rotation);
-	void setObjectScale(int ObjectID, int scale);
-	void setObjectDirection(int ObjectID, int dir);
-	void setObjectStatic(int ObjectID, bool stat);
+	void moveObject(const int ObjectID,const int X, const int Y);
+	void moveObjectRelative(const int ObjectID, const int moveXby, const int moveYby);
+	void rotateObject(const int ObjectID, const int rotation);
+	void setObjectScale(const int ObjectID, const int scale);
+	void setObjectDirection(const int ObjectID, const int dir);
+	void setObjectStatic(const int ObjectID, const bool stat);
+
+	// Pointer
+	vector <Object*> pointerToCurrentObjectVector;
+
+protected:
+	
 
 private:
 
-	bool checkIfSceneExists(int);
+	// Helper Functions
+	bool checkIfSceneExists(const int);
 
 	Scene* currentScene = nullptr;
 	vector<Scene*> scenes;

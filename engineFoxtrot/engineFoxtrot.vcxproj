@@ -152,9 +152,6 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="GeneralHelperFunctions.cpp" />
-    <ClCompile Include="IJsonFacade.cpp" />
-    <ClCompile Include="IParticleFacade.cpp" />
-    <ClCompile Include="ISVI.cpp" />
     <ClCompile Include="JsonFacade.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -201,6 +198,9 @@
     <ClInclude Include="SVI.h" />
     <ClInclude Include="SVIEngine.h" />
     <ClInclude Include="Version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="PointerUsage.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

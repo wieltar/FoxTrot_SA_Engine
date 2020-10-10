@@ -7,6 +7,8 @@
 
 using namespace std;
 
+// TODO engine.h & engine.cpp
+
 // Doxygen
 // Cntrl + / above function or class to generate Doxygen
 // https://devblogs.microsoft.com/cppblog/doxygen-and-xml-doc-comment-support/
@@ -16,9 +18,8 @@ using namespace std;
 Engine engine;
 
 int main() {
-
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object);
+	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
 	engine.createNewSceneWithSceneID(1);
 	engine.createNewSceneWithSceneID(2);
@@ -31,13 +32,13 @@ int main() {
 	engine.createNewObjectWithSceneID(2, 1, 50, 50, 40, 40, false);
 	engine.createNewObjectWithSceneID(2, 2, 100, 50, 40, 40, false);
 	engine.createNewObjectWithSceneID(2, 3, 150, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 4, 5, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 5, 50, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 6, 100, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 7, 150, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 8, 5, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 9, 100, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 10, 50, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 4, 200, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 5, 250, 50, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 6, 50, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 7, 150, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 8, 200, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 9, 250, 100, 40, 40, false);
+	engine.createNewObjectWithSceneID(2, 10, 300, 100, 40, 40, false);
 
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
@@ -50,16 +51,9 @@ int main() {
 	engine.linkSpriteIDWithAssetPath(8, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-03.png");
 	engine.linkSpriteIDWithAssetPath(9, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-04.png");
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
-
-	engine.createNewSceneWithSceneID(20);
-	engine.createNewObjectWithSceneID(20, 1, 50, 150, 40, 40, false);
-	engine.createNewObjectWithSceneID(20, 2, 20, 300, 40, 40, true);
-	engine.setCurrentScene(20);
-	engine.createNewObjectWithSceneID(20, 1, 30, 50, 40, 40, false,100,400,1,0,0);
-	engine.createNewObjectWithSceneID(20, 1, 50, 55, 40, 40, false);
-
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
-	Object* object = new Object(10);
+
+	Object* object = new Object(1);
 	object->setName("house");
 	object->setHeight(80);
 	object->setWidth(80);
@@ -71,16 +65,14 @@ int main() {
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
-	object->setSpriteID(1);
 	engine.createObject(3, object);
 
-	Object* staticGround = new Object(11);
+	Object* staticGround = new Object(101);
 	staticGround->setWidth(500); // width
 	staticGround->setHeight(10);// height
 	staticGround->setPositionX(20); // x 20 left down
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
-	staticGround->setSpriteID(101);
 	engine.createObject(3, staticGround);
 
 

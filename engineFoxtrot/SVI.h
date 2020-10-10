@@ -60,18 +60,18 @@ private:
 public:
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
-	void PlayEffect(const string& identifier, int volume);
+	void PlayEffect(const string& identifier, const int volume);
 	void LoadEffect(const string& identifier);
 	void UnloadEffect(const string& identifier);
 	void StartLoopedEffect(const string& effect);
 	void StopLoopedEffect(const string& identifier);
 	void LoadMusic(const string& identifier);
-	void PlayMusic(int volume);
-	void PlayMusic(const string& identifier, int volume);
+	void PlayMusic(const int volume);
+	void PlayMusic(const string& identifier, const int volume);
 	void ChangeMusic(const string& identifier);
-	void FadeOutMusic(int fadeTime);
-	void FadeInMusic(int fadeTime);
-	void FadeInMusic(const string& identifier, int fadeTime);
+	void FadeOutMusic(const int fadeTime);
+	void FadeInMusic(const int fadeTime);
+	void FadeInMusic(const string& identifier, const int fadeTime);
 	void RewindMusic();
 	void StopMusic();
 	void PauseMusic();
@@ -91,10 +91,12 @@ public:
 
 	void clearScreen();
 	void drawScreen();
-	void loadImage(int spriteID, const char* filename);
+	void loadImage(const int spriteID, const char* filename);
 
-	void renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation);
-	void renderCopy(Object* object);
+	//TODO delete this is only for POC
+	void renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation);
+
+	void renderCopy(Object& object);
 
 
 	unordered_map<int, SDL_Texture*> textureMap;

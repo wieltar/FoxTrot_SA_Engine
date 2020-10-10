@@ -10,7 +10,6 @@
 #include <iostream>
 #include <map>
 
-
 using namespace std;
 
 #define VELOCITY_ITERATIONS 8
@@ -38,30 +37,26 @@ public:
 	PhysicsFacade();
 	~PhysicsFacade();
 
-	void addStaticObject(PhysicsBody* ground) override;
+	void addStaticObject(const PhysicsBody* object) override;
 	void addNonStaticObject(PhysicsBody* object) override;
 
-	
-	PhysicsBody* getPhysicsObject(int objectId) override;
+	PhysicsBody* getPhysicsObject(const int objectId) override;
 
-	void MoveLeft(int objectId) override;
-	void MoveRight(int objectId) override;
-	void Jump(int objectId) override;
-	void JumpLeft(int objectId) override;
-	void JumpRight(int objectId) override;
+	void MoveLeft(const int objectId) override;
+	void MoveRight(const int objectId) override;
+	void Jump(const int objectId) override;
+	void JumpLeft(const int objectId) override;
+	void JumpRight(const int objectId) override;
 
 	void update() override;
 
 private:
 	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
-	float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
-
-	int32 velocityIterations = VELOCITY_ITERATIONS;
-	int32 positionIterations = POSITION_ITERATIONS;
-
-	map <PhysicsBody*, b2Body*> bodies;
+	const float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
 		
-	b2Body* findBody(int objectId);
+	b2Body* findBody(const int objectId);
+	map <PhysicsBody*, b2Body*> bodies;
+
 };
 
 
