@@ -47,7 +47,14 @@ void Engine::createNewSceneWithSceneID(const int sceneID)
 	}
 }
 
-
+/// @brief 
+/// @param sceneID 
+/// @param id 
+/// @param xPos 
+/// @param yPos 
+/// @param height 
+/// @param width 
+/// @param stat 
 void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat)
 {
 	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
@@ -73,6 +80,9 @@ void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const i
 	}
 }
 
+/// @brief 
+/// @param sceneID 
+/// @param object 
 void Engine::createObject(const int sceneID, Object* object) {
 	try
 	{
@@ -115,6 +125,8 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 	}
 }
 
+/// @brief 
+/// Thread that gives a tick 60 times per second
 void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
@@ -129,6 +141,8 @@ void Engine::engineTick60()
 	cout << "Thread killed 60" << endl;
 }
 
+/// @brief 
+/// Thread that gives a tick 30 times per second
 void Engine::engineTick30()
 {
 	cout << "Thread started" << endl;
@@ -142,6 +156,8 @@ void Engine::engineTick30()
 	cout << "Thread killed 30" << endl;
 }
 
+/// @brief 
+/// Start the 2 threads. 
 void Engine::startTickThreads()
 {
 	engineTick60Thread = new thread(&Engine::engineTick60, this);
@@ -151,6 +167,8 @@ void Engine::startTickThreads()
 	engineTick30Thread->detach();
 }
 
+/// @brief
+/// Stop the 2 threads
 void Engine::stopTickThreads()
 {
 	//engineTick60Thread->join();

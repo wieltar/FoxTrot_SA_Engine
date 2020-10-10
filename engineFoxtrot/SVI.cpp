@@ -1,6 +1,6 @@
 #include "SVI.h"
 
-
+/// @brief 
 SVI::SVI() 
 {
 	initSDL();
@@ -13,6 +13,7 @@ SVI::SVI()
     }
 }
 
+/// @brief 
 SVI::~SVI()
 {
 	/*SDL_CloseAudioDevice(deviceId);

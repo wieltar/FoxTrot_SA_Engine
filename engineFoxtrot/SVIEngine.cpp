@@ -28,7 +28,7 @@ void SVIEngine::clearScreen()
 {
 	try
 	{
-	sviFacade->clearScreen();
+		sviFacade->clearScreen();
 	}
 	catch (int e)
 	{
@@ -42,7 +42,7 @@ void SVIEngine::drawScreen()
 {
 	try
 	{
-	sviFacade->drawScreen();
+		sviFacade->drawScreen();
 	}
 	catch (int e)
 	{
@@ -57,7 +57,7 @@ void SVIEngine::loadImage(int spriteID, const char* filename)
 {
 	try
 	{
-	sviFacade->loadImage(spriteID, filename);
+		sviFacade->loadImage(spriteID, filename);
 	}
 	catch (int e)
 	{
@@ -70,7 +70,7 @@ void SVIEngine::renderCopy(const int spriteID, const int xPos, const int yPos, c
 {
 	try
 	{
-	sviFacade->renderCopy(spriteID, xPos, yPos, width, height, rotation);
+		sviFacade->renderCopy(spriteID, xPos, yPos, width, height, rotation);
 	}
 	catch (int e)
 	{
@@ -121,6 +121,7 @@ void SVIEngine::update(Object* object)
 	drawScreen();
 }
 
+/// @brief Handle the tick update from the thread
 void SVIEngine::receiveTick()
 {
 	clearScreen();
@@ -135,79 +136,115 @@ void SVIEngine::input()
 	sviFacade->input();
 }
 
-//Sound 
+/// @brief 
+/// @param files 
 void SVIEngine::SetFiles(map<string, string> files)
 {
 	sviFacade->SetFiles(files);
 }
+/// @brief 
+/// @param identifier 
+/// @param file 
 void SVIEngine::AddFile(const string& identifier, const string& file)
 {
 	sviFacade->AddFile(identifier, file);
 }
+/// @brief 
+/// @param effect 
+/// @param volume 
 void SVIEngine::PlayEffect(const string& effect, int volume = MAX_VOLUME)
 {
 	sviFacade->PlayEffect(effect, volume);
 }
+/// @brief 
+/// @param identifier 
 void SVIEngine::LoadEffect(const string& identifier)
 {
 	sviFacade->LoadEffect(identifier);
 }
+/// @brief 
+/// @param identifier 
 void SVIEngine::UnloadEffect(const string& identifier)
 {
 	sviFacade->UnloadEffect(identifier);
 }
+/// @brief 
+/// @param effect 
 void SVIEngine::StartLoopedEffect(const string& effect)
 {
 	sviFacade->StartLoopedEffect(effect);
 }
+/// @brief 
+/// @param identifier 
 void SVIEngine::StopLoopedEffect(const string& identifier)
 {
 	sviFacade->StopLoopedEffect(identifier);
 }
+/// @brief 
+/// @param identifier 
 void SVIEngine::LoadMusic(const string& identifier)
 {
 	sviFacade->LoadMusic(identifier);
 }
+/// @brief 
+/// @param volume 
 void SVIEngine::PlayMusic(int volume = MAX_VOLUME)
 {
 	sviFacade->PlayMusic(volume);
 }
+/// @brief 
+/// @param identifier 
+/// @param volume 
 void SVIEngine::PlayMusic(const string& identifier, int volume = MAX_VOLUME)
 {
 	sviFacade->PlayMusic(identifier, volume);
 }
+/// @brief 
+/// @param identifier 
 void SVIEngine::ChangeMusic(const string& identifier)
 {
 	sviFacade->ChangeMusic(identifier);
 }
+/// @brief 
+/// @param fadeTime 
 void SVIEngine::FadeOutMusic(int fadeTime)
 {
 	sviFacade->FadeOutMusic(fadeTime);
 }
+/// @brief 
+/// @param fadeTime 
 void SVIEngine::FadeInMusic(int fadeTime)
 {
 	sviFacade->FadeInMusic(fadeTime);
 }
+/// @brief 
+/// @param identifier 
+/// @param fadeTime 
 void SVIEngine::FadeInMusic(const string& identifier, int fadeTime)
 {
 	sviFacade->FadeInMusic(identifier, fadeTime);
 }
+/// @brief 
 void SVIEngine::RewindMusic()
 {
 	sviFacade->RewindMusic();
 }
+/// @brief 
 void SVIEngine::StopMusic()
 {
 	sviFacade->StopMusic();
 }
+/// @brief 
 void SVIEngine::PauseMusic()
 {
 	sviFacade->PauseMusic();
 }
+/// @brief 
 void SVIEngine::ResumeMusic()
 {
 	sviFacade->ResumeMusic();
 }
+/// @brief 
 void SVIEngine::Flush()
 {
 	sviFacade->Flush();
@@ -249,11 +286,17 @@ void SVIEngine::onPlayEffect(const string& identifier, const int volume = MIX_MA
 	}
 }
 
+/// @brief 
+/// @param identifier 
+/// @return 
 bool SVIEngine::IdentifierExists(const string& identifier)
 {
 	return sviFacade->IdentifierExists(identifier);
 }
 
+/// @brief 
+/// @param identifier 
+/// @return 
 bool SVIEngine::IdentifierIsLoaded(const string& identifier)
 {
 	return sviFacade->IdentifierIsLoaded(identifier);

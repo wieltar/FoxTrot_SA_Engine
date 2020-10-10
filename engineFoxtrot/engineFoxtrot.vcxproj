@@ -152,8 +152,6 @@
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="GeneralHelperFunctions.cpp" />
-    <ClCompile Include="IJsonFacade.cpp" />
-    <ClCompile Include="IParticleFacade.cpp" />
     <ClCompile Include="JsonFacade.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />

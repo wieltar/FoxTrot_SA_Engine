@@ -16,9 +16,10 @@ PhysicsFacade::~PhysicsFacade()
 }
 
 /// @brief 
-/// @param objectId 
 /// A function to search a physicsObject with the ObjectId
 /// If a body is not found throw PHYSICS_FACADE_OBJECT_DOESNT_EXIST
+/// @param objectId 
+/// Identifier for ObjectID
 PhysicsBody* PhysicsFacade::getPhysicsObject(const int objectId)
 {
 	for (const auto& value : bodies) {
@@ -31,9 +32,10 @@ PhysicsBody* PhysicsFacade::getPhysicsObject(const int objectId)
 }
 
 /// @brief 
-/// @param objectId 
 /// A (private) function for create a shape
 /// The position is set to the bottom left
+/// @param objectId 
+/// Identifier for ObjectID
 b2PolygonShape createShape(const PhysicsBody& object) {
 	b2PolygonShape shape;
 	float halfH = object.getHeight()/ 2; //Box2D needs the half height of a object
@@ -45,8 +47,9 @@ b2PolygonShape createShape(const PhysicsBody& object) {
 }
 
 /// @brief 
-/// @param Object 
 /// A function for register a non static object
+/// @param Object 
+/// The object to register
 void PhysicsFacade::addStaticObject(const PhysicsBody* object) {
 	b2BodyDef groundBodyDef;
 	b2Body* body = world.CreateBody(&groundBodyDef);
@@ -55,8 +58,9 @@ void PhysicsFacade::addStaticObject(const PhysicsBody* object) {
 }
 
 /// @brief 
-/// @param Object 
 /// A function for register a non static object
+/// @param Object 
+/// The object to register
 void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 {
 	b2BodyDef bodyDef;
@@ -83,9 +87,10 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 }
 
 /// @brief 
-/// @param objectId 
 /// A function to search a body with the ObjectId
 /// If a body is not found throw PHYSICS_FACADE_BODY_DOESNT_EXIST
+/// @param objectId 
+/// Identifier for ObjectID
 b2Body* PhysicsFacade::findBody(const int objectId) {
 	for (const auto& value : bodies) {
 		if (value.first->getSpriteID() == objectId)
@@ -114,8 +119,9 @@ void PhysicsFacade::update() {
 }
 
 /// @brief 
-/// @param objectId 
 /// A function to add a linearImpulse to a object for moving to left
+/// @param objectId 
+/// Identifier for ObjectID
 void PhysicsFacade::MoveLeft(const int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -124,8 +130,9 @@ void PhysicsFacade::MoveLeft(const int objectId)
 };
 
 /// @brief 
-/// @param objectId
 /// A function to add a linearImpulse to a object for moving to right 
+/// @param objectId
+/// Identifier for ObjectID
 void PhysicsFacade::MoveRight(const int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -134,8 +141,9 @@ void PhysicsFacade::MoveRight(const int objectId)
 };
 
 /// @brief 
-/// @param objectId 
 /// A function to add a linearImpulse to a object for jumping
+/// @param objectId 
+/// Identifier for ObjectID
 void PhysicsFacade::Jump(const int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -144,8 +152,9 @@ void PhysicsFacade::Jump(const int objectId)
 };
 
 /// @brief 
-/// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the left
+/// @param objectId 
+/// Identifier for ObjectID
 void PhysicsFacade::JumpLeft(const int objectId)
 {
 	b2Body* body = findBody(objectId);
@@ -154,8 +163,9 @@ void PhysicsFacade::JumpLeft(const int objectId)
 };
 
 /// @brief 
-/// @param objectId 
 /// A function to add a linearImpulse to a object for jumping to the right
+/// @param objectId 
+/// Identifier for ObjectID
 void PhysicsFacade::JumpRight(const int objectId)
 {
 	b2Body* body = findBody(objectId);

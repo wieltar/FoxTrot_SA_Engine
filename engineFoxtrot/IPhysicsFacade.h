@@ -3,7 +3,7 @@
 #include "PhysicsBody.h"
 
 /// @brief 
-/// Facade for all physics actions
+/// Interface facade for all physics actions
 #if(EXPORT)
 class DLLEXPORT IPhysicsFacade
 #else

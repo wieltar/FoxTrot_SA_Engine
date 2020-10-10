@@ -51,14 +51,8 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IJsonFacade.cpp">
-      <Filter>Header Files\FileIO</Filter>
-    </ClCompile>
     <ClCompile Include="JsonFacade.cpp">
       <Filter>Header Files\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="IParticleFacade.cpp">
-      <Filter>Header Files\Particle</Filter>
     </ClCompile>
     <ClCompile Include="ParticleEngine.cpp">
       <Filter>Header Files\Particle</Filter>
