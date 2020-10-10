@@ -5,7 +5,11 @@
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
 
+#if(EXPORT)
+class DLLEXPORT ParticleEngine
+#else
 class ParticleEngine
+#endif
 {
 public:
 	ParticleEngine();
