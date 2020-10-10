@@ -29,7 +29,7 @@ void Scene::addNewObject(Object* object)
 /// Identifier for a ObjectID
 /// @return 
 /// Returns true if Object is found in current scene else false.
-bool Scene::checkIfObjectExists(int objectID)
+bool Scene::checkIfObjectExists(const int objectID)
 {
 	for (Object* obj : objects)
 	{

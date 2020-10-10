@@ -237,7 +237,7 @@ void SVIEngine::onChangeBackgroundMusic(const string& identifier, int volume = M
 /// The identifier of the effect to play
 /// @param volume
 /// The volume to play the effect at. Ranges from 0 to 128
-void SVIEngine::onPlayEffect(const string& identifier, int volume = MIX_MAX_VOLUME) {
+void SVIEngine::onPlayEffect(const string& identifier, const int volume = MIX_MAX_VOLUME) {
 	if (IdentifierExists(identifier)) {
 		if (IdentifierIsLoaded(identifier)) {
 			PlayEffect(identifier, volume);

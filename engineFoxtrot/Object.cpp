@@ -11,12 +11,8 @@ Object::Object(int id) : spriteID(id)
 /// @param yPos 
 /// @param height 
 /// @param width 
-Object::Object(const int id, const float xPos, const float yPos, const float height, const float width) : spriteID(id)
+Object::Object(const int id, const float xPos, const float yPos, const float height, const float width) : spriteID(id), positionX(xPos), positionY(yPos), height(height), width(width)
 {
-	positionX = xPos;
-	positionY = yPos;
-	this->height = height;
-	this->width = width;
 }
 
 /// @brief 

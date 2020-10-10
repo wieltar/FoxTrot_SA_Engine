@@ -54,7 +54,7 @@ private:
 	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
 	const float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
 		
-	b2Body* findBody(int objectId);
+	b2Body* findBody(const int objectId);
 	map <PhysicsBody*, b2Body*> bodies;
 
 };

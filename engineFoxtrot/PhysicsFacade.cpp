@@ -79,7 +79,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	bodyDef.position.Set(posX, posY);
 
 	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
-	bodies.insert(std::pair<PhysicsBody*, b2Body*>(object, body));
+	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
 
 /// @brief 
