@@ -79,7 +79,7 @@ void SVIEngine::renderCopy(const int spriteID, const int xPos, const int yPos, c
 }
 /// @brief Sets the sprite on the screen
 /// @param Object 
-void SVIEngine::renderCopy(Object object) {
+void SVIEngine::renderCopy(Object& object) {
 	try
 	{
 		sviFacade->renderCopy(object);
