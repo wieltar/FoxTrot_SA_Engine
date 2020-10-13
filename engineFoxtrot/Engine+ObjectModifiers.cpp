@@ -4,7 +4,7 @@
 /// @param objId 
 /// @param x 
 /// @param y 
-void Engine::moveObjectTo(int objId, int x, int y)
+void Engine::moveObjectTo(const int objId, const int x, const int y)
 {
 	try
 	{
@@ -20,7 +20,7 @@ void Engine::moveObjectTo(int objId, int x, int y)
 /// @param objId 
 /// @param withX 
 /// @param withY 
-void Engine::moveObjectBy(int objId, int withX, int withY)
+void Engine::moveObjectBy(const int objId, const int withX, const int withY)
 {
 	try
 	{
@@ -35,7 +35,7 @@ void Engine::moveObjectBy(int objId, int withX, int withY)
 /// @brief 
 /// @param objId 
 /// @param rotation 
-void Engine::setObjectRotation(int objId, int rotation)
+void Engine::setObjectRotation(const int objId, const int rotation)
 {
 	try
 	{
@@ -50,7 +50,7 @@ void Engine::setObjectRotation(int objId, int rotation)
 /// @brief 
 /// @param objId 
 /// @param scale 
-void Engine::setObjectScale(int objId, int scale)
+void Engine::setObjectScale(const int objId, const int scale)
 {
 	try
 	{
@@ -65,7 +65,7 @@ void Engine::setObjectScale(int objId, int scale)
 /// @brief 
 /// @param objId 
 /// @param dir 
-void Engine::setObjectDirection(int objId, int dir)
+void Engine::setObjectDirection(const int objId, const int dir)
 {
 	try
 	{
@@ -80,7 +80,7 @@ void Engine::setObjectDirection(int objId, int dir)
 /// @brief 
 /// @param objId 
 /// @param stat 
-void Engine::setObjectStatic(int objId, bool stat)
+void Engine::setObjectStatic(const int objId, const bool stat)
 {
 	try
 	{

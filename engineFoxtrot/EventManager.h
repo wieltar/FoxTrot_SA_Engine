@@ -15,11 +15,11 @@ class EventManager
 #endif
 {
 private:
-    std::map<EventType, std::vector<EventListener*>> listeners = std::map<EventType, std::vector<EventListener*>>();
+    std::map<const EventType, std::vector<EventListener*>> listeners = std::map<const EventType, std::vector<EventListener*>>();
 public:
     EventManager() { }
 
-    void subscribe(EventType eventType, EventListener* listener);
-    void unsubscribe(EventType eventType, EventListener* listener);
-    void notify(EventType eventType, Object* data);
+    void subscribe(const EventType eventType, EventListener* listener);
+    void unsubscribe(const EventType eventType, EventListener* listener);
+    void notify(const EventType eventType, Object* data);
 };

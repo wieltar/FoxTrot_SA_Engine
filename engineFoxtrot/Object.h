@@ -18,55 +18,76 @@ class Object
 #endif
 {
 public:
-	Object();
-	Object(int id, int xPos, int yPos, int height, int width);
+	Object(const int id);
+	Object(const int id, const float xPos, const float yPos, const float height, const float width);
 	~Object();
 
-	void setName(string);
-	string getName();
+	void setName(const string);
+	string getName() const;
 
-	void setSpriteID(int);
-	int getSpriteID();
+	int getSpriteID() const;
 
-	void setPositionX(int);
-	int getPositionX();
+	void setPositionX(const float);
+	float getPositionX() const;
 
-	void setPositionY(int);
-	int getPositionY();
+	void setPositionY(const float);
+	float getPositionY() const;
 
-	void setRotation(int);
-	int getRotation();
+	void setRotation(const float);
+	float getRotation() const;
 
-	void setScale(int);
-	int getScale();
+	void setScale(const float);
+	float getScale() const;
 
-	void setDirection(int);
-	int getDirection();
+	void setDirection(const float);
+	float getDirection() const;
 
-	void setHeight(int);
-	int getHeight();
+	void setHeight(const float);
+	float getHeight() const;
 
-	void setWidth(int);
-	int getWidth();
+	void setWidth(const float);
+	float getWidth() const;
 
-	void setStatic(bool);
-	bool getStatic();
+	void setStatic(const bool);
+	bool getStatic() const;
 
-	bool getChanged();
-private:
+	void setRestitution(const float val);
+	float getRestitution() const;
+
+	void setFriction(const float val);
+	float getFriction() const;
+
+	void setDensity(const float val);
+	float getDensity() const;
 
 	LayerSelection layerSelection = LAYER_SELECTION__UNKNOWN;
 
 	std::string name;
 
-	int spriteID = 0;
-	int positionX = 0;
-	int positionY = 0;
-	int rotation = 0;
-	int scale = 0;
-	int direction = 0;
-	int height = 0;
-	int width = 0;
+	void setSpeed(const float val);
+	float getSpeed() const;
+
+	void setJumpHeight(const float val);
+	float getJumpHeight() const;
+
+	bool getChanged() const;
+private:
+
+	string name;
+
+	const int spriteID = 0;
+	float positionX = 0;
+	float positionY = 0;
+	float rotation = 0;
+	float scale = 0;
+	float direction = 0;
+	float height = 0;
+	float width = 0;
+	float speed = 0;
+	float jumpHeight = 0;
+	float density = 0;
+	float friction = 0;
+	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
 };

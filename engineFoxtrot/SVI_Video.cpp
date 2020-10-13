@@ -1,41 +1,13 @@
 #include "SVI.h"
 
-// Functions in this cpp file may only call functions in this file. And global SDL2 definitions
-
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
-
-/// @brief TO BE REMOVED
-/// @param x 
-/// @param y
-void SVI::testLoopVideo(int x, int y)
-{
-	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-
-	SDL_RenderClear(renderer);
-	SDL_Surface* surface = IMG_Load(Example_Sprite);
-	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-	
-	SDL_Rect destination;
-	destination.x = x;
-	destination.y = y;
-	destination.w = 320;
-	destination.h = 320;
-	SDL_FreeSurface(surface);
-
-	SDL_RenderCopy(renderer, texture, NULL, &destination);
-
-	SDL_RenderPresent(renderer);
-
-	//SDL_Delay(5000);
-}
-
 /// @brief 
 /// Inits SDL2
 void SVI::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
 
@@ -86,7 +58,7 @@ void SVI::drawScreen()
 /// Loads PNG files and makes them textures to be added to the unordered map
 /// @param spriteID 
 /// @param filename 
-void SVI::loadImage(int spriteID, const char* filename)
+void SVI::loadImage(const int spriteID, const char* filename)
 {
 	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
@@ -95,30 +67,36 @@ void SVI::loadImage(int spriteID, const char* filename)
 	textureMap[spriteID] = texture;
 }
 
+
 /// @brief 
-/// Takes the sprites from the Textuture map and copys them to the screen
+/// Test function used for POC
 /// @param spriteID 
 /// @param xPos 
 /// @param yPos 
 /// @param width 
 /// @param height 
 /// @param rotation 
-void SVI::renderCopy(int spriteID, int xPos, int yPos, int width, int height, int rotation)
+void SVI::renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation)
 {
-	// TODO
-	//if (textureMap[spriteID] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
-	//if (xPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
-	//if (yPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;
-	//if (height == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_HEIGHT_IS_NULL;
-	//if (width == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_WIDTH_IS_NULL;
-	//if (rotation == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_ROTATION_IS_NULL;
-
 	SDL_Rect destination;
 	destination.x = xPos;
-	destination.y = yPos;
+	destination.y = yPos - height;
 	destination.w = width;
 	destination.h = height;
+
 	SDL_RenderCopyEx(renderer, textureMap[spriteID], NULL, &destination, rotation,NULL, SDL_FLIP_NONE);
 }
 
+/// @brief 
+/// Takes the sprites from the Textuture map and copys them to the screen
+/// @param Object 
+void SVI::renderCopy(Object& object)
+{
+	SDL_Rect destination;
+	destination.w = object.getWidth();
+	destination.h = object.getHeight();
+	destination.x = object.getPositionX();
+	destination.y = object.getPositionY() - object.getHeight();
 
+	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+}
