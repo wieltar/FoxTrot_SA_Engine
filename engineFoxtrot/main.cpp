@@ -22,25 +22,7 @@ void sceneTestSetup()
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
 	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
-	engine.createNewSceneWithSceneID(1);
-	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(3);
-	engine.createNewSceneWithSceneID(20);
-
-	engine.createNewObjectWithSceneID(1, 1, 50, 50, 40, 40, false);
-	engine.setCurrentScene(1);
-
-	engine.createNewObjectWithSceneID(2, 1, 50, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 2, 100, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 3, 150, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 4, 200, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 5, 250, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 6, 50, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 7, 150, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 8, 200, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 9, 250, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 10, 300, 100, 40, 40, false);
-
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
@@ -67,6 +49,20 @@ void sceneTestSetup()
 	object->setRestitution(0);
 	object->setStatic(false);
 	engine.createObject(3, object);
+
+	Object* object2 = new Object(2);
+	object2->setName("person");
+	object2->setHeight(80);
+	object2->setWidth(80);
+	object2->setPositionX(100);
+	object2->setPositionY(80);
+	object2->setSpeed(100);
+	object2->setJumpHeight(400);
+	object2->setDensity(10);
+	object2->setFriction(0);
+	object2->setRestitution(0);
+	object2->setStatic(false);
+	engine.createObject(3, object2);
 
 	Object* staticGround = new Object(101);
 	staticGround->setWidth(500); // width
