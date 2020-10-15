@@ -60,10 +60,6 @@ public:
 	void setDensity(const float val);
 	float getDensity() const;
 
-	LayerSelection layerSelection = LAYER_SELECTION__UNKNOWN;
-
-	std::string name;
-
 	void setSpeed(const float val);
 	float getSpeed() const;
 
@@ -73,6 +69,7 @@ public:
 	bool getChanged() const;
 private:
 
+	LayerSelection layerSelection = LAYER_SELECTION__UNKNOWN;
 	string name;
 
 	const int spriteID = 0;
