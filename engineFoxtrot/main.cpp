@@ -17,29 +17,12 @@ using namespace std;
 
 Engine engine;
 
-int main() {
+void sceneTestSetup()
+{
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
 	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
-	engine.createNewSceneWithSceneID(1);
-	engine.createNewSceneWithSceneID(2);
 	engine.createNewSceneWithSceneID(3);
-	engine.createNewSceneWithSceneID(20);
-
-	engine.createNewObjectWithSceneID(1, 1, 50, 50, 40, 40, false);
-	engine.setCurrentScene(1);
-
-	engine.createNewObjectWithSceneID(2, 1, 50, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 2, 100, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 3, 150, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 4, 200, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 5, 250, 50, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 6, 50, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 7, 150, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 8, 200, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 9, 250, 100, 40, 40, false);
-	engine.createNewObjectWithSceneID(2, 10, 300, 100, 40, 40, false);
-
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
@@ -58,7 +41,7 @@ int main() {
 	object->setHeight(80);
 	object->setWidth(80);
 	object->setPositionX(30);
-	object->setPositionY(80); 
+	object->setPositionY(80);
 	object->setSpeed(100);
 	object->setJumpHeight(400);
 	object->setDensity(10);
@@ -66,6 +49,20 @@ int main() {
 	object->setRestitution(0);
 	object->setStatic(false);
 	engine.createObject(3, object);
+
+	Object* object2 = new Object(2);
+	object2->setName("person");
+	object2->setHeight(80);
+	object2->setWidth(80);
+	object2->setPositionX(100);
+	object2->setPositionY(80);
+	object2->setSpeed(100);
+	object2->setJumpHeight(400);
+	object2->setDensity(10);
+	object2->setFriction(0);
+	object2->setRestitution(0);
+	object2->setStatic(false);
+	engine.createObject(3, object2);
 
 	Object* staticGround = new Object(101);
 	staticGround->setWidth(500); // width
@@ -79,51 +76,17 @@ int main() {
 	engine.setCurrentScene(3);
 	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 	engine.startTickThreads();
-	for (int i = 0; i < 100; i++)
+}
+
+int main() {
+	sceneTestSetup();
+
+
+	bool gameRunning = true;
+	while (gameRunning)
 	{
-		this_thread::sleep_for(chrono::milliseconds(50));
+
 	}
-
-
-	cout << "Got to here " << endl;
-	this_thread::sleep_for(chrono::milliseconds(100));
-
-
-	this_thread::sleep_for(chrono::milliseconds(5000));
-
-	engine.setCurrentScene(2);
-	this_thread::sleep_for(chrono::milliseconds(250));
-	engine.createNewSceneWithSceneID(10);
-	engine.setCurrentScene(10);
-	this_thread::sleep_for(chrono::milliseconds(1000));
-	engine.setCurrentScene(2);
-	cout << "Engine filled" << endl;
-	
-	this_thread::sleep_for(chrono::milliseconds(2500));
-	for (int i = 0; i < 10; i++)
-	{
-		if(i % 2)engine.setCurrentScene(1);
-		else engine.setCurrentScene(2);
-		this_thread::sleep_for(chrono::milliseconds(50));
-	}
-
-	engine.setCurrentScene(1);
-	
-	for (int i = 0; i < 100; i++)
-	{
-		engine.moveObjectTo(1, i, 100);
-		this_thread::sleep_for(chrono::milliseconds(10));
-	}
-
-	for (int i = 0; i < 360; i++)
-	{
-		engine.setObjectRotation(1, i);
-		this_thread::sleep_for(chrono::milliseconds(10));
-	}
-	engine.setCurrentScene(1);
-	engine.stopTickThreads();
-
-
 
 	return 0;
 }
