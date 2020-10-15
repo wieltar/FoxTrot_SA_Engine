@@ -17,7 +17,8 @@ using namespace std;
 
 Engine engine;
 
-int main() {
+void sceneTestSetup()
+{
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
 	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
@@ -58,7 +59,7 @@ int main() {
 	object->setHeight(80);
 	object->setWidth(80);
 	object->setPositionX(30);
-	object->setPositionY(80); 
+	object->setPositionY(80);
 	object->setSpeed(100);
 	object->setJumpHeight(400);
 	object->setDensity(10);
@@ -79,51 +80,17 @@ int main() {
 	engine.setCurrentScene(3);
 	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 	engine.startTickThreads();
-	for (int i = 0; i < 100; i++)
+}
+
+int main() {
+	sceneTestSetup();
+
+
+	bool gameRunning = true;
+	while (gameRunning)
 	{
-		this_thread::sleep_for(chrono::milliseconds(50));
+
 	}
-
-
-	cout << "Got to here " << endl;
-	this_thread::sleep_for(chrono::milliseconds(100));
-
-
-	this_thread::sleep_for(chrono::milliseconds(5000));
-
-	engine.setCurrentScene(2);
-	this_thread::sleep_for(chrono::milliseconds(250));
-	engine.createNewSceneWithSceneID(10);
-	engine.setCurrentScene(10);
-	this_thread::sleep_for(chrono::milliseconds(1000));
-	engine.setCurrentScene(2);
-	cout << "Engine filled" << endl;
-	
-	this_thread::sleep_for(chrono::milliseconds(2500));
-	for (int i = 0; i < 10; i++)
-	{
-		if(i % 2)engine.setCurrentScene(1);
-		else engine.setCurrentScene(2);
-		this_thread::sleep_for(chrono::milliseconds(50));
-	}
-
-	engine.setCurrentScene(1);
-	
-	for (int i = 0; i < 100; i++)
-	{
-		engine.moveObjectTo(1, i, 100);
-		this_thread::sleep_for(chrono::milliseconds(10));
-	}
-
-	for (int i = 0; i < 360; i++)
-	{
-		engine.setObjectRotation(1, i);
-		this_thread::sleep_for(chrono::milliseconds(10));
-	}
-	engine.setCurrentScene(1);
-	engine.stopTickThreads();
-
-
 
 	return 0;
 }
