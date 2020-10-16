@@ -1,16 +1,34 @@
 #include "stdafx.h"
-#include "SVI.h"
+#include "VideoFacade.h"
+
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <SDL_image.h>
 #include "../../SDL2/include/SDL_mixer.h"
 #include "../../SDL2/include/SDL_image.h"
 #undef main
+
+
+/// @brief 
+VideoFacade::VideoFacade()
+{
+	initSDL();
+
+	SDL_Init(SDL_INIT_EVERYTHING);
+}
+
+/// @brief 
+VideoFacade::~VideoFacade()
+{
+	/*SDL_CloseAudioDevice(deviceId);
+	SDL_FreeWAV(wavBuffer);*/
+}
+
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
 /// @brief 
 /// Inits SDL2
-void SVI::initSDL()
+void VideoFacade::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
@@ -47,7 +65,7 @@ void SVI::initSDL()
 
 /// @brief 
 /// Clears SDL screen
-void SVI::clearScreen()
+void VideoFacade::clearScreen()
 {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
@@ -55,7 +73,7 @@ void SVI::clearScreen()
 
 /// @brief 
 /// Draws SDL screen
-void SVI::drawScreen()
+void VideoFacade::drawScreen()
 {
 	SDL_RenderPresent(renderer);
 }
@@ -64,7 +82,7 @@ void SVI::drawScreen()
 /// Loads PNG files and makes them textures to be added to the unordered map
 /// @param spriteID 
 /// @param filename 
-void SVI::loadImage(const int spriteID, const char* filename)
+void VideoFacade::loadImage(const int spriteID, const char* filename)
 {
 	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
@@ -75,28 +93,9 @@ void SVI::loadImage(const int spriteID, const char* filename)
 
 
 /// @brief 
-/// Test function used for POC
-/// @param spriteID 
-/// @param xPos 
-/// @param yPos 
-/// @param width 
-/// @param height 
-/// @param rotation 
-void SVI::renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation)
-{
-	SDL_Rect destination;
-	destination.x = xPos;
-	destination.y = yPos - height;
-	destination.w = width;
-	destination.h = height;
-
-	SDL_RenderCopyEx(renderer, textureMap[spriteID], NULL, &destination, rotation,NULL, SDL_FLIP_NONE);
-}
-
-/// @brief 
 /// Takes the sprites from the Textuture map and copys them to the screen
 /// @param Object 
-void SVI::renderCopy(Object& object)
+void VideoFacade::renderCopy(Object& object)
 {
 	SDL_Rect destination;
 	destination.w = object.getWidth();

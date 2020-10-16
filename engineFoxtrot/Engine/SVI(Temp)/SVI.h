@@ -74,25 +74,6 @@ private:
 	Mix_Music* music;
 	std::map<std::string, Mix_Chunk*> loadedSoundEffects;
 
-// Video functions
-public:
-	void initSDL();
-
-	void clearScreen();
-	void drawScreen();
-	void loadImage(const int spriteID, const char* filename);
-
-	//TODO delete this is only for POC
-	void renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation);
-
-	void renderCopy(Object& object);
-
-
-	unordered_map<int, SDL_Texture*> textureMap;
-
-private:
-
-
 // Input functions
 public:
 	void input();

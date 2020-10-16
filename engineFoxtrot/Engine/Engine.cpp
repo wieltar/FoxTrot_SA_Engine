@@ -4,10 +4,10 @@
 /// @brief 
 Engine::Engine()
 {
-	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
+	videoEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	eventManager.subscribe(EventType::ENGINE60, &sviEngine);
+	eventManager.subscribe(EventType::ENGINE60, &videoEngine);
 	//sviEngine.initSDL();
 }
 
@@ -102,7 +102,7 @@ void Engine::linkSpriteIDWithAssetPath(const int spriteID, const char * assetPat
  {
 	try
 	{
-		sviEngine.loadImage(spriteID, assetPath);
+		videoEngine.loadImage(spriteID, assetPath);
 	}
 	catch (int e)
 	{
@@ -117,7 +117,7 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 	try
 	{
 		for (auto sprite : spritesVector) {
-			sviEngine.loadImage(sprite.spriteID, sprite.filename);
+			videoEngine.loadImage(sprite.spriteID, sprite.filename);
 		}
 	}
 	catch (int e)
