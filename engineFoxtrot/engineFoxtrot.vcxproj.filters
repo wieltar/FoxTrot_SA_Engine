@@ -72,9 +72,6 @@
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp">
       <Filter>Header Files\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Particles\ParticleFacade.cpp">
-      <Filter>Header Files\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Physics\PhysicsFacade.cpp">
       <Filter>Header Files\Physics</Filter>
     </ClCompile>
@@ -114,6 +111,9 @@
     <ClCompile Include="Engine\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Particles\Particle.cpp">
+      <Filter>Header Files\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
@@ -143,9 +143,6 @@
     <ClInclude Include="Engine\Particles\ParticleEngine.h">
       <Filter>Header Files\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Particles\ParticleFacade.h">
-      <Filter>Header Files\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Physics\PhysicsFacade.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
@@ -157,9 +154,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Events\KeyEvent.h">
       <Filter>Header Files\Events\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Particles\IParticleFacade.h">
-      <Filter>Header Files\Particle</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h">
       <Filter>Header Files\Physics</Filter>
@@ -193,6 +187,12 @@
     </ClInclude>
     <ClInclude Include="Engine\stdafx.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Particles\ParticleStruct.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Particles\Particle.h">
+      <Filter>Header Files\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

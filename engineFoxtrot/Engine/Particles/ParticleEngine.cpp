@@ -10,3 +10,12 @@ ParticleEngine::ParticleEngine()
 ParticleEngine::~ParticleEngine()
 {
 }
+
+void ParticleEngine::onUpdate()
+{
+
+}
+
+void ParticleEngine::createParticle(int amountOfParticles, float xPosition, float yPostion)
+{
+}

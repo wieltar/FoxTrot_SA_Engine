@@ -1,5 +1,5 @@
 #pragma once
-#include "ParticleFacade.h"
+#include "Particle.h"
 
 
 #if(EXPORT)
@@ -12,9 +12,13 @@ public:
 	ParticleEngine();
 	~ParticleEngine();
 
-	// Set to Private after testing!!!
-	IParticleFacade* particleEngine = new ParticleFacade;
+
+	void onUpdate();
+	void createParticle(int amountOfParticles, float xPosition, float yPostion);
+
+	vector<Particle*> getParticlesVector() { return particles; };
 private:
+	vector<Particle*> particles;
 
 };
 
