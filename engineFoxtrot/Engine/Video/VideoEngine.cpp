@@ -104,7 +104,6 @@ void VideoEngine::updateScreen()
 /// Update function
 void VideoEngine::update(Object* object)
 {
-
 	clearScreen();
 	updateScreen();
 	drawScreen();

@@ -1,22 +1,19 @@
 #pragma once
-
 #include "IVideo.h"
-#include <SDL.h>
-#include <unordered_map>
-#include "../../SDL2/include/SDL_image.h"
 #include "../SceneManager/Object.h"
-#undef main
-
-using namespace std;
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
+
+struct SDL_Renderer;
+struct SDL_Window;
+struct SDL_Texture;
 
 #if(EXPORT)
 class DLLEXPORT VideoFacade : public IVideo
 #else
 /// @brief 
-/// SVI is de SDL2 facade
+/// VideoFacade is de SDL2 facade
 class VideoFacade : public IVideo
 #endif
 {

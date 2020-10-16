@@ -41,9 +41,9 @@ public:
 
 	vector <Object*>* pointerToObjectVector = nullptr;
 
-	//Set to private after testing!!!
 	EventManager* eventManager = nullptr;
-	IVideo* videoFacade = new VideoFacade;
 
 private:
+	IVideo* videoFacade = new VideoFacade;
+
 };

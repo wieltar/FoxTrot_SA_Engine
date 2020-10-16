@@ -2,12 +2,9 @@
 #include "VideoFacade.h"
 
 #include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_image.h>
-#include "../../SDL2/include/SDL_mixer.h"
 #include "../../SDL2/include/SDL_image.h"
-#undef main
 
+#undef main
 
 /// @brief 
 VideoFacade::VideoFacade()
@@ -20,8 +17,7 @@ VideoFacade::VideoFacade()
 /// @brief 
 VideoFacade::~VideoFacade()
 {
-	/*SDL_CloseAudioDevice(deviceId);
-	SDL_FreeWAV(wavBuffer);*/
+
 }
 
 // Tips:
