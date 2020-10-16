@@ -27,6 +27,12 @@ bool SceneManager::checkIfSceneExists(const int sceneID)
 	return false;
 }
 
+void SceneManager::insertScene(Scene* scene)
+{
+	if (scene == nullptr) return;
+	scenes.push_back(scene);
+}
+
 /// @brief 
 /// A function to create a new scene, if a scene already exists throw ERROR_CODE_SCENEMANAGER_SCENE_ALREADY_EXISTS
 /// @param sceneID 
@@ -51,8 +57,7 @@ void SceneManager::setCurrentScene(const int sceneID)
 	if (scenes.empty()) throw ERROR_CODE_SCENEMANAGER_SCENES_IS_EMPTY;
 
 	currentScene = getSceneWithID(sceneID);
-	pointerToCurrentObjectVector = currentScene->getPtrToObjects();
-	cout << "Setting current scene to " << sceneID << " with amount of obj: " << currentScene->getPtrToObjects().size() << endl;
+	cout << "Setting current scene to " << sceneID << " with amount of obj: " << currentScene->getAllObjectsInScene().size() << endl;
 }
 
 /// @brief 

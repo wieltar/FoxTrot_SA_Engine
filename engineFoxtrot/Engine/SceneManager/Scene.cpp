@@ -14,16 +14,6 @@ Scene::~Scene()
 }
 
 /// @brief 
-/// Adds new object to the scene. If Object is empty function does not do anything. 
-/// @param object 
-/// Pointer to a new Object to be added to the Scene.
-void Scene::addNewObject(Object* object) 
-{
-	if (object == nullptr) return;
-	objects.push_back(object);
-}
-
-/// @brief 
 /// Function for checking if an object with ObjectID exists in a Scene.
 /// @param objectID 
 /// Identifier for a ObjectID
@@ -31,7 +21,7 @@ void Scene::addNewObject(Object* object)
 /// Returns true if Object is found in current scene else false.
 bool Scene::checkIfObjectExists(const int objectID)
 {
-	for (Object* obj : objects)
+	for (Object* obj : getAllObjectsInScene())
 	{
 		if (obj->getSpriteID() == objectID)
 		{
@@ -41,28 +31,62 @@ bool Scene::checkIfObjectExists(const int objectID)
 	return false;
 }
 
-/// @brief 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-/// @param speed 
-/// @param jumpHeight 
-/// @param density 
-/// @param friction 
-/// @param restitution 
-/// @param stat 
-void Scene::addNewObject(const int id, const int xPos, const int yPos, const int height, const int width, const int speed, const int jumpHeight, const int density, const int friction, const int restitution, const bool stat)
+void Scene::createLayer(string layerIdentifier, bool render)
 {
-	Object* obj = new Object(id, xPos, yPos, height, width);
-	obj->setDensity(density);
-	obj->setFriction(friction);
-	obj->setRestitution(restitution);
-	obj->setJumpHeight(jumpHeight);
-	obj->setSpeed(speed);
-	obj->setStatic(stat);
-	objects.push_back(obj);
+	cout << "Creating new layer with identifier " << layerIdentifier << endl;
+	Layer * layer = new Layer;
+	layer->layerIdentifier = layerIdentifier;
+	layer->render = render;
+	layers.push_back(layer);
+}
+
+bool Scene::toggleLayer(string layerIdentifier)
+{
+	for (auto layer : layers)
+	{
+		if (layer->layerIdentifier == layerIdentifier) layer->render = !layer->render;
+		return layer->render;
+	}
+	return false;
+}
+
+vector <Object*> Scene::getObjectsInLayer(string layerIdentifier)
+{
+	for (auto layer : layers)
+	{
+		if (layer->layerIdentifier == layerIdentifier)
+		{
+			return layer->objects;
+		}
+	}
+}
+
+vector <Object*> Scene::getAllObjectsInScene()
+{
+	vector <Object*> returnVector;
+	for (auto layer : layers)
+	{
+		returnVector.insert(returnVector.end(), layer->objects.begin(), layer->objects.end());
+	}
+	return returnVector;
+}
+
+bool Scene::addNewObjectToLayer(string layerIdentifier, Object* object)
+{
+	if (layerIdentifier == "") return false;
+	if (object == nullptr) return false;
+
+	for (Layer * layer : layers)
+	{
+		if (layer->layerIdentifier == layerIdentifier)
+		{
+			cout << "Layer found, adding Object" << endl;
+			layer->objects.push_back(object);
+			return true;
+		}
+	}
+	createLayer(layerIdentifier,false);
+	return addNewObjectToLayer(layerIdentifier, object);
 }
 
 /// @brief 
@@ -73,7 +97,7 @@ void Scene::addNewObject(const int id, const int xPos, const int yPos, const int
 /// Returns pointer to the found Object
 Object * Scene::getObject(const int objectID)
 {
-	for (Object * obj : objects)
+	for (Object * obj : getAllObjectsInScene())
 	{
 		if (obj->getSpriteID() == objectID)
 		{

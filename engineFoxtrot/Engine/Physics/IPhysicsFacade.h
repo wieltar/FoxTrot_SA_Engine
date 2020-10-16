@@ -26,6 +26,8 @@ public:
 	virtual void JumpRight(const int objectId) = 0;
 
 	virtual void update() = 0;
+
+	virtual void cleanMap() = 0;
 private:
 
 };

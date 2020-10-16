@@ -1,7 +1,7 @@
 #pragma once
 #include "../Events/EventManager.h"
 #include "SVI.h"
-
+#include "../SceneManager/Scene.h"
 
 #define MAX_VOLUME 128
 
@@ -75,7 +75,7 @@ public:
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
 
-	vector <Object*>*pointerToObjectVector = nullptr;
+	Scene ** pointerToCurrentScene = nullptr;
 
 
 	//Set to private after testing!!!

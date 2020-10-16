@@ -4,8 +4,8 @@
 /// @brief 
 Engine::Engine()
 {
-	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
-	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
+	sviEngine.pointerToCurrentScene =	 &sceneManager.currentScene;
+	physicsEngine.pointerToCurrentScene = &sceneManager.currentScene;
 
 	eventManager.subscribe(EventType::ENGINE60, &sviEngine);
 	//sviEngine.initSDL();
@@ -32,15 +32,11 @@ void Engine::setCurrentScene(const int sceneID)
 	}
 }
 
-/// @brief 
-/// Creates a new Scene in the Scene manager given the sceneID
-/// @param sceneID 
-/// int SceneID
-void Engine::createNewSceneWithSceneID(const int sceneID)
+void Engine::insertScene(Scene* scene)
 {
 	try
 	{
-		sceneManager.createNewScene(sceneID);
+		sceneManager.insertScene(scene);
 	}
 	catch (int e)
 	{
@@ -48,53 +44,6 @@ void Engine::createNewSceneWithSceneID(const int sceneID)
 	}
 }
 
-/// @brief 
-/// @param sceneID 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-/// @param stat 
-void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat)
-{
-	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
-}
-
-/// @brief 
-/// @param sceneID 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat, const int speed, const int jumpHeight, const int density, const int friction, const int restitution)
-{
-	try
-	{
-		cout << "creating new obj sceneID: " << sceneID << endl;
-		sceneManager.getSceneWithID(sceneID)->addNewObject(id, xPos, yPos, height, width,speed,jumpHeight, density, friction,restitution, stat);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-
-/// @brief 
-/// @param sceneID 
-/// @param object 
-void Engine::createObject(const int sceneID, Object* object) {
-	try
-	{
-		cout << "creating new obj sceneID: " << sceneID << endl;
-		sceneManager.getSceneWithID(sceneID)->addNewObject(object);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
 /// @brief 
 /// @param spriteID 
 /// @param assetPath 

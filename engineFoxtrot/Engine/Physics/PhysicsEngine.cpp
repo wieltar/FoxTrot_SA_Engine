@@ -19,7 +19,7 @@ PhysicsEngine::~PhysicsEngine()
 /// Identifier for ObjectID
 Object* PhysicsEngine::getObject(const int objectId)
 {
-	for (Object * obj : *pointerToObjectVector)
+	for (Object * obj : (*pointerToCurrentScene)->getAllObjectsInScene())
 	{
 		if (obj->getSpriteID() == objectId)
 		{
@@ -33,8 +33,8 @@ Object* PhysicsEngine::getObject(const int objectId)
 /// A function to create all objects in the facade
 void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 {
-	cout << "Size pointertoObj: " << pointerToObjectVector->size() << endl;
-	for (Object* object : *pointerToObjectVector)
+	cout << "Size pointertoObj: " << (*pointerToCurrentScene)->getAllObjectsInScene().size() << endl;
+	for (Object* object : (*pointerToCurrentScene)->getAllObjectsInScene())
 	{
 		PhysicsBody * phyObj = new PhysicsBody(object);
 		cout << "Registering object : " << phyObj->getSpriteID() << endl;
@@ -54,6 +54,13 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 /// Handle the tick given from the thread. 
 void PhysicsEngine::update30()
 {
+	if (currentSceneID != (*pointerToCurrentScene)->getSceneID())
+	{
+		cout << "Cleaning map and reinserting Objects" << endl;
+		physicsFacade->cleanMap();
+		registerObjectInCurrentVectorWithPhysicsEngine();
+		currentSceneID = (*pointerToCurrentScene)->getSceneID();
+	}
 	physicsFacade->update();
 }
 

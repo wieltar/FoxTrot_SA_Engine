@@ -51,9 +51,6 @@
     <ClCompile Include="Engine\Engine.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Engine+ObjectModifiers.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Events\EventManager.cpp">
       <Filter>Header Files\Events</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
       <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SceneManager\SceneManager.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp">
@@ -192,6 +186,9 @@
       <Filter>Header Files\FileIO</Filter>
     </ClInclude>
     <ClInclude Include="Engine\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SceneManager\Layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

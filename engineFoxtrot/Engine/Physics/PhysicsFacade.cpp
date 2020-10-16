@@ -82,6 +82,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	float posY = object->getPositionY() - object->getHeight() / 2; //Box2d needs the middle position
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
+	bodyDef.angularVelocity = object->getSpeed();
 
 	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
@@ -114,6 +115,7 @@ void PhysicsFacade::update() {
 		PhysicsBody* object = it.first;
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
+		object->setSpeed(body->GetAngularVelocity());
 		//TODO from radiant to radius/angle???
 		object->setRotation(body->GetAngle());
 	}
