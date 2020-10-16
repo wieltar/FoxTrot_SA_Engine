@@ -3,8 +3,6 @@
 #include "ISVI.h"
 #include "Sound.h"
 #include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_image.h>
 #include <unordered_map>
 #include "../../SDL2/include/SDL_mixer.h"
 #include "../../SDL2/include/SDL_image.h"
