@@ -1,5 +1,20 @@
 #include "stdafx.h"
 #include "Engine.h"
+#include "Events/EventDispatcher.h"
+#include "Events/Event.h"
+#include "Events/Window/WindowCloseEvent.h"
+#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
+bool Engine::dispatchTestEvent() {
+	std::cout << "test" << std::endl;
+	return true;
+}
+
+void Engine::OnEvent(Event& e)
+{
+	EventDispatcher dispatcher(e);
+	dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Engine::dispatchTestEvent));
+}
 
 /// @brief 
 Engine::Engine()
@@ -7,7 +22,9 @@ Engine::Engine()
 	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	eventManager.subscribe(EventType::ENGINE60, &sviEngine);
+	EventSingleton::get_instance().setEventCallback(BIND_EVENT_FN(Engine::OnEvent))
+
+
 	//sviEngine.initSDL();
 }
 

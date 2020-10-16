@@ -54,9 +54,6 @@
     <ClCompile Include="Engine\Engine+ObjectModifiers.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Events\EventManager.cpp">
-      <Filter>Header Files\Events</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\SceneManager\Object.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
@@ -114,6 +111,9 @@
     <ClCompile Include="Engine\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Events\old\EventManager.cpp">
+      <Filter>Header Files\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
@@ -121,15 +121,6 @@
     </ClInclude>
     <ClInclude Include="Engine\General\ErrorCodes.h">
       <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\EventManager.h">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\EventType.h">
-      <Filter>Header Files\Events\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\EventListener.h">
-      <Filter>Header Files\Events</Filter>
     </ClInclude>
     <ClInclude Include="Engine\SceneManager\Object.h">
       <Filter>Header Files\Object</Filter>
@@ -154,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Physics\PhysicsBody.h">
       <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\KeyEvent.h">
-      <Filter>Header Files\Events\Enums</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Particles\IParticleFacade.h">
       <Filter>Header Files\Particle</Filter>
@@ -192,6 +180,72 @@
       <Filter>Header Files\FileIO</Filter>
     </ClInclude>
     <ClInclude Include="Engine\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\old\EventListener.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\old\EventManager.h">
+      <Filter>Header Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\old\EventType.h">
+      <Filter>Header Files\Events\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\old\KeyEvent.h">
+      <Filter>Header Files\Events\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\ApplicationEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\MouseEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\ObjectEventCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\codes\KeyCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\codes\MouseCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\mouse\MouseEvents.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\mouse\MouseMoved.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\mouse\MousePressed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\mouse\MouseReleased.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Key\KeyDown.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Key\KeyEvents.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Key\KeyPressed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Key\KeyReleased.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Window\WindowResizeEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\EventType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\EventDispatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

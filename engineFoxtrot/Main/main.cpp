@@ -1,9 +1,9 @@
-#include "stdafx.h"
+#include "../Engine/stdafx.h"
 #pragma once
 #include "../Engine/Engine.h"
 
-
-using namespace std;
+#include "Events/Window/WindowCloseEvent.h"
+#include "Events/EventDispatcher.h"
 
 // TODO engine.h & engine.cpp
 
