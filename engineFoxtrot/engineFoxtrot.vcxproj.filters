@@ -105,11 +105,11 @@
     <ClCompile Include="SceneManager+ObjectModifiers.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Engine+ObjectModifiers.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicsBody.cpp">
       <Filter>Header Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteObject.cpp">
+      <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="PhysicsBody.h">
       <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteObject.h">
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

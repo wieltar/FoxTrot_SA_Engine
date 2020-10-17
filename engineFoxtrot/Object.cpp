@@ -1,20 +1,9 @@
 #include "Object.h"
 
 /// @brief 
-Object::Object(int id) : spriteID(id)
+Object::Object() 
 {
 }
-
-/// @brief 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-Object::Object(const int id, const float xPos, const float yPos, const float _height, const float _width) : spriteID(id), positionX(xPos), positionY(yPos), height(_height), width(_width)
-{
-}
-
 /// @brief 
 Object::~Object()
 {
@@ -24,7 +13,7 @@ Object::~Object()
 void Object::setName(const string n) { this->name = n; }
 string Object::getName() const { return name; }
 
-int Object::getSpriteID() const { return spriteID; }
+int Object::getSpriteID() { return spriteID; }
 
 void Object::setPositionX(const float x) { this->positionX = x; }
 float Object::getPositionX() const { return positionX; }
@@ -66,3 +55,20 @@ float Object::getJumpHeight() const {return this->jumpHeight;}
 void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
 bool Object::getChanged() const { return changed; }
+
+/// @brief
+/// register a new state or overwrite a existing state
+/// register the spriteID
+/// link a state with a sprite
+void Object::registerSprite(const std::string state, const int spriteID) {
+	textures[state] = spriteID;
+}
+
+/// @brief
+/// change the state
+/// change the textureID to the current state
+void Object::changeToState(const std::string state) {
+	int spriteID = textures[state];
+	//if (spriteID == NULL) throw ERROR_CODE_SPRITE_DOENST_EXIST;
+	this->spriteID = spriteID;
+}

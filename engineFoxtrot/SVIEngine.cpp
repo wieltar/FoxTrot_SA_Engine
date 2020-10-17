@@ -49,34 +49,6 @@ void SVIEngine::drawScreen()
 		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
 	}
 }
-
-/// @brief Loads the PNG files AKA sprites
-/// @param spriteID 
-/// @param filename
-void SVIEngine::loadImage(int spriteID, const char* filename)
-{
-	try
-	{
-		sviFacade->loadImage(spriteID, filename);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-
-//TODO delete this is only for POC
-void SVIEngine::renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation)
-{
-	try
-	{
-		sviFacade->renderCopy(spriteID, xPos, yPos, width, height, rotation);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
 /// @brief Sets the sprite on the screen
 /// @param Object 
 void SVIEngine::renderCopy(Object& object) {
@@ -90,6 +62,12 @@ void SVIEngine::renderCopy(Object& object) {
 	}
 }
 
+void SVIEngine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
+	//bool exists = std::filesystem::exists(filename);
+	//if (!exists)
+	//	throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
+	sviFacade->loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
+}
 /// @brief 
 /// Update all the sprites on the screen
 void SVIEngine::updateScreen()

@@ -4,6 +4,8 @@
 #include "Debug.h"
 #include "ErrorCodes.h"
 #include "GeneralHelperFunctions.cpp"
+#include <map>
+
 
 using namespace std;
 
@@ -17,14 +19,13 @@ class Object
 #endif
 {
 public:
-	Object(const int id);
-	Object(const int id, const float xPos, const float yPos, const float height, const float width);
+	Object();
 	~Object();
 
 	void setName(const string);
 	string getName() const;
 
-	int getSpriteID() const;
+	int getSpriteID();
 
 	void setPositionX(const float);
 	float getPositionX() const;
@@ -66,11 +67,14 @@ public:
 	float getJumpHeight() const;
 
 	bool getChanged() const;
+
+	void registerSprite(std::string state, int spriteID);
+	void changeToState(const std::string state);
 private:
 
 	string name;
 
-	const int spriteID = 0;
+	int spriteID = 0;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;
@@ -85,4 +89,5 @@ private:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
+	std::map<std::string, int> textures = std::map<std::string, int>();
 };

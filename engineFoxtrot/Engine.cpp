@@ -46,40 +46,6 @@ void Engine::createNewSceneWithSceneID(const int sceneID)
 		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
 	}
 }
-
-/// @brief 
-/// @param sceneID 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-/// @param stat 
-void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat)
-{
-	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
-}
-
-/// @brief 
-/// @param sceneID 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat, const int speed, const int jumpHeight, const int density, const int friction, const int restitution)
-{
-	try
-	{
-		cout << "creating new obj sceneID: " << sceneID << endl;
-		sceneManager.getSceneWithID(sceneID)->addNewObject(id, xPos, yPos, height, width,speed,jumpHeight, density, friction,restitution, stat);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-
 /// @brief 
 /// @param sceneID 
 /// @param object 
@@ -88,36 +54,6 @@ void Engine::createObject(const int sceneID, Object* object) {
 	{
 		cout << "creating new obj sceneID: " << sceneID << endl;
 		sceneManager.getSceneWithID(sceneID)->addNewObject(object);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-/// @brief 
-/// @param spriteID 
-/// @param assetPath 
-void Engine::linkSpriteIDWithAssetPath(const int spriteID, const char * assetPath)
- {
-	try
-	{
-		sviEngine.loadImage(spriteID, assetPath);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-
-/// @brief 
-/// @param spritesVector 
-void Engine::loadSpriteArray(vector<Sprite> spritesVector)
-{
-	try
-	{
-		for (auto sprite : spritesVector) {
-			sviEngine.loadImage(sprite.spriteID, sprite.filename);
-		}
 	}
 	catch (int e)
 	{
@@ -134,7 +70,7 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		eventManager.notify(EventType::ENGINE60, new Object(1));
+		eventManager.notify(EventType::ENGINE60, new Object());
 		//svi.receiveTick();
 	}
 
@@ -184,3 +120,17 @@ void Engine::addEventListener(EventListener* listener, const EventType eventType
     eventManager.subscribe(eventType, listener);
 }
 
+
+/// @brief 
+/// Load a animated sprite (PNG) into the AnimatedTexture map
+/// @param spriteID 
+/// @param filename
+/// @param height of 1 single animation sprite
+/// @param widht of 1 single animation sprite
+/// @param amount of animations of 1 sprite
+void Engine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
+	//bool exists = std::filesystem::exists(filename);
+	//if (!exists)
+	//	throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
+	sviEngine.loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
+}

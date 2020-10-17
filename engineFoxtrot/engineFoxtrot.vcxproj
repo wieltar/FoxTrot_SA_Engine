@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine+ObjectModifiers.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FileParser.cpp" />
@@ -163,6 +162,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager+ObjectModifiers.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SpriteObject.cpp" />
     <ClCompile Include="SVI.cpp" />
     <ClCompile Include="SVIEngine.cpp" />
     <ClCompile Include="SVI_Input.cpp" />
@@ -195,6 +195,7 @@
     <ClInclude Include="PhysicsFacade.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SpriteObject.h" />
     <ClInclude Include="SVI.h" />
     <ClInclude Include="SVIEngine.h" />
     <ClInclude Include="Version.h" />

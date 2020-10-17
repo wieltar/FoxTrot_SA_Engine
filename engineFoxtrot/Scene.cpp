@@ -42,30 +42,6 @@ bool Scene::checkIfObjectExists(const int objectID)
 }
 
 /// @brief 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-/// @param speed 
-/// @param jumpHeight 
-/// @param density 
-/// @param friction 
-/// @param restitution 
-/// @param stat 
-void Scene::addNewObject(const int id, const int xPos, const int yPos, const int height, const int width, const int speed, const int jumpHeight, const int density, const int friction, const int restitution, const bool stat)
-{
-	Object* obj = new Object(id, xPos, yPos, height, width);
-	obj->setDensity(density);
-	obj->setFriction(friction);
-	obj->setRestitution(restitution);
-	obj->setJumpHeight(jumpHeight);
-	obj->setSpeed(speed);
-	obj->setStatic(stat);
-	objects.push_back(obj);
-}
-
-/// @brief 
 /// Returns the object matched with the given objectID, if none are found an error is thrown
 /// @param ObjectID 
 /// Identifier for objectID

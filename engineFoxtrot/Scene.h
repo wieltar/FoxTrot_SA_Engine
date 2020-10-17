@@ -29,7 +29,6 @@ public:
 
 	bool checkIfObjectExists(const int objectID);
 	void addNewObject(Object* object);
-	void addNewObject(const int id, const int xPos, const int yPos, const int height, const int width, const int speed, const int jumpHeight, const int density, const int friction, const int restitution, const bool stat);
 	Object * getObject(const int objectID);
 
 	int getSceneID() { return sceneID; }

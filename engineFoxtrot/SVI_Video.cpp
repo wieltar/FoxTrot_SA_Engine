@@ -53,50 +53,53 @@ void SVI::drawScreen()
 {
 	SDL_RenderPresent(renderer);
 }
-
 /// @brief 
-/// Loads PNG files and makes them textures to be added to the unordered map
+/// Load a animated sprite into the AnimatedTexture map
 /// @param spriteID 
-/// @param filename 
-void SVI::loadImage(const int spriteID, const char* filename)
-{
+/// @param filename
+/// @param height of 1 single animation sprite
+/// @param widht of 1 single animation sprite
+/// @param amount of animations of 1 sprite
+void SVI::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
 	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+
 	SDL_Surface* surface = IMG_Load(filename);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+	SpriteObject* spriteObject = new SpriteObject(spriteID, size, singleSpriteHeight, singleSpriteWidth);
 	textureMap[spriteID] = texture;
-}
-
-
-/// @brief 
-/// Test function used for POC
-/// @param spriteID 
-/// @param xPos 
-/// @param yPos 
-/// @param width 
-/// @param height 
-/// @param rotation 
-void SVI::renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation)
-{
-	SDL_Rect destination;
-	destination.x = xPos;
-	destination.y = yPos - height;
-	destination.w = width;
-	destination.h = height;
-
-	SDL_RenderCopyEx(renderer, textureMap[spriteID], NULL, &destination, rotation,NULL, SDL_FLIP_NONE);
+	animatedTextureMap[spriteID] = spriteObject;
+	SDL_FreeSurface(surface);
 }
 
 /// @brief 
-/// Takes the sprites from the Textuture map and copys them to the screen
-/// @param Object 
+	/// Takes the sprites from the Textuture map animated and copys them to the screen
+	/// @param object 
 void SVI::renderCopy(Object& object)
 {
+	// TODO
+	//if (textureMap[spriteID] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
+	//if (xPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
+	//if (yPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;
+	//if (height == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_HEIGHT_IS_NULL;
+	//if (width == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_WIDTH_IS_NULL;
+	//if (rotation == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_ROTATION_IS_NULL;
+	// TODO find out why floats ruin stuff
 	SDL_Rect destination;
-	destination.w = object.getWidth();
-	destination.h = object.getHeight();
 	destination.x = object.getPositionX();
 	destination.y = object.getPositionY() - object.getHeight();
+	destination.w = object.getWidth();
+	destination.h = object.getHeight();
 
-	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+	SpriteObject* sprite = animatedTextureMap[object.getSpriteID()];
+	if (sprite == NULL) {
+		//throw ERROR_CODE_SDL2FACADE_SPRITE_DOESNT_EXISTS;
+	}
+	Uint32 ticks = SDL_GetTicks();
+	Uint32 seconds = ticks / 300;
+	Uint32 pos = seconds % sprite->getAmountOfTextures();
+	int leftPos = pos * sprite->getWidth();
+	SDL_Rect rect{ leftPos, 0, sprite->getWidth(), sprite->getHeight() };
+	SDL_RenderCopy(renderer, textureMap[object.getSpriteID()], &rect, &destination);
 }

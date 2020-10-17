@@ -37,11 +37,8 @@ public:
 
 	void clearScreen();
 	void drawScreen();
-	void loadImage(const int spriteID, const char* filename);
 
-	//TODO delete this is only for POC
-	void renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation);
-
+	void loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size);
 	void renderCopy(Object& object);
 
 	void updateScreen();
