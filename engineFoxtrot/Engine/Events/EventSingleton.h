@@ -21,31 +21,35 @@ public:
         EventDispatcher dispatcher;
         dispatcher.Dispatch<T>(BIND_EVENT_FN(func))
     }
-
-    void OnEvent(Event& e) {
-        string name = e.GetName();
-        if (handlers.count(name) > 0) {
-            for (EventCallbackFn callback : handlers[name])
-            {
-                callback(e);
+    template<typename T>
+    void OnEvent(T e) {
+        inline constexpr bool is_base_of_v = is_base_of<Event, T>::value;
+        if (is_base_of_v)
+        {
+            string typeName = typeid(T).name();
+            if (! handlers.at(typeName).empty()) {
+                for (EventCallbackFn callback : handlers[name])
+                {
+                    callback(e);
+                }
             }
         }
     }
 
-#define REGISTER_PARSE_TYPE(X) template <> struct TypeParseTraits<X> \
-        { static const char* name} ; const char* TypeParseTraits<X>::name = #X
-    template<class Event>
+
+    template<typename T>
     void setEventCallback(const EventCallbackFn& callback) {
         // Contains element 
-        auto x = typeid(Event).name;
-        if (handlers.at(T) > 0) {
-            handlers.at(Event).push_back(callback);
+        string typeName = typeid(T).name();
+        if (! handlers.at(typeName).empty()) {
+            handlers[typeName].push_back(callback);
         }
         // Create new vector
         else {
             auto ve = vector<const EventCallbackFn&>();
             ve.push_back(callback);
-            handlers.insert(std::pair<string, std::vector<const EventCallbackFn&>>(name, ve));
+            handlers[typeName].push_back(callback);
+            //handlers.insert(std::pair<string, std::vector<const EventCallbackFn&>>(typename, ve));
         }
 
     }
@@ -57,26 +61,3 @@ private:
 
     EventSingleton() {}
 };
-
-class TestSystem
-{
-public:
-    TestSystem() {
-        
-    }
-    ~TestSystem();
-
-private:
-    bool OnWindowClose(WindowCloseEvent& e) {
-        return true;
-    }
-};
-
-TestSystem::TestSystem()
-{
-}
-
-TestSystem::~TestSystem()
-{
-}
-

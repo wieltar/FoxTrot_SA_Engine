@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -167,6 +167,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Engine\Events\EventSingleton.cpp" />
     <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
@@ -184,18 +185,17 @@
     <ClCompile Include="Engine\SVI%28Temp%29\SVI_Video.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Events\ApplicationEvent.h" />
     <ClInclude Include="Engine\Events\Event.h" />
     <ClInclude Include="Engine\Events\codes\KeyCodes.h" />
     <ClInclude Include="Engine\Events\EventDispatcher.h" />
     <ClInclude Include="Engine\Events\EventType.h" />
-    <ClInclude Include="Engine\Events\Key\KeyDown.h" />
-    <ClInclude Include="Engine\Events\Key\KeyEvents.h" />
+    <ClInclude Include="Engine\Events\Key\KeyEvent.h" />
     <ClInclude Include="Engine\Events\Key\KeyPressed.h" />
     <ClInclude Include="Engine\Events\Key\KeyReleased.h" />
     <ClInclude Include="Engine\Events\codes\MouseCodes.h" />
+    <ClInclude Include="Engine\Events\Key\KeyTyped.h" />
     <ClInclude Include="Engine\Events\MouseEvent.h" />
-    <ClInclude Include="Engine\Events\mouse\MouseEvents.h" />
+    <ClInclude Include="Engine\Events\mouse\MouseButtonEvent.h" />
     <ClInclude Include="Engine\Events\mouse\MouseMoved.h" />
     <ClInclude Include="Engine\Events\mouse\MousePressed.h" />
     <ClInclude Include="Engine\Events\mouse\MouseReleased.h" />
@@ -228,6 +228,7 @@
     <ClInclude Include="Engine\SVI%28Temp%29\SVI.h" />
     <ClInclude Include="Engine\SVI%28Temp%29\SVIEngine.h" />
     <ClInclude Include="Engine\General\Version.h" />
+    <ClInclude Include="Engine\Events\EventSingleton.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

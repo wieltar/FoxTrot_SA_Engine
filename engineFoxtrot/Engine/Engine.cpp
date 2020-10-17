@@ -22,7 +22,7 @@ Engine::Engine()
 	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	EventSingleton::get_instance().setEventCallback(BIND_EVENT_FN(Engine::OnEvent))
+	EventSingleton::get_instance().setEventCallback(BIND_EVENT_FN(Engine::OnEvent));
 
 
 	//sviEngine.initSDL();
