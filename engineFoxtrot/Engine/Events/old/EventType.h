@@ -21,7 +21,7 @@ enum EventCategory
 enum class EventType
 #else
 /// This is a enum for all different EventTypes
-enum class EventType
+enum class OldEventType
 #endif
 {
 	MOVE			= 0x01,

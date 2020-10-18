@@ -3,6 +3,7 @@
 #include "Events/EventDispatcher.h"
 #include "Events/Event.h"
 #include "Events/Window/WindowCloseEvent.h"
+
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
 bool Engine::dispatchTestEvent() {
@@ -10,11 +11,11 @@ bool Engine::dispatchTestEvent() {
 	return true;
 }
 
-void Engine::OnEvent(Event& e)
+void print_num()
 {
-	EventDispatcher dispatcher(e);
-	dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Engine::dispatchTestEvent));
+	std::cout << "hello" << '\n';
 }
+
 
 /// @brief 
 Engine::Engine()
@@ -22,9 +23,10 @@ Engine::Engine()
 	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	EventSingleton::get_instance().setEventCallback(BIND_EVENT_FN(Engine::OnEvent));
+	std::function<void()> f_display = print_num;
+	EventSingleton::get_instance().setEventCallback<WindowCloseEvent>(f_display);
 
-
+	EventSingleton::get_instance().OnEvent<WindowCloseEvent>();
 	//sviEngine.initSDL();
 }
 
@@ -152,7 +154,7 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		eventManager.notify(EventType::ENGINE60, new Object(1));
+		eventManager.notify(OldEventType::ENGINE60, new Object(1));
 		//svi.receiveTick();
 	}
 
@@ -198,7 +200,7 @@ void Engine::stopTickThreads()
 /// @brief 
 /// @param listener 
 /// @param eventType 
-void Engine::addEventListener(EventListener* listener, const EventType eventType) {
+void Engine::addEventListener(EventListener* listener, const OldEventType eventType) {
     eventManager.subscribe(eventType, listener);
 }
 

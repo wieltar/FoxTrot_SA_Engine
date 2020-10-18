@@ -1,4 +1,4 @@
-#include "../Engine/stdafx.h"
+#include "stdafx.h"
 #pragma once
 #include "../Engine/Engine.h"
 
@@ -17,8 +17,8 @@ Engine engine;
 
 void sceneTestSetup()
 {
-	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object(1));
+	engine.addEventListener(new PhysicsEngine, OldEventType::MOVE);
+	engine.eventManager.notify(OldEventType::MOVE, new Object(1));
 
 	engine.createNewSceneWithSceneID(3);
 

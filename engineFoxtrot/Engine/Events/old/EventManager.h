@@ -2,7 +2,7 @@
 
 #include "EventType.h"
 #include "EventListener.h"
-#include "../SceneManager/Object.h"
+#include "../../SceneManager/Object.h"
 
 #if(EXPORT)
 class DLLEXPORT EventManager
@@ -11,11 +11,11 @@ class EventManager
 #endif
 {
 private:
-    std::map<const EventType, std::vector<EventListener*>> listeners = std::map<const EventType, std::vector<EventListener*>>();
+    std::map<const OldEventType, std::vector<EventListener*>> listeners = std::map<const OldEventType, std::vector<EventListener*>>();
 public:
     EventManager() { }
 
-    void subscribe(const EventType eventType, EventListener* listener);
-    void unsubscribe(const EventType eventType, EventListener* listener);
-    void notify(const EventType eventType, Object* data);
+    void subscribe(const OldEventType eventType, EventListener* listener);
+    void unsubscribe(const OldEventType eventType, EventListener* listener);
+    void notify(const OldEventType eventType, Object* data);
 };

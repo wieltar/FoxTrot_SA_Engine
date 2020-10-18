@@ -24,11 +24,13 @@ class Engine
 {
 public:
 	void OnEvent(Event& e);
+	bool dispatchTestEvent();
+
 	Engine();
 	~Engine();
 
 	// TODO: Set to private after testing
-	
+
 //private:
 	void engineTick60();
 	void engineTick30();
@@ -57,12 +59,12 @@ public:
 	void setObjectDirection(const int objId, const int dir);
 	void setObjectStatic(const int objId, const bool stat);
 
-
+	void addEventListener(EventListener* listener, const OldEventType eventType);
+	EventManager eventManager;
 	//TODO make private
 
 	PhysicsEngine physicsEngine;
 private:
-
 	SVIEngine sviEngine;
 	FileParser fileParser;
 	ParticleEngine particleEngine;
