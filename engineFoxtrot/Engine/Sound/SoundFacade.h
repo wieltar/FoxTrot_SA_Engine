@@ -1,14 +1,7 @@
 #pragma once
 
-#include "ISVI.h"
-#include <SDL.h>
-#include <unordered_map>
-#include "../../SDL2/include/SDL_mixer.h"
-#include "../../SDL2/include/SDL_image.h"
+#include "ISound.h"
 #include "../SceneManager/Object.h"
-#undef main
-
-using namespace std;
 
 #define EXAMPLE_SOUND	"../Assets/Sound/b423b42.wav"
 #define EXAMPLE_SPRITE  "../Assets/Sprites/simple.png"
@@ -21,31 +14,19 @@ using namespace std;
 #define AUDIO_CHANNEL_AMOUNT 2
 #define AUDIO_CHUNK_SIZE 2048
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 400
 
 #if(EXPORT)
-class DLLEXPORT SVI : public ISVI
+class DLLEXPORT SoundFacade : public ISound
 #else
 /// @brief 
-/// SVI is de SDL2 facade
-class SVI : public ISVI
+/// SoundFacade is de Sound SDL2 facade
+class SoundFacade : public ISound
 #endif
 {
-// General stuff
 public:
-	SVI();
-	~SVI();
+	SoundFacade();
+	~SoundFacade();
 
-
-private:
-	SDL_Renderer* renderer;
-	SDL_Window* window;
-
-
-
-// Sound functions
-public:
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
 	void PlayEffect(const string& identifier, const int volume);
@@ -73,11 +54,4 @@ private:
 	Mix_Music* music;
 	std::map<std::string, Mix_Chunk*> loadedSoundEffects;
 
-// Input functions
-public:
-	void input();
-
-private:
-	int mousex = 0;
-	int mousey = 0;
 };

@@ -10,8 +10,6 @@
 VideoFacade::VideoFacade()
 {
 	initSDL();
-
-	SDL_Init(SDL_INIT_EVERYTHING);
 }
 
 /// @brief 

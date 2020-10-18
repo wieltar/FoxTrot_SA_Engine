@@ -12,6 +12,7 @@
 #include "./Events/EventManager.h"
 #include "./Events/EventListener.h"
 #include "./Video/VideoEngine.h"
+#include "./Sound/SoundEngine.h"
 
 #define	ENGINE_TICK60	 17
 #define ENGINE_TICK30	 33
@@ -66,6 +67,7 @@ public:
 	PhysicsEngine physicsEngine;
 private:
 	VideoEngine videoEngine;
+	SoundEngine soundEngine;
 	SVIEngine sviEngine;
 	FileParser fileParser;
 	ParticleEngine particleEngine;

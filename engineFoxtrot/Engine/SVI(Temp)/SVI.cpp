@@ -7,8 +7,6 @@
 #include "../../SDL2/include/SDL_image.h"
 #undef main
 
-#include "Sound.h"
-
 
 /// @brief 
 SVI::SVI() 

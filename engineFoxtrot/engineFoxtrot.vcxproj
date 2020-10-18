@@ -183,6 +183,8 @@
     <ClCompile Include="Engine\SVI%28Temp%29\SVI_Sound.cpp" />
     <ClCompile Include="Engine\Video\VideoEngine.cpp" />
     <ClCompile Include="Engine\Video\VideoFacade.cpp" />
+    <ClCompile Include="Engine\Sound\SoundFacade.cpp" />
+    <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\General\Debug.h" />
@@ -214,6 +216,9 @@
     <ClInclude Include="Engine\Video\IVideo.h" />
     <ClInclude Include="Engine\Video\VideoEngine.h" />
     <ClInclude Include="Engine\Video\VideoFacade.h" />
+    <ClInclude Include="Engine\Sound\ISound.h" />
+    <ClInclude Include="Engine\Sound\SoundFacade.h" />
+    <ClInclude Include="Engine\Sound\SoundEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
