@@ -31,7 +31,29 @@ bool Scene::checkIfObjectExists(const int objectID)
 	return false;
 }
 
-void Scene::createLayer(string layerIdentifier, bool render)
+void Scene::switchLayers(const string layer1, const string layer2)
+{
+	int layer1Pos = 0, layer2Pos = 0;
+	int count = 0;
+	for (auto layer : layers)
+	{
+		if (layer->layerIdentifier == layer1)
+		{
+			layer1Pos = count;
+		}
+		else if (layer->layerIdentifier == layer2)
+		{
+			layer2Pos = count;
+		}
+		count++;
+	}
+	if (layer1Pos != layer2Pos)
+	{
+		swap(layers[layer1Pos], layers[layer2Pos]);
+	}
+}
+
+void Scene::createLayer(const string layerIdentifier, const bool render)
 {
 	cout << "Creating new layer with identifier " << layerIdentifier << endl;
 	Layer * layer = new Layer;
@@ -40,7 +62,7 @@ void Scene::createLayer(string layerIdentifier, bool render)
 	layers.push_back(layer);
 }
 
-bool Scene::toggleLayer(string layerIdentifier)
+const bool Scene::toggleLayer(const string layerIdentifier)
 {
 	for (auto layer : layers)
 	{
@@ -50,7 +72,7 @@ bool Scene::toggleLayer(string layerIdentifier)
 	return false;
 }
 
-vector <Object*> Scene::getObjectsInLayer(string layerIdentifier)
+vector <Object*> Scene::getObjectsInLayer(const string layerIdentifier)
 {
 	for (auto layer : layers)
 	{
@@ -71,7 +93,7 @@ vector <Object*> Scene::getAllObjectsInScene()
 	return returnVector;
 }
 
-bool Scene::addNewObjectToLayer(string layerIdentifier, Object* object)
+const bool Scene::addNewObjectToLayer(const string layerIdentifier, Object* object)
 {
 	if (layerIdentifier == "") return false;
 	if (object == nullptr) return false;

@@ -18,12 +18,14 @@ public:
 
 	bool checkIfObjectExists(const int objectID);
 
-	void createLayer(string layerIdentifier, bool render);
-	bool toggleLayer(string layerIdentifier);
+	// The order of creating layers it the order it will be displayed
+	void createLayer(const string layerIdentifier, const bool render);
+	void switchLayers(const string layer1, string layer2);
+	const bool toggleLayer(const string layerIdentifier);
 
-	bool addNewObjectToLayer(string layerIdentifier,Object* object);
+	const bool addNewObjectToLayer(const string layerIdentifier,Object* object);
 
-	vector <Object*> getObjectsInLayer(string layerIdentifier);
+	vector <Object*> getObjectsInLayer(const string layerIdentifier);
 	vector <Object*> getAllObjectsInScene();
 
 	Object * getObject(const int objectID);

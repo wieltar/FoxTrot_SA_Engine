@@ -47,7 +47,7 @@ void sceneTestSetup()
 	object->setRestitution(0);
 	object->setStatic(false);
 
-	testScene->addNewObjectToLayer("OneLayer", object);
+	testScene->addNewObjectToLayer("Backlayer", object);
 	
 	Object* object2 = new Object(2);
 	object2->setName("person");
@@ -61,7 +61,7 @@ void sceneTestSetup()
 	object2->setFriction(0);
 	object2->setRestitution(0);
 	object2->setStatic(false);
-	testScene->addNewObjectToLayer("OneLayer", object2);
+	testScene->addNewObjectToLayer("MiddleLayer", object2);
 
 	Object* staticGround = new Object(101);
 	staticGround->setWidth(500); // width
@@ -69,7 +69,7 @@ void sceneTestSetup()
 	staticGround->setPositionX(20); // x 20 left down
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
-	testScene->addNewObjectToLayer("OneLayer", staticGround);
+	testScene->addNewObjectToLayer("FrontLayer", staticGround);
 	
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));
