@@ -11,11 +11,19 @@ bool Engine::dispatchTestEvent() {
 	return true;
 }
 
-void print_num()
+void print_hello()
 {
-	std::cout << "hello" << '\n';
+	std::cout << "==================== EVENT ==========================" << '\n';
+	std::cout << "                                                     " << '\n';
+	std::cout << "Hello event" << '\n';
+	std::cout << "                                                     " << '\n';
+	std::cout << "=====================================================" << '\n';
 }
 
+void mFunction(int n1, int n2)
+{
+	std::cout << n1 << ' ' << n2 << '\n';
+}
 
 /// @brief 
 Engine::Engine()
@@ -23,7 +31,12 @@ Engine::Engine()
 	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	std::function<void()> f_display = print_num;
+	std::function<void()> f_display = print_hello;
+	
+	using namespace std::placeholders;
+	auto f1 = std::bind(mFunction, _1, _2);
+
+
 	EventSingleton::get_instance().setEventCallback<WindowCloseEvent>(f_display);
 
 	EventSingleton::get_instance().OnEvent<WindowCloseEvent>();

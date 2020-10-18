@@ -114,6 +114,9 @@
     <ClCompile Include="Engine\Events\old\EventManager.cpp">
       <Filter>Header Files\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Events\EventSingleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h">
@@ -194,9 +197,6 @@
     <ClInclude Include="Engine\Events\old\KeyEvent.h">
       <Filter>Header Files\Events\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Events\ApplicationEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Events\Event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -212,9 +212,6 @@
     <ClInclude Include="Engine\Events\codes\MouseCodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Events\mouse\MouseEvents.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Events\mouse\MouseMoved.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -222,12 +219,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Events\mouse\MouseReleased.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Key\KeyDown.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Key\KeyEvents.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Events\Key\KeyPressed.h">
@@ -246,6 +237,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Key\KeyEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Key\KeyTyped.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\mouse\MouseButtonEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\EventSingleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

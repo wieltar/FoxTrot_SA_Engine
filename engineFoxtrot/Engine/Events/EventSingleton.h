@@ -35,7 +35,7 @@ public:
     void setEventCallback(function<void()> callback) {
         // Contains element 
         string typeName = typeid(T).name();
-        if(handlers.count(typeName) > 0) { //.at(typeName).empty()) {
+        if(handlers.count(typeName) > 0) { 
             handlers[typeName].push_back(callback);
         }
         // Create new vector
@@ -44,9 +44,21 @@ public:
         }
     }
 
-    map<string, vector<function<void()>>> handlers = map<string, vector<function<void()>>>();
+    template<typename T>
+    void setEventCallback(std::bind callback) {
+        // Contains element 
+        string typeName = typeid(T).name();
+        if (handlers.count(typeName) > 0) {
+            handlers[typeName].push_back(callback);
+        }
+        // Create new vector
+        else {
+            handlers[typeName].push_back({ callback });
+        }
+    }
+
 private:
-    
+    map<string, vector<function<void()>>> handlers = map<string, vector<function<void()>>>();
     static EventSingleton instance;
 
     EventSingleton() {}
