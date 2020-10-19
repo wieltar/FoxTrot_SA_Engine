@@ -48,154 +48,163 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JsonFacade.cpp">
-      <Filter>Header Files\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleEngine.cpp">
-      <Filter>Header Files\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleFacade.cpp">
-      <Filter>Header Files\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="FileParser.cpp">
-      <Filter>Header Files\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsEngine.cpp">
-      <Filter>Header Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsFacade.cpp">
-      <Filter>Header Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneralHelperFunctions.cpp">
-      <Filter>Header Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
+    <ClCompile Include="Engine\Engine.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Header Files\Object</Filter>
+    <ClCompile Include="Engine\Engine+ObjectModifiers.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="SVI.cpp">
-      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
-    </ClCompile>
-    <ClCompile Include="SVI_Input.cpp">
-      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
-    </ClCompile>
-    <ClCompile Include="SVI_Sound.cpp">
-      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
-    </ClCompile>
-    <ClCompile Include="SVI_Video.cpp">
-      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
-    </ClCompile>
-    <ClCompile Include="SVIEngine.cpp">
-      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="EventManager.cpp">
+    <ClCompile Include="Engine\Events\EventManager.cpp">
       <Filter>Header Files\Events</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager+ObjectModifiers.cpp">
+    <ClCompile Include="Engine\SceneManager\Object.cpp">
       <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SceneManager\Scene.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SceneManager\SceneManager.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Particles\ParticleEngine.cpp">
+      <Filter>Header Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Particles\ParticleFacade.cpp">
+      <Filter>Header Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Physics\PhysicsFacade.cpp">
+      <Filter>Header Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Physics\PhysicsEngine.cpp">
+      <Filter>Header Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Physics\PhysicsBody.cpp">
+      <Filter>Header Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp">
+      <Filter>Header Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SVI%28Temp%29\SVI.cpp">
+      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SVI%28Temp%29\SVI_Input.cpp">
+      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SVI%28Temp%29\SVI_Sound.cpp">
+      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SVI%28Temp%29\SVI_Video.cpp">
+      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SVI%28Temp%29\SVIEngine.cpp">
+      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FileParser\FileParser.cpp">
+      <Filter>Header Files\FileIO</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsBody.cpp">
       <Filter>Header Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FileParser\JsonFacade.cpp">
+      <Filter>Header Files\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\stdafx.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpriteObject.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Engine.h">
+    <ClInclude Include="Engine\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileParser.h">
-      <Filter>Header Files\FileIO</Filter>
+    <ClInclude Include="Engine\General\ErrorCodes.h">
+      <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="IJsonFacade.h">
-      <Filter>Header Files\FileIO</Filter>
+    <ClInclude Include="Engine\Events\EventManager.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="JsonFacade.h">
-      <Filter>Header Files\FileIO</Filter>
+    <ClInclude Include="Engine\Events\EventType.h">
+      <Filter>Header Files\Events\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="IParticleFacade.h">
-      <Filter>Header Files\Particle</Filter>
+    <ClInclude Include="Engine\Events\EventListener.h">
+      <Filter>Header Files\Events</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleEngine.h">
-      <Filter>Header Files\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleFacade.h">
-      <Filter>Header Files\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsFacade.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsEngine.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="IPhysicsFacade.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="Engine\SceneManager\Object.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="ErrorCodes.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
+    <ClInclude Include="Engine\SceneManager\Scene.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Version.h">
+    <ClInclude Include="Engine\SceneManager\SceneManager.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Particles\ParticleEngine.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Particles\ParticleFacade.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Physics\PhysicsFacade.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Physics\PhysicsEngine.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Physics\PhysicsBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\KeyEvent.h">
+      <Filter>Header Files\Events\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Particles\IParticleFacade.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Physics\IPhysicsFacade.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\General\GeneralDefines.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="SVI.h">
+    <ClInclude Include="Engine\SVI%28Temp%29\SVI.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Facade</Filter>
     </ClInclude>
-    <ClInclude Include="ISVI.h">
-      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="SVIEngine.h">
+    <ClInclude Include="Engine\SVI%28Temp%29\SVIEngine.h">
       <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyEvent.h">
-      <Filter>Header Files\Events\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="EventListener.h">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="EventType.h">
-      <Filter>Header Files\Events\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneralDefines.h">
+    <ClInclude Include="Engine\General\Version.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsBody.h">
-      <Filter>Header Files\Physics</Filter>
+    <ClInclude Include="Engine\SVI%28Temp%29\ISVI.h">
+      <Filter>Header Files\Sound &amp; Input &amp; Video\SDL2 Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\General\Debug.h">
+      <Filter>Header Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FileParser\FileParser.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FileParser\IJsonFacade.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FileParser\JsonFacade.h">
+      <Filter>Header Files\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\stdafx.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SpriteObject.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="PointerUsage.txt" />
+    <Text Include="Engine\Documentation\PointerUsage.md" />
   </ItemGroup>
 </Project>
