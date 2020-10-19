@@ -130,18 +130,9 @@ void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
 	while (!stopThreadTick60){
-		//eventManager.notify(EventType::ENGINE60, new Object);
-
-		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-
-		// TODO Update60 -> Send appTick60
-		// EventSingleton::get_instance().OnEvent<WindowResizeEvent>(ev);
-		
+		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
 		AppTickEvent appTick;
 		EventSingleton::get_instance().OnEvent<AppTickEvent>(appTick);
-		//eventManager.notify(OldEventType::ENGINE60, new Object(1));
-		
-		//svi.receiveTick();
 	}
 
 	cout << "Thread killed 60" << endl;
