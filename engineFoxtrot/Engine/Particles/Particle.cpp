@@ -32,3 +32,21 @@ void Particle::particleMove()
 		particle.yPosition += particle.yVelocity;
 	}
 }
+
+
+void Particle::createJumpParticle(float _xPosition, float _yPostion)
+{
+	for (int i = 0; i < 10; i++) {
+		ParticleStruct particle;
+
+		particle.particleID = 1;
+		particle.height = 10;
+		particle.width = 10;
+		particle.xVelocity = (rand() % 100) / 5 / 10;
+		particle.yPosition = (rand() % 100) / 5 / 10;
+		particle.xPosition = _xPosition;
+		particle.yPosition = _yPostion;
+
+		particleList.push_back(particle);
+	}
+}

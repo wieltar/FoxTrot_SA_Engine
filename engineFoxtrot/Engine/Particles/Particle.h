@@ -16,6 +16,8 @@ public:
 	void particleMove();
 
 	vector<ParticleStruct> particleList;
+
+	void createJumpParticle(float _xPosition, float _yPostion);
 	
 private:
 

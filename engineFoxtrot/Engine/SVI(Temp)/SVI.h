@@ -91,6 +91,7 @@ public:
 
 
 	unordered_map<int, SDL_Texture*> textureMap;
+	unordered_map<int, SDL_Texture> particleMap;
 
 private:
 

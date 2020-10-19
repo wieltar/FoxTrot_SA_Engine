@@ -16,6 +16,17 @@ void ParticleEngine::onUpdate()
 
 }
 
-void ParticleEngine::createParticle(int amountOfParticles, float xPosition, float yPostion)
+void ParticleEngine::createCustomParticle(int amountOfParticles, float xPosition, float yPostion)
 {
+}
+
+void ParticleEngine::createJumpParticle(float xPosition, float yPosition)
+{
+	Particle *particle = new Particle();
+
+	particle->createJumpParticle(xPosition, yPosition);
+	
+	particles.push_back(particle);
+
+	delete particle;
 }

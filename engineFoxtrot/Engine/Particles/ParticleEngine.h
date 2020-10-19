@@ -14,9 +14,11 @@ public:
 
 
 	void onUpdate();
-	void createParticle(int amountOfParticles, float xPosition, float yPostion);
+	void createCustomParticle(int amountOfParticles, float xPosition, float yPostion);
+	void createJumpParticle(float xPosition, float yPosition);
 
 	vector<Particle*> getParticlesVector() { return particles; };
+
 private:
 	vector<Particle*> particles;
 
