@@ -31,16 +31,6 @@ void windowClosedEvent(Event& e)
 	std::cout << "=====================================================" << '\n';
 }
 
-//void windowClosedEvent2(Event& e)
-//{
-//	auto x = static_cast<WindowResizeEvent&>(e);
-//
-//	std::cout << "==================== EVENT WINDOW CLOSE ==========================" << '\n';
-//	std::cout << "                                                     " << '\n';
-//	std::cout << x.GetHeight() << '\n';
-//	std::cout << "                                                     " << '\n';
-//	std::cout << "=====================================================" << '\n';
-//}
 
 /// @brief 
 Engine::Engine()
@@ -50,11 +40,9 @@ Engine::Engine()
 
 	EventSingleton::get_instance().setEventCallback<WindowResizeEvent>(WindowEv);
 	EventSingleton::get_instance().setEventCallback<WindowCloseEvent>(windowClosedEvent);
-	//EventSingleton::get_instance().setEventCallback<WindowCloseEvent>(windowClosedEvent2);
 
 	WindowResizeEvent ev = WindowResizeEvent(10, 10);
 
-	//EventSingleton::get_instance().OnEvent<Engine>(ev);
 	EventSingleton::get_instance().OnEvent<WindowResizeEvent>(ev);
 
 	//sviEngine.initSDLWindowResizeEvent
