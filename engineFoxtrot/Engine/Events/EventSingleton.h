@@ -3,7 +3,6 @@
 #include <functional>
 #include <type_traits>
 
-
 using EventCallbackFn = std::function<void(Event&)>;
 
 class EventSingleton
@@ -21,6 +20,7 @@ public:
 
     template<typename T>
     void OnEvent(Event& e) {
+        static_assert(std::is_base_of<Event, T>::value, "nee");
         // Contains element 
         string typeName = typeid(T).name();
         if (handlers.count(typeName) > 0) {
@@ -32,6 +32,7 @@ public:
 
     template<typename T>
     void setEventCallback(function<void(Event&)> callback) {
+        static_assert(std::is_base_of<Event, T>::value, "wat doe je me aan?");
         // Contains element 
         string typeName = typeid(T).name();
         if(handlers.count(typeName) > 0) { 
