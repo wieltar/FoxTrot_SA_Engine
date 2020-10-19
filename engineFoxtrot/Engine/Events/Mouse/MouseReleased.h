@@ -2,7 +2,7 @@
 #include "MouseButtonEvent.h"
 
 /// @brief
-	/// MouseButtonRealeasedEvent is triggered when left or right click is released. Derived class of MouseButtonEvent.
+/// MouseButtonRealeasedEvent is triggered when left or right click is released. Derived class of MouseButtonEvent.
 class MouseButtonReleasedEvent : public MouseButtonEvent
 {
 	MouseButtonReleasedEvent(MouseCode code) : MouseButtonEvent(code) {}

@@ -43,7 +43,7 @@ public:
 
 	void updateScreen();
 
-	void update(Event& e);
+	void update(Event& event);
 	void receiveTick();
 
 	// Input Functions
