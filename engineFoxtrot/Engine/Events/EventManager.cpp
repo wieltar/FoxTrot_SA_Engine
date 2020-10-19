@@ -1,4 +1,5 @@
-#include "stdafx.h"
+#include "../stdafx.h"
+#include "stdafx.h";
 #include "EventManager.h"
 
 /// @brief a subscribe function for all other classes

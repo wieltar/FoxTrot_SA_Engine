@@ -11,8 +11,6 @@ Object::~Object()
 }
 
 // Getters and setters
-void Object::setName(const string n) { this->name = n; }
-string Object::getName() const { return name; }
 
 int Object::getSpriteID() { return spriteID; }
 

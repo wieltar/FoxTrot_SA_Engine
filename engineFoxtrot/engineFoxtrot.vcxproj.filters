@@ -51,9 +51,6 @@
     <ClCompile Include="Engine\Engine.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Engine+ObjectModifiers.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Events\EventManager.cpp">
       <Filter>Header Files\Events</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
       <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SceneManager\SceneManager.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp">
@@ -108,17 +102,14 @@
     <ClCompile Include="Engine\FileParser\FileParser.cpp">
       <Filter>Header Files\FileIO</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsBody.cpp">
-      <Filter>Header Files\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\FileParser\JsonFacade.cpp">
       <Filter>Header Files\FileIO</Filter>
     </ClCompile>
     <ClCompile Include="Engine\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteObject.cpp">
-      <Filter>Header Files\Object</Filter>
+    <ClCompile Include="Engine\SceneManager\SpriteObject.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,8 +191,8 @@
     <ClInclude Include="Engine\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteObject.h">
-      <Filter>Header Files\Object</Filter>
+    <ClInclude Include="Engine\SceneManager\SpriteObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -155,7 +155,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Engine+ObjectModifiers.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Events\EventManager.cpp" />
     <ClCompile Include="Engine\FileParser\FileParser.cpp" />
@@ -175,13 +174,13 @@
     <ClCompile Include="Engine\Physics\PhysicsEngine.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsFacade.cpp" />
     <ClCompile Include="Engine\SceneManager\Scene.cpp" />
-    <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp" />
     <ClCompile Include="Engine\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Engine\SVI%28Temp%29\SVI.cpp" />
     <ClCompile Include="Engine\SVI%28Temp%29\SVIEngine.cpp" />
     <ClCompile Include="Engine\SVI%28Temp%29\SVI_Input.cpp" />
     <ClCompile Include="Engine\SVI%28Temp%29\SVI_Sound.cpp" />
     <ClCompile Include="Engine\SVI%28Temp%29\SVI_Video.cpp" />
+    <ClCompile Include="Engine\SceneManager\SpriteObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\General\Debug.h" />
@@ -210,6 +209,7 @@
     <ClInclude Include="Engine\SVI%28Temp%29\SVI.h" />
     <ClInclude Include="Engine\SVI%28Temp%29\SVIEngine.h" />
     <ClInclude Include="Engine\General\Version.h" />
+    <ClInclude Include="Engine\SceneManager\SpriteObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

@@ -30,7 +30,6 @@ void sceneTestSetup()
 	engine.loadSprite(103, "../Assets/Sprites/Character/adventure_slide.png", 37, 50, 2);
 
 	Object* object = new Object();
-	object->setName("character");
 	object->setHeight(200);
 	object->setWidth(200);
 	object->setPositionX(30);
@@ -65,8 +64,7 @@ void sceneTestSetup()
 int main() {
 	sceneTestSetup();
 
-
-	engine.stopTickThreads();
+	engine.startTickThreads();
 	bool gameRunning = true;
 	while (gameRunning)
 	{
@@ -74,8 +72,9 @@ int main() {
 		{
 			this_thread::sleep_for(chrono::milliseconds(50));
 		}
-		gameRunning = false
+		gameRunning = false;
 	}
+	engine.stopTickThreads();
 
 	return 0;
 }

@@ -1,3 +1,5 @@
+#include "../stdafx.h"
+#include "stdafx.h"
 #include "SpriteObject.h"
 
 using namespace std;
