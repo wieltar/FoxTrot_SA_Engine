@@ -1,7 +1,8 @@
 #pragma once
-// mousecodes directly reflect enum values defined in sdl without a aditional include in this file
 // TODO find a suitable place for the conversion from sdl to 'our own'
-using MouseCode = int;
+
+/// @brief 
+/// mousecodes directly reflect enum values defined in sdl without a aditional include in this file
 enum MouseCode
 {
 	MOUSE_BTN_LEFT = 1, 

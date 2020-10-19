@@ -115,7 +115,7 @@ void SVIEngine::updateScreen()
 
 /// @brief 
 /// Update function
-void SVIEngine::update(Event& e)
+void SVIEngine::update(Event& event)
 {
 	
 	clearScreen();

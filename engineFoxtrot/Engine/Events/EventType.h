@@ -1,18 +1,6 @@
 #pragma once
-enum class ObjectEvent
-{
-	Move,
-	Jump
-};
-// teveel overeenkomend?
-enum class ObjectMoveEventType {
-	Left,
-	Right,
-	Up,
-	Down,
-};
-
-// TODO
+/// @brief
+/// EventType enum all the derived event types that can be fired as an enum
 enum class EventType
 {
 	None = 0,

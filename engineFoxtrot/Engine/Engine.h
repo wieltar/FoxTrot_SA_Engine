@@ -23,15 +23,8 @@ class Engine
 #endif
 {
 public:
-	void OnEvent(Event& e);
-	bool dispatchTestEvent();
-
-	void windowClosedEvent(Event& e);
-
 	Engine();
 	~Engine();
-
-	// TODO: Set to private after testing
 
 //private:
 	void engineTick60();

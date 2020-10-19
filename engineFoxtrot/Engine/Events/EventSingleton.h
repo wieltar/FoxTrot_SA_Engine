@@ -18,23 +18,31 @@ public:
     EventSingleton& operator=(const EventSingleton&) = delete;
     EventSingleton& operator=(EventSingleton&&) = delete;
 
-    std::string message() const { return "Hello, world!"; }
-
+    /// @brief
+    /// OnEvent is triggered when an event is fired, and send message to all registered listiners
+    /// @template T is fired
+    /// @param Event the event that is fired with data
+    /// @assert check wheter the type T and the Event fired is the same
     template<typename T>
-    void OnEvent(Event& e) {
-        static_assert(std::is_base_of<Event, T>::value, "nee");
+    void OnEvent(Event& event) {
+        static_assert(std::is_base_of<Event, T>::value, "OnEvent Assert fail: Make sure the event that is fired and the Template Type is the same");
         // Contains element 
         string typeName = typeid(T).name();
         if (handlers.count(typeName) > 0) {
             for (auto handler : handlers.at(typeName)) {
-                handler(e);
+                handler(event);
             }
         }
     }
 
+    /// @brief
+    /// Register a callback for a specific Event. 
+    /// @template T is fired
+    /// @param EventCallbackFn& the method that should be executed when an event is fired
+    /// @assert check wheter the type T and the Event fired is the same
     template<typename T>
     void setEventCallback(const EventCallbackFn& callback) {
-        static_assert(std::is_base_of<Event, T>::value, "wat doe je me aan?");
+        static_assert(std::is_base_of<Event, T>::value, "setEventCallback Assert fail: Make sure the event in the param of callback is the same as the Template Type");
         // Contains element 
         string typeName = typeid(T).name();
         if(handlers.count(typeName) > 0) { 

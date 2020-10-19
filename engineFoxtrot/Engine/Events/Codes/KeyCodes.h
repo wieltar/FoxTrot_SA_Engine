@@ -1,10 +1,9 @@
 #pragma once
-// ----------------------------
-// -- USB STANDARD SCANCODES --
-// ----------------------------
-// https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf 
-// PAG. 53
-// SOURCED FROM SDL KEYCODES FILE
+
+/// @brief 
+/// USB STANDARD SCANCODES
+/// Found on: https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf 
+/// PAG. 53
 enum KeyCode
 {
 KEY_UNKNOWN = 0,
