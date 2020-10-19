@@ -111,9 +111,6 @@
     <ClCompile Include="Engine\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Events\old\EventManager.cpp">
-      <Filter>Header Files\Events</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Events\EventSingleton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -185,22 +182,7 @@
     <ClInclude Include="Engine\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Events\old\EventListener.h">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\old\EventManager.h">
-      <Filter>Header Files\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\old\EventType.h">
-      <Filter>Header Files\Events\Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\old\KeyEvent.h">
-      <Filter>Header Files\Events\Enums</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Events\Event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\MouseEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Events\ObjectEventCodes.h">
@@ -233,9 +215,6 @@
     <ClInclude Include="Engine\Events\EventType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Events\EventDispatcher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -249,6 +228,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Events\EventSingleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\AppTickEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Events\Mouse\MouseScrolledEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

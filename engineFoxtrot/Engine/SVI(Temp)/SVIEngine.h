@@ -1,7 +1,7 @@
 #pragma once
-#include "../Events/old/EventManager.h"
 #include "SVI.h"
-
+#include "Events/EventSingleton.h"
+#include "Events/AppTickEvent.h"
 
 #define MAX_VOLUME 128
 
@@ -21,7 +21,7 @@ struct Sprite
 #if(EXPORT)
 class DLLEXPORT SVIEngine
 #else
-class SVIEngine : public EventListener
+class SVIEngine
 #endif
 {
 public:
@@ -43,7 +43,7 @@ public:
 
 	void updateScreen();
 
-	void update(Object* object) override;
+	void update(Event& e);
 	void receiveTick();
 
 	// Input Functions
@@ -78,8 +78,6 @@ public:
 	vector <Object*>*pointerToObjectVector = nullptr;
 
 
-	//Set to private after testing!!!
-	EventManager* eventManager = nullptr;
 	ISVI * sviFacade = new SVI;
 private:
 };

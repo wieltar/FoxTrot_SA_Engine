@@ -26,6 +26,8 @@ public:
 	void OnEvent(Event& e);
 	bool dispatchTestEvent();
 
+	void windowClosedEvent(Event& e);
+
 	Engine();
 	~Engine();
 
@@ -58,9 +60,6 @@ public:
 	void setObjectScale(const int objId, const int scale);
 	void setObjectDirection(const int objId, const int dir);
 	void setObjectStatic(const int objId, const bool stat);
-
-	void addEventListener(EventListener* listener, const OldEventType eventType);
-	EventManager eventManager;
 	//TODO make private
 
 	PhysicsEngine physicsEngine;

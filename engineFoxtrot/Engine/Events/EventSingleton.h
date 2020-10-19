@@ -5,6 +5,8 @@
 
 using EventCallbackFn = std::function<void(Event&)>;
 
+#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
 class EventSingleton
 {
 public:
@@ -31,7 +33,7 @@ public:
     }
 
     template<typename T>
-    void setEventCallback(function<void(Event&)> callback) {
+    void setEventCallback(const EventCallbackFn& callback) {
         static_assert(std::is_base_of<Event, T>::value, "wat doe je me aan?");
         // Contains element 
         string typeName = typeid(T).name();

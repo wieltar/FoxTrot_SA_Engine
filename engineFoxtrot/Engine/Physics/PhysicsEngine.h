@@ -1,16 +1,14 @@
 #pragma once
 
 #include "PhysicsFacade.h"
-#include "../Events/old/EventManager.h"
 
 #if(EXPORT)
 class DLLEXPORT PhysicsEngine : public EventListener
 #else
-class PhysicsEngine : public EventListener
+class PhysicsEngine
 #endif
 {
 public:
-	EventManager* eventManager{ new EventManager };
 	vector <Object*>* pointerToObjectVector = nullptr;
 
 	PhysicsEngine();
@@ -26,18 +24,9 @@ public:
 
 	void update30();
 
-	void update(Object* object) override {
-		std::cout << "Handle notification " << std::endl;
-	}
-
 	//Set to private after testing!!!
 	IPhysicsFacade * physicsFacade = new PhysicsFacade;
 private:
 
 	Object* getObject(const int objectId);
 };
-
-
-
-
-

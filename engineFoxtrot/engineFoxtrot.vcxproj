@@ -158,7 +158,6 @@
   <ItemGroup>
     <ClCompile Include="Engine\Engine+ObjectModifiers.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
-    <ClCompile Include="Engine\Events\old\EventManager.cpp" />
     <ClCompile Include="Engine\FileParser\FileParser.cpp" />
     <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp" />
     <ClCompile Include="Engine\FileParser\JsonFacade.cpp" />
@@ -186,29 +185,26 @@
     <ClCompile Include="Engine\SVI%28Temp%29\SVI_Video.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Events\AppTickEvent.h" />
     <ClInclude Include="Engine\Events\Event.h" />
     <ClInclude Include="Engine\Events\codes\KeyCodes.h" />
-    <ClInclude Include="Engine\Events\EventDispatcher.h" />
     <ClInclude Include="Engine\Events\EventType.h" />
     <ClInclude Include="Engine\Events\Key\KeyEvent.h" />
     <ClInclude Include="Engine\Events\Key\KeyPressed.h" />
     <ClInclude Include="Engine\Events\Key\KeyReleased.h" />
     <ClInclude Include="Engine\Events\codes\MouseCodes.h" />
     <ClInclude Include="Engine\Events\Key\KeyTyped.h" />
-    <ClInclude Include="Engine\Events\MouseEvent.h" />
     <ClInclude Include="Engine\Events\mouse\MouseButtonEvent.h" />
     <ClInclude Include="Engine\Events\mouse\MouseMoved.h" />
     <ClInclude Include="Engine\Events\mouse\MousePressed.h" />
     <ClInclude Include="Engine\Events\mouse\MouseReleased.h" />
+    <ClInclude Include="Engine\Events\Mouse\MouseScrolledEvent.h" />
     <ClInclude Include="Engine\Events\ObjectEventCodes.h" />
     <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h" />
     <ClInclude Include="Engine\Events\Window\WindowResizeEvent.h" />
     <ClInclude Include="Engine\General\Debug.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\General\ErrorCodes.h" />
-    <ClInclude Include="Engine\Events\old\EventListener.h" />
-    <ClInclude Include="Engine\Events\old\EventManager.h" />
-    <ClInclude Include="Engine\Events\old\EventType.h" />
     <ClInclude Include="Engine\FileParser\FileParser.h" />
     <ClInclude Include="Engine\General\GeneralDefines.h" />
     <ClInclude Include="Engine\FileParser\IJsonFacade.h" />
@@ -217,7 +213,6 @@
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\SVI%28Temp%29\ISVI.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
-    <ClInclude Include="Engine\Events\old\KeyEvent.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />
     <ClInclude Include="Engine\Particles\ParticleEngine.h" />
     <ClInclude Include="Engine\Particles\ParticleFacade.h" />

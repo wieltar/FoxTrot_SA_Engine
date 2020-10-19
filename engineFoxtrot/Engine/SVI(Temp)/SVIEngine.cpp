@@ -3,7 +3,8 @@
 
 SVIEngine::SVIEngine()
 {
-}
+	EventSingleton::get_instance().setEventCallback<AppTickEvent>(BIND_EVENT_FN(SVIEngine::update));
+} 
 
 SVIEngine::~SVIEngine()
 {
@@ -114,7 +115,7 @@ void SVIEngine::updateScreen()
 
 /// @brief 
 /// Update function
-void SVIEngine::update(Object* object)
+void SVIEngine::update(Event& e)
 {
 	
 	clearScreen();

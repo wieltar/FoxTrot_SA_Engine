@@ -1,51 +1,12 @@
 #include "stdafx.h"
 #include "Engine.h"
-#include "Events/EventDispatcher.h"
-#include "Events/Event.h"
-#include "Events/Window/WindowCloseEvent.h"
-#include <Events\Window\WindowResizeEvent.h>
-
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
-
-void WindowEv(Event& e)
-{
-	auto x = static_cast<WindowResizeEvent&>(e);
-
-	std::cout << "==================== EVENT ==========================" << '\n';
-	std::cout << "                                                     " << '\n';
-	std::cout << x.GetHeight() << '\n';
-	std::cout << x.GetWidth() << '\n';
-	std::cout << "                                                     " << '\n';
-	std::cout << "=====================================================" << '\n';
-}
-
-void windowClosedEvent(Event& e)
-{
-	auto x = static_cast<WindowResizeEvent&>(e);
-
-	std::cout << "==================== EVENT WINDOW CLOSE ==========================" << '\n';
-	std::cout << "                                                     " << '\n';
-	std::cout << x.GetHeight() << '\n';
-	std::cout << "                                                     " << '\n';
-	std::cout << "=====================================================" << '\n';
-}
-
-
 /// @brief 
 Engine::Engine()
 {
 	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	EventSingleton::get_instance().setEventCallback<WindowResizeEvent>(WindowEv);
-	EventSingleton::get_instance().setEventCallback<WindowCloseEvent>(windowClosedEvent);
-
-	WindowResizeEvent ev = WindowResizeEvent(10, 10);
-
-	EventSingleton::get_instance().OnEvent<WindowResizeEvent>(ev);
-
-	//sviEngine.initSDLWindowResizeEvent
+	this->startTickThreads();
 }
 
 /// @brief 
@@ -172,7 +133,14 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		eventManager.notify(OldEventType::ENGINE60, new Object(1));
+
+		// TODO Update60 -> Send appTick60
+		// EventSingleton::get_instance().OnEvent<WindowResizeEvent>(ev);
+		
+		AppTickEvent appTick;
+		EventSingleton::get_instance().OnEvent<AppTickEvent>(appTick);
+		//eventManager.notify(OldEventType::ENGINE60, new Object(1));
+		
 		//svi.receiveTick();
 	}
 
@@ -187,7 +155,9 @@ void Engine::engineTick30()
 	while (!stopThreadTick30) {
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
 
-		//eventManager.notify(EventType::ENGINE30, new Object);
+		AppTickEvent appTick;
+		//EventSingleton::get_instance().OnEvent<AppTickEvent>(appTick);
+
 		physicsEngine.update30();
 
 	}
@@ -215,10 +185,4 @@ void Engine::stopTickThreads()
 	stopThreadTick30 = true;
 }
 
-/// @brief 
-/// @param listener 
-/// @param eventType 
-void Engine::addEventListener(EventListener* listener, const OldEventType eventType) {
-    eventManager.subscribe(eventType, listener);
-}
 
