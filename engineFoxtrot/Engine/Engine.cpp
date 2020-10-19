@@ -3,26 +3,21 @@
 #include "Events/EventDispatcher.h"
 #include "Events/Event.h"
 #include "Events/Window/WindowCloseEvent.h"
+#include <Events\Window\WindowResizeEvent.h>
 
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
-bool Engine::dispatchTestEvent() {
-	std::cout << "test" << std::endl;
-	return true;
-}
 
-void print_hello()
+void windowClosedEvent(Event& e)
 {
+	auto x = static_cast<WindowResizeEvent&>(e);
+
 	std::cout << "==================== EVENT ==========================" << '\n';
 	std::cout << "                                                     " << '\n';
-	std::cout << "Hello event" << '\n';
+	std::cout << x.GetHeight() << '\n';
+	std::cout << x.GetWidth() << '\n';
 	std::cout << "                                                     " << '\n';
 	std::cout << "=====================================================" << '\n';
-}
-
-void mFunction(int n1, int n2)
-{
-	std::cout << n1 << ' ' << n2 << '\n';
 }
 
 /// @brief 
@@ -31,15 +26,10 @@ Engine::Engine()
 	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	std::function<void()> f_display = print_hello;
-	
-	using namespace std::placeholders;
-	auto f1 = std::bind(mFunction, _1, _2);
+	EventSingleton::get_instance().setEventCallback<WindowResizeEvent>(windowClosedEvent);
 
-
-	EventSingleton::get_instance().setEventCallback<WindowCloseEvent>(f_display);
-
-	EventSingleton::get_instance().OnEvent<WindowCloseEvent>();
+	WindowResizeEvent ev = WindowResizeEvent(10, 10);
+	EventSingleton::get_instance().OnEvent<WindowResizeEvent>(ev);
 	//sviEngine.initSDL();
 }
 

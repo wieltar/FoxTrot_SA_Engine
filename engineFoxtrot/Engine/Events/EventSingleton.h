@@ -20,19 +20,18 @@ public:
     std::string message() const { return "Hello, world!"; }
 
     template<typename T>
-    void OnEvent() {
+    void OnEvent(Event& e) {
         // Contains element 
         string typeName = typeid(T).name();
         if (handlers.count(typeName) > 0) {
             for (auto handler : handlers.at(typeName)) {
-                std::function<void()> func = handler;
-                func();
+                handler(e);
             }
         }
     }
 
     template<typename T>
-    void setEventCallback(function<void()> callback) {
+    void setEventCallback(function<void(Event&)> callback) {
         // Contains element 
         string typeName = typeid(T).name();
         if(handlers.count(typeName) > 0) { 
@@ -44,21 +43,8 @@ public:
         }
     }
 
-    template<typename T>
-    void setEventCallback(std::bind callback) {
-        // Contains element 
-        string typeName = typeid(T).name();
-        if (handlers.count(typeName) > 0) {
-            handlers[typeName].push_back(callback);
-        }
-        // Create new vector
-        else {
-            handlers[typeName].push_back({ callback });
-        }
-    }
-
 private:
-    map<string, vector<function<void()>>> handlers = map<string, vector<function<void()>>>();
+    map<string, vector<function<void(Event&)>>> handlers = map<string, vector<function<void(Event&)>>>();
     static EventSingleton instance;
 
     EventSingleton() {}
