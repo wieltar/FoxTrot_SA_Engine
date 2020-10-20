@@ -60,23 +60,18 @@ void SVI::drawScreen()
 	SDL_RenderPresent(renderer);
 }
 /// @brief 
-/// Load a animated sprite into the AnimatedTexture map
-/// @param spriteID 
+/// Load a animated sprite into the texturemap map
+/// @param spriteObject 
 /// @param filename
-/// @param height of 1 single animation sprite
-/// @param widht of 1 single animation sprite
-/// @param amount of animations of 1 sprite
-SpriteObject SVI::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
-	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
+void SVI::loadSprite(SpriteObject spriteObject, const char* filename) {
+	if (spriteObject.getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
 
 	SDL_Surface* surface = IMG_Load(filename);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	SpriteObject spriteObject(spriteID, size, singleSpriteHeight, singleSpriteWidth);
-	textureMap[spriteID] = texture;
+	textureMap[spriteObject.getTextureID()] = texture;
 	SDL_FreeSurface(surface);
-	return spriteObject;
 }
 
 /// @brief 

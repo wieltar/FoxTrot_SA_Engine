@@ -63,8 +63,11 @@ void SVIEngine::renderCopy(Object& object) {
 	}
 }
 
-SpriteObject SVIEngine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
-	return sviFacade->loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
+/// Call the LoadSprite method in the svi facade 
+/// @param spriteObject 
+/// @param filename
+void SVIEngine::loadSprite(SpriteObject spriteObject, const char* filename) {
+	return sviFacade->loadSprite(spriteObject, filename);
 }
 /// @brief 
 /// Update all the sprites on the screen

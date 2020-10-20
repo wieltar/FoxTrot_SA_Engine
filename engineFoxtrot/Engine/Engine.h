@@ -47,7 +47,7 @@ public:
 
 	void addEventListener(EventListener* listener, const EventType eventType);
 
-	SpriteObject loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size);
+	void loadSprite(SpriteObject spriteObject, const char* filename);
 
 
 	EventManager eventManager;

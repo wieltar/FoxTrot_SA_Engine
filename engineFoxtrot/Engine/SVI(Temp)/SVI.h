@@ -82,7 +82,7 @@ public:
 	void clearScreen();
 	void drawScreen();
 
-	SpriteObject loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size);
+	void loadSprite(SpriteObject spriteObject, const char* filename);
 	void renderCopy(Object& object);
 private:
 	unordered_map<int, SDL_Texture*> textureMap;

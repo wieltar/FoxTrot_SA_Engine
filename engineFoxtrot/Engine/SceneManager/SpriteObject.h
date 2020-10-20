@@ -10,7 +10,7 @@ class SpriteObject
 {
 public:
 	SpriteObject();
-	SpriteObject(const int _textureID, const int _size, const int _height, const int _width);
+	SpriteObject(const int _textureID, const int _height, const int _width, const int _size );
 	~SpriteObject();
 	int getTextureID() const;
 	int getAmountOfTextures() const;

@@ -22,13 +22,21 @@ void sceneTestSetup()
 
 	engine.createNewSceneWithSceneID(1);
 	
-	SpriteObject so0 = engine.loadSprite(1, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png", 16, 16, 1);
+	SpriteObject so0(1, 16, 16, 1);
+	SpriteObject so1(100, 37, 50, 1);
+	SpriteObject so2(101, 37, 50, 4);
+	SpriteObject so3(102, 37, 50, 6);
+	SpriteObject so4(103, 37, 50, 2);
+	SpriteObject so5(104, 37, 50, 2);
 
-	SpriteObject so1 = engine.loadSprite(100, "../Assets/Sprites/Character/adventure.png", 37, 50, 1);
-	SpriteObject so2 = engine.loadSprite(101, "../Assets/Sprites/Character/adventure_air_attack1.png", 37, 50, 4);
-	SpriteObject so3 = engine.loadSprite(102, "../Assets/Sprites/Character/adventure_run.png", 37, 50, 6);
-	SpriteObject so4 = engine.loadSprite(103, "../Assets/Sprites/Character/adventure_slide.png", 37, 50, 2); 
-	SpriteObject so5 = engine.loadSprite(103, "../Assets/Sprites/Character/adventure_fall.png", 37, 50, 2);
+
+	engine.loadSprite(so0, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
+
+	engine.loadSprite(so1, "../Assets/Sprites/Character/adventure.png");
+	engine.loadSprite(so2, "../Assets/Sprites/Character/adventure_air_attack1.png");
+	engine.loadSprite(so3, "../Assets/Sprites/Character/adventure_run.png");
+	engine.loadSprite(so4, "../Assets/Sprites/Character/adventure_slide.png"); 
+	engine.loadSprite(so5, "../Assets/Sprites/Character/adventure_fall.png");
 
 	Object* object = new Object(1);
 	object->setHeight(200);

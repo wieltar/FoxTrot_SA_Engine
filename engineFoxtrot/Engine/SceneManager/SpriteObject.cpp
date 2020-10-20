@@ -3,7 +3,7 @@
 
 using namespace std;
 SpriteObject::SpriteObject() {}
-SpriteObject::SpriteObject(const int _textureID, const int _size, const int _height, const int _width) : textureID(_textureID), lengthOfTextures(_size), height(_height), width(_width) {};
+SpriteObject::SpriteObject(const int _textureID, const int _height, const int _width, const int _size) : textureID(_textureID), height(_height), width(_width), lengthOfTextures(_size) {};
 SpriteObject::~SpriteObject() {};
 
 int SpriteObject::getTextureID() const { return textureID; }

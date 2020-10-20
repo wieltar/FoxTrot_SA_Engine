@@ -125,15 +125,12 @@ void Engine::addEventListener(EventListener* listener, const EventType eventType
 
 /// @brief 
 /// Load a animated sprite (PNG) into the AnimatedTexture map
-/// @param spriteID 
+/// @param spriteObject 
 /// @param filename
-/// @param height of 1 single animation sprite
-/// @param widht of 1 single animation sprite
-/// @param amount of animations of 1 sprite
-SpriteObject Engine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
+void Engine::loadSprite(SpriteObject spriteObject, const char* filename) {
 	struct stat buffer;
 	bool exists = (stat(filename, &buffer) == 0);
 	if (!exists)
 		throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
-	return sviEngine.loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
+	sviEngine.loadSprite(spriteObject, filename);
 }

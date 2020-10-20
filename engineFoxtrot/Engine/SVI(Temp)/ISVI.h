@@ -17,7 +17,7 @@ public:
 
 	virtual void clearScreen() = 0;
 	virtual void drawScreen() = 0;
-	virtual SpriteObject loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) = 0;
+	virtual void loadSprite(SpriteObject spriteObject, const char* filename) = 0;
 
 	virtual void renderCopy(Object& object) = 0;
 
