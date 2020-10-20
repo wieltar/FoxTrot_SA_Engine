@@ -131,8 +131,9 @@ void Engine::addEventListener(EventListener* listener, const EventType eventType
 /// @param widht of 1 single animation sprite
 /// @param amount of animations of 1 sprite
 SpriteObject Engine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
-	//bool exists = std::filesystem->exists(filename);
-	//if (!exists)
-	//	throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
+	struct stat buffer;
+	bool exists = (stat(filename, &buffer) == 0);
+	if (!exists)
+		throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
 	return sviEngine.loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
 }
