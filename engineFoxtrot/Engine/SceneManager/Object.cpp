@@ -55,6 +55,8 @@ void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
 bool Object::getChanged() const { return changed; }
 
+SpriteObject* Object::GetCurrentSprite() { return currentSprite; }
+
 /// @brief
 /// register a new state or overwrite a existing state
 /// register the spriteID
@@ -68,6 +70,6 @@ void Object::registerSprite(const std::string state, const SpriteObject spriteOb
 /// change the textureID to the current state
 void Object::changeToState(const std::string state) {
 	SpriteObject* spriteObject = &textures[state];
-	//if (spriteID == NULL) throw ERROR_CODE_SPRITE_DOENST_EXIST;
+	if (spriteObject == NULL) throw ERROR_CODE_SPRITE_DOENST_EXIST;
 	this->currentSprite = spriteObject;
 }

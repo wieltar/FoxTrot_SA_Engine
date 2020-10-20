@@ -27,7 +27,8 @@ void sceneTestSetup()
 	SpriteObject so1 = engine.loadSprite(100, "../Assets/Sprites/Character/adventure.png", 37, 50, 1);
 	SpriteObject so2 = engine.loadSprite(101, "../Assets/Sprites/Character/adventure_air_attack1.png", 37, 50, 4);
 	SpriteObject so3 = engine.loadSprite(102, "../Assets/Sprites/Character/adventure_run.png", 37, 50, 6);
-	SpriteObject so4 = engine.loadSprite(103, "../Assets/Sprites/Character/adventure_slide.png", 37, 50, 2);
+	SpriteObject so4 = engine.loadSprite(103, "../Assets/Sprites/Character/adventure_slide.png", 37, 50, 2); 
+	SpriteObject so5 = engine.loadSprite(103, "../Assets/Sprites/Character/adventure_fall.png", 37, 50, 2);
 
 	Object* object = new Object(1);
 	object->setHeight(200);
@@ -44,7 +45,8 @@ void sceneTestSetup()
 	object->registerSprite("air_attack", so2);
 	object->registerSprite("run", so3);
 	object->registerSprite("slide", so4);
-	object->changeToState("run");
+	object->registerSprite("air_fall", so5);
+	object->changeToState("air_fall");
 
 	engine.createObject(1, object);
 
