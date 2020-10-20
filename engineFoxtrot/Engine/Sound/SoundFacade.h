@@ -1,5 +1,9 @@
 #pragma once
 
+#include <SDL.h>
+#include <SDL_mixer.h>
+#undef main
+
 #include "ISound.h"
 #include "../SceneManager/Object.h"
 

@@ -49,6 +49,8 @@ public:
 
 	//Set to private after testing!!!
 	EventManager* eventManager = nullptr;
-	ISound* soundFacade = new SoundFacade;
 private:
+
+	ISound* soundFacade = new SoundFacade;
+
 };

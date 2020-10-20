@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "SoundFacade.h"
 
-#include <SDL.h>
-#include <SDL_mixer.h>
-#undef main
+
 
 /// @brief 
 SoundFacade::SoundFacade()
