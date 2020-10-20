@@ -66,17 +66,17 @@ void SVI::drawScreen()
 /// @param height of 1 single animation sprite
 /// @param widht of 1 single animation sprite
 /// @param amount of animations of 1 sprite
-void SVI::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
+SpriteObject SVI::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
 	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
 
 	SDL_Surface* surface = IMG_Load(filename);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	SpriteObject* spriteObject = new SpriteObject(spriteID, size, singleSpriteHeight, singleSpriteWidth);
+	SpriteObject spriteObject(spriteID, size, singleSpriteHeight, singleSpriteWidth);
 	textureMap[spriteID] = texture;
-	animatedTextureMap[spriteID] = spriteObject;
 	SDL_FreeSurface(surface);
+	return spriteObject;
 }
 
 /// @brief 
@@ -98,7 +98,7 @@ void SVI::renderCopy(Object& object)
 	destination.w = object.getWidth();
 	destination.h = object.getHeight();
 
-	SpriteObject* sprite = animatedTextureMap[object.getSpriteID()];
+	SpriteObject* sprite = object.GetCurrentSprite();
 	if (sprite == NULL) {
 		//throw ERROR_CODE_SDL2FACADE_SPRITE_DOESNT_EXISTS;
 	}
@@ -107,5 +107,5 @@ void SVI::renderCopy(Object& object)
 	Uint32 pos = seconds % sprite->getAmountOfTextures();
 	int leftPos = pos * sprite->getWidth();
 	SDL_Rect rect{ leftPos, 0, sprite->getWidth(), sprite->getHeight() };
-	SDL_RenderCopy(renderer, textureMap[object.getSpriteID()], &rect, &destination);
+	SDL_RenderCopy(renderer, textureMap[sprite->getTextureID()], &rect, &destination);
 }

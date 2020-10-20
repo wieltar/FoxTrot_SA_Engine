@@ -1,4 +1,3 @@
-#include "../stdafx.h"
 #include "stdafx.h"
 #include "SpriteObject.h"
 

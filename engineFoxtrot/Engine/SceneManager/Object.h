@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "SpriteObject.h"
 
 /// @brief 
 /// Object class. Object is linked with a sprite id in SVI. 
@@ -11,10 +12,11 @@ class Object
 #endif
 {
 public:
-	Object();
+	Object(const int objectId);
 	~Object();
 
-	int getSpriteID();
+	SpriteObject* GetCurrentSprite();
+	int getObjectId() const;
 
 	void setPositionX(const float);
 	float getPositionX() const;
@@ -57,10 +59,11 @@ public:
 
 	bool getChanged() const;
 
-	void registerSprite(std::string state, int spriteID);
+	void registerSprite(std::string state, const SpriteObject spriteObject);
 	void changeToState(const std::string state);
 private:
-	int spriteID = 0;
+	const int objectId = 0;
+	SpriteObject* currentSprite;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;
@@ -75,5 +78,5 @@ private:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
-	std::map<std::string, int> textures = std::map<std::string, int>();
+	std::map<std::string, SpriteObject> textures = std::map<std::string, SpriteObject>();
 };

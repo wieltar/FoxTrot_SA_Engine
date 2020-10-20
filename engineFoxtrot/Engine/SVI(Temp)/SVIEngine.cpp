@@ -63,11 +63,8 @@ void SVIEngine::renderCopy(Object& object) {
 	}
 }
 
-void SVIEngine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
-	//bool exists = std::filesystem::exists(filename);
-	//if (!exists)
-	//	throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
-	sviFacade->loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
+SpriteObject SVIEngine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
+	return sviFacade->loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
 }
 /// @brief 
 /// Update all the sprites on the screen

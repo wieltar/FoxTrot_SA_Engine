@@ -8,8 +8,7 @@ class PhysicsBody
 public:
 	PhysicsBody(Object* object);
 	~PhysicsBody();
-
-	int getSpriteID() const;
+	int getObjectId() const;
 
 	void setPositionX(const float);
 	float getPositionX() const;

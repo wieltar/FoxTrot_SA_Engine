@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PhysicsBody.h"
 
-PhysicsBody::PhysicsBody(Object* object) : objectID(object->getSpriteID()), height(object->getHeight()), width(object->getWidth()), posX(object->getPositionX()),
+PhysicsBody::PhysicsBody(Object* object) : objectID(object->getObjectId()), height(object->getHeight()), width(object->getWidth()), posX(object->getPositionX()),
 	posY(object->getPositionY()), speed(object->getSpeed()), friction(object->getFriction()), restitution(object->getRestitution()), density(object->getDensity()),
 	rotation(object->getRotation()), jumpHeight(object->getJumpHeight()) {
 	this->object = object;
@@ -9,7 +9,7 @@ PhysicsBody::PhysicsBody(Object* object) : objectID(object->getSpriteID()), heig
 PhysicsBody::~PhysicsBody() {
 }
 
-int PhysicsBody::getSpriteID() const { return this->objectID; }
+int PhysicsBody::getObjectId() const { return this->objectID; }
 
 void PhysicsBody::setPositionX(const float x) { this->posX = x; this->object->setPositionX(x); }
 float PhysicsBody::getPositionX() const { return posX; }

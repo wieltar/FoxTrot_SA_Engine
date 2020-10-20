@@ -24,7 +24,7 @@ PhysicsFacade::~PhysicsFacade()
 PhysicsBody* PhysicsFacade::getPhysicsObject(const int objectId)
 {
 	for (const auto& value : bodies) {
-		if (value.first->getSpriteID() == objectId)
+		if (value.first->getObjectId() == objectId)
 		{
 			return value.first;
 		}
@@ -83,7 +83,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
 
-	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
+	cout << "Pushing back obj: spriteid: " << object->getObjectId() << endl;
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
 
@@ -94,7 +94,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 /// Identifier for ObjectID
 b2Body* PhysicsFacade::findBody(const int objectId) {
 	for (const auto& value : bodies) {
-		if (value.first->getSpriteID() == objectId)
+		if (value.first->getObjectId() == objectId)
 		{
 			return value.second;
 		}

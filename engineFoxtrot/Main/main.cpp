@@ -18,18 +18,18 @@ Engine engine;
 void sceneTestSetup()
 {
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object());
+	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
 	engine.createNewSceneWithSceneID(1);
 	
-	engine.loadSprite(1, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png", 16, 16, 1);
+	SpriteObject so0 = engine.loadSprite(1, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png", 16, 16, 1);
 
-	engine.loadSprite(100, "../Assets/Sprites/Character/adventure.png", 37, 50, 1);
-	engine.loadSprite(101, "../Assets/Sprites/Character/adventure_air_attack1.png", 37, 50, 4);
-	engine.loadSprite(102, "../Assets/Sprites/Character/adventure_run.png", 37, 50, 6);
-	engine.loadSprite(103, "../Assets/Sprites/Character/adventure_slide.png", 37, 50, 2);
+	SpriteObject so1 = engine.loadSprite(100, "../Assets/Sprites/Character/adventure.png", 37, 50, 1);
+	SpriteObject so2 = engine.loadSprite(101, "../Assets/Sprites/Character/adventure_air_attack1.png", 37, 50, 4);
+	SpriteObject so3 = engine.loadSprite(102, "../Assets/Sprites/Character/adventure_run.png", 37, 50, 6);
+	SpriteObject so4 = engine.loadSprite(103, "../Assets/Sprites/Character/adventure_slide.png", 37, 50, 2);
 
-	Object* object = new Object();
+	Object* object = new Object(1);
 	object->setHeight(200);
 	object->setWidth(200);
 	object->setPositionX(30);
@@ -40,15 +40,16 @@ void sceneTestSetup()
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
-	object->registerSprite("default", 100);
-	object->registerSprite("air_attack", 101);
-	object->registerSprite("run", 102);
-	object->registerSprite("slide", 103);
+	object->registerSprite("default", so1);
+	object->registerSprite("air_attack", so2);
+	object->registerSprite("run", so3);
+	object->registerSprite("slide", so4);
 	object->changeToState("run");
+
 	engine.createObject(1, object);
 
-	Object* staticGround = new Object();
-	staticGround->registerSprite("default", 1);
+	Object* staticGround = new Object(2);
+	staticGround->registerSprite("default", so0);
 	staticGround->setWidth(500); // width
 	staticGround->setHeight(10);// height
 	staticGround->setPositionX(20); // x 20 left down

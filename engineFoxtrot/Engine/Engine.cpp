@@ -72,7 +72,7 @@ void Engine::engineTick60()
 		//eventManager.notify(EventType::ENGINE60, new Object);
 
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		eventManager.notify(EventType::ENGINE60, new Object());
+		eventManager.notify(EventType::ENGINE60, new Object(1));
 		//svi.receiveTick();
 	}
 
@@ -130,9 +130,9 @@ void Engine::addEventListener(EventListener* listener, const EventType eventType
 /// @param height of 1 single animation sprite
 /// @param widht of 1 single animation sprite
 /// @param amount of animations of 1 sprite
-void Engine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
+SpriteObject Engine::loadSprite(int spriteID, const char* filename, int singleSpriteHeight, int singleSpriteWidth, int size) {
 	//bool exists = std::filesystem->exists(filename);
 	//if (!exists)
 	//	throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
-	sviEngine.loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
+	return sviEngine.loadSprite(spriteID, filename, singleSpriteHeight, singleSpriteWidth, size);
 }

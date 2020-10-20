@@ -2,7 +2,7 @@
 #include "Object.h"
 
 /// @brief 
-Object::Object() 
+Object::Object(const int _objectId) : objectId(_objectId)
 {
 }
 /// @brief 
@@ -12,7 +12,7 @@ Object::~Object()
 
 // Getters and setters
 
-int Object::getSpriteID() { return spriteID; }
+int Object::getObjectId() const { return objectId; }
 
 void Object::setPositionX(const float x) { this->positionX = x; }
 float Object::getPositionX() const { return positionX; }
@@ -59,15 +59,15 @@ bool Object::getChanged() const { return changed; }
 /// register a new state or overwrite a existing state
 /// register the spriteID
 /// link a state with a sprite
-void Object::registerSprite(const std::string state, const int spriteID) {
-	textures[state] = spriteID;
+void Object::registerSprite(const std::string state, const SpriteObject spriteObject) {
+	textures[state] = spriteObject;
 }
 
 /// @brief
 /// change the state
 /// change the textureID to the current state
 void Object::changeToState(const std::string state) {
-	int spriteID = textures[state];
+	SpriteObject* spriteObject = &textures[state];
 	//if (spriteID == NULL) throw ERROR_CODE_SPRITE_DOENST_EXIST;
-	this->spriteID = spriteID;
+	this->currentSprite = spriteObject;
 }
