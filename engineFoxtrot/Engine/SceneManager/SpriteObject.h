@@ -1,7 +1,6 @@
 #pragma once
 
 
-using namespace std;
 #if(EXPORT)
 class DLLEXPORT Object
 #else

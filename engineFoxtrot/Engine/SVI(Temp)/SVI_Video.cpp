@@ -95,7 +95,7 @@ void SVI::renderCopy(Object& object)
 
 	SpriteObject* sprite = object.GetCurrentSprite();
 	if (sprite == NULL) {
-		//throw ERROR_CODE_SDL2FACADE_SPRITE_DOESNT_EXISTS;
+		throw ERROR_CODE_SDL2FACADE_SPRITE_DOESNT_EXISTS;
 	}
 	Uint32 ticks = SDL_GetTicks();
 	Uint32 seconds = ticks / 300;
