@@ -31,7 +31,6 @@ public:
 	Object * getObject(const int objectID);
 
 	int getSceneID() { return sceneID; }
-	//vector<Object*> getObjectInLayer();
 
 private:
 	const int sceneID = 0;

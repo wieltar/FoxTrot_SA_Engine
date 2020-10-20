@@ -55,7 +55,7 @@ void Scene::switchLayers(const string layer1, const string layer2)
 
 void Scene::createLayer(const string layerIdentifier, const bool render)
 {
-	cout << "Creating new layer with identifier " << layerIdentifier << endl;
+	if(DEBUG_SCENE_MANAGER)cout << "Creating new layer with identifier " << layerIdentifier << endl;
 	Layer * layer = new Layer;
 	layer->layerIdentifier = layerIdentifier;
 	layer->render = render;
@@ -102,7 +102,7 @@ const bool Scene::addNewObjectToLayer(const string layerIdentifier, Object* obje
 	{
 		if (layer->layerIdentifier == layerIdentifier)
 		{
-			cout << "Layer found, adding Object" << endl;
+			if (DEBUG_SCENE_MANAGER) cout << "Layer found, adding Object" << endl;
 			layer->objects.push_back(object);
 			return true;
 		}
