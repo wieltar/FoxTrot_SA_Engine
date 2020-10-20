@@ -33,11 +33,11 @@ Object* PhysicsEngine::getObject(const int objectId)
 /// A function to create all objects in the facade
 void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 {
-	cout << "Size pointertoObj: " << (*pointerToCurrentScene)->getAllObjectsInScene().size() << endl;
+	if(DEBUG_PHYSICS_ENGINE)cout << "Size pointertoObj: " << (*pointerToCurrentScene)->getAllObjectsInScene().size() << endl;
 	for (Object* object : (*pointerToCurrentScene)->getAllObjectsInScene())
 	{
 		PhysicsBody * phyObj = new PhysicsBody(object);
-		cout << "Registering object : " << phyObj->getSpriteID() << endl;
+		if (DEBUG_PHYSICS_ENGINE)cout << "Registering object : " << phyObj->getSpriteID() << endl;
 
 		if (object->getStatic())
 		{
@@ -56,7 +56,7 @@ void PhysicsEngine::update30()
 {
 	if (currentSceneID != (*pointerToCurrentScene)->getSceneID())
 	{
-		cout << "Cleaning map and reinserting Objects" << endl;
+		if (DEBUG_PHYSICS_ENGINE)cout << "Cleaning map and reinserting Objects" << endl;
 		physicsFacade->cleanMap();
 		registerObjectInCurrentVectorWithPhysicsEngine();
 		currentSceneID = (*pointerToCurrentScene)->getSceneID();
