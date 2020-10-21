@@ -34,9 +34,9 @@ public:
 	/// @return string with the width and height
 	std::string ToString() const override
 	{
-		std::stringstream ss;
-		ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
-		return ss.str();
+		std::stringstream stream;
+		stream << "WindowResizeEvent: " << m_Width << ", " << m_Height;
+		return stream.str();
 	}
 private:
 	unsigned int m_Width, m_Height;

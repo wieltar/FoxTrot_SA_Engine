@@ -23,10 +23,9 @@ public:
 	/// @return string with the realesed button
 	std::string ToString() const override
 	{
-		std::stringstream ss;
-		ss << "MouseMovedEvent: " << x << ", " << y;
-		auto string = ss.str();
-		return string;
+		std::stringstream stream;
+		stream << "MouseMovedEvent: " << x << ", " << y;
+		return stream.str();
 	}
 private:
 	const float x, y;

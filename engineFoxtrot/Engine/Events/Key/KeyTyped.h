@@ -13,8 +13,8 @@ public:
 	/// @return string with key code pressed
 	std::string ToString() const override
 	{
-		std::stringstream ss;
-		ss << "KeyTypedEvent: " << keycode;
-		return ss.str();
+		std::stringstream stream;
+		stream << "KeyTypedEvent: " << keycode;
+		return stream.str();
 	}
 };

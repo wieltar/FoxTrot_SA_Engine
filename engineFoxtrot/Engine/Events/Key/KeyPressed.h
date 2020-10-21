@@ -18,9 +18,9 @@ public:
 	/// @return string with key code released
 	std::string ToString() const override
 	{
-		std::stringstream ss;
-		ss << "KeyPressedEvent: " << keycode << " (" << repeatCount << " repeats)";
-		return ss.str();
+		std::stringstream stream;
+		stream << "KeyPressedEvent: " << keycode << " (" << repeatCount << " repeats)";
+		return stream.str();
 	}
 
 private:
