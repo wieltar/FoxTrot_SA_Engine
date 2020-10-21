@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "InputFacade.h"
-
+#include <SDL.h>
 
 InputFacade::InputFacade()
 {

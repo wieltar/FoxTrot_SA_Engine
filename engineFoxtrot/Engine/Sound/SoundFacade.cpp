@@ -2,6 +2,9 @@
 #include "SoundFacade.h"
 
 
+#include <SDL.h>
+#include <SDL_mixer.h>
+#undef main
 
 /// @brief 
 SoundFacade::SoundFacade()
@@ -19,6 +22,13 @@ SoundFacade::~SoundFacade()
 {
     /*SDL_CloseAudioDevice(deviceId);
     SDL_FreeWAV(wavBuffer);*/
+}
+
+/// @brief 
+/// @return 
+bool SoundFacade::isMix_PlayingMusic()
+{
+	return Mix_PlayingMusic();
 }
 
 /// @brief

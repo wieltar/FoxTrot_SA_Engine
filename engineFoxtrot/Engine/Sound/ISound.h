@@ -11,6 +11,7 @@ public:
 	ISound() {};
 	~ISound() {};
 
+	virtual bool isMix_PlayingMusic() = 0;
 	virtual void SetFiles(std::map<std::string, std::string> files) = 0;
 	virtual void AddFile(const std::string& identifier, const std::string& file) = 0;
 	virtual void PlayEffect(const std::string& identifier, const int volume) = 0;

@@ -1,9 +1,4 @@
 #pragma once
-
-#include <SDL.h>
-#include <SDL_mixer.h>
-#undef main
-
 #include "ISound.h"
 #include "../SceneManager/Object.h"
 
@@ -18,18 +13,23 @@
 #define AUDIO_CHANNEL_AMOUNT 2
 #define AUDIO_CHUNK_SIZE 2048
 
+struct Mix_Chunk;
+struct _Mix_Music;
+typedef struct _Mix_Music Mix_Music;
 
+/// @brief 
+/// SoundFacade is de Sound SDL2 facade
 #if(EXPORT)
 class DLLEXPORT SoundFacade : public ISound
 #else
-/// @brief 
-/// SoundFacade is de Sound SDL2 facade
 class SoundFacade : public ISound
 #endif
 {
 public:
 	SoundFacade();
 	~SoundFacade();
+
+	bool isMix_PlayingMusic();
 
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);

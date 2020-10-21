@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL.h>
+
 #include "IInputFacade.h"
 
 class InputFacade : public IInputFacade

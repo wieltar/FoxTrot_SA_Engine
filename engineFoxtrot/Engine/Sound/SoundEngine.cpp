@@ -136,9 +136,9 @@ void SoundEngine::Flush()
 /// The identifier of the music to play
 /// @param volume
 /// The volume to play the music at. Ranges from 0 to 128
-void SoundEngine::onChangeBackgroundMusic(const string& identifier, int volume = MIX_MAX_VOLUME) {
+void SoundEngine::onChangeBackgroundMusic(const string& identifier, int volume = MAX_VOLUME) {
 	if (IdentifierExists(identifier)) {
-		if (Mix_PlayingMusic()) {
+		if (soundFacade->isMix_PlayingMusic()) {
 			ChangeMusic(identifier);
 		}
 		else {
@@ -154,7 +154,7 @@ void SoundEngine::onChangeBackgroundMusic(const string& identifier, int volume =
 /// The identifier of the effect to play
 /// @param volume
 /// The volume to play the effect at. Ranges from 0 to 128
-void SoundEngine::onPlayEffect(const string& identifier, const int volume = MIX_MAX_VOLUME) {
+void SoundEngine::onPlayEffect(const string& identifier, const int volume = MAX_VOLUME) {
 	if (IdentifierExists(identifier)) {
 		if (IdentifierIsLoaded(identifier)) {
 			PlayEffect(identifier, volume);
