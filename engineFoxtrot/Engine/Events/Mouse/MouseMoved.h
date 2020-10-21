@@ -6,17 +6,17 @@
 class MouseMovedEvent : public Event
 {
 public:
-	MouseMovedEvent(const float _x, const float _y) : x{ _x }, y{ _y } {};
+	MouseMovedEvent(const float _x, const float _y) : xPosition{ _x }, yPosition{ _y } {};
 
 	/// @brief
 	/// Gets the new X coords of the mouse relative to screen
 	/// @return float new X 
-	const float GetX() { return x; }
+	const float GetX() { return xPosition; }
 
 	/// @brief
 	/// Gets the new Y coords of the mouse relative to screen
 	/// @return float new Y 
-	const float GetY() { return y; }
+	const float GetY() { return yPosition; }
 
 	/// @brief
 	/// MouseButtonPressed to string
@@ -24,9 +24,9 @@ public:
 	std::string ToString() const override
 	{
 		std::stringstream stream;
-		stream << "MouseMovedEvent: " << x << ", " << y;
+		stream << "MouseMovedEvent: " << xPosition << ", " << yPosition;
 		return stream.str();
 	}
 private:
-	const float x, y;
+	const float xPosition, yPosition;
 };
