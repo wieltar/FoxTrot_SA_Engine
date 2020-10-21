@@ -18,14 +18,11 @@ public:
 
 	bool checkIfObjectExists(const int objectID);
 
-	// The order of creating layers it the order it will be displayed
-	void createLayer(const string layerIdentifier, const bool render);
-	void switchLayers(const string layer1, string layer2);
-	const bool toggleLayer(const string layerIdentifier);
+	void switchLayers(const int zIndex, const int zIndex2);
+	const bool toggleLayer(const int zIndex, bool render);
 
-	const bool addNewObjectToLayer(const string layerIdentifier,Object* object);
+	const void addNewObjectToLayer(const int zIndex,Object* object);
 
-	vector <Object*> getObjectsInLayer(const string layerIdentifier);
 	vector <Object*> getAllObjectsInScene();
 
 	Object * getObject(const int objectID);
@@ -34,6 +31,7 @@ public:
 
 private:
 	const int sceneID = 0;
-	vector<Layer*> layers;
+	std::map<int, Layer*> layers;
+
 
 };

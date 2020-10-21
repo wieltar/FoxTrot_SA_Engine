@@ -4,7 +4,6 @@
 
 struct Layer
 {
-	string layerIdentifier;
 	bool render = false;
 	vector<Object*> objects;
 };

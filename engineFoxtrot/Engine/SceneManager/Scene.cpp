@@ -31,84 +31,79 @@ bool Scene::checkIfObjectExists(const int objectID)
 	return false;
 }
 
-void Scene::switchLayers(const string layer1, const string layer2)
+/// @brief 
+/// This will switch 2 layers of their z index
+/// @param zIndex 
+/// Layer1 to be switched
+/// @param zIndex2 
+/// Layer2 to be switched
+void Scene::switchLayers(const int zIndex, const int zIndex2)
 {
-	int layer1Pos = 0, layer2Pos = 0;
-	int count = 0;
-	for (auto layer : layers)
+	if (layers.find(zIndex) != layers.end() && layers.find(zIndex2) != layers.end())
 	{
-		if (layer->layerIdentifier == layer1)
-		{
-			layer1Pos = count;
-		}
-		else if (layer->layerIdentifier == layer2)
-		{
-			layer2Pos = count;
-		}
-		count++;
+		Layer* tempLayer;
+		tempLayer = layers[zIndex];
+		layers[zIndex] = layers[zIndex2];
+		layers[zIndex2] = tempLayer;
 	}
-	if (layer1Pos != layer2Pos)
+	else
 	{
-		swap(layers[layer1Pos], layers[layer2Pos]);
+		throw ERROR_CODE_SCENE_NO_LAYERS_TO_SWITCH;
 	}
 }
 
-void Scene::createLayer(const string layerIdentifier, const bool render)
+/// @brief 
+/// Turns the layer on or off
+/// @param zIndex 
+/// The zindex of the layer to be toggled
+/// @param render 
+/// True for on, false for off
+/// @return 
+/// Returns the new state of the layer.
+/// False in case the layer is not available. 
+const bool Scene::toggleLayer(const int zIndex, bool render)
 {
-	if(DEBUG_SCENE_MANAGER)cout << "Creating new layer with identifier " << layerIdentifier << endl;
-	Layer * layer = new Layer;
-	layer->layerIdentifier = layerIdentifier;
-	layer->render = render;
-	layers.push_back(layer);
-}
-
-const bool Scene::toggleLayer(const string layerIdentifier)
-{
-	for (auto layer : layers)
+	if (layers.find(zIndex) != layers.end())
 	{
-		if (layer->layerIdentifier == layerIdentifier) layer->render = !layer->render;
-		return layer->render;
+		layers[zIndex]->render = render;
+		return render;
 	}
 	return false;
 }
 
-vector <Object*> Scene::getObjectsInLayer(const string layerIdentifier)
-{
-	for (auto layer : layers)
-	{
-		if (layer->layerIdentifier == layerIdentifier)
-		{
-			return layer->objects;
-		}
-	}
-}
-
+/// @brief 
+/// Returns pointers to all available objects in the whole scene. 
+/// @return 
 vector <Object*> Scene::getAllObjectsInScene()
 {
 	vector <Object*> returnVector;
-	for (auto layer : layers)
+
+	for (auto layer = layers.begin(); layer != layers.end(); layer++)
 	{
-		returnVector.insert(returnVector.end(), layer->objects.begin(), layer->objects.end());
+		returnVector.insert(returnVector.end(), (*layer).second->objects.begin(), (*layer).second->objects.end());
 	}
 	return returnVector;
 }
 
-const bool Scene::addNewObjectToLayer(const string layerIdentifier, Object* object)
+/// @brief 
+/// Adds a new object to the given Z index. 
+/// @param zIndex 
+/// Zindex of the layer that the object should be added to
+/// @param object 
+/// Pointer to the object
+const void Scene::addNewObjectToLayer(const int zIndex, Object* object)
 {
-	if (layerIdentifier == "") return false;
-	if (object == nullptr) return false;
+	if (object == nullptr) throw ERROR_CODE_SCENE_NO_OBJECT_FOUND;
 
-	for (Layer * layer : layers)
+	if (layers.find(zIndex) != layers.end()) 
 	{
-		if (layer->layerIdentifier == layerIdentifier)
-		{
-			if (DEBUG_SCENE_MANAGER) cout << "Layer found, adding Object" << endl;
-			layer->objects.push_back(object);
-			return true;
-		}
+		layers[zIndex]->objects.push_back(object);
 	}
-	createLayer(layerIdentifier,false);
-	return addNewObjectToLayer(layerIdentifier, object);
+	else 
+	{
+		layers[zIndex] = new Layer();
+		layers[zIndex]->objects.push_back(object);
+	}
 }
 
 /// @brief 
