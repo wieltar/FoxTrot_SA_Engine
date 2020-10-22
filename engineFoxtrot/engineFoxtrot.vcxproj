@@ -161,6 +161,8 @@
     <ClCompile Include="Engine\FileParser\FileParser.cpp" />
     <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp" />
     <ClCompile Include="Engine\FileParser\JsonFacade.cpp" />
+    <ClCompile Include="Engine\Input\InputFacade.cpp" />
+    <ClCompile Include="Engine\Input\InputEngine.cpp" />
     <ClCompile Include="Engine\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -178,11 +180,10 @@
     <ClCompile Include="Engine\SceneManager\Scene.cpp" />
     <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp" />
     <ClCompile Include="Engine\SceneManager\SceneManager.cpp" />
-    <ClCompile Include="Engine\SVI%28Temp%29\SVI.cpp" />
-    <ClCompile Include="Engine\SVI%28Temp%29\SVIEngine.cpp" />
-    <ClCompile Include="Engine\SVI%28Temp%29\SVI_Input.cpp" />
-    <ClCompile Include="Engine\SVI%28Temp%29\SVI_Sound.cpp" />
-    <ClCompile Include="Engine\SVI%28Temp%29\SVI_Video.cpp" />
+    <ClCompile Include="Engine\Video\VideoEngine.cpp" />
+    <ClCompile Include="Engine\Video\VideoFacade.cpp" />
+    <ClCompile Include="Engine\Sound\SoundFacade.cpp" />
+    <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Events\AppTickEvent.h" />
@@ -208,10 +209,12 @@
     <ClInclude Include="Engine\FileParser\FileParser.h" />
     <ClInclude Include="Engine\General\GeneralDefines.h" />
     <ClInclude Include="Engine\FileParser\IJsonFacade.h" />
+    <ClInclude Include="Engine\Input\IInputFacade.h" />
+    <ClInclude Include="Engine\Input\InputFacade.h" />
+    <ClInclude Include="Engine\Input\InputEngine.h" />
     <ClInclude Include="Engine\Particles\IParticleFacade.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
     <ClInclude Include="Engine\stdafx.h" />
-    <ClInclude Include="Engine\SVI%28Temp%29\ISVI.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />
     <ClInclude Include="Engine\Particles\ParticleEngine.h" />
@@ -221,10 +224,14 @@
     <ClInclude Include="Engine\Physics\PhysicsFacade.h" />
     <ClInclude Include="Engine\SceneManager\Scene.h" />
     <ClInclude Include="Engine\SceneManager\SceneManager.h" />
-    <ClInclude Include="Engine\SVI%28Temp%29\SVI.h" />
-    <ClInclude Include="Engine\SVI%28Temp%29\SVIEngine.h" />
     <ClInclude Include="Engine\General\Version.h" />
     <ClInclude Include="Engine\Events\EventSingleton.h" />
+    <ClInclude Include="Engine\Video\IVideoFacade.h" />
+    <ClInclude Include="Engine\Video\VideoEngine.h" />
+    <ClInclude Include="Engine\Video\VideoFacade.h" />
+    <ClInclude Include="Engine\Sound\ISoundFacade.h" />
+    <ClInclude Include="Engine\Sound\SoundFacade.h" />
+    <ClInclude Include="Engine\Sound\SoundEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "Engine.h"
+#include <Events\AppTickEvent.h>
 /// @brief 
 Engine::Engine()
 {
-	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
+	videoEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
 	this->startTickThreads();
+	//sviEngine.initSDL();
 }
 
 /// @brief 
@@ -100,7 +102,7 @@ void Engine::linkSpriteIDWithAssetPath(const int spriteID, const char * assetPat
  {
 	try
 	{
-		sviEngine.loadImage(spriteID, assetPath);
+		videoEngine.loadImage(spriteID, assetPath);
 	}
 	catch (int e)
 	{
@@ -115,7 +117,7 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 	try
 	{
 		for (auto sprite : spritesVector) {
-			sviEngine.loadImage(sprite.spriteID, sprite.filename);
+			videoEngine.loadImage(sprite.spriteID, sprite.filename);
 		}
 	}
 	catch (int e)

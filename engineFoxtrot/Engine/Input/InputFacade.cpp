@@ -1,16 +1,18 @@
 #include "stdafx.h"
-#include "SVI.h"
+#include "InputFacade.h"
 #include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_image.h>
-#include "../../SDL2/include/SDL_mixer.h"
-#include "../../SDL2/include/SDL_image.h"
-#undef main
-// Functions in this cpp file may only call functions in this file. And global SDL2 definitions
 
-/// @brief 
-/// Test function for input
-void SVI::input() 
+InputFacade::InputFacade()
+{
+
+}
+
+InputFacade::~InputFacade()
+{
+
+}
+
+void InputFacade::input()
 {
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {

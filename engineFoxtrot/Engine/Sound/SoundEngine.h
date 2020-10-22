@@ -1,55 +1,28 @@
 #pragma once
-#include "SVI.h"
-#include "Events/EventSingleton.h"
-#include "Events/AppTickEvent.h"
+#include "SoundFacade.h"
+
 
 #define MAX_VOLUME 128
 
-#if(EXPORT)
-struct DLLEXPORT Sprite
-#else
-struct Sprite
-#endif
-{
-	int spriteID = 0;
-	const char* filename = "";
-};
-
 /// @brief 
-/// SVIEngine is the SDL2 wrapper
+/// SoundEngine is the Sound SDL2 wrapper
 
 #if(EXPORT)
-class DLLEXPORT SVIEngine
+class DLLEXPORT SoundEngine
 #else
-class SVIEngine
+class SoundEngine
 #endif
 {
 public:
-	SVIEngine();
-	~SVIEngine();
-	
-	// Video Functions
+	SoundEngine();
+	~SoundEngine();
 
-	void initSDL();
-
-	void clearScreen();
-	void drawScreen();
-	void loadImage(const int spriteID, const char* filename);
-
-	//TODO delete this is only for POC
-	void renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation);
-
-	void renderCopy(Object& object);
-
-	void updateScreen();
-
-	void update(Event& event);
 	void receiveTick();
 
 	// Input Functions
 	void input();
+	void update(Object* object);
 
-	// Sound functions
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
 	void PlayEffect(const string& identifier, const int volume);
@@ -75,9 +48,9 @@ public:
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
 
-	vector <Object*>*pointerToObjectVector = nullptr;
-
-
-	ISVI * sviFacade = new SVI;
+	vector <Object*>* pointerToObjectVector = nullptr;
 private:
+
+	ISoundFacade* soundFacade = new SoundFacade;
+
 };
