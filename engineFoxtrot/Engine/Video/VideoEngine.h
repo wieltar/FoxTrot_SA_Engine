@@ -35,7 +35,7 @@ public:
 	void updateScreen();
 
 	void update(Object* object);
-	void receiveTick();
+	void receiveTick(Event& tickEvent);
 
 	vector <Object*>* pointerToObjectVector = nullptr;
 

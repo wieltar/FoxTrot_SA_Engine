@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Engine.h"
-#include <Events\AppTickEvent.h>
+#include <Events\AppTickEvent30.h>
+#include <Events\AppTickEvent60.h>
 /// @brief 
 Engine::Engine()
 {
@@ -133,8 +134,8 @@ void Engine::engineTick60()
 	cout << "Thread started" << endl;
 	while (!stopThreadTick60){
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
-		AppTickEvent appTick;
-		EventSingleton::get_instance().OnEvent<AppTickEvent>(appTick);
+		AppTickEvent60 appTick;
+		EventSingleton::get_instance().OnEvent<AppTickEvent60>(appTick);
 	}
 
 	cout << "Thread killed 60" << endl;
@@ -148,10 +149,11 @@ void Engine::engineTick30()
 	while (!stopThreadTick30) {
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
 
-		AppTickEvent appTick;
-		//EventSingleton::get_instance().OnEvent<AppTickEvent>(appTick);
+		AppTickEvent30 appTick;
+		EventSingleton::get_instance().OnEvent<AppTickEvent30>(appTick);
 
-		physicsEngine.update30();
+		// TODO listen for event
+		//physicsEngine.update30();
 
 	}
 	cout << "Thread killed 30" << endl;

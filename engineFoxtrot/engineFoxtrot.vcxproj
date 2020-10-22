@@ -186,7 +186,8 @@
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Events\AppTickEvent.h" />
+    <ClInclude Include="Engine\Events\AppTickEvent30.h" />
+    <ClInclude Include="Engine\Events\AppTickEvent60.h" />
     <ClInclude Include="Engine\Events\Event.h" />
     <ClInclude Include="Engine\Events\codes\KeyCodes.h" />
     <ClInclude Include="Engine\Events\EventType.h" />

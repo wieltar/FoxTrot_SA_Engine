@@ -1,7 +1,7 @@
 #pragma once
-#include "Events/Window/WindowCloseEvent.h"
 #include <functional>
 #include <type_traits>
+#include "Event.h";
 
 using EventCallbackFn = std::function<void(Event&)>;
 

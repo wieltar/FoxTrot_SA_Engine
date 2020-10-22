@@ -1,260 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\Particle">
-      <UniqueIdentifier>{c141fdb4-5d33-489f-8b3b-96dd20a5678d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FileIO">
-      <UniqueIdentifier>{8d954043-8d70-442c-80a4-436266ab0488}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Physics">
-      <UniqueIdentifier>{2d60673c-c8e9-4964-981a-505abd032f56}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\General">
-      <UniqueIdentifier>{f1c55ea4-7bc1-4225-9d63-1ca1c3b81cb2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Sound &amp; Input &amp; Video">
-      <UniqueIdentifier>{52cd5157-a6b4-4f37-b2e0-69bab15634a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Sound &amp; Input &amp; Video\SDL2 Facade">
-      <UniqueIdentifier>{6d406e54-9816-4a1d-84a4-e7ca53466129}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Sound &amp; Input &amp; Video\SDL2 Interface">
-      <UniqueIdentifier>{43c75b35-7bb9-4e98-ba23-1416f4fca9ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Sound &amp; Input &amp; Video\SDL2 Wrapper">
-      <UniqueIdentifier>{199fce93-79d1-4d55-aaf0-2e65e807cc41}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Events">
-      <UniqueIdentifier>{e92540a3-ad08-4b30-a09f-b1e3215ae7f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Events\Enums">
-      <UniqueIdentifier>{200fd3ed-2003-4fd4-913b-f068ca1876ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Object">
-      <UniqueIdentifier>{dc5ebff8-c42f-49dd-90ab-8ec2303bb001}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Engine\Engine+ObjectModifiers.cpp" />
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\FileParser\FileParser.cpp" />
+    <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp" />
+    <ClCompile Include="Engine\FileParser\JsonFacade.cpp" />
+    <ClCompile Include="Engine\Input\InputFacade.cpp" />
+    <ClCompile Include="Engine\Input\InputEngine.cpp" />
+    <ClCompile Include="Engine\stdafx.cpp" />
+    <ClCompile Include="Engine\Events\EventSingleton.cpp" />
+    <ClCompile Include="Main\main.cpp" />
+    <ClCompile Include="Engine\SceneManager\Object.cpp" />
+    <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
+    <ClCompile Include="Engine\Particles\ParticleFacade.cpp" />
+    <ClCompile Include="Engine\Physics\PhysicsBody.cpp" />
+    <ClCompile Include="Engine\Physics\PhysicsEngine.cpp" />
+    <ClCompile Include="Engine\Physics\PhysicsFacade.cpp" />
+    <ClCompile Include="Engine\SceneManager\Scene.cpp" />
+    <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp" />
+    <ClCompile Include="Engine\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="Engine\Video\VideoEngine.cpp" />
+    <ClCompile Include="Engine\Video\VideoFacade.cpp" />
+    <ClCompile Include="Engine\Sound\SoundFacade.cpp" />
+    <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Engine.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Engine+ObjectModifiers.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SceneManager\Object.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SceneManager\Scene.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SceneManager\SceneManager.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Particles\ParticleEngine.cpp">
-      <Filter>Header Files\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Particles\ParticleFacade.cpp">
-      <Filter>Header Files\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Physics\PhysicsFacade.cpp">
-      <Filter>Header Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Physics\PhysicsEngine.cpp">
-      <Filter>Header Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Physics\PhysicsBody.cpp">
-      <Filter>Header Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp">
-      <Filter>Header Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\FileParser\FileParser.cpp">
-      <Filter>Header Files\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\FileParser\JsonFacade.cpp">
-      <Filter>Header Files\FileIO</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Events\EventSingleton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Video\VideoEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Video\VideoFacade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Sound\SoundFacade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Sound\SoundEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input\InputFacade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input\InputEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Engine\Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\General\ErrorCodes.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SceneManager\Object.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SceneManager\Scene.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SceneManager\SceneManager.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Particles\ParticleEngine.h">
-      <Filter>Header Files\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Particles\ParticleFacade.h">
-      <Filter>Header Files\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Physics\PhysicsFacade.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Physics\PhysicsEngine.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Physics\PhysicsBody.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Particles\IParticleFacade.h">
-      <Filter>Header Files\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Physics\IPhysicsFacade.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\General\GeneralDefines.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\General\Version.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\General\Debug.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\FileParser\FileParser.h">
-      <Filter>Header Files\FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\FileParser\IJsonFacade.h">
-      <Filter>Header Files\FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\FileParser\JsonFacade.h">
-      <Filter>Header Files\FileIO</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\ObjectEventCodes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\codes\KeyCodes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\codes\MouseCodes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\mouse\MouseMoved.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\mouse\MousePressed.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\mouse\MouseReleased.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Key\KeyPressed.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Key\KeyReleased.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Window\WindowResizeEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\EventType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Key\KeyEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Key\KeyTyped.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\mouse\MouseButtonEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\EventSingleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\AppTickEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Events\Mouse\MouseScrolledEvent.h">
-    <ClInclude Include="Engine\Video\VideoEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Video\VideoFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Sound\SoundFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Sound\SoundEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Input\IInputFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Input\InputFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Input\InputEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Sound\ISoundFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Video\IVideoFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="Engine\Events\Event.h" />
+    <ClInclude Include="Engine\Events\codes\KeyCodes.h" />
+    <ClInclude Include="Engine\Events\EventType.h" />
+    <ClInclude Include="Engine\Events\Key\KeyEvent.h" />
+    <ClInclude Include="Engine\Events\Key\KeyPressed.h" />
+    <ClInclude Include="Engine\Events\Key\KeyReleased.h" />
+    <ClInclude Include="Engine\Events\codes\MouseCodes.h" />
+    <ClInclude Include="Engine\Events\Key\KeyTyped.h" />
+    <ClInclude Include="Engine\Events\mouse\MouseButtonEvent.h" />
+    <ClInclude Include="Engine\Events\mouse\MouseMoved.h" />
+    <ClInclude Include="Engine\Events\mouse\MousePressed.h" />
+    <ClInclude Include="Engine\Events\mouse\MouseReleased.h" />
+    <ClInclude Include="Engine\Events\Mouse\MouseScrolledEvent.h" />
+    <ClInclude Include="Engine\Events\ObjectEventCodes.h" />
+    <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h" />
+    <ClInclude Include="Engine\Events\Window\WindowResizeEvent.h" />
+    <ClInclude Include="Engine\General\Debug.h" />
+    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\General\ErrorCodes.h" />
+    <ClInclude Include="Engine\FileParser\FileParser.h" />
+    <ClInclude Include="Engine\General\GeneralDefines.h" />
+    <ClInclude Include="Engine\FileParser\IJsonFacade.h" />
+    <ClInclude Include="Engine\Input\IInputFacade.h" />
+    <ClInclude Include="Engine\Input\InputFacade.h" />
+    <ClInclude Include="Engine\Input\InputEngine.h" />
+    <ClInclude Include="Engine\Particles\IParticleFacade.h" />
+    <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
+    <ClInclude Include="Engine\stdafx.h" />
+    <ClInclude Include="Engine\FileParser\JsonFacade.h" />
+    <ClInclude Include="Engine\SceneManager\Object.h" />
+    <ClInclude Include="Engine\Particles\ParticleEngine.h" />
+    <ClInclude Include="Engine\Particles\ParticleFacade.h" />
+    <ClInclude Include="Engine\Physics\PhysicsBody.h" />
+    <ClInclude Include="Engine\Physics\PhysicsEngine.h" />
+    <ClInclude Include="Engine\Physics\PhysicsFacade.h" />
+    <ClInclude Include="Engine\SceneManager\Scene.h" />
+    <ClInclude Include="Engine\SceneManager\SceneManager.h" />
+    <ClInclude Include="Engine\General\Version.h" />
+    <ClInclude Include="Engine\Events\EventSingleton.h" />
+    <ClInclude Include="Engine\Video\IVideoFacade.h" />
+    <ClInclude Include="Engine\Video\VideoEngine.h" />
+    <ClInclude Include="Engine\Video\VideoFacade.h" />
+    <ClInclude Include="Engine\Sound\ISoundFacade.h" />
+    <ClInclude Include="Engine\Sound\SoundFacade.h" />
+    <ClInclude Include="Engine\Sound\SoundEngine.h" />
+    <ClInclude Include="Engine\Events\AppTickEvent60.h" />
+    <ClInclude Include="Engine\Events\AppTickEvent30.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
