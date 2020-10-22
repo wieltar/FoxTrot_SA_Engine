@@ -1,5 +1,6 @@
 #pragma once
-
+// TODO wrong way to include event, identify why it breaks
+#include "Events/Event.h"
 #include "PhysicsFacade.h"
 
 #if(EXPORT)
@@ -22,7 +23,7 @@ public:
 	void JumpLeft(const int objectId);
 	void JumpRight(const int objectId);
 
-	void update30();
+	void update30(Event& tick30Event);
 
 	//Set to private after testing!!!
 	IPhysicsFacade * physicsFacade = new PhysicsFacade;

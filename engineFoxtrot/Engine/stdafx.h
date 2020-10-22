@@ -12,6 +12,8 @@
 #include <unordered_map>
 #include <map>
 #include <sstream>
+#include <functional>
+#include <type_traits>
 
 using namespace std;
 

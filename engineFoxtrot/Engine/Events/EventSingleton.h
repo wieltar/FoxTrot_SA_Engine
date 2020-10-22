@@ -1,6 +1,4 @@
 #pragma once
-#include <functional>
-#include <type_traits>
 #include "Event.h";
 
 using EventCallbackFn = std::function<void(Event&)>;
