@@ -96,4 +96,14 @@ void Engine::setObjectStatic(const int objId, const bool stat)
 void Engine::pollInput()
 {
 	inputEngine.fill(commandQueue);
+	updateInput();
+}
+
+void Engine::updateInput()
+{
+	// Update character state
+	while (!commandQueue.empty()) {
+		commandQueue.back()->execute(&inputEngine);
+		commandQueue.pop_back();
+	}
 }

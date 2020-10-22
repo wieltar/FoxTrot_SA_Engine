@@ -62,6 +62,7 @@ public:
 	void setObjectStatic(const int objId, const bool stat);
 
 	void pollInput();
+	void updateInput();
 
 
 	//TODO make private

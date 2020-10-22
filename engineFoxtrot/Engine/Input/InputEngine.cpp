@@ -4,6 +4,7 @@
 InputEngine::InputEngine()
 {
 	configure(97, new MoveRight());
+	configure(98, new Jump());
 }
 
 InputEngine::~InputEngine()
@@ -13,6 +14,11 @@ InputEngine::~InputEngine()
 void InputEngine::moveRight()
 {
 	cout << "Knop om naar rechts te lopen" << endl;
+}
+
+void InputEngine::jump()
+{
+	cout << "Jump ding" << endl;
 }
 
 bool InputEngine::fill(vector<Command*>& command_queue)

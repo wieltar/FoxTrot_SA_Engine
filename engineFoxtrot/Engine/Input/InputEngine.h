@@ -10,6 +10,7 @@ public:
 	// Input Functions
 
 	void moveRight();
+	void jump();
 	
 	bool fill(vector<Command*>& command_queue);
 	void configure(int key, Command* command);

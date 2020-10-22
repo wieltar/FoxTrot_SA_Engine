@@ -8,6 +8,7 @@ void MoveRight::execute(InputEngine* inputEngine)
 	inputEngine->moveRight();
 }
 
-
-
-
+void Jump::execute(InputEngine* inputEngine)
+{
+	inputEngine->jump();
+}
