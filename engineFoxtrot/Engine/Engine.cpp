@@ -148,13 +148,8 @@ void Engine::engineTick30()
 	cout << "Thread started" << endl;
 	while (!stopThreadTick30) {
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
-
 		AppTickEvent30 appTick;
 		EventSingleton::get_instance().OnEvent<AppTickEvent30>(appTick);
-
-		// TODO listen for event
-		//physicsEngine.update30();
-
 	}
 	cout << "Thread killed 30" << endl;
 }
