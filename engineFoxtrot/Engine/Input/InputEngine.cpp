@@ -3,18 +3,26 @@
 
 InputEngine::InputEngine()
 {
-
+	configure(97, new MoveRight());
 }
 
 InputEngine::~InputEngine()
 {
 }
 
-/// @brief 
-/// Receives input
-void InputEngine::input()
+void InputEngine::moveRight()
 {
-	inputFacade->input();
+	cout << "Knop om naar rechts te lopen" << endl;
+}
+
+bool InputEngine::fill(vector<Command*>& command_queue)
+{
+	return inputFacade->fill(command_queue);
+}
+
+void InputEngine::configure(int key, Command* command)
+{
+	inputFacade->configure(key, command);
 }
 
 

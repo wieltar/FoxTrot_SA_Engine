@@ -8,7 +8,11 @@ public:
 	~InputEngine();
 
 	// Input Functions
-	void input();
+
+	void moveRight();
+	
+	bool fill(vector<Command*>& command_queue);
+	void configure(int key, Command* command);
 
 private:
 	IInputFacade *inputFacade = new InputFacade();

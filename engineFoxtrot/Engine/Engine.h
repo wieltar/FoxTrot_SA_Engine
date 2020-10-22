@@ -61,6 +61,8 @@ public:
 	void setObjectDirection(const int objId, const int dir);
 	void setObjectStatic(const int objId, const bool stat);
 
+	void pollInput();
+
 
 	//TODO make private
 
@@ -74,6 +76,8 @@ private:
 	SceneManager sceneManager;
 
 	void loadSpriteArray(vector<Sprite> spriteVector);
+
+	vector<Command*> commandQueue;
 };
 
 #endif

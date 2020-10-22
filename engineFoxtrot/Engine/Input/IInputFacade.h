@@ -7,8 +7,8 @@ public:
 	IInputFacade() {};
 	~IInputFacade() {};
 
-
-	virtual bool input_mapping() = 0;
+	virtual bool fill(vector<Command*>& command_queue) = 0;
+	virtual void configure(int key, Command* command) = 0;
 
 private:
 

@@ -1,66 +1,22 @@
 #pragma once
+#include "InputConstants.h"
+
+class InputEngine;
+class Command
+{
+public:
+	Command() {};
+	virtual ~Command() {};
+	virtual void execute(InputEngine* inputEngine) = 0;
+	InputType get_input_type() { return STATE; }
+};
 
 
+class MoveRight : public Command
+{
+public:
+	void execute(InputEngine* inputEngine);
+	InputType get_input_type() { return STATE; }
+};
 
 
-
-
-
-
-//class Simulation;
-//class Command
-//{
-//public:
-//	Command() {};
-//	virtual ~Command() {};
-//	virtual void execute(Simulation* simulation) = 0;
-//
-//};
-//
-//class StartSimulation : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
-//
-//class StopSimulation : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
-//
-//class IncreaseSimulationSpeed : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
-//
-//class DecreaseSimulationSpeed : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
-//
-//class ChangeCollisionDetection : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
-//
-//class JumpBack : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
-//
-//class ShortestPath : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
-//
-//class CheapestPath : public Command
-//{
-//public:
-//	void execute(Simulation* simulation);
-//};
