@@ -17,9 +17,6 @@ Engine engine;
 void sceneTestSetup()
 {
 
-	while(1)
-		engine.pollInput();
-
 	engine.createNewSceneWithSceneID(3);
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
@@ -83,6 +80,7 @@ int main() {
 	bool gameRunning = true;
 	while (gameRunning)
 	{
+		engine.pollInput();
 
 	}
 

@@ -57,7 +57,7 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 /// Handle the tick given from the thread. 
 void PhysicsEngine::update30(Event& tick30Event)
 {
-	tick30Event = (AppTickEvent30&)tick30Event;
+	//tick30Event = (AppTickEvent30&)tick30Event;
 	physicsFacade->update();
 }
 
