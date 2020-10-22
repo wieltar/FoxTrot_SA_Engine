@@ -211,10 +211,10 @@
     <ClInclude Include="Engine\SceneManager\Scene.h" />
     <ClInclude Include="Engine\SceneManager\SceneManager.h" />
     <ClInclude Include="Engine\General\Version.h" />
-    <ClInclude Include="Engine\Video\IVideo.h" />
+    <ClInclude Include="Engine\Video\IVideoFacade.h" />
     <ClInclude Include="Engine\Video\VideoEngine.h" />
     <ClInclude Include="Engine\Video\VideoFacade.h" />
-    <ClInclude Include="Engine\Sound\ISound.h" />
+    <ClInclude Include="Engine\Sound\ISoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
   </ItemGroup>

@@ -51,6 +51,6 @@ public:
 	EventManager* eventManager = nullptr;
 private:
 
-	ISound* soundFacade = new SoundFacade;
+	ISoundFacade* soundFacade = new SoundFacade;
 
 };

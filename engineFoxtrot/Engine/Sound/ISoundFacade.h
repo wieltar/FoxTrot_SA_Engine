@@ -4,12 +4,12 @@
 #if(EXPORT)
 class DLLEXPORT ISVI
 #else
-class ISound
+class ISoundFacade
 #endif
 {
 public:
-	ISound() {};
-	~ISound() {};
+	ISoundFacade() {};
+	~ISoundFacade() {};
 
 	virtual bool isMix_PlayingMusic() = 0;
 	virtual void SetFiles(std::map<std::string, std::string> files) = 0;

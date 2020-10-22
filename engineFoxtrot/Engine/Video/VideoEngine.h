@@ -44,6 +44,6 @@ public:
 	EventManager* eventManager = nullptr;
 
 private:
-	IVideo* videoFacade = new VideoFacade;
+	IVideoFacade* videoFacade = new VideoFacade;
 
 };

@@ -191,13 +191,7 @@
     <ClInclude Include="Engine\Video\VideoEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Video\IVideo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Video\VideoFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Sound\ISound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Sound\SoundFacade.h">
@@ -213,6 +207,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Input\InputEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sound\ISoundFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Video\IVideoFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

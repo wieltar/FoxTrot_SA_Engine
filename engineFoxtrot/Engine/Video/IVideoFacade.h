@@ -3,14 +3,14 @@
 
 /// @brief Interface class for Video facade
 #if(EXPORT)
-class DLLEXPORT IVideo
+class DLLEXPORT IVideoFacade
 #else
-class IVideo
+class IVideoFacade
 #endif
 {
 public:
-	IVideo() {};
-	~IVideo() {};
+	IVideoFacade() {};
+	~IVideoFacade() {};
 
 	virtual void initSDL() = 0;
 	virtual void clearScreen() = 0;

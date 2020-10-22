@@ -1,5 +1,5 @@
 #pragma once
-#include "IVideo.h"
+#include "IVideoFacade.h"
 #include "../SceneManager/Object.h"
 
 #define WINDOW_WIDTH 600
@@ -10,11 +10,11 @@ struct SDL_Window;
 struct SDL_Texture;
 
 #if(EXPORT)
-class DLLEXPORT VideoFacade : public IVideo
+class DLLEXPORT VideoFacade : public IVideoFacade
 #else
 /// @brief 
 /// VideoFacade is de SDL2 facade
-class VideoFacade : public IVideo
+class VideoFacade : public IVideoFacade
 #endif
 {
 public:
