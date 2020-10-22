@@ -2,16 +2,22 @@
 #include "InputFacade.h"
 #include <SDL.h>
 
+/// @brief 
 InputFacade::InputFacade()
 {
 
 }
 
+/// @brief 
 InputFacade::~InputFacade()
 {
 
 }
 
+/// @brief 
+/// Checks if any keys are pressed and will call keydown or keyup function
+/// @return 
+/// Returns true if a key is pressed, false if none.
 bool InputFacade::input_mapping()
 {
     SDL_Event event;
@@ -27,6 +33,9 @@ bool InputFacade::input_mapping()
     return false;
 }
 
+/// @brief 
+/// Handles Keydown event from sdl2
+/// @param event 
 void InputFacade::keydown(SDL_Event& event)
 {
     if (state_map[event.key.keysym.sym] == RELEASED) {
@@ -35,26 +44,45 @@ void InputFacade::keydown(SDL_Event& event)
     state_map[event.key.keysym.sym] = PRESSED;
 }
 
+/// @brief 
+/// Handles keyup event from sdl2
+/// @param event 
 void InputFacade::keyup(SDL_Event& event)
 {
     state_map[event.key.keysym.sym] = RELEASED;
 }
 
+/// @brief 
+/// Checks if the key is currently pressed down, then the key will be in state_map
+/// @param key 
+/// @return 
 bool InputFacade::is_held(int key)
 {
     return state_map[key];
 }
 
+/// @brief 
+/// Checks if a key was pressed, then the key will be in action_map
+/// @param key 
+/// @return 
 bool InputFacade::was_pressed(int key)
 {
     return action_map[key];
 }
 
+/// @brief 
+/// Configures the key to a command. 
+/// @param key 
+/// @param command 
 void InputFacade::configure(int key, Command* command)
 {
     commands[key] = command;    // key points to newly assigned command
 }
 
+/// @brief 
+/// Fills the command queue with the dispatcher if a key is pressed
+/// @param command_queue 
+/// @return 
 bool InputFacade::fill(vector<Command*>& command_queue)
 {
     bool exit = input_mapping();    // converts raw input datum to an action and/or state
@@ -67,6 +95,9 @@ bool InputFacade::fill(vector<Command*>& command_queue)
     }
 }
 
+/// @brief 
+/// Fills the command queue with pressed keys.
+/// @param command_queue 
 void InputFacade::dispatcher(std::vector<Command*>& command_queue)
 {
     std::map<int, Command*>::iterator iter;

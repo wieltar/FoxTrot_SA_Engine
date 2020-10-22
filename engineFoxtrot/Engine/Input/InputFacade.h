@@ -6,6 +6,7 @@
 
 typedef union SDL_Event;
 
+/// @brief 
 class InputFacade : public IInputFacade
 {
 

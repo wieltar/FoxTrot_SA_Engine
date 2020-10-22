@@ -1,14 +1,15 @@
 #pragma once
 #include "InputFacade.h"
 
+/// @brief 
+/// Input engine for handling input
 class InputEngine
 {
 public:
 	InputEngine();
 	~InputEngine();
 
-	// Input Functions
-
+	void moveLeft();
 	void moveRight();
 	void jump();
 	

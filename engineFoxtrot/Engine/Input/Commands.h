@@ -2,6 +2,9 @@
 #include "InputConstants.h"
 
 class InputEngine;
+
+
+/// @brief 
 class Command
 {
 public:
@@ -11,7 +14,15 @@ public:
 	virtual InputType get_input_type() = 0;
 };
 
+/// @brief 
+class MoveLeft : public Command
+{
+public:
+	void execute(InputEngine* inputEngine);
+	InputType get_input_type() { return STATE; }
+};
 
+/// @brief 
 class MoveRight : public Command
 {
 public:
@@ -19,6 +30,7 @@ public:
 	InputType get_input_type() { return STATE; }
 };
 
+/// @brief 
 class Jump : public Command
 {
 public:
