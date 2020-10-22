@@ -1,9 +1,12 @@
 #include "stdafx.h"
+#include <Events\AppTickEvent30.h>
+#include "Events/EventSingleton.h"
 #include "PhysicsEngine.h"
 
 /// @brief Constructor
 PhysicsEngine::PhysicsEngine()
 {
+	EventSingleton::get_instance().setEventCallback<AppTickEvent30>(BIND_EVENT_FN(PhysicsEngine::update30));
 }
 
 /// @brief Destructor
@@ -52,8 +55,9 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 
 /// @brief 
 /// Handle the tick given from the thread. 
-void PhysicsEngine::update30()
+void PhysicsEngine::update30(Event& tick30Event)
 {
+	tick30Event = (AppTickEvent30&)tick30Event;
 	physicsFacade->update();
 }
 

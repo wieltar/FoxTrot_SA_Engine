@@ -1,8 +1,11 @@
 #include "stdafx.h"
+#include <Events\AppTickEvent60.h>
+#include <Events\EventSingleton.h>
 #include "VideoEngine.h"
 
 VideoEngine::VideoEngine()
 {
+	EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
 }
 
 VideoEngine::~VideoEngine()
@@ -110,8 +113,10 @@ void VideoEngine::update(Object* object)
 }
 
 /// @brief Handle the tick update from the thread
-void VideoEngine::receiveTick()
+void VideoEngine::receiveTick(Event& tickEvent)
 {
+	//tickEvent = static_cast<AppTickEvent&>(tickEvent);
+
 	clearScreen();
 	updateScreen();
 	drawScreen();
