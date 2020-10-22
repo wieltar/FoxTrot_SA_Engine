@@ -43,9 +43,9 @@ void InputFacade::keydown(SDL_Event& event)
     //int SDLInt = (int)(event.key.keysym.scancode);
 
     if (state_map[eventToKeyCode(event)] == RELEASED) {
-        action_map[KeyCode(eventToKeyCode(event))] = EXECUTE;
+        action_map[eventToKeyCode(event)] = EXECUTE;
     }
-    state_map[KeyCode(eventToKeyCode(event))] = PRESSED;
+    state_map[eventToKeyCode(event)] = PRESSED;
 }
 
 /// @brief 
@@ -73,6 +73,10 @@ bool InputFacade::was_pressed(int key)
     return action_map[KeyCode(key)];
 }
 
+/// @brief 
+/// Function to convert event scancode to KeyCode
+/// @param event 
+/// @return KeyCode
 KeyCode InputFacade::eventToKeyCode(SDL_Event& event)
 {
     return KeyCode((int)(event.key.keysym.scancode));

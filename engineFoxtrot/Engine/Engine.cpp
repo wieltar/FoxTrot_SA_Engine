@@ -177,13 +177,16 @@ void Engine::stopTickThreads()
 	stopThreadTick30 = true;
 }
 
-
+/// @brief 
+/// Polls for input using SDL poll events
 void Engine::pollInput()
 {
 	inputEngine.fill(commandQueue);
 	updateInput();
 }
 
+/// @brief 
+/// Executes the events from polling
 void Engine::updateInput()
 {
 	while (!commandQueue.empty()) {
@@ -192,6 +195,10 @@ void Engine::updateInput()
 	}
 }
 
+/// @brief 
+/// Function to bind keys to commands.
+/// @param key KeyCode key
+/// @param command Command to be executed
 void Engine::configureInput(KeyCode key, Command* command)
 {
 	inputEngine.configure(key, command);

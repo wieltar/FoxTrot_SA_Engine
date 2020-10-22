@@ -9,7 +9,7 @@ typedef union SDL_Event;
 
 
 
-/// @brief 
+/// @brief Facade for SDL input part
 class InputFacade : public IInputFacade
 {
 
@@ -30,9 +30,6 @@ private:
 
 	bool is_held(int key);
 	bool was_pressed(int key);
-
-	int mousex = 0;
-	int mousey = 0;
 
 	map <KeyCode, State> state_map;
 	map <KeyCode, Action> action_map;

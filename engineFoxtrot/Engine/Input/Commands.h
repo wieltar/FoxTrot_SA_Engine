@@ -4,7 +4,7 @@
 class InputEngine;
 
 
-/// @brief 
+/// @brief Virtual class for all commands
 class Command
 {
 public:
