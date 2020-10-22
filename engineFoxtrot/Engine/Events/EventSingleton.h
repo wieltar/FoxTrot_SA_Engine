@@ -22,8 +22,8 @@ public:
     /// @param Event the event that is fired with data
     /// @assert check wheter the type T and the Event fired is the same
     template<typename T>
-    void OnEvent(Event& event) {
-        static_assert(std::is_base_of<Event, T>::value, "OnEvent Assert fail: Make sure the event that is fired and the Template Type is the same");
+    void dispatchEvent(Event& event) {
+        static_assert(std::is_base_of<Event, T>::value, "dispatchEvent Assert fail: Make sure the event that is fired and the Template Type is the same");
         // Contains element 
         string typeName = typeid(T).name();
         if (handlers.count(typeName) > 0) {
