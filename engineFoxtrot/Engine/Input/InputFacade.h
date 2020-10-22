@@ -3,8 +3,11 @@
 #include "IInputFacade.h"
 
 #include "InputConstants.h"
+#include "Events/Codes/KeyCodes.h"
 
 typedef union SDL_Event;
+
+
 
 /// @brief 
 class InputFacade : public IInputFacade
@@ -16,7 +19,7 @@ public:
 
 
 	bool fill(vector<Command*>& command_queue);
-	void configure(int key, Command* command);
+	void configure(KeyCode key, Command* command);
 
 private:
 	bool input_mapping();
@@ -31,11 +34,12 @@ private:
 	int mousex = 0;
 	int mousey = 0;
 
-	map <int, State> state_map;
-	map <int, Action> action_map;
+	map <KeyCode, State> state_map;
+	map <KeyCode, Action> action_map;
 
-	map <int, Command*> commands;
+	map <KeyCode, Command*> commands;
 
+	KeyCode eventToKeyCode(SDL_Event& event);
 };
 
 

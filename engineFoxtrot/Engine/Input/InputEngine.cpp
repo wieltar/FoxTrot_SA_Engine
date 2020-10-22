@@ -4,9 +4,7 @@
 /// @brief 
 InputEngine::InputEngine()
 {
-	configure(99, new MoveLeft());
-	configure(97, new MoveRight());
-	configure(98, new Jump());
+
 }
 
 /// @brief 
@@ -46,7 +44,7 @@ bool InputEngine::fill(vector<Command*>& command_queue)
 /// @brief 
 /// @param key 
 /// @param command 
-void InputEngine::configure(int key, Command* command)
+void InputEngine::configure(KeyCode key, Command* command)
 {
 	inputFacade->configure(key, command);
 }

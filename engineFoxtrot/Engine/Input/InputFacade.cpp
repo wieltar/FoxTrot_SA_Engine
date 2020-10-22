@@ -2,6 +2,8 @@
 #include "InputFacade.h"
 #include <SDL.h>
 
+#undef main
+
 /// @brief 
 InputFacade::InputFacade()
 {
@@ -38,10 +40,12 @@ bool InputFacade::input_mapping()
 /// @param event 
 void InputFacade::keydown(SDL_Event& event)
 {
-    if (state_map[event.key.keysym.sym] == RELEASED) {
-        action_map[event.key.keysym.sym] = EXECUTE;
+    //int SDLInt = (int)(event.key.keysym.scancode);
+
+    if (state_map[eventToKeyCode(event)] == RELEASED) {
+        action_map[KeyCode(eventToKeyCode(event))] = EXECUTE;
     }
-    state_map[event.key.keysym.sym] = PRESSED;
+    state_map[KeyCode(eventToKeyCode(event))] = PRESSED;
 }
 
 /// @brief 
@@ -49,16 +53,15 @@ void InputFacade::keydown(SDL_Event& event)
 /// @param event 
 void InputFacade::keyup(SDL_Event& event)
 {
-    state_map[event.key.keysym.sym] = RELEASED;
+    state_map[eventToKeyCode(event)] = RELEASED;
 }
-
 /// @brief 
 /// Checks if the key is currently pressed down, then the key will be in state_map
 /// @param key 
 /// @return 
 bool InputFacade::is_held(int key)
 {
-    return state_map[key];
+    return state_map[KeyCode(key)];
 }
 
 /// @brief 
@@ -67,14 +70,19 @@ bool InputFacade::is_held(int key)
 /// @return 
 bool InputFacade::was_pressed(int key)
 {
-    return action_map[key];
+    return action_map[KeyCode(key)];
+}
+
+KeyCode InputFacade::eventToKeyCode(SDL_Event& event)
+{
+    return KeyCode((int)(event.key.keysym.scancode));
 }
 
 /// @brief 
 /// Configures the key to a command. 
 /// @param key 
 /// @param command 
-void InputFacade::configure(int key, Command* command)
+void InputFacade::configure(KeyCode key, Command* command)
 {
     commands[key] = command;    // key points to newly assigned command
 }
@@ -100,7 +108,7 @@ bool InputFacade::fill(vector<Command*>& command_queue)
 /// @param command_queue 
 void InputFacade::dispatcher(std::vector<Command*>& command_queue)
 {
-    std::map<int, Command*>::iterator iter;
+    std::map<KeyCode, Command*>::iterator iter;
     for (iter = commands.begin(); iter != commands.end(); iter++) {
         if (is_held(iter->first) && iter->second->get_input_type() == STATE)
             command_queue.push_back(iter->second);

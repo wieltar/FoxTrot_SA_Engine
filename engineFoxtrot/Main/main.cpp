@@ -16,7 +16,6 @@ Engine engine;
 
 void sceneTestSetup()
 {
-
 	engine.createNewSceneWithSceneID(3);
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
@@ -68,6 +67,12 @@ void sceneTestSetup()
 	engine.createObject(3, staticGround);
 
 
+	engine.configureInput(KEY_A, new MoveLeft);
+	engine.configureInput(KEY_D, new MoveRight);
+	engine.configureInput(KEY_SPACE, new Jump);
+
+
+
 	engine.setCurrentScene(3);
 	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 	engine.startTickThreads();
@@ -81,7 +86,6 @@ int main() {
 	while (gameRunning)
 	{
 		engine.pollInput();
-
 	}
 
 	return 0;

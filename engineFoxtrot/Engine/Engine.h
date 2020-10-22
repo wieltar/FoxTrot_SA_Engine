@@ -14,6 +14,9 @@
 #include "./Sound/SoundEngine.h"
 #include "./Input/InputEngine.h"
 
+// TODO Weet niet of deze hier moet?!?!??! Is even voor de test
+#include "Events/Codes/KeyCodes.h"
+
 #define	ENGINE_TICK60	 17
 #define ENGINE_TICK30	 33
 
@@ -58,6 +61,7 @@ public:
 
 	void pollInput();
 	void updateInput();
+	void configureInput(KeyCode key, Command* command);
 
 	//TODO make private
 

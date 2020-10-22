@@ -14,7 +14,7 @@ public:
 	void jump();
 	
 	bool fill(vector<Command*>& command_queue);
-	void configure(int key, Command* command);
+	void configure(KeyCode key, Command* command);
 
 private:
 	IInputFacade *inputFacade = new InputFacade();

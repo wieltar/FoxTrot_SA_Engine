@@ -178,3 +178,22 @@ void Engine::stopTickThreads()
 }
 
 
+void Engine::pollInput()
+{
+	inputEngine.fill(commandQueue);
+	updateInput();
+}
+
+void Engine::updateInput()
+{
+	while (!commandQueue.empty()) {
+		commandQueue.back()->execute(&inputEngine);
+		commandQueue.pop_back();
+	}
+}
+
+void Engine::configureInput(KeyCode key, Command* command)
+{
+	inputEngine.configure(key, command);
+}
+
