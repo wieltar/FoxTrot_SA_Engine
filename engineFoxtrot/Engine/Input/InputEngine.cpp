@@ -3,6 +3,7 @@
 
 InputEngine::InputEngine()
 {
+
 }
 
 InputEngine::~InputEngine()
@@ -15,4 +16,6 @@ void InputEngine::input()
 {
 	inputFacade->input();
 }
+
+
 

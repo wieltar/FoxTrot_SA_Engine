@@ -12,20 +12,34 @@ InputFacade::~InputFacade()
 
 }
 
-void InputFacade::input()
+bool InputFacade::input_mapping()
 {
-	SDL_Event e;
-	while (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) { cout << "Quitting" << endl; }
-		if (e.type == SDL_KEYDOWN) {
-			if (e.key.keysym.sym == SDLK_ESCAPE) { cout << "SDLK_ESCAPE" << endl; }
-			if (e.key.keysym.sym == SDLK_w) { cout << "w down" << endl; }
-		}
-		if (e.type == SDL_KEYUP) {
-			if (e.key.keysym.sym == SDLK_w) { cout << "w up" << endl; }
-		}
-		SDL_GetMouseState(&mousex, &mousey);
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+        case SDL_KEYDOWN:
+            keydown(event);
+            break;
 
+        case SDL_KEYUP:
+            break;
 
-	}
+        case SDL_QUIT:
+            cout << "SDL_QUIT" << endl;
+            break;
+
+        default:
+            break;
+        }
+    }
+    return false;
+}
+
+void InputFacade::keydown(SDL_Event& event)
+{
+    if (commands.find(event.key.keysym.sym) != commands.end())
+        commands[event.key.keysym.sym]->execute(simulation);
+    else
+        return;
+
 }

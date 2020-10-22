@@ -7,7 +7,8 @@ public:
 	IInputFacade() {};
 	~IInputFacade() {};
 
-	virtual void input() = 0;
+
+	virtual bool input_mapping() = 0;
 
 private:
 
