@@ -3,6 +3,7 @@
 
 VideoEngine::VideoEngine()
 {
+	frameData = new FrameData;
 }
 
 VideoEngine::~VideoEngine()
@@ -104,9 +105,12 @@ void VideoEngine::updateScreen()
 /// Update function
 void VideoEngine::update(Object* object)
 {
+	frameData->startTimer();
 	clearScreen();
 	updateScreen();
 	drawScreen();
+	FrameData::renderFps = frameData->calculateAverageFps();
+	cout << FrameData::renderFps << " fps" << endl;
 }
 
 /// @brief Handle the tick update from the thread

@@ -4,6 +4,7 @@
 /// @brief 
 Engine::Engine()
 {
+	frameData = new FrameData;
 	videoEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
@@ -132,10 +133,11 @@ void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
 	while (!stopThreadTick60){
-		//eventManager.notify(EventType::ENGINE60, new Object);
-
+		
+		frameData->startTimer();
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
 		eventManager.notify(EventType::ENGINE60, new Object(1));
+		FrameData::gameFps = frameData->calculateAverageFps();
 		//svi.receiveTick();
 	}
 

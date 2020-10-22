@@ -125,7 +125,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\SDL2\include;$(projectDir)..\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Engine;$(ProjectDir)..\SDL2\include;$(projectDir)..\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
     </ClCompile>
@@ -159,6 +159,7 @@
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Events\EventManager.cpp" />
     <ClCompile Include="Engine\FileParser\FileParser.cpp" />
+    <ClCompile Include="Engine\Fps\FrameData.cpp" />
     <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp" />
     <ClCompile Include="Engine\FileParser\JsonFacade.cpp" />
     <ClCompile Include="Engine\Input\InputFacade.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Fps\FrameData.h" />
     <ClInclude Include="Engine\General\Debug.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\General\ErrorCodes.h" />

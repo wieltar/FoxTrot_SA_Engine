@@ -1,6 +1,7 @@
 #pragma once
 #include "../Events/EventManager.h"
 #include "./VideoFacade.h"
+#include "../Fps/FrameData.h"
 
 
 #if(EXPORT)
@@ -42,6 +43,8 @@ public:
 	vector <Object*>* pointerToObjectVector = nullptr;
 
 	EventManager* eventManager = nullptr;
+
+	FrameData* frameData = nullptr;
 
 private:
 	IVideoFacade* videoFacade = new VideoFacade;

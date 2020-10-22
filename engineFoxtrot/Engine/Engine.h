@@ -13,6 +13,7 @@
 #include "./Video/VideoEngine.h"
 #include "./Sound/SoundEngine.h"
 #include "./Input/InputEngine.h"
+#include "./Fps/FrameData.h"
 
 #define	ENGINE_TICK60	 17
 #define ENGINE_TICK30	 33
@@ -35,6 +36,8 @@ public:
 	void engineTick30();
 	void startTickThreads();
 	void stopTickThreads();
+
+	FrameData* frameData;
 
 	atomic_bool stopThreadTick60 = false;
 	atomic_bool stopThreadTick30 = false;

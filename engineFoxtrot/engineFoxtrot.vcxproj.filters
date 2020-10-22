@@ -46,6 +46,9 @@
     <Filter Include="Header Files\Object">
       <UniqueIdentifier>{dc5ebff8-c42f-49dd-90ab-8ec2303bb001}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Fps">
+      <UniqueIdentifier>{21dc6efe-1e1a-4a21-9901-e6dd978884e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Input\InputEngine.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Fps\FrameData.cpp">
+      <Filter>Header Files\Fps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Video\IVideoFacade.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Fps\FrameData.h">
+      <Filter>Header Files\Fps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
