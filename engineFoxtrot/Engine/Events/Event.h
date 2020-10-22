@@ -23,7 +23,7 @@ public:
 	virtual std::string ToString() const { return GetName(); }
 };
 
-inline std::ostream& operator<<(std::ostream& os, const Event& e)
+inline std::ostream& operator<<(std::ostream& osStream, const Event& event)
 {
-	return os << e.ToString();
+	return osStream << event.ToString();
 }
