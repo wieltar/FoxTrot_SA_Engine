@@ -17,6 +17,7 @@ Engine engine;
 
 void sceneTestSetup()
 {
+
 	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
 	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
