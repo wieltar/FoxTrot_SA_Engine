@@ -12,7 +12,6 @@ public:
     InputFacade();
     ~InputFacade();
 
-	void input();
 	bool input_mapping();
 	void keydown(SDL_Event& event);
 
