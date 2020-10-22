@@ -1,5 +1,4 @@
 #pragma once
-#include "../Events/EventManager.h"
 #include "SoundFacade.h"
 
 
@@ -11,14 +10,18 @@
 #if(EXPORT)
 class DLLEXPORT SoundEngine
 #else
-class SoundEngine : public EventListener
+class SoundEngine
 #endif
 {
 public:
 	SoundEngine();
 	~SoundEngine();
 
-	void update(Object* object) override;
+	void receiveTick();
+
+	// Input Functions
+	void input();
+	void update(Object* object);
 
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
@@ -46,9 +49,6 @@ public:
 	bool IdentifierIsLoaded(const string& identifier);
 
 	vector <Object*>* pointerToObjectVector = nullptr;
-
-	//Set to private after testing!!!
-	EventManager* eventManager = nullptr;
 private:
 
 	ISoundFacade* soundFacade = new SoundFacade;

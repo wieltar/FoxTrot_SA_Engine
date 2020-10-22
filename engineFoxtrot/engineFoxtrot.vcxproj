@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -128,6 +128,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)\Engine;$(ProjectDir)..\SDL2\include;$(projectDir)..\box2d-master\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,7 +158,6 @@
   <ItemGroup>
     <ClCompile Include="Engine\Engine+ObjectModifiers.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
-    <ClCompile Include="Engine\Events\EventManager.cpp" />
     <ClCompile Include="Engine\FileParser\FileParser.cpp" />
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
     <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp" />
@@ -170,6 +170,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Engine\Events\EventSingleton.cpp" />
     <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
@@ -186,13 +187,28 @@
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Events\AppTickEvent30.h" />
+    <ClInclude Include="Engine\Events\AppTickEvent60.h" />
+    <ClInclude Include="Engine\Events\Event.h" />
+    <ClInclude Include="Engine\Events\codes\KeyCodes.h" />
+    <ClInclude Include="Engine\Events\EventType.h" />
+    <ClInclude Include="Engine\Events\Key\KeyEvent.h" />
+    <ClInclude Include="Engine\Events\Key\KeyPressed.h" />
+    <ClInclude Include="Engine\Events\Key\KeyReleased.h" />
+    <ClInclude Include="Engine\Events\codes\MouseCodes.h" />
+    <ClInclude Include="Engine\Events\Key\KeyTyped.h" />
+    <ClInclude Include="Engine\Events\mouse\MouseButtonEvent.h" />
+    <ClInclude Include="Engine\Events\mouse\MouseMoved.h" />
+    <ClInclude Include="Engine\Events\mouse\MousePressed.h" />
+    <ClInclude Include="Engine\Events\mouse\MouseReleased.h" />
+    <ClInclude Include="Engine\Events\Mouse\MouseScrolledEvent.h" />
+    <ClInclude Include="Engine\Events\ObjectEventCodes.h" />
+    <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h" />
+    <ClInclude Include="Engine\Events\Window\WindowResizeEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
     <ClInclude Include="Engine\General\Debug.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\General\ErrorCodes.h" />
-    <ClInclude Include="Engine\Events\EventListener.h" />
-    <ClInclude Include="Engine\Events\EventManager.h" />
-    <ClInclude Include="Engine\Events\EventType.h" />
     <ClInclude Include="Engine\FileParser\FileParser.h" />
     <ClInclude Include="Engine\General\GeneralDefines.h" />
     <ClInclude Include="Engine\FileParser\IJsonFacade.h" />
@@ -203,7 +219,6 @@
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
-    <ClInclude Include="Engine\Events\KeyEvent.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />
     <ClInclude Include="Engine\Particles\ParticleEngine.h" />
     <ClInclude Include="Engine\Particles\ParticleFacade.h" />
@@ -213,6 +228,7 @@
     <ClInclude Include="Engine\SceneManager\Scene.h" />
     <ClInclude Include="Engine\SceneManager\SceneManager.h" />
     <ClInclude Include="Engine\General\Version.h" />
+    <ClInclude Include="Engine\Events\EventSingleton.h" />
     <ClInclude Include="Engine\Video\IVideoFacade.h" />
     <ClInclude Include="Engine\Video\VideoEngine.h" />
     <ClInclude Include="Engine\Video\VideoFacade.h" />

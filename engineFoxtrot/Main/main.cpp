@@ -2,8 +2,7 @@
 #pragma once
 #include "../Engine/Engine.h"
 
-
-using namespace std;
+#include "Events/Window/WindowCloseEvent.h"
 
 // TODO engine.h & engine.cpp
 
@@ -17,10 +16,6 @@ Engine engine;
 
 void sceneTestSetup()
 {
-
-	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object(1));
-
 	engine.createNewSceneWithSceneID(3);
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");

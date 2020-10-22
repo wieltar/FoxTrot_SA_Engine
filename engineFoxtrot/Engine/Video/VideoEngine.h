@@ -1,8 +1,6 @@
 #pragma once
-#include "../Events/EventManager.h"
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
-
 
 #if(EXPORT)
 struct DLLEXPORT Sprite
@@ -20,7 +18,7 @@ struct Sprite
 #if(EXPORT)
 class DLLEXPORT VideoEngine
 #else
-class VideoEngine : public EventListener
+class VideoEngine
 #endif
 {
 public:
@@ -37,15 +35,12 @@ public:
 
 	void updateScreen();
 
-	void update(Object* object) override;
-	void receiveTick();
+	void update(Object* object);
+	void receiveTick(Event& tickEvent);
 
 	vector <Object*>* pointerToObjectVector = nullptr;
 
-	EventManager* eventManager = nullptr;
-
 	FrameData* frameData = nullptr;
-
 private:
 	IVideoFacade* videoFacade = new VideoFacade;
 

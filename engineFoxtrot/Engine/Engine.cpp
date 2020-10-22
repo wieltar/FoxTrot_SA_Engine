@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Engine.h"
-
+#include <Events\AppTickEvent30.h>
+#include <Events\AppTickEvent60.h>
 /// @brief 
 Engine::Engine()
 {
@@ -8,7 +9,7 @@ Engine::Engine()
 	videoEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	eventManager.subscribe(EventType::ENGINE60, &videoEngine);
+	this->startTickThreads();
 	//sviEngine.initSDL();
 }
 
@@ -133,12 +134,11 @@ void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
 	while (!stopThreadTick60){
-		
 		frameData->startTimer();
-		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		eventManager.notify(EventType::ENGINE60, new Object(1));
+		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
+		AppTickEvent60 appTick;
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
 		FrameData::gameFps = frameData->calculateAverageFps();
-		//svi.receiveTick();
 	}
 
 	cout << "Thread killed 60" << endl;
@@ -151,10 +151,8 @@ void Engine::engineTick30()
 	cout << "Thread started" << endl;
 	while (!stopThreadTick30) {
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
-
-		//eventManager.notify(EventType::ENGINE30, new Object);
-		physicsEngine.update30();
-
+		AppTickEvent30 appTick;
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick);
 	}
 	cout << "Thread killed 30" << endl;
 }
@@ -180,10 +178,4 @@ void Engine::stopTickThreads()
 	stopThreadTick30 = true;
 }
 
-/// @brief 
-/// @param listener 
-/// @param eventType 
-void Engine::addEventListener(EventListener* listener, const EventType eventType) {
-    eventManager.subscribe(eventType, listener);
-}
 
