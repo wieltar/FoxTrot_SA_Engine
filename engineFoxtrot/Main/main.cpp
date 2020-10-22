@@ -2,8 +2,7 @@
 #pragma once
 #include "../Engine/Engine.h"
 
-
-using namespace std;
+#include "Events/Window/WindowCloseEvent.h"
 
 // TODO engine.h & engine.cpp
 
@@ -17,11 +16,9 @@ Engine engine;
 
 void sceneTestSetup()
 {
+
 	while(1)
 		engine.pollInput();
-
-	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object(1));
 
 	engine.createNewSceneWithSceneID(3);
 
