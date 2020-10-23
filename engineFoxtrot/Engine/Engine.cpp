@@ -2,14 +2,14 @@
 #include "Engine.h"
 #include <Events\AppTickEvent30.h>
 #include <Events\AppTickEvent60.h>
+
 /// @brief 
 Engine::Engine()
 {
 	videoEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	this->startTickThreads();
-	//sviEngine.initSDL();
+	//this->startTickThreads();
 }
 
 /// @brief 
@@ -132,11 +132,12 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
+	pollInput();
 	while (!stopThreadTick60){
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
 		AppTickEvent60 appTick;
-		//EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
-		videoEngine.receiveTick(appTick);
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
+		//videoEngine.receiveTick(appTick);
 	}
 
 	cout << "Thread killed 60" << endl;
@@ -150,8 +151,8 @@ void Engine::engineTick30()
 	while (!stopThreadTick30) {
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
 		AppTickEvent30 appTick;
-		//EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick);
-		physicsEngine.update30(appTick);
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick);
+		//physicsEngine.update30(appTick);
 	}
 	cout << "Thread killed 30" << endl;
 }
@@ -160,11 +161,11 @@ void Engine::engineTick30()
 /// Start the 2 threads. 
 void Engine::startTickThreads()
 {
-	engineTick60Thread = new thread(&Engine::engineTick60, this);
-	engineTick30Thread = new thread(&Engine::engineTick30, this);
+	//engineTick60Thread = new thread(&Engine::engineTick60, this);
+	//engineTick30Thread = new thread(&Engine::engineTick30, this);
 
-	engineTick60Thread->detach();
-	engineTick30Thread->detach();
+	//engineTick60Thread->detach();
+	//engineTick30Thread->detach();
 }
 
 /// @brief

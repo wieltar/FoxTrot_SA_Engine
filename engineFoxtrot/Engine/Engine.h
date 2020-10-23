@@ -51,23 +51,14 @@ public:
 	void createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat, const int speed, const int jumpHeight, const int density, const int friction, const int restitution);
 	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
-	// Object Modifiers
-	void moveObjectTo(const int objId, const int x, const int y);
-	void moveObjectBy(const int objId, const int withX, const int withY);
-	void setObjectRotation(const int objId, const int rotation);
-	void setObjectScale(const int objId, const int scale);
-	void setObjectDirection(const int objId, const int dir);
-	void setObjectStatic(const int objId, const bool stat);
-
 	void pollInput();
 	void updateInput();
 	void configureInput(KeyCode key, Command* command);
 
 	//TODO make private
-
 	PhysicsEngine physicsEngine;
-private:
 	VideoEngine videoEngine;
+private:
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;

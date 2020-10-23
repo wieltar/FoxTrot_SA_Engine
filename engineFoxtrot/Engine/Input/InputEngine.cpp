@@ -16,6 +16,8 @@ InputEngine::~InputEngine()
 /// Moveleft function called when a according key is pressed
 void InputEngine::moveLeft()
 {
+	// TODO Get object Id where player
+	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, 2));
 	cout << "Knop om naar links te lopen" << endl;
 }
 
@@ -23,6 +25,8 @@ void InputEngine::moveLeft()
 /// Moveright function called when a according key is pressed
 void InputEngine::moveRight()
 {
+	// TODO Get object Id where player
+	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, 2));
 	cout << "Knop om naar rechts te lopen" << endl;
 }
 
@@ -30,6 +34,8 @@ void InputEngine::moveRight()
 /// Jump function called when a according key is pressed
 void InputEngine::jump()
 {
+	// TODO Get object Id where player
+	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, 2));
 	cout << "Jump ding" << endl;
 }
 
@@ -48,6 +54,4 @@ void InputEngine::configure(KeyCode key, Command* command)
 {
 	inputFacade->configure(key, command);
 }
-
-
 

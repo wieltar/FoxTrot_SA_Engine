@@ -3,7 +3,6 @@
 
 class InputEngine;
 
-
 /// @brief Virtual class for all commands
 class Command
 {

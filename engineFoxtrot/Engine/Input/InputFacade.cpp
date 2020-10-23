@@ -19,7 +19,7 @@ InputFacade::~InputFacade()
 /// @brief 
 /// Checks if any keys are pressed and will call keydown or keyup function
 /// @return 
-/// Returns true if a key is pressed, false if none.
+/// Returns true poll events should quit, default false if none.
 bool InputFacade::input_mapping()
 {
     SDL_Event event;
@@ -29,8 +29,9 @@ bool InputFacade::input_mapping()
             if (event.key.keysym.sym == SDLK_ESCAPE) return true;
             keydown(event);
         }
-        else if (event.type == SDL_KEYUP)
+        else if (event.type == SDL_KEYUP) {
             keyup(event);
+        }
 
     return false;
 }
@@ -41,7 +42,6 @@ bool InputFacade::input_mapping()
 void InputFacade::keydown(SDL_Event& event)
 {
     //int SDLInt = (int)(event.key.keysym.scancode);
-
     if (state_map[eventToKeyCode(event)] == RELEASED) {
         action_map[eventToKeyCode(event)] = EXECUTE;
     }

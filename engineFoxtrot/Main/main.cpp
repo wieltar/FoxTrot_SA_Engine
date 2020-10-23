@@ -1,6 +1,8 @@
-#include "stdafx.h"
 #pragma once
+#include "stdafx.h"
 #include "../Engine/Engine.h"
+#include "../Engine/Events/AppTickEvent30.h"
+#include "../Engine/Events/AppTickEvent60.h"
 
 #include "Events/Window/WindowCloseEvent.h"
 
@@ -50,8 +52,8 @@ void sceneTestSetup()
 	object2->setWidth(80);
 	object2->setPositionX(100);
 	object2->setPositionY(80);
-	object2->setSpeed(100);
-	object2->setJumpHeight(400);
+	object2->setSpeed(100000);
+	object2->setJumpHeight(4000000);
 	object2->setDensity(10);
 	object2->setFriction(0);
 	object2->setRestitution(0);
@@ -66,12 +68,9 @@ void sceneTestSetup()
 	staticGround->setStatic(true);
 	engine.createObject(3, staticGround);
 
-
 	engine.configureInput(KEY_A, new MoveLeft);
 	engine.configureInput(KEY_D, new MoveRight);
 	engine.configureInput(KEY_SPACE, new Jump);
-
-
 
 	engine.setCurrentScene(3);
 	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
@@ -81,11 +80,17 @@ void sceneTestSetup()
 int main() {
 	sceneTestSetup();
 
-
 	bool gameRunning = true;
 	while (gameRunning)
 	{
+		AppTickEvent60 appTick;
+		AppTickEvent30 appTick30;
+
+		engine.videoEngine.receiveTick(appTick);
+		engine.physicsEngine.update30(appTick30);
 		engine.pollInput();
+
+		this_thread::sleep_for(chrono::milliseconds(10));
 	}
 
 	return 0;

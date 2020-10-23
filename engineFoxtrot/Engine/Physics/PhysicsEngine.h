@@ -1,6 +1,7 @@
 #pragma once
 // TODO wrong way to include event, identify why it breaks
 #include "Events/Event.h"
+#include "Events/Action/ActionEvent.h"
 #include "PhysicsFacade.h"
 
 #if(EXPORT)
@@ -17,12 +18,7 @@ public:
 
 	void registerObjectInCurrentVectorWithPhysicsEngine();
 
-	void MoveLeft(const int objectId);
-	void MoveRight(const int objectId);
-	void Jump(const int objectId);
-	void JumpLeft(const int objectId);
-	void JumpRight(const int objectId);
-
+	void handleAction(Event& event);
 	void update30(Event& tick30Event);
 
 	//Set to private after testing!!!
