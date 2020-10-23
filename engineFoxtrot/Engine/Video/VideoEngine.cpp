@@ -107,8 +107,8 @@ void VideoEngine::updateScreen()
 /// @brief
 /// Calls the drawFps method with parameters for all calculated Fps types
 void VideoEngine::drawFps() {
-	drawFps(FrameData::gameFps, FPS_X, Y_ZERO, "Game Fps: ");
-	drawFps(FrameData::renderFps, FPS_X, SDL_FPS_Y, "SDL Fps: ");
+	drawFps(FrameData::gameFps, FPS_X_POSITION, Y_POSITION_TOP_OF_SCREEN, "Game Fps: ");
+	drawFps(FrameData::renderFps, FPS_X_POSITION, FPS_Y_POSITION_OFFSET, "SDL Fps: ");
 }
 
 /// @brief
@@ -132,6 +132,8 @@ void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix =
 	}
 }
 
+/// @brief
+/// Toggles fps visibility
 void VideoEngine::toggleFps() {
 	shouldDrawFps = !shouldDrawFps;
 }

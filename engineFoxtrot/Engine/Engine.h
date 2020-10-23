@@ -35,8 +35,6 @@ public:
 	void startTickThreads();
 	void stopTickThreads();
 
-	FrameData* frameData;
-
 	atomic_bool stopThreadTick60 = false;
 	atomic_bool stopThreadTick30 = false;
 
@@ -68,6 +66,8 @@ private:
 	FileParser fileParser;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
+
+	FrameData* frameData = nullptr;
 
 	void loadSpriteArray(vector<Sprite> spriteVector);
 };

@@ -5,12 +5,9 @@ double FrameData::gameFps = 0;
 double FrameData::renderFps = 0;
 
 FrameData::FrameData() {
-	framespersecond = 0;
-	//frametimelast = SDL_GetTicks();
 }
 
 FrameData::~FrameData() {
-	
 }
 
 /// @brief
@@ -21,7 +18,7 @@ void FrameData::startTimer() {
 
 /// @brief
 /// Calculates the average fps of the last few ticks
-float FrameData::calculateAverageFps()
+double FrameData::calculateAverageFps()
 {
 	chrono::high_resolution_clock::time_point endTime = chrono::high_resolution_clock::now();
 	chrono::duration<double> diff = chrono::duration_cast<chrono::duration<double>>(endTime - startTime);
@@ -38,6 +35,6 @@ float FrameData::calculateAverageFps()
 
 	avgFps /= frametimes.size();
 
-	framespersecond = TIMESTEP / avgFps;
-	return framespersecond;
+	framesPerSecond = TIMESTEP / avgFps;
+	return framesPerSecond;
 }

@@ -27,7 +27,7 @@ void VideoFacade::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	TTF_Init();
-	Sans = TTF_OpenFont("../Assets/Fonts/Sans.ttf", 24);
+	Sans = TTF_OpenFont(FONT_PATH, FONT_POINT_SIZE);
 	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
@@ -111,7 +111,7 @@ void VideoFacade::renderCopy(Object& object)
 /// A Position struct containing the position to draw the message at
 void VideoFacade::drawMessageAt(const Message message, const Position pos)
 {
-	bool exists = std::filesystem::exists("../Assets/Fonts/Sans.ttf"); // TODO dynamic fonts
+	bool exists = std::filesystem::exists(FONT_PATH); // TODO dynamic fonts
 
 	if (exists) {
 
@@ -134,8 +134,5 @@ void VideoFacade::drawMessageAt(const Message message, const Position pos)
 
 		SDL_FreeSurface(surfaceMessage);
 		SDL_DestroyTexture(Message);
-	}
-	else {
-
 	}
 }

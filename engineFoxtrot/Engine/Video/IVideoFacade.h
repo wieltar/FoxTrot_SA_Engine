@@ -1,6 +1,6 @@
 #pragma once
 #include "../SceneManager/Object.h"
-#include "./Structs/structs.h"
+#include "./Structs/fpsStructs.h"
 
 /// @brief Interface class for Video facade
 #if(EXPORT)

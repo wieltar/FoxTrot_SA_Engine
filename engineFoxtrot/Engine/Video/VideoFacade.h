@@ -7,6 +7,9 @@
 #define MESSAGE_WIDTH 150
 #define MESSAGE_HEIGHT 30
 
+#define FONT_PATH "../Assets/Fonts/Sans.ttf"
+#define FONT_POINT_SIZE 24
+
 struct SDL_Renderer;
 struct SDL_Window;
 struct SDL_Texture;
