@@ -4,8 +4,8 @@
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
 
-#define FPS_WIDTH 150
-#define FPS_HEIGHT 30
+#define MESSAGE_WIDTH 150
+#define MESSAGE_HEIGHT 30
 
 struct SDL_Renderer;
 struct SDL_Window;

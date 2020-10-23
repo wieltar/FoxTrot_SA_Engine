@@ -121,12 +121,14 @@ void VideoFacade::drawMessageAt(const Message message, const Position pos)
 
 		SDL_Rect Message_rect;
 
-		int xPos = pos.xPos > WINDOW_WIDTH ? WINDOW_WIDTH - FPS_WIDTH : pos.xPos;
+		// If the message doesn't fit the screen, make it fit the screen
+		int xPos = pos.xPos + MESSAGE_WIDTH > WINDOW_WIDTH ? WINDOW_WIDTH - MESSAGE_WIDTH : xPos < 0 ? 0 : pos.xPos;
+		int yPos = pos.yPos + MESSAGE_HEIGHT > WINDOW_HEIGHT ? WINDOW_HEIGHT - MESSAGE_HEIGHT : yPos < 0 ? 0 : pos.yPos;
 
 		Message_rect.x = xPos;
-		Message_rect.y = pos.yPos;
-		Message_rect.w = FPS_WIDTH;
-		Message_rect.h = FPS_HEIGHT;
+		Message_rect.y = yPos;
+		Message_rect.w = MESSAGE_WIDTH;
+		Message_rect.h = MESSAGE_HEIGHT;
 
 		SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
 
