@@ -40,6 +40,18 @@ void InputEngine::jump()
 }
 
 /// @brief 
+/// Executes the events from polling
+void InputEngine::updateInput()
+{
+	this->fill(commandQueue);
+
+	while (!commandQueue.empty()) {
+		commandQueue.back()->execute(this);
+		commandQueue.pop_back();
+	}
+}
+
+/// @brief 
 /// @param command_queue 
 /// @return 
 bool InputEngine::fill(vector<Command*>& command_queue)

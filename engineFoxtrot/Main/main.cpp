@@ -86,9 +86,10 @@ int main() {
 		AppTickEvent60 appTick;
 		AppTickEvent30 appTick30;
 
-		engine.videoEngine.receiveTick(appTick);
-		engine.physicsEngine.update30(appTick30);
 		engine.pollInput();
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick30);
+
 
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}

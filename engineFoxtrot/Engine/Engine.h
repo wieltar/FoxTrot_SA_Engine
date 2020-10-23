@@ -52,7 +52,6 @@ public:
 	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
 	void pollInput();
-	void updateInput();
 	void configureInput(KeyCode key, Command* command);
 
 	//TODO make private
@@ -66,8 +65,5 @@ private:
 	SceneManager sceneManager;
 
 	void loadSpriteArray(vector<Sprite> spriteVector);
-
-	vector<Command*> commandQueue;
 };
-
 #endif

@@ -137,7 +137,6 @@ void Engine::engineTick60()
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
 		AppTickEvent60 appTick;
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
-		//videoEngine.receiveTick(appTick);
 	}
 
 	cout << "Thread killed 60" << endl;
@@ -152,7 +151,6 @@ void Engine::engineTick30()
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
 		AppTickEvent30 appTick;
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick);
-		//physicsEngine.update30(appTick);
 	}
 	cout << "Thread killed 30" << endl;
 }
@@ -161,11 +159,11 @@ void Engine::engineTick30()
 /// Start the 2 threads. 
 void Engine::startTickThreads()
 {
-	//engineTick60Thread = new thread(&Engine::engineTick60, this);
-	//engineTick30Thread = new thread(&Engine::engineTick30, this);
+	/*engineTick60Thread = new thread(&Engine::engineTick60, this);
+	engineTick60Thread->detach();*/
 
-	//engineTick60Thread->detach();
-	//engineTick30Thread->detach();
+	/*engineTick30Thread = new thread(&Engine::engineTick30, this);
+	engineTick30Thread->detach();*/
 }
 
 /// @brief
@@ -173,8 +171,9 @@ void Engine::startTickThreads()
 void Engine::stopTickThreads()
 {
 	//engineTick60Thread->join();
-	//engineTick30Thread->join();
-	stopThreadTick60 = true;
+	//stopThreadTick60 = true;
+
+	engineTick30Thread->join();
 	stopThreadTick30 = true;
 }
 
@@ -182,18 +181,7 @@ void Engine::stopTickThreads()
 /// Polls for input using SDL poll events
 void Engine::pollInput()
 {
-	inputEngine.fill(commandQueue);
-	updateInput();
-}
-
-/// @brief 
-/// Executes the events from polling
-void Engine::updateInput()
-{
-	while (!commandQueue.empty()) {
-		commandQueue.back()->execute(&inputEngine);
-		commandQueue.pop_back();
-	}
+	inputEngine.updateInput();
 }
 
 /// @brief 

@@ -17,7 +17,9 @@ public:
 	
 	bool fill(vector<Command*>& command_queue);
 	void configure(KeyCode key, Command* command);
-
+	void updateInput();
 private:
 	IInputFacade *inputFacade = new InputFacade();
+
+	vector<Command*> commandQueue;
 };
