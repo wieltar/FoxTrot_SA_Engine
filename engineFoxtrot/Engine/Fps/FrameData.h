@@ -6,9 +6,11 @@
 
 #undef main
 
-using namespace std;
-
+#if(EXPORT)
+class DLLEXPORT FrameData
+#else
 class FrameData
+#endif
 {
 public:
 	FrameData();

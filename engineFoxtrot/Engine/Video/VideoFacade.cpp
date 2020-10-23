@@ -103,6 +103,12 @@ void VideoFacade::renderCopy(Object& object)
 	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
 }
 
+/// @brief
+/// Draws the given text message at the given position
+/// @param message
+/// A Message struct containing the message and the color of the message
+/// @param pos
+/// A Position struct containing the position to draw the message at
 void VideoFacade::drawMessageAt(const Message message, const Position pos)
 {
 	bool exists = std::filesystem::exists("../Assets/Fonts/Sans.ttf"); // TODO dynamic fonts

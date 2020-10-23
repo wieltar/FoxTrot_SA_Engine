@@ -104,11 +104,23 @@ void VideoEngine::updateScreen()
 	}
 }
 
+/// @brief
+/// Calls the drawFps method with parameters for all calculated Fps types
 void VideoEngine::drawFps() {
 	drawFps(FrameData::gameFps, FPS_X, Y_ZERO, "Game Fps: ");
 	drawFps(FrameData::renderFps, FPS_X, SDL_FPS_Y, "SDL Fps: ");
 }
 
+/// @brief
+/// Gathers the given fps data, stores them in structs and passes the data to the videofacade if fps should be drawn
+/// @param fps
+/// The fps to show on screen
+/// @param xPos
+/// The X position of where the fps should be drawn
+/// @param yPos
+/// The Y position of where the fps should be drawn
+/// @param prefix
+/// The prefix message for the fps
 void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix = "fps: ") {
 	ostringstream stre;
 	stre << prefix << fps;
