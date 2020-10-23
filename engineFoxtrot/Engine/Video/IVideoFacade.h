@@ -1,5 +1,6 @@
 #pragma once
 #include "../SceneManager/Object.h"
+#include "./Structs/structs.h"
 
 /// @brief Interface class for Video facade
 #if(EXPORT)
@@ -17,6 +18,7 @@ public:
 	virtual void drawScreen() = 0;
 	virtual void loadImage(const int spriteID, const char* filename) = 0;
 	virtual void renderCopy(Object& object) = 0;
+	virtual void drawMessageAt(const Message& message, const Position& pos) = 0;
 
 private:
 

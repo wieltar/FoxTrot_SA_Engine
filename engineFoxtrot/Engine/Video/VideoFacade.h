@@ -1,6 +1,6 @@
 #pragma once
 #include "IVideoFacade.h"
-#include "../SceneManager/Object.h"
+#include "../../SDL2/include/SDL_ttf.h"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
@@ -28,9 +28,12 @@ public:
 	void loadImage(const int spriteID, const char* filename);
 	void renderCopy(Object& object);
 
+	void drawMessageAt(const Message& message, const Position& pos);
+
 	unordered_map<int, SDL_Texture*> textureMap;
 
 private:
 	SDL_Renderer* renderer;
 	SDL_Window* window;
+	TTF_Font* Sans;
 };

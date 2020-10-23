@@ -24,6 +24,8 @@
     <ClCompile Include="Engine\Video\VideoFacade.cpp" />
     <ClCompile Include="Engine\Sound\SoundFacade.cpp" />
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
+    <ClCompile Include="Engine\Fps\FrameData.cpp" />
+    <ClCompile Include="Engine\Structs\structs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Events\Event.h" />
@@ -73,6 +75,8 @@
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Engine\Events\AppTickEvent60.h" />
     <ClInclude Include="Engine\Events\AppTickEvent30.h" />
+    <ClInclude Include="Engine\Fps\FrameData.h" />
+    <ClInclude Include="Engine\Structs\structs.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

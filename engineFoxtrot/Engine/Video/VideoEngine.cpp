@@ -104,24 +104,43 @@ void VideoEngine::updateScreen()
 	}
 }
 
+void VideoEngine::drawFps() {
+	drawFps(FrameData::gameFps, X_ZERO, Y_ZERO, "Game Fps: ");
+	drawFps(FrameData::renderFps, X_ZERO, SDL_FPS_Y, "SDL Fps: ");
+}
+
+void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix = "fps: ") {
+	ostringstream stre;
+	stre << prefix << fps;
+	string str = stre.str();
+	if (shouldDrawFps) {
+		Message m(str, NO_RED, NO_BLUE, NO_GREEN);
+		Position p(xPos, yPos);
+		videoFacade->drawMessageAt(m, p);
+	}
+}
+
+void VideoEngine::toggleFps() {
+	shouldDrawFps = !shouldDrawFps;
+}
+
 /// @brief 
 /// Update function
 void VideoEngine::update(Object* object)
 {
-	frameData->startTimer();
 	clearScreen();
 	updateScreen();
 	drawScreen();
-	FrameData::renderFps = frameData->calculateAverageFps();
-	cout << FrameData::renderFps << " fps" << endl;
 }
 
 /// @brief Handle the tick update from the thread
 void VideoEngine::receiveTick(Event& tickEvent)
 {
 	//tickEvent = static_cast<AppTickEvent&>(tickEvent);
-
+	frameData->startTimer();
 	clearScreen();
 	updateScreen();
+	drawFps();
 	drawScreen();
+	FrameData::renderFps = frameData->calculateAverageFps();
 }

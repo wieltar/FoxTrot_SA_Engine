@@ -1,8 +1,10 @@
 #include "stdafx.h"
-#include "VideoFacade.h"
 
 #include <SDL.h>
 #include "../../SDL2/include/SDL_image.h"
+#include "../../SDL2/include/SDL_ttf.h"
+
+#include "VideoFacade.h"
 
 #undef main
 
@@ -25,6 +27,8 @@ VideoFacade::~VideoFacade()
 void VideoFacade::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	TTF_Init();
+	Sans = TTF_OpenFont("../../Assets/Fonts/Sans.ttf", 24);
 	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
@@ -98,4 +102,30 @@ void VideoFacade::renderCopy(Object& object)
 	destination.y = object.getPositionY() - object.getHeight();
 
 	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+}
+
+void VideoFacade::drawMessageAt(const Message& message, const Position& pos)
+{
+	bool exists = std::filesystem::exists("../Assets/Fonts/Sans.ttf"); // TODO dynamic fonts
+
+	if (exists) {
+
+		SDL_Color Color = { message.red, message.green, message.blue };
+		SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, message.text.c_str(), Color);
+		SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+		SDL_Rect Message_rect;
+		Message_rect.x = pos.xPos;
+		Message_rect.y = pos.yPos;
+		Message_rect.w = 150;
+		Message_rect.h = 35;
+
+		SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+
+		SDL_FreeSurface(surfaceMessage);
+		SDL_DestroyTexture(Message);
+	}
+	else {
+
+	}
 }

@@ -1,6 +1,15 @@
 #pragma once
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
+#include "./Structs/structs.h"
+
+#define NO_RED 0
+#define NO_BLUE 0
+#define NO_GREEN 0
+
+#define X_ZERO 0
+#define Y_ZERO 0
+#define SDL_FPS_Y 36
 
 #if(EXPORT)
 struct DLLEXPORT Sprite
@@ -35,6 +44,10 @@ public:
 
 	void updateScreen();
 
+	void drawFps();
+	void drawFps(double fps, int xPos, int yPos, const string& prefix);
+	void toggleFps();
+
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
 
@@ -43,5 +56,7 @@ public:
 	FrameData* frameData = nullptr;
 private:
 	IVideoFacade* videoFacade = new VideoFacade;
+
+	bool shouldDrawFps = true;
 
 };

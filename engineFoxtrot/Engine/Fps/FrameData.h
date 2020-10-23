@@ -1,9 +1,10 @@
 #pragma once
-#include <SDL.h>
 #include <iostream>
 
 #define FRAME_VALUES 100
 #define TIMESTEP 1.f
+
+#undef main
 
 using namespace std;
 
