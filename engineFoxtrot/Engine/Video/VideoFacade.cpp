@@ -28,7 +28,7 @@ void VideoFacade::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	TTF_Init();
-	Sans = TTF_OpenFont("../../Assets/Fonts/Sans.ttf", 24);
+	Sans = TTF_OpenFont("../Assets/Fonts/Sans.ttf", 24);
 	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
@@ -117,8 +117,8 @@ void VideoFacade::drawMessageAt(const Message& message, const Position& pos)
 		SDL_Rect Message_rect;
 		Message_rect.x = pos.xPos;
 		Message_rect.y = pos.yPos;
-		Message_rect.w = 150;
-		Message_rect.h = 35;
+		Message_rect.w = 100;
+		Message_rect.h = 20;
 
 		SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
 

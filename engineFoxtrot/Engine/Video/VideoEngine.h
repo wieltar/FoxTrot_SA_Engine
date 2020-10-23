@@ -57,6 +57,5 @@ public:
 private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
-	bool shouldDrawFps = true;
-
+	bool shouldDrawFps;
 };
