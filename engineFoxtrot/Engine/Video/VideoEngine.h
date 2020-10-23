@@ -7,7 +7,7 @@
 #define NO_BLUE 0
 #define NO_GREEN 0
 
-#define X_ZERO 0
+#define FPS_X 999
 #define Y_ZERO 0
 #define SDL_FPS_Y 36
 
@@ -46,7 +46,7 @@ public:
 
 	void drawFps();
 	void drawFps(double fps, int xPos, int yPos, const string& prefix);
-	void toggleFps();
+	void toggleFps(); //TODO Toggle via input/Command pattern
 
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
@@ -57,5 +57,5 @@ public:
 private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
-	bool shouldDrawFps;
+	bool shouldDrawFps = true; //TODO Should be set to false when toggle via button is added, see Todo above.
 };

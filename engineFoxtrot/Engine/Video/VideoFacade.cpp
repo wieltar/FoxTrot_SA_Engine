@@ -115,10 +115,13 @@ void VideoFacade::drawMessageAt(const Message& message, const Position& pos)
 		SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
 
 		SDL_Rect Message_rect;
-		Message_rect.x = pos.xPos;
+
+		int xPos = pos.xPos > WINDOW_WIDTH ? WINDOW_WIDTH - FPS_WIDTH : pos.xPos;
+
+		Message_rect.x = xPos;
 		Message_rect.y = pos.yPos;
-		Message_rect.w = 100;
-		Message_rect.h = 20;
+		Message_rect.w = FPS_WIDTH;
+		Message_rect.h = FPS_HEIGHT;
 
 		SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
 

@@ -105,8 +105,8 @@ void VideoEngine::updateScreen()
 }
 
 void VideoEngine::drawFps() {
-	drawFps(FrameData::gameFps, X_ZERO, Y_ZERO, "Game Fps: ");
-	drawFps(FrameData::renderFps, X_ZERO, SDL_FPS_Y, "SDL Fps: ");
+	drawFps(FrameData::gameFps, FPS_X, Y_ZERO, "Game Fps: ");
+	drawFps(FrameData::renderFps, FPS_X, SDL_FPS_Y, "SDL Fps: ");
 }
 
 void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix = "fps: ") {
