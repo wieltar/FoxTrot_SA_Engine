@@ -1,10 +1,9 @@
 #include "stdafx.h"
+#include "VideoFacade.h"
 
 #include <SDL.h>
 #include "../../SDL2/include/SDL_image.h"
 #include "../../SDL2/include/SDL_ttf.h"
-
-#include "VideoFacade.h"
 
 #undef main
 
@@ -104,7 +103,7 @@ void VideoFacade::renderCopy(Object& object)
 	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
 }
 
-void VideoFacade::drawMessageAt(const Message& message, const Position& pos)
+void VideoFacade::drawMessageAt(const Message message, const Position pos)
 {
 	bool exists = std::filesystem::exists("../Assets/Fonts/Sans.ttf"); // TODO dynamic fonts
 

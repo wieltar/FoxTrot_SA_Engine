@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "FrameData.h"
 
-using namespace std;
-
 double FrameData::gameFps = 0;
 double FrameData::renderFps = 0;
 

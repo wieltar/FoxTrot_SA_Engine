@@ -1,6 +1,5 @@
 #pragma once
 #include "IVideoFacade.h"
-#include "../../SDL2/include/SDL_ttf.h"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
@@ -11,6 +10,7 @@
 struct SDL_Renderer;
 struct SDL_Window;
 struct SDL_Texture;
+typedef struct _TTF_Font TTF_Font;
 
 #if(EXPORT)
 class DLLEXPORT VideoFacade : public IVideoFacade
@@ -31,7 +31,7 @@ public:
 	void loadImage(const int spriteID, const char* filename);
 	void renderCopy(Object& object);
 
-	void drawMessageAt(const Message& message, const Position& pos);
+	void drawMessageAt(const Message message, const Position pos);
 
 	unordered_map<int, SDL_Texture*> textureMap;
 
