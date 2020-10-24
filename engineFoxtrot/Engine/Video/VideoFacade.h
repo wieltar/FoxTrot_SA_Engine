@@ -34,7 +34,7 @@ public:
 	void loadImage(const int spriteID, const char* filename);
 	void renderCopy(Object& object);
 
-	void drawMessageAt(const Message message, const Position pos);
+	void drawMessageAt(const FpsMessage message, const TextPosition pos);
 
 	unordered_map<int, SDL_Texture*> textureMap;
 

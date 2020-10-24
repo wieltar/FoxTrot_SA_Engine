@@ -109,7 +109,7 @@ void VideoFacade::renderCopy(Object& object)
 /// A Message struct containing the message and the color of the message
 /// @param pos
 /// A Position struct containing the position to draw the message at
-void VideoFacade::drawMessageAt(const Message message, const Position pos)
+void VideoFacade::drawMessageAt(const FpsMessage message, const TextPosition pos)
 {
 	bool exists = std::filesystem::exists(FONT_PATH); // TODO dynamic fonts
 

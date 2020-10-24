@@ -2,10 +2,10 @@
 #if(EXPORT)
 class DLLEXPORT Message
 #else
-struct Message
+struct FpsMessage
 #endif
 {
-	Message(const string& _text, int _r, int _g, int _b)
+	FpsMessage(const string& _text, int _r, int _g, int _b)
 		: text{ _text }, red{ _r }, green{ _g }, blue{ _b }{}
 	const string& text;
 	int red, green, blue;
@@ -14,19 +14,19 @@ struct Message
 #if(EXPORT)
 class DLLEXPORT Position
 #else
-struct Position
+struct TextPosition
 #endif
 {
-	Position(int _x, int _y) : xPos{ _x }, yPos{ _y } {}
+	TextPosition(int _x, int _y) : xPos{ _x }, yPos{ _y } {}
 	int xPos, yPos;
 };
 
 #if(EXPORT)
 class DLLEXPORT Size
 #else
-struct Size
+struct TextSize
 #endif
 {
-	Size(int _w, int _h) : width{ _w }, height{ _h } {}
+	TextSize(int _w, int _h) : width{ _w }, height{ _h } {}
 	int width, height;
 };
