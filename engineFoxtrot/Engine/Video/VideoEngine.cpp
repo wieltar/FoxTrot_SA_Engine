@@ -107,8 +107,8 @@ void VideoEngine::updateScreen()
 /// @brief
 /// Calls the drawFps method with parameters for all calculated Fps types
 void VideoEngine::drawFps() {
-	drawFps(FrameData::gameFps, FPS_X_POSITION, Y_POSITION_TOP_OF_SCREEN, "Game Fps: ");
-	drawFps(FrameData::renderFps, FPS_X_POSITION, FPS_Y_POSITION_OFFSET, "SDL Fps: ");
+	//drawFps(FrameData::gameFps, FPS_X_POSITION, Y_POSITION_TOP_OF_SCREEN, "Game Fps: ");
+	drawFps(FrameData::renderFps, FPS_X_POSITION, FPS_Y_POSITION_OFFSET, "Fps: ");
 }
 
 /// @brief
