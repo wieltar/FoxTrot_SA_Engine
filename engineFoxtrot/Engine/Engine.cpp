@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include <Events\AppTickEvent30.h>
 #include <Events\AppTickEvent60.h>
+
 /// @brief 
 Engine::Engine()
 {
@@ -9,8 +10,7 @@ Engine::Engine()
 	videoEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
-	this->startTickThreads();
-	//sviEngine.initSDL();
+	//this->startTickThreads();
 }
 
 /// @brief 
@@ -133,6 +133,7 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
+	pollInput();
 	while (!stopThreadTick60){
 		frameData->startTimer();
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
@@ -161,11 +162,11 @@ void Engine::engineTick30()
 /// Start the 2 threads. 
 void Engine::startTickThreads()
 {
-	engineTick60Thread = new thread(&Engine::engineTick60, this);
-	engineTick30Thread = new thread(&Engine::engineTick30, this);
+	/*engineTick60Thread = new thread(&Engine::engineTick60, this);
+	engineTick60Thread->detach();*/
 
-	engineTick60Thread->detach();
-	engineTick30Thread->detach();
+	/*engineTick30Thread = new thread(&Engine::engineTick30, this);
+	engineTick30Thread->detach();*/
 }
 
 /// @brief
@@ -173,9 +174,25 @@ void Engine::startTickThreads()
 void Engine::stopTickThreads()
 {
 	//engineTick60Thread->join();
-	//engineTick30Thread->join();
-	stopThreadTick60 = true;
+	//stopThreadTick60 = true;
+
+	engineTick30Thread->join();
 	stopThreadTick30 = true;
 }
 
+/// @brief 
+/// Polls for input using SDL poll events
+void Engine::pollInput()
+{
+	inputEngine.updateInput();
+}
+
+/// @brief 
+/// Function to bind keys to commands.
+/// @param key KeyCode key
+/// @param command Command to be executed
+void Engine::configureInput(KeyCode key, Command* command)
+{
+	inputEngine.configure(key, command);
+}
 

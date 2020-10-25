@@ -31,7 +31,6 @@ void VideoFacade::initSDL()
 	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
-
 		printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
 		throw ERROR_CODE_SVIFACADE_CANT_CREATE_WINDOW;
 	}
@@ -72,7 +71,12 @@ void VideoFacade::clearScreen()
 /// Draws SDL screen
 void VideoFacade::drawScreen()
 {
-	SDL_RenderPresent(renderer);
+	try {
+		SDL_RenderPresent(renderer);
+	}
+	catch (...) {
+		std::cout << "ERR" << std::endl;
+	}
 }
 
 /// @brief 

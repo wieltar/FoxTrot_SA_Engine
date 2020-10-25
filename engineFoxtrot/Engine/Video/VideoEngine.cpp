@@ -13,19 +13,19 @@ VideoEngine::~VideoEngine()
 {
 }
 
-/// @brief 
-/// Inits SDL2 and creates the window
-void VideoEngine::initSDL()
-{
-	try
-	{
-		videoFacade->initSDL();
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
+///// @brief 
+///// Inits SDL2 and creates the window
+//void VideoEngine::initSDL()
+//{
+//	try
+//	{
+//		videoFacade->initSDL();
+//	}
+//	catch (int e)
+//	{
+//		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
+//	}
+//}
 
 /// @brief 
 /// Clears the SDL screen

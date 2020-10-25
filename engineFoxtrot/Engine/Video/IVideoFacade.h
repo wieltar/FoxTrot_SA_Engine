@@ -20,6 +20,7 @@ public:
 	virtual void renderCopy(Object& object) = 0;
 	virtual void drawMessageAt(const FpsMessage message, const TextPosition pos) = 0;
 
+
 private:
 
 };
