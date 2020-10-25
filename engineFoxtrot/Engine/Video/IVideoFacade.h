@@ -17,7 +17,6 @@ public:
 	virtual void drawScreen() = 0;
 	virtual void loadImage(const int spriteID, const char* filename) = 0;
 	virtual void renderCopy(Object& object) = 0;
-
 private:
 
 };

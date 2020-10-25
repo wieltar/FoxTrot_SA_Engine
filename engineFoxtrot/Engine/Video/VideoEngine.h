@@ -24,7 +24,7 @@ public:
 	VideoEngine();
 	~VideoEngine();
 
-	void initSDL();
+	//void initSDL();
 
 	void clearScreen();
 	void drawScreen();
@@ -41,5 +41,4 @@ public:
 
 private:
 	IVideoFacade* videoFacade = new VideoFacade;
-
 };
