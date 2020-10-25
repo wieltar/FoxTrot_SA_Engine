@@ -5,6 +5,7 @@
 
 VideoEngine::VideoEngine()
 {
+	frameData = new FrameData;
 	EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
 }
 
@@ -103,6 +104,40 @@ void VideoEngine::updateScreen()
 	}
 }
 
+/// @brief
+/// Calls the drawFps method with parameters for all calculated Fps types
+void VideoEngine::drawFps() {
+	//drawFps(FrameData::gameFps, FPS_X_POSITION, Y_POSITION_TOP_OF_SCREEN, "Game Fps: ");
+	drawFps(FrameData::renderFps, FPS_X_POSITION, FPS_Y_POSITION_OFFSET, "Fps: ");
+}
+
+/// @brief
+/// Gathers the given fps data, stores them in structs and passes the data to the videofacade if fps should be drawn
+/// @param fps
+/// The fps to show on screen
+/// @param xPos
+/// The X position of where the fps should be drawn
+/// @param yPos
+/// The Y position of where the fps should be drawn
+/// @param prefix
+/// The prefix message for the fps
+void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix = "fps: ") {
+	ostringstream stre;
+	stre << prefix << fps;
+	string str = stre.str();
+	if (shouldDrawFps) {
+		FpsMessage m(str, NO_RED, NO_BLUE, NO_GREEN);
+		TextPosition p(xPos, yPos);
+		videoFacade->drawMessageAt(m, p);
+	}
+}
+
+/// @brief
+/// Toggles fps visibility
+void VideoEngine::toggleFps() {
+	shouldDrawFps = !shouldDrawFps;
+}
+
 /// @brief 
 /// Update function
 void VideoEngine::update(Object* object)
@@ -116,8 +151,10 @@ void VideoEngine::update(Object* object)
 void VideoEngine::receiveTick(Event& tickEvent)
 {
 	//tickEvent = static_cast<AppTickEvent&>(tickEvent);
-
+	frameData->startTimer();
 	clearScreen();
 	updateScreen();
+	drawFps();
 	drawScreen();
+	FrameData::renderFps = frameData->calculateAverageFps();
 }

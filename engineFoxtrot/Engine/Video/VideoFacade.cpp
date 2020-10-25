@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "../../SDL2/include/SDL_image.h"
+#include "../../SDL2/include/SDL_ttf.h"
 
 #undef main
 
@@ -25,6 +26,8 @@ VideoFacade::~VideoFacade()
 void VideoFacade::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	TTF_Init();
+	Sans = TTF_OpenFont(FONT_PATH, FONT_POINT_SIZE);
 	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
@@ -102,4 +105,38 @@ void VideoFacade::renderCopy(Object& object)
 	destination.y = object.getPositionY() - object.getHeight();
 
 	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+}
+
+/// @brief
+/// Draws the given text message at the given position
+/// @param message
+/// A Message struct containing the message and the color of the message
+/// @param pos
+/// A Position struct containing the position to draw the message at
+void VideoFacade::drawMessageAt(const FpsMessage message, const TextPosition pos)
+{
+	bool exists = std::filesystem::exists(FONT_PATH); // TODO dynamic fonts
+
+	if (exists) {
+
+		SDL_Color Color = { message.red, message.green, message.blue };
+		SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, message.text.c_str(), Color);
+		SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+		SDL_Rect Message_rect;
+
+		// If the message doesn't fit the screen, make it fit the screen
+		int xPos = pos.xPos + MESSAGE_WIDTH > WINDOW_WIDTH ? WINDOW_WIDTH - MESSAGE_WIDTH : pos.xPos < 0 ? 0 : pos.xPos;
+		int yPos = pos.yPos + MESSAGE_HEIGHT > WINDOW_HEIGHT ? WINDOW_HEIGHT - MESSAGE_HEIGHT : pos.yPos < 0 ? 0 : pos.yPos;
+
+		Message_rect.x = xPos;
+		Message_rect.y = yPos;
+		Message_rect.w = MESSAGE_WIDTH;
+		Message_rect.h = MESSAGE_HEIGHT;
+
+		SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+
+		SDL_FreeSurface(surfaceMessage);
+		SDL_DestroyTexture(Message);
+	}
 }

@@ -23,12 +23,10 @@
     <ClCompile Include="Engine\Sound\SoundFacade.cpp" />
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
     <ClCompile Include="Engine\Input\Commands.cpp" />
+    <ClCompile Include="Engine\Fps\FrameData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Engine+ObjectModifiers.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SceneManager\Object.cpp">
@@ -38,9 +36,6 @@
       <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SceneManager\SceneManager.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SceneManager\SceneManager+ObjectModifiers.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp">
@@ -172,6 +167,7 @@
     <ClInclude Include="Engine\Sound\SoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
+    <ClInclude Include="Engine\Fps\FrameData.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

@@ -13,6 +13,7 @@
 #include "./Video/VideoEngine.h"
 #include "./Sound/SoundEngine.h"
 #include "./Input/InputEngine.h"
+#include "./Fps/FrameData.h"
 
 // TODO Weet niet of deze hier moet?!?!??! Is even voor de test
 #include "Events/Codes/KeyCodes.h"
@@ -63,6 +64,8 @@ private:
 	FileParser fileParser;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
+
+	FrameData* frameData = nullptr;
 
 	void loadSpriteArray(vector<Sprite> spriteVector);
 };
