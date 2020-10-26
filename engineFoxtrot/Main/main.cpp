@@ -77,18 +77,12 @@ void sceneTestSetup()
 	engine.configureInput(KEY_D, new MoveRight);
 	engine.configureInput(KEY_SPACE, new Jump);
 
-	engine.setCurrentScene(4);
+	engine.setCurrentScene(3);
 	engine.startTickThreads();
 }
 
 int main() {
 	sceneTestSetup();
-
-	this_thread::sleep_for(chrono::milliseconds(3000));
-	engine.setCurrentScene(4);
-	this_thread::sleep_for(chrono::milliseconds(3000));
-	engine.setCurrentScene(3);
-
 
 	bool gameRunning = true;
 	while (gameRunning)

@@ -16,7 +16,6 @@ public:
 	~SceneManager();
 
 	// Scene modifiers
-	void createNewScene(const int sceneID);
 	void setCurrentScene(const int sceneID);
 	Scene* getSceneWithID(const int sceneID);
 	void insertScene(Scene* scene);

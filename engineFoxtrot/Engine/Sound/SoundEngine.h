@@ -18,12 +18,6 @@ public:
 	SoundEngine();
 	~SoundEngine();
 
-	void receiveTick();
-
-	// Input Functions
-	void input();
-	void update(Object* object);
-
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
 	void PlayEffect(const string& identifier, const int volume);
@@ -48,8 +42,6 @@ public:
 
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
-
-	Scene ** pointerToCurrentScene = nullptr;
 
 	ISoundFacade* soundFacade = new SoundFacade;
 

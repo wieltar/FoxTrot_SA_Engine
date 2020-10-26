@@ -38,20 +38,6 @@ void SceneManager::insertScene(Scene* scene)
 }
 
 /// @brief 
-/// A function to create a new scene, if a scene already exists throw ERROR_CODE_SCENEMANAGER_SCENE_ALREADY_EXISTS
-/// @param sceneID 
-/// Identifier to a SceneID.
-void SceneManager::createNewScene(const int sceneID)
-{
-	if (DEBUG_SCENE_MANAGER)cout << "Trying to create scene with id: " << sceneID << endl;
-	if (checkIfSceneExists(sceneID))
-	{
-		throw ERROR_CODE_SCENEMANAGER_SCENE_ALREADY_EXISTS;
-	}
-	scenes.push_back(new Scene(sceneID));
-}
-
-/// @brief 
 /// A function to change a scene
 /// If a scene does not exists throw ERROR_CODE_SCENEMANAGER_SCENES_IS_EMPTY
 /// @param sceneID 

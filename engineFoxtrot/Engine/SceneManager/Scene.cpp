@@ -32,27 +32,6 @@ bool Scene::checkIfObjectExists(const int objectID)
 }
 
 /// @brief 
-/// This will switch 2 layers of their z index
-/// @param zIndex 
-/// Layer1 to be switched
-/// @param zIndex2 
-/// Layer2 to be switched
-void Scene::switchLayers(const int zIndex, const int zIndex2)
-{
-	if (layers.find(zIndex) != layers.end() && layers.find(zIndex2) != layers.end())
-	{
-		Layer* tempLayer;
-		tempLayer = layers[zIndex];
-		layers[zIndex] = layers[zIndex2];
-		layers[zIndex2] = tempLayer;
-	}
-	else
-	{
-		throw ERROR_CODE_SCENE_NO_LAYERS_TO_SWITCH;
-	}
-}
-
-/// @brief 
 /// Turns the layer on or off
 /// @param zIndex 
 /// The zindex of the layer to be toggled

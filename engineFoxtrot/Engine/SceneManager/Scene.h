@@ -17,10 +17,7 @@ public:
     ~Scene();
 
 	bool checkIfObjectExists(const int objectID);
-
-	void switchLayers(const int zIndex, const int zIndex2);
 	const bool toggleLayer(const int zIndex, bool render);
-
 	const void addNewObjectToLayer(const int zIndex,Object* object);
 
 	vector <Object*> getAllObjectsInScene();
