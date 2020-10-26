@@ -2,6 +2,7 @@
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
+#include "../SceneManager/Scene.h"
 
 #define NO_RED 0
 #define NO_BLUE 0

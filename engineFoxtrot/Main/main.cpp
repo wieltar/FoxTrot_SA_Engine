@@ -19,8 +19,6 @@ Engine engine;
 void sceneTestSetup()
 {
 
-	engine.createNewSceneWithSceneID(3);
-
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
 	engine.linkSpriteIDWithAssetPath(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-02.png");
@@ -79,12 +77,13 @@ void sceneTestSetup()
 	engine.configureInput(KEY_D, new MoveRight);
 	engine.configureInput(KEY_SPACE, new Jump);
 
-	engine.setCurrentScene(3);
+	engine.setCurrentScene(4);
 	engine.startTickThreads();
 }
 
 int main() {
 	sceneTestSetup();
+
 	this_thread::sleep_for(chrono::milliseconds(3000));
 	engine.setCurrentScene(4);
 	this_thread::sleep_for(chrono::milliseconds(3000));
