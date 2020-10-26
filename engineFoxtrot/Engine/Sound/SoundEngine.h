@@ -1,55 +1,29 @@
 #pragma once
-#include "../Events/EventManager.h"
-#include "SVI.h"
+
 #include "../SceneManager/Scene.h"
+#include "SoundFacade.h"
 
 #define MAX_VOLUME 128
 
-#if(EXPORT)
-struct DLLEXPORT Sprite
-#else
-struct Sprite
-#endif
-{
-	int spriteID = 0;
-	const char* filename = "";
-};
-
 /// @brief 
-/// SVIEngine is the SDL2 wrapper
+/// SoundEngine is the Sound SDL2 wrapper
 
 #if(EXPORT)
-class DLLEXPORT SVIEngine
+class DLLEXPORT SoundEngine
 #else
-class SVIEngine : public EventListener
+class SoundEngine
 #endif
 {
 public:
-	SVIEngine();
-	~SVIEngine();
-	
-	// Video Functions
+	SoundEngine();
+	~SoundEngine();
 
-	void initSDL();
-
-	void clearScreen();
-	void drawScreen();
-	void loadImage(const int spriteID, const char* filename);
-
-	//TODO delete this is only for POC
-	void renderCopy(const int spriteID, const int xPos, const int yPos, const int width, const int height, const int rotation);
-
-	void renderCopy(Object& object);
-
-	void updateScreen();
-
-	void update(Object* object) override;
 	void receiveTick();
 
 	// Input Functions
 	void input();
+	void update(Object* object);
 
-	// Sound functions
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
 	void PlayEffect(const string& identifier, const int volume);
@@ -77,9 +51,6 @@ public:
 
 	Scene ** pointerToCurrentScene = nullptr;
 
+	ISoundFacade* soundFacade = new SoundFacade;
 
-	//Set to private after testing!!!
-	EventManager* eventManager = nullptr;
-	ISVI * sviFacade = new SVI;
-private:
 };

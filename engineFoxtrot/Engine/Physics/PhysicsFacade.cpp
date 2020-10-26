@@ -118,7 +118,8 @@ void PhysicsFacade::update() {
 		object->setSpeed(body->GetAngularVelocity());
 		//TODO from radiant to radius/angle???
 		object->setRotation(body->GetAngle());
-	}
+	}	
+	//world.ClearForces();
 }
 
 /// @brief 
@@ -151,27 +152,9 @@ void PhysicsFacade::Jump(const int objectId)
 {
 	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(X_AXIS_STATIC, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
-};
 
-/// @brief 
-/// A function to add a linearImpulse to a object for jumping to the left
-/// @param objectId 
-/// Identifier for ObjectID
-void PhysicsFacade::JumpLeft(const int objectId)
-{
-	b2Body* body = findBody(objectId);
-	const PhysicsBody* ob = getPhysicsObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED * -1, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
-};
-
-/// @brief 
-/// A function to add a linearImpulse to a object for jumping to the right
-/// @param objectId 
-/// Identifier for ObjectID
-void PhysicsFacade::JumpRight(const int objectId)
-{
-	b2Body* body = findBody(objectId);
-	const PhysicsBody* ob = getPhysicsObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * INCREASE_JUMP_SPEED, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
+	b2Vec2 vel = body->GetLinearVelocity();
+	vel.y = -100;//upwards - don't change x velocity
+	body->SetLinearVelocity(vel);
+	//body->ApplyLinearImpulse(b2Vec2(0, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };

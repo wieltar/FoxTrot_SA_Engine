@@ -1,9 +1,34 @@
 #include "stdafx.h"
+#include <Events\AppTickEvent30.h>
+#include "Events/EventSingleton.h"
 #include "PhysicsEngine.h"
 
 /// @brief Constructor
 PhysicsEngine::PhysicsEngine()
 {
+	EventSingleton::get_instance().setEventCallback<AppTickEvent30>(BIND_EVENT_FN(PhysicsEngine::update30));
+	EventSingleton::get_instance().setEventCallback<ActionEvent>(BIND_EVENT_FN(PhysicsEngine::handleAction));
+}
+
+void PhysicsEngine::handleAction(Event& event) {
+	auto actionEvent = static_cast<ActionEvent&>(event);
+
+	auto direction = actionEvent.GetDirection();
+	auto objectId = actionEvent.GetObjectId();
+	switch (direction)
+	{
+		case Direction::UP:
+			this->physicsFacade->Jump(objectId);
+		break;
+		case Direction::LEFT:
+			this->physicsFacade->MoveLeft(objectId);
+			break;
+		case Direction::RIGHT:
+			this->physicsFacade->MoveRight(objectId);
+			break;
+		default:
+			break;
+	}
 }
 
 /// @brief Destructor
@@ -52,7 +77,7 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 
 /// @brief 
 /// Handle the tick given from the thread. 
-void PhysicsEngine::update30()
+void PhysicsEngine::update30(Event& tick30Event)
 {
 	if (currentSceneID != (*pointerToCurrentScene)->getSceneID())
 	{
@@ -61,47 +86,8 @@ void PhysicsEngine::update30()
 		registerObjectInCurrentVectorWithPhysicsEngine();
 		currentSceneID = (*pointerToCurrentScene)->getSceneID();
 	}
+	//tick30Event = (AppTickEvent30&)tick30Event;
 	physicsFacade->update();
-}
-
-/// @brief 
-/// A function to add a linearImpulse to a object for moving to left
-/// @param objectId 
-/// Identifier for ObjectID
-void PhysicsEngine::MoveLeft(const int objectId) {
-	this->physicsFacade->MoveLeft(objectId);
-}
-
-/// @brief 
-/// A function to add a linearImpulse to a object for moving to right 
-/// @param objectId 
-/// Identifier for ObjectID
-void PhysicsEngine::MoveRight(const int objectId) {
-	this->physicsFacade->MoveRight(objectId);
-}
-
-/// @brief 
-/// A function to add a linearImpulse to a object for jumping
-/// @param objectId 
-/// Identifier for ObjectID
-void PhysicsEngine::Jump(const int objectId) {
-	this->physicsFacade->Jump(objectId);
-}
-
-/// @brief 
-/// A function to add a linearImpulse to a object for jumping to the left
-/// @param objectId 
-/// Identifier for ObjectID
-void PhysicsEngine::JumpLeft(const int objectId) {
-	this->physicsFacade->JumpLeft(objectId);
-}
-
-/// @brief 
-/// A function to add a linearImpulse to a object for jumping to the right
-/// @param objectId 
-/// Identifier for ObjectID
-void PhysicsEngine::JumpRight(const int objectId) {
-	this->physicsFacade->JumpRight(objectId);
 }
 
 
