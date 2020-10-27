@@ -52,7 +52,7 @@ public:
 	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
 	void pollInput();
-	void configureInput(KeyCode key, Command* command);
+	void configureInput(KeyCode key, Command* command, bool runOnce = false);
 
 private:
 	PhysicsEngine physicsEngine;

@@ -19,10 +19,10 @@ public:
 	void toggleFps();
 	
 	bool fill(vector<Command*>& command_queue);
-	void configure(KeyCode key, Command* command);
+	void configure(KeyCode key, Command* command, bool runOnce);
 	void updateInput();
 private:
-	IInputFacade *inputFacade = new InputFacade();
+	IInputFacade *inputFacade = new InputFacade(this);
 
 	vector<Command*> commandQueue;
 };
