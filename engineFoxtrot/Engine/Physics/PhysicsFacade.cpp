@@ -1,11 +1,59 @@
 #include "stdafx.h"
 #include "PhysicsFacade.h"
+#include <set>
 
+set<b2Fixture*> fixturesUnderfoot;
+
+//revised implementation of contact listener
+class MyContactListener : public b2ContactListener
+{
+	PhysicsFacade* f;
+public:
+	MyContactListener(PhysicsFacade* _f) : f(_f) { }
+protected:
+	void BeginContact(b2Contact* contact) override {
+		//check if fixture A was the foot sensor
+		PhysicsBody* o1 = nullptr;
+		PhysicsBody* o2 = nullptr;
+		b2Fixture* fixtureOne = contact->GetFixtureA();
+		b2Fixture* fixtureTwo = contact->GetFixtureB();
+		for (const auto& value : f->bodies) {
+			auto fixtures = value.second->GetFixtureList();
+			for (b2Fixture* f = value.second->GetFixtureList(); f; f = f->GetNext())
+			{
+				if (fixtureOne == f)
+					o1 = value.first;
+				if (fixtureTwo == f) 
+					o2 = value.first;
+			}
+		}
+		if( o1 != nullptr && o2 != nullptr) std::cout << "ob1: " << o1->getSpriteID() << " | ob2:" << o2->getSpriteID() << std::endl;
+	}
+
+	void EndContact(b2Contact* contact) override {
+		//check if fixture A was the foot sensor
+		PhysicsBody* o1 = nullptr;
+		PhysicsBody* o2 = nullptr;
+		b2Fixture* fixtureOne = contact->GetFixtureA();
+		b2Fixture* fixtureTwo = contact->GetFixtureB();
+		for (const auto& value : f->bodies) {
+			auto fixtures = value.second->GetFixtureList();
+			for (b2Fixture* f = value.second->GetFixtureList(); f; f = f->GetNext())
+			{
+				if (fixtureOne == f)
+					o1 = value.first;
+				if (fixtureTwo == f)
+					o2 = value.first;
+			}
+		}
+		if (o1 != nullptr && o2 != nullptr) std::cout << "ob1: " << o1->getSpriteID() << " | ob2:" << o2->getSpriteID() << std::endl;
+	}
+};
 
 /// @brief Constructor
 PhysicsFacade::PhysicsFacade()
 {
-
+	world.SetContactListener(new MyContactListener(this));
 }
 
 /// @brief Destructor
@@ -51,11 +99,13 @@ b2PolygonShape createShape(const PhysicsBody& object) {
 /// A function for register a non static object
 /// @param Object 
 /// The object to register
-void PhysicsFacade::addStaticObject(const PhysicsBody* object) {
+void PhysicsFacade::addStaticObject(PhysicsBody* object) {
 	b2BodyDef groundBodyDef;
 	b2Body* body = world.CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox = createShape(*object);
 	body->CreateFixture(&groundBox, 0.0f);
+
+	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
 
 /// @brief 
@@ -77,14 +127,12 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	fixtureDef.restitution = object->getRestitution();
 
 	body->CreateFixture(&fixtureDef);
-	auto x = body->GetPosition();
 
 	float posY = object->getPositionY() - object->getHeight() / 2; //Box2d needs the middle position
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
 	bodyDef.linearVelocity = b2Vec2(0, object->getLineairVelocity());
 
-	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
 
@@ -103,6 +151,8 @@ b2Body* PhysicsFacade::findBody(const int objectId) {
 	throw PHYSICS_FACADE_BODY_DOESNT_EXIST;
 }
 
+//class member variable
+int m_jumpTimeout = 0;
 /// @brief 
 /// A function to update the position information of all objects
 /// The position is set to the bottom left
@@ -143,16 +193,35 @@ void PhysicsFacade::MoveRight(const int objectId)
 	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), Y_AXIS_STATIC), body->GetWorldCenter(), true);
 };
 
+//in Step()
+
 /// @brief 
 /// A function to add a linearImpulse to a object for jumping
 /// @param objectId 
 /// Identifier for ObjectID
 void PhysicsFacade::Jump(const int objectId)
 {
-	b2Body* body = findBody(objectId);
+  	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
 
 	b2Vec2 vel = body->GetLinearVelocity();
 	vel.y = ob->getJumpHeight() * -1;
 	body->SetLinearVelocity(vel);
 };
+
+//bool CanJumpNow()
+//{
+//	if (m_jumpTimeout > 0)
+//		return false;
+//	set<b2Fixture*>::iterator it = fixturesUnderfoot.begin();
+//	set<b2Fixture*>::iterator end = fixturesUnderfoot.end();
+//	while (it != end)
+//	{
+//		b2Fixture* fixture = *it;
+//		int userDataTag = (int)fixture->GetUserData();
+//		if (userDataTag == 0 || userDataTag == 1) //large box or static ground
+//			return true;
+//		++it;
+//	}
+//	return false;
+//}

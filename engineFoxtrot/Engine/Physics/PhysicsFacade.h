@@ -30,7 +30,7 @@ public:
 	PhysicsFacade();
 	~PhysicsFacade();
 
-	void addStaticObject(const PhysicsBody* object) override;
+	void addStaticObject(PhysicsBody* object) override;
 	void addNonStaticObject(PhysicsBody* object) override;
 
 	PhysicsBody* getPhysicsObject(const int objectId) override;
@@ -41,12 +41,12 @@ public:
 
 	void update() override;
 
+	map <PhysicsBody*, b2Body*> bodies;
 private:
 	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
 	const float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
 		
 	b2Body* findBody(const int objectId);
-	map <PhysicsBody*, b2Body*> bodies;
 
 };
 

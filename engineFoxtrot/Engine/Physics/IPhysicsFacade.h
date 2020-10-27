@@ -14,7 +14,7 @@ public:
 	IPhysicsFacade() {};
 	virtual ~IPhysicsFacade() {};
 
-	virtual void addStaticObject(const PhysicsBody* object) = 0;
+	virtual void addStaticObject(PhysicsBody* object) = 0;
 	virtual void addNonStaticObject(PhysicsBody* object) = 0;
 
 	virtual PhysicsBody* getPhysicsObject(const int objectId) = 0;
