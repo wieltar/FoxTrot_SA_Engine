@@ -49,6 +49,7 @@ void sceneTestSetup()
 	Object* object2 = new Object(2);
 	object2->setName("person");
 	object2->setHeight(80);
+	object2->setCanChangeAngle(false);
 	object2->setWidth(80);
 	object2->setPositionX(100);
 	object2->setPositionY(80);
@@ -89,7 +90,6 @@ int main() {
 		engine.pollInput();
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick30);
-
 
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}

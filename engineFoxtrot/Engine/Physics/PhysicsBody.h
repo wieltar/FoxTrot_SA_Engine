@@ -42,6 +42,12 @@ public:
 
 	void setJumpHeight(const float);
 	float getJumpHeight() const;
+
+	void setLineairVelocity(const float val);
+	float getLineairVelocity() const;
+
+	void setCanChangeAngle(const bool val);
+	bool getCanChangeAngle() const;
 private:
 	int objectID = 0;
 	float height = 0;
@@ -55,4 +61,6 @@ private:
 	float rotation = 0;
 	float jumpHeight = 0;
 	Object* object;
+	float lineairVelocity = 0;
+	bool canChangeAngle = false;
 };

@@ -66,4 +66,10 @@ void Object::setSpeed(const float val) { this->speed = val; }
 float Object::getJumpHeight() const {return this->jumpHeight;}
 void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
+float Object::getLineairVelocity() const { return this->lineairVelocity; }
+void Object::setLineairVelocity(const float val) { this->lineairVelocity = val; }
+
+bool Object::getCanChangeAngle() const { return this->canChangeAngle; }
+void Object::setCanChangeAngle(const bool val) { this->canChangeAngle = val; }
+
 bool Object::getChanged() const { return changed; }

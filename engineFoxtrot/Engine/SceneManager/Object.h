@@ -58,6 +58,12 @@ public:
 	void setJumpHeight(const float val);
 	float getJumpHeight() const;
 
+	void setLineairVelocity(const float val);
+	float getLineairVelocity() const;
+
+	void setCanChangeAngle(const bool val);
+	bool getCanChangeAngle() const;
+
 	bool getChanged() const;
 
 private:
@@ -79,4 +85,6 @@ private:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
+	bool canChangeAngle = false;
+	float lineairVelocity = 0;
 };

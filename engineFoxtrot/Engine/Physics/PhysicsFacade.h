@@ -2,6 +2,9 @@
 #include "IPhysicsFacade.h"
 #include "PhysicsBody.h"
 
+#define PI 3.14159
+#define TOTAL_DEGREES 180
+
 #define VELOCITY_ITERATIONS 8
 #define POSITION_ITERATIONS 3
 

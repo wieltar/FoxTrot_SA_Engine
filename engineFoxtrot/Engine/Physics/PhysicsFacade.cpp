@@ -82,6 +82,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	float posY = object->getPositionY() - object->getHeight() / 2; //Box2d needs the middle position
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
+	bodyDef.linearVelocity = b2Vec2(0, object->getLineairVelocity());
 
 	cout << "Pushing back obj: spriteid: " << object->getSpriteID() << endl;
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
@@ -114,10 +115,10 @@ void PhysicsFacade::update() {
 		PhysicsBody* object = it.first;
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
-		//TODO from radiant to radius/angle???
-		object->setRotation(body->GetAngle());
+
+		if(object->getCanChangeAngle()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
+		object->setLineairVelocity(body->GetLinearVelocity().y);
 	}	
-	//world.ClearForces();
 }
 
 /// @brief 
@@ -152,7 +153,6 @@ void PhysicsFacade::Jump(const int objectId)
 	const PhysicsBody* ob = getPhysicsObject(objectId);
 
 	b2Vec2 vel = body->GetLinearVelocity();
-	vel.y = -100;//upwards - don't change x velocity
+	vel.y = ob->getJumpHeight() * -1;
 	body->SetLinearVelocity(vel);
-	//body->ApplyLinearImpulse(b2Vec2(0, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };
