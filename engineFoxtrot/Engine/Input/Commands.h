@@ -37,4 +37,14 @@ public:
 	InputType get_input_type() { return STATE; }
 };
 
+/// @brief 
+class ToggleFps : public Command
+{
+public:
+	void execute(InputEngine* inputEngine);
+	InputType get_input_type() { return STATE; }
+};
+
+
+
 

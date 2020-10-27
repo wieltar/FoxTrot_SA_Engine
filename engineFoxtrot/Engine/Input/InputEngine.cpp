@@ -39,6 +39,11 @@ void InputEngine::jump()
 	cout << "Jump ding" << endl;
 }
 
+void InputEngine::toggleFps()
+{
+	EventSingleton::get_instance().dispatchEvent<FpsToggleEvent>((Event&)FpsToggleEvent());
+}
+
 /// @brief 
 /// Executes the events from polling
 void InputEngine::updateInput()

@@ -74,6 +74,7 @@ void sceneTestSetup()
 	engine.configureInput(KEY_A, new MoveLeft);
 	engine.configureInput(KEY_D, new MoveRight);
 	engine.configureInput(KEY_SPACE, new Jump);
+	engine.configureInput(KEY_F1, new ToggleFps);
 
 	engine.setCurrentScene(3);
 	engine.startTickThreads();

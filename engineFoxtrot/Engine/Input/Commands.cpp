@@ -25,3 +25,7 @@ void Jump::execute(InputEngine* inputEngine)
 {
 	inputEngine->jump();
 }
+
+void ToggleFps::execute(InputEngine* inputEngine) {
+	inputEngine->toggleFps();
+}

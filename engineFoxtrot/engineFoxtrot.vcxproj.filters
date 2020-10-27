@@ -175,6 +175,7 @@
     <ClInclude Include="Engine\Events\Sound\BaseSoundEvent.h" />
     <ClInclude Include="Engine\Events\Sound\OnMusicStopEvent.h" />
     <ClInclude Include="Engine\Events\Sound\SoundAttachEvent.h" />
+    <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
