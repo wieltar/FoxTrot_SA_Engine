@@ -6,20 +6,21 @@
 #include "Events/Codes/KeyCodes.h"
 
 typedef union SDL_Event;
-
-
+class InputEngine;
 
 /// @brief Facade for SDL input part
 class InputFacade : public IInputFacade
 {
 
 public:
-    InputFacade();
+    InputFacade(InputEngine* _inputEngine);
     ~InputFacade();
 
 	bool fill(vector<Command*>& command_queue);
-	void configure(KeyCode key, Command* command);
+	void configure(KeyCode key, Command* command, bool runOnce);
+
 private:
+	InputEngine *inputEngine;
 	bool input_mapping();
 	void dispatcher(std::vector<Command*>& command_queue);
 
@@ -33,6 +34,7 @@ private:
 	map <KeyCode, Action> action_map;
 
 	map <KeyCode, Command*> commands;
+	vector<KeyCode> handleOnce;
 
 	KeyCode eventToKeyCode(SDL_Event& event);
 };

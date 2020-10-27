@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "InputFacade.h"
 #include <SDL.h>
+#include "InputEngine.h"
 
 #undef main
 
 /// @brief 
-InputFacade::InputFacade()
+InputFacade::InputFacade(InputEngine *_inputEngine)
 {
-
+    inputEngine = _inputEngine;
 }
 
 /// @brief 
@@ -27,7 +28,10 @@ bool InputFacade::input_mapping()
         if (event.type == SDL_QUIT) return true;
         else if (event.type == SDL_KEYDOWN) {
             if (event.key.keysym.sym == SDLK_ESCAPE) return true;
-            keydown(event);
+            if (find(handleOnce.begin(), handleOnce.end(), eventToKeyCode(event)) != handleOnce.end())
+                commands[eventToKeyCode(event)]->execute(inputEngine);
+            else
+                keydown(event);
         }
         else if (event.type == SDL_KEYUP) {
             keyup(event);
@@ -41,7 +45,6 @@ bool InputFacade::input_mapping()
 /// @param event 
 void InputFacade::keydown(SDL_Event& event)
 {
-    //int SDLInt = (int)(event.key.keysym.scancode);
     if (state_map[eventToKeyCode(event)] == RELEASED) {
         action_map[eventToKeyCode(event)] = EXECUTE;
     }
@@ -86,8 +89,9 @@ KeyCode InputFacade::eventToKeyCode(SDL_Event& event)
 /// Configures the key to a command. 
 /// @param key 
 /// @param command 
-void InputFacade::configure(KeyCode key, Command* command)
+void InputFacade::configure(KeyCode key, Command* command, bool runOnce)
 {
+    if (runOnce) handleOnce.push_back(key);
     commands[key] = command;    // key points to newly assigned command
 }
 

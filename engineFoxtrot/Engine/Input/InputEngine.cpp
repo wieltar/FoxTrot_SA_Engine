@@ -67,8 +67,8 @@ bool InputEngine::fill(vector<Command*>& command_queue)
 /// @brief 
 /// @param key 
 /// @param command 
-void InputEngine::configure(KeyCode key, Command* command)
+void InputEngine::configure(KeyCode key, Command* command, bool runOnce)
 {
-	inputFacade->configure(key, command);
+	inputFacade->configure(key, command, runOnce);
 }
 
