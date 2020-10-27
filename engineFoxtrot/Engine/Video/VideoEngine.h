@@ -2,6 +2,7 @@
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
+#include "Events/Action/FpsToggleEvent.h";
 
 #define NO_RED 0
 #define NO_BLUE 0
@@ -46,7 +47,7 @@ public:
 
 	void drawFps();
 	void drawFps(double fps, int xPos, int yPos, const string& prefix);
-	void toggleFps(); //TODO Toggle via input/Command pattern
+	void toggleFps(Event& fpsEvent); //TODO Toggle via input/Command pattern
 
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);

@@ -1,6 +1,7 @@
 #pragma once
 #include "InputFacade.h"
 #include "../Events/Action/ActionEvent.h"
+#include "../Events/Action/FpsToggleEvent.h"
 #include "../Events/EventSingleton.h"
 
 /// @brief 
@@ -14,6 +15,8 @@ public:
 	void moveLeft();
 	void moveRight();
 	void jump();
+
+	void toggleFps();
 	
 	bool fill(vector<Command*>& command_queue);
 	void configure(KeyCode key, Command* command);
