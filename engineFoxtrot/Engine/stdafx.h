@@ -11,6 +11,10 @@
 #include <memory>
 #include <unordered_map>
 #include <map>
+#include <sstream>
+#include <functional>
+#include <type_traits>
+#include <filesystem>
 
 using namespace std;
 

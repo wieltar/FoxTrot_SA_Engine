@@ -20,17 +20,8 @@ public:
 	void setCurrentScene(const int sceneID);
 	Scene* getSceneWithID(const int sceneID);
 
-	// Object Modifiers
-	void moveObject(const int ObjectID,const int X, const int Y);
-	void moveObjectRelative(const int ObjectID, const int moveXby, const int moveYby);
-	void rotateObject(const int ObjectID, const int rotation);
-	void setObjectScale(const int ObjectID, const int scale);
-	void setObjectDirection(const int ObjectID, const int dir);
-	void setObjectStatic(const int ObjectID, const bool stat);
-
 	// Pointer
 	vector <Object*> pointerToCurrentObjectVector;
-
 protected:
 	
 

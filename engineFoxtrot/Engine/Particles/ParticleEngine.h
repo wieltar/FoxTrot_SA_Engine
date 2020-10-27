@@ -14,8 +14,8 @@ public:
 
 
 	void onUpdate();
-	void createCustomParticle(int amountOfParticles, float xPosition, float yPostion);
-	void createJumpParticle(float xPosition, float yPosition);
+	void createCustomParticle(int particleSpirteID, int amountOfParticles, float xPosition, float yPostion);
+	void createJumpParticle(int particleSpirteID, float xPosition, float yPosition);
 
 	vector<Particle*> getParticlesVector() { return particles; };
 

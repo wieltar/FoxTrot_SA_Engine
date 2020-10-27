@@ -12,14 +12,15 @@ public:
 	Particle();
 	~Particle();
 
-	void addParticle(int particleID, int width, int height, float xPosition, float yPosition, float xVelocity, float yVelocity);
+	void addParticle(int particleSpirteID, int width, int height, float xPosition, float yPosition, float xVelocity, float yVelocity);
 	void particleMove();
 
-	vector<ParticleStruct> particleList;
 
 	void createJumpParticle(float _xPosition, float _yPostion);
+	vector<ParticleStruct> getParticleList() const;
 	
 private:
+	vector<ParticleStruct> particleList;
 
 };
 

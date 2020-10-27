@@ -6,11 +6,17 @@
 #include "./SceneManager/SceneManager.h"
 #include "./FileParser/FileParser.h"
 #include "./Physics/PhysicsEngine.h"
-#include "./SVI(Temp)/SVIEngine.h"
 #include "./Particles/ParticleEngine.h"
 #include "./SceneManager/SceneManager.h"
-#include "./Events/EventManager.h"
-#include "./Events/EventListener.h"
+
+#include "Events/EventSingleton.h"
+#include "./Video/VideoEngine.h"
+#include "./Sound/SoundEngine.h"
+#include "./Input/InputEngine.h"
+#include "./Fps/FrameData.h"
+
+// TODO Weet niet of deze hier moet?!?!??! Is even voor de test
+#include "Events/Codes/KeyCodes.h"
 
 #define	ENGINE_TICK60	 17
 #define ENGINE_TICK30	 33
@@ -26,8 +32,6 @@ public:
 	Engine();
 	~Engine();
 
-	// TODO: Set to private after testing
-	
 //private:
 	void engineTick60();
 	void engineTick30();
@@ -48,29 +52,21 @@ public:
 	void createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat, const int speed, const int jumpHeight, const int density, const int friction, const int restitution);
 	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
-	void addEventListener(EventListener* listener, const EventType eventType);
-	EventManager eventManager;
-
-	// Object Modifiers
-	void moveObjectTo(const int objId, const int x, const int y);
-	void moveObjectBy(const int objId, const int withX, const int withY);
-	void setObjectRotation(const int objId, const int rotation);
-	void setObjectScale(const int objId, const int scale);
-	void setObjectDirection(const int objId, const int dir);
-	void setObjectStatic(const int objId, const bool stat);
-
+	void pollInput();
+	void configureInput(KeyCode key, Command* command);
 
 	//TODO make private
-
 	PhysicsEngine physicsEngine;
+	VideoEngine videoEngine;
 private:
-
-	SVIEngine sviEngine;
+	SoundEngine soundEngine;
+	InputEngine inputEngine;
 	FileParser fileParser;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 
+	FrameData* frameData = nullptr;
+
 	void loadSpriteArray(vector<Sprite> spriteVector);
 };
-
 #endif

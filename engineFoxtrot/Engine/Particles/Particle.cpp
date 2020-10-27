@@ -15,7 +15,7 @@ Particle::~Particle()
 void Particle::addParticle(int particleID, int width, int height, float xPosition, float yPosition, float xVelocity, float yVelocity)
 {
 	ParticleStruct particle;
-	particle.particleID = particleID;
+	particle.particleSpriteID = particleID;
 	particle.width = width;
 	particle.height = height;
 	particle.xPosition = xPosition;
@@ -33,13 +33,12 @@ void Particle::particleMove()
 	}
 }
 
-
 void Particle::createJumpParticle(float _xPosition, float _yPostion)
 {
 	for (int i = 0; i < 10; i++) {
 		ParticleStruct particle;
 
-		particle.particleID = 1;
+		particle.particleSpriteID = 1;
 		particle.height = 10;
 		particle.width = 10;
 		particle.xVelocity = (rand() % 100) / 5 / 10;
@@ -49,4 +48,9 @@ void Particle::createJumpParticle(float _xPosition, float _yPostion)
 
 		particleList.push_back(particle);
 	}
+}
+
+vector<ParticleStruct> Particle::getParticleList() const
+{
+	return particleList;
 }

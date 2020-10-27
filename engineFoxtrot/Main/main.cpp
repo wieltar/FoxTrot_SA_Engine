@@ -1,9 +1,10 @@
-#include "stdafx.h"
 #pragma once
+#include "stdafx.h"
 #include "../Engine/Engine.h"
+#include "../Engine/Events/AppTickEvent30.h"
+#include "../Engine/Events/AppTickEvent60.h"
 
-
-using namespace std;
+#include "Events/Window/WindowCloseEvent.h"
 
 // TODO engine.h & engine.cpp
 
@@ -17,9 +18,6 @@ Engine engine;
 
 void sceneTestSetup()
 {
-	engine.addEventListener(new PhysicsEngine, EventType::MOVE);
-	engine.eventManager.notify(EventType::MOVE, new Object(1));
-
 	engine.createNewSceneWithSceneID(3);
 
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
@@ -54,8 +52,8 @@ void sceneTestSetup()
 	object2->setWidth(80);
 	object2->setPositionX(100);
 	object2->setPositionY(80);
-	object2->setSpeed(100);
-	object2->setJumpHeight(400);
+	object2->setSpeed(100000);
+	object2->setJumpHeight(4000000);
 	object2->setDensity(10);
 	object2->setFriction(0);
 	object2->setRestitution(0);
@@ -70,6 +68,9 @@ void sceneTestSetup()
 	staticGround->setStatic(true);
 	engine.createObject(3, staticGround);
 
+	engine.configureInput(KEY_A, new MoveLeft);
+	engine.configureInput(KEY_D, new MoveRight);
+	engine.configureInput(KEY_SPACE, new Jump);
 
 	engine.setCurrentScene(3);
 	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
@@ -79,11 +80,18 @@ void sceneTestSetup()
 int main() {
 	sceneTestSetup();
 
-
 	bool gameRunning = true;
 	while (gameRunning)
 	{
+		AppTickEvent60 appTick;
+		AppTickEvent30 appTick30;
 
+		engine.pollInput();
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick30);
+
+
+		this_thread::sleep_for(chrono::milliseconds(10));
 	}
 
 	return 0;
