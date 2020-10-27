@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Object.h"
-
+#include "Layer.h"
 
 /// @brief 
 /// Scene Class
@@ -17,15 +17,18 @@ public:
     ~Scene();
 
 	bool checkIfObjectExists(const int objectID);
-	void addNewObject(Object* object);
-	void addNewObject(const int id, const int xPos, const int yPos, const int height, const int width, const int speed, const int jumpHeight, const int density, const int friction, const int restitution, const bool stat);
+	const bool toggleLayer(const int zIndex, bool render);
+	const void addNewObjectToLayer(const int zIndex,Object* object);
+
+	vector <Object*> getAllObjectsInScene();
+
 	Object * getObject(const int objectID);
 
 	int getSceneID() { return sceneID; }
-	vector<Object*> getPtrToObjects() { return objects; }
 
 private:
 	const int sceneID = 0;
-	vector<Object*> objects;
+	std::map<int, Layer*> layers;
+
 
 };

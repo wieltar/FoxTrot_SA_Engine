@@ -44,12 +44,11 @@ public:
 	thread *engineTick60Thread = nullptr;
 	thread *engineTick30Thread = nullptr;
 
+	//SceneManager calls
 	void setCurrentScene(const int sceneID);
-	void createNewSceneWithSceneID(const int sceneID);
+	void insertScene(Scene * scene);
 
-	void createObject(const int sceneID, Object* object);
-	void createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat);
-	void createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat, const int speed, const int jumpHeight, const int density, const int friction, const int restitution);
+	// Video calls
 	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
 	void pollInput();
