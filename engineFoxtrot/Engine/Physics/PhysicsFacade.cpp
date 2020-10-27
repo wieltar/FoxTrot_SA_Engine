@@ -1,59 +1,11 @@
 #include "stdafx.h"
 #include "PhysicsFacade.h"
-#include <set>
-
-set<b2Fixture*> fixturesUnderfoot;
-
-//revised implementation of contact listener
-class MyContactListener : public b2ContactListener
-{
-	PhysicsFacade* f;
-public:
-	MyContactListener(PhysicsFacade* _f) : f(_f) { }
-protected:
-	void BeginContact(b2Contact* contact) override {
-		//check if fixture A was the foot sensor
-		PhysicsBody* o1 = nullptr;
-		PhysicsBody* o2 = nullptr;
-		b2Fixture* fixtureOne = contact->GetFixtureA();
-		b2Fixture* fixtureTwo = contact->GetFixtureB();
-		for (const auto& value : f->bodies) {
-			auto fixtures = value.second->GetFixtureList();
-			for (b2Fixture* f = value.second->GetFixtureList(); f; f = f->GetNext())
-			{
-				if (fixtureOne == f)
-					o1 = value.first;
-				if (fixtureTwo == f) 
-					o2 = value.first;
-			}
-		}
-		if( o1 != nullptr && o2 != nullptr) std::cout << "ob1: " << o1->getSpriteID() << " | ob2:" << o2->getSpriteID() << std::endl;
-	}
-
-	void EndContact(b2Contact* contact) override {
-		//check if fixture A was the foot sensor
-		PhysicsBody* o1 = nullptr;
-		PhysicsBody* o2 = nullptr;
-		b2Fixture* fixtureOne = contact->GetFixtureA();
-		b2Fixture* fixtureTwo = contact->GetFixtureB();
-		for (const auto& value : f->bodies) {
-			auto fixtures = value.second->GetFixtureList();
-			for (b2Fixture* f = value.second->GetFixtureList(); f; f = f->GetNext())
-			{
-				if (fixtureOne == f)
-					o1 = value.first;
-				if (fixtureTwo == f)
-					o2 = value.first;
-			}
-		}
-		if (o1 != nullptr && o2 != nullptr) std::cout << "ob1: " << o1->getSpriteID() << " | ob2:" << o2->getSpriteID() << std::endl;
-	}
-};
+#include "./ContactListenerAdapter.h"
 
 /// @brief Constructor
 PhysicsFacade::PhysicsFacade()
 {
-	world.SetContactListener(new MyContactListener(this));
+	world.SetContactListener(new ContactListenerAdapter(this));
 }
 
 /// @brief Destructor
@@ -62,6 +14,23 @@ PhysicsFacade::~PhysicsFacade()
 	// When a world leaves scope or is deleted by calling delete on a pointer, all the memory reserved for bodies, fixtures, and joints is freed.This is done to improve performanceand make your life easier.
 	// However, you will need to nullify any body, fixture, or joint pointers you have because they will become invalid.
 	// https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html#autotoc_md113
+}
+
+CollisionStruct PhysicsFacade::getObjectsByFixture(b2Fixture* fixture1, b2Fixture* fixture2) {
+	CollisionStruct collisionStruct = CollisionStruct();
+	for (const auto& value : this->bodies) {
+		auto fixtures = value.second->GetFixtureList();
+		for (b2Fixture* f = value.second->GetFixtureList(); f; f = f->GetNext())
+		{
+			if (fixture1 == f)
+				collisionStruct.object1 = value.first;
+			else if (fixture2 == f)
+				collisionStruct.object2 = value.first;
+
+			if (collisionStruct.object1 != nullptr && collisionStruct.object2 != nullptr) break;
+		}
+	}
+	return collisionStruct;
 }
 
 /// @brief 
@@ -112,7 +81,7 @@ void PhysicsFacade::addStaticObject(PhysicsBody* object) {
 /// A function for register a non static object
 /// @param Object 
 /// The object to register
-void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
+void PhysicsFacade::addDynamicObject(PhysicsBody* object)
 {
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -131,7 +100,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	float posY = object->getPositionY() - object->getHeight() / 2; //Box2d needs the middle position
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
-	bodyDef.linearVelocity = b2Vec2(0, object->getLineairVelocity());
+	bodyDef.linearVelocity = b2Vec2(0, object->getLinearVelocity());
 
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
@@ -167,7 +136,7 @@ void PhysicsFacade::update() {
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
 
 		if(object->getCanChangeAngle()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
-		object->setLineairVelocity(body->GetLinearVelocity().y);
+		object->setLinearVelocity(body->GetLinearVelocity().y);
 	}	
 }
 
@@ -208,20 +177,3 @@ void PhysicsFacade::Jump(const int objectId)
 	vel.y = ob->getJumpHeight() * -1;
 	body->SetLinearVelocity(vel);
 };
-
-//bool CanJumpNow()
-//{
-//	if (m_jumpTimeout > 0)
-//		return false;
-//	set<b2Fixture*>::iterator it = fixturesUnderfoot.begin();
-//	set<b2Fixture*>::iterator end = fixturesUnderfoot.end();
-//	while (it != end)
-//	{
-//		b2Fixture* fixture = *it;
-//		int userDataTag = (int)fixture->GetUserData();
-//		if (userDataTag == 0 || userDataTag == 1) //large box or static ground
-//			return true;
-//		++it;
-//	}
-//	return false;
-//}

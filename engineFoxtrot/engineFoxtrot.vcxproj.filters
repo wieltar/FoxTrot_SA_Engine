@@ -168,6 +168,8 @@
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
+    <ClInclude Include="Engine\Events\Action\OnCollisionEvent.h" />
+    <ClInclude Include="Engine\Physics\ContactListenerAdapter.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

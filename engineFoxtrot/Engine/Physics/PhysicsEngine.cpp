@@ -70,7 +70,7 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 		}
 		else
 		{
-			physicsFacade->addNonStaticObject(phyObj);
+			physicsFacade->addDynamicObject(phyObj);
 		}
 	}
 }

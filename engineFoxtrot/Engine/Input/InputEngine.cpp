@@ -18,7 +18,6 @@ void InputEngine::moveLeft()
 {
 	// TODO Get object Id where player
 	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, 2));
-	cout << "Knop om naar links te lopen" << endl;
 }
 
 /// @brief 
@@ -27,7 +26,6 @@ void InputEngine::moveRight()
 {
 	// TODO Get object Id where player
 	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, 2));
-	cout << "Knop om naar rechts te lopen" << endl;
 }
 
 /// @brief 
@@ -36,7 +34,6 @@ void InputEngine::jump()
 {
 	// TODO Get object Id where player
 	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, 2));
-	cout << "Jump ding" << endl;
 }
 
 /// @brief 
