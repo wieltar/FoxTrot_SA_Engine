@@ -2,10 +2,10 @@
 
 class ContactListenerAdapter : public b2ContactListener
 {
+private:
 	PhysicsFacade* facade;
 public:
-	ContactListenerAdapter(PhysicsFacade* _facade) : facade(_facade) {
-	}
+	ContactListenerAdapter(PhysicsFacade* _facade) : facade(_facade) { }
 protected:
 	void BeginContact(b2Contact* contact) override {
 		b2Fixture* fixtureOne = contact->GetFixtureA();

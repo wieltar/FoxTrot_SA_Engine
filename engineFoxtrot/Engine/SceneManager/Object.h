@@ -67,10 +67,9 @@ public:
 	bool getChanged() const;
 
 private:
-
-	string name;
-
 	const int spriteID = 0;
+protected:
+	string name;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;

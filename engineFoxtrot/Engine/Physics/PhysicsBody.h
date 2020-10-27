@@ -48,7 +48,7 @@ public:
 
 	void setCanChangeAngle(const bool val);
 	bool getCanChangeAngle() const;
-private:
+protected:
 	int objectID = 0;
 	float height = 0;
 	float width = 0;

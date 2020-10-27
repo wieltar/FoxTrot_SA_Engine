@@ -6,8 +6,7 @@ PhysicsBody::PhysicsBody(Object* object) : objectID(object->getSpriteID()), heig
 	rotation(object->getRotation()), jumpHeight(object->getJumpHeight()), linearVelocity(object->getLinearVelocity()), canChangeAngle(object->getCanChangeAngle()) {
 	this->object = object;
 };
-PhysicsBody::~PhysicsBody() {
-}
+PhysicsBody::~PhysicsBody() { }
 
 int PhysicsBody::getSpriteID() const { return this->objectID; }
 
