@@ -19,11 +19,7 @@ typedef struct _Mix_Music Mix_Music;
 
 /// @brief 
 /// SoundFacade is de Sound SDL2 facade
-#if(EXPORT)
-class DLLEXPORT SoundFacade : public ISoundFacade
-#else
 class SoundFacade : public ISoundFacade
-#endif
 {
 public:
 	SoundFacade();

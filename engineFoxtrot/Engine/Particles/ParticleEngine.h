@@ -1,12 +1,7 @@
 #pragma once
 #include "ParticleFacade.h"
-
-
-#if(EXPORT)
-class DLLEXPORT ParticleEngine
-#else
-class ParticleEngine
-#endif
+#include "core.h"
+class API ParticleEngine
 {
 public:
 	ParticleEngine();

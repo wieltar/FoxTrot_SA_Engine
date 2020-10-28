@@ -1,15 +1,9 @@
 #pragma once
 #include "Scene.h"
 
-
-
 /// @brief 
 /// Contains all scenes. Manages all scenes and objects.
-#if(EXPORT)
-class DLLEXPORT SceneManager
-#else
-class SceneManager
-#endif
+class API SceneManager
 {
 public:
 	SceneManager();

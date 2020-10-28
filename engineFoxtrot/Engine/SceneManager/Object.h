@@ -1,13 +1,8 @@
 #pragma once
-
+#include "core.h"
 /// @brief 
 /// Object class. Object is linked with a sprite id in SVI. 
-
-#if(EXPORT)
-class DLLEXPORT Object
-#else
-class Object
-#endif
+class API Object
 {
 public:
 	Object(const int id);

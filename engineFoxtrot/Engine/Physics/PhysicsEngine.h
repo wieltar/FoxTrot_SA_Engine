@@ -5,12 +5,7 @@
 #include "PhysicsFacade.h"
 #include "../SceneManager/Scene.h"
 
-
-#if(EXPORT)
-class DLLEXPORT PhysicsEngine : public EventListener
-#else
-class PhysicsEngine
-#endif
+class API PhysicsEngine
 {
 public:
 	PhysicsEngine();

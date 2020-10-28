@@ -1,18 +1,13 @@
 #pragma once
 
-#include "../SceneManager/Scene.h"
+#include "SceneManager/Scene.h"
 #include "SoundFacade.h"
 
 #define MAX_VOLUME 128
 
 /// @brief 
 /// SoundEngine is the Sound SDL2 wrapper
-
-#if(EXPORT)
-class DLLEXPORT SoundEngine
-#else
-class SoundEngine
-#endif
+class API SoundEngine
 {
 public:
 	SoundEngine();

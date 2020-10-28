@@ -2,7 +2,7 @@
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
-#include "../SceneManager/Scene.h"
+#include "SceneManager/Scene.h"
 
 #define NO_RED 0
 #define NO_BLUE 0
@@ -12,11 +12,7 @@
 #define Y_POSITION_TOP_OF_SCREEN 0
 #define FPS_Y_POSITION_OFFSET 36
 
-#if(EXPORT)
-struct DLLEXPORT Sprite
-#else
-struct Sprite
-#endif
+struct API Sprite
 {
 	int spriteID = 0;
 	const char* filename = "";
@@ -25,11 +21,7 @@ struct Sprite
 /// @brief 
 /// Video is the SDL2 wrapper
 
-#if(EXPORT)
-class DLLEXPORT VideoEngine
-#else
-class VideoEngine
-#endif
+class API VideoEngine
 {
 public:
 	VideoEngine();

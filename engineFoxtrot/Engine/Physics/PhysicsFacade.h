@@ -17,11 +17,7 @@
 
 /// @brief 
 /// PhysicsFacade class. Class for update physics off objects
-#if(EXPORT)
-class DLLEXPORT PhysicsFacade : public IPhysicsFacade
-#else
 class PhysicsFacade : public IPhysicsFacade
-#endif
 {
 public:
 	PhysicsFacade();

@@ -1,8 +1,8 @@
 #pragma once
-
+#include "core.h"
 /// @brief 
 /// Type of button input
-enum InputType
+enum API InputType
 {
     ACTION,
     STATE,
@@ -11,7 +11,7 @@ enum InputType
 
 /// @brief 
 /// Type of button action
-enum Action
+enum API Action
 {
     EXECUTE = true,
     STOP = false
@@ -19,7 +19,7 @@ enum Action
 
 /// @brief 
 /// Button state
-enum State
+enum API State
 {
     PRESSED = true,
     RELEASED = false

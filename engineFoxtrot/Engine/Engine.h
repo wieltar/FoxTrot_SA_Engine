@@ -14,6 +14,7 @@
 #include "./Sound/SoundEngine.h"
 #include "./Input/InputEngine.h"
 #include "./Fps/FrameData.h"
+#include "core.h"
 
 // TODO Weet niet of deze hier moet?!?!??! Is even voor de test
 #include "Events/Codes/KeyCodes.h"
@@ -22,11 +23,7 @@
 #define ENGINE_TICK30	 33
 
 /// @brief 
-#if(EXPORT)
-class DLLEXPORT Engine
-#else
-class Engine
-#endif
+class API Engine
 {
 public:
 	Engine();

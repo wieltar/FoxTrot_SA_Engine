@@ -1,13 +1,9 @@
 #pragma once
-
+#include "core.h"
 #define FRAME_VALUES 100
 #define TIMESTEP 1.f
 
-#if(EXPORT)
-class DLLEXPORT FrameData
-#else
-class FrameData
-#endif
+class API FrameData
 {
 public:
 	FrameData();

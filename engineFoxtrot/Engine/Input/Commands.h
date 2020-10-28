@@ -4,7 +4,7 @@
 class InputEngine;
 
 /// @brief Virtual class for all commands
-class Command
+class API Command
 {
 public:
 	Command() {};
