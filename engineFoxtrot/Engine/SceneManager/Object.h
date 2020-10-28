@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 #include "core.h"
 /// @brief 
 /// Object class. Object is linked with a sprite id in SVI. 
@@ -9,7 +10,7 @@ public:
 	Object(const int id, const float xPos, const float yPos, const float height, const float width);
 	~Object();
 
-	void setName(const string);
+	void setName(const string val);
 	string getName() const;
 
 	int getSpriteID() const;

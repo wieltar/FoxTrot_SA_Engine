@@ -1,4 +1,6 @@
 #pragma once
+#include "Events/AppTickEvent30.h"
+#include "Events/AppTickEvent60.h"
 // ----- engine core ----------------------
 #include "Engine/General/ErrorCodes.h"
 // ----- individual engines ----------------

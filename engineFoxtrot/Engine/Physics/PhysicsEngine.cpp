@@ -1,11 +1,13 @@
 #include "stdafx.h"
 #include <Events\AppTickEvent30.h>
 #include "Events/EventSingleton.h"
+#include "PhysicsFacade.h"
 #include "PhysicsEngine.h"
 
 /// @brief Constructor
 PhysicsEngine::PhysicsEngine()
 {
+	physicsFacade = new PhysicsFacade();
 	EventSingleton::get_instance().setEventCallback<AppTickEvent30>(BIND_EVENT_FN(PhysicsEngine::update30));
 	EventSingleton::get_instance().setEventCallback<ActionEvent>(BIND_EVENT_FN(PhysicsEngine::handleAction));
 }
