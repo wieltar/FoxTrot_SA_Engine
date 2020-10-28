@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;BUILD_WINDOWS;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)engineFoxtrot;$(SolutionDir)engineFoxtrot\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)engineFoxtrot;$(SolutionDir)engineFoxtrot\Engine;$(SolutionDir)engineFoxtrot\Engine\SceneManager;$(SolutionDir)engineFoxtrot\Engine\Input;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Glitch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\engineFoxtrot\engineFoxtrot.vcxproj">
+      <Project>{f1d99aff-84ec-467c-a5e9-d5ba5bb76acd}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
