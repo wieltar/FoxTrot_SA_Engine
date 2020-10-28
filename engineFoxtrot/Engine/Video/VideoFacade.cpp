@@ -118,8 +118,10 @@ void VideoFacade::renderCopy(Object& object)
 	SDL_Rect rect{ leftpos, 0, sprite->getWidth(), sprite->getHeight() };
 
 	//update collision box 
-	object.setWidth(sprite->getWidth());
-	object.setHeight(sprite->getHeight());
+	if (!object.getScalable()) {
+		object.setWidth(sprite->getWidth());
+		object.setHeight(sprite->getHeight());
+	}
 
 	//generate stratch of image
 	SDL_Rect destination;

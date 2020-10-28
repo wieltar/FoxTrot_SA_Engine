@@ -60,6 +60,9 @@ bool Object::getChanged() const { return changed; }
 
 SpriteObject* Object::GetCurrentSprite() { return currentSprite; }
 
+bool Object::getScalable() const { return this->scalable; }
+void Object::setScalable(const bool val) { this->scalable = val; }
+
 /// @brief
 /// register a new state or overwrite a existing state
 /// register the spriteID

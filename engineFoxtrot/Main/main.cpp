@@ -78,6 +78,7 @@ void sceneTestSetup()
 	testScene->addNewObjectToLayer(1, object2);
 
 	Object* staticGround = new Object(101);
+	staticGround->setScalable(true);
 	staticGround->setWidth(500); // width
 	staticGround->setHeight(10);// height
 	staticGround->setPositionX(20); // x 20 left down

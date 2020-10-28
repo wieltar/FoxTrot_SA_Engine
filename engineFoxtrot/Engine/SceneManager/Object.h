@@ -63,8 +63,12 @@ public:
 
 	void registerSprite(std::string state, const SpriteObject spriteObject);
 	void changeToState(const std::string state);
+
+	void setScalable(const bool val);
+	bool getScalable() const;
 private:
 	const int objectId = 0;
+	bool scalable = false;
 	SpriteObject* currentSprite;
 	std::string name;
 	float positionX = 0;
