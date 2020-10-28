@@ -18,6 +18,9 @@ public:
 	SpriteObject* GetCurrentSprite();
 	int getObjectId() const;
 
+	void setName(const std::string);
+	std::string getName() const;
+
 	void setPositionX(const float);
 	float getPositionX() const;
 
@@ -64,6 +67,7 @@ public:
 private:
 	const int objectId = 0;
 	SpriteObject* currentSprite;
+	std::string name;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;

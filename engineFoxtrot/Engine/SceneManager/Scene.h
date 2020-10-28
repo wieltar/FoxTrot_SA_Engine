@@ -17,7 +17,6 @@ public:
     ~Scene();
 
 	bool checkIfObjectExists(const int objectID);
-	/void addNewObject(Object* object);
 	const bool toggleLayer(const int zIndex, bool render);
 	const void addNewObjectToLayer(const int zIndex,Object* object);
 

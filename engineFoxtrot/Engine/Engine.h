@@ -48,19 +48,13 @@ public:
 	void setCurrentScene(const int sceneID);
 	void insertScene(Scene * scene);
 
-	void createObject(const int sceneID, Object* object);
-
-	void addEventListener(EventListener* listener, const EventType eventType);
-
-	void loadSprite(SpriteObject spriteObject, const char* filename);
-
 	// Video calls
-	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
+	void loadSprite(SpriteObject spriteObject);
 
+	//Input calls
 	void pollInput();
 	void configureInput(KeyCode key, Command* command);
 
-	EventManager eventManager;
 	//TODO make private
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
@@ -73,6 +67,6 @@ private:
 
 	FrameData* frameData = nullptr;
 
-	void loadSpriteArray(vector<Sprite> spriteVector);
+	void loadSpriteArray(vector<SpriteObject> spriteVector);
 };
 #endif

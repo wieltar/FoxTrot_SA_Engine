@@ -82,11 +82,11 @@ void VideoFacade::drawScreen()
 /// Load a animated sprite into the texturemap map
 /// @param spriteObject 
 /// @param filename
-void VideoFacade::loadSprite(SpriteObject spriteObject, const char* filename) {
+void VideoFacade::loadImage(SpriteObject spriteObject) {
 	if (spriteObject.getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
-	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+	if (spriteObject.getfileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
 
-	SDL_Surface* surface = IMG_Load(filename);
+	SDL_Surface* surface = IMG_Load(spriteObject.getfileName());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 	textureMap[spriteObject.getTextureID()] = texture;

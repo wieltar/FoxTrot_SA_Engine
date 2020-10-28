@@ -45,30 +45,14 @@ void Engine::insertScene(Scene* scene)
 		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
 	}
 }
-
-/// @brief 
-/// @param spriteID 
-/// @param assetPath 
-void Engine::linkSpriteIDWithAssetPath(const int spriteID, const char * assetPath)
- {
-	try
-	{
-		videoEngine.loadImage(spriteID, assetPath);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-
 /// @brief 
 /// @param spritesVector 
-void Engine::loadSpriteArray(vector<Sprite> spritesVector)
+void Engine::loadSpriteArray(vector<SpriteObject> spritesVector)
 {
 	try
 	{
 		for (auto sprite : spritesVector) {
-			videoEngine.loadImage(sprite.spriteID, sprite.filename);
+			videoEngine.loadImage(sprite);
 		}
 	}
 	catch (int e)
@@ -150,10 +134,13 @@ void Engine::configureInput(KeyCode key, Command* command)
 /// Load a animated sprite (PNG) into the AnimatedTexture map
 /// @param spriteObject 
 /// @param filename
-void Engine::loadSprite(SpriteObject spriteObject, const char* filename) {
+void Engine::loadSprite(SpriteObject spriteObject) {
 	struct stat buffer;
-	bool exists = (stat(filename, &buffer) == 0);
+	bool exists = (stat(spriteObject.getfileName(), &buffer) == 0);
 	if (!exists)
 		throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
-	sviEngine.loadSprite(spriteObject, filename);
+	if (spriteObject.getTextureID() == NULL) {
+
+	}
+	videoEngine.loadImage(spriteObject);
 }

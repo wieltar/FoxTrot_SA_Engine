@@ -62,7 +62,7 @@ void PhysicsEngine::registerObjectInCurrentVectorWithPhysicsEngine()
 	for (Object* object : (*pointerToCurrentScene)->getAllObjectsInScene())
 	{
 		PhysicsBody * phyObj = new PhysicsBody(object);
-		if (DEBUG_PHYSICS_ENGINE)cout << "Registering object : " << phyObj->getSpriteID() << endl;
+		if (DEBUG_PHYSICS_ENGINE)cout << "Registering object : " << phyObj->getObjectId() << endl;
 
 		if (object->getStatic())
 		{

@@ -13,20 +13,6 @@ VideoEngine::~VideoEngine()
 {
 }
 
-///// @brief 
-///// Inits SDL2 and creates the window
-//void VideoEngine::initSDL()
-//{
-//	try
-//	{
-//		videoFacade->initSDL();
-//	}
-//	catch (int e)
-//	{
-//		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-//	}
-//}
-
 /// @brief 
 /// Clears the SDL screen
 void VideoEngine::clearScreen()
@@ -58,11 +44,11 @@ void VideoEngine::drawScreen()
 /// @brief Loads the PNG files AKA sprites
 /// @param spriteID 
 /// @param filename
-void VideoEngine::loadImage(int spriteID, const char* filename)
+void VideoEngine::loadImage(const SpriteObject spriteObject)
 {
 	try
 	{
-		videoFacade->loadImage(spriteID, filename);
+		videoFacade->loadImage(spriteObject);
 	}
 	catch (int e)
 	{

@@ -31,14 +31,15 @@ public:
 
 	void clearScreen();
 	void drawScreen();
-	void loadImage(const int spriteID, const char* filename);
+	void loadImage(const SpriteObject spriteObject);
 	void renderCopy(Object& object);
 
 	void drawMessageAt(const FpsMessage message, const TextPosition pos);
 
-	unordered_map<int, SDL_Texture*> textureMap;
 
 private:
+private:
+	unordered_map<int, SDL_Texture*> textureMap;
 	SDL_Renderer* renderer;
 	SDL_Window* window;
 	TTF_Font* Sans;
