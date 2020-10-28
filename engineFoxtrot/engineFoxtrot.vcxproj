@@ -164,6 +164,8 @@
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Input\InputFacade.cpp" />
     <ClCompile Include="Engine\Input\InputEngine.cpp" />
+    <ClCompile Include="Engine\ParticlesTest\ParticleExample.cpp" />
+    <ClCompile Include="Engine\ParticlesTest\ParticleSystem.cpp" />
     <ClCompile Include="Engine\Particles\Particle.cpp" />
     <ClCompile Include="Engine\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -217,6 +219,8 @@
     <ClInclude Include="Engine\Input\InputConstants.h" />
     <ClInclude Include="Engine\Input\InputFacade.h" />
     <ClInclude Include="Engine\Input\InputEngine.h" />
+    <ClInclude Include="Engine\ParticlesTest\ParticleExample.h" />
+    <ClInclude Include="Engine\ParticlesTest\ParticleSystem.h" />
     <ClInclude Include="Engine\Particles\Particle.h" />
     <ClInclude Include="Engine\Particles\ParticleStruct.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
@@ -240,6 +244,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
+    <Text Include="Engine\ParticlesTest\Cocos2dx-particles.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Engine\ParticlesTest\fire.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
