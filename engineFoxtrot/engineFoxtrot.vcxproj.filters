@@ -9,7 +9,6 @@
     <ClCompile Include="Engine\Input\InputEngine.cpp" />
     <ClCompile Include="Engine\stdafx.cpp" />
     <ClCompile Include="Engine\Events\EventSingleton.cpp" />
-    <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
     <ClCompile Include="Engine\Particles\ParticleFacade.cpp" />
@@ -56,9 +55,6 @@
     </ClCompile>
     <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp">
       <Filter>Header Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\main.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\FileParser\FileParser.cpp">
       <Filter>Header Files\FileIO</Filter>
@@ -169,10 +165,10 @@
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
     <ClInclude Include="Engine\SceneManager\Layer.h" />
-    <ClInclude Include="Engine\core.h" />
     <ClInclude Include="Engine\Structs\fpsStructs.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="api.h" />
+    <ClInclude Include="Engine\core.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

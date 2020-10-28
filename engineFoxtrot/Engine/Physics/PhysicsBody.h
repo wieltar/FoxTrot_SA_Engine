@@ -1,6 +1,4 @@
 #pragma once
-
-#include "box2d/box2d.h"
 #include "../SceneManager/Object.h"
 
 class PhysicsBody

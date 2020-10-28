@@ -1,14 +1,13 @@
 #pragma once
-// ----- engine core --------------------
+// ----- engine core ----------------------
 #include "Engine/General/ErrorCodes.h"
-#include "Engine/Fps/FrameData.h"
-#include "Engine/Events/EventSingleton.h"
-// ----- individual engines --------------------
+// ----- individual engines ----------------
 #include "Engine/Particles/ParticleEngine.h"
 #include "Engine/Physics/PhysicsEngine.h"
 #include "Engine/Video/VideoEngine.h"
 #include "Engine/Sound/SoundEngine.h"
 #include "Engine/Input/InputEngine.h"
+// ----- commands -------------------------
 #include "Engine/Input/Commands.h"
 // ----- scene manager --------------------
 #include "Engine/SceneManager/Layer.h"

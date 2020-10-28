@@ -1,6 +1,5 @@
 #pragma once
 #include "InputConstants.h"
-
 class InputEngine;
 
 /// @brief Virtual class for all commands
