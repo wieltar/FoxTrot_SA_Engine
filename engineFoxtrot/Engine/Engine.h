@@ -55,6 +55,7 @@ public:
 	void pollInput();
 	void configureInput(KeyCode key, Command* command);
 
+	void pollEvents();
 	//TODO make private
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;

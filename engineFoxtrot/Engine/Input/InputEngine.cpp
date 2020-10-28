@@ -42,10 +42,14 @@ void InputEngine::updateInput()
 {
 	this->fill(commandQueue);
 
-	while (!commandQueue.empty()) {
-		commandQueue.back()->execute(this);
-		commandQueue.pop_back();
-	}
+	//while (!commandQueue.empty()) {
+	//	commandQueue.back()->execute(this);
+	//	commandQueue.pop_back();
+	//}
+}
+
+void InputEngine::pollEvents() {
+	inputFacade->pollEvents();
 }
 
 /// @brief 

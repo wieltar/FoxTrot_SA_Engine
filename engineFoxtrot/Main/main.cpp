@@ -16,6 +16,60 @@
 
 Engine engine;
 
+class Player : public Object {
+private:
+	bool canJump = false;
+public:
+	Player() : Object(2) {
+		this->setName("person");
+		this->setHeight(80);
+		this->setCanChangeAngle(false);
+		this->setWidth(80);
+		this->setPositionX(100);
+		this->setPositionY(80);
+		this->setSpeed(100000);
+		this->setJumpHeight(4000000);
+		this->setDensity(10);
+		this->setFriction(0);
+		this->setRestitution(0);
+		this->setStatic(false);
+
+		EventSingleton::get_instance().setEventCallback<OnCollisionBeginEvent>(BIND_EVENT_FN(Player::onCollisionBeginEvent));
+		EventSingleton::get_instance().setEventCallback<OnCollisionEndEvent>(BIND_EVENT_FN(Player::onCollisionEndEvent));
+		EventSingleton::get_instance().setEventCallback<KeyPressedEvent>(BIND_EVENT_FN(Player::onKeyPressed));
+	}
+
+	void onCollisionBeginEvent(Event& event) {
+		auto collisionEvent = static_cast<OnCollisionBeginEvent&>(event);
+		this->canJump = true;
+	}
+	void onCollisionEndEvent(Event& event) {
+		auto collisionEvent = static_cast<OnCollisionEndEvent&>(event);
+		this->canJump = false;
+	}
+
+	void onKeyPressed(Event& event) {
+		auto keyPressedEvent = static_cast<KeyPressedEvent&>(event);
+
+		switch (keyPressedEvent.GetKeyCode())
+		{
+		case KeyCode::KEY_A:
+			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, 2));
+			break;
+		case KeyCode::KEY_D:
+			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, 2));
+			break;
+		case KeyCode::KEY_SPACE:
+			if (canJump) {
+				EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, 2));
+			}
+			break;
+		default:
+			break;
+		}
+	}
+};
+
 void sceneTestSetup()
 {
 	engine.createNewSceneWithSceneID(3);
@@ -46,19 +100,7 @@ void sceneTestSetup()
 	object->setStatic(false);
 	engine.createObject(3, object);
 
-	Object* object2 = new Object(2);
-	object2->setName("person");
-	object2->setHeight(80);
-	object2->setCanChangeAngle(false);
-	object2->setWidth(80);
-	object2->setPositionX(100);
-	object2->setPositionY(80);
-	object2->setSpeed(100000);
-	object2->setJumpHeight(4000000);
-	object2->setDensity(10);
-	object2->setFriction(0);
-	object2->setRestitution(0);
-	object2->setStatic(false);
+	Object* object2 = new Player();
 	engine.createObject(3, object2);
 
 	Object* staticGround = new Object(101);
@@ -87,7 +129,7 @@ int main() {
 		AppTickEvent60 appTick;
 		AppTickEvent30 appTick30;
 
-		engine.pollInput();
+		engine.pollEvents();
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick30);
 

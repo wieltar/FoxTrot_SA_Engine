@@ -105,6 +105,8 @@ bool InputFacade::fill(vector<Command*>& command_queue)
         action_map.clear();         // clears key presses
         return false;
     }
+
+    return false;
 }
 
 /// @brief 
@@ -118,5 +120,30 @@ void InputFacade::dispatcher(std::vector<Command*>& command_queue)
             command_queue.push_back(iter->second);
         else if (was_pressed(iter->first) && iter->second->get_input_type() == ACTION)
             command_queue.push_back(iter->second);
+    }
+}
+
+void InputFacade::pollEvents() {
+    SDL_Event sdl_event;
+    if (&sdl_event)
+    {
+        while (SDL_PollEvent(&sdl_event))
+        {
+            switch (sdl_event.type)
+            {
+            case SDL_KEYDOWN: {
+                KeyPressedEvent event((KeyCode)sdl_event.key.keysym.scancode, 1);
+                EventSingleton::get_instance().dispatchEvent<KeyPressedEvent>(event);
+                break;
+            }
+            case SDL_KEYUP: {
+                KeyReleasedEvent event((KeyCode)sdl_event.key.keysym.scancode);
+                EventSingleton::get_instance().dispatchEvent<KeyReleasedEvent>(event);
+                break;
+            }
+            default:
+                break;
+            }
+        }
     }
 }

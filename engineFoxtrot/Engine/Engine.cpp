@@ -63,6 +63,9 @@ void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const i
 	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
 }
 
+void Engine::pollEvents() {
+	this->inputEngine.pollEvents();
+}
 /// @brief 
 /// @param sceneID 
 /// @param id 
