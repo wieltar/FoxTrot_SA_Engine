@@ -219,6 +219,7 @@
     <ClInclude Include="Engine\Input\InputEngine.h" />
     <ClInclude Include="Engine\Particles\IParticleFacade.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
+    <ClInclude Include="Engine\SceneManager\Layer.h" />
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />

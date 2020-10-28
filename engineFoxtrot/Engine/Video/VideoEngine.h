@@ -3,6 +3,7 @@
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
 #include "Events/Action/FpsToggleEvent.h";
+#include "../SceneManager/Scene.h"
 
 #define NO_RED 0
 #define NO_BLUE 0
@@ -52,7 +53,7 @@ public:
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
 
-	vector <Object*>* pointerToObjectVector = nullptr;
+	Scene** pointerToCurrentScene = nullptr;
 
 private:
 	IVideoFacade* videoFacade = new VideoFacade;

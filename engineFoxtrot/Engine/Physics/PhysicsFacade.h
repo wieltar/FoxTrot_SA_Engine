@@ -38,6 +38,15 @@ public:
 
 	void update() override;
 
+	void cleanMap() 
+	{ 
+		for (auto b : bodies)
+		{
+			world.DestroyBody(b.second);
+		}
+		bodies.clear();
+	}
+
 private:
 	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
 	const float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;

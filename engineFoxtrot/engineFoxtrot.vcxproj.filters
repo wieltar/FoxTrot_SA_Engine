@@ -169,6 +169,7 @@
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
     <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
+    <ClInclude Include="Engine\SceneManager\Layer.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
