@@ -417,22 +417,6 @@ void ParticleSystem::update()
     }
 }
 
-// ParticleSystem - Texture protocol
-void ParticleSystem::setTexture(SDL_Texture* var)
-{
-    if (_texture != var)
-    {
-        _texture = var;
-    }
-}
-
-
-
-SDL_Texture* ParticleSystem::getTexture()
-{
-    return _texture;
-}
-
 // ParticleSystem - Properties of Gravity Mode
 void ParticleSystem::setTangentialAccel(float t)
 {

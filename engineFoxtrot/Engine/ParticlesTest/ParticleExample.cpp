@@ -13,10 +13,6 @@ void ParticleExample::setStyle(PatticleStyle style)
     {
         stopSystem();
     }
-    if (_texture == nullptr)
-    {
-        setTexture(getDefaultTexture());
-    }
     switch (style)
     {
     case ParticleExample::FIRE:

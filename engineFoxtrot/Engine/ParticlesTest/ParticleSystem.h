@@ -1,6 +1,5 @@
 #pragma once
 
-#include "SDL.h"
 #include <vector>
 #include <string>
 
@@ -581,8 +580,6 @@ public:
     void setOpacityModifyRGB(bool opacityModifyRGB) { _opacityModifyRGB = opacityModifyRGB; }
     bool isOpacityModifyRGB() const { return _opacityModifyRGB; }
 
-    SDL_Texture* getTexture();
-    void setTexture(SDL_Texture* texture);
     void update();
 
     ParticleSystem();
@@ -740,8 +737,6 @@ protected:
     /** maximum particles of the system */
     int _totalParticles = 0;
     /** conforms to CocosNodeTexture protocol */
-    SDL_Texture* _texture = nullptr;
-    /** conforms to CocosNodeTexture protocol */
     //BlendFunc _blendFunc;
     /** does the alpha value modify color */
     bool _opacityModifyRGB = false;
@@ -759,9 +754,7 @@ protected:
     /** is sourcePosition compatible */
     bool _sourcePositionCompatible = false;
 
-    SDL_Renderer* _renderer = nullptr;
     int x_ = 0, y_ = 0;
 public:
-    void setRenderer(SDL_Renderer* ren) { _renderer = ren; }
     void setPosition(int x, int y) { x_ = x; y_ = y; }
 };

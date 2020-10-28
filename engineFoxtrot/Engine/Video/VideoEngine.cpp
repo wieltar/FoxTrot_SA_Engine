@@ -181,7 +181,7 @@ void VideoEngine::drawParticle()
 		{
 			continue;
 		}
-		videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation);
+		videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation); // TODO Remove hard ID
 	}
 	particleExample->update();
 }

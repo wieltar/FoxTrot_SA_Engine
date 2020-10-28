@@ -142,7 +142,7 @@ int main() {
 		videoEngine.receiveTick();
 
 		//SDL_RenderPresent(ren);
-		SDL_Delay(10);
+		//SDL_Delay(10);
 	}
 
 

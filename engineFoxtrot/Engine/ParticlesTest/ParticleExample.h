@@ -1,6 +1,6 @@
 #pragma once
 #include "ParticleSystem.h"
-#include "SDL_image.h"
+//#include "SDL_image.h"
 
 class ParticleExample : public ParticleSystem
 {
@@ -26,10 +26,4 @@ public:
 
     PatticleStyle style_ = NONE;
     void setStyle(PatticleStyle style);
-    SDL_Texture* getDefaultTexture()
-    {
-        static SDL_Texture* t = IMG_LoadTexture(_renderer, "./Engine/ParticlesTest/fire.png");
-        printf(SDL_GetError());
-        return t;
-    }
 };
