@@ -114,15 +114,23 @@ int main() {
 	videoEngine.setParticle(p);
 	videoEngine.loadImage(1, "./Engine/ParticlesTest/fire.png"); 
 
-	//p->setRenderer(ren);                   // set the renderer
-	p->setPosition(512, 384);              // set the position
+	p->setPosition(800, 384);              // set the position
 	p->setStyle(ParticleExample::FIRE);    // set the example effects
 	p->setStartSpin(0);
 	p->setStartSpinVar(90);
 	p->setEndSpin(90);
 	p->setStartSpinVar(90);
 
+	auto d = new ParticleExample();        // create a new particle system pointer
+	videoEngine.setParticle(d);
+	videoEngine.loadImage(1, "./Engine/ParticlesTest/fire.png");
 
+	d->setPosition(100, 384);              // set the position
+	d->setStyle(ParticleExample::FIRE);    // set the example effects
+	d->setStartSpin(0);
+	d->setStartSpinVar(90);
+	d->setEndSpin(90);
+	d->setStartSpinVar(90);
 
 	while (1)
 	{
@@ -132,6 +140,7 @@ int main() {
 		{
 			int s = (e.key.keysym.sym - SDLK_a + 1);
 			p->setStyle(ParticleExample::PatticleStyle(s));    // switch the example effects
+			d->setStyle(ParticleExample::PatticleStyle(s));    // switch the example effects
 		}
 		if (e.type == SDL_QUIT)
 		{
@@ -142,11 +151,12 @@ int main() {
 		videoEngine.receiveTick();
 
 		//SDL_RenderPresent(ren);
-		//SDL_Delay(10);
+		SDL_Delay(10);
 	}
 
 
 	delete p;    // destroy it
+	delete d;
 
 	return 0;
 }

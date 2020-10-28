@@ -162,7 +162,7 @@ void VideoEngine::receiveTick(/*Event& tickEvent*/)
 
 void VideoEngine::setParticle(ParticleExample* _particleExample)
 {
-	particleExample = _particleExample;
+	particlesVector.push_back(_particleExample);
 }
 
 
@@ -172,16 +172,20 @@ void VideoEngine::drawParticle()
 	//{
 	//	return;
 	//}
-	vector<ParticleData> particleData = particleExample->getParticleDataVector();
-	for (int i = 0; i < particleExample->getParticleCount(); i++)
+	for (auto part : particlesVector)
 	{
-		auto& p = particleData[i];
-
-		if (p.size <= 0 || p.colorA <= 0)
+		vector<ParticleData> particleData = part->getParticleDataVector();
+		for (int i = 0; i < part->getParticleCount(); i++)
 		{
-			continue;
+			auto& p = particleData[i];
+
+			if (p.size <= 0 || p.colorA <= 0)
+			{
+				continue;
+			}
+			videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation); // TODO Remove hard ID
 		}
-		videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation); // TODO Remove hard ID
+		part->update();
 	}
-	particleExample->update();
+
 }

@@ -67,7 +67,7 @@ private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
 	FrameData* frameData = nullptr;
-	ParticleExample* particleExample = nullptr;
+	vector<ParticleExample*> particlesVector;
 
 	bool shouldDrawFps = true; //TODO Should be set to false when toggle via button is added, see Todo above.
 
