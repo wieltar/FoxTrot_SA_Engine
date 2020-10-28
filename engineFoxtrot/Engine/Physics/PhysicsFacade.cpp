@@ -70,6 +70,7 @@ b2PolygonShape createShape(const PhysicsBody& object) {
 /// The object to register
 void PhysicsFacade::addStaticObject(PhysicsBody* object) {
 	b2BodyDef groundBodyDef;
+	groundBodyDef.type = b2_staticBody;
 	b2Body* body = world.CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox = createShape(*object);
 	body->CreateFixture(&groundBox, 0.0f);
@@ -131,6 +132,10 @@ void PhysicsFacade::update() {
 	for (auto const& it : bodies)
 	{
 		b2Body* body = it.second;
+
+		if (body->GetType() == b2_staticBody) {
+			continue;
+		}
 		PhysicsBody* object = it.first;
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
