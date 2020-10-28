@@ -6,11 +6,17 @@
 #include "./SceneManager/SceneManager.h"
 #include "./FileParser/FileParser.h"
 #include "./Physics/PhysicsEngine.h"
-#include "./SVI(Temp)/SVIEngine.h"
 #include "./Particles/ParticleEngine.h"
 #include "./SceneManager/SceneManager.h"
-#include "./Events/EventManager.h"
-#include "./Events/EventListener.h"
+
+#include "Events/EventSingleton.h"
+#include "./Video/VideoEngine.h"
+#include "./Sound/SoundEngine.h"
+#include "./Input/InputEngine.h"
+#include "./Fps/FrameData.h"
+
+// TODO Weet niet of deze hier moet?!?!??! Is even voor de test
+#include "Events/Codes/KeyCodes.h"
 
 #define	ENGINE_TICK60	 17
 #define ENGINE_TICK30	 33
@@ -26,8 +32,6 @@ public:
 	Engine();
 	~Engine();
 
-	// TODO: Set to private after testing
-	
 //private:
 	void engineTick60();
 	void engineTick30();
@@ -40,8 +44,9 @@ public:
 	thread *engineTick60Thread = nullptr;
 	thread *engineTick30Thread = nullptr;
 
+	//SceneManager calls
 	void setCurrentScene(const int sceneID);
-	void createNewSceneWithSceneID(const int sceneID);
+	void insertScene(Scene * scene);
 
 	void createObject(const int sceneID, Object* object);
 
@@ -49,18 +54,25 @@ public:
 
 	void loadSprite(SpriteObject spriteObject, const char* filename);
 
+	// Video calls
+	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
+
+	void pollInput();
+	void configureInput(KeyCode key, Command* command);
 
 	EventManager eventManager;
 	//TODO make private
 	PhysicsEngine physicsEngine;
+	VideoEngine videoEngine;
 private:
-
-	SVIEngine sviEngine;
+	SoundEngine soundEngine;
+	InputEngine inputEngine;
 	FileParser fileParser;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 
+	FrameData* frameData = nullptr;
+
 	void loadSpriteArray(vector<Sprite> spriteVector);
 };
-
 #endif

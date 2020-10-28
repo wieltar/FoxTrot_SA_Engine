@@ -1,22 +1,36 @@
 #include "stdafx.h"
-#include "SVI.h"
+#include "VideoFacade.h"
+
 #include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_image.h>
-#include "../../SDL2/include/SDL_mixer.h"
 #include "../../SDL2/include/SDL_image.h"
+#include "../../SDL2/include/SDL_ttf.h"
+
 #undef main
+
+/// @brief 
+VideoFacade::VideoFacade()
+{
+	initSDL();
+}
+
+/// @brief 
+VideoFacade::~VideoFacade()
+{
+
+}
+
 // Tips:
 // http://lazyfoo.net/tutorials/SDL/07_texture_loading_and_rendering/index.php
 /// @brief 
 /// Inits SDL2
-void SVI::initSDL()
+void VideoFacade::initSDL()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	TTF_Init();
+	Sans = TTF_OpenFont(FONT_PATH, FONT_POINT_SIZE);
 	window = SDL_CreateWindow("Foxtrot Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
-
 		printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
 		throw ERROR_CODE_SVIFACADE_CANT_CREATE_WINDOW;
 	}
@@ -47,7 +61,7 @@ void SVI::initSDL()
 
 /// @brief 
 /// Clears SDL screen
-void SVI::clearScreen()
+void VideoFacade::clearScreen()
 {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
@@ -55,15 +69,20 @@ void SVI::clearScreen()
 
 /// @brief 
 /// Draws SDL screen
-void SVI::drawScreen()
+void VideoFacade::drawScreen()
 {
-	SDL_RenderPresent(renderer);
+	try {
+		SDL_RenderPresent(renderer);
+	}
+	catch (...) {
+		std::cout << "ERR" << std::endl;
+	}
 }
 /// @brief 
 /// Load a animated sprite into the texturemap map
 /// @param spriteObject 
 /// @param filename
-void SVI::loadSprite(SpriteObject spriteObject, const char* filename) {
+void VideoFacade::loadSprite(SpriteObject spriteObject, const char* filename) {
 	if (spriteObject.getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
 	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
 
@@ -75,9 +94,9 @@ void SVI::loadSprite(SpriteObject spriteObject, const char* filename) {
 }
 
 /// @brief 
-	/// Takes the sprites from the Textuture map animated and copys them to the screen
-	/// @param object 
-void SVI::renderCopy(Object& object)
+/// Takes the sprites from the Textuture map animated and copys them to the screen
+/// @param object 
+void VideoFacade::renderCopy(Object& object)
 {
 	// TODO
 	//if (textureMap[spriteID] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
@@ -103,4 +122,38 @@ void SVI::renderCopy(Object& object)
 	int leftPos = pos * sprite->getWidth();
 	SDL_Rect rect{ leftPos, 0, sprite->getWidth(), sprite->getHeight() };
 	SDL_RenderCopy(renderer, textureMap[sprite->getTextureID()], &rect, &destination);
+}
+
+/// @brief
+/// Draws the given text message at the given position
+/// @param message
+/// A Message struct containing the message and the color of the message
+/// @param pos
+/// A Position struct containing the position to draw the message at
+void VideoFacade::drawMessageAt(const FpsMessage message, const TextPosition pos)
+{
+	bool exists = std::filesystem::exists(FONT_PATH); // TODO dynamic fonts
+
+	if (exists) {
+
+		SDL_Color Color = { message.red, message.green, message.blue };
+		SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, message.text.c_str(), Color);
+		SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+		SDL_Rect Message_rect;
+
+		// If the message doesn't fit the screen, make it fit the screen
+		int xPos = pos.xPos + MESSAGE_WIDTH > WINDOW_WIDTH ? WINDOW_WIDTH - MESSAGE_WIDTH : pos.xPos < 0 ? 0 : pos.xPos;
+		int yPos = pos.yPos + MESSAGE_HEIGHT > WINDOW_HEIGHT ? WINDOW_HEIGHT - MESSAGE_HEIGHT : pos.yPos < 0 ? 0 : pos.yPos;
+
+		Message_rect.x = xPos;
+		Message_rect.y = yPos;
+		Message_rect.w = MESSAGE_WIDTH;
+		Message_rect.h = MESSAGE_HEIGHT;
+
+		SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+
+		SDL_FreeSurface(surfaceMessage);
+		SDL_DestroyTexture(Message);
+	}
 }

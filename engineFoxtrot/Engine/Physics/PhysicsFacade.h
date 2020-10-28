@@ -35,10 +35,17 @@ public:
 	void MoveLeft(const int objectId) override;
 	void MoveRight(const int objectId) override;
 	void Jump(const int objectId) override;
-	void JumpLeft(const int objectId) override;
-	void JumpRight(const int objectId) override;
 
 	void update() override;
+
+	void cleanMap() 
+	{ 
+		for (auto b : bodies)
+		{
+			world.DestroyBody(b.second);
+		}
+		bodies.clear();
+	}
 
 private:
 	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));

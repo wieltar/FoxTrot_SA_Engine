@@ -1,14 +1,16 @@
 #include "stdafx.h"
 #include "Engine.h"
+#include <Events\AppTickEvent30.h>
+#include <Events\AppTickEvent60.h>
 
 /// @brief 
 Engine::Engine()
 {
-	sviEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
-	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
+	videoEngine.pointerToCurrentScene =	 &sceneManager.currentScene;
+	physicsEngine.pointerToCurrentScene = &sceneManager.currentScene;
+	frameData = new FrameData;
 
-	eventManager.subscribe(EventType::ENGINE60, &sviEngine);
-	//sviEngine.initSDL();
+	//this->startTickThreads();
 }
 
 /// @brief 
@@ -32,29 +34,42 @@ void Engine::setCurrentScene(const int sceneID)
 	}
 }
 
-/// @brief 
-/// Creates a new Scene in the Scene manager given the sceneID
-/// @param sceneID 
-/// int SceneID
-void Engine::createNewSceneWithSceneID(const int sceneID)
+void Engine::insertScene(Scene* scene)
 {
 	try
 	{
-		sceneManager.createNewScene(sceneID);
+		sceneManager.insertScene(scene);
 	}
 	catch (int e)
 	{
 		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
 	}
 }
+
 /// @brief 
-/// @param sceneID 
-/// @param object 
-void Engine::createObject(const int sceneID, Object* object) {
+/// @param spriteID 
+/// @param assetPath 
+void Engine::linkSpriteIDWithAssetPath(const int spriteID, const char * assetPath)
+ {
 	try
 	{
-		cout << "creating new obj sceneID: " << sceneID << endl;
-		sceneManager.getSceneWithID(sceneID)->addNewObject(object);
+		videoEngine.loadImage(spriteID, assetPath);
+	}
+	catch (int e)
+	{
+		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
+	}
+}
+
+/// @brief 
+/// @param spritesVector 
+void Engine::loadSpriteArray(vector<Sprite> spritesVector)
+{
+	try
+	{
+		for (auto sprite : spritesVector) {
+			videoEngine.loadImage(sprite.spriteID, sprite.filename);
+		}
 	}
 	catch (int e)
 	{
@@ -67,12 +82,13 @@ void Engine::createObject(const int sceneID, Object* object) {
 void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
+	pollInput();
 	while (!stopThreadTick60){
-		//eventManager.notify(EventType::ENGINE60, new Object);
-
-		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));
-		eventManager.notify(EventType::ENGINE60, new Object(1));
-		//svi.receiveTick();
+		frameData->startTimer();
+		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
+		AppTickEvent60 appTick;
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
+		FrameData::gameFps = frameData->calculateAverageFps();
 	}
 
 	cout << "Thread killed 60" << endl;
@@ -85,10 +101,8 @@ void Engine::engineTick30()
 	cout << "Thread started" << endl;
 	while (!stopThreadTick30) {
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK30));
-
-		//eventManager.notify(EventType::ENGINE30, new Object);
-		physicsEngine.update30();
-
+		AppTickEvent30 appTick;
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick);
 	}
 	cout << "Thread killed 30" << endl;
 }
@@ -97,11 +111,11 @@ void Engine::engineTick30()
 /// Start the 2 threads. 
 void Engine::startTickThreads()
 {
-	engineTick60Thread = new thread(&Engine::engineTick60, this);
-	engineTick30Thread = new thread(&Engine::engineTick30, this);
+	/*engineTick60Thread = new thread(&Engine::engineTick60, this);
+	engineTick60Thread->detach();*/
 
-	engineTick60Thread->detach();
-	engineTick30Thread->detach();
+	/*engineTick30Thread = new thread(&Engine::engineTick30, this);
+	engineTick30Thread->detach();*/
 }
 
 /// @brief
@@ -109,16 +123,26 @@ void Engine::startTickThreads()
 void Engine::stopTickThreads()
 {
 	//engineTick60Thread->join();
-	//engineTick30Thread->join();
-	stopThreadTick60 = true;
+	//stopThreadTick60 = true;
+
+	engineTick30Thread->join();
 	stopThreadTick30 = true;
 }
 
 /// @brief 
-/// @param listener 
-/// @param eventType 
-void Engine::addEventListener(EventListener* listener, const EventType eventType) {
-    eventManager.subscribe(eventType, listener);
+/// Polls for input using SDL poll events
+void Engine::pollInput()
+{
+	inputEngine.updateInput();
+}
+
+/// @brief 
+/// Function to bind keys to commands.
+/// @param key KeyCode key
+/// @param command Command to be executed
+void Engine::configureInput(KeyCode key, Command* command)
+{
+	inputEngine.configure(key, command);
 }
 
 

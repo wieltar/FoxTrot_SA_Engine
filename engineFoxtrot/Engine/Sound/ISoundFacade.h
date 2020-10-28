@@ -1,31 +1,17 @@
 #pragma once
-#include "../SceneManager/Object.h"
 
-/// @brief Interface class for SDL2 facade
+/// @brief Interface class for Sound facade
 #if(EXPORT)
 class DLLEXPORT ISVI
 #else
-class ISVI
+class ISoundFacade
 #endif
 {
 public:
-	ISVI() {};
-	~ISVI() {};
+	ISoundFacade() {};
+	~ISoundFacade() {};
 
-	// Video Functions
-	virtual void initSDL() = 0;
-
-	virtual void clearScreen() = 0;
-	virtual void drawScreen() = 0;
-	virtual void loadSprite(SpriteObject spriteObject, const char* filename) = 0;
-
-	virtual void renderCopy(Object& object) = 0;
-
-
-	// Input Functions
-	virtual void input() = 0;
-
-	// Sound Functions
+	virtual bool isMix_PlayingMusic() = 0;
 	virtual void SetFiles(std::map<std::string, std::string> files) = 0;
 	virtual void AddFile(const std::string& identifier, const std::string& file) = 0;
 	virtual void PlayEffect(const std::string& identifier, const int volume) = 0;
