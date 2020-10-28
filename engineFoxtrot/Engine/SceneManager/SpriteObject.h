@@ -18,8 +18,8 @@ public:
 	const char * getfileName() const;
 private:
 	int textureID;
-	int lengthOfTextures;
-	int height;
-	int width;
+	int lengthOfTextures = 0;
+	int height = 0;
+	int width = 0;
 	const char * fileName;
 };

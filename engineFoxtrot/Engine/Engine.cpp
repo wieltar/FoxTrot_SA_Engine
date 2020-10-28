@@ -140,7 +140,7 @@ void Engine::loadSprite(SpriteObject spriteObject) {
 	if (!exists)
 		throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
 	if (spriteObject.getTextureID() == NULL) {
-
+		throw ERROR_CODE_IMAGE_CANNOT_BE_SAVED;
 	}
 	videoEngine.loadImage(spriteObject);
 }

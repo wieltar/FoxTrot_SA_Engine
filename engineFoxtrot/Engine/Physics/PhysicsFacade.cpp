@@ -83,7 +83,7 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
 
-	cout << "Pushing back obj: spriteid: " << object->getObjectId() << endl;
+	if(DEBUG_PHYSICS_ENGINE)cout << "Pushing back obj: spriteid: " << object->getObjectId() << endl;
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
 

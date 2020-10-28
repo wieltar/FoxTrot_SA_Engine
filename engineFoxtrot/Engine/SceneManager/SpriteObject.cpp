@@ -2,7 +2,8 @@
 #include "SpriteObject.h"
 
 SpriteObject::SpriteObject() {}
-SpriteObject::SpriteObject(const int _textureID, const int _height, const int _width, const int _size, const char* _fileName) : textureID(_textureID), height(_height), width(_width), lengthOfTextures(_size), fileName(_fileName){};
+SpriteObject::SpriteObject(const int _textureID, const int _height, const int _width, const int _size, const char* _fileName) : 
+							textureID(_textureID), height(_height), width(_width), lengthOfTextures(_size), fileName(_fileName){};
 SpriteObject::~SpriteObject() {};
 
 int SpriteObject::getTextureID() const { return textureID; }
