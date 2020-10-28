@@ -16,12 +16,13 @@ public:
 	~SceneManager();
 
 	// Scene modifiers
-	void createNewScene(const int sceneID);
 	void setCurrentScene(const int sceneID);
 	Scene* getSceneWithID(const int sceneID);
+	void insertScene(Scene* scene);
 
 	// Pointer
-	vector <Object*> pointerToCurrentObjectVector;
+	Scene* currentScene = nullptr;
+
 protected:
 	
 
@@ -30,7 +31,6 @@ private:
 	// Helper Functions
 	bool checkIfSceneExists(const int);
 
-	Scene* currentScene = nullptr;
 	vector<Scene*> scenes;
 
 };

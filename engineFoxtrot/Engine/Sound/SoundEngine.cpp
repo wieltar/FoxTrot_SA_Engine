@@ -10,13 +10,6 @@ SoundEngine::~SoundEngine()
 }
 
 /// @brief 
-/// Update function
-void SoundEngine::update(Object* object)
-{
-
-}
-
-/// @brief 
 /// @param files 
 void SoundEngine::SetFiles(map<string, string> files)
 {

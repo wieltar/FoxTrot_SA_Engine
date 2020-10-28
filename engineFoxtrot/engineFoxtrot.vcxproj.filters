@@ -166,6 +166,7 @@
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
+    <ClInclude Include="Engine\SceneManager\Layer.h" />
     <ClInclude Include="Engine\Particles\Particle.h" />
     <ClInclude Include="Engine\Particles\ParticleStruct.h" />
   </ItemGroup>

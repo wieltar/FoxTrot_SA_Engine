@@ -1,6 +1,7 @@
 #pragma once
-#include "SoundFacade.h"
 
+#include "../SceneManager/Scene.h"
+#include "SoundFacade.h"
 
 #define MAX_VOLUME 128
 
@@ -16,12 +17,6 @@ class SoundEngine
 public:
 	SoundEngine();
 	~SoundEngine();
-
-	void receiveTick();
-
-	// Input Functions
-	void input();
-	void update(Object* object);
 
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
@@ -47,9 +42,6 @@ public:
 
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
-
-	vector <Object*>* pointerToObjectVector = nullptr;
-private:
 
 	ISoundFacade* soundFacade = new SoundFacade;
 
