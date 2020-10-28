@@ -3,10 +3,15 @@
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
 #include "../SceneManager/Scene.h"
+#include "ParticlesTest/ParticleExample.h"
 
 #define NO_RED 0
 #define NO_BLUE 0
 #define NO_GREEN 0
+
+#define FULL_RED 255
+#define FULL_BLUE 255
+#define FULL_GREEN 255
 
 #define FPS_X_POSITION 999
 #define Y_POSITION_TOP_OF_SCREEN 0
@@ -50,7 +55,11 @@ public:
 	void toggleFps(); //TODO Toggle via input/Command pattern
 
 	void update(Object* object);
-	void receiveTick(Event& tickEvent);
+	void receiveTick(/*Event& tickEvent*/);
+
+	void setParticle(ParticleExample* _particleExample);
+	void drawParticle();
+
 
 	Scene** pointerToCurrentScene = nullptr;
 
@@ -58,6 +67,8 @@ private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
 	FrameData* frameData = nullptr;
+	ParticleExample* particleExample = nullptr;
+
 	bool shouldDrawFps = true; //TODO Should be set to false when toggle via button is added, see Todo above.
 
 };

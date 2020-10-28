@@ -19,6 +19,7 @@ public:
 	virtual void loadImage(const int spriteID, const char* filename) = 0;
 	virtual void renderCopy(Object& object) = 0;
 	virtual void drawMessageAt(const FpsMessage message, const TextPosition pos) = 0;
+	virtual void drawParticle(float posX, float startPosX, float posY, float startPosY, float size, float spriteID, float colorR, float colorG, float colorB, float colorA, float rotation) = 0;
 
 
 private:

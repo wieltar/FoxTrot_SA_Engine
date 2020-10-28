@@ -1,7 +1,5 @@
 #pragma once
 
-//移植自Cocos2dx，版权声明请查看licenses文件夹
-
 #include "SDL.h"
 #include <vector>
 #include <string>
@@ -577,13 +575,14 @@ public:
      */
     virtual void setTotalParticles(int totalParticles);
 
+    virtual vector<ParticleData> getParticleDataVector() const;
+
     /** does the alpha value modify color */
     void setOpacityModifyRGB(bool opacityModifyRGB) { _opacityModifyRGB = opacityModifyRGB; }
     bool isOpacityModifyRGB() const { return _opacityModifyRGB; }
 
     SDL_Texture* getTexture();
     void setTexture(SDL_Texture* texture);
-    void draw();
     void update();
 
     ParticleSystem();

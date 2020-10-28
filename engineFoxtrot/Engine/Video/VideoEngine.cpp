@@ -6,7 +6,7 @@
 VideoEngine::VideoEngine()
 {
 	frameData = new FrameData;
-	EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
+	//EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
 }
 
 VideoEngine::~VideoEngine()
@@ -126,7 +126,7 @@ void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix =
 	stre << prefix << fps;
 	string str = stre.str();
 	if (shouldDrawFps) {
-		FpsMessage m(str, NO_RED, NO_BLUE, NO_GREEN);
+		FpsMessage m(str, FULL_RED, FULL_BLUE, FULL_GREEN);
 		TextPosition p(xPos, yPos);
 		videoFacade->drawMessageAt(m, p);
 	}
@@ -148,13 +148,40 @@ void VideoEngine::update(Object* object)
 }
 
 /// @brief Handle the tick update from the thread
-void VideoEngine::receiveTick(Event& tickEvent)
+void VideoEngine::receiveTick(/*Event& tickEvent*/)
 {
 	//tickEvent = static_cast<AppTickEvent&>(tickEvent);
 	frameData->startTimer();
 	clearScreen();
-	updateScreen();
+	//updateScreen();
+	drawParticle();    // you have to draw it in each loop
 	drawFps();
 	drawScreen();
 	FrameData::renderFps = frameData->calculateAverageFps();
+}
+
+void VideoEngine::setParticle(ParticleExample* _particleExample)
+{
+	particleExample = _particleExample;
+}
+
+
+void VideoEngine::drawParticle()
+{
+	//if (_texture == nullptr)
+	//{
+	//	return;
+	//}
+	vector<ParticleData> particleData = particleExample->getParticleDataVector();
+	for (int i = 0; i < particleExample->getParticleCount(); i++)
+	{
+		auto& p = particleData[i];
+
+		if (p.size <= 0 || p.colorA <= 0)
+		{
+			continue;
+		}
+		videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation);
+	}
+	particleExample->update();
 }

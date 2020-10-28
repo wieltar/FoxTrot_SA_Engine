@@ -29,7 +29,7 @@ public:
     SDL_Texture* getDefaultTexture()
     {
         static SDL_Texture* t = IMG_LoadTexture(_renderer, "./Engine/ParticlesTest/fire.png");
-        //printf(SDL_GetError());
+        printf(SDL_GetError());
         return t;
     }
 };
