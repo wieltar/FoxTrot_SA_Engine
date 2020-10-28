@@ -106,21 +106,28 @@ void VideoFacade::renderCopy(Object& object)
 	//if (width == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_WIDTH_IS_NULL;
 	//if (rotation == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_ROTATION_IS_NULL;
 	// TODO find out why floats ruin stuff
-	SDL_Rect destination;
-	destination.x = object.getPositionX();
-	destination.y = object.getPositionY() - object.getHeight();
-	destination.w = object.getWidth();
-	destination.h = object.getHeight();
 
 	SpriteObject* sprite = object.GetCurrentSprite();
 	if (sprite == NULL) {
 		throw ERROR_CODE_SDL2FACADE_SPRITE_DOESNT_EXISTS;
 	}
+	//generate image 
 	Uint32 ticks = SDL_GetTicks();
 	Uint32 seconds = ticks / 300;
-	Uint32 pos = seconds % sprite->getAmountOfTextures();
-	int leftPos = pos * sprite->getWidth();
-	SDL_Rect rect{ leftPos, 0, sprite->getWidth(), sprite->getHeight() };
+	int leftpos = sprite->getLeftPos(seconds);
+	SDL_Rect rect{ leftpos, 0, sprite->getWidth(), sprite->getHeight() };
+
+	//update collision box 
+	object.setWidth(sprite->getWidth());
+	object.setHeight(sprite->getHeight());
+
+	//generate stratch of image
+	SDL_Rect destination;
+	destination.x = object.getPositionX();
+	destination.y = object.getPositionY() - object.getHeight();
+	destination.w = object.getWidth();
+	destination.h = object.getHeight();
+	
 	SDL_RenderCopy(renderer, textureMap[sprite->getTextureID()], &rect, &destination);
 }
 

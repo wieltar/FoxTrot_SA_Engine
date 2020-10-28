@@ -11,3 +11,7 @@ int SpriteObject::getAmountOfTextures() const { return lengthOfTextures; }
 int SpriteObject::getHeight() const { return height; }
 int SpriteObject::getWidth() const { return width; }
 const char * SpriteObject::getfileName() const { return fileName; }
+int SpriteObject::getLeftPos(uint32_t tick){
+	uint32_t pos = tick % lengthOfTextures;
+	return pos * width;
+}

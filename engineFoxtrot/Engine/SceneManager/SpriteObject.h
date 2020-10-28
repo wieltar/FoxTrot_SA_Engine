@@ -16,6 +16,7 @@ public:
 	int getHeight() const;
 	int getWidth() const;
 	const char * getfileName() const;
+	int getLeftPos(uint32_t ticks);
 private:
 	int textureID;
 	int lengthOfTextures = 0;

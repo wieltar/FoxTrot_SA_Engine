@@ -105,7 +105,6 @@ void sceneTestSetup()
 int main() {
 	sceneTestSetup();
 
-	engine.startTickThreads();
 	bool gameRunning = true;
 	while (gameRunning)
 	{
