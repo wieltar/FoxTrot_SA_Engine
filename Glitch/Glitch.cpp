@@ -1,18 +1,4 @@
-#pragma once
-#include "stdafx.h"
-#include "../Engine/Engine.h"
-#include "../Engine/Events/AppTickEvent30.h"
-#include "../Engine/Events/AppTickEvent60.h"
-
-#include "Events/Window/WindowCloseEvent.h"
-
-// TODO engine.h & engine.cpp
-
-// Doxygen
-// Cntrl + / above function or class to generate Doxygen
-// https://devblogs.microsoft.com/cppblog/doxygen-and-xml-doc-comment-support/
-// Installing
-// https://computingonplains.wordpress.com/doxygen-and-visual-studio/
+#include "Glitch.h"
 
 Engine engine;
 
@@ -47,7 +33,7 @@ void sceneTestSetup()
 	object->setStatic(false);
 
 	testScene->addNewObjectToLayer(1, object);
-	
+
 	Object* object2 = new Object(2);
 	object2->setName("person");
 	object2->setHeight(80);
@@ -69,7 +55,7 @@ void sceneTestSetup()
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(1, staticGround);
-	
+
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));
 

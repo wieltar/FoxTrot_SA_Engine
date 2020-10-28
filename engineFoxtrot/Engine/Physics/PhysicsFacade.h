@@ -1,6 +1,6 @@
 #pragma once
 #include "IPhysicsFacade.h"
-#include "PhysicsBody.h"
+#include "box2d/box2d.h"
 
 #define VELOCITY_ITERATIONS 8
 #define POSITION_ITERATIONS 3
@@ -17,11 +17,7 @@
 
 /// @brief 
 /// PhysicsFacade class. Class for update physics off objects
-#if(EXPORT)
-class DLLEXPORT PhysicsFacade : public IPhysicsFacade
-#else
 class PhysicsFacade : public IPhysicsFacade
-#endif
 {
 public:
 	PhysicsFacade();

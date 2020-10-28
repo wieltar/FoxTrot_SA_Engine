@@ -1,6 +1,6 @@
 #pragma once
-#include "stdafx.h"
-#include "Events/EventType.h"
+#include <ostream>
+#include "EventType.h"
 
 /// @brief
 	/// Abstract event class. Multiple events have this class as a super class

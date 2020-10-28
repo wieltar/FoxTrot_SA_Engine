@@ -1,11 +1,7 @@
 #pragma once
 
 /// @brief Interface class for Sound facade
-#if(EXPORT)
-class DLLEXPORT ISVI
-#else
 class ISoundFacade
-#endif
 {
 public:
 	ISoundFacade() {};

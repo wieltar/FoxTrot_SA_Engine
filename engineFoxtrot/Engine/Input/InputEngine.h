@@ -2,10 +2,11 @@
 #include "InputFacade.h"
 #include "../Events/Action/ActionEvent.h"
 #include "../Events/EventSingleton.h"
+#include "core.h"
 
 /// @brief 
 /// Input engine for handling input
-class InputEngine
+class API InputEngine
 {
 public:
 	InputEngine();

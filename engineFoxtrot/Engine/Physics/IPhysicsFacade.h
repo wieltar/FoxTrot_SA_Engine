@@ -1,14 +1,10 @@
 #pragma once
-
+#include "core.h"
 #include "PhysicsBody.h"
 
 /// @brief 
 /// Interface facade for all physics actions
-#if(EXPORT)
-class DLLEXPORT IPhysicsFacade
-#else
 class IPhysicsFacade
-#endif
 {
 public:
 	IPhysicsFacade() {};

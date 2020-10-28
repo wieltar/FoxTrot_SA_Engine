@@ -1,8 +1,7 @@
-#include "../stdafx.h"
 #pragma once
 #include "./Object.h"
 
-struct Layer
+struct API Layer
 {
 	bool render = false;
 	vector<Object*> objects;
