@@ -1,4 +1,5 @@
 #pragma once
+#include "../SceneManager/Object.h"
 
 struct Pointf
 {
@@ -110,7 +111,7 @@ emitter.startSpin = 0;
 
 */
 
-class Particle
+class Particle : public Object
 {
 public:
     enum class Mode

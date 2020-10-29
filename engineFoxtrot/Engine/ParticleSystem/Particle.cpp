@@ -60,6 +60,7 @@ inline static float RANDOM_M11(unsigned int* seed)
 
 Particle::Particle()
 {
+    this->isParticle = true;
 }
 
 // implementation Particle

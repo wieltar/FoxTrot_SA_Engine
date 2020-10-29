@@ -80,7 +80,14 @@ void VideoEngine::updateScreen()
 		if ((*pointerToCurrentScene)->getAllObjectsInScene().size() <= 0) return;
 		for (Object* obj : (*pointerToCurrentScene)->getAllObjectsInScene()) {
 			if (obj != nullptr) {
-				videoFacade->renderCopy(*obj);
+				if (obj->isParticle)
+				{
+					drawParticle((Particle*)obj);
+				}
+				else
+				{
+					renderCopy(*obj);
+				}
 			}
 		}
 	}
@@ -140,28 +147,25 @@ void VideoEngine::receiveTick(Event& tickEvent)
 	frameData->startTimer();
 	clearScreen();
 	updateScreen();
-	drawParticle();    // you have to draw it in each loop
+
 	drawFps();
 	drawScreen();
 	FrameData::renderFps = frameData->calculateAverageFps();
 }
 
-void VideoEngine::drawParticle()
+void VideoEngine::drawParticle(Particle* part)
 {
-	if ((*pointerToCurrentScene)->getAllParticlesInScene().size() == 0) return;
-	for (auto part : (*pointerToCurrentScene)->getAllParticlesInScene())
-	{
-		vector<ParticleData> particleData = part->getParticleDataVector();
-		for (int i = 0; i < part->getParticleCount(); i++)
-		{
-			auto& p = particleData[i];
 
-			if (p.size <= 0 || p.colorA <= 0)
-			{
-				continue;
-			}
-			videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation); // TODO Remove hard ID
+	vector<ParticleData> particleData = part->getParticleDataVector();
+	for (int i = 0; i < part->getParticleCount(); i++)
+	{
+		auto& p = particleData[i];
+
+		if (p.size <= 0 || p.colorA <= 0)
+		{
+			continue;
 		}
+		videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation); // TODO Remove hard ID
 	}
 
 }

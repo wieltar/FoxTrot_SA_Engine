@@ -57,7 +57,7 @@ public:
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
 
-	void drawParticle();
+	void drawParticle(Particle* part);
 
 	Scene** pointerToCurrentScene = nullptr;
 

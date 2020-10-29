@@ -10,6 +10,7 @@ class Object
 #endif
 {
 public:
+	Object() {};
 	Object(const int id);
 	Object(const int id, const float xPos, const float yPos, const float height, const float width);
 	~Object();
@@ -59,7 +60,7 @@ public:
 	float getJumpHeight() const;
 
 	bool getChanged() const;
-
+	bool isParticle = false;
 private:
 
 	string name;
@@ -79,4 +80,5 @@ private:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
+	
 };
