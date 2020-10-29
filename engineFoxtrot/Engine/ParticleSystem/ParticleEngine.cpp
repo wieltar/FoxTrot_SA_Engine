@@ -14,6 +14,8 @@ ParticleEngine::~ParticleEngine()
 {
 }
 
+/// @brief OnUpdate for updating particles
+/// @param tickEvent tick event listening to
 void ParticleEngine::onUpdate(Event& tickEvent)
 {
 	if ((*pointerToCurrentScene)->getAllObjectsInScene().size() == 0) return;

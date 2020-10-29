@@ -3,6 +3,7 @@
 #include "Events/Event.h"
 #include "Events/Action/ActionEvent.h"
 
+/// @brief Class to update Particle
 #if(EXPORT)
 class DLLEXPORT ParticleEngine
 #else

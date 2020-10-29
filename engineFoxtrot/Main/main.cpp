@@ -75,25 +75,25 @@ void sceneTestSetup()
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(3, staticGround);
 
-	auto p = new ParticleInit(11);        // create a new particle system pointer
-	testScene->addNewObjectToLayer(4, (Object*)p);
+	auto particle1 = new ParticleInit(11);        // create a new particle system pointer
+	testScene->addNewObjectToLayer(4, (Object*)particle1);
 
-	p->setPosition(800, 384);              // set the position
-	p->setStyle(ParticleInit::FIRE);    // set the example effects
-	p->setStartSpin(0);
-	p->setStartSpinVar(90);
-	p->setEndSpin(90);
-	p->setStartSpinVar(90);
+	particle1->setPosition(800, 384);              // set the position
+	particle1->setStyle(ParticleInit::FIRE);    // set the example effects
+	particle1->setStartSpin(0);
+	particle1->setStartSpinVar(90);
+	particle1->setEndSpin(90);
+	particle1->setStartSpinVar(90);
 
-	auto d = new ParticleInit(11);        // create a new particle system pointer
-	testScene->addNewObjectToLayer(2, (Object*)d);
+	auto particle2 = new ParticleInit(11);        // create a new particle system pointer
+	testScene->addNewObjectToLayer(2, (Object*)particle2);
 
-	d->setPosition(100, 384);              // set the position
-	d->setStyle(ParticleInit::FIRE);    // set the example effects
-	d->setStartSpin(0);
-	d->setStartSpinVar(90);
-	d->setEndSpin(90);
-	d->setStartSpinVar(90);
+	particle2->setPosition(100, 384);              // set the position
+	particle2->setStyle(ParticleInit::FIRE);    // set the example effects
+	particle2->setStartSpin(0);
+	particle2->setStartSpinVar(90);
+	particle2->setEndSpin(90);
+	particle2->setStartSpinVar(90);
 	
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));

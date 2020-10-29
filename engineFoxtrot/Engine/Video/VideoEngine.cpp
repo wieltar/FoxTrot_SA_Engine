@@ -153,19 +153,22 @@ void VideoEngine::receiveTick(Event& tickEvent)
 	FrameData::renderFps = frameData->calculateAverageFps();
 }
 
+/// @brief Draws the Particles
+/// @param part pointer to the particle
 void VideoEngine::drawParticle(Particle* part)
 {
 
 	vector<ParticleData> particleData = part->getParticleDataVector();
-	for (int i = 0; i < part->getParticleCount(); i++)
+	for (int index = 0; index < part->getParticleCount(); index++)
 	{
-		auto& p = particleData[i];
+		auto& partData = particleData[index];
 
-		if (p.size <= 0 || p.colorA <= 0)
+		if (partData.size <= 0 || partData.colorA <= 0)
 		{
 			continue;
 		}
-		videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, part->getSpriteID(), p.colorR, p.colorG, p.colorB, p.colorA, p.rotation); // TODO Remove hard ID
+		videoFacade->drawParticle(	partData.posx, partData.startPosX, partData.posy, partData.startPosY, partData.size,
+									part->getSpriteID(), partData.colorR, partData.colorG, partData.colorB, partData.colorA, partData.rotation); // TODO Remove hard ID
 	}
 
 }
