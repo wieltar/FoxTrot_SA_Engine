@@ -113,7 +113,7 @@ emitter.startSpin = 0;
 
 */
 
-class ParticleSystem
+class Particle
 {
 public:
     enum class Mode
@@ -582,8 +582,8 @@ public:
 
     void update();
 
-    ParticleSystem();
-    virtual ~ParticleSystem();
+    Particle();
+    virtual ~Particle();
 
     /** initializes a ParticleSystem*/
     virtual bool initWithTotalParticles(int numberOfParticles);

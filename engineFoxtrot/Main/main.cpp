@@ -6,7 +6,7 @@
 
 #include "Events/Window/WindowCloseEvent.h"
 
-#include "./ParticlesTest/ParticleExample.h"
+#include "./ParticleSystem/ParticleExample.h"
 #include "SDL.h"
 #undef main
 
@@ -112,7 +112,7 @@ int main() {
 
 	auto p = new ParticleExample();        // create a new particle system pointer
 	videoEngine.setParticle(p);
-	videoEngine.loadImage(1, "./Engine/ParticlesTest/fire.png"); 
+	videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png"); 
 
 	p->setPosition(800, 384);              // set the position
 	p->setStyle(ParticleExample::FIRE);    // set the example effects
@@ -123,7 +123,7 @@ int main() {
 
 	auto d = new ParticleExample();        // create a new particle system pointer
 	videoEngine.setParticle(d);
-	videoEngine.loadImage(1, "./Engine/ParticlesTest/fire.png");
+	videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png");
 
 	d->setPosition(100, 384);              // set the position
 	d->setStyle(ParticleExample::FIRE);    // set the example effects

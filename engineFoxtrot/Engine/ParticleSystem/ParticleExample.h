@@ -1,8 +1,8 @@
 #pragma once
-#include "ParticleSystem.h"
+#include "Particle.h"
 //#include "SDL_image.h"
 
-class ParticleExample : public ParticleSystem
+class ParticleExample : public Particle
 {
 public:
     ParticleExample() {}

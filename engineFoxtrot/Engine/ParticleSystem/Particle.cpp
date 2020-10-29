@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include "ParticleSystem.h"
+#include "Particle.h"
 #include <algorithm>
 #include <assert.h>
 #include <string>
@@ -60,13 +60,13 @@ inline static float RANDOM_M11(unsigned int* seed)
     return u.f - 3.0f;
 }
 
-ParticleSystem::ParticleSystem()
+Particle::Particle()
 {
 }
 
-// implementation ParticleSystem
+// implementation Particle
 
-bool ParticleSystem::initWithTotalParticles(int numberOfParticles)
+bool Particle::initWithTotalParticles(int numberOfParticles)
 {
     _totalParticles = numberOfParticles;
     _isActive = true;
@@ -79,7 +79,7 @@ bool ParticleSystem::initWithTotalParticles(int numberOfParticles)
     return true;
 }
 
-void ParticleSystem::resetTotalParticles(int numberOfParticles)
+void Particle::resetTotalParticles(int numberOfParticles)
 {
     if (particle_data_.size() < numberOfParticles)
     {
@@ -87,11 +87,11 @@ void ParticleSystem::resetTotalParticles(int numberOfParticles)
     }
 }
 
-ParticleSystem::~ParticleSystem()
+Particle::~Particle()
 {
 }
 
-void ParticleSystem::addParticles(int count)
+void Particle::addParticles(int count)
 {
     if (_paused)
     {
@@ -277,14 +277,14 @@ void ParticleSystem::addParticles(int count)
     }
 }
 
-void ParticleSystem::stopSystem()
+void Particle::stopSystem()
 {
     _isActive = false;
     _elapsed = _duration;
     _emitCounter = 0;
 }
 
-void ParticleSystem::resetSystem()
+void Particle::resetSystem()
 {
     _isActive = true;
     _elapsed = 0;
@@ -294,13 +294,13 @@ void ParticleSystem::resetSystem()
     }
 }
 
-bool ParticleSystem::isFull()
+bool Particle::isFull()
 {
     return (_particleCount == _totalParticles);
 }
 
 // ParticleSystem - MainLoop
-void ParticleSystem::update()
+void Particle::update()
 {
     float dt = 1.0 / 25;
     if (_isActive && _emissionRate)
@@ -418,216 +418,216 @@ void ParticleSystem::update()
 }
 
 // ParticleSystem - Properties of Gravity Mode
-void ParticleSystem::setTangentialAccel(float t)
+void Particle::setTangentialAccel(float t)
 {
     modeA.tangentialAccel = t;
 }
 
-float ParticleSystem::getTangentialAccel() const
+float Particle::getTangentialAccel() const
 {
     return modeA.tangentialAccel;
 }
 
-void ParticleSystem::setTangentialAccelVar(float t)
+void Particle::setTangentialAccelVar(float t)
 {
     modeA.tangentialAccelVar = t;
 }
 
-float ParticleSystem::getTangentialAccelVar() const
+float Particle::getTangentialAccelVar() const
 {
     return modeA.tangentialAccelVar;
 }
 
-void ParticleSystem::setRadialAccel(float t)
+void Particle::setRadialAccel(float t)
 {
     modeA.radialAccel = t;
 }
 
-float ParticleSystem::getRadialAccel() const
+float Particle::getRadialAccel() const
 {
     return modeA.radialAccel;
 }
 
-void ParticleSystem::setRadialAccelVar(float t)
+void Particle::setRadialAccelVar(float t)
 {
     modeA.radialAccelVar = t;
 }
 
-float ParticleSystem::getRadialAccelVar() const
+float Particle::getRadialAccelVar() const
 {
     return modeA.radialAccelVar;
 }
 
-void ParticleSystem::setRotationIsDir(bool t)
+void Particle::setRotationIsDir(bool t)
 {
     modeA.rotationIsDir = t;
 }
 
-bool ParticleSystem::getRotationIsDir() const
+bool Particle::getRotationIsDir() const
 {
     return modeA.rotationIsDir;
 }
 
-void ParticleSystem::setGravity(const Vec2& g)
+void Particle::setGravity(const Vec2& g)
 {
     modeA.gravity = g;
 }
 
-const Vec2& ParticleSystem::getGravity()
+const Vec2& Particle::getGravity()
 {
     return modeA.gravity;
 }
 
-void ParticleSystem::setSpeed(float speed)
+void Particle::setSpeed(float speed)
 {
     modeA.speed = speed;
 }
 
-float ParticleSystem::getSpeed() const
+float Particle::getSpeed() const
 {
     return modeA.speed;
 }
 
-void ParticleSystem::setSpeedVar(float speedVar)
+void Particle::setSpeedVar(float speedVar)
 {
 
     modeA.speedVar = speedVar;
 }
 
-float ParticleSystem::getSpeedVar() const
+float Particle::getSpeedVar() const
 {
 
     return modeA.speedVar;
 }
 
 // ParticleSystem - Properties of Radius Mode
-void ParticleSystem::setStartRadius(float startRadius)
+void Particle::setStartRadius(float startRadius)
 {
     modeB.startRadius = startRadius;
 }
 
-float ParticleSystem::getStartRadius() const
+float Particle::getStartRadius() const
 {
     return modeB.startRadius;
 }
 
-void ParticleSystem::setStartRadiusVar(float startRadiusVar)
+void Particle::setStartRadiusVar(float startRadiusVar)
 {
     modeB.startRadiusVar = startRadiusVar;
 }
 
-float ParticleSystem::getStartRadiusVar() const
+float Particle::getStartRadiusVar() const
 {
     return modeB.startRadiusVar;
 }
 
-void ParticleSystem::setEndRadius(float endRadius)
+void Particle::setEndRadius(float endRadius)
 {
     modeB.endRadius = endRadius;
 }
 
-float ParticleSystem::getEndRadius() const
+float Particle::getEndRadius() const
 {
     return modeB.endRadius;
 }
 
-void ParticleSystem::setEndRadiusVar(float endRadiusVar)
+void Particle::setEndRadiusVar(float endRadiusVar)
 {
     modeB.endRadiusVar = endRadiusVar;
 }
 
-float ParticleSystem::getEndRadiusVar() const
+float Particle::getEndRadiusVar() const
 {
 
     return modeB.endRadiusVar;
 }
 
-void ParticleSystem::setRotatePerSecond(float degrees)
+void Particle::setRotatePerSecond(float degrees)
 {
     modeB.rotatePerSecond = degrees;
 }
 
-float ParticleSystem::getRotatePerSecond() const
+float Particle::getRotatePerSecond() const
 {
     return modeB.rotatePerSecond;
 }
 
-void ParticleSystem::setRotatePerSecondVar(float degrees)
+void Particle::setRotatePerSecondVar(float degrees)
 {
     modeB.rotatePerSecondVar = degrees;
 }
 
-float ParticleSystem::getRotatePerSecondVar() const
+float Particle::getRotatePerSecondVar() const
 {
     return modeB.rotatePerSecondVar;
 }
 
-bool ParticleSystem::isActive() const
+bool Particle::isActive() const
 {
     return _isActive;
 }
 
-int ParticleSystem::getTotalParticles() const
+int Particle::getTotalParticles() const
 {
     return _totalParticles;
 }
 
-void ParticleSystem::setTotalParticles(int var)
+void Particle::setTotalParticles(int var)
 {
     _totalParticles = var;
 }
 
-vector<ParticleData> ParticleSystem::getParticleDataVector() const
+vector<ParticleData> Particle::getParticleDataVector() const
 {
     return particle_data_;
 }
 
-bool ParticleSystem::isAutoRemoveOnFinish() const
+bool Particle::isAutoRemoveOnFinish() const
 {
     return _isAutoRemoveOnFinish;
 }
 
-void ParticleSystem::setAutoRemoveOnFinish(bool var)
+void Particle::setAutoRemoveOnFinish(bool var)
 {
     _isAutoRemoveOnFinish = var;
 }
 
 ////don't use a transform matrix, this is faster
-//void ParticleSystem::setScale(float s)
+//void Particle::setScale(float s)
 //{
 //    _transformSystemDirty = true;
 //    Node::setScale(s);
 //}
 //
-//void ParticleSystem::setRotation(float newRotation)
+//void Particle::setRotation(float newRotation)
 //{
 //    _transformSystemDirty = true;
 //    Node::setRotation(newRotation);
 //}
 //
-//void ParticleSystem::setScaleX(float newScaleX)
+//void Particle::setScaleX(float newScaleX)
 //{
 //    _transformSystemDirty = true;
 //    Node::setScaleX(newScaleX);
 //}
 //
-//void ParticleSystem::setScaleY(float newScaleY)
+//void Particle::setScaleY(float newScaleY)
 //{
 //    _transformSystemDirty = true;
 //    Node::setScaleY(newScaleY);
 //}
 
-bool ParticleSystem::isPaused() const
+bool Particle::isPaused() const
 {
     return _paused;
 }
 
-void ParticleSystem::pauseEmissions()
+void Particle::pauseEmissions()
 {
     _paused = true;
 }
 
-void ParticleSystem::resumeEmissions()
+void Particle::resumeEmissions()
 {
     _paused = false;
 }
