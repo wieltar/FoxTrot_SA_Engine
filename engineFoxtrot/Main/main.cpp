@@ -51,7 +51,7 @@ void sceneTestSetup()
 	object->setRestitution(0);
 	object->setStatic(false);
 
-	testScene->addNewObjectToLayer(1, object);
+	testScene->addNewObjectToLayer(3, object);
 	
 	Object* object2 = new Object(2);
 	object2->setName("person");
@@ -65,7 +65,7 @@ void sceneTestSetup()
 	object2->setFriction(0);
 	object2->setRestitution(0);
 	object2->setStatic(false);
-	testScene->addNewObjectToLayer(1, object2);
+	testScene->addNewObjectToLayer(3, object2);
 
 	Object* staticGround = new Object(101);
 	staticGround->setWidth(500); // width
@@ -73,7 +73,7 @@ void sceneTestSetup()
 	staticGround->setPositionX(20); // x 20 left down
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
-	testScene->addNewObjectToLayer(1, staticGround);
+	testScene->addNewObjectToLayer(3, staticGround);
 	
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));
@@ -94,7 +94,7 @@ int main() {
 	bool gameRunning = true;
 
 	auto p = new ParticleInit();        // create a new particle system pointer
-	testScene->particles.push_back(p);
+	testScene->addNewObjectToLayer(4,(Object*)p);
 	engine.videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png");
 
 	p->setPosition(800, 384);              // set the position
@@ -105,7 +105,7 @@ int main() {
 	p->setStartSpinVar(90);
 
 	auto d = new ParticleInit();        // create a new particle system pointer
-	testScene->particles.push_back(d);
+	testScene->addNewObjectToLayer(2, (Object*)d);
 	engine.videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png");
 
 	d->setPosition(100, 384);              // set the position

@@ -61,10 +61,6 @@ vector <Object*> Scene::getAllObjectsInScene()
 	{
 		returnVector.insert(returnVector.end(), (*layer).second->objects.begin(), (*layer).second->objects.end());
 	}
-	for (auto part : particles)
-	{
-		returnVector.push_back(part);
-	}
 	return returnVector;
 }
 

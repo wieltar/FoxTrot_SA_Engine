@@ -16,10 +16,10 @@ ParticleEngine::~ParticleEngine()
 
 void ParticleEngine::onUpdate(Event& tickEvent)
 {
-	if ((*pointerToCurrentScene)->getAllParticlesInScene().size() == 0) return;
-	for (Particle * particle : (*pointerToCurrentScene)->getAllParticlesInScene()) {
-		if (particle != nullptr) {
-			particle->update();
+	if ((*pointerToCurrentScene)->getAllObjectsInScene().size() == 0) return;
+	for (Object * particle : (*pointerToCurrentScene)->getAllObjectsInScene()) {
+		if (particle != nullptr && particle->isParticle) {
+			((Particle*)particle)->update();
 		}
 	}
 }

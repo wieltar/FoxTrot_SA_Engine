@@ -22,12 +22,10 @@ public:
 	const void addNewObjectToLayer(const int zIndex,Object* object);
 
 	vector <Object*> getAllObjectsInScene();
-	vector <Particle*> getAllParticlesInScene();
 
 	Object * getObject(const int objectID);
 
 	int getSceneID() { return sceneID; }
-	vector<Particle *> particles;
 
 private:
 	const int sceneID = 0;
