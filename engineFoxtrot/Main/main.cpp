@@ -23,13 +23,13 @@ public:
 	Player() : Object(2) {
 		this->setName("person");
 		this->setHeight(80);
-		this->setCanChangeAngle(false);
 		this->setWidth(80);
 		this->setPositionX(100);
 		this->setPositionY(80);
-		this->setSpeed(100000);
-		this->setJumpHeight(4000000);
-		this->setDensity(10);
+
+		this->setSpeed(50);
+		this->setJumpHeight(400);
+		this->setDensity(100);
 		this->setFriction(0);
 		this->setRestitution(0);
 		this->setStatic(false);
@@ -41,11 +41,23 @@ public:
 
 	void onCollisionBeginEvent(Event& event) {
 		auto collisionEvent = static_cast<OnCollisionBeginEvent&>(event);
-		this->canJump = true;
+		if (collisionEvent.GetObjectOneId() != this->getSpriteID() && collisionEvent.GetObjectTwoId() != this->getSpriteID()) return;
+
+		auto map = collisionEvent.getDirectionMap();
+		auto collidedDirection = map[this->getSpriteID()];
+		if (collidedDirection == Direction::DOWN) {
+			this->canJump = true;
+		}
 	}
 	void onCollisionEndEvent(Event& event) {
 		auto collisionEvent = static_cast<OnCollisionEndEvent&>(event);
-		this->canJump = false;
+		if (collisionEvent.GetObjectOneId() != this->getSpriteID() && collisionEvent.GetObjectTwoId() != this->getSpriteID()) return;
+
+		auto map = collisionEvent.getDirectionMap();
+		auto collidedDirection = map[this->getSpriteID()];
+		if (collidedDirection == Direction::DOWN) {
+			this->canJump = false;
+		}
 	}
 
 	void onKeyPressed(Event& event) {
@@ -85,6 +97,7 @@ void sceneTestSetup()
 	engine.linkSpriteIDWithAssetPath(9, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-attack1-04.png");
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
+	engine.linkSpriteIDWithAssetPath(102, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
 
 	Object* object = new Object(1);
 	object->setName("house");
@@ -94,7 +107,7 @@ void sceneTestSetup()
 	object->setPositionY(80);
 	object->setSpeed(100);
 	object->setJumpHeight(400);
-	object->setDensity(10);
+	object->setDensity(1000000);
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
@@ -109,7 +122,17 @@ void sceneTestSetup()
 	staticGround->setPositionX(20); // x 20 left down
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
+	staticGround->setFriction(0);
 	engine.createObject(3, staticGround);
+
+	Object* staticGround2 = new Object(102);
+	staticGround2->setWidth(100); // width
+	staticGround2->setHeight(80);// height
+	staticGround2->setPositionX(220); // x 20 left down
+	staticGround2->setPositionY(290);// y 300 left down
+	staticGround2->setStatic(true);
+	staticGround2->setFriction(0);
+	engine.createObject(3, staticGround2);
 
 	engine.configureInput(KEY_A, new MoveLeft);
 	engine.configureInput(KEY_D, new MoveRight);

@@ -74,6 +74,7 @@ void PhysicsFacade::addStaticObject(PhysicsBody* object) {
 	b2Body* body = world.CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox = createShape(*object);
 	body->CreateFixture(&groundBox, 0.0f);
+	b2FixtureDef fixtureDef;
 
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
@@ -153,7 +154,12 @@ void PhysicsFacade::MoveLeft(const int objectId)
 {
 	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, Y_AXIS_STATIC), body->GetWorldCenter(), true);
+	//body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, Y_AXIS_STATIC), body->GetWorldCenter(), true);
+
+	b2Vec2 vel = body->GetLinearVelocity();
+	vel.y = ob->getLinearVelocity();
+	vel.x = ob->getSpeed() *-1;
+	body->SetLinearVelocity(vel);
 };
 
 /// @brief 
@@ -164,7 +170,12 @@ void PhysicsFacade::MoveRight(const int objectId)
 {
 	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), Y_AXIS_STATIC), body->GetWorldCenter(), true);
+	//body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), Y_AXIS_STATIC), body->GetWorldCenter(), true);
+
+	b2Vec2 vel = body->GetLinearVelocity();
+	vel.y = ob->getLinearVelocity();
+	vel.x = ob->getSpeed();
+	body->SetLinearVelocity(vel);
 };
 
 //in Step()

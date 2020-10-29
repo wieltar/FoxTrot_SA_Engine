@@ -132,6 +132,7 @@ void InputFacade::pollEvents() {
             switch (sdl_event.type)
             {
             case SDL_KEYDOWN: {
+                // Command queue with events to fire
                 KeyPressedEvent event((KeyCode)sdl_event.key.keysym.scancode, 1);
                 EventSingleton::get_instance().dispatchEvent<KeyPressedEvent>(event);
                 break;
