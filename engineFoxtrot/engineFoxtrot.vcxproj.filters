@@ -24,6 +24,7 @@
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
+    <ClCompile Include="Main\Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -169,6 +170,9 @@
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
     <ClInclude Include="Engine\SceneManager\Layer.h" />
+    <ClInclude Include="Main\Level.h" />
+    <ClInclude Include="Engine\Events\Sound\OnMusicStartEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\BaseSoundEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

@@ -16,6 +16,7 @@
 
 Engine engine;
 
+
 void sceneTestSetup()
 {
 
@@ -69,6 +70,8 @@ void sceneTestSetup()
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(1, staticGround);
+
+	engine.soundEngine
 	
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));
