@@ -139,7 +139,7 @@ void VideoEngine::receiveTick(Event& tickEvent)
 	//tickEvent = static_cast<AppTickEvent&>(tickEvent);
 	frameData->startTimer();
 	clearScreen();
-	//updateScreen();
+	updateScreen();
 	drawParticle();    // you have to draw it in each loop
 	drawFps();
 	drawScreen();
