@@ -6,7 +6,7 @@
 #include "./SceneManager/SceneManager.h"
 #include "./FileParser/FileParser.h"
 #include "./Physics/PhysicsEngine.h"
-#include "./Particles/ParticleEngine.h"
+#include "./ParticleSystem/ParticleEngine.h"
 #include "./SceneManager/SceneManager.h"
 
 #include "Events/EventSingleton.h"
