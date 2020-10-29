@@ -4,12 +4,6 @@
 #include "../Engine/Events/AppTickEvent30.h"
 #include "../Engine/Events/AppTickEvent60.h"
 
-#include "Events/Window/WindowCloseEvent.h"
-
-#include "./ParticleSystem/ParticleInit.h"
-#include "SDL.h"
-#undef main
-
 // TODO engine.h & engine.cpp
 
 // Doxygen
@@ -22,7 +16,6 @@ Engine engine;
 
 void sceneTestSetup()
 {
-
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
 	engine.linkSpriteIDWithAssetPath(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-02.png");
@@ -120,7 +113,6 @@ int main() {
 		engine.pollInput();
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick30);
-
 
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}

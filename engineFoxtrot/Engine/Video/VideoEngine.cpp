@@ -157,7 +157,6 @@ void VideoEngine::receiveTick(Event& tickEvent)
 /// @param part pointer to the particle
 void VideoEngine::drawParticle(Particle* part)
 {
-
 	vector<ParticleData> particleData = part->getParticleDataVector();
 	for (int index = 0; index < part->getParticleCount(); index++)
 	{

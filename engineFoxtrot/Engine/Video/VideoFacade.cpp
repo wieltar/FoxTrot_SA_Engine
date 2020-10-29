@@ -108,6 +108,18 @@ void VideoFacade::renderCopy(Object& object)
 	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
 }
 
+/// @brief Function to draw Particles
+/// @param posX 
+/// @param startPosX 
+/// @param posY 
+/// @param startPosY 
+/// @param size 
+/// @param spriteID 
+/// @param colorR 
+/// @param colorG 
+/// @param colorB 
+/// @param colorA 
+/// @param rotation 
 void VideoFacade::drawParticle(float posX, float startPosX, float posY, float startPosY, float size, float spriteID, float colorR, float colorG, float colorB, float colorA, float rotation)
 {
 	SDL_Rect r = { int(posX + startPosX - size / 2), int(posY + startPosY - size / 2), int(size), int(size) };

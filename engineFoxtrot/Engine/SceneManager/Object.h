@@ -18,7 +18,6 @@ public:
 	string getName() const;
 
 	int getSpriteID() const;
-	void setSpriteID(const int);
 
 	void setPositionX(const float);
 	float getPositionX() const;
@@ -65,7 +64,7 @@ private:
 
 	string name;
 
-	int spriteID = 0;
+	const int spriteID = 0;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;
