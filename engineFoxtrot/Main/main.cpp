@@ -86,7 +86,6 @@ void sceneTestSetup()
 	engine.startTickThreads();
 }
 
-//VideoEngine videoEngine;
 
 int main() {
 	sceneTestSetup();
