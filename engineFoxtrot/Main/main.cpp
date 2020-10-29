@@ -19,7 +19,6 @@
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
 Engine engine;
-Scene* testScene;
 
 void sceneTestSetup()
 {
@@ -36,7 +35,7 @@ void sceneTestSetup()
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
 
-	testScene = new Scene(3);
+	Scene* testScene = new Scene(3);
 
 	Object* object = new Object(1);
 	object->setName("house");
@@ -74,26 +73,9 @@ void sceneTestSetup()
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(3, staticGround);
-	
-	engine.insertScene(testScene);
-	engine.insertScene(new Scene(4));
-
-	engine.configureInput(KEY_A, new MoveLeft);
-	engine.configureInput(KEY_D, new MoveRight);
-	engine.configureInput(KEY_SPACE, new Jump);
-
-	engine.setCurrentScene(3);
-	engine.startTickThreads();
-}
-
-
-int main() {
-	sceneTestSetup();
-
-	bool gameRunning = true;
 
 	auto p = new ParticleInit();        // create a new particle system pointer
-	testScene->addNewObjectToLayer(4,(Object*)p);
+	testScene->addNewObjectToLayer(4, (Object*)p);
 	engine.videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png");
 
 	p->setPosition(800, 384);              // set the position
@@ -113,7 +95,23 @@ int main() {
 	d->setStartSpinVar(90);
 	d->setEndSpin(90);
 	d->setStartSpinVar(90);
+	
+	engine.insertScene(testScene);
+	engine.insertScene(new Scene(4));
 
+	engine.configureInput(KEY_A, new MoveLeft);
+	engine.configureInput(KEY_D, new MoveRight);
+	engine.configureInput(KEY_SPACE, new Jump);
+
+	engine.setCurrentScene(3);
+	engine.startTickThreads();
+}
+
+
+int main() {
+	sceneTestSetup();
+
+	bool gameRunning = true;
 
 	while (gameRunning)
 	{
@@ -127,9 +125,6 @@ int main() {
 
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}
-
-	delete p;   
-	delete d;
 
 	return 0;
 }
