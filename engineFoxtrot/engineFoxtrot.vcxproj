@@ -164,7 +164,7 @@
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Input\InputFacade.cpp" />
     <ClCompile Include="Engine\Input\InputEngine.cpp" />
-    <ClCompile Include="Engine\ParticleSystem\ParticleExample.cpp" />
+    <ClCompile Include="Engine\ParticleSystem\ParticleInit.cpp" />
     <ClCompile Include="Engine\ParticleSystem\Particle.cpp" />
     <ClCompile Include="Engine\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -218,9 +218,10 @@
     <ClInclude Include="Engine\Input\InputConstants.h" />
     <ClInclude Include="Engine\Input\InputFacade.h" />
     <ClInclude Include="Engine\Input\InputEngine.h" />
-    <ClInclude Include="Engine\ParticleSystem\ParticleExample.h" />
+    <ClInclude Include="Engine\ParticleSystem\ParticleInit.h" />
     <ClInclude Include="Engine\ParticleSystem\Particle.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
+    <ClInclude Include="Engine\SceneManager\Layer.h" />
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />

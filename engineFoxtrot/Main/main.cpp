@@ -6,7 +6,7 @@
 
 #include "Events/Window/WindowCloseEvent.h"
 
-#include "./ParticleSystem/ParticleExample.h"
+#include "./ParticleSystem/ParticleInit.h"
 #include "SDL.h"
 #undef main
 
@@ -110,23 +110,23 @@ int main() {
 	//auto win = SDL_CreateWindow("SDL2 Particles", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_OPENGL);
 	//auto ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
 
-	auto p = new ParticleExample();        // create a new particle system pointer
+	auto p = new ParticleInit();        // create a new particle system pointer
 	videoEngine.setParticle(p);
 	videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png"); 
 
 	p->setPosition(800, 384);              // set the position
-	p->setStyle(ParticleExample::FIRE);    // set the example effects
+	p->setStyle(ParticleInit::FIRE);    // set the example effects
 	p->setStartSpin(0);
 	p->setStartSpinVar(90);
 	p->setEndSpin(90);
 	p->setStartSpinVar(90);
 
-	auto d = new ParticleExample();        // create a new particle system pointer
+	auto d = new ParticleInit();        // create a new particle system pointer
 	videoEngine.setParticle(d);
 	videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png");
 
 	d->setPosition(100, 384);              // set the position
-	d->setStyle(ParticleExample::FIRE);    // set the example effects
+	d->setStyle(ParticleInit::FIRE);    // set the example effects
 	d->setStartSpin(0);
 	d->setStartSpinVar(90);
 	d->setEndSpin(90);
@@ -139,8 +139,8 @@ int main() {
 		if (e.type == SDL_KEYUP)
 		{
 			int s = (e.key.keysym.sym - SDLK_a + 1);
-			p->setStyle(ParticleExample::PatticleStyle(s));    // switch the example effects
-			d->setStyle(ParticleExample::PatticleStyle(s));    // switch the example effects
+			p->setStyle(ParticleInit::PatticleStyle(s));    // switch the example effects
+			d->setStyle(ParticleInit::PatticleStyle(s));    // switch the example effects
 		}
 		if (e.type == SDL_QUIT)
 		{

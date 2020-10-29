@@ -2,11 +2,11 @@
 #include "Particle.h"
 //#include "SDL_image.h"
 
-class ParticleExample : public Particle
+class ParticleInit : public Particle
 {
 public:
-    ParticleExample() {}
-    virtual ~ParticleExample() {}
+    ParticleInit() {}
+    virtual ~ParticleInit() {}
 
     enum PatticleStyle
     {

@@ -24,7 +24,7 @@
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
     <ClCompile Include="Engine\ParticleSystem\Particle.cpp" />
-    <ClCompile Include="Engine\ParticleSystem\ParticleExample.cpp" />
+    <ClCompile Include="Engine\ParticleSystem\ParticleInit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -163,7 +163,8 @@
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
     <ClInclude Include="Engine\ParticleSystem\Particle.h" />
-    <ClInclude Include="Engine\ParticleSystem\ParticleExample.h" />
+    <ClInclude Include="Engine\SceneManager\Layer.h" />
+    <ClInclude Include="Engine\ParticleSystem\ParticleInit.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

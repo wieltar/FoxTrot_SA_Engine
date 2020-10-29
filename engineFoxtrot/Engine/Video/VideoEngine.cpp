@@ -160,9 +160,9 @@ void VideoEngine::receiveTick(/*Event& tickEvent*/)
 	FrameData::renderFps = frameData->calculateAverageFps();
 }
 
-void VideoEngine::setParticle(ParticleExample* _particleExample)
+void VideoEngine::setParticle(ParticleInit* _ParticleInit)
 {
-	particlesVector.push_back(_particleExample);
+	particlesVector.push_back(_ParticleInit);
 }
 
 

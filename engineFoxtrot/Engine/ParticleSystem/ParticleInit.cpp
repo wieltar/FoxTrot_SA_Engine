@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-#include "ParticleExample.h"
+#include "ParticleInit.h"
 
-void ParticleExample::setStyle(PatticleStyle style)
+void ParticleInit::setStyle(PatticleStyle style)
 {
     if (style_ == style)
     {
@@ -15,7 +15,7 @@ void ParticleExample::setStyle(PatticleStyle style)
     }
     switch (style)
     {
-    case ParticleExample::FIRE:
+    case ParticleInit::FIRE:
     {
         initWithTotalParticles(250);
 
@@ -73,7 +73,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 40.0f, 20.0f };
         break;
     }
-    case ParticleExample::FIRE_WORK:
+    case ParticleInit::FIRE_WORK:
     {
         initWithTotalParticles(1500);
 
@@ -131,7 +131,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleExample::SUN:
+    case ParticleInit::SUN:
     {
         initWithTotalParticles(350);
 
@@ -192,7 +192,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleExample::GALAXY:
+    case ParticleInit::GALAXY:
     {
         initWithTotalParticles(200);
         // duration
@@ -253,7 +253,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleExample::FLOWER:
+    case ParticleInit::FLOWER:
     {
         initWithTotalParticles(250);
 
@@ -315,7 +315,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleExample::METEOR:
+    case ParticleInit::METEOR:
     {
         initWithTotalParticles(150);
 
@@ -377,7 +377,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleExample::SPIRAL:
+    case ParticleInit::SPIRAL:
     {
         initWithTotalParticles(500);
 
@@ -439,7 +439,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleExample::EXPLOSION:
+    case ParticleInit::EXPLOSION:
     {
         initWithTotalParticles(700);
 
@@ -500,7 +500,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleExample::SMOKE:
+    case ParticleInit::SMOKE:
     {
         initWithTotalParticles(200);
 
@@ -558,7 +558,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 20.0f, 0.0f };
         break;
     }
-    case ParticleExample::SNOW:
+    case ParticleInit::SNOW:
     {
         initWithTotalParticles(700);
 
@@ -620,7 +620,7 @@ void ParticleExample::setStyle(PatticleStyle style)
         _posVar = { 1.0f * x_, 0.0f };
         break;
     }
-    case ParticleExample::RAIN:
+    case ParticleInit::RAIN:
     {
         initWithTotalParticles(1000);
 

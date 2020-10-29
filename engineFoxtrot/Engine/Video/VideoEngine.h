@@ -3,7 +3,7 @@
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
 #include "../SceneManager/Scene.h"
-#include "ParticleSystem/ParticleExample.h"
+#include "ParticleSystem/ParticleInit.h"
 
 #define NO_RED 0
 #define NO_BLUE 0
@@ -57,7 +57,7 @@ public:
 	void update(Object* object);
 	void receiveTick(/*Event& tickEvent*/);
 
-	void setParticle(ParticleExample* _particleExample);
+	void setParticle(ParticleInit* _particleExample);
 	void drawParticle();
 
 
@@ -67,7 +67,7 @@ private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
 	FrameData* frameData = nullptr;
-	vector<ParticleExample*> particlesVector;
+	vector<ParticleInit*> particlesVector;
 
 	bool shouldDrawFps = true; //TODO Should be set to false when toggle via button is added, see Todo above.
 
