@@ -6,26 +6,12 @@
 VideoEngine::VideoEngine()
 {
 	frameData = new FrameData;
-	//EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
+	EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
 }
 
 VideoEngine::~VideoEngine()
 {
 }
-
-///// @brief 
-///// Inits SDL2 and creates the window
-//void VideoEngine::initSDL()
-//{
-//	try
-//	{
-//		videoFacade->initSDL();
-//	}
-//	catch (int e)
-//	{
-//		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-//	}
-//}
 
 /// @brief 
 /// Clears the SDL screen
@@ -148,7 +134,7 @@ void VideoEngine::update(Object* object)
 }
 
 /// @brief Handle the tick update from the thread
-void VideoEngine::receiveTick(/*Event& tickEvent*/)
+void VideoEngine::receiveTick(Event& tickEvent)
 {
 	//tickEvent = static_cast<AppTickEvent&>(tickEvent);
 	frameData->startTimer();

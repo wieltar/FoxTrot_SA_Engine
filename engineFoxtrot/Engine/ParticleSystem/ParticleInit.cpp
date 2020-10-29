@@ -1,5 +1,4 @@
 #include "stdafx.h"
-
 #include "ParticleInit.h"
 
 void ParticleInit::setStyle(PatticleStyle style)

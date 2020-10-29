@@ -1,9 +1,7 @@
 #include "stdafx.h"
 
 #include "Particle.h"
-#include <algorithm>
-#include <assert.h>
-#include <string>
+
 
 inline float Deg2Rad(float a)
 {

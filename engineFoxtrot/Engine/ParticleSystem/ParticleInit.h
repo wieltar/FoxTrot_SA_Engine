@@ -1,6 +1,5 @@
 #pragma once
 #include "Particle.h"
-//#include "SDL_image.h"
 
 class ParticleInit : public Particle
 {

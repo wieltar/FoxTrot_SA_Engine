@@ -13,7 +13,11 @@ ParticleEngine::~ParticleEngine()
 
 void ParticleEngine::onUpdate()
 {
-
+	for (Particle * particle : (*pointerToCurrentScene)->getAllParticlesInScene()) {
+		if (particle != nullptr) {
+			particle->update();
+		}
+	}
 }
 
 

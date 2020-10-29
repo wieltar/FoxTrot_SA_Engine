@@ -15,6 +15,7 @@
 #include <functional>
 #include <type_traits>
 #include <filesystem>
+#include <algorithm>
 
 using namespace std;
 

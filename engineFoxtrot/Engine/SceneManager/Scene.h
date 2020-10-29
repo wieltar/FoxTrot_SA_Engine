@@ -2,6 +2,7 @@
 
 #include "Object.h"
 #include "Layer.h"
+#include "../ParticleSystem/ParticleInit.h"
 
 /// @brief 
 /// Scene Class
@@ -21,6 +22,7 @@ public:
 	const void addNewObjectToLayer(const int zIndex,Object* object);
 
 	vector <Object*> getAllObjectsInScene();
+	vector <Particle*> getAllParticlesInScene();
 
 	Object * getObject(const int objectID);
 
@@ -29,7 +31,7 @@ public:
 private:
 	const int sceneID = 0;
 	std::map<int, Layer*> layers;
-	//vector<Particle> particles;
+	vector<Particle *> particles;
 
 
 };

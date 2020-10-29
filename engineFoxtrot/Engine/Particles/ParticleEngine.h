@@ -1,4 +1,7 @@
 #pragma once
+#include "../SceneManager/Scene.h"
+
+
 
 
 #if(EXPORT)
@@ -15,8 +18,10 @@ public:
 	void onUpdate();
 
 
+	Scene** pointerToCurrentScene = nullptr;
 
 private:
+
 
 };
 

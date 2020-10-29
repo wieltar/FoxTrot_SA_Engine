@@ -58,10 +58,10 @@ public:
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
 private:
+	ParticleEngine particleEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
-	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 
 	FrameData* frameData = nullptr;

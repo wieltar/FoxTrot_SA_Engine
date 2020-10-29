@@ -51,6 +51,13 @@ const bool Scene::toggleLayer(const int zIndex, bool render)
 }
 
 /// @brief 
+/// @return 
+vector <Particle*> Scene::getAllParticlesInScene()
+{
+	return particles;
+}
+
+/// @brief 
 /// Returns pointers to all available objects in the whole scene. 
 /// @return 
 vector <Object*> Scene::getAllObjectsInScene()

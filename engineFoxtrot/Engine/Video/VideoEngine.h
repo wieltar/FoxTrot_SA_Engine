@@ -55,7 +55,7 @@ public:
 	void toggleFps(); //TODO Toggle via input/Command pattern
 
 	void update(Object* object);
-	void receiveTick(/*Event& tickEvent*/);
+	void receiveTick(Event& tickEvent);
 
 	void setParticle(ParticleInit* _particleExample);
 	void drawParticle();
