@@ -35,6 +35,7 @@ struct Color4F
 class ParticleData
 {
 public:
+    int spriteID = 0;
     float posx = 0;
     float posy = 0;
     float startPosX = 0;

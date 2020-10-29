@@ -27,6 +27,8 @@ string Object::getName() const { return name; }
 
 int Object::getSpriteID() const { return spriteID; }
 
+void Object::setSpriteID(const int spriteID_) {	spriteID = spriteID_; }
+
 void Object::setPositionX(const float x) { this->positionX = x; }
 float Object::getPositionX() const { return positionX; }
 
