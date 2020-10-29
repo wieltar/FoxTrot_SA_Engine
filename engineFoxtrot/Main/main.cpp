@@ -129,37 +129,7 @@ int main() {
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}
 
-	/*return 0;*/
-
-	//SDL_Init(SDL_INIT_VIDEO);
-	//auto win = SDL_CreateWindow("SDL2 Particles", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_OPENGL);
-	//auto ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
-
-	
-	//while (1)
-	//{
-	//	SDL_Event e;
-	//	SDL_PollEvent(&e);
-	//	if (e.type == SDL_KEYUP)
-	//	{
-	//		int s = (e.key.keysym.sym - SDLK_a + 1);
-	//		p->setStyle(ParticleInit::PatticleStyle(s));    // switch the example effects
-	//		d->setStyle(ParticleInit::PatticleStyle(s));    // switch the example effects
-	//	}
-	//	if (e.type == SDL_QUIT)
-	//	{
-	//		break;
-	//	}
-
-	//	//SDL_RenderClear(ren);
-	//	//videoEngine.receiveTick();
-
-	//	//SDL_RenderPresent(ren);
-	//	SDL_Delay(10);
-	//}
-
-
-	delete p;    // destroy it
+	delete p;   
 	delete d;
 
 	return 0;
