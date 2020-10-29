@@ -1,8 +1,7 @@
 #pragma once
 #include "../SceneManager/Scene.h"
-
-
-
+#include "Events/Event.h"
+#include "Events/Action/ActionEvent.h"
 
 #if(EXPORT)
 class DLLEXPORT ParticleEngine
@@ -15,7 +14,7 @@ public:
 	~ParticleEngine();
 
 
-	void onUpdate();
+	void onUpdate(Event& tickEvent);
 
 
 	Scene** pointerToCurrentScene = nullptr;

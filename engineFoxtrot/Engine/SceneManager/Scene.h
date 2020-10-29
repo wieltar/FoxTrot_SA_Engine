@@ -27,11 +27,11 @@ public:
 	Object * getObject(const int objectID);
 
 	int getSceneID() { return sceneID; }
+	vector<Particle *> particles;
 
 private:
 	const int sceneID = 0;
 	std::map<int, Layer*> layers;
-	vector<Particle *> particles;
 
 
 };

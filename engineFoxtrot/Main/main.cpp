@@ -19,6 +19,7 @@
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
 Engine engine;
+Scene* testScene;
 
 void sceneTestSetup()
 {
@@ -35,7 +36,7 @@ void sceneTestSetup()
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
 
-	Scene* testScene = new Scene(3);
+	testScene = new Scene(3);
 
 	Object* object = new Object(1);
 	object->setName("house");
@@ -93,7 +94,7 @@ int main() {
 	bool gameRunning = true;
 
 	auto p = new ParticleInit();        // create a new particle system pointer
-	engine.videoEngine.setParticle(p);
+	testScene->particles.push_back(p);
 	engine.videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png");
 
 	p->setPosition(800, 384);              // set the position
@@ -104,7 +105,7 @@ int main() {
 	p->setStartSpinVar(90);
 
 	auto d = new ParticleInit();        // create a new particle system pointer
-	engine.videoEngine.setParticle(d);
+	testScene->particles.push_back(d);
 	engine.videoEngine.loadImage(1, "./Engine/ParticleSystem/fire.png");
 
 	d->setPosition(100, 384);              // set the position

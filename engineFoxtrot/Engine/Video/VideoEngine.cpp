@@ -146,19 +146,10 @@ void VideoEngine::receiveTick(Event& tickEvent)
 	FrameData::renderFps = frameData->calculateAverageFps();
 }
 
-void VideoEngine::setParticle(ParticleInit* _ParticleInit)
-{
-	particlesVector.push_back(_ParticleInit);
-}
-
-
 void VideoEngine::drawParticle()
 {
-	//if (_texture == nullptr)
-	//{
-	//	return;
-	//}
-	for (auto part : particlesVector)
+	if ((*pointerToCurrentScene)->getAllParticlesInScene().size() == 0) return;
+	for (auto part : (*pointerToCurrentScene)->getAllParticlesInScene())
 	{
 		vector<ParticleData> particleData = part->getParticleDataVector();
 		for (int i = 0; i < part->getParticleCount(); i++)
@@ -171,7 +162,6 @@ void VideoEngine::drawParticle()
 			}
 			videoFacade->drawParticle(p.posx, p.startPosX, p.posy, p.startPosY, p.size, 1, p.colorR, p.colorG, p.colorB, p.colorA, p.rotation); // TODO Remove hard ID
 		}
-		part->update();
 	}
 
 }

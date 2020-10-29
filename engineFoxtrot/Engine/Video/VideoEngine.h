@@ -57,9 +57,7 @@ public:
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
 
-	void setParticle(ParticleInit* _particleExample);
 	void drawParticle();
-
 
 	Scene** pointerToCurrentScene = nullptr;
 
@@ -67,7 +65,6 @@ private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
 	FrameData* frameData = nullptr;
-	vector<ParticleInit*> particlesVector;
 
 	bool shouldDrawFps = true; //TODO Should be set to false when toggle via button is added, see Todo above.
 
