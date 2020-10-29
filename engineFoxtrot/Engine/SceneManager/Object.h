@@ -10,7 +10,6 @@ class Object
 #endif
 {
 public:
-	Object() {};
 	Object(const int id);
 	Object(const int id, const float xPos, const float yPos, const float height, const float width);
 	~Object();

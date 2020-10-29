@@ -75,7 +75,7 @@ void sceneTestSetup()
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(3, staticGround);
 
-	auto p = new ParticleInit();        // create a new particle system pointer
+	auto p = new ParticleInit(11);        // create a new particle system pointer
 	testScene->addNewObjectToLayer(4, (Object*)p);
 
 	p->setPosition(800, 384);              // set the position
@@ -84,9 +84,8 @@ void sceneTestSetup()
 	p->setStartSpinVar(90);
 	p->setEndSpin(90);
 	p->setStartSpinVar(90);
-	p->setSpriteID(11);
 
-	auto d = new ParticleInit();        // create a new particle system pointer
+	auto d = new ParticleInit(11);        // create a new particle system pointer
 	testScene->addNewObjectToLayer(2, (Object*)d);
 
 	d->setPosition(100, 384);              // set the position
@@ -95,7 +94,6 @@ void sceneTestSetup()
 	d->setStartSpinVar(90);
 	d->setEndSpin(90);
 	d->setStartSpinVar(90);
-	d->setSpriteID(11);
 	
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));

@@ -58,7 +58,7 @@ inline static float RANDOM_M11(unsigned int* seed)
     return u.f - 3.0f;
 }
 
-Particle::Particle()
+Particle::Particle(const int id) : Object(id)
 {
     this->isParticle = true;
 }
