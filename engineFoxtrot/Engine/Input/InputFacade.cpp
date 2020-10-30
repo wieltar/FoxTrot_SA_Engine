@@ -6,10 +6,7 @@
 #undef main
 
 /// @brief 
-InputFacade::InputFacade(InputEngine *_inputEngine)
-{
-    inputEngine = _inputEngine;
-}
+InputFacade::InputFacade() {}
 
 /// @brief 
 InputFacade::~InputFacade()
@@ -29,7 +26,7 @@ bool InputFacade::input_mapping()
         else if (event.type == SDL_KEYDOWN) {
             if (event.key.keysym.sym == SDLK_ESCAPE) return true;
             if (find(handleOnce.begin(), handleOnce.end(), eventToKeyCode(event)) != handleOnce.end())
-                commands[eventToKeyCode(event)]->execute(inputEngine);
+                commands[eventToKeyCode(event)]->execute();
             else
                 keydown(event);
         }

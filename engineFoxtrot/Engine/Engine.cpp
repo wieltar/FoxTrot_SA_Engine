@@ -144,4 +144,3 @@ void Engine::configureInput(KeyCode key, Command* command, bool runOnce)
 {
 	inputEngine.configure(key, command, runOnce);
 }
-

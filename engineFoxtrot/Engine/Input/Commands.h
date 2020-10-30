@@ -7,7 +7,7 @@ class InputEngine;
 class Command
 {
 public:
-	Command(InputEngine* inputEngine) {};
+	Command(InputEngine* inputEngine);
 	virtual ~Command() {};
 	virtual void execute() = 0;
 	virtual InputType get_input_type() = 0;
@@ -19,6 +19,7 @@ protected:
 class MoveLeft : public Command
 {
 public:
+	MoveLeft(InputEngine* inputEngine);
 	void execute();
 	InputType get_input_type() { return STATE; }
 };
@@ -27,6 +28,7 @@ public:
 class MoveRight : public Command
 {
 public:
+	MoveRight(InputEngine* inputEngine);
 	void execute();
 	InputType get_input_type() { return STATE; }
 };
@@ -35,6 +37,7 @@ public:
 class Jump : public Command
 {
 public:
+	Jump(InputEngine* inputEngine);
 	void execute();
 	InputType get_input_type() { return STATE; }
 };
@@ -43,6 +46,7 @@ public:
 class ToggleFps : public Command
 {
 public:
+	ToggleFps(InputEngine* inputEngine);
 	void execute();
 	InputType get_input_type() { return STATE; }
 };
