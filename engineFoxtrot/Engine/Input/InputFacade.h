@@ -13,14 +13,13 @@ class InputFacade : public IInputFacade
 {
 
 public:
-    InputFacade(InputEngine* _inputEngine);
+    InputFacade();
     ~InputFacade();
 
 	bool fill(vector<Command*>& command_queue);
 	void configure(KeyCode key, Command* command, bool runOnce);
 
 private:
-	InputEngine *inputEngine;
 	bool input_mapping();
 	void dispatcher(std::vector<Command*>& command_queue);
 

@@ -51,7 +51,7 @@ void InputEngine::updateInput()
 	this->fill(commandQueue);
 
 	while (!commandQueue.empty()) {
-		commandQueue.back()->execute(this);
+		commandQueue.back()->execute();
 		commandQueue.pop_back();
 	}
 }

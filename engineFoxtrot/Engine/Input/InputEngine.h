@@ -20,9 +20,15 @@ public:
 	
 	bool fill(vector<Command*>& command_queue);
 	void configure(KeyCode key, Command* command, bool runOnce);
+
+	template <class T>
+	T* makeCommand() {
+		return new T(this);
+	}
+
 	void updateInput();
 private:
-	IInputFacade *inputFacade = new InputFacade(this);
+	IInputFacade *inputFacade = new InputFacade();
 
 	vector<Command*> commandQueue;
 };

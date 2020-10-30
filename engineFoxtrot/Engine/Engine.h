@@ -54,6 +54,12 @@ public:
 	void pollInput();
 	void configureInput(KeyCode key, Command* command, bool runOnce = false);
 
+	template <class T>
+	T* makeCommand() {
+		return inputEngine.makeCommand<T>();
+	}
+
+	//TODO make private
 private:
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
