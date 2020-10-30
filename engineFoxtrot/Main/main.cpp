@@ -45,10 +45,10 @@ public:
 	/// Handles when an collision event begins, when the direction of the collision happend on the bottom side of the player object, set can jump true
 	void onCollisionBeginEvent(Event& event) {
 		auto collisionEvent = static_cast<OnCollisionBeginEvent&>(event);
-		if (collisionEvent.GetObjectOneId() != this->getSpriteID() && collisionEvent.GetObjectTwoId() != this->getSpriteID()) return;
+		if (collisionEvent.GetObjectOneId() != this->getObjectId() && collisionEvent.GetObjectTwoId() != this->getObjectId()) return;
 
 		auto map = collisionEvent.getDirectionMap();
-		auto collidedDirection = map[this->getSpriteID()];
+		auto collidedDirection = map[this->getObjectId()];
 		if (collidedDirection == Direction::DOWN) {
 			this->canJump = true;
 		}
@@ -58,10 +58,10 @@ public:
 	/// Handles when an collision event ends, when the direction of the collision happend on the bottom side of the player object, set can jump false
 	void onCollisionEndEvent(Event& event) {
 		auto collisionEvent = static_cast<OnCollisionEndEvent&>(event);
-		if (collisionEvent.GetObjectOneId() != this->getSpriteID() && collisionEvent.GetObjectTwoId() != this->getSpriteID()) return;
+		if (collisionEvent.GetObjectOneId() != this->getObjectId() && collisionEvent.GetObjectTwoId() != this->getObjectId()) return;
 
 		auto map = collisionEvent.getDirectionMap();
-		auto collidedDirection = map[this->getSpriteID()];
+		auto collidedDirection = map[this->getObjectId()];
 		if (collidedDirection == Direction::DOWN) {
 			this->canJump = false;
 		}
@@ -75,14 +75,14 @@ public:
 		switch (keyPressedEvent.GetKeyCode())
 		{
 		case KeyCode::KEY_A:
-			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getSpriteID()));
+			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
 			break;
 		case KeyCode::KEY_D:
-			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getSpriteID()));
+			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
 			break;
 		case KeyCode::KEY_SPACE:
 			if (canJump) {
-				EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, this->getSpriteID()));
+				EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, this->getObjectId()));
 			}
 			break;
 		default:
@@ -123,7 +123,7 @@ void sceneTestSetup()
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
-	engine.createObject(3, object);
+	testScene->addNewObjectToLayer(1, object);
 
 	Object* object2 = new Player();
 	object2->setStatic(false);
@@ -133,7 +133,7 @@ void sceneTestSetup()
 	object2->registerSprite("slide", so4);
 	object2->registerSprite("air_fall", so5);
 	object2->changeToState("air_fall");
-	engine.createObject(3, object2);
+	testScene->addNewObjectToLayer(1, object2);
 
 	Object* staticGround = new Object(101);
 	staticGround->setScalable(true);
@@ -148,7 +148,7 @@ void sceneTestSetup()
 
 
 	engine.setCurrentScene(3);
-	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
+	//engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 	
 	engine.insertScene(new Scene(4));
 
@@ -159,7 +159,7 @@ void sceneTestSetup()
 	staticGround2->setPositionY(290);// y 300 left down
 	staticGround2->setStatic(true);
 	staticGround2->setFriction(0);
-	engine.createObject(3, staticGround2);
+	testScene->addNewObjectToLayer(1, staticGround2);
 
 	engine.insertScene(testScene);
 	engine.setCurrentScene(3);

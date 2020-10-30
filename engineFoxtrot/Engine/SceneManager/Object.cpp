@@ -85,5 +85,3 @@ void Object::setYAxisVelocity(const float val) { this->yAxisVelocity = val; }
 
 bool Object::getRotatable() const { return this->rotatable; }
 void Object::setRotatable(const bool val) { this->rotatable = val; }
-
-bool Object::getChanged() const { return changed; }

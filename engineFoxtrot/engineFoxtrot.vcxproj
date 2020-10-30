@@ -165,6 +165,7 @@
     <ClCompile Include="Engine\Input\InputFacade.cpp" />
     <ClCompile Include="Engine\Input\InputEngine.cpp" />
     <ClCompile Include="Engine\Physics\ContactListenerAdapter.cpp" />
+    <ClCompile Include="Engine\SceneManager\SpriteObject.cpp" />
     <ClCompile Include="Engine\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -222,6 +223,8 @@
     <ClInclude Include="Engine\Particles\IParticleFacade.h" />
     <ClInclude Include="Engine\Physics\ContactListenerAdapter.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
+    <ClInclude Include="Engine\SceneManager\Layer.h" />
+    <ClInclude Include="Engine\SceneManager\SpriteObject.h" />
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />

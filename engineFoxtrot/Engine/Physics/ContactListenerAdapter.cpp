@@ -15,7 +15,7 @@ void ContactListenerAdapter::BeginContact(b2Contact* contact) {
 		map<int, Direction> direction = getCollisionDirection(contact, getCollidedBeginByObject(collidedPoint, result.object1),
 			getCollidedBeginByObject(collidedPoint, result.object2));
 
-		EventSingleton::get_instance().dispatchEvent<OnCollisionBeginEvent>((Event&)OnCollisionBeginEvent(result.object1->getSpriteID(), result.object2->getSpriteID(), direction));
+		EventSingleton::get_instance().dispatchEvent<OnCollisionBeginEvent>((Event&)OnCollisionBeginEvent(result.object1->getObjectId(), result.object2->getObjectId(), direction));
 	}
 }
 
@@ -33,7 +33,7 @@ void ContactListenerAdapter::EndContact(b2Contact* contact) {
 		map<int, Direction> direction = getCollisionDirection(contact, getCollidedEndByObject(collidedPoint, result.object1),
 			getCollidedEndByObject(collidedPoint, result.object2));
 
-		EventSingleton::get_instance().dispatchEvent<OnCollisionEndEvent>((Event&)OnCollisionEndEvent(result.object1->getSpriteID(), result.object2->getSpriteID(), direction));
+		EventSingleton::get_instance().dispatchEvent<OnCollisionEndEvent>((Event&)OnCollisionEndEvent(result.object1->getObjectId(), result.object2->getObjectId(), direction));
 	}
 };
 
@@ -42,16 +42,16 @@ void ContactListenerAdapter::EndContact(b2Contact* contact) {
 /// When a contact begins gets the direction of where the collision happend on the object
 pair<int, Direction> ContactListenerAdapter::getCollidedBeginByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
 	if (object->getPositionY() < collidedPoint.y) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::DOWN);
+		return pair<int, Direction>(object->getObjectId(), Direction::DOWN);
 	}
 	else if (object->getPositionY() > collidedPoint.y) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::UP);
+		return pair<int, Direction>(object->getObjectId(), Direction::UP);
 	}
 	if (object->getPositionX() < collidedPoint.x) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::LEFT);
+		return pair<int, Direction>(object->getObjectId(), Direction::LEFT);
 	}
 	else if (object->getPositionX() > collidedPoint.x) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::RIGHT);
+		return pair<int, Direction>(object->getObjectId(), Direction::RIGHT);
 	}
 	return pair<int, Direction>();
 }
@@ -60,16 +60,16 @@ pair<int, Direction> ContactListenerAdapter::getCollidedBeginByObject(b2Vec2 col
 /// When a contact ends gets the direction of where the collision happend on the object
 pair<int, Direction> ContactListenerAdapter::getCollidedEndByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
 	if (object->getPositionY() < collidedPoint.y) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::UP);
+		return pair<int, Direction>(object->getObjectId(), Direction::UP);
 	}
 	else if (object->getPositionY() > collidedPoint.y) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::DOWN);
+		return pair<int, Direction>(object->getObjectId(), Direction::DOWN);
 	}
 	if (object->getPositionX() < collidedPoint.x) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::LEFT);
+		return pair<int, Direction>(object->getObjectId(), Direction::LEFT);
 	}
 	else if (object->getPositionX() > collidedPoint.x) {
-		return pair<int, Direction>(object->getSpriteID(), Direction::RIGHT);
+		return pair<int, Direction>(object->getObjectId(), Direction::RIGHT);
 	}
 	return pair<int, Direction>();
 }
