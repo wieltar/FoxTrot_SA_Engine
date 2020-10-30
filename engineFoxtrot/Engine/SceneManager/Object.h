@@ -62,7 +62,7 @@ public:
 	void setYAxisVelocity(const float val);
 	float getYAxisVelocity() const;
 
-	void registerSprite(std::string state, const SpriteObject spriteObject);
+	void registerSprite(string state, SpriteObject* spriteObject);
 	void changeToState(const std::string state);
 
 	void setScalable(const bool val);
@@ -94,7 +94,7 @@ protected:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
-	map<string, SpriteObject> textures;
+	map<const string, SpriteObject*> textures;
 	bool rotatable = false;
 	float yAxisVelocity = 0;
 };

@@ -82,14 +82,14 @@ void VideoFacade::drawScreen()
 /// Load a animated sprite into the texturemap map
 /// @param spriteObject 
 /// @param filename
-void VideoFacade::loadImage(SpriteObject spriteObject) {
-	if (spriteObject.getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
-	if (spriteObject.getfileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+void VideoFacade::loadImage(SpriteObject * spriteObject) {
+	if (spriteObject->getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
+	if (spriteObject->getfileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
 
-	SDL_Surface* surface = IMG_Load(spriteObject.getfileName());
+	SDL_Surface* surface = IMG_Load(spriteObject->getfileName());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	textureMap[spriteObject.getTextureID()] = texture;
+	textureMap[spriteObject->getTextureID()] = texture;
 	SDL_FreeSurface(surface);
 }
 
@@ -129,8 +129,7 @@ void VideoFacade::renderCopy(Object& object)
 	destination.y = object.getPositionY() - object.getHeight();
 	destination.w = object.getWidth();
 	destination.h = object.getHeight();
-	
-	SDL_RenderCopy(renderer, textureMap[sprite->getTextureID()], &rect, &destination);
+	SDL_RenderCopyEx(renderer, textureMap[sprite->getTextureID()], &rect, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
 }
 
 /// @brief

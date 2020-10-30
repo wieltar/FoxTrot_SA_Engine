@@ -16,7 +16,7 @@ public:
 	virtual void initSDL() = 0;
 	virtual void clearScreen() = 0;
 	virtual void drawScreen() = 0;
-	virtual void loadImage(const SpriteObject spriteObject) = 0;
+	virtual void loadImage(SpriteObject * spriteObject) = 0;
 	virtual void renderCopy(Object& object) = 0;
 	virtual void drawMessageAt(const FpsMessage message, const TextPosition pos) = 0;
 

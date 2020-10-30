@@ -67,16 +67,16 @@ SpriteObject* Object::GetCurrentSprite() { return currentSprite; }
 /// register a new state or overwrite a existing state
 /// register the spriteID
 /// link a state with a sprite
-void Object::registerSprite(const std::string state, const SpriteObject spriteObject) {
-	textures[state] = spriteObject;
+void Object::registerSprite(string state, SpriteObject* spriteObject) {
+	textures.insert(pair<string, SpriteObject*>(state, spriteObject));
 }
 
 /// @brief
 /// change the state
 /// change the textureID to the current state
 void Object::changeToState(const std::string state) {
-	SpriteObject* spriteObject = &textures[state];
-	if (spriteObject == NULL) throw ERROR_CODE_SPRITE_DOENST_EXIST;
+	SpriteObject* spriteObject = textures[state];
+	if (spriteObject == nullptr) throw ERROR_CODE_SPRITE_DOENST_EXIST;
 	this->currentSprite = spriteObject;
 }
 

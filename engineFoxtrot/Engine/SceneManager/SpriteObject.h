@@ -18,9 +18,9 @@ public:
 	const char * getfileName() const;
 	int getLeftPos(uint32_t ticks);
 private:
-	int textureID;
-	int lengthOfTextures = 0;
-	int height = 0;
-	int width = 0;
+	const int textureID =0;
+	const int lengthOfTextures = 0;
+	const int height = 0;
+	const int width = 0;
 	const char * fileName;
 };

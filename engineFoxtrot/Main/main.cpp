@@ -28,7 +28,7 @@ public:
 		this->setPositionY(80);
 
 		this->setSpeed(50);
-		this->setJumpHeight(400);
+		this->setJumpHeight(40);
 		this->setDensity(100);
 		this->setFriction(0);
 		this->setRestitution(0);
@@ -93,12 +93,12 @@ public:
 
 void sceneTestSetup()
 {
-	SpriteObject so0(1, 16, 16, 1, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
-	SpriteObject so1(100, 37, 50, 1, "../Assets/Sprites/Character/adventure.png");
-	SpriteObject so2(101, 37, 50, 4, "../Assets/Sprites/Character/adventure_air_attack1.png");
-	SpriteObject so3(102, 37, 50, 6, "../Assets/Sprites/Character/adventure_run.png");
-	SpriteObject so4(103, 37, 50, 2, "../Assets/Sprites/Character/adventure_slide.png");
-	SpriteObject so5(104, 37, 50, 2, "../Assets/Sprites/Character/adventure_fall.png");
+	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
+	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, "../Assets/Sprites/Character/adventure.png");
+	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, "../Assets/Sprites/Character/adventure_air_attack1.png");
+	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, "../Assets/Sprites/Character/adventure_run.png");
+	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, "../Assets/Sprites/Character/adventure_slide.png");
+	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, "../Assets/Sprites/Character/adventure_fall.png");
 
 
 	engine.loadSprite(so0);
@@ -123,6 +123,8 @@ void sceneTestSetup()
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
+	object->registerSprite("default", so1);
+	object->changeToState("default");
 	testScene->addNewObjectToLayer(1, object);
 
 	Object* object2 = new Player();
@@ -147,7 +149,6 @@ void sceneTestSetup()
 	testScene->addNewObjectToLayer(1, staticGround);
 
 
-	engine.setCurrentScene(3);
 	//engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 	
 	engine.insertScene(new Scene(4));
@@ -159,6 +160,8 @@ void sceneTestSetup()
 	staticGround2->setPositionY(290);// y 300 left down
 	staticGround2->setStatic(true);
 	staticGround2->setFriction(0);
+	staticGround2->registerSprite("default", so0);
+	staticGround2->changeToState("default");
 	testScene->addNewObjectToLayer(1, staticGround2);
 
 	engine.insertScene(testScene);

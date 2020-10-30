@@ -39,7 +39,7 @@ public:
 
 	void clearScreen();
 	void drawScreen();
-	void loadImage(const SpriteObject spriteObject);
+	void loadImage(SpriteObject * spriteObject);
 
 	void renderCopy(Object& object);
 
