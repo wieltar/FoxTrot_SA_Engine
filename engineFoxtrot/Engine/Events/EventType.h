@@ -23,5 +23,7 @@ enum class EventType
 	MouseButtonReleased, 
 	MouseMoved, 
 
-	Action
+	Action,
+	CollisionEnd,
+	CollisionBegin
 };

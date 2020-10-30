@@ -15,6 +15,8 @@ public:
 	void moveRight();
 	void jump();
 	
+	void pollEvents();
+
 	bool fill(vector<Command*>& command_queue);
 	void configure(KeyCode key, Command* command);
 	void updateInput();

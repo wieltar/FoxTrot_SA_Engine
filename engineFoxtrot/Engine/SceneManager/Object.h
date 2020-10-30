@@ -59,18 +59,27 @@ public:
 	void setJumpHeight(const float val);
 	float getJumpHeight() const;
 
-	bool getChanged() const;
+	void setYAxisVelocity(const float val);
+	float getYAxisVelocity() const;
 
 	void registerSprite(std::string state, const SpriteObject spriteObject);
 	void changeToState(const std::string state);
 
 	void setScalable(const bool val);
 	bool getScalable() const;
+
+	void setRotatable(const bool val);
+	bool getRotatable() const;
+
+	bool getChanged() const;
+
 private:
 	const int objectId = 0;
-	bool scalable = false;
+	const int spriteID = 0;
 	SpriteObject* currentSprite;
-	std::string name;
+protected:
+	string name;
+	bool scalable = false;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;
@@ -85,5 +94,7 @@ private:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
-	std::map<std::string, SpriteObject> textures = std::map<std::string, SpriteObject>();
+	map<string, SpriteObject> textures;
+	bool rotatable = false;
+	float yAxisVelocity = 0;
 };

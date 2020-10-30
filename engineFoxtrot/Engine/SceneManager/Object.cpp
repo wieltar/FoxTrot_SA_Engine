@@ -58,10 +58,10 @@ void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
 bool Object::getChanged() const { return changed; }
 
-SpriteObject* Object::GetCurrentSprite() { return currentSprite; }
-
 bool Object::getScalable() const { return this->scalable; }
 void Object::setScalable(const bool val) { this->scalable = val; }
+
+SpriteObject* Object::GetCurrentSprite() { return currentSprite; }
 
 /// @brief
 /// register a new state or overwrite a existing state
@@ -79,3 +79,11 @@ void Object::changeToState(const std::string state) {
 	if (spriteObject == NULL) throw ERROR_CODE_SPRITE_DOENST_EXIST;
 	this->currentSprite = spriteObject;
 }
+
+float Object::getYAxisVelocity() const { return this->yAxisVelocity; }
+void Object::setYAxisVelocity(const float val) { this->yAxisVelocity = val; }
+
+bool Object::getRotatable() const { return this->rotatable; }
+void Object::setRotatable(const bool val) { this->rotatable = val; }
+
+bool Object::getChanged() const { return changed; }

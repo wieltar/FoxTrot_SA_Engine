@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "PhysicsFacade.h"
-
+#include "./ContactListenerAdapter.h"
 
 /// @brief Constructor
 PhysicsFacade::PhysicsFacade()
 {
-
+	world.SetContactListener(new ContactListenerAdapter(this));
 }
 
 /// @brief Destructor
@@ -14,6 +14,23 @@ PhysicsFacade::~PhysicsFacade()
 	// When a world leaves scope or is deleted by calling delete on a pointer, all the memory reserved for bodies, fixtures, and joints is freed.This is done to improve performanceand make your life easier.
 	// However, you will need to nullify any body, fixture, or joint pointers you have because they will become invalid.
 	// https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html#autotoc_md113
+}
+
+CollisionStruct PhysicsFacade::getObjectsByFixture(b2Fixture* fixture1, b2Fixture* fixture2) {
+	CollisionStruct collisionStruct = CollisionStruct();
+	for (const auto& value : this->bodies) {
+		auto fixtures = value.second->GetFixtureList();
+		for (b2Fixture* f = value.second->GetFixtureList(); f; f = f->GetNext())
+		{
+			if (fixture1 == f)
+				collisionStruct.object1 = value.first;
+			else if (fixture2 == f)
+				collisionStruct.object2 = value.first;
+
+			if (collisionStruct.object1 != nullptr && collisionStruct.object2 != nullptr) break;
+		}
+	}
+	return collisionStruct;
 }
 
 /// @brief 
@@ -51,18 +68,22 @@ b2PolygonShape createShape(const PhysicsBody& object) {
 /// A function for register a non static object
 /// @param Object 
 /// The object to register
-void PhysicsFacade::addStaticObject(const PhysicsBody* object) {
+void PhysicsFacade::addStaticObject(PhysicsBody* object) {
 	b2BodyDef groundBodyDef;
+	groundBodyDef.type = b2_staticBody;
 	b2Body* body = world.CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox = createShape(*object);
 	body->CreateFixture(&groundBox, 0.0f);
+	b2FixtureDef fixtureDef;
+
+	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
 
 /// @brief 
 /// A function for register a non static object
 /// @param Object 
 /// The object to register
-void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
+void PhysicsFacade::addDynamicObject(PhysicsBody* object)
 {
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -77,11 +98,11 @@ void PhysicsFacade::addNonStaticObject(PhysicsBody* object)
 	fixtureDef.restitution = object->getRestitution();
 
 	body->CreateFixture(&fixtureDef);
-	auto x = body->GetPosition();
 
 	float posY = object->getPositionY() - object->getHeight() / 2; //Box2d needs the middle position
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
+	bodyDef.linearVelocity = b2Vec2(0, object->getYAxisVelocity());
 
 	if(DEBUG_PHYSICS_ENGINE)cout << "Pushing back obj: spriteid: " << object->getObjectId() << endl;
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
@@ -111,13 +132,17 @@ void PhysicsFacade::update() {
 	for (auto const& it : bodies)
 	{
 		b2Body* body = it.second;
+
+		if (body->GetType() == b2_staticBody) {
+			continue;
+		}
 		PhysicsBody* object = it.first;
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
-		//TODO from radiant to radius/angle???
-		object->setRotation(body->GetAngle());
+
+		if(object->getRotatable()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
+		object->setYAxisVelocity(body->GetLinearVelocity().y);
 	}	
-	//world.ClearForces();
 }
 
 /// @brief 
@@ -128,7 +153,11 @@ void PhysicsFacade::MoveLeft(const int objectId)
 {
 	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, Y_AXIS_STATIC), body->GetWorldCenter(), true);
+
+	b2Vec2 vel = body->GetLinearVelocity();
+	vel.y = ob->getYAxisVelocity();
+	vel.x = ob->getSpeed() *-1;
+	body->SetLinearVelocity(vel);
 };
 
 /// @brief 
@@ -139,7 +168,11 @@ void PhysicsFacade::MoveRight(const int objectId)
 {
 	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
-	body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), Y_AXIS_STATIC), body->GetWorldCenter(), true);
+
+	b2Vec2 vel = body->GetLinearVelocity();
+	vel.y = ob->getYAxisVelocity();
+	vel.x = ob->getSpeed();
+	body->SetLinearVelocity(vel);
 };
 
 /// @brief 
@@ -148,11 +181,10 @@ void PhysicsFacade::MoveRight(const int objectId)
 /// Identifier for ObjectID
 void PhysicsFacade::Jump(const int objectId)
 {
-	b2Body* body = findBody(objectId);
+  	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
 
 	b2Vec2 vel = body->GetLinearVelocity();
-	vel.y = -100;//upwards - don't change x velocity
+	vel.y = ob->getJumpHeight() * -1;
 	body->SetLinearVelocity(vel);
-	//body->ApplyLinearImpulse(b2Vec2(0, ob->getJumpHeight() * -1), body->GetWorldCenter(), true);
 };

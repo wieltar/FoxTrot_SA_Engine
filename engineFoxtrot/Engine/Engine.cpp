@@ -27,6 +27,7 @@ void Engine::setCurrentScene(const int sceneID)
 	try
 	{
 		sceneManager.setCurrentScene(sceneID);
+		physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 	}
 	catch (int e)
 	{
@@ -34,6 +35,40 @@ void Engine::setCurrentScene(const int sceneID)
 	}
 }
 
+/// @brief 
+/// Creates a new Scene in the Scene manager given the sceneID
+/// @param sceneID 
+/// int SceneID
+void Engine::createNewSceneWithSceneID(const int sceneID)
+{
+	try
+	{
+		sceneManager.createNewScene(sceneID);
+	}
+	catch (int e)
+	{
+		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
+	}
+}
+
+/// @brief 
+/// @param sceneID 
+/// @param id 
+/// @param xPos 
+/// @param yPos 
+/// @param height 
+/// @param width 
+/// @param stat 
+void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat)
+{
+	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
+}
+
+void Engine::pollEvents() {
+	this->inputEngine.pollEvents();
+}
+/// @brief 
+/// @param scene
 void Engine::insertScene(Scene* scene)
 {
 	try
