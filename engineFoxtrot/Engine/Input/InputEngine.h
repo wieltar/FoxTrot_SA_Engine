@@ -21,6 +21,8 @@ public:
 	bool fill(vector<Command*>& command_queue);
 	void configure(KeyCode key, Command* command, bool runOnce);
 
+	/// @brief
+	/// Generic function for creating command externally
 	template <class T>
 	T* makeCommand() {
 		return new T(this);

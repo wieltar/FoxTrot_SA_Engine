@@ -54,6 +54,8 @@ public:
 	void pollInput();
 	void configureInput(KeyCode key, Command* command, bool runOnce = false);
 
+	/// @brief
+	/// Generic function for creating command externally
 	template <class T>
 	T* makeCommand() {
 		return inputEngine.makeCommand<T>();

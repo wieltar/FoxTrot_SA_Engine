@@ -20,6 +20,7 @@ InputFacade::~InputFacade()
 /// Returns true poll events should quit, default false if none.
 bool InputFacade::input_mapping()
 {
+    // TODO Omschrijven zodat input niet afhankelijk is van Commands zodat de input naar de game gestuurd kan worden
     SDL_Event event;
     while (SDL_PollEvent(&event))
         if (event.type == SDL_QUIT) return true;
@@ -27,8 +28,7 @@ bool InputFacade::input_mapping()
             if (event.key.keysym.sym == SDLK_ESCAPE) return true;
             if (find(handleOnce.begin(), handleOnce.end(), eventToKeyCode(event)) != handleOnce.end())
                 commands[eventToKeyCode(event)]->execute();
-            else
-                keydown(event);
+            keydown(event);
         }
         else if (event.type == SDL_KEYUP) {
             keyup(event);
