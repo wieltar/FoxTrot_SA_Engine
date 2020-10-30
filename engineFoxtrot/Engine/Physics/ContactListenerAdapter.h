@@ -1,6 +1,7 @@
 #pragma once
 #include "./Events/Action/ActionEvent.h"
 #include <Physics\PhysicsFacade.h>
+#include "box2d/box2d.h"
 
 class ContactListenerAdapter : public b2ContactListener
 {
