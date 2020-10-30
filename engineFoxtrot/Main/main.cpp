@@ -136,13 +136,7 @@ void sceneTestSetup()
 	staticGround2->setFriction(0);
 	engine.createObject(3, staticGround2);
 
-	engine.configureInput(KEY_A, new MoveLeft);
-	engine.configureInput(KEY_D, new MoveRight);
-	engine.configureInput(KEY_SPACE, new Jump);
-
 	engine.setCurrentScene(3);
-	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
-	engine.startTickThreads();
 }
 
 int main() {

@@ -122,8 +122,6 @@ b2Body* PhysicsFacade::findBody(const int objectId) {
 	throw PHYSICS_FACADE_BODY_DOESNT_EXIST;
 }
 
-//class member variable
-int m_jumpTimeout = 0;
 /// @brief 
 /// A function to update the position information of all objects
 /// The position is set to the bottom left
@@ -154,7 +152,6 @@ void PhysicsFacade::MoveLeft(const int objectId)
 {
 	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
-	//body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, Y_AXIS_STATIC), body->GetWorldCenter(), true);
 
 	b2Vec2 vel = body->GetLinearVelocity();
 	vel.y = ob->getYAxisVelocity();
@@ -170,15 +167,12 @@ void PhysicsFacade::MoveRight(const int objectId)
 {
 	b2Body* body = findBody(objectId);
 	const PhysicsBody* ob = getPhysicsObject(objectId);
-	//body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), Y_AXIS_STATIC), body->GetWorldCenter(), true);
 
 	b2Vec2 vel = body->GetLinearVelocity();
 	vel.y = ob->getYAxisVelocity();
 	vel.x = ob->getSpeed();
 	body->SetLinearVelocity(vel);
 };
-
-//in Step()
 
 /// @brief 
 /// A function to add a linearImpulse to a object for jumping
