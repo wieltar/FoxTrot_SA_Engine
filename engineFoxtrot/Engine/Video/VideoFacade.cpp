@@ -120,14 +120,14 @@ void VideoFacade::renderCopy(Object& object)
 /// @param colorB 
 /// @param colorA 
 /// @param rotation 
-void VideoFacade::drawParticle(float posX, float startPosX, float posY, float startPosY, float size, float spriteID, float colorR, float colorG, float colorB, float colorA, float rotation)
+void VideoFacade::drawParticle(ParticleData data, int spriteID)
 {
-	SDL_Rect r = { int(posX + startPosX - size / 2), int(posY + startPosY - size / 2), int(size), int(size) };
-	SDL_Color c = { Uint8(colorR * 255), Uint8(colorG * 255), Uint8(colorB * 255), Uint8(colorA * 255) };
+	SDL_Rect r = { int(data.posx + data.startPosX - data.size / 2), int(data.posy + data.startPosY - data.size / 2), int(data.size), int(data.size) };
+	SDL_Color c = { Uint8(data.colorR * 255), Uint8(data.colorG * 255), Uint8(data.colorB * 255), Uint8(data.colorA * 255) };
 	SDL_SetTextureColorMod(textureMap[spriteID], c.r, c.g, c.b);
 	SDL_SetTextureAlphaMod(textureMap[spriteID], c.a);
 	SDL_SetTextureBlendMode(textureMap[spriteID], SDL_BLENDMODE_BLEND);
-	SDL_RenderCopyEx(renderer, textureMap[spriteID], nullptr, &r, rotation, nullptr, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, textureMap[spriteID], nullptr, &r, data.rotation, nullptr, SDL_FLIP_NONE);
 }
 
 /// @brief

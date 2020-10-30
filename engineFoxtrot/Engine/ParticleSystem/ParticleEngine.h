@@ -1,5 +1,5 @@
 #pragma once
-#include "../SceneManager/Scene.h"
+#include "SceneManager/Scene.h"
 #include "Events/Event.h"
 #include "Events/Action/ActionEvent.h"
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "../SceneManager/Object.h"
+#include "SceneManager/Object.h"
 
 struct Pointf
 {
@@ -55,7 +55,6 @@ public:
     float rotation = 0;
     float deltaRotation = 0;
     float timeToLive = 0;
-    unsigned int atlasIndex = 0;
 
     //! Mode A: gravity, direction, radial accel, tangential accel
     struct
@@ -310,17 +309,6 @@ public:
      * @return True if the particle system is active.
      */
     virtual bool isActive() const;
-
-    /** Gets the index of system in batch node array.
-     *
-     * @return The index of system in batch node array.
-     */
-    int getAtlasIndex() const { return _atlasIndex; }
-    /** Sets the index of system in batch node array.
-     *
-     * @param index The index of system in batch node array.
-     */
-    void setAtlasIndex(int index) { _atlasIndex = index; }
 
     /** Gets the Quantity of particles that are being simulated at the moment.
      *
@@ -670,9 +658,6 @@ protected:
 
     /** weak reference to the SpriteBatchNode that renders the Sprite */
     //ParticleBatchNode* _batchNode;
-
-    // index of system in batch node array
-    int _atlasIndex = 0;
 
     //true if scaled or rotated
     bool _transformSystemDirty = false;

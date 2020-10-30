@@ -2,26 +2,6 @@
 
 #include "Particle.h"
 
-
-inline float Deg2Rad(float a)
-{
-    return a * 0.01745329252f;
-}
-
-inline float Rad2Deg(float a)
-{
-    return a * 57.29577951f;
-}
-
-inline float clampf(float value, float min_inclusive, float max_inclusive)
-{
-    if (min_inclusive > max_inclusive)
-    {
-        std::swap(min_inclusive, max_inclusive);
-    }
-    return value < min_inclusive ? min_inclusive : value < max_inclusive ? value : max_inclusive;
-}
-
 inline void normalize_point(float x, float y, Pointf* out)
 {
     float n = x * x + y * y;
@@ -41,21 +21,6 @@ inline void normalize_point(float x, float y, Pointf* out)
     n = 1.0f / n;
     out->x = x * n;
     out->y = y * n;
-}
-
-/**
-A more effect random number getter function, get from ejoy2d.
-*/
-inline static float RANDOM_M11(unsigned int* seed)
-{
-    *seed = *seed * 134775813 + 1;
-    union
-    {
-        uint32_t d;
-        float f;
-    } u;
-    u.d = (((uint32_t)(*seed) & 0x7fff) << 8) | 0x40000000;
-    return u.f - 3.0f;
 }
 
 Particle::Particle(const int id) : Object(id)
@@ -175,9 +140,7 @@ void Particle::addParticles(int count)
     for (int i = start; i < _particleCount; ++i)
     {
         particle_data_[i].rotation = _startSpin + _startSpinVar * RANDOM_M11(&RANDSEED);
-    }
-    for (int i = start; i < _particleCount; ++i)
-    {
+
         float endA = _endSpin + _endSpinVar * RANDOM_M11(&RANDSEED);
         particle_data_[i].deltaRotation = (endA - particle_data_[i].rotation) / particle_data_[i].timeToLive;
     }
@@ -190,9 +153,7 @@ void Particle::addParticles(int count)
     for (int i = start; i < _particleCount; ++i)
     {
         particle_data_[i].startPosX = pos.x;
-    }
-    for (int i = start; i < _particleCount; ++i)
-    {
+
         particle_data_[i].startPosY = pos.y;
     }
 
@@ -204,40 +165,25 @@ void Particle::addParticles(int count)
         for (int i = start; i < _particleCount; ++i)
         {
             particle_data_[i].modeA.radialAccel = modeA.radialAccel + modeA.radialAccelVar * RANDOM_M11(&RANDSEED);
-        }
 
-        // tangential accel
-        for (int i = start; i < _particleCount; ++i)
-        {
+            // tangential accel
             particle_data_[i].modeA.tangentialAccel = modeA.tangentialAccel + modeA.tangentialAccelVar * RANDOM_M11(&RANDSEED);
         }
 
         // rotation is dir
-        if (modeA.rotationIsDir)
+    
+        for (int i = start; i < _particleCount; ++i)
         {
-            for (int i = start; i < _particleCount; ++i)
-            {
-                float a = Deg2Rad(_angle + _angleVar * RANDOM_M11(&RANDSEED));
-                Vec2 v(cosf(a), sinf(a));
-                float s = modeA.speed + modeA.speedVar * RANDOM_M11(&RANDSEED);
-                Vec2 dir = v * s;
-                particle_data_[i].modeA.dirX = dir.x;    //v * s ;
-                particle_data_[i].modeA.dirY = dir.y;
-                particle_data_[i].rotation = -Rad2Deg(dir.getAngle());
-            }
+            float a = Degree2Radians(_angle + _angleVar * RANDOM_M11(&RANDSEED));
+            Vec2 v(cosf(a), sinf(a));
+            float s = modeA.speed + modeA.speedVar * RANDOM_M11(&RANDSEED);
+            Vec2 dir = v * s;
+            particle_data_[i].modeA.dirX = dir.x;    //v * s ;
+            particle_data_[i].modeA.dirY = dir.y;
+            if (modeA.rotationIsDir)
+                particle_data_[i].rotation = -Radians2Degree(dir.getAngle());
         }
-        else
-        {
-            for (int i = start; i < _particleCount; ++i)
-            {
-                float a = Deg2Rad(_angle + _angleVar * RANDOM_M11(&RANDSEED));
-                Vec2 v(cosf(a), sinf(a));
-                float s = modeA.speed + modeA.speedVar * RANDOM_M11(&RANDSEED);
-                Vec2 dir = v * s;
-                particle_data_[i].modeA.dirX = dir.x;    //v * s ;
-                particle_data_[i].modeA.dirY = dir.y;
-            }
-        }
+
     }
 
     // Mode Radius: B
@@ -246,16 +192,10 @@ void Particle::addParticles(int count)
         for (int i = start; i < _particleCount; ++i)
         {
             particle_data_[i].modeB.radius = modeB.startRadius + modeB.startRadiusVar * RANDOM_M11(&RANDSEED);
-        }
 
-        for (int i = start; i < _particleCount; ++i)
-        {
-            particle_data_[i].modeB.angle = Deg2Rad(_angle + _angleVar * RANDOM_M11(&RANDSEED));
-        }
+            particle_data_[i].modeB.angle = Degree2Radians(_angle + _angleVar * RANDOM_M11(&RANDSEED));
 
-        for (int i = start; i < _particleCount; ++i)
-        {
-            particle_data_[i].modeB.degreesPerSecond = Deg2Rad(modeB.rotatePerSecond + modeB.rotatePerSecondVar * RANDOM_M11(&RANDSEED));
+            particle_data_[i].modeB.degreesPerSecond = Degree2Radians(modeB.rotatePerSecond + modeB.rotatePerSecondVar * RANDOM_M11(&RANDSEED));
         }
 
         if (modeB.endRadius == START_RADIUS_EQUAL_TO_END_RADIUS)

@@ -1,8 +1,8 @@
 #pragma once
-#include "./VideoFacade.h"
-#include "../Fps/FrameData.h"
-#include "./Structs/fpsStructs.h"
-#include "../SceneManager/Scene.h"
+#include "VideoFacade.h"
+#include "Fps/FrameData.h"
+#include "Structs/fpsStructs.h"
+#include "SceneManager/Scene.h"
 #include "ParticleSystem/ParticleInit.h"
 
 #define NO_RED 0
