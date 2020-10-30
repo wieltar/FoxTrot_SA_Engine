@@ -52,22 +52,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.76f;
-        _startColor.g = 0.25f;
-        _startColor.b = 0.12f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.0f;
-        _startColorVar.g = 0.0f;
-        _startColorVar.b = 0.0f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 0.0f;
-        _endColor.g = 0.0f;
-        _endColor.b = 0.0f;
-        _endColor.a = 0.0f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.76f;
+        _startColor.green = 0.25f;
+        _startColor.blue = 0.12f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.0f;
+        _startColorVar.green = 0.0f;
+        _startColorVar.blue = 0.0f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 0.0f;
+        _endColor.green = 0.0f;
+        _endColor.blue = 0.0f;
+        _endColor.alpha = 0.0f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 40.0f, 20.0f };
         break;
@@ -105,22 +105,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         this->_emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.5f;
-        _startColor.g = 0.5f;
-        _startColor.b = 0.5f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.5f;
-        _startColorVar.g = 0.5f;
-        _startColorVar.b = 0.5f;
-        _startColorVar.a = 0.1f;
-        _endColor.r = 0.1f;
-        _endColor.g = 0.1f;
-        _endColor.b = 0.1f;
-        _endColor.a = 0.2f;
-        _endColorVar.r = 0.1f;
-        _endColorVar.g = 0.1f;
-        _endColorVar.b = 0.1f;
-        _endColorVar.a = 0.2f;
+        _startColor.red = 0.5f;
+        _startColor.green = 0.5f;
+        _startColor.blue = 0.5f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.5f;
+        _startColorVar.green = 0.5f;
+        _startColorVar.blue = 0.5f;
+        _startColorVar.alpha = 0.1f;
+        _endColor.red = 0.1f;
+        _endColor.green = 0.1f;
+        _endColor.blue = 0.1f;
+        _endColor.alpha = 0.2f;
+        _endColorVar.red = 0.1f;
+        _endColorVar.green = 0.1f;
+        _endColorVar.blue = 0.1f;
+        _endColorVar.alpha = 0.2f;
 
         // size, in pixels
         _startSize = 8.0f;
@@ -171,22 +171,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.76f;
-        _startColor.g = 0.25f;
-        _startColor.b = 0.12f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.0f;
-        _startColorVar.g = 0.0f;
-        _startColorVar.b = 0.0f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 0.0f;
-        _endColor.g = 0.0f;
-        _endColor.b = 0.0f;
-        _endColor.a = 1.0f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.76f;
+        _startColor.green = 0.25f;
+        _startColor.blue = 0.12f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.0f;
+        _startColorVar.green = 0.0f;
+        _startColorVar.blue = 0.0f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 0.0f;
+        _endColor.green = 0.0f;
+        _endColor.blue = 0.0f;
+        _endColor.alpha = 1.0f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 0, 0 };
         break;
@@ -232,22 +232,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.12f;
-        _startColor.g = 0.25f;
-        _startColor.b = 0.76f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.0f;
-        _startColorVar.g = 0.0f;
-        _startColorVar.b = 0.0f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 0.0f;
-        _endColor.g = 0.0f;
-        _endColor.b = 0.0f;
-        _endColor.a = 1.0f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.12f;
+        _startColor.green = 0.25f;
+        _startColor.blue = 0.76f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.0f;
+        _startColorVar.green = 0.0f;
+        _startColorVar.blue = 0.0f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 0.0f;
+        _endColor.green = 0.0f;
+        _endColor.blue = 0.0f;
+        _endColor.alpha = 1.0f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 0, 0 };
         break;
@@ -294,22 +294,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.50f;
-        _startColor.g = 0.50f;
-        _startColor.b = 0.50f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.5f;
-        _startColorVar.g = 0.5f;
-        _startColorVar.b = 0.5f;
-        _startColorVar.a = 0.5f;
-        _endColor.r = 0.0f;
-        _endColor.g = 0.0f;
-        _endColor.b = 0.0f;
-        _endColor.a = 1.0f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.50f;
+        _startColor.green = 0.50f;
+        _startColor.blue = 0.50f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.5f;
+        _startColorVar.green = 0.5f;
+        _startColorVar.blue = 0.5f;
+        _startColorVar.alpha = 0.5f;
+        _endColor.red = 0.0f;
+        _endColor.green = 0.0f;
+        _endColor.blue = 0.0f;
+        _endColor.alpha = 1.0f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 0, 0 };
         break;
@@ -356,22 +356,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.2f;
-        _startColor.g = 0.4f;
-        _startColor.b = 0.7f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.0f;
-        _startColorVar.g = 0.0f;
-        _startColorVar.b = 0.2f;
-        _startColorVar.a = 0.1f;
-        _endColor.r = 0.0f;
-        _endColor.g = 0.0f;
-        _endColor.b = 0.0f;
-        _endColor.a = 1.0f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.2f;
+        _startColor.green = 0.4f;
+        _startColor.blue = 0.7f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.0f;
+        _startColorVar.green = 0.0f;
+        _startColorVar.blue = 0.2f;
+        _startColorVar.alpha = 0.1f;
+        _endColor.red = 0.0f;
+        _endColor.green = 0.0f;
+        _endColor.blue = 0.0f;
+        _endColor.alpha = 1.0f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 0, 0 };
         break;
@@ -418,22 +418,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.5f;
-        _startColor.g = 0.5f;
-        _startColor.b = 0.5f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.5f;
-        _startColorVar.g = 0.5f;
-        _startColorVar.b = 0.5f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 0.5f;
-        _endColor.g = 0.5f;
-        _endColor.b = 0.5f;
-        _endColor.a = 1.0f;
-        _endColorVar.r = 0.5f;
-        _endColorVar.g = 0.5f;
-        _endColorVar.b = 0.5f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.5f;
+        _startColor.green = 0.5f;
+        _startColor.blue = 0.5f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.5f;
+        _startColorVar.green = 0.5f;
+        _startColorVar.blue = 0.5f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 0.5f;
+        _endColor.green = 0.5f;
+        _endColor.blue = 0.5f;
+        _endColor.alpha = 1.0f;
+        _endColorVar.red = 0.5f;
+        _endColorVar.green = 0.5f;
+        _endColorVar.blue = 0.5f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 0, 0 };
         break;
@@ -479,22 +479,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _duration;
 
         // color of particles
-        _startColor.r = 0.7f;
-        _startColor.g = 0.1f;
-        _startColor.b = 0.2f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.5f;
-        _startColorVar.g = 0.5f;
-        _startColorVar.b = 0.5f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 0.5f;
-        _endColor.g = 0.5f;
-        _endColor.b = 0.5f;
-        _endColor.a = 0.0f;
-        _endColorVar.r = 0.5f;
-        _endColorVar.g = 0.5f;
-        _endColorVar.b = 0.5f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.7f;
+        _startColor.green = 0.1f;
+        _startColor.blue = 0.2f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.5f;
+        _startColorVar.green = 0.5f;
+        _startColorVar.blue = 0.5f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 0.5f;
+        _endColor.green = 0.5f;
+        _endColor.blue = 0.5f;
+        _endColor.alpha = 0.0f;
+        _endColorVar.red = 0.5f;
+        _endColorVar.green = 0.5f;
+        _endColorVar.blue = 0.5f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 0, 0 };
         break;
@@ -537,22 +537,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = _totalParticles / _life;
 
         // color of particles
-        _startColor.r = 0.8f;
-        _startColor.g = 0.8f;
-        _startColor.b = 0.8f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.02f;
-        _startColorVar.g = 0.02f;
-        _startColorVar.b = 0.02f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 0.0f;
-        _endColor.g = 0.0f;
-        _endColor.b = 0.0f;
-        _endColor.a = 1.0f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.8f;
+        _startColor.green = 0.8f;
+        _startColor.blue = 0.8f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.02f;
+        _startColorVar.green = 0.02f;
+        _startColorVar.blue = 0.02f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 0.0f;
+        _endColor.green = 0.0f;
+        _endColor.blue = 0.0f;
+        _endColor.alpha = 1.0f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 20.0f, 0.0f };
         break;
@@ -599,22 +599,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = 10;
 
         // color of particles
-        _startColor.r = 1.0f;
-        _startColor.g = 1.0f;
-        _startColor.b = 1.0f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.0f;
-        _startColorVar.g = 0.0f;
-        _startColorVar.b = 0.0f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 1.0f;
-        _endColor.g = 1.0f;
-        _endColor.b = 1.0f;
-        _endColor.a = 0.0f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 1.0f;
+        _startColor.green = 1.0f;
+        _startColor.blue = 1.0f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.0f;
+        _startColorVar.green = 0.0f;
+        _startColorVar.blue = 0.0f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 1.0f;
+        _endColor.green = 1.0f;
+        _endColor.blue = 1.0f;
+        _endColor.alpha = 0.0f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 1.0f * x_, 0.0f };
         break;
@@ -660,22 +660,22 @@ void ParticleInit::setStyle(PatticleStyle style)
         _emissionRate = 20;
 
         // color of particles
-        _startColor.r = 0.7f;
-        _startColor.g = 0.8f;
-        _startColor.b = 1.0f;
-        _startColor.a = 1.0f;
-        _startColorVar.r = 0.0f;
-        _startColorVar.g = 0.0f;
-        _startColorVar.b = 0.0f;
-        _startColorVar.a = 0.0f;
-        _endColor.r = 0.7f;
-        _endColor.g = 0.8f;
-        _endColor.b = 1.0f;
-        _endColor.a = 0.5f;
-        _endColorVar.r = 0.0f;
-        _endColorVar.g = 0.0f;
-        _endColorVar.b = 0.0f;
-        _endColorVar.a = 0.0f;
+        _startColor.red = 0.7f;
+        _startColor.green = 0.8f;
+        _startColor.blue = 1.0f;
+        _startColor.alpha = 1.0f;
+        _startColorVar.red = 0.0f;
+        _startColorVar.green = 0.0f;
+        _startColorVar.blue = 0.0f;
+        _startColorVar.alpha = 0.0f;
+        _endColor.red = 0.7f;
+        _endColor.green = 0.8f;
+        _endColor.blue = 1.0f;
+        _endColor.alpha = 0.5f;
+        _endColorVar.red = 0.0f;
+        _endColorVar.green = 0.0f;
+        _endColorVar.blue = 0.0f;
+        _endColorVar.alpha = 0.0f;
 
         _posVar = { 1.0f * x_, 0.0f };
         break;

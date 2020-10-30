@@ -62,15 +62,15 @@ void Particle::setColorParticleData(int start) {
         particle_data_[i].c = clampf(b + v * RANDOM_M11(&RANDSEED), 0, 1); \
     }
 
-    SET_COLOR(colorR, _startColor.r, _startColorVar.r);
-    SET_COLOR(colorG, _startColor.g, _startColorVar.g);
-    SET_COLOR(colorB, _startColor.b, _startColorVar.b);
-    SET_COLOR(colorA, _startColor.a, _startColorVar.a);
+    SET_COLOR(colorR, _startColor.red, _startColorVar.red);
+    SET_COLOR(colorG, _startColor.green, _startColorVar.green);
+    SET_COLOR(colorB, _startColor.blue, _startColorVar.blue);
+    SET_COLOR(colorA, _startColor.alpha, _startColorVar.alpha);
 
-    SET_COLOR(deltaColorR, _endColor.r, _endColorVar.r);
-    SET_COLOR(deltaColorG, _endColor.g, _endColorVar.g);
-    SET_COLOR(deltaColorB, _endColor.b, _endColorVar.b);
-    SET_COLOR(deltaColorA, _endColor.a, _endColorVar.a);
+    SET_COLOR(deltaColorR, _endColor.red, _endColorVar.red);
+    SET_COLOR(deltaColorG, _endColor.green, _endColorVar.green);
+    SET_COLOR(deltaColorB, _endColor.blue, _endColorVar.blue);
+    SET_COLOR(deltaColorA, _endColor.alpha, _endColorVar.alpha);
 
 #define SET_DELTA_COLOR(c, dc)                                                                              \
     for (int i = start; i < _particleCount; ++i)                                                            \
