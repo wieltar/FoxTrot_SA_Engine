@@ -2,30 +2,31 @@
 #include "Commands.h"
 #include "InputEngine.h"
 
+Command::Command(InputEngine* _inputEngine) : inputEngine(_inputEngine) {}
+
 /// @brief 
 /// Execute function for Moveleft
-/// @param inputEngine 
-void MoveLeft::execute(InputEngine* inputEngine)
+void MoveLeft::execute()
 {
 	inputEngine->moveLeft();
 }
 
 /// @brief 
 /// Execute function for moveRight
-/// @param inputEngine 
-void MoveRight::execute(InputEngine* inputEngine)
+void MoveRight::execute()
 {
 	inputEngine->moveRight();
 }
 
 /// @brief 
 /// Execute function for jumping
-/// @param inputEngine 
-void Jump::execute(InputEngine* inputEngine)
+void Jump::execute()
 {
 	inputEngine->jump();
 }
 
-void ToggleFps::execute(InputEngine* inputEngine) {
+/// @brief
+///  Execute function for toggling fps
+void ToggleFps::execute() {
 	inputEngine->toggleFps();
 }
