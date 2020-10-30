@@ -287,10 +287,6 @@ void Particle::resetSystem()
 {
     _isActive = true;
     _elapsed = 0;
-    for (int i = 0; i < _particleCount; ++i)
-    {
-        //particle_data_[i].timeToLive = 0.0f;
-    }
 }
 
 bool Particle::isFull()
@@ -590,31 +586,6 @@ void Particle::setAutoRemoveOnFinish(bool var)
 {
     _isAutoRemoveOnFinish = var;
 }
-
-////don't use a transform matrix, this is faster
-//void Particle::setScale(float s)
-//{
-//    _transformSystemDirty = true;
-//    Node::setScale(s);
-//}
-//
-//void Particle::setRotation(float newRotation)
-//{
-//    _transformSystemDirty = true;
-//    Node::setRotation(newRotation);
-//}
-//
-//void Particle::setScaleX(float newScaleX)
-//{
-//    _transformSystemDirty = true;
-//    Node::setScaleX(newScaleX);
-//}
-//
-//void Particle::setScaleY(float newScaleY)
-//{
-//    _transformSystemDirty = true;
-//    Node::setScaleY(newScaleY);
-//}
 
 bool Particle::isPaused() const
 {

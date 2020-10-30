@@ -167,7 +167,7 @@ void VideoEngine::drawParticle(Particle* part)
 			continue;
 		}
 		videoFacade->drawParticle(	partData.posx, partData.startPosX, partData.posy, partData.startPosY, partData.size,
-									part->getSpriteID(), partData.colorR, partData.colorG, partData.colorB, partData.colorA, partData.rotation); // TODO Remove hard ID
+									part->getSpriteID(), partData.colorR, partData.colorG, partData.colorB, partData.colorA, partData.rotation);
 	}
 
 }
