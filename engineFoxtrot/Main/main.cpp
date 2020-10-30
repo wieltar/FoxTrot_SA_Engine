@@ -33,8 +33,7 @@ public:
 		this->setFriction(0);
 		this->setRestitution(0);
 		this->setStatic(false);
-
-		this->setRotatable(true);
+		this->setRotatable(false);
 
 		EventSingleton::get_instance().setEventCallback<OnCollisionBeginEvent>(BIND_EVENT_FN(Player::onCollisionBeginEvent));
 		EventSingleton::get_instance().setEventCallback<OnCollisionEndEvent>(BIND_EVENT_FN(Player::onCollisionEndEvent));
@@ -70,11 +69,11 @@ public:
 	void setYAxisVelocity(const float val) override {
 		Object::setYAxisVelocity(val);
 
-		if (this->yAxisVelocity == 0) {
-			this->changeToState("default");
+		if (this->yAxisVelocity > 0) {
+			this->changeToState("air_fall");
 		}
-		else if(this->yAxisVelocity < 0) {
-			this->changeToState("fall");
+		else if(this->yAxisVelocity == 0) {
+			this->changeToState("default");
 		}
 	}
 
@@ -87,16 +86,16 @@ public:
 		{
 		case KeyCode::KEY_A:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
-			this->changeToState("run");
+			this->changeToState("run_left");
 			break;
 		case KeyCode::KEY_D:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
-			this->changeToState("run");
+			this->changeToState("run_right");
 			break;
 		case KeyCode::KEY_SPACE:
 			if (canJump) {
+				this->changeToState("air_jump");
 				EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, this->getObjectId()));
-				this->changeToState("slide");
 			}
 			break;
 		default:
@@ -110,9 +109,11 @@ void sceneTestSetup()
 	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
 	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, "../Assets/Sprites/Character/adventure.png");
 	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, "../Assets/Sprites/Character/adventure_air_attack1.png");
-	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, "../Assets/Sprites/Character/adventure_run.png");
+	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_right.png");
 	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, "../Assets/Sprites/Character/adventure_slide.png");
 	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, "../Assets/Sprites/Character/adventure_fall.png");
+	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, "../Assets/Sprites/Character/adventure_jump.png");
+	SpriteObject* so7 = new SpriteObject(102, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_left.png");
 
 
 	engine.loadSprite(so0);
@@ -122,6 +123,7 @@ void sceneTestSetup()
 	engine.loadSprite(so3);
 	engine.loadSprite(so4); 
 	engine.loadSprite(so5);
+	engine.loadSprite(so6);
 
 	Scene* testScene = new Scene(3);
 
@@ -145,10 +147,12 @@ void sceneTestSetup()
 	object2->setStatic(false);
 	object2->registerSprite("default", so1);
 	object2->registerSprite("air_attack", so2);
-	object2->registerSprite("run", so3);
+	object2->registerSprite("run_right", so3);
 	object2->registerSprite("slide", so4);
 	object2->registerSprite("air_fall", so5);
-	object2->changeToState("air_fall");
+	object2->registerSprite("air_jump", so6);
+	object2->registerSprite("run_left", so7);
+	object2->changeToState("default");
 	testScene->addNewObjectToLayer(1, object2);
 
 	Object* staticGround = new Object(101);
