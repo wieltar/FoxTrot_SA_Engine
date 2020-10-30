@@ -55,36 +55,7 @@ Particle::~Particle()
 {
 }
 
-void Particle::addParticles(int count)
-{
-    if (_paused)
-    {
-        return;
-    }
-    uint32_t RANDSEED = rand();
-
-    int start = _particleCount;
-    _particleCount += count;
-
-    //life
-    for (int i = start; i < _particleCount; ++i)
-    {
-        float theLife = _life + _lifeVar * RANDOM_M11(&RANDSEED);
-        particle_data_[i].timeToLive = (std::max)(0.0f, theLife);
-    }
-
-    //position
-    for (int i = start; i < _particleCount; ++i)
-    {
-        particle_data_[i].posx = _sourcePosition.x + _posVar.x * RANDOM_M11(&RANDSEED);
-    }
-
-    for (int i = start; i < _particleCount; ++i)
-    {
-        particle_data_[i].posy = _sourcePosition.y + _posVar.y * RANDOM_M11(&RANDSEED);
-    }
-
-    //color
+void Particle::setColorParticleData(int start) {
 #define SET_COLOR(c, b, v)                                                 \
     for (int i = start; i < _particleCount; ++i)                           \
     {                                                                      \
@@ -111,8 +82,19 @@ void Particle::addParticles(int count)
     SET_DELTA_COLOR(colorG, deltaColorG);
     SET_DELTA_COLOR(colorB, deltaColorB);
     SET_DELTA_COLOR(colorA, deltaColorA);
+}
 
-    //size
+void Particle::setLifeParticleData(int start) {
+    for (int i = start; i < _particleCount; ++i)
+    {
+        float theLife = _life + _lifeVar * RANDOM_M11(&RANDSEED);
+        particle_data_[i].timeToLive = (std::max)(0.0f, theLife);
+        particle_data_[i].posx = _sourcePosition.x + _posVar.x * RANDOM_M11(&RANDSEED);
+        particle_data_[i].posy = _sourcePosition.y + _posVar.y * RANDOM_M11(&RANDSEED);
+    }
+}
+
+void Particle::setSizeParticleData(int start) {
     for (int i = start; i < _particleCount; ++i)
     {
         particle_data_[i].size = _startSize + _startSizeVar * RANDOM_M11(&RANDSEED);
@@ -135,8 +117,9 @@ void Particle::addParticles(int count)
             particle_data_[i].deltaSize = 0.0f;
         }
     }
+}
 
-    // rotation
+void Particle::setRotationParticleData(int start) {
     for (int i = start; i < _particleCount; ++i)
     {
         particle_data_[i].rotation = _startSpin + _startSpinVar * RANDOM_M11(&RANDSEED);
@@ -144,6 +127,28 @@ void Particle::addParticles(int count)
         float endA = _endSpin + _endSpinVar * RANDOM_M11(&RANDSEED);
         particle_data_[i].deltaRotation = (endA - particle_data_[i].rotation) / particle_data_[i].timeToLive;
     }
+}
+
+void Particle::addParticles(int count)
+{
+    if (_paused)
+    {
+        return;
+    }
+    int start = _particleCount;
+    _particleCount += count;
+
+    //life
+    setLifeParticleData(start);
+
+    //color
+    setColorParticleData(start);
+
+    //size
+    setSizeParticleData(start);
+
+    // rotation
+    setRotationParticleData(start);
 
     // position
     Vec2 pos;
@@ -162,18 +167,15 @@ void Particle::addParticles(int count)
     {
 
         // radial accel
-        for (int i = start; i < _particleCount; ++i)
-        {
+        for (int i = start; i < _particleCount; ++i){
             particle_data_[i].modeA.radialAccel = modeA.radialAccel + modeA.radialAccelVar * RANDOM_M11(&RANDSEED);
 
             // tangential accel
             particle_data_[i].modeA.tangentialAccel = modeA.tangentialAccel + modeA.tangentialAccelVar * RANDOM_M11(&RANDSEED);
         }
 
-        // rotation is dir
-    
-        for (int i = start; i < _particleCount; ++i)
-        {
+        // rotation is dir    
+        for (int i = start; i < _particleCount; ++i){
             float a = Degree2Radians(_angle + _angleVar * RANDOM_M11(&RANDSEED));
             Vec2 v(cosf(a), sinf(a));
             float s = modeA.speed + modeA.speedVar * RANDOM_M11(&RANDSEED);
@@ -192,9 +194,7 @@ void Particle::addParticles(int count)
         for (int i = start; i < _particleCount; ++i)
         {
             particle_data_[i].modeB.radius = modeB.startRadius + modeB.startRadiusVar * RANDOM_M11(&RANDSEED);
-
             particle_data_[i].modeB.angle = Degree2Radians(_angle + _angleVar * RANDOM_M11(&RANDSEED));
-
             particle_data_[i].modeB.degreesPerSecond = Degree2Radians(modeB.rotatePerSecond + modeB.rotatePerSecondVar * RANDOM_M11(&RANDSEED));
         }
 
@@ -234,6 +234,19 @@ bool Particle::isFull()
     return (_particleCount == _totalParticles);
 }
 
+void Particle::updateColorSizeRadius(int dt) {
+    for (int i = 0; i < _particleCount; ++i)
+    {
+        particle_data_[i].colorR += particle_data_[i].deltaColorR * dt;
+        particle_data_[i].colorG += particle_data_[i].deltaColorG * dt;
+        particle_data_[i].colorB += particle_data_[i].deltaColorB * dt;
+        particle_data_[i].colorA += particle_data_[i].deltaColorA * dt;
+        particle_data_[i].size += (particle_data_[i].deltaSize * dt);
+        particle_data_[i].size = (std::max)(0.0f, particle_data_[i].size);
+        particle_data_[i].rotation += particle_data_[i].deltaRotation * dt;
+    }
+}
+
 // ParticleSystem - MainLoop
 void Particle::update()
 {
@@ -243,7 +256,6 @@ void Particle::update()
         float rate = 1.0f / _emissionRate;
         int totalParticles = _totalParticles;
 
-        //issue #1201, prevent bursts of particles, due to too high emitCounter
         if (_particleCount < totalParticles)
         {
             _emitCounter += dt;
@@ -271,19 +283,10 @@ void Particle::update()
     for (int i = 0; i < _particleCount; ++i)
     {
         particle_data_[i].timeToLive -= dt;
-    }
 
-    // rebirth
-    for (int i = 0; i < _particleCount; ++i)
-    {
         if (particle_data_[i].timeToLive <= 0.0f)
         {
             int j = _particleCount - 1;
-            //while (j > 0 && particle_data_[i].timeToLive <= 0)
-            //{
-            //    _particleCount--;
-            //    j--;
-            //}
             particle_data_[i] = particle_data_[_particleCount - 1];
             --_particleCount;
         }
@@ -319,9 +322,6 @@ void Particle::update()
             particle_data_[i].modeA.dirY += tmp.y;
 
             // this is cocos2d-x v3.0
-            // if (_configName.length()>0 && _yCoordFlipped != -1)
-
-            // this is cocos2d-x v3.0
             tmp.x = particle_data_[i].modeA.dirX * dt * _yCoordFlipped;
             tmp.y = particle_data_[i].modeA.dirY * dt * _yCoordFlipped;
             particle_data_[i].posx += tmp.x;
@@ -340,16 +340,7 @@ void Particle::update()
     }
 
     //color, size, rotation
-    for (int i = 0; i < _particleCount; ++i)
-    {
-        particle_data_[i].colorR += particle_data_[i].deltaColorR * dt;
-        particle_data_[i].colorG += particle_data_[i].deltaColorG * dt;
-        particle_data_[i].colorB += particle_data_[i].deltaColorB * dt;
-        particle_data_[i].colorA += particle_data_[i].deltaColorA * dt;
-        particle_data_[i].size += (particle_data_[i].deltaSize * dt);
-        particle_data_[i].size = (std::max)(0.0f, particle_data_[i].size);
-        particle_data_[i].rotation += particle_data_[i].deltaRotation * dt;
-    }
+    updateColorSizeRadius(dt);
 }
 
 // ParticleSystem - Properties of Gravity Mode

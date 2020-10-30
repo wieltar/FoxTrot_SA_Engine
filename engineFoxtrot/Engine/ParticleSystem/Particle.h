@@ -144,6 +144,8 @@ public:
      */
     bool isFull();
 
+    void updateColorSizeRadius(int dt);
+
     /** Whether or not the particle system removed self on finish.
      *
      * @return True if the particle system removed self on finish.
@@ -571,6 +573,14 @@ public:
     Particle(const int id);
     virtual ~Particle();
 
+    void setColorParticleData(int start);
+
+    void setLifeParticleData(int start);
+
+    void setSizeParticleData(int start);
+
+    void setRotationParticleData(int start);
+
     /** initializes a ParticleSystem*/
     virtual bool initWithTotalParticles(int numberOfParticles);
     virtual void resetTotalParticles(int numberOfParticles);
@@ -582,6 +592,8 @@ protected:
     //virtual void updateBlendFunc();
 
 protected:
+    uint32_t RANDSEED = rand();
+
     /** whether or not the particles are using blend additive.
      If enabled, the following blending function will be used.
      @code
