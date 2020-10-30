@@ -3,7 +3,7 @@
 
 PhysicsBody::PhysicsBody(Object* object) : objectID(object->getSpriteID()), height(object->getHeight()), width(object->getWidth()), posX(object->getPositionX()),
 	posY(object->getPositionY()), speed(object->getSpeed()), friction(object->getFriction()), restitution(object->getRestitution()), density(object->getDensity()),
-	rotation(object->getRotation()), jumpHeight(object->getJumpHeight()), linearVelocity(object->getLinearVelocity()), canChangeAngle(object->getCanChangeAngle()) {
+	rotation(object->getRotation()), jumpHeight(object->getJumpHeight()), yAxisVelocity(object->getYAxisVelocity()), rotatable(object->getRotatable()) {
 	this->object = object;
 };
 PhysicsBody::~PhysicsBody() { }
@@ -40,8 +40,8 @@ float PhysicsBody::getSpeed() const { return this->speed; }
 void PhysicsBody::setJumpHeight(const float j) { this->jumpHeight = j; this->object->setJumpHeight(j);}
 float PhysicsBody::getJumpHeight() const { return this->jumpHeight; }
 
-void PhysicsBody::setLinearVelocity(const float val) { this->linearVelocity = val; this->object->setLinearVelocity(val); }
-float PhysicsBody::getLinearVelocity() const { return this->linearVelocity; }
+void PhysicsBody::setYAxisVelocity(const float val) { this->yAxisVelocity = val; this->object->setYAxisVelocity(val); }
+float PhysicsBody::getYAxisVelocity() const { return this->yAxisVelocity; }
 
-bool PhysicsBody::getCanChangeAngle() const { return this->canChangeAngle; }
-void PhysicsBody::setCanChangeAngle(const bool val) { this->canChangeAngle = val; }
+bool PhysicsBody::getRotatable() const { return this->rotatable; }
+void PhysicsBody::setRotatable(const bool val) { this->rotatable = val; }

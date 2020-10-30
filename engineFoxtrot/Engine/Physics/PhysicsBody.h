@@ -17,8 +17,6 @@ public:
 	void setPositionY(const float);
 	float getPositionY() const;
 
-	//TODO same as angle??
-
 	void setRotation(const float);
 	float getRotation() const;
 
@@ -43,11 +41,11 @@ public:
 	void setJumpHeight(const float);
 	float getJumpHeight() const;
 
-	void setLinearVelocity(const float val);
-	float getLinearVelocity() const;
+	void setYAxisVelocity(const float val);
+	float getYAxisVelocity() const;
 
-	void setCanChangeAngle(const bool val);
-	bool getCanChangeAngle() const;
+	void setRotatable(const bool val);
+	bool getRotatable() const;
 protected:
 	int objectID = 0;
 	float height = 0;
@@ -61,6 +59,6 @@ protected:
 	float rotation = 0;
 	float jumpHeight = 0;
 	Object* object;
-	float linearVelocity = 0;
-	bool canChangeAngle = false;
+	float yAxisVelocity = 0;
+	bool rotatable = false;
 };

@@ -66,10 +66,10 @@ void Object::setSpeed(const float val) { this->speed = val; }
 float Object::getJumpHeight() const {return this->jumpHeight;}
 void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
-float Object::getLinearVelocity() const { return this->linearVelocity; }
-void Object::setLinearVelocity(const float val) { this->linearVelocity = val; }
+float Object::getYAxisVelocity() const { return this->yAxisVelocity; }
+void Object::setYAxisVelocity(const float val) { this->yAxisVelocity = val; }
 
-bool Object::getCanChangeAngle() const { return this->canChangeAngle; }
-void Object::setCanChangeAngle(const bool val) { this->canChangeAngle = val; }
+bool Object::getRotatable() const { return this->rotatable; }
+void Object::setRotatable(const bool val) { this->rotatable = val; }
 
 bool Object::getChanged() const { return changed; }

@@ -58,11 +58,11 @@ public:
 	void setJumpHeight(const float val);
 	float getJumpHeight() const;
 
-	void setLinearVelocity(const float val);
-	float getLinearVelocity() const;
+	void setYAxisVelocity(const float val);
+	float getYAxisVelocity() const;
 
-	void setCanChangeAngle(const bool val);
-	bool getCanChangeAngle() const;
+	void setRotatable(const bool val);
+	bool getRotatable() const;
 
 	bool getChanged() const;
 
@@ -84,6 +84,6 @@ protected:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
-	bool canChangeAngle = false;
-	float linearVelocity = 0;
+	bool rotatable = false;
+	float yAxisVelocity = 0;
 };

@@ -102,7 +102,7 @@ void PhysicsFacade::addDynamicObject(PhysicsBody* object)
 	float posY = object->getPositionY() - object->getHeight() / 2; //Box2d needs the middle position
 	float posX = object->getPositionX() + object->getWidth() / 2; //Box2d needs the middle position
 	bodyDef.position.Set(posX, posY);
-	bodyDef.linearVelocity = b2Vec2(0, object->getLinearVelocity());
+	bodyDef.linearVelocity = b2Vec2(0, object->getYAxisVelocity());
 
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
@@ -141,8 +141,8 @@ void PhysicsFacade::update() {
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
 
-		if(object->getCanChangeAngle()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
-		object->setLinearVelocity(body->GetLinearVelocity().y);
+		if(object->getRotatable()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
+		object->setYAxisVelocity(body->GetLinearVelocity().y);
 	}	
 }
 
@@ -157,7 +157,7 @@ void PhysicsFacade::MoveLeft(const int objectId)
 	//body->ApplyLinearImpulse(b2Vec2(ob->getSpeed() * -1, Y_AXIS_STATIC), body->GetWorldCenter(), true);
 
 	b2Vec2 vel = body->GetLinearVelocity();
-	vel.y = ob->getLinearVelocity();
+	vel.y = ob->getYAxisVelocity();
 	vel.x = ob->getSpeed() *-1;
 	body->SetLinearVelocity(vel);
 };
@@ -173,7 +173,7 @@ void PhysicsFacade::MoveRight(const int objectId)
 	//body->ApplyLinearImpulse(b2Vec2(ob->getSpeed(), Y_AXIS_STATIC), body->GetWorldCenter(), true);
 
 	b2Vec2 vel = body->GetLinearVelocity();
-	vel.y = ob->getLinearVelocity();
+	vel.y = ob->getYAxisVelocity();
 	vel.x = ob->getSpeed();
 	body->SetLinearVelocity(vel);
 };

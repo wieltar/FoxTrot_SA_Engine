@@ -24,6 +24,7 @@
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
+    <ClCompile Include="Engine\Physics\ContactListenerAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
