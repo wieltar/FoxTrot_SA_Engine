@@ -10,6 +10,8 @@ PhysicsEngine::PhysicsEngine()
 	EventSingleton::get_instance().setEventCallback<ActionEvent>(BIND_EVENT_FN(PhysicsEngine::handleAction));
 }
 
+/// @brief 
+/// Handles a ActionEvent and according to the given direction moves the object
 void PhysicsEngine::handleAction(Event& event) {
 	auto actionEvent = static_cast<ActionEvent&>(event);
 

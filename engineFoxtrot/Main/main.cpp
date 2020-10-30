@@ -41,6 +41,8 @@ public:
 		EventSingleton::get_instance().setEventCallback<KeyPressedEvent>(BIND_EVENT_FN(Player::onKeyPressed));
 	}
 
+	/// @brief 
+	/// Handles when an collision event begins, when the direction of the collision happend on the bottom side of the player object, set can jump true
 	void onCollisionBeginEvent(Event& event) {
 		auto collisionEvent = static_cast<OnCollisionBeginEvent&>(event);
 		if (collisionEvent.GetObjectOneId() != this->getSpriteID() && collisionEvent.GetObjectTwoId() != this->getSpriteID()) return;
@@ -51,6 +53,9 @@ public:
 			this->canJump = true;
 		}
 	}
+
+	/// @brief 
+	/// Handles when an collision event ends, when the direction of the collision happend on the bottom side of the player object, set can jump false
 	void onCollisionEndEvent(Event& event) {
 		auto collisionEvent = static_cast<OnCollisionEndEvent&>(event);
 		if (collisionEvent.GetObjectOneId() != this->getSpriteID() && collisionEvent.GetObjectTwoId() != this->getSpriteID()) return;
@@ -62,6 +67,8 @@ public:
 		}
 	}
 
+	/// @brief 
+	/// Handles when an key pressed event happend, Player can move right, left and jump
 	void onKeyPressed(Event& event) {
 		auto keyPressedEvent = static_cast<KeyPressedEvent&>(event);
 
