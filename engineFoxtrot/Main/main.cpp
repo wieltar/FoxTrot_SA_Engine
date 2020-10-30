@@ -67,6 +67,17 @@ public:
 		}
 	}
 
+	void setYAxisVelocity(const float val) override {
+		Object::setYAxisVelocity(val);
+
+		if (this->yAxisVelocity == 0) {
+			this->changeToState("default");
+		}
+		else if(this->yAxisVelocity < 0) {
+			this->changeToState("fall");
+		}
+	}
+
 	/// @brief 
 	/// Handles when an key pressed event happend, Player can move right, left and jump
 	void onKeyPressed(Event& event) {
@@ -76,13 +87,16 @@ public:
 		{
 		case KeyCode::KEY_A:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
+			this->changeToState("run");
 			break;
 		case KeyCode::KEY_D:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
+			this->changeToState("run");
 			break;
 		case KeyCode::KEY_SPACE:
 			if (canJump) {
 				EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, this->getObjectId()));
+				this->changeToState("slide");
 			}
 			break;
 		default:

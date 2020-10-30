@@ -59,7 +59,7 @@ public:
 	void setJumpHeight(const float val);
 	float getJumpHeight() const;
 
-	void setYAxisVelocity(const float val);
+	virtual void setYAxisVelocity(const float val);
 	float getYAxisVelocity() const;
 
 	void registerSprite(string state, SpriteObject* spriteObject);
