@@ -5,6 +5,7 @@
 #include "../Engine/Events/AppTickEvent60.h"
 
 #include "Events/Window/WindowCloseEvent.h"
+#include "Level.h"
 
 // TODO engine.h & engine.cpp
 
@@ -16,7 +17,19 @@
 
 Engine engine;
 
+void musicSceneSetup() {
+	map<string, string> soundL1 = {
+		{"Level_1_Sound", "Assets/Sound/file_example_WAV_1MG.wav"},
+	};
 
+	Level* testLevel = new Level(100, soundL1);
+	engine.soundEngine.AddFile("Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"); //TODO fixing path in Level class
+	//engine.soundEngine.PlayMusic("Level_1_Sound", 12);
+	testLevel->Start();
+	engine.insertScene((Scene*)testLevel);
+	engine.setCurrentScene(100);
+	engine.startTickThreads();
+}
 void sceneTestSetup()
 {
 
@@ -70,8 +83,6 @@ void sceneTestSetup()
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(1, staticGround);
-
-	engine.soundEngine
 	
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));
@@ -85,8 +96,8 @@ void sceneTestSetup()
 }
 
 int main() {
-	sceneTestSetup();
-
+	musicSceneSetup();
+	
 	bool gameRunning = true;
 	while (gameRunning)
 	{

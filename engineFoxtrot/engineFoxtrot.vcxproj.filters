@@ -173,6 +173,8 @@
     <ClInclude Include="Main\Level.h" />
     <ClInclude Include="Engine\Events\Sound\OnMusicStartEvent.h" />
     <ClInclude Include="Engine\Events\Sound\BaseSoundEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\OnMusicStopEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\SoundAttachEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

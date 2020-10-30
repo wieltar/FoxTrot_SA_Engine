@@ -10,10 +10,10 @@ public:
 	/// @brief
 	/// KeyCode that is pressed
 	/// @returns KeyCode
-	const std::string& GetFileName() { return fileName; }
+	const std::string& Getidentifier() { return identifier; }
 
 
 protected:
-	BaseSoundEvent(const std::string& _fileName) : fileName{ _fileName } {};
-	const std::string& fileName;
+	BaseSoundEvent(const std::string& identifier) : identifier{ identifier } {};
+	const std::string& identifier;
 };

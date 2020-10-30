@@ -57,8 +57,8 @@ public:
 	//TODO make private
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
-private:
 	SoundEngine soundEngine;
+private:
 	InputEngine inputEngine;
 	FileParser fileParser;
 	ParticleEngine particleEngine;

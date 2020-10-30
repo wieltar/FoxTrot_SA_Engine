@@ -25,6 +25,7 @@ enum class EventType
 	// -- sounds events -----
 	OnMusicStartEvent,
 	OnMusicStopEvent,
+	AttachSound,
 
 	Action
 };

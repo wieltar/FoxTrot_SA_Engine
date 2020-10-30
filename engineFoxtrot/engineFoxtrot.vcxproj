@@ -206,6 +206,8 @@
     <ClInclude Include="Engine\Events\ObjectEventCodes.h" />
     <ClInclude Include="Engine\Events\Sound\BaseSoundEvent.h" />
     <ClInclude Include="Engine\Events\Sound\OnMusicStartEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\OnMusicStopEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\SoundAttachEvent.h" />
     <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h" />
     <ClInclude Include="Engine\Events\Window\WindowResizeEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />

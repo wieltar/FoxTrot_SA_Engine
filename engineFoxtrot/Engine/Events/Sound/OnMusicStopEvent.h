@@ -4,10 +4,10 @@
 
 /// @brief
 /// AppTickEvent is fired when a tick happened in the engine. Derived class of event. 
-class OnMusicStartEvent : public BaseSoundEvent
+class OnMusicStopEvent : public BaseSoundEvent
 {
 public:
-	OnMusicStartEvent(const std::string& identifier) : BaseSoundEvent(identifier) {}
+	OnMusicStopEvent(const std::string& _file) : BaseSoundEvent(_file) {}
 
 	/// @brief
 	/// KeyReleasedEvent to string
@@ -15,15 +15,15 @@ public:
 	std::string ToString() const override
 	{
 		std::stringstream stream;
-		stream << "Started Sound: " << identifier;
+		stream << "Stop Sound: " << identifier;
 		return stream.str();
 	}
 
 	/// @brief
 	/// Returns the eventType of a specific event
 	/// @return EventType
-	EventType GetEventType() const override { return EventType::OnMusicStartEvent; }
+	EventType GetEventType() const override { return EventType::OnMusicStopEvent; }
 	/// @brief
 	/// Returns the name of the event
-	const char* GetName() const override { return "Action Sound Start Event"; }
+	const char* GetName() const override { return "Action Sound Stop Event"; }
 };
