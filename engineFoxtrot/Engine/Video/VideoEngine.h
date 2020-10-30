@@ -48,7 +48,7 @@ public:
 
 	void drawFps();
 	void drawFps(double fps, int xPos, int yPos, const string& prefix);
-	void toggleFps(Event& fpsEvent); //TODO Toggle via input/Command pattern
+	void toggleFps(Event& fpsEvent);
 
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
@@ -59,6 +59,6 @@ private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
 	FrameData* frameData = nullptr;
-	bool shouldDrawFps = true; //TODO Should be set to false when toggle via button is added, see Todo above.
+	bool shouldDrawFps;
 
 };
