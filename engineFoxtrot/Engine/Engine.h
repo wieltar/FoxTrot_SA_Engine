@@ -56,13 +56,14 @@ public:
 	void configureInput(KeyCode key, Command* command);
 
 	void pollEvents();
+
+	PhysicsEngine physicsEngine;
 private:
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
 	ParticleEngine particleEngine;
 	SceneManager sceneManager;
-	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
 
 	FrameData* frameData = nullptr;

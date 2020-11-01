@@ -144,6 +144,7 @@ void sceneTestSetup()
 	engine.createObject(3, staticGround2);
 
 	engine.setCurrentScene(3);
+	engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 }
 
 int main() {
