@@ -55,7 +55,3 @@ private:
 	map <PhysicsBody*, b2Body*> bodies;
 	b2Body* findBody(const int objectId);
 };
-
-
-
-
