@@ -76,7 +76,6 @@ void PhysicsFacade::addStaticObject(PhysicsBody* object) {
 	b2Body* body = world->CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox = createShape(*object);
 	body->CreateFixture(&groundBox, 0.0f);
-	b2FixtureDef fixtureDef;
 
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
