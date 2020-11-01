@@ -3,6 +3,7 @@
 #include <Events\EventSingleton.h>
 #include <Events\Action\OnCollisionEvent.h>
 #include <Physics\PhysicsFacade.h>
+#include "box2d/box2d.h"
 
 class ContactListenerAdapter : public b2ContactListener
 {
