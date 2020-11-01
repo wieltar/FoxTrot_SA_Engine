@@ -6,6 +6,7 @@
 #include "../../SDL2/include/SDL_ttf.h"
 
 #undef main
+#define ANIMATIONSPEED 300;
 
 /// @brief 
 VideoFacade::VideoFacade()
@@ -84,9 +85,9 @@ void VideoFacade::drawScreen()
 /// @param filename
 void VideoFacade::loadImage(SpriteObject * spriteObject) {
 	if (spriteObject->getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
-	if (spriteObject->getfileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+	if (spriteObject->getFileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
 
-	SDL_Surface* surface = IMG_Load(spriteObject->getfileName());
+	SDL_Surface* surface = IMG_Load(spriteObject->getFileName());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
 	textureMap[spriteObject->getTextureID()] = texture;
@@ -97,25 +98,30 @@ void VideoFacade::loadImage(SpriteObject * spriteObject) {
 /// Takes the sprites from the Textuture map animated and copys them to the screen
 /// @param object 
 void VideoFacade::renderCopy(Object& object)
-{
-	// TODO
-	//if (textureMap[spriteID] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
-	//if (xPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
-	//if (yPos == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;
-	//if (height == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_HEIGHT_IS_NULL;
-	//if (width == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_WIDTH_IS_NULL;
-	//if (rotation == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_ROTATION_IS_NULL;
-	// TODO find out why floats ruin stuff
-
+{	
 	SpriteObject* sprite = object.GetCurrentSprite();
 	if (sprite == NULL) {
 		throw ERROR_CODE_SDL2FACADE_SPRITE_DOESNT_EXISTS;
 	}
+	if (textureMap[sprite->getTextureID()] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
+	if (object.getPositionX() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
+	if (object.getPositionY() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;
+	if (object.getHeight() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_HEIGHT_IS_NULL;
+	if (object.getWidth() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_WIDTH_IS_NULL;
+	if (object.getRotation() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_ROTATION_IS_NULL;
+
 	//generate image 
 	Uint32 ticks = SDL_GetTicks();
-	Uint32 seconds = ticks / 300;
+	Uint32 seconds = ticks / ANIMATIONSPEED;
 	int leftpos = sprite->getLeftPos(seconds);
-	SDL_Rect rect{ leftpos, 0, sprite->getWidth(), sprite->getHeight() };
+	int top = 0;
+
+	//generate rectangele for selecting 1 image of a full sprite
+	//leftpos = amount of pixels from the left side
+	//top = amount of pixels of the top (sprites are renderd of the top to bottom
+	//width = amount of pixels of the with of 1 image
+	//height = amount of pixels of the height of 1 image
+	SDL_Rect rect{ leftpos, top, sprite->getWidth(), sprite->getHeight() };
 
 	//update collision box 
 	if (!object.getScalable()) {

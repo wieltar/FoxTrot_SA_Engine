@@ -1,11 +1,5 @@
 #pragma once
-
-#include <SDL.h>
-#include <SDL_mixer.h>
-#include <SDL_image.h>
 #include <unordered_map>
-#include "../SceneManager/Object.h"
-#include "../SceneManager/SpriteObject.h"
 #include "ISoundFacade.h"
 #undef main
 

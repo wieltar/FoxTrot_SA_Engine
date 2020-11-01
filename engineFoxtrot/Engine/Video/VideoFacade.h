@@ -36,8 +36,6 @@ public:
 
 	void drawMessageAt(const FpsMessage message, const TextPosition pos);
 
-
-private:
 private:
 	unordered_map<int, SDL_Texture*> textureMap;
 	SDL_Renderer* renderer;

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "box2d/box2d.h"
 #include "../SceneManager/Object.h"
 
 class PhysicsBody
@@ -57,7 +56,7 @@ protected:
 	float density = 0;
 	float rotation = 0;
 	float jumpHeight = 0;
-	Object* object;
+	Object* object = nullptr; 
 	float yAxisVelocity = 0;
 	bool rotatable = false;
 };

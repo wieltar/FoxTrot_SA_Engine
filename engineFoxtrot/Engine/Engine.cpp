@@ -142,7 +142,7 @@ void Engine::configureInput(KeyCode key, Command* command)
 /// @param filename
 void Engine::loadSprite(SpriteObject* spriteObject) {
 	struct stat buffer;
-	bool exists = (stat(spriteObject->getfileName(), &buffer) == 0);
+	bool exists = (stat(spriteObject->getFileName(), &buffer) == 0);
 	if (!exists)
 		throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
 	if (spriteObject->getTextureID() == NULL) {

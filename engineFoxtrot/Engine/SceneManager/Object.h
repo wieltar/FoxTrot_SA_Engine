@@ -76,9 +76,9 @@ public:
 private:
 	const int objectId = 0;
 	const int spriteID = 0;
-	SpriteObject* currentSprite;
+	SpriteObject* currentSprite = nullptr;
 protected:
-	string name;
+	string name = "";
 	bool scalable = false;
 	float positionX = 0;
 	float positionY = 0;

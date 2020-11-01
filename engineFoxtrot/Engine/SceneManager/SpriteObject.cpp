@@ -10,7 +10,7 @@ int SpriteObject::getTextureID() const { return textureID; }
 int SpriteObject::getAmountOfTextures() const { return lengthOfTextures; }
 int SpriteObject::getHeight() const { return height; }
 int SpriteObject::getWidth() const { return width; }
-const char * SpriteObject::getfileName() const { return fileName; }
+const char * SpriteObject::getFileName() const { return fileName; }
 
 
 /// @brief 
