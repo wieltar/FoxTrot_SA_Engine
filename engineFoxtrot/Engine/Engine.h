@@ -6,7 +6,7 @@
 #include "./SceneManager/SceneManager.h"
 #include "./FileParser/FileParser.h"
 #include "./Physics/PhysicsEngine.h"
-#include "./Particles/ParticleEngine.h"
+#include "./ParticleSystem/ParticleEngine.h"
 #include "./SceneManager/SceneManager.h"
 
 #include "Events/EventSingleton.h"
@@ -66,10 +66,11 @@ public:
 private:
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
+private:
+	ParticleEngine particleEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
-	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 
 	FrameData* frameData = nullptr;

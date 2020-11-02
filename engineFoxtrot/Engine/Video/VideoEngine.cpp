@@ -14,20 +14,6 @@ VideoEngine::~VideoEngine()
 {
 }
 
-///// @brief 
-///// Inits SDL2 and creates the window
-//void VideoEngine::initSDL()
-//{
-//	try
-//	{
-//		videoFacade->initSDL();
-//	}
-//	catch (int e)
-//	{
-//		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-//	}
-//}
-
 /// @brief 
 /// Clears the SDL screen
 void VideoEngine::clearScreen()
@@ -95,7 +81,14 @@ void VideoEngine::updateScreen()
 		if ((*pointerToCurrentScene)->getAllObjectsInScene().size() <= 0) return;
 		for (Object* obj : (*pointerToCurrentScene)->getAllObjectsInScene()) {
 			if (obj != nullptr) {
-				videoFacade->renderCopy(*obj);
+				if (obj->getIsParticle())
+				{
+					drawParticle((ParticleAdapter*)obj);
+				}
+				else
+				{
+					renderCopy(*obj);
+				}
 			}
 		}
 	}
@@ -155,7 +148,26 @@ void VideoEngine::receiveTick(Event& tickEvent)
 	frameData->startTimer();
 	clearScreen();
 	updateScreen();
+
 	drawFps();
 	drawScreen();
 	FrameData::renderFps = frameData->calculateAverageFps();
+}
+
+/// @brief Draws the Particles
+/// @param part pointer to the particle
+void VideoEngine::drawParticle(ParticleAdapter* part)
+{
+	vector<ParticleData> particleData = part->getParticleDataVector();
+	for (int index = 0; index < part->getParticleCount(); index++)
+	{
+		auto& partData = particleData[index];
+
+		if (partData.size <= 0 || partData.colorA <= 0)
+		{
+			continue;
+		}
+		videoFacade->drawParticle(partData, part->getSpriteID());
+	}
+
 }

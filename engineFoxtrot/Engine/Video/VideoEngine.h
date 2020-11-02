@@ -4,11 +4,7 @@
 #include "./Structs/fpsStructs.h"
 #include "Events/Action/FpsToggleEvent.h";
 #include "../SceneManager/Scene.h"
-#include "Events/Action/FpsToggleEvent.h";
-
-#define NO_RED 0
-#define NO_BLUE 0
-#define NO_GREEN 0
+#include "../ParticleSystem/ParticleAdapter.h"
 
 #define FPS_X_POSITION 999
 #define Y_POSITION_TOP_OF_SCREEN 0
@@ -53,6 +49,8 @@ public:
 
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
+
+	void drawParticle(ParticleAdapter* part);
 
 	Scene** pointerToCurrentScene = nullptr;
 
