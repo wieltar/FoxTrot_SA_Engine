@@ -112,9 +112,9 @@ bool InputFacade::fill(vector<Command*>& command_queue)
 /// @brief 
 /// Fills the command queue with pressed keys.
 /// @param command_queue 
-void InputFacade::dispatcher(std::vector<Command*>& command_queue)
+void InputFacade::dispatcher(vector<Command*>& command_queue)
 {
-    std::map<KeyCode, Command*>::iterator iter;
+    map<KeyCode, Command*>::iterator iter;
     for (iter = commands.begin(); iter != commands.end(); iter++) {
         if (is_held(iter->first) && iter->second->get_input_type() == STATE)
             command_queue.push_back(iter->second);

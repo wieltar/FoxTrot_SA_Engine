@@ -17,7 +17,7 @@ public:
 
 	/// @brief
 	/// Returns the name of the event
-	virtual std::string ToString() const { return GetName(); }
+	virtual string ToString() const { return GetName(); }
 
 	/// @brief
 	/// Returns type of the event

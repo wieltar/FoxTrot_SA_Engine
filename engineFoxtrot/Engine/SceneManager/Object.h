@@ -17,8 +17,8 @@ public:
 	SpriteObject& GetCurrentSprite() const;
 	int getObjectId() const;
 
-	void setName(const std::string);
-	std::string getName() const;
+	void setName(const string);
+	string getName() const;
 
 	void setPositionX(const float);
 	float getPositionX() const;

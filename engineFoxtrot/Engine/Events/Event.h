@@ -20,10 +20,10 @@ public:
 
 	/// @brief
 	/// Returns the name of the event
-	virtual std::string ToString() const { return GetName(); }
+	virtual string ToString() const { return GetName(); }
 };
 
-inline std::ostream& operator<<(std::ostream& osStream, const Event& event)
+inline ostream& operator<<(ostream& osStream, const Event& event)
 {
 	return osStream << event.ToString();
 }

@@ -18,7 +18,7 @@ public:
 
 	/// @brief
 	/// Returns the name of the event
-	virtual std::string ToString() const { return GetName(); }
+	virtual string ToString() const { return GetName(); }
 
 	EventType GetEventType() const override { return EventType::MouseButtonReleased; }
 protected:

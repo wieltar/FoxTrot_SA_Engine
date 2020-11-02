@@ -28,7 +28,7 @@ public:
 	void configure(KeyCode key, Command* command);
 private:
 	bool input_mapping();
-	void dispatcher(std::vector<Command*>& command_queue);
+	void dispatcher(vector<Command*>& command_queue);
 
 	void keydown(SDL_Event& event);
 	void keyup(SDL_Event& event);
