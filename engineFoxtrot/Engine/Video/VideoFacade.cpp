@@ -6,7 +6,7 @@
 #include "../../SDL2/include/SDL_ttf.h"
 
 #undef main
-#define ANIMATIONSPEED 300;
+#define ANIMATIONDELAY 100;
 
 /// @brief 
 VideoFacade::VideoFacade()
@@ -109,7 +109,7 @@ void VideoFacade::renderCopy(Object& object)
 
 	//generate image 
 	Uint32 ticks = SDL_GetTicks();
-	Uint32 seconds = ticks / ANIMATIONSPEED;
+	Uint32 seconds = ticks / ANIMATIONDELAY;
 	int leftpos = sprite.getLeftPos(seconds);
 	int top = 0;
 
