@@ -16,7 +16,8 @@ VideoFacade::VideoFacade()
 /// @brief 
 VideoFacade::~VideoFacade()
 {
-
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
 }
 
 // Tips:
@@ -63,7 +64,7 @@ void VideoFacade::initSDL()
 /// Clears SDL screen
 void VideoFacade::clearScreen()
 {
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(renderer, FULL_RED, FULL_GREEN, FULL_BLUE, 0);
 	SDL_RenderClear(renderer);
 }
 
@@ -132,6 +133,28 @@ void VideoFacade::renderCopy(Object& object)
 	destination.w = object.getWidth();
 	destination.h = object.getHeight();
 	SDL_RenderCopyEx(renderer, textureMap[sprite.getTextureID()], &rect, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+}
+
+/// @brief Function to draw Particles
+/// @param posX 
+/// @param startPosX 
+/// @param posY 
+/// @param startPosY 
+/// @param size 
+/// @param spriteID 
+/// @param colorR 
+/// @param colorG 
+/// @param colorB 
+/// @param colorA 
+/// @param rotation 
+void VideoFacade::drawParticle(ParticleData data, int spriteID)
+{
+	SDL_Rect r = { int(data.posx + data.startPosX - data.size / 2), int(data.posy + data.startPosY - data.size / 2), int(data.size), int(data.size) };
+	SDL_Color c = { Uint8(data.colorR * 255), Uint8(data.colorG * 255), Uint8(data.colorB * 255), Uint8(data.colorA * 255) };
+	SDL_SetTextureColorMod(textureMap[spriteID], c.r, c.g, c.b);
+	SDL_SetTextureAlphaMod(textureMap[spriteID], c.a);
+	SDL_SetTextureBlendMode(textureMap[spriteID], SDL_BLENDMODE_BLEND);
+	SDL_RenderCopyEx(renderer, textureMap[spriteID], nullptr, &r, data.rotation, nullptr, SDL_FLIP_NONE);
 }
 
 /// @brief

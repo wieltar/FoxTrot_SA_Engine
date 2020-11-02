@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "../Engine/Engine.h"
-#include "../Engine/Events/AppTickEvent30.h"
-#include "../Engine/Events/AppTickEvent60.h"
+#include "Engine.h"
+#include "Events/AppTickEvent30.h"
+#include "Events/AppTickEvent60.h"
 
 #include "Events/Window/WindowCloseEvent.h"
 #include "Level.h"
@@ -157,6 +157,7 @@ void sceneTestSetup()
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
+
 	object->registerSprite(SpriteState::DEFAULT, so1);
 	object->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, object);
@@ -173,6 +174,7 @@ void sceneTestSetup()
 	object2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, object2);
 
+
 	Object* staticGround = new Object(101);
 	staticGround->setScalable(true);
 	staticGround->setWidth(500); // width
@@ -184,10 +186,30 @@ void sceneTestSetup()
 	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-	engine.insertScene(testScene);
-	engine.setCurrentScene(100);
-	testScene->Start(); 
+	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 0, "./Engine/ParticleSystem/fire.png");
 
+	ParticleAdapter * particle1 = new ParticleAdapter(11);        // create a new particle system pointer
+	particle1->registerSprite(SpriteState::DEFAULT,particle1Sprite);
+	particle1->setPosition(800, 384);              // set the position
+	particle1->setStyle(ParticleInit::FIRE);    // set the example effects
+	particle1->setStartSpin(0);
+	particle1->setStartSpinVar(90);
+	particle1->setEndSpin(90);
+	particle1->setStartSpinVar(90);
+
+	testScene->addNewObjectToLayer(4, particle1);
+
+	ParticleAdapter * particle2 = new ParticleAdapter(11);        // create a new particle system pointer
+	particle2->registerSprite(SpriteState::DEFAULT, particle1Sprite);
+	particle2->setPosition(100, 384);              // set the position
+	particle2->setStyle(ParticleInit::EXPLOSION);    // set the example effects
+	particle2->setStartSpin(0);
+	particle2->setStartSpinVar(90);
+	particle2->setEndSpin(90);
+	particle2->setStartSpinVar(90);
+
+	testScene->addNewObjectToLayer(2, particle2);
+	
 	Object* staticGround2 = new Object(102);
 	staticGround2->setWidth(100); // width
 	staticGround2->setHeight(80);// height
@@ -199,13 +221,25 @@ void sceneTestSetup()
 	staticGround2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround2);
 
+	engine.configureInput(KEY_A, engine.makeCommand<MoveLeft>());
+	engine.configureInput(KEY_D, engine.makeCommand<MoveRight>());
+	engine.configureInput(KEY_SPACE, engine.makeCommand<Jump>());
+	engine.configureInput(KEY_F1, engine.makeCommand<ToggleFps>(), true);
+	//Engine* command = engine.makeCommand<Engine>();
+
+	engine.insertScene(testScene);
+	engine.setCurrentScene(100);
+	testScene->Start();
+
 	engine.startTickThreads();
 }
+
 
 int main() {
 	sceneTestSetup();
 	
 	bool gameRunning = true;
+
 	while (gameRunning)
 	{
 		AppTickEvent60 appTick;

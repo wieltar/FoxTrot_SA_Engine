@@ -187,7 +187,7 @@ void SoundEngine::EventListners() {
 }
 void SoundEngine::Event_StartEvent(Event& event) {
 	auto startEvent = static_cast<OnMusicStartEvent&>(event);
-	this->PlayMusic(startEvent.Getidentifier());
+	this->PlayMusic(startEvent.Getidentifier(), 15);
 }
 void SoundEngine::Event_AttachEvent(Event& event) {
 	auto attachEvent = static_cast<SoundAttachEvent&>(event);

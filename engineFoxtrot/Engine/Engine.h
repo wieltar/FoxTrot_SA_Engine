@@ -6,7 +6,7 @@
 #include "./SceneManager/SceneManager.h"
 #include "./FileParser/FileParser.h"
 #include "./Physics/PhysicsEngine.h"
-#include "./Particles/ParticleEngine.h"
+#include "./ParticleSystem/ParticleEngine.h"
 #include "./SceneManager/SceneManager.h"
 
 #include "Events/EventSingleton.h"
@@ -51,17 +51,27 @@ public:
 	// Video calls
 	void loadSprite(const SpriteObject& spriteObject);
 
+	void pollEvents();
+
 	//Input calls
 	void pollInput();
-	void configureInput(KeyCode key, Command* command);
+	void configureInput(KeyCode key, Command* command, bool runOnce = false);
 
-	void pollEvents();
+	/// @brief
+	/// Generic function for creating command externally
+	template <class T>
+	T* makeCommand() {
+		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
+		return inputEngine.makeCommand<T>();
+	}
+
+	//TODO make private
 private:
 	PhysicsEngine physicsEngine;
+	ParticleEngine particleEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
-	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 	VideoEngine videoEngine;
 

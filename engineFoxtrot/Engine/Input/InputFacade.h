@@ -13,8 +13,7 @@
 #include "./Events/Mouse/MouseScrolledEvent.h"
 
 typedef union SDL_Event;
-
-
+class InputEngine;
 
 /// @brief Facade for SDL input part
 class InputFacade : public IInputFacade
@@ -25,7 +24,8 @@ public:
     ~InputFacade();
 
 	bool fill(vector<Command*>& command_queue);
-	void configure(KeyCode key, Command* command);
+	void configure(KeyCode key, Command* command, bool runOnce);
+
 private:
 	bool input_mapping();
 	void dispatcher(vector<Command*>& command_queue);
@@ -42,6 +42,7 @@ private:
 	map <KeyCode, Action> action_map;
 
 	map <KeyCode, Command*> commands;
+	vector<KeyCode> handleOnce;
 
 	KeyCode eventToKeyCode(SDL_Event& event);
 };

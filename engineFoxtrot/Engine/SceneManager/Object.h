@@ -74,11 +74,14 @@ public:
 	bool getChanged() const;
 	void setChanged(const bool c);
 
-private:
-	const int objectId = 0;
-	const int spriteID = 0;
-	SpriteObject* currentSprite = nullptr;
+	bool getIsParticle();
+	
 protected:
+
+	Object(const int id, const bool particle) : objectId(id),isParticle(particle) {  }
+	
+	const int objectId = 0;
+	SpriteObject* currentSprite = nullptr;
 	string name = "";
 	bool scalable = false;
 	float positionX = 0;
@@ -95,6 +98,7 @@ protected:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
+	const bool isParticle = false;
 	map<const int, SpriteObject*> textures;
 	bool rotatable = false;
 	float yAxisVelocity = 0;

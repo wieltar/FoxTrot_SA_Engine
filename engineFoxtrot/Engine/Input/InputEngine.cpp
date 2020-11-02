@@ -36,6 +36,11 @@ void InputEngine::jump()
 	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, 2));
 }
 
+void InputEngine::toggleFps()
+{
+	EventSingleton::get_instance().dispatchEvent<FpsToggleEvent>((Event&)FpsToggleEvent());
+}
+
 /// @brief 
 /// Executes the events from polling
 void InputEngine::updateInput()
@@ -63,8 +68,8 @@ bool InputEngine::fill(vector<Command*>& command_queue)
 /// @brief 
 /// @param key 
 /// @param command 
-void InputEngine::configure(KeyCode key, Command* command)
+void InputEngine::configure(KeyCode key, Command* command, bool runOnce)
 {
-	inputFacade->configure(key, command);
+	inputFacade->configure(key, command, runOnce);
 }
 

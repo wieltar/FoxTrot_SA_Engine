@@ -175,6 +175,7 @@
     <ClInclude Include="Engine\Events\Action\OnCollisionEvent.h" />
     <ClInclude Include="Engine\Physics\ContactListenerAdapter.h" />
     <ClInclude Include="Engine\SceneManager\SpriteObject.h" />
+    <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
     <ClInclude Include="Engine\SceneManager\Layer.h" />
     <ClInclude Include="Main\Level.h" />
     <ClInclude Include="Engine\Events\Sound\OnMusicStartEvent.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Engine\Events\Sound\SoundAttachEvent.h" />
     <ClInclude Include="Engine\Structs\fpsStructs.h" />
     <ClInclude Include="Main\SpriteState.h" />
+    <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

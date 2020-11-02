@@ -5,10 +5,7 @@
 #undef main
 
 /// @brief 
-InputFacade::InputFacade()
-{
-
-}
+InputFacade::InputFacade() {}
 
 /// @brief 
 InputFacade::~InputFacade()
@@ -22,12 +19,16 @@ InputFacade::~InputFacade()
 /// Returns true poll events should quit, default false if none.
 bool InputFacade::input_mapping()
 {
+    // TODO Omschrijven zodat input niet afhankelijk is van Commands zodat de input naar de game gestuurd kan worden
     SDL_Event event;
     while (SDL_PollEvent(&event))
         if (event.type == SDL_QUIT) return true;
         else if (event.type == SDL_KEYDOWN) {
             if (event.key.keysym.sym == SDLK_ESCAPE) return true;
-            keydown(event);
+            if (find(handleOnce.begin(), handleOnce.end(), eventToKeyCode(event)) != handleOnce.end())
+                commands[eventToKeyCode(event)]->execute();
+            else
+                keydown(event);
         }
         else if (event.type == SDL_KEYUP) {
             keyup(event);
@@ -41,7 +42,6 @@ bool InputFacade::input_mapping()
 /// @param event 
 void InputFacade::keydown(SDL_Event& event)
 {
-    //int SDLInt = (int)(event.key.keysym.scancode);
     if (state_map[eventToKeyCode(event)] == RELEASED) {
         action_map[eventToKeyCode(event)] = EXECUTE;
     }
@@ -86,8 +86,9 @@ KeyCode InputFacade::eventToKeyCode(SDL_Event& event)
 /// Configures the key to a command. 
 /// @param key 
 /// @param command 
-void InputFacade::configure(KeyCode key, Command* command)
+void InputFacade::configure(KeyCode key, Command* command, bool runOnce)
 {
+    if (runOnce) handleOnce.push_back(key);
     commands[key] = command;    // key points to newly assigned command
 }
 

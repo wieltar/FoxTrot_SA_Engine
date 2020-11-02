@@ -1,8 +1,8 @@
 #pragma once
 #include "IVideoFacade.h"
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 400
+#define WINDOW_WIDTH 860
+#define WINDOW_HEIGHT 1280
 
 #define MESSAGE_WIDTH 150
 #define MESSAGE_HEIGHT 30
@@ -34,6 +34,7 @@ public:
 	void loadImage(const SpriteObject& spriteObject);
 	void renderCopy(Object& object);
 
+	void drawParticle(ParticleData data, int spriteID);
 	void drawMessageAt(const FpsMessage message, const TextPosition pos);
 
 private:
