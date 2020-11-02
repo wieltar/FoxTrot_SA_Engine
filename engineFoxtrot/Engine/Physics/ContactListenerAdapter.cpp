@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "ContactListenerAdapter.h"
 
-
 /// @brief 
 /// Fires Event when a contact between two objects begin
 /// @overrides box2dContactListener

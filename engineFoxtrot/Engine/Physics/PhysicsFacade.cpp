@@ -1,11 +1,13 @@
 #include "stdafx.h"
 #include "PhysicsFacade.h"
 #include "./ContactListenerAdapter.h"
+#include "box2d/box2d.h"
 
 /// @brief Constructor
 PhysicsFacade::PhysicsFacade()
 {
-	world.SetContactListener(new ContactListenerAdapter(this));
+	world = new b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
+	world->SetContactListener(new ContactListenerAdapter(this));
 }
 
 /// @brief Destructor
@@ -71,10 +73,9 @@ b2PolygonShape createShape(const PhysicsBody& object) {
 void PhysicsFacade::addStaticObject(PhysicsBody* object) {
 	b2BodyDef groundBodyDef;
 	groundBodyDef.type = b2_staticBody;
-	b2Body* body = world.CreateBody(&groundBodyDef);
+	b2Body* body = world->CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox = createShape(*object);
 	body->CreateFixture(&groundBox, 0.0f);
-	b2FixtureDef fixtureDef;
 
 	bodies.insert(pair<PhysicsBody*, b2Body*>(object, body));
 }
@@ -87,7 +88,7 @@ void PhysicsFacade::addDynamicObject(PhysicsBody* object)
 {
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	b2Body* body = world.CreateBody(&bodyDef);
+	b2Body* body = world->CreateBody(&bodyDef);
 
 	b2PolygonShape bodyBox = createShape(*object);
 
@@ -96,6 +97,7 @@ void PhysicsFacade::addDynamicObject(PhysicsBody* object)
 	fixtureDef.density = object->getDensity();
 	fixtureDef.friction = object->getFriction();
 	fixtureDef.restitution = object->getRestitution();
+	if (!object->getRotatable()) body->SetFixedRotation(true);
 
 	body->CreateFixture(&fixtureDef);
 
@@ -127,7 +129,7 @@ b2Body* PhysicsFacade::findBody(const int objectId) {
 /// A function to update the position information of all objects
 /// The position is set to the bottom left
 void PhysicsFacade::update() {
-	this->world.Step(timeStep, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+	this->world->Step(timeStep, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
 
 	for (auto const& it : bodies)
 	{
@@ -140,7 +142,7 @@ void PhysicsFacade::update() {
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
 
-		if(object->getRotatable()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
+		if (object->getRotatable()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
 		object->setYAxisVelocity(body->GetLinearVelocity().y);
 	}	
 }

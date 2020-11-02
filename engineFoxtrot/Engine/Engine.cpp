@@ -27,7 +27,6 @@ void Engine::setCurrentScene(const int sceneID)
 	try
 	{
 		sceneManager.setCurrentScene(sceneID);
-		physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
 	}
 	catch (int e)
 	{

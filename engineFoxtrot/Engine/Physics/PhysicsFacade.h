@@ -25,6 +25,10 @@ struct CollisionStruct {
 	PhysicsBody* object2 = nullptr;
 };
 
+class b2Fixture;
+class b2World;
+class b2Body;
+
 /// @brief 
 /// PhysicsFacade class. Class for update physics off objects
 #if(EXPORT)
@@ -59,13 +63,9 @@ public:
 	}
 
 private:
-	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
+	b2World * world;
 	const float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
 
 	map <PhysicsBody*, b2Body*> bodies;
 	b2Body* findBody(const int objectId);
 };
-
-
-
-
