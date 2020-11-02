@@ -81,7 +81,7 @@ void sceneTestSetup()
 	testScene->addNewObjectToLayer(2, particle2);
 
 	particle2->setPosition(100, 384);              // set the position
-	particle2->setStyle(ParticleInit::RAIN);    // set the example effects
+	particle2->setStyle(ParticleInit::EXPLOSION);    // set the example effects
 	particle2->setStartSpin(0);
 	particle2->setStartSpinVar(90);
 	particle2->setEndSpin(90);
@@ -97,7 +97,6 @@ void sceneTestSetup()
 	engine.configureInput(KEY_F1, engine.makeCommand<ToggleFps>(), true);
 	//Engine* command = engine.makeCommand<Engine>();
 
-	engine.setCurrentScene(3);
 	engine.startTickThreads();
 }
 
