@@ -1,6 +1,9 @@
 #pragma once
+#include <unordered_map>
 #include "ISoundFacade.h"
-#include "../SceneManager/Object.h"
+#undef main
+
+using namespace std;
 
 #define EXAMPLE_SOUND	"../Assets/Sound/b423b42.wav"
 #define EXAMPLE_SPRITE  "../Assets/Sprites/simple.png"

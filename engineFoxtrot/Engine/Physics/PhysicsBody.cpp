@@ -1,15 +1,14 @@
 #include "stdafx.h"
 #include "PhysicsBody.h"
 
-PhysicsBody::PhysicsBody(Object* object) : objectID(object->getSpriteID()), height(object->getHeight()), width(object->getWidth()), posX(object->getPositionX()),
+PhysicsBody::PhysicsBody(Object* object) : objectID(object->getObjectId()), height(object->getHeight()), width(object->getWidth()), posX(object->getPositionX()),
 	posY(object->getPositionY()), speed(object->getSpeed()), friction(object->getFriction()), restitution(object->getRestitution()), density(object->getDensity()),
-	rotation(object->getRotation()), jumpHeight(object->getJumpHeight()) {
+	rotation(object->getRotation()), jumpHeight(object->getJumpHeight()), yAxisVelocity(object->getYAxisVelocity()), rotatable(object->getRotatable()) {
 	this->object = object;
 };
-PhysicsBody::~PhysicsBody() {
-}
+PhysicsBody::~PhysicsBody() { }
 
-int PhysicsBody::getSpriteID() const { return this->objectID; }
+int PhysicsBody::getObjectId() const { return this->objectID; }
 
 void PhysicsBody::setPositionX(const float x) { this->posX = x; this->object->setPositionX(x); }
 float PhysicsBody::getPositionX() const { return posX; }
@@ -40,3 +39,9 @@ float PhysicsBody::getSpeed() const { return this->speed; }
 
 void PhysicsBody::setJumpHeight(const float j) { this->jumpHeight = j; this->object->setJumpHeight(j);}
 float PhysicsBody::getJumpHeight() const { return this->jumpHeight; }
+
+void PhysicsBody::setYAxisVelocity(const float val) { this->yAxisVelocity = val; this->object->setYAxisVelocity(val); }
+float PhysicsBody::getYAxisVelocity() const { return this->yAxisVelocity; }
+
+bool PhysicsBody::getRotatable() const { return this->rotatable; }
+void PhysicsBody::setRotatable(const bool val) { this->rotatable = val; }

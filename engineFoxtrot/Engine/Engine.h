@@ -49,8 +49,11 @@ public:
 	void insertScene(Scene * scene);
 
 	// Video calls
-	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
+	void loadSprite(const SpriteObject& spriteObject);
 
+	void pollEvents();
+
+	//Input calls
 	void pollInput();
 	void configureInput(KeyCode key, Command* command, bool runOnce = false);
 
@@ -65,16 +68,15 @@ public:
 	//TODO make private
 private:
 	PhysicsEngine physicsEngine;
-	VideoEngine videoEngine;
-private:
 	ParticleEngine particleEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
 	SceneManager sceneManager;
+	VideoEngine videoEngine;
 
 	FrameData* frameData = nullptr;
 
-	void loadSpriteArray(vector<Sprite> spriteVector);
+	void loadSpriteArray(vector<SpriteObject> spriteVector);
 };
 #endif

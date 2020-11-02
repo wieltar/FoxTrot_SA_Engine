@@ -1,6 +1,11 @@
 #pragma once
 #include "IPhysicsFacade.h"
 #include "PhysicsBody.h"
+#include "Events/EventSingleton.h"
+#include "Events/Action/OnCollisionEvent.h"
+
+#define PI 3.14159
+#define TOTAL_DEGREES 180
 
 #define VELOCITY_ITERATIONS 8
 #define POSITION_ITERATIONS 3
@@ -15,6 +20,15 @@
 #define X_AXIS_STATIC 0
 #define Y_AXIS_STATIC 0
 
+struct CollisionStruct {
+	PhysicsBody* object1 = nullptr;
+	PhysicsBody* object2 = nullptr;
+};
+
+class b2Fixture;
+class b2World;
+class b2Body;
+
 /// @brief 
 /// PhysicsFacade class. Class for update physics off objects
 #if(EXPORT)
@@ -27,8 +41,8 @@ public:
 	PhysicsFacade();
 	~PhysicsFacade();
 
-	void addStaticObject(const PhysicsBody* object) override;
-	void addNonStaticObject(PhysicsBody* object) override;
+	void addStaticObject(PhysicsBody* object) override;
+	void addDynamicObject(PhysicsBody* object) override;
 
 	PhysicsBody* getPhysicsObject(const int objectId) override;
 
@@ -36,26 +50,14 @@ public:
 	void MoveRight(const int objectId) override;
 	void Jump(const int objectId) override;
 
+	CollisionStruct getObjectsByFixture(b2Fixture* fixture1, b2Fixture* fixture2);
 	void update() override;
-
-	void cleanMap() 
-	{ 
-		for (auto b : bodies)
-		{
-			world.DestroyBody(b.second);
-		}
-		bodies.clear();
-	}
+	void cleanMap();
 
 private:
-	b2World world = b2World(b2Vec2(GRAVITY_SCALE, GRAVITY_FALL));
+	b2World * world;
 	const float timeStep = TIMESTEP_SEC / TIMESTEP_FRAMES;
-		
-	b2Body* findBody(const int objectId);
+
 	map <PhysicsBody*, b2Body*> bodies;
-
+	b2Body* findBody(const int objectId);
 };
-
-
-
-

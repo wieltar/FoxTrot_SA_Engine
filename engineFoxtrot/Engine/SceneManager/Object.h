@@ -1,4 +1,5 @@
 #pragma once
+#include "SpriteObject.h"
 
 /// @brief 
 /// Object class. Object is linked with a sprite id in SVI. 
@@ -10,14 +11,14 @@ class Object
 #endif
 {
 public:
-	Object(const int id);
-	Object(const int id, const float xPos, const float yPos, const float height, const float width);
+	Object(const int objectId);
 	~Object();
+
+	SpriteObject& GetCurrentSprite() const;
+	int getObjectId() const;
 
 	void setName(const string);
 	string getName() const;
-
-	int getSpriteID() const;
 
 	void setPositionX(const float);
 	float getPositionX() const;
@@ -58,18 +59,31 @@ public:
 	void setJumpHeight(const float val);
 	float getJumpHeight() const;
 
+	virtual void setYAxisVelocity(const float val);
+	float getYAxisVelocity() const;
+
+	void registerSprite(int state, SpriteObject* spriteObject);
+	void changeToState(const int state);
+
+	void setScalable(const bool val);
+	bool getScalable() const;
+
+	void setRotatable(const bool val);
+	bool getRotatable() const;
+
 	bool getChanged() const;
-	
+	void setChanged(const bool c);
+
 	bool getIsParticle();
 	
 protected:
 
-	Object(const int id, const bool particle) : spriteID(id),isParticle(particle) {  }
+	Object(const int id, const bool particle) : objectId(id),isParticle(particle) {  }
 	
-private:
-
-	string name;
-	const int spriteID = 0;
+	const int objectId = 0;
+	SpriteObject* currentSprite = nullptr;
+	string name = "";
+	bool scalable = false;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;
@@ -85,4 +99,7 @@ private:
 	bool staticObject = false;
 	bool changed = false;
 	const bool isParticle = false;
+	map<const int, SpriteObject*> textures;
+	bool rotatable = false;
+	float yAxisVelocity = 0;
 };

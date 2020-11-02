@@ -23,7 +23,7 @@ bool Scene::checkIfObjectExists(const int objectID)
 {
 	for (Object* obj : getAllObjectsInScene())
 	{
-		if (obj->getSpriteID() == objectID)
+		if (obj->getObjectId() == objectID)
 		{
 			return true;
 		}
@@ -94,7 +94,7 @@ Object * Scene::getObject(const int objectID)
 {
 	for (Object * obj : getAllObjectsInScene())
 	{
-		if (obj->getSpriteID() == objectID)
+		if (obj->getObjectId() == objectID)
 		{
 			return obj;
 		}
