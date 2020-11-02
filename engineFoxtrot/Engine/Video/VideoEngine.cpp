@@ -82,7 +82,7 @@ void VideoEngine::updateScreen()
 			if (obj != nullptr) {
 				if (obj->getIsParticle())
 				{
-					drawParticle((Particle*)obj);
+					drawParticle((ParticleInit*)obj);
 				}
 				else
 				{
@@ -155,7 +155,7 @@ void VideoEngine::receiveTick(Event& tickEvent)
 
 /// @brief Draws the Particles
 /// @param part pointer to the particle
-void VideoEngine::drawParticle(Particle* part)
+void VideoEngine::drawParticle(ParticleInit* part)
 {
 	vector<ParticleData> particleData = part->getParticleDataVector();
 	for (int index = 0; index < part->getParticleCount(); index++)

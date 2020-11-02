@@ -23,7 +23,7 @@ inline void normalize_point(float x, float y, Pointf* out)
     out->y = y * n;
 }
 
-Particle::Particle(const int id) : Object(id,true)
+Particle::Particle(const int id)
 {
 
 }
@@ -404,7 +404,7 @@ const Vec2& Particle::getGravity()
     return modeA.gravity;
 }
 
-void Particle::setSpeed(float speed)
+void Particle::setSpeedParticle(float speed)
 {
     modeA.speed = speed;
 }

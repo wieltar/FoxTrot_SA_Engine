@@ -151,7 +151,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setRadialAccelVar(0);
 
         // Gravity mode: speed of particles
-        setSpeed(-20);
+        setSpeedParticle(-20);
         setSpeedVar(5);
 
         // angle

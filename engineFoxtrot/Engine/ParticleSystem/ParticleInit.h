@@ -1,10 +1,11 @@
 #pragma once
 #include "Particle.h"
+#include "./SceneManager/Object.h"
 
-class ParticleInit : public Particle
+class ParticleInit : public Particle, public Object
 {
 public:
-    ParticleInit(const int id) : Particle(id) {};
+    ParticleInit(const int id) : Particle(id), Object(id,true) {};
     virtual ~ParticleInit() {}
 
     enum PatticleStyle

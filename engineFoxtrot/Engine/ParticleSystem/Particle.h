@@ -110,7 +110,7 @@ emitter.startSpin = 0;
 
 */
 
-class Particle : public Object
+class Particle
 {
 public:
     enum class Mode
@@ -178,7 +178,7 @@ public:
      *
      * @param speed The speed.
      */
-    virtual void setSpeed(float speed);
+    virtual void setSpeedParticle(float speed);
     /** Gets the speed variance.
      *
      * @return The speed variance.
