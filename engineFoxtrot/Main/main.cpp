@@ -186,10 +186,12 @@ void sceneTestSetup()
 	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 0, "./Engine/ParticleSystem/fire.png");
+	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 300, "ParticleSystem/fire.png");
+	engine.loadSprite(*particle1Sprite);
 
 	ParticleAdapter * particle1 = new ParticleAdapter(11);        // create a new particle system pointer
 	particle1->registerSprite(SpriteState::DEFAULT,particle1Sprite);
+	particle1->changeToState(SpriteState::DEFAULT);
 	particle1->setPosition(800, 384);              // set the position
 	particle1->setStyle(ParticleInit::FIRE);    // set the example effects
 	particle1->setStartSpin(0);
@@ -201,6 +203,7 @@ void sceneTestSetup()
 
 	ParticleAdapter * particle2 = new ParticleAdapter(11);        // create a new particle system pointer
 	particle2->registerSprite(SpriteState::DEFAULT, particle1Sprite);
+	particle2->changeToState(SpriteState::DEFAULT);
 	particle2->setPosition(100, 384);              // set the position
 	particle2->setStyle(ParticleInit::EXPLOSION);    // set the example effects
 	particle2->setStartSpin(0);
