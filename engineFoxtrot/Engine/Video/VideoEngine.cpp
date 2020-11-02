@@ -119,7 +119,7 @@ void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix =
 	stre << prefix << fps;
 	string str = stre.str();
 	if (shouldDrawFps) {
-		FpsMessage m(str, FULL_RED, FULL_BLUE, FULL_GREEN);
+		FpsMessage m(str, NO_RED, NO_BLUE, NO_GREEN);
 		TextPosition p(xPos, yPos);
 		videoFacade->drawMessageAt(m, p);
 	}

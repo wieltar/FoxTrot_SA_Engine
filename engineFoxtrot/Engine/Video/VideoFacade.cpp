@@ -64,7 +64,7 @@ void VideoFacade::initSDL()
 /// Clears SDL screen
 void VideoFacade::clearScreen()
 {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	SDL_SetRenderDrawColor(renderer, FULL_RED, FULL_GREEN, FULL_BLUE, 0);
 	SDL_RenderClear(renderer);
 }
 

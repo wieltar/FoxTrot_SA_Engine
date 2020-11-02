@@ -5,13 +5,7 @@
 #include "SceneManager/Scene.h"
 #include "ParticleSystem/ParticleAdapter.h"
 
-#define NO_RED 0
-#define NO_BLUE 0
-#define NO_GREEN 0
 
-#define FULL_RED 255
-#define FULL_BLUE 255
-#define FULL_GREEN 255
 
 #define FPS_X_POSITION 999
 #define Y_POSITION_TOP_OF_SCREEN 0

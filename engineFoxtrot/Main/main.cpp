@@ -68,7 +68,7 @@ void sceneTestSetup()
 	testScene->addNewObjectToLayer(3, staticGround);
 
 	ParticleAdapter * particle1 = new ParticleAdapter(11);        // create a new particle system pointer
-	testScene->addNewObjectToLayer(4, (Object*)particle1);
+	testScene->addNewObjectToLayer(4, particle1);
 
 	particle1->setPosition(800, 384);              // set the position
 	particle1->setStyle(ParticleInit::FIRE);    // set the example effects
@@ -78,10 +78,10 @@ void sceneTestSetup()
 	particle1->setStartSpinVar(90);
 
 	ParticleAdapter * particle2 = new ParticleAdapter(11);        // create a new particle system pointer
-	testScene->addNewObjectToLayer(2, (Object*)particle2);
+	testScene->addNewObjectToLayer(2, particle2);
 
 	particle2->setPosition(100, 384);              // set the position
-	particle2->setStyle(ParticleInit::FIRE);    // set the example effects
+	particle2->setStyle(ParticleInit::RAIN);    // set the example effects
 	particle2->setStartSpin(0);
 	particle2->setStartSpinVar(90);
 	particle2->setEndSpin(90);
