@@ -173,6 +173,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Engine\Events\EventSingleton.cpp" />
+    <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
+    <ClCompile Include="Main\Level.cpp" />
     <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
@@ -206,6 +208,10 @@
     <ClInclude Include="Engine\Events\mouse\MouseReleased.h" />
     <ClInclude Include="Engine\Events\Mouse\MouseScrolledEvent.h" />
     <ClInclude Include="Engine\Events\ObjectEventCodes.h" />
+    <ClInclude Include="Engine\Events\Sound\BaseSoundEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\OnMusicStartEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\OnMusicStopEvent.h" />
+    <ClInclude Include="Engine\Events\Sound\SoundAttachEvent.h" />
     <ClInclude Include="Engine\Events\Window\WindowCloseEvent.h" />
     <ClInclude Include="Engine\Events\Window\WindowResizeEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
@@ -237,12 +243,14 @@
     <ClInclude Include="Engine\SceneManager\SceneManager.h" />
     <ClInclude Include="Engine\General\Version.h" />
     <ClInclude Include="Engine\Events\EventSingleton.h" />
+    <ClInclude Include="Engine\Structs\fpsStructs.h" />
     <ClInclude Include="Engine\Video\IVideoFacade.h" />
     <ClInclude Include="Engine\Video\VideoEngine.h" />
     <ClInclude Include="Engine\Video\VideoFacade.h" />
     <ClInclude Include="Engine\Sound\ISoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
+    <ClInclude Include="Main\Level.h" />
     <ClInclude Include="Main\SpriteState.h" />
   </ItemGroup>
   <ItemGroup>

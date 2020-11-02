@@ -5,6 +5,7 @@
 #include "../Engine/Events/AppTickEvent60.h"
 
 #include "Events/Window/WindowCloseEvent.h"
+#include "Level.h"
 
 #include "SpriteState.h"
 
@@ -120,14 +121,14 @@ public:
 
 void sceneTestSetup()
 {
-	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
-	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, "../Assets/Sprites/Character/adventure.png");
-	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, "../Assets/Sprites/Character/adventure_air_attack1.png");
-	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_right.png");
-	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, "../Assets/Sprites/Character/adventure_slide.png");
-	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, "../Assets/Sprites/Character/adventure_fall.png");
-	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, "../Assets/Sprites/Character/adventure_jump.png");
-	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_left.png");
+	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, 300, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
+	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, 300, "../Assets/Sprites/Character/adventure.png");
+	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, 300, "../Assets/Sprites/Character/adventure_air_attack1.png");
+	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, 300, "../Assets/Sprites/Character/adventure_run_right.png");
+	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_slide.png");
+	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_fall.png");
+	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_jump.png");
+	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, 300, "../Assets/Sprites/Character/adventure_run_left.png");
 
 	engine.loadSprite(*so0);
 
@@ -139,7 +140,11 @@ void sceneTestSetup()
 	engine.loadSprite(*so6);
 	engine.loadSprite(*so7);
 
-	Scene* testScene = new Scene(3);
+	map<string, string> soundL1 = {
+		{"Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"},
+	};
+
+	Level* testScene = new Level(100, soundL1);
 
 	Object* object = new Object(1);
 	object->setName("person1");
@@ -180,10 +185,9 @@ void sceneTestSetup()
 	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-
-	//engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
-	
-	engine.insertScene(new Scene(4));
+	engine.insertScene(testScene);
+	engine.setCurrentScene(100);
+	testScene->Start(); 
 
 	Object* staticGround2 = new Object(102);
 	staticGround2->setWidth(100); // width
@@ -196,14 +200,12 @@ void sceneTestSetup()
 	staticGround2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround2);
 
-	engine.insertScene(testScene);
-	engine.setCurrentScene(3);
 	engine.startTickThreads();
 }
 
 int main() {
 	sceneTestSetup();
-
+	
 	bool gameRunning = true;
 	while (gameRunning)
 	{

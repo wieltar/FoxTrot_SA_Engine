@@ -9,15 +9,19 @@ class SpriteObject
 {
 public:
 	SpriteObject();
-	SpriteObject(const int _textureID, const int _height, const int _width, const int _size, const char * _fileName );
+	SpriteObject(const int _textureID, const int _height, const int _width, const int _size, int _animationDelay, const char * _fileName );
 	~SpriteObject();
 	int getTextureID() const;
-	int getAmountOfTextures() const;
-	int getHeight() const;
-	int getWidth() const;
+	int  getAmountOfTextures() const;
+	float  getHeight() const;
+	float getWidth() const;
 	const char * getFileName() const;
 	int getLeftPos(uint32_t ticks);
+
+	int getAnimationDelay();
+	void setAnimationDelay(int speed);
 private:
+	int animationDelay = 0;
 	const int textureID =0;
 	const int lengthOfTextures = 0;
 	const int height = 0;

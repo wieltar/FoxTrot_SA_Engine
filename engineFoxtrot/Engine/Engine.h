@@ -56,9 +56,8 @@ public:
 	void configureInput(KeyCode key, Command* command);
 
 	void pollEvents();
-
-	PhysicsEngine physicsEngine;
 private:
+	PhysicsEngine physicsEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
