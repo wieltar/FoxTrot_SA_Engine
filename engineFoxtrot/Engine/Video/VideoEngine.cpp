@@ -7,6 +7,7 @@ VideoEngine::VideoEngine()
 {
 	frameData = new FrameData;
 	EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
+	EventSingleton::get_instance().setEventCallback<FpsToggleEvent>(BIND_EVENT_FN(VideoEngine::toggleFps));
 }
 
 VideoEngine::~VideoEngine()
@@ -127,7 +128,7 @@ void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix =
 
 /// @brief
 /// Toggles fps visibility
-void VideoEngine::toggleFps() {
+void VideoEngine::toggleFps(Event& fpsEvent) {
 	shouldDrawFps = !shouldDrawFps;
 }
 

@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "../Engine/Engine.h"
-#include "../Engine/Events/AppTickEvent30.h"
-#include "../Engine/Events/AppTickEvent60.h"
+#include "Engine.h"
+#include "Events/AppTickEvent30.h"
+#include "Events/AppTickEvent60.h"
 
 #include "Events/Window/WindowCloseEvent.h"
 #include "Level.h"
@@ -91,9 +91,11 @@ void sceneTestSetup()
 	engine.setCurrentScene(100);
 	testScene->Start(); 
 
-	engine.configureInput(KEY_A, new MoveLeft);
-	engine.configureInput(KEY_D, new MoveRight);
-	engine.configureInput(KEY_SPACE, new Jump);
+	engine.configureInput(KEY_A, engine.makeCommand<MoveLeft>());
+	engine.configureInput(KEY_D, engine.makeCommand<MoveRight>());
+	engine.configureInput(KEY_SPACE, engine.makeCommand<Jump>());
+	engine.configureInput(KEY_F1, engine.makeCommand<ToggleFps>(), true);
+	//Engine* command = engine.makeCommand<Engine>();
 
 	engine.setCurrentScene(3);
 	engine.startTickThreads();

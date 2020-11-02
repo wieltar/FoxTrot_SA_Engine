@@ -248,6 +248,7 @@
     <ClInclude Include="Engine\Sound\ISoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
+    <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
     <ClInclude Include="Main\Level.h" />
   </ItemGroup>
   <ItemGroup>

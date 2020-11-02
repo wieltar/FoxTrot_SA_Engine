@@ -52,8 +52,17 @@ public:
 	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
 	void pollInput();
-	void configureInput(KeyCode key, Command* command);
+	void configureInput(KeyCode key, Command* command, bool runOnce = false);
 
+	/// @brief
+	/// Generic function for creating command externally
+	template <class T>
+	T* makeCommand() {
+		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
+		return inputEngine.makeCommand<T>();
+	}
+
+	//TODO make private
 private:
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
