@@ -8,7 +8,7 @@ public:
     ParticleInit(){};
     virtual ~ParticleInit() {}
 
-    enum PatticleStyle
+    enum ParticleStyle
     {
         NONE,
         FIRE,
@@ -24,6 +24,6 @@ public:
         RAIN,
     };
 
-    PatticleStyle style_ = NONE;
-    void setStyle(PatticleStyle style);
+    ParticleStyle style_ = NONE;
+    void setStyle(ParticleStyle style);
 };

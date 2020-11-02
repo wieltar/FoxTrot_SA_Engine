@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ParticleInit.h"
 
-void ParticleInit::setStyle(PatticleStyle style)
+void ParticleInit::setStyle(ParticleStyle style)
 {
     if (style_ == style)
     {
