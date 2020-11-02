@@ -55,7 +55,25 @@ Particle::~Particle()
 {
 }
 
-void Particle::setColorParticleData(int start) {
+void Particle::addParticles(int count)
+{
+    if (_paused)
+    {
+        return;
+    }
+    int start = _particleCount;
+    _particleCount += count;
+
+    //life
+    for (int i = start; i < _particleCount; ++i) {
+        float theLife = _life + _lifeVar * RANDOM_M11(&RANDSEED);
+        particle_data_[i].timeToLive = (std::max)(0.0f, theLife);
+        particle_data_[i].posx = _sourcePosition.x + _posVar.x * RANDOM_M11(&RANDSEED);
+        particle_data_[i].posy = _sourcePosition.y + _posVar.y * RANDOM_M11(&RANDSEED);
+    }
+
+    
+    //color
 #define SET_COLOR(c, b, v)                                                 \
     for (int i = start; i < _particleCount; ++i)                           \
     {                                                                      \
@@ -82,19 +100,8 @@ void Particle::setColorParticleData(int start) {
     SET_DELTA_COLOR(colorG, deltaColorG);
     SET_DELTA_COLOR(colorB, deltaColorB);
     SET_DELTA_COLOR(colorA, deltaColorA);
-}
 
-void Particle::setLifeParticleData(int start) {
-    for (int i = start; i < _particleCount; ++i)
-    {
-        float theLife = _life + _lifeVar * RANDOM_M11(&RANDSEED);
-        particle_data_[i].timeToLive = (std::max)(0.0f, theLife);
-        particle_data_[i].posx = _sourcePosition.x + _posVar.x * RANDOM_M11(&RANDSEED);
-        particle_data_[i].posy = _sourcePosition.y + _posVar.y * RANDOM_M11(&RANDSEED);
-    }
-}
-
-void Particle::setSizeParticleData(int start) {
+    //size
     for (int i = start; i < _particleCount; ++i)
     {
         particle_data_[i].size = _startSize + _startSizeVar * RANDOM_M11(&RANDSEED);
@@ -117,9 +124,8 @@ void Particle::setSizeParticleData(int start) {
             particle_data_[i].deltaSize = 0.0f;
         }
     }
-}
 
-void Particle::setRotationParticleData(int start) {
+    // rotation
     for (int i = start; i < _particleCount; ++i)
     {
         particle_data_[i].rotation = _startSpin + _startSpinVar * RANDOM_M11(&RANDSEED);
@@ -127,28 +133,6 @@ void Particle::setRotationParticleData(int start) {
         float endA = _endSpin + _endSpinVar * RANDOM_M11(&RANDSEED);
         particle_data_[i].deltaRotation = (endA - particle_data_[i].rotation) / particle_data_[i].timeToLive;
     }
-}
-
-void Particle::addParticles(int count)
-{
-    if (_paused)
-    {
-        return;
-    }
-    int start = _particleCount;
-    _particleCount += count;
-
-    //life
-    setLifeParticleData(start);
-
-    //color
-    setColorParticleData(start);
-
-    //size
-    setSizeParticleData(start);
-
-    // rotation
-    setRotationParticleData(start);
 
     // position
     Vec2 pos;
@@ -232,19 +216,6 @@ void Particle::resetSystem()
 bool Particle::isFull()
 {
     return (_particleCount == _totalParticles);
-}
-
-void Particle::updateColorSizeRadius(int dt) {
-    for (int i = 0; i < _particleCount; ++i)
-    {
-        particle_data_[i].colorR += particle_data_[i].deltaColorR * dt;
-        particle_data_[i].colorG += particle_data_[i].deltaColorG * dt;
-        particle_data_[i].colorB += particle_data_[i].deltaColorB * dt;
-        particle_data_[i].colorA += particle_data_[i].deltaColorA * dt;
-        particle_data_[i].size += (particle_data_[i].deltaSize * dt);
-        particle_data_[i].size = (std::max)(0.0f, particle_data_[i].size);
-        particle_data_[i].rotation += particle_data_[i].deltaRotation * dt;
-    }
 }
 
 // ParticleSystem - MainLoop
@@ -340,7 +311,16 @@ void Particle::update()
     }
 
     //color, size, rotation
-    updateColorSizeRadius(dt);
+    for (int i = 0; i < _particleCount; ++i)
+    {
+        particle_data_[i].colorR += particle_data_[i].deltaColorR * dt;
+        particle_data_[i].colorG += particle_data_[i].deltaColorG * dt;
+        particle_data_[i].colorB += particle_data_[i].deltaColorB * dt;
+        particle_data_[i].colorA += particle_data_[i].deltaColorA * dt;
+        particle_data_[i].size += (particle_data_[i].deltaSize * dt);
+        particle_data_[i].size = (std::max)(0.0f, particle_data_[i].size);
+        particle_data_[i].rotation += particle_data_[i].deltaRotation * dt;
+    }
 }
 
 // ParticleSystem - Properties of Gravity Mode
