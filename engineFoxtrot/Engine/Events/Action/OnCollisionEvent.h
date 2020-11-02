@@ -1,14 +1,14 @@
 #pragma once
 #include "Events/Event.h"
 #include "Events/Action/ActionEvent.h"
-#include "./SceneManager/Object.h"
+#include "SceneManager/Object.h"
 
 /// @brief
 /// OnCollisionEvent base class of CollisionEnd and CollisionStart
 class OnCollisionEvent : public Event
 {
 public:
-	OnCollisionEvent(int _objectOneId, int _objectTwoId, const map<int, Direction> _directionMap) : 
+	OnCollisionEvent(int _objectOneId, int _objectTwoId, const map<int, vector<Direction>> _directionMap) : 
 		objectOneId{ _objectOneId }, 
 		objectTwoId{ _objectTwoId }, 
 		directionMap{ _directionMap }{};
@@ -27,18 +27,18 @@ public:
 	/// Returns the name of the event
 	virtual const char* GetName() const override = 0;
 
-	map<int, Direction> getDirectionMap() { return directionMap; };
+	map<int, vector<Direction>> getDirectionMap() { return directionMap; };
 protected:
 	int objectOneId;
 	int objectTwoId;
-	map<int, Direction> directionMap;
+	map<int, vector<Direction>> directionMap;
 };
 
 /// @brief
 /// OnCollisionEvent is fired when a a collision ended
 class OnCollisionEndEvent : public OnCollisionEvent {
 public:
-	OnCollisionEndEvent(int _objectOneId, int _objectTwoId, const map<int, Direction> _directionMap)
+	OnCollisionEndEvent(int _objectOneId, int _objectTwoId, const map<int, vector<Direction>> _directionMap)
 		: OnCollisionEvent(_objectOneId, _objectTwoId, _directionMap) {};
 
 	virtual const char* GetName() const override { return "Collision end Event"; }
@@ -49,7 +49,7 @@ public:
 /// OnCollisionEvent is fired when a a collision started
 class OnCollisionBeginEvent : public OnCollisionEvent {
 public:
-	OnCollisionBeginEvent(int _objectOneId, int _objectTwoId, const map<int, Direction> _directionMap)
+	OnCollisionBeginEvent(int _objectOneId, int _objectTwoId, const map<int, vector<Direction>> _directionMap)
 		: OnCollisionEvent(_objectOneId, _objectTwoId, _directionMap) {};
 
 	virtual const char* GetName() const override { return "Collision begin Event"; }

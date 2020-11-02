@@ -51,10 +51,9 @@ public:
 
 		auto map = collisionEvent.getDirectionMap();
 		auto collidedDirection = map[this->getObjectId()];
-		if (collidedDirection == Direction::DOWN) {
+
+		if (std::find(collidedDirection.begin(), collidedDirection.end(), Direction::DOWN) != collidedDirection.end()) {
 			this->canJump = true;
-			this->changeToState(SpriteState::DEFAULT);
-			this->changed = true;
 		}
 	}
 
@@ -66,8 +65,11 @@ public:
 
 		auto map = collisionEvent.getDirectionMap();
 		auto collidedDirection = map[this->getObjectId()];
-		if (collidedDirection == Direction::DOWN) {
-			this->canJump = false;
+
+		if (std::find(collidedDirection.begin(), collidedDirection.end(), Direction::DOWN) != collidedDirection.end()) {
+			if (collidedDirection.size() == 1) {
+				this->canJump = false;
+			}
 		}
 	}
 

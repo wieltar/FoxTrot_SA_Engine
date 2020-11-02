@@ -11,8 +11,9 @@ void ContactListenerAdapter::BeginContact(b2Contact* contact) {
 	if (result.object1 != nullptr && result.object2 != nullptr) {
 		auto collidedPoint = getCollidedPoint(contact);
 
-		map<int, Direction> direction = getCollisionDirection(contact, getCollidedBeginByObject(collidedPoint, result.object1),
-			getCollidedBeginByObject(collidedPoint, result.object2));
+		map<int, vector<Direction>> direction;
+		direction.insert(pair<int, vector<Direction>>(result.object1->getObjectId(), getCollidedBeginByObject(collidedPoint, result.object1)));
+		direction.insert(pair<int, vector<Direction>>(result.object2->getObjectId(), getCollidedBeginByObject(collidedPoint, result.object2)));
 
 		EventSingleton::get_instance().dispatchEvent<OnCollisionBeginEvent>((Event&)OnCollisionBeginEvent(result.object1->getObjectId(), result.object2->getObjectId(), direction));
 	}
@@ -29,8 +30,9 @@ void ContactListenerAdapter::EndContact(b2Contact* contact) {
 	if (result.object1 != nullptr && result.object2 != nullptr) {
 		auto collidedPoint = getCollidedPoint(contact);
 
-		map<int, Direction> direction = getCollisionDirection(contact, getCollidedEndByObject(collidedPoint, result.object1),
-			getCollidedEndByObject(collidedPoint, result.object2));
+		map<int, vector<Direction>> direction;
+		direction.insert(pair<int, vector<Direction>>(result.object1->getObjectId(), getCollidedEndByObject(collidedPoint, result.object1)));
+		direction.insert(pair<int, vector<Direction>>(result.object2->getObjectId(), getCollidedEndByObject(collidedPoint, result.object2)));
 
 		EventSingleton::get_instance().dispatchEvent<OnCollisionEndEvent>((Event&)OnCollisionEndEvent(result.object1->getObjectId(), result.object2->getObjectId(), direction));
 	}
@@ -39,38 +41,40 @@ void ContactListenerAdapter::EndContact(b2Contact* contact) {
 
 /// @brief 
 /// When a contact begins gets the direction of where the collision happend on the object
-pair<int, Direction> ContactListenerAdapter::getCollidedBeginByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
-	if (object->getPositionY() < collidedPoint.y) {
-		return pair<int, Direction>(object->getObjectId(), Direction::DOWN);
+vector<Direction> ContactListenerAdapter::getCollidedBeginByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
+	auto ret = vector<Direction>();
+	if (round(object->getPositionY()) < round(collidedPoint.y)) {
+		ret.push_back(Direction::DOWN);
 	}
-	else if (object->getPositionY() > collidedPoint.y) {
-		return pair<int, Direction>(object->getObjectId(), Direction::UP);
+	else if (round(object->getPositionY()) > round(collidedPoint.y)) {
+		ret.push_back(Direction::UP);
 	}
-	if (object->getPositionX() < collidedPoint.x) {
-		return pair<int, Direction>(object->getObjectId(), Direction::LEFT);
+	if (round(object->getPositionX()) < round(collidedPoint.x)) {
+		ret.push_back(Direction::RIGHT);
 	}
-	else if (object->getPositionX() > collidedPoint.x) {
-		return pair<int, Direction>(object->getObjectId(), Direction::RIGHT);
+	else if (round(object->getPositionX()) > round(collidedPoint.x)) {
+		ret.push_back(Direction::LEFT);
 	}
-	return pair<int, Direction>();
+	return ret;
 }
 
 /// @brief 
 /// When a contact ends gets the direction of where the collision happend on the object
-pair<int, Direction> ContactListenerAdapter::getCollidedEndByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
-	if (object->getPositionY() < collidedPoint.y) {
-		return pair<int, Direction>(object->getObjectId(), Direction::UP);
+vector<Direction> ContactListenerAdapter::getCollidedEndByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
+	auto ret = vector<Direction>();
+	if (round(object->getPositionY()) < round(collidedPoint.y)) {
+		ret.push_back(Direction::UP);
 	}
-	else if (object->getPositionY() > collidedPoint.y) {
-		return pair<int, Direction>(object->getObjectId(), Direction::DOWN);
+	else if (round(object->getPositionY()) > round(collidedPoint.y)) {
+		ret.push_back(Direction::DOWN);
 	}
-	if (object->getPositionX() < collidedPoint.x) {
-		return pair<int, Direction>(object->getObjectId(), Direction::LEFT);
+	if (round(object->getPositionX()) < round(collidedPoint.x)) {
+		ret.push_back(Direction::LEFT);
 	}
-	else if (object->getPositionX() > collidedPoint.x) {
-		return pair<int, Direction>(object->getObjectId(), Direction::RIGHT);
+	else if (round(object->getPositionX()) > round(collidedPoint.x)) {
+		ret.push_back(Direction::RIGHT);
 	}
-	return pair<int, Direction>();
+	return ret;
 }
 
 /// @brief 
