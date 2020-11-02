@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "../Engine/Engine.h"
-#include "../Engine/Events/AppTickEvent30.h"
-#include "../Engine/Events/AppTickEvent60.h"
+#include "Engine.h"
+#include "Events/AppTickEvent30.h"
+#include "Events/AppTickEvent60.h"
 
 #include "Events/Window/WindowCloseEvent.h"
 #include "Level.h"
