@@ -180,7 +180,7 @@ void sceneTestSetup()
 	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 300, "../engineFoxtrot/Engine/ParticleSystem/fire.png");
+	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 300, "Assets/Particles/fire.png");
 	engine.loadSprite(*particle1Sprite);
 
 	ParticleAdapter* particle1 = new ParticleAdapter(11);        // create a new particle system pointer
