@@ -159,7 +159,7 @@ void VideoEngine::receiveTick(Event& tickEvent)
 void VideoEngine::drawParticle(ParticleAdapter* part)
 {
 	vector<ParticleData> particleData = part->getParticleDataVector();
-	for (int index = 0; index < part->getParticleCount(); index++)
+	for (unsigned int index = 0; index < part->getParticleCount(); index++)
 	{
 		auto& partData = particleData[index];
 

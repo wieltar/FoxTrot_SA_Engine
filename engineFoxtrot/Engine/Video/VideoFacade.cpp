@@ -110,7 +110,7 @@ void VideoFacade::renderCopy(Object& object)
 	//generate image 
 	Uint32 ticks = SDL_GetTicks();
 	Uint32 seconds = ticks / sprite.getAnimationDelay();
-	int leftpos = sprite.getLeftPos(seconds);
+	float leftpos = sprite.getLeftPos(seconds);
 	int top = 0;
 
 	//generate rectangele for selecting 1 image of a full sprite
@@ -118,7 +118,7 @@ void VideoFacade::renderCopy(Object& object)
 	//top = amount of pixels of the top (sprites are renderd of the top to bottom
 	//width = amount of pixels of the with of 1 image
 	//height = amount of pixels of the height of 1 image
-	SDL_Rect rect{ leftpos, top, (int)sprite.getWidth(), (int)sprite.getHeight() };
+	SDL_Rect rect{ (int)leftpos, top, (int)sprite.getWidth(), (int)sprite.getHeight() };
 
 	//update collision box 
 	if (!object.getScalable()) {

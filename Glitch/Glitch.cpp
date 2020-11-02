@@ -187,7 +187,7 @@ void sceneTestSetup()
 	particle1->registerSprite(SpriteState::DEFAULT, particle1Sprite);
 	particle1->changeToState(SpriteState::DEFAULT);
 	particle1->setPosition(800, 384);              // set the position
-	particle1->setStyle(ParticleInit::FIRE);    // set the example effects
+	particle1->setStyle(ParticleInit::ParticleStyle::FIRE);    // set the example effects
 	particle1->setStartSpin(0);
 	particle1->setStartSpinVar(90);
 	particle1->setEndSpin(90);
@@ -199,7 +199,7 @@ void sceneTestSetup()
 	particle2->registerSprite(SpriteState::DEFAULT, particle1Sprite);
 	particle2->changeToState(SpriteState::DEFAULT);
 	particle2->setPosition(100, 384);              // set the position
-	particle2->setStyle(ParticleInit::EXPLOSION);    // set the example effects
+	particle2->setStyle(ParticleInit::ParticleStyle::EXPLOSION);    // set the example effects
 	particle2->setStartSpin(0);
 	particle2->setStartSpinVar(90);
 	particle2->setEndSpin(90);
