@@ -83,14 +83,14 @@ void VideoFacade::drawScreen()
 /// Load a animated sprite into the texturemap map
 /// @param spriteObject 
 /// @param filename
-void VideoFacade::loadImage(SpriteObject * spriteObject) {
-	if (spriteObject->getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
-	if (spriteObject->getFileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+void VideoFacade::loadImage(const SpriteObject& spriteObject) {
+	if (spriteObject.getTextureID() == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
+	if (spriteObject.getFileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
 
-	SDL_Surface* surface = IMG_Load(spriteObject->getFileName());
+	SDL_Surface* surface = IMG_Load(spriteObject.getFileName());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-	textureMap[spriteObject->getTextureID()] = texture;
+	textureMap[spriteObject.getTextureID()] = texture;
 	SDL_FreeSurface(surface);
 }
 
@@ -99,11 +99,9 @@ void VideoFacade::loadImage(SpriteObject * spriteObject) {
 /// @param object 
 void VideoFacade::renderCopy(Object& object)
 {	
-	SpriteObject* sprite = object.GetCurrentSprite();
-	if (sprite == NULL) {
-		throw ERROR_CODE_SDL2FACADE_SPRITE_DOESNT_EXISTS;
-	}
-	if (textureMap[sprite->getTextureID()] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
+	SpriteObject& sprite = object.GetCurrentSprite();
+
+	if (textureMap[sprite.getTextureID()] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
 	if (object.getPositionX() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
 	if (object.getPositionY() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;
 	if (object.getHeight() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_HEIGHT_IS_NULL;
@@ -112,7 +110,7 @@ void VideoFacade::renderCopy(Object& object)
 	//generate image 
 	Uint32 ticks = SDL_GetTicks();
 	Uint32 seconds = ticks / ANIMATIONSPEED;
-	int leftpos = sprite->getLeftPos(seconds);
+	int leftpos = sprite.getLeftPos(seconds);
 	int top = 0;
 
 	//generate rectangele for selecting 1 image of a full sprite
@@ -120,12 +118,12 @@ void VideoFacade::renderCopy(Object& object)
 	//top = amount of pixels of the top (sprites are renderd of the top to bottom
 	//width = amount of pixels of the with of 1 image
 	//height = amount of pixels of the height of 1 image
-	SDL_Rect rect{ leftpos, top, sprite->getWidth(), sprite->getHeight() };
+	SDL_Rect rect{ leftpos, top, sprite.getWidth(), sprite.getHeight() };
 
 	//update collision box 
 	if (!object.getScalable()) {
-		object.setWidth(sprite->getWidth());
-		object.setHeight(sprite->getHeight());
+		object.setWidth(sprite.getWidth());
+		object.setHeight(sprite.getHeight());
 	}
 
 	//generate stratch of image
@@ -134,7 +132,7 @@ void VideoFacade::renderCopy(Object& object)
 	destination.y = object.getPositionY() - object.getHeight();
 	destination.w = object.getWidth();
 	destination.h = object.getHeight();
-	SDL_RenderCopyEx(renderer, textureMap[sprite->getTextureID()], &rect, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, textureMap[sprite.getTextureID()], &rect, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
 }
 
 /// @brief

@@ -50,21 +50,6 @@ void Engine::insertScene(Scene* scene)
 		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
 	}
 }
-/// @brief 
-/// @param spritesVector 
-/*void Engine::loadSpriteArray(vector<SpriteObject> spritesVector)
-{
-	try
-	{
-		for (auto sprite : spritesVector) {
-			videoEngine.loadImage(sprite);
-		}
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}*/
 
 /// @brief 
 /// Thread that gives a tick 60 times per second
@@ -139,12 +124,11 @@ void Engine::configureInput(KeyCode key, Command* command)
 /// Load a animated sprite (PNG) into the AnimatedTexture map
 /// @param spriteObject 
 /// @param filename
-void Engine::loadSprite(SpriteObject* spriteObject) {
-	struct stat buffer;
-	bool exists = (stat(spriteObject->getFileName(), &buffer) == 0);
+void Engine::loadSprite(const SpriteObject& spriteObject) {
+	bool exists = std::filesystem::exists(spriteObject.getFileName());
 	if (!exists)
 		throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
-	if (spriteObject->getTextureID() == NULL) {
+	if (spriteObject.getTextureID() == NULL) {
 		throw ERROR_CODE_IMAGE_CANNOT_BE_SAVED;
 	}
 	videoEngine.loadImage(spriteObject);

@@ -49,7 +49,7 @@ public:
 	void insertScene(Scene * scene);
 
 	// Video calls
-	void loadSprite(SpriteObject* spriteObject);
+	void loadSprite(const SpriteObject& spriteObject);
 
 	//Input calls
 	void pollInput();
