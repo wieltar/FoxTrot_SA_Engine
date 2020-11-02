@@ -174,6 +174,7 @@
     </ClCompile>
     <ClCompile Include="Engine\Events\EventSingleton.cpp" />
     <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
+    <ClCompile Include="Main\Level.cpp" />
     <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="Engine\Sound\SoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Main\Level.h" />
+    <ClInclude Include="Main\SpriteState.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
