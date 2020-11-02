@@ -1,4 +1,5 @@
 #include "Glitch.h"
+#include "Level.h"
 
 Engine engine;
 
@@ -7,7 +8,7 @@ void sceneTestSetup()
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/character/adventure.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/character/adventure.png");
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
-	engine.linkSpriteIDWithAssetPath(11, "./Engine/ParticleSystem/fire.png");
+	engine.linkSpriteIDWithAssetPath(11, "../engineFoxtrot/Engine/ParticleSystem/fire.png");
 
 	map<string, string> soundL1 = {
 		{"Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"},
@@ -76,10 +77,10 @@ void sceneTestSetup()
 	engine.setCurrentScene(100);
 	testScene->Start(); 
 
-	engine.configureInput(KEY_A, engine.makeCommand<MoveLeft>());
-	engine.configureInput(KEY_D, engine.makeCommand<MoveRight>());
-	engine.configureInput(KEY_SPACE, engine.makeCommand<Jump>());
-	engine.configureInput(KEY_F1, engine.makeCommand<ToggleFps>(), true);
+	engine.configureInput(KeyCode::KEY_A, engine.makeCommand<MoveLeft>());
+	engine.configureInput(KeyCode::KEY_D, engine.makeCommand<MoveRight>());
+	engine.configureInput(KeyCode::KEY_SPACE, engine.makeCommand<Jump>());
+	engine.configureInput(KeyCode::KEY_F1, engine.makeCommand<ToggleFps>(), true);
 	//Engine* command = engine.makeCommand<Engine>();
 
 	engine.startTickThreads();
@@ -93,11 +94,11 @@ int main() {
 
 	while (gameRunning)
 	{
-		AppTickEvent60 appTick;
+		AppTickEvent60 appTick60;
 		AppTickEvent30 appTick30;
 
 		engine.pollInput();
-		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
+		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick60);
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick30);
 
 		this_thread::sleep_for(chrono::milliseconds(10));

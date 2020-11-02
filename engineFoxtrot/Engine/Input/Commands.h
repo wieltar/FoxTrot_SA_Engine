@@ -20,7 +20,7 @@ class API MoveLeft : public Command
 public:
 	MoveLeft(InputEngine* inputEngine);
 	void execute();
-	InputType get_input_type() { return STATE; }
+	InputType get_input_type() { return InputType::STATE; }
 };
 
 /// @brief 
@@ -29,7 +29,7 @@ class API MoveRight : public Command
 public:
 	MoveRight(InputEngine* inputEngine);
 	void execute();
-	InputType get_input_type() { return STATE; }
+	InputType get_input_type() { return InputType::STATE; }
 };
 
 /// @brief 
@@ -38,16 +38,16 @@ class API Jump : public Command
 public:
 	Jump(InputEngine* inputEngine);
 	void execute();
-	InputType get_input_type() { return STATE; }
+	InputType get_input_type() { return InputType::STATE; }
 };
 
 /// @brief 
-class ToggleFps : public Command
+class API ToggleFps : public Command
 {
 public:
 	ToggleFps(InputEngine* inputEngine);
 	void execute();
-	InputType get_input_type() { return STATE; }
+	InputType get_input_type() { return InputType::STATE; }
 };
 
 

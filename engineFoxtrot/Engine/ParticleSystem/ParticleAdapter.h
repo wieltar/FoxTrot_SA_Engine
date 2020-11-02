@@ -7,8 +7,8 @@
 class ParticleAdapter : public Object, public ParticleInit
 {
 public:
-	ParticleAdapter(const int id) : Object(id, true) {};
-	~ParticleAdapter() {};
+	API ParticleAdapter(const int id) : Object(id, true) {};
+	API ~ParticleAdapter() {};
 
 private:
 

@@ -148,9 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Glitch.h" />
+    <ClInclude Include="Level.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Glitch.cpp" />
+    <ClCompile Include="Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\engineFoxtrot\engineFoxtrot.vcxproj">

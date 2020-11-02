@@ -176,8 +176,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Events\EventSingleton.cpp" />
     <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
-    <ClCompile Include="Main\Level.cpp" />
-    <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsBody.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsEngine.cpp" />

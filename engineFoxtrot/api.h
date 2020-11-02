@@ -6,7 +6,7 @@
 // ----- engine core ----------------------
 #include "Engine/General/ErrorCodes.h"
 // ----- individual engines ----------------
-#include "Engine/Particles/ParticleEngine.h"
+#include "Engine/ParticleSystem/ParticleEngine.h"
 #include "Engine/Physics/PhysicsEngine.h"
 #include "Engine/Video/VideoEngine.h"
 #include "Engine/Sound/SoundEngine.h"

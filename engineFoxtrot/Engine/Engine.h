@@ -47,7 +47,7 @@ public:
 	API void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
 	API void pollInput();
-	API void configureInput(KeyCode key, Command* command);
+	API void configureInput(KeyCode key, Command* command, bool runOnce = false);
 
 	/// @brief
 	/// Generic function for creating command externally

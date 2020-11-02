@@ -25,5 +25,5 @@ public:
     };
 
     ParticleStyle style_ = NONE;
-    void setStyle(ParticleStyle style);
+    API void setStyle(ParticleStyle style);
 };

@@ -25,10 +25,10 @@ private:
 	void keydown(SDL_Event& event);
 	void keyup(SDL_Event& event);
 
-	State is_held(KeyCode key);
+	ButtonState is_held(KeyCode key);
 	Action was_pressed(KeyCode key);
 
-	map <KeyCode, State> state_map;
+	map <KeyCode, ButtonState> state_map;
 	map <KeyCode, Action> action_map;
 
 	map <KeyCode, Command*> commands;

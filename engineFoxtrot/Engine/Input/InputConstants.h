@@ -18,7 +18,7 @@ enum class Action
 
 /// @brief 
 /// Button state
-enum class State
+enum class ButtonState
 {
     PRESSED = true,
     RELEASED = false

@@ -43,10 +43,10 @@ bool InputFacade::input_mapping()
 /// @param event 
 void InputFacade::keydown(SDL_Event& event)
 {
-    if (state_map[eventToKeyCode(event)] == RELEASED) {
-        action_map[eventToKeyCode(event)] = EXECUTE;
+    if (state_map[eventToKeyCode(event)] == ButtonState::RELEASED) {
+        action_map[eventToKeyCode(event)] = Action::EXECUTE;
     }
-    state_map[eventToKeyCode(event)] = State::PRESSED;
+    state_map[eventToKeyCode(event)] = ButtonState::PRESSED;
 }
 
 /// @brief 
@@ -54,13 +54,13 @@ void InputFacade::keydown(SDL_Event& event)
 /// @param event 
 void InputFacade::keyup(SDL_Event& event)
 {
-    state_map[eventToKeyCode(event)] = State::RELEASED;
+    state_map[eventToKeyCode(event)] = ButtonState::RELEASED;
 }
 /// @brief 
 /// Checks if the key is currently pressed down, then the key will be in state_map
 /// @param key 
 /// @return 
-State InputFacade::is_held(KeyCode key)
+ButtonState InputFacade::is_held(KeyCode key)
 {
     return state_map[key];
 }
@@ -117,7 +117,7 @@ void InputFacade::dispatcher(std::vector<Command*>& command_queue)
     std::map<KeyCode, Command*>::iterator iter;
     for (iter = commands.begin(); iter != commands.end(); iter++) {
         // TODO remove the check on iter->second because types are now enforced by enum class?
-        if (is_held(iter->first) == State::PRESSED && iter->second->get_input_type() == InputType::STATE)
+        if (is_held(iter->first) == ButtonState::PRESSED && iter->second->get_input_type() == InputType::STATE)
             command_queue.push_back(iter->second);
         else if (was_pressed(iter->first) == Action::EXECUTE && iter->second->get_input_type() == InputType::ACTION)
             command_queue.push_back(iter->second);
