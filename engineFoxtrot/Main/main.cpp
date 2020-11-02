@@ -6,6 +6,8 @@
 
 #include "Events/Window/WindowCloseEvent.h"
 
+#include "SpriteState.h"
+
 // TODO engine.h & engine.cpp
 
 // Doxygen
@@ -50,7 +52,7 @@ public:
 		auto collidedDirection = map[this->getObjectId()];
 		if (collidedDirection == Direction::DOWN) {
 			this->canJump = true;
-			this->changeToState("default");
+			this->changeToState(SpriteState::DEFAULT);
 			this->changed = true;
 		}
 	}
@@ -72,7 +74,7 @@ public:
 
 		if (!canJump) {
 			if (val > 0 && !changed) {
-				this->changeToState("air_fall");
+				this->changeToState(SpriteState::AIR_FALL);
 			}
 		}
 
@@ -93,15 +95,15 @@ public:
 		{
 		case KeyCode::KEY_A:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
-			this->changeToState("run_left");
+			this->changeToState(SpriteState::RUN_LEFT);
 			break;
 		case KeyCode::KEY_D:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
-			this->changeToState("run_right");
+			this->changeToState(SpriteState::RUN_RIGHT);
 			break;
 		case KeyCode::KEY_SPACE:
 			if (canJump) {
-				this->changeToState("air_jump");
+				this->changeToState(SpriteState::AIR_JUMP);
 				EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, this->getObjectId()));
 			}
 			break;
@@ -121,7 +123,6 @@ void sceneTestSetup()
 	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, "../Assets/Sprites/Character/adventure_fall.png");
 	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, "../Assets/Sprites/Character/adventure_jump.png");
 	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_left.png");
-
 
 	engine.loadSprite(so0);
 
@@ -147,20 +148,20 @@ void sceneTestSetup()
 	object->setFriction(0);
 	object->setRestitution(0);
 	object->setStatic(false);
-	object->registerSprite("default", so1);
-	object->changeToState("default");
+	object->registerSprite(SpriteState::DEFAULT, so1);
+	object->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, object);
 
 	Object* object2 = new Player();
 	object2->setStatic(false);
-	object2->registerSprite("default", so1);
-	object2->registerSprite("air_attack", so2);
-	object2->registerSprite("run_right", so3);
-	object2->registerSprite("slide", so4);
-	object2->registerSprite("air_fall", so5);
-	object2->registerSprite("air_jump", so6);
-	object2->registerSprite("run_left", so7);
-	object2->changeToState("default");
+	object2->registerSprite(SpriteState::DEFAULT, so1);
+	object2->registerSprite(SpriteState::AIR_ATTACK, so2);
+	object2->registerSprite(SpriteState::RUN_RIGHT, so3);
+	object2->registerSprite(SpriteState::SLIDE, so4);
+	object2->registerSprite(SpriteState::AIR_FALL, so5);
+	object2->registerSprite(SpriteState::AIR_JUMP, so6);
+	object2->registerSprite(SpriteState::RUN_LEFT, so7);
+	object2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, object2);
 
 	Object* staticGround = new Object(101);
@@ -170,8 +171,8 @@ void sceneTestSetup()
 	staticGround->setPositionX(20); // x 20 left down
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
-	staticGround->registerSprite("default", so0);
-	staticGround->changeToState("default");
+	staticGround->registerSprite(SpriteState::DEFAULT, so0);
+	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
 
@@ -186,8 +187,8 @@ void sceneTestSetup()
 	staticGround2->setPositionY(290);// y 300 left down
 	staticGround2->setStatic(true);
 	staticGround2->setFriction(0);
-	staticGround2->registerSprite("default", so0);
-	staticGround2->changeToState("default");
+	staticGround2->registerSprite(SpriteState::DEFAULT, so0);
+	staticGround2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround2);
 
 	engine.insertScene(testScene);

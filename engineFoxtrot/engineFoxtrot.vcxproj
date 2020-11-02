@@ -243,6 +243,7 @@
     <ClInclude Include="Engine\Sound\ISoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundFacade.h" />
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
+    <ClInclude Include="Main\SpriteState.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
