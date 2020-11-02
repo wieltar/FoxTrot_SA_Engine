@@ -7,12 +7,12 @@
 #if(EXPORT)
 class DLLEXPORT Object
 #else
-class Level : Scene
+class Level : public Scene
 #endif
 {
 public:
 	Level(const int id, map<string, string> sounds);
-	virtual void OnAtach() override;
+	virtual void OnAttach() override;
 	virtual void Start() override;
 	virtual void Pause();
 	virtual void OnDetach() override;

@@ -17,22 +17,8 @@
 
 Engine engine;
 
-void musicSceneSetup() {
-	map<string, string> soundL1 = {
-		{"Level_1_Sound", "Assets/Sound/file_example_WAV_1MG.wav"},
-	};
-
-	Level* testLevel = new Level(100, soundL1);
-	engine.soundEngine.AddFile("Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"); //TODO fixing path in Level class
-	//engine.soundEngine.PlayMusic("Level_1_Sound", 12);
-	testLevel->Start();
-	engine.insertScene((Scene*)testLevel);
-	engine.setCurrentScene(100);
-	engine.startTickThreads();
-}
 void sceneTestSetup()
 {
-
 	engine.linkSpriteIDWithAssetPath(1, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-00.png");
 	engine.linkSpriteIDWithAssetPath(2, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-01.png");
 	engine.linkSpriteIDWithAssetPath(3, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/adventurer-air-attack1-02.png");
@@ -45,7 +31,11 @@ void sceneTestSetup()
 	engine.linkSpriteIDWithAssetPath(10, "../Assets/Sprites/Project assets/Adventurer-1.5/Individual Sprites/helmet_02a.png");
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/Project assets/LIGHT TILE WITHOUT TOP.png");
 
-	Scene* testScene = new Scene(3);
+	map<string, string> soundL1 = {
+		{"Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"},
+	};
+
+	Level* testScene = new Level(100, soundL1);
 
 	Object* object = new Object(1);
 	object->setName("house");
@@ -83,9 +73,10 @@ void sceneTestSetup()
 	staticGround->setPositionY(300);// y 300 left down
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(1, staticGround);
-	
-	engine.insertScene(testScene);
-	engine.insertScene(new Scene(4));
+
+	testScene->Start();
+	engine.insertScene((Scene*)testScene);
+	engine.setCurrentScene(100);
 
 	engine.configureInput(KEY_A, new MoveLeft);
 	engine.configureInput(KEY_D, new MoveRight);
@@ -96,7 +87,7 @@ void sceneTestSetup()
 }
 
 int main() {
-	musicSceneSetup();
+	sceneTestSetup();
 	
 	bool gameRunning = true;
 	while (gameRunning)

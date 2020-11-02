@@ -27,13 +27,13 @@ public:
 	int getSceneID() { return sceneID; }
 
 
-	virtual void OnAtach();//load all sounds
+	virtual void OnAttach();//load all sounds
 	virtual void Start();//play 1 select sound
 	virtual void OnDetach();//cleaup buffer
 
 private:
 	const int sceneID = 0;
-	std::map<int, Layer*> layers;
+	map<int, Layer*> layers;
 
 
 };

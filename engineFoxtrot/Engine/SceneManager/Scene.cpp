@@ -56,7 +56,6 @@ const bool Scene::toggleLayer(const int zIndex, bool render)
 vector <Object*> Scene::getAllObjectsInScene()
 {
 	vector <Object*> returnVector;
-
 	for (auto layer = layers.begin(); layer != layers.end(); layer++)
 	{
 		returnVector.insert(returnVector.end(), (*layer).second->objects.begin(), (*layer).second->objects.end());
@@ -103,6 +102,6 @@ Object * Scene::getObject(const int objectID)
 	throw ERROR_CODE_SCENE_NO_OBJECT_FOUND;
 }
 
-void Scene::OnAtach() {}
+void Scene::OnAttach() {}
 void Scene::Start() {}
 void Scene::OnDetach() {}

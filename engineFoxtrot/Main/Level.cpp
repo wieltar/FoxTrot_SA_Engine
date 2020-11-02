@@ -10,19 +10,23 @@
 /// @param sceneID 
 Level::Level(const int id, map<string, string> _sounds = map<string, string>()) : Scene::Scene(id), sounds(_sounds)
 {
-	OnAtach();
+	OnAttach();
 }
-void Level::OnAtach() {
+void Level::OnAttach() {
 	for (const auto& s : sounds) {
 		std::cout << s.first << " has value " << s.second << std::endl;
 		EventSingleton::get_instance().dispatchEvent<SoundAttachEvent>((Event&)SoundAttachEvent(s.first, s.second));
 	}
 }
 void Level::Start() {
-	EventSingleton::get_instance().dispatchEvent<OnMusicStartEvent>((Event&)OnMusicStartEvent("Level_1_Sound"));
+	for (const auto& s : sounds) {
+		EventSingleton::get_instance().dispatchEvent<OnMusicStartEvent>((Event&)OnMusicStartEvent(s.first));
+	}
 }
 void Level::Pause() {
-	EventSingleton::get_instance().dispatchEvent<OnMusicStopEvent>((Event&)OnMusicStopEvent("Level_1_Sound"));
+	for (const auto& s : sounds) {
+		EventSingleton::get_instance().dispatchEvent<OnMusicStopEvent>((Event&)OnMusicStopEvent(s.first));
+	}
 }
 
 void Level::OnDetach() {}//cleaup buffer
