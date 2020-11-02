@@ -4,6 +4,9 @@
 #include "../Engine/Events/AppTickEvent30.h"
 #include "../Engine/Events/AppTickEvent60.h"
 
+#include "Events/Window/WindowCloseEvent.h"
+#include "Level.h"
+
 // TODO engine.h & engine.cpp
 
 // Doxygen
@@ -21,7 +24,11 @@ void sceneTestSetup()
 	engine.linkSpriteIDWithAssetPath(101, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
 	engine.linkSpriteIDWithAssetPath(11, "./Engine/ParticleSystem/fire.png");
 
-	Scene* testScene = new Scene(3);
+	map<string, string> soundL1 = {
+		{"Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"},
+	};
+
+	Level* testScene = new Level(100, soundL1);
 
 	Object* object = new Object(1);
 	object->setName("house");
@@ -81,7 +88,8 @@ void sceneTestSetup()
 	particle2->setStartSpinVar(90);
 	
 	engine.insertScene(testScene);
-	engine.insertScene(new Scene(4));
+	engine.setCurrentScene(100);
+	testScene->Start(); 
 
 	engine.configureInput(KEY_A, new MoveLeft);
 	engine.configureInput(KEY_D, new MoveRight);
@@ -94,7 +102,7 @@ void sceneTestSetup()
 
 int main() {
 	sceneTestSetup();
-
+	
 	bool gameRunning = true;
 
 	while (gameRunning)
