@@ -5,7 +5,7 @@
 /// Level class. Level has all the information. 
 
 #if(EXPORT)
-class DLLEXPORT Object
+class DLLEXPORT Level
 #else
 class Level : public Scene
 #endif
