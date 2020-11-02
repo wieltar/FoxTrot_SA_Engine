@@ -169,6 +169,7 @@
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
+    <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
     <ClInclude Include="Engine\SceneManager\Layer.h" />
     <ClInclude Include="Main\Level.h" />
     <ClInclude Include="Engine\Events\Sound\OnMusicStartEvent.h" />

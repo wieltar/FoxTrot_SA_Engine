@@ -2,6 +2,7 @@
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
+#include "Events/Action/FpsToggleEvent.h";
 #include "../SceneManager/Scene.h"
 #include "Events/Action/FpsToggleEvent.h";
 
