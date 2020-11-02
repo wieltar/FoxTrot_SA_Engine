@@ -1,8 +1,8 @@
 #pragma once
 #include "IVideoFacade.h"
 
-#define WINDOW_WIDTH 860
-#define WINDOW_HEIGHT 1280
+#define WINDOW_WIDTH 1020
+#define WINDOW_HEIGHT 860
 
 #define MESSAGE_WIDTH 150
 #define MESSAGE_HEIGHT 30
