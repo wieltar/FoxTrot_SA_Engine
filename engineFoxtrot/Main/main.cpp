@@ -130,7 +130,6 @@ void sceneTestSetup()
 	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, 300, "../Assets/Sprites/Character/adventure_run_left.png");
 
 	engine.loadSprite(*so0);
-
 	engine.loadSprite(*so1);
 	engine.loadSprite(*so2);
 	engine.loadSprite(*so3);
@@ -186,7 +185,7 @@ void sceneTestSetup()
 	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 300, "ParticleSystem/fire.png");
+	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 300, "./Engine/ParticleSystem/fire.png");
 	engine.loadSprite(*particle1Sprite);
 
 	ParticleAdapter * particle1 = new ParticleAdapter(11);        // create a new particle system pointer
