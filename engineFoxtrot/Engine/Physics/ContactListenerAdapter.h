@@ -19,5 +19,4 @@ protected:
 	vector<Direction> getCollidedBeginByObject(b2Vec2 collidedPoint, PhysicsBody* object);
 	vector<Direction> getCollidedEndByObject(b2Vec2 collidedPoint, PhysicsBody* object);
 	b2Vec2 getCollidedPoint(b2Contact* contact);
-	map<int, Direction> getCollisionDirection(b2Contact* contact, pair<int, Direction> pairObject1, pair<int, Direction> pairObject2);
 };

@@ -43,16 +43,16 @@ void ContactListenerAdapter::EndContact(b2Contact* contact) {
 /// When a contact begins gets the direction of where the collision happend on the object
 vector<Direction> ContactListenerAdapter::getCollidedBeginByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
 	auto ret = vector<Direction>();
-	if (round(object->getPositionY()) < round(collidedPoint.y)) {
+	if (round(object->getPositionY()) <= round(collidedPoint.y)) {
 		ret.push_back(Direction::DOWN);
 	}
-	else if (round(object->getPositionY()) > round(collidedPoint.y)) {
+	else if (round(object->getPositionY()) >= round(collidedPoint.y)) {
 		ret.push_back(Direction::UP);
 	}
-	if (round(object->getPositionX()) < round(collidedPoint.x)) {
+	if (round(object->getPositionX()) <= round(collidedPoint.x)) {
 		ret.push_back(Direction::RIGHT);
 	}
-	else if (round(object->getPositionX()) > round(collidedPoint.x)) {
+	if (round(object->getPositionX()) >= round(collidedPoint.x)) {
 		ret.push_back(Direction::LEFT);
 	}
 	return ret;
@@ -62,16 +62,16 @@ vector<Direction> ContactListenerAdapter::getCollidedBeginByObject(b2Vec2 collid
 /// When a contact ends gets the direction of where the collision happend on the object
 vector<Direction> ContactListenerAdapter::getCollidedEndByObject(b2Vec2 collidedPoint, PhysicsBody* object) {
 	auto ret = vector<Direction>();
-	if (round(object->getPositionY()) < round(collidedPoint.y)) {
+	if (round(object->getPositionY()) <= round(collidedPoint.y)) {
 		ret.push_back(Direction::UP);
 	}
-	else if (round(object->getPositionY()) > round(collidedPoint.y)) {
+	else if (round(object->getPositionY()) >= round(collidedPoint.y)) {
 		ret.push_back(Direction::DOWN);
 	}
-	if (round(object->getPositionX()) < round(collidedPoint.x)) {
+	if (round(object->getPositionX()) <= round(collidedPoint.x)) {
 		ret.push_back(Direction::LEFT);
 	}
-	else if (round(object->getPositionX()) > round(collidedPoint.x)) {
+	if (round(object->getPositionX()) >= round(collidedPoint.x)) {
 		ret.push_back(Direction::RIGHT);
 	}
 	return ret;
@@ -83,13 +83,4 @@ b2Vec2 ContactListenerAdapter::getCollidedPoint(b2Contact* contact) {
 	b2WorldManifold worldManifold;
 	contact->GetWorldManifold(&worldManifold);
 	return worldManifold.points[0];
-}
-
-/// @brief 
-/// Returns a map <int, Direction> with the ID of an object and the side where the collision happend
-map<int, Direction> ContactListenerAdapter::getCollisionDirection(b2Contact* contact, pair<int, Direction> pairObject1, pair<int, Direction> pairObject2) {
-	map<int, Direction> direction = map<int, Direction>();
-	direction.insert(pairObject1);
-	direction.insert(pairObject2);
-	return direction;
 }

@@ -55,6 +55,7 @@ public:
 
 		if (std::find(collidedDirection.begin(), collidedDirection.end(), Direction::DOWN) != collidedDirection.end()) {
 			this->canJump = true;
+			this->changeToState(SpriteState::DEFAULT);
 		}
 	}
 
@@ -68,9 +69,7 @@ public:
 		auto collidedDirection = map[this->getObjectId()];
 
 		if (std::find(collidedDirection.begin(), collidedDirection.end(), Direction::DOWN) != collidedDirection.end()) {
-			if (collidedDirection.size() == 1) {
-				this->canJump = false;
-			}
+ 			this->canJump = false;
 		}
 	}
 
