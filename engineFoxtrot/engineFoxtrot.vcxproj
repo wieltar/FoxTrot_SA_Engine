@@ -173,6 +173,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Engine\Events\EventSingleton.cpp" />
+    <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
     <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="Engine\SceneManager\SceneManager.h" />
     <ClInclude Include="Engine\General\Version.h" />
     <ClInclude Include="Engine\Events\EventSingleton.h" />
+    <ClInclude Include="Engine\Structs\fpsStructs.h" />
     <ClInclude Include="Engine\Video\IVideoFacade.h" />
     <ClInclude Include="Engine\Video\VideoEngine.h" />
     <ClInclude Include="Engine\Video\VideoFacade.h" />

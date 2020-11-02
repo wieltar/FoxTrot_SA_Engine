@@ -8,8 +8,8 @@ SpriteObject::~SpriteObject() {};
 
 int SpriteObject::getTextureID() const { return textureID; }
 int SpriteObject::getAmountOfTextures() const { return lengthOfTextures; }
-int SpriteObject::getHeight() const { return height; }
-int SpriteObject::getWidth() const { return width; }
+float SpriteObject::getHeight() const { return height; }
+float SpriteObject::getWidth() const { return width; }
 const char * SpriteObject::getFileName() const { return fileName; }
 
 int SpriteObject::getAnimationDelay() { return animationDelay; }

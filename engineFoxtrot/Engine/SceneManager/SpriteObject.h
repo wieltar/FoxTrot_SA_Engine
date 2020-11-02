@@ -13,8 +13,8 @@ public:
 	~SpriteObject();
 	int getTextureID() const;
 	int getAmountOfTextures() const;
-	int getHeight() const;
-	int getWidth() const;
+	float getHeight() const;
+	float getWidth() const;
 	const char * getFileName() const;
 	int getLeftPos(uint32_t ticks);
 
