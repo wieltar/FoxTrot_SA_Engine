@@ -6,34 +6,50 @@ class InputEngine;
 class API Command
 {
 public:
-	Command() {};
+	Command(InputEngine* inputEngine);
 	virtual ~Command() {};
-	virtual void execute(InputEngine* inputEngine) = 0;
+	virtual void execute() = 0;
 	virtual InputType get_input_type() = 0;
+protected:
+	InputEngine* inputEngine;
 };
 
 /// @brief 
 class API MoveLeft : public Command
 {
 public:
-	void execute(InputEngine* inputEngine);
-	InputType get_input_type() { return InputType::STATE; }
+	MoveLeft(InputEngine* inputEngine);
+	void execute();
+	InputType get_input_type() { return STATE; }
 };
 
 /// @brief 
 class API MoveRight : public Command
 {
 public:
-	void execute(InputEngine* inputEngine);
-	InputType get_input_type() { return	InputType::STATE; }
+	MoveRight(InputEngine* inputEngine);
+	void execute();
+	InputType get_input_type() { return STATE; }
 };
 
 /// @brief 
 class API Jump : public Command
 {
 public:
-	void execute(InputEngine* inputEngine);
-	InputType get_input_type() { return InputType::STATE; }
+	Jump(InputEngine* inputEngine);
+	void execute();
+	InputType get_input_type() { return STATE; }
 };
+
+/// @brief 
+class ToggleFps : public Command
+{
+public:
+	ToggleFps(InputEngine* inputEngine);
+	void execute();
+	InputType get_input_type() { return STATE; }
+};
+
+
 
 

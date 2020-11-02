@@ -8,6 +8,7 @@ Engine::Engine()
 {
 	videoEngine.pointerToCurrentScene =	 &sceneManager.currentScene;
 	physicsEngine.pointerToCurrentScene = &sceneManager.currentScene;
+	particleEngine.pointerToCurrentScene = &sceneManager.currentScene;
 	frameData = new FrameData;
 
 	//this->startTickThreads();
@@ -140,8 +141,7 @@ void Engine::pollInput()
 /// Function to bind keys to commands.
 /// @param key KeyCode key
 /// @param command Command to be executed
-void Engine::configureInput(KeyCode key, Command* command)
+void Engine::configureInput(KeyCode key, Command* command, bool runOnce)
 {
-	inputEngine.configure(key, command);
+	inputEngine.configure(key, command, runOnce);
 }
-

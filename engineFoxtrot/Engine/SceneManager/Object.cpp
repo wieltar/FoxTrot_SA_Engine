@@ -67,3 +67,5 @@ float Object::getJumpHeight() const {return this->jumpHeight;}
 void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
 bool Object::getChanged() const { return changed; }
+
+bool Object::getIsParticle() { return isParticle; }

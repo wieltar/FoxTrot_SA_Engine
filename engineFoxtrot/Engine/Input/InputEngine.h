@@ -1,6 +1,19 @@
-#pragma once
+/// @brief
+	/// Generic function for creating command externally
+	template <class T>
+	T* makeCommand() {
+		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
+		return new T(this);
+	}/// @brief
+	/// Generic function for creating command externally
+	template <class T>
+	T* makeCommand() {
+		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
+		return new T(this);
+	}#pragma once
 #include "InputFacade.h"
 #include "Events/Action/ActionEvent.h"
+#include "Events/Action/FpsToggleEvent.h" //TODO check this
 #include "Events/EventSingleton.h"
 
 /// @brief 
@@ -18,6 +31,14 @@ public:
 	API bool fill(vector<Command*>& command_queue);
 	API void configure(KeyCode key, Command* command);
 	API void updateInput();
+	
+	/// @brief
+	/// Generic function for creating command externally
+	template <class T>
+	T* makeCommand() {
+		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
+		return new T(this);
+	}
 private:
 	IInputFacade *inputFacade = new InputFacade();
 

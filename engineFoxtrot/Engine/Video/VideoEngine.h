@@ -2,7 +2,10 @@
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
-#include "SceneManager/Scene.h"
+#include "Events/Action/FpsToggleEvent.h";
+#include "../SceneManager/Scene.h"
+#include "../ParticleSystem/ParticleAdapter.h"
+
 
 #define NO_RED 0
 #define NO_BLUE 0
@@ -39,10 +42,12 @@ public:
 
 	void drawFps();
 	void drawFps(double fps, int xPos, int yPos, const string& prefix);
-	void toggleFps(); //TODO Toggle via input/Command pattern
+	void toggleFps(Event& fpsEvent);
 
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
+
+	void drawParticle(ParticleAdapter* part);
 
 	Scene** pointerToCurrentScene = nullptr;
 
@@ -50,6 +55,6 @@ private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
 	FrameData* frameData = nullptr;
-	bool shouldDrawFps = true; //TODO Should be set to false when toggle via button is added, see Todo above.
+	bool shouldDrawFps;
 
 };

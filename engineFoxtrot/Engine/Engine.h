@@ -6,7 +6,7 @@
 #include "./SceneManager/SceneManager.h"
 #include "./FileParser/FileParser.h"
 #include "./Physics/PhysicsEngine.h"
-#include "./Particles/ParticleEngine.h"
+#include "./ParticleSystem/ParticleEngine.h"
 #include "./SceneManager/SceneManager.h"
 
 #include "Events/EventSingleton.h"
@@ -49,14 +49,23 @@ public:
 	API void pollInput();
 	API void configureInput(KeyCode key, Command* command);
 
+	/// @brief
+	/// Generic function for creating command externally
+	template <class T>
+	T* makeCommand() {
+		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
+		return inputEngine.makeCommand<T>();
+	}
+
 	//TODO make private
+private:
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
 private:
+	ParticleEngine particleEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
-	ParticleEngine particleEngine;
 	SceneManager sceneManager;
 
 	FrameData* frameData = nullptr;

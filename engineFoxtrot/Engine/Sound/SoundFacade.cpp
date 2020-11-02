@@ -197,7 +197,7 @@ void SoundFacade::PlayMusic(const string& identifier, const int volume = MIX_MAX
 void SoundFacade::ChangeMusic(const string& identifier) {
 	StopMusic();
 	LoadMusic(identifier);
-	PlayMusic();
+	PlayMusic(10);
 }
 
 /// @brief 
