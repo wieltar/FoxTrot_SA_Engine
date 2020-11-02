@@ -59,6 +59,6 @@ private:
 	map<string, string> soundPaths;
 	map<string, int> loopChannels;
 	Mix_Music* music;
-	std::map<std::string, Mix_Chunk*> loadedSoundEffects;
+	map<std::string, Mix_Chunk*> loadedSoundEffects;
 
 };

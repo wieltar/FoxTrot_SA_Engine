@@ -5,6 +5,7 @@
 #include "../Engine/Events/AppTickEvent60.h"
 
 #include "Events/Window/WindowCloseEvent.h"
+#include "Level.h"
 
 #include "SpriteState.h"
 
@@ -137,7 +138,11 @@ void sceneTestSetup()
 	engine.loadSprite(*so6);
 	engine.loadSprite(*so7);
 
-	Scene* testScene = new Scene(3);
+	map<string, string> soundL1 = {
+		{"Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"},
+	};
+
+	Level* testScene = new Level(100, soundL1);
 
 	Object* object = new Object(1);
 	object->setName("person1");
@@ -178,10 +183,9 @@ void sceneTestSetup()
 	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-
-	//engine.physicsEngine.registerObjectInCurrentVectorWithPhysicsEngine();
-	
-	engine.insertScene(new Scene(4));
+	engine.insertScene(testScene);
+	engine.setCurrentScene(100);
+	testScene->Start(); 
 
 	Object* staticGround2 = new Object(102);
 	staticGround2->setWidth(100); // width
@@ -201,7 +205,7 @@ void sceneTestSetup()
 
 int main() {
 	sceneTestSetup();
-
+	
 	bool gameRunning = true;
 	while (gameRunning)
 	{

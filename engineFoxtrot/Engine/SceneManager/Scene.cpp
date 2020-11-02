@@ -56,7 +56,6 @@ const bool Scene::toggleLayer(const int zIndex, bool render)
 vector <Object*> Scene::getAllObjectsInScene()
 {
 	vector <Object*> returnVector;
-
 	for (auto layer = layers.begin(); layer != layers.end(); layer++)
 	{
 		returnVector.insert(returnVector.end(), (*layer).second->objects.begin(), (*layer).second->objects.end());

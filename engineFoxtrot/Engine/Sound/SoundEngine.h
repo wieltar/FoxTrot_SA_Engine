@@ -1,7 +1,7 @@
 #pragma once
-
-#include "../SceneManager/Scene.h"
+#include "SceneManager/SceneManager.h"
 #include "SoundFacade.h"
+#include "Events/Event.h"
 
 #define MAX_VOLUME 128
 
@@ -43,6 +43,11 @@ public:
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
 
+	void EventListners(); 
+	void Event_StartEvent(Event& event);
+	void Event_AttachEvent(Event& event);
+
+private:
 	ISoundFacade* soundFacade = new SoundFacade;
 
 };
