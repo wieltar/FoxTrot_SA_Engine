@@ -107,19 +107,49 @@ bool InputFacade::fill(vector<Command*>& command_queue)
         action_map.clear();         // clears key presses
         return false;
     }
+
+    return false;
 }
 
 /// @brief 
 /// Fills the command queue with pressed keys.
 /// @param command_queue 
-void InputFacade::dispatcher(std::vector<Command*>& command_queue)
+void InputFacade::dispatcher(vector<Command*>& command_queue)
 {
-    std::map<KeyCode, Command*>::iterator iter;
+    map<KeyCode, Command*>::iterator iter;
     for (iter = commands.begin(); iter != commands.end(); iter++) {
         // TODO remove the check on iter->second because types are now enforced by enum class?
         if (is_held(iter->first) == ButtonState::PRESSED && iter->second->get_input_type() == InputType::STATE)
             command_queue.push_back(iter->second);
         else if (was_pressed(iter->first) == Action::EXECUTE && iter->second->get_input_type() == InputType::ACTION)
             command_queue.push_back(iter->second);
+    }
+}
+
+/// @brief
+/// Poll the input events and dispatch a KeyPressedEvent
+void InputFacade::pollEvents() {
+    SDL_Event sdl_event;
+    if (&sdl_event)
+    {
+        while (SDL_PollEvent(&sdl_event))
+        {
+            switch (sdl_event.type)
+            {
+            case SDL_KEYDOWN: {
+                // Command queue with events to fire
+                KeyPressedEvent event((KeyCode)sdl_event.key.keysym.scancode, 1);
+                EventSingleton::get_instance().dispatchEvent<KeyPressedEvent>(event);
+                break;
+            }
+            case SDL_KEYUP: {
+                KeyReleasedEvent event((KeyCode)sdl_event.key.keysym.scancode);
+                EventSingleton::get_instance().dispatchEvent<KeyReleasedEvent>(event);
+                break;
+            }
+            default:
+                break;
+            }
+        }
     }
 }

@@ -168,6 +168,8 @@
     <ClCompile Include="Engine\ParticleSystem\ParticleAdapter.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleEngine.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleLib\ParticleInit.cpp" />
+    <ClCompile Include="Engine\Physics\ContactListenerAdapter.cpp" />
+    <ClCompile Include="Engine\SceneManager\SpriteObject.cpp" />
     <ClCompile Include="Engine\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -191,6 +193,7 @@
     <ClInclude Include="api.h" />
     <ClInclude Include="Engine\core.h" />
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
+    <ClInclude Include="Engine\Events\Action\OnCollisionEvent.h" />
     <ClInclude Include="Engine\Events\AppTickEvent30.h" />
     <ClInclude Include="Engine\Events\AppTickEvent60.h" />
     <ClInclude Include="Engine\Events\Event.h" />
@@ -229,8 +232,11 @@
     <ClInclude Include="Engine\ParticleSystem\ParticleAdapter.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleEngine.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleLib\ParticleInit.h" />
+    <ClInclude Include="Engine\Particles\IParticleFacade.h" />
+    <ClInclude Include="Engine\Physics\ContactListenerAdapter.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
     <ClInclude Include="Engine\SceneManager\Layer.h" />
+    <ClInclude Include="Engine\SceneManager\SpriteObject.h" />
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />
@@ -250,6 +256,7 @@
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
     <ClInclude Include="Main\Level.h" />
+    <ClInclude Include="Main\SpriteState.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

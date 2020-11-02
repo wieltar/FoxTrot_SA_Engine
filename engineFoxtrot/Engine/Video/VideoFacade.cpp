@@ -79,33 +79,60 @@ void VideoFacade::drawScreen()
 		std::cout << "ERR" << std::endl;
 	}
 }
-
 /// @brief 
-/// Loads PNG files and makes them textures to be added to the unordered map
-/// @param spriteID 
-/// @param filename 
-void VideoFacade::loadImage(const int spriteID, const char* filename)
-{
-	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
-	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
-	SDL_Surface* surface = IMG_Load(filename);
+/// Load a animated sprite into the texturemap map
+/// @param spriteObject 
+/// @param filename
+void VideoFacade::loadImage(const SpriteObject& spriteObject) {
+	if (spriteObject.getFileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+
+	SDL_Surface* surface = IMG_Load(spriteObject.getFileName());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-	textureMap[spriteID] = texture;
+
+	int temp = spriteObject.getTextureID();
+	textureMap[temp] = texture;
+	SDL_FreeSurface(surface);
 }
 
-
 /// @brief 
-/// Takes the sprites from the Textuture map and copys them to the screen
-/// @param Object 
+/// Takes the sprites from the Textuture map animated and copys them to the screen
+/// @param object 
 void VideoFacade::renderCopy(Object& object)
-{
+{	
+	SpriteObject& sprite = object.GetCurrentSprite();
+
+	if (textureMap[sprite.getTextureID()] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
+	if (object.getPositionX() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
+	if (object.getPositionY() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;
+	if (object.getHeight() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_HEIGHT_IS_NULL;
+	if (object.getWidth() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_WIDTH_IS_NULL;
+
+	//generate image 
+	Uint32 ticks = SDL_GetTicks();
+	Uint32 seconds = ticks / sprite.getAnimationDelay();
+	int leftpos = sprite.getLeftPos(seconds);
+	int top = 0;
+
+	//generate rectangele for selecting 1 image of a full sprite
+	//leftpos = amount of pixels from the left side
+	//top = amount of pixels of the top (sprites are renderd of the top to bottom
+	//width = amount of pixels of the with of 1 image
+	//height = amount of pixels of the height of 1 image
+	SDL_Rect rect{ leftpos, top, sprite.getWidth(), sprite.getHeight() };
+
+	//update collision box 
+	if (!object.getScalable()) {
+		object.setWidth(sprite.getWidth());
+		object.setHeight(sprite.getHeight());
+	}
+
+	//generate stratch of image
 	SDL_Rect destination;
-	destination.w = object.getWidth();
-	destination.h = object.getHeight();
 	destination.x = object.getPositionX();
 	destination.y = object.getPositionY() - object.getHeight();
-
-	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+	destination.w = object.getWidth();
+	destination.h = object.getHeight();
+	SDL_RenderCopyEx(renderer, textureMap[sprite.getTextureID()], &rect, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
 }
 
 /// @brief Function to draw Particles

@@ -1,13 +1,14 @@
 #pragma once
 // TODO find out why removing this breaks everything
 #include "stdafx.h"
+#include "SpriteObject.h"
+
 /// @brief 
 /// Object class. Object is linked with a sprite id in SVI. 
 class Object
 {
 public:
 	API Object(const int id);
-	API Object(const int id, const float xPos, const float yPos, const float height, const float width);
 	API ~Object();
 
 	void API setName(const string val);
@@ -17,6 +18,9 @@ public:
 
 	void API setPositionX(const float);
 	float API getPositionX() const;
+	
+	API SpriteObject& GetCurrentSprite() const;
+	API int getObjectId() const;
 
 	void API setPositionY(const float);
 	float API getPositionY() const;
@@ -54,17 +58,31 @@ public:
 	void API setJumpHeight(const float val);
 	float API getJumpHeight() const;
 
-	bool API getChanged() const;
-	
-	bool API getIsParticle();
+	virtual void setYAxisVelocity(const float val);
+	float getYAxisVelocity() const;
+
+	void registerSprite(int state, SpriteObject* spriteObject);
+	void changeToState(const int state);
+
+	void setScalable(const bool val);
+	bool getScalable() const;
+
+	void setRotatable(const bool val);
+	bool getRotatable() const;
+
+	bool getChanged() const;
+	void setChanged(const bool c);
+
+	bool getIsParticle();
 	
 protected:
 
-	Object(const int id, const bool particle) : spriteID(id),isParticle(particle) {  }
+	Object(const int id, const bool particle) : objectId(id),isParticle(particle) {  }
 	
-private:
-	string name;
-	const int spriteID = 0;
+	const int objectId = 0;
+	SpriteObject* currentSprite = nullptr;
+	string name = "";
+	bool scalable = false;
 	float positionX = 0;
 	float positionY = 0;
 	float rotation = 0;
@@ -80,4 +98,7 @@ private:
 	bool staticObject = false;
 	bool changed = false;
 	const bool isParticle = false;
+	map<const int, SpriteObject*> textures;
+	bool rotatable = false;
+	float yAxisVelocity = 0;
 };

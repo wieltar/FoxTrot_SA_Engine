@@ -1,10 +1,10 @@
 #pragma once
 struct FpsMessage
 {
-	FpsMessage(const string& _text, int _r, int _g, int _b)
+	FpsMessage(const string& _text, uint8_t _r, uint8_t _g, uint8_t _b)
 		: text{ _text }, red{ _r }, green{ _g }, blue{ _b }{}
 	const string& text;
-	int red, green, blue;
+	uint8_t red, green, blue;
 };
 
 struct TextPosition

@@ -48,6 +48,9 @@ public:
 
 	API void pollInput();
 	API void configureInput(KeyCode key, Command* command, bool runOnce = false);
+	void loadSprite(const SpriteObject& spriteObject);
+
+	void pollEvents();
 
 	/// @brief
 	/// Generic function for creating command externally
@@ -60,16 +63,15 @@ public:
 	//TODO make private
 private:
 	PhysicsEngine physicsEngine;
-	VideoEngine videoEngine;
-private:
 	ParticleEngine particleEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
 	SceneManager sceneManager;
+	VideoEngine videoEngine;
 
 	FrameData* frameData = nullptr;
 
-	void loadSpriteArray(vector<Sprite> spriteVector);
+	void loadSpriteArray(vector<SpriteObject> spriteVector);
 };
 #endif

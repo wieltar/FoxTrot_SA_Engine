@@ -45,11 +45,11 @@ void VideoEngine::drawScreen()
 /// @brief Loads the PNG files AKA sprites
 /// @param spriteID 
 /// @param filename
-void VideoEngine::loadImage(int spriteID, const char* filename)
+void VideoEngine::loadImage(const SpriteObject& spriteObject)
 {
 	try
 	{
-		videoFacade->loadImage(spriteID, filename);
+		videoFacade->loadImage(spriteObject);
 	}
 	catch (int e)
 	{
@@ -167,7 +167,7 @@ void VideoEngine::drawParticle(ParticleAdapter* part)
 		{
 			continue;
 		}
-		videoFacade->drawParticle(partData, part->getSpriteID());
+		videoFacade->drawParticle(partData, part->getObjectId());
 	}
 
 }

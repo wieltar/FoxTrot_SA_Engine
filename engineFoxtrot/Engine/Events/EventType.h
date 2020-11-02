@@ -27,5 +27,7 @@ enum class EventType
 	OnMusicStopEvent,
 	AttachSound,
 
-	Action
+	Action,
+	CollisionEnd,
+	CollisionBegin
 };

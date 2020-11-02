@@ -20,6 +20,7 @@ public:
 	API bool fill(vector<Command*>& command_queue);
 	API void configure(KeyCode key, Command* command, bool runOnce);
 	API void updateInput();
+	void pollEvents();
 
 	API void toggleFps();
 	

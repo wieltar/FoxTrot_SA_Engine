@@ -23,6 +23,9 @@
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
+    <ClCompile Include="Engine\Physics\ContactListenerAdapter.cpp" />
+    <ClCompile Include="Engine\SceneManager\SpriteObject.cpp" />
+    <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
     <ClCompile Include="Main\Level.cpp" />
     <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
   </ItemGroup>
@@ -165,6 +168,9 @@
     <ClInclude Include="Engine\Sound\SoundEngine.h" />
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Fps\FrameData.h" />
+    <ClInclude Include="Engine\Events\Action\OnCollisionEvent.h" />
+    <ClInclude Include="Engine\Physics\ContactListenerAdapter.h" />
+    <ClInclude Include="Engine\SceneManager\SpriteObject.h" />
     <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
     <ClInclude Include="Engine\SceneManager\Layer.h" />
     <ClInclude Include="Main\Level.h" />
@@ -172,6 +178,8 @@
     <ClInclude Include="Engine\Events\Sound\BaseSoundEvent.h" />
     <ClInclude Include="Engine\Events\Sound\OnMusicStopEvent.h" />
     <ClInclude Include="Engine\Events\Sound\SoundAttachEvent.h" />
+    <ClInclude Include="Engine\Structs\fpsStructs.h" />
+    <ClInclude Include="Main\SpriteState.h" />
     <ClInclude Include="Engine\Events\Action\FpsToggleEvent.h" />
     <ClInclude Include="Engine\Structs\fpsStructs.h" />
     <ClInclude Include="Engine\Engine.h" />

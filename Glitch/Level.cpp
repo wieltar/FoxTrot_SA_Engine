@@ -19,7 +19,7 @@ Level::Level(const int id, map<string, string> _sounds = map<string, string>()) 
 /// Must be implemented by a concrete implementation of a scene
 void Level::OnAttach() {
 	for (const auto& s : sounds) {
-		std::cout << s.first << " has value " << s.second << std::endl;
+		if(DEBUG_MAIN)std::cout << s.first << " has value " << s.second << std::endl;
 		EventSingleton::get_instance().dispatchEvent<SoundAttachEvent>((Event&)SoundAttachEvent(s.first, s.second));
 	}
 }
