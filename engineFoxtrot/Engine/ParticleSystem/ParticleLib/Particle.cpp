@@ -136,8 +136,8 @@ void Particle::addParticles(int count)
 
     // position
     Vec2 pos;
-    pos.x = x_;
-    pos.y = y_;
+    pos.x = (float)x_;
+    pos.y = (float)y_;
 
     for (int i = start; i < _particleCount; ++i)
     {
