@@ -42,7 +42,7 @@
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -123,7 +123,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;BUILD_WINDOWS;BUILD_DLL;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)..\SDL2\include;$(projectDir)..\box2d-master\include;$(projectDir)Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -161,7 +161,6 @@
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
     <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp" />
     <ClCompile Include="Engine\FileParser\JsonFacade.cpp" />
-    <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Input\InputFacade.cpp" />
     <ClCompile Include="Engine\Input\InputEngine.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleLib\Particle.cpp" />
@@ -178,8 +177,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Events\EventSingleton.cpp" />
     <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
-    <ClCompile Include="Main\Level.cpp" />
-    <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsBody.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsEngine.cpp" />
@@ -192,6 +189,8 @@
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="api.h" />
+    <ClInclude Include="Engine\core.h" />
     <ClInclude Include="Engine\Events\Action\ActionEvent.h" />
     <ClInclude Include="Engine\Events\Action\OnCollisionEvent.h" />
     <ClInclude Include="Engine\Events\AppTickEvent30.h" />
@@ -223,9 +222,7 @@
     <ClInclude Include="Engine\FileParser\FileParser.h" />
     <ClInclude Include="Engine\General\GeneralDefines.h" />
     <ClInclude Include="Engine\FileParser\IJsonFacade.h" />
-    <ClInclude Include="Engine\Input\Commands.h" />
     <ClInclude Include="Engine\Input\IInputFacade.h" />
-    <ClInclude Include="Engine\Input\InputConstants.h" />
     <ClInclude Include="Engine\Input\InputFacade.h" />
     <ClInclude Include="Engine\Input\InputEngine.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleLib\Particle.h" />
@@ -260,6 +257,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

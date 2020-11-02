@@ -1,6 +1,5 @@
-#include "../stdafx.h"
 #pragma once
-#include "./Object.h"
+#include "Object.h"
 
 struct Layer
 {

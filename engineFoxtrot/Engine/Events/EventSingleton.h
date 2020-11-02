@@ -1,5 +1,5 @@
 #pragma once
-#include "Event.h";
+#include "Event.h"
 
 using EventCallbackFn = function<void(Event&)>;
 
@@ -8,13 +8,13 @@ using EventCallbackFn = function<void(Event&)>;
 class EventSingleton
 {
 public:
-    static EventSingleton& get_instance() { return instance; }
+    static API EventSingleton& get_instance() { return instance; }
 
     // prohibit copy & move
-    EventSingleton(const EventSingleton&) = delete;
-    EventSingleton(EventSingleton&&) = delete;
-    EventSingleton& operator=(const EventSingleton&) = delete;
-    EventSingleton& operator=(EventSingleton&&) = delete;
+    API EventSingleton(const EventSingleton&) = delete;
+    API EventSingleton(EventSingleton&&) = delete;
+    API EventSingleton& operator=(const EventSingleton&) = delete;
+    API EventSingleton& operator=(EventSingleton&&) = delete;
 
     /// @brief
     /// OnEvent is triggered when an event is fired, and send message to all registered listiners
@@ -53,7 +53,7 @@ public:
     }
 
 private:
-    map<string, vector<function<void(Event&)>>> handlers = map<string, vector<function<void(Event&)>>>();
+    map<string, vector<EventCallbackFn>> handlers = map<string, vector<EventCallbackFn>>();
     static EventSingleton instance;
 
     EventSingleton() {}

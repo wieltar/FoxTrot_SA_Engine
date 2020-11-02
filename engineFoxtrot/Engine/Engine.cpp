@@ -60,7 +60,6 @@ void Engine::insertScene(Scene* scene)
 void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
-	pollInput();
 	while (!stopThreadTick60){
 		frameData->startTimer();
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
@@ -106,23 +105,6 @@ void Engine::stopTickThreads()
 	engineTick30Thread->join();
 	stopThreadTick30 = true;
 }
-
-/// @brief 
-/// Polls for input using SDL poll events
-void Engine::pollInput()
-{
-	inputEngine.updateInput();
-}
-
-/// @brief 
-/// Function to bind keys to commands.
-/// @param key KeyCode key
-/// @param command Command to be executed
-void Engine::configureInput(KeyCode key, Command* command, bool runOnce)
-{
-	inputEngine.configure(key, command, runOnce);
-}
-
 
 /// @brief 
 /// Load a animated sprite (PNG) into the AnimatedTexture map

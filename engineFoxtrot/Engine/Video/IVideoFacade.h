@@ -5,11 +5,7 @@
 #include "ParticleSystem/ParticleLib/ParticleInit.h"
 
 /// @brief Interface class for Video facade
-#if(EXPORT)
-class DLLEXPORT IVideoFacade
-#else
 class IVideoFacade
-#endif
 {
 public:
 	IVideoFacade() {};

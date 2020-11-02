@@ -1,11 +1,7 @@
 #pragma once
 #include "IVideoFacade.h"
 
-#define WINDOW_WIDTH 1020
-#define WINDOW_HEIGHT 860
-
-#define MESSAGE_WIDTH 150
-#define MESSAGE_HEIGHT 30
+#include "ParticleSystem/ParticleLib/ParticleInit.h"
 
 #define FONT_PATH "../Assets/Fonts/Sans.ttf"
 #define FONT_POINT_SIZE 24
@@ -35,10 +31,12 @@ public:
 	void renderCopy(Object& object);
 
 	void drawParticle(ParticleData data, int spriteID);
+
 	void drawMessageAt(const FpsMessage message, const TextPosition pos);
 
-private:
 	unordered_map<int, SDL_Texture*> textureMap;
+
+private:
 	SDL_Renderer* renderer;
 	SDL_Window* window;
 	TTF_Font* Sans;

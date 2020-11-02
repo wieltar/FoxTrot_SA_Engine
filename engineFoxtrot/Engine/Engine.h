@@ -14,7 +14,6 @@
 #include "./Sound/SoundEngine.h"
 #include "./Input/InputEngine.h"
 #include "./Fps/FrameData.h"
-
 // TODO Weet niet of deze hier moet?!?!??! Is even voor de test
 #include "Events/Codes/KeyCodes.h"
 
@@ -22,21 +21,17 @@
 #define ENGINE_TICK30	 33
 
 /// @brief 
-#if(EXPORT)
-class DLLEXPORT Engine
-#else
 class Engine
-#endif
 {
 public:
-	Engine();
-	~Engine();
+	API Engine();
+	API ~Engine();
 
 //private:
-	void engineTick60();
-	void engineTick30();
-	void startTickThreads();
-	void stopTickThreads();
+	API void engineTick60();
+	API void engineTick30();
+	API void startTickThreads();
+	API void stopTickThreads();
 
 	atomic_bool stopThreadTick60 = false;
 	atomic_bool stopThreadTick30 = false;
@@ -45,27 +40,14 @@ public:
 	thread *engineTick30Thread = nullptr;
 
 	//SceneManager calls
-	void setCurrentScene(const int sceneID);
-	void insertScene(Scene * scene);
+	API void setCurrentScene(const int sceneID);
+	API void insertScene(Scene * scene);
 
 	// Video calls
-	void loadSprite(const SpriteObject& spriteObject);
+	API void loadSprite(const SpriteObject& spriteObject);
 
-	void pollEvents();
-
-	//Input calls
-	void pollInput();
-	void configureInput(KeyCode key, Command* command, bool runOnce = false);
-
-	/// @brief
-	/// Generic function for creating command externally
-	template <class T>
-	T* makeCommand() {
-		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
-		return inputEngine.makeCommand<T>();
-	}
-
-	//TODO make private
+	// Input calls
+	API void pollEvents();
 private:
 	PhysicsEngine physicsEngine;
 	ParticleEngine particleEngine;
@@ -76,7 +58,5 @@ private:
 	VideoEngine videoEngine;
 
 	FrameData* frameData = nullptr;
-
-	void loadSpriteArray(vector<SpriteObject> spriteVector);
 };
 #endif

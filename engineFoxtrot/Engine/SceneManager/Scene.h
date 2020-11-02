@@ -7,25 +7,22 @@
 /// @brief 
 /// Scene Class
 /// Contains all the objects that should be drawn in this scene.
-#if(EXPORT)
-class DLLEXPORT Scene
-#else
+
 class Scene 
-#endif
 {
 public:
-	Scene(const int);
-    ~Scene();
+	API Scene(const int);
+	API~Scene();
 
-	bool checkIfObjectExists(const int objectID);
-	const bool toggleLayer(const int zIndex, bool render);
-	const void addNewObjectToLayer(const int zIndex,Object* object);
+	bool API checkIfObjectExists(const int objectID);
+	const bool API toggleLayer(const int zIndex, bool render);
+	const void API addNewObjectToLayer(const int zIndex,Object* object);
 
-	vector <Object*> getAllObjectsInScene();
+	vector <Object*> API getAllObjectsInScene();
 
-	Object * getObject(const int objectID);
+	Object API *getObject(const int objectID);
 
-	int getSceneID() { return sceneID; }
+	int API getSceneID() { return sceneID; }
 
 	/// @brief
 	/// OnAttach is executed when a scene is "attached" to the current running context

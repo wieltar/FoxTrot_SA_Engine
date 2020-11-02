@@ -3,7 +3,7 @@
 
 /// @brief 
 /// mousecodes directly reflect enum values defined in sdl without a aditional include in this file
-enum MouseCode
+enum class MouseCode
 {
 	MOUSE_BTN_LEFT = 1, 
 	MOUSE_BTN_MIDDLE = 2,

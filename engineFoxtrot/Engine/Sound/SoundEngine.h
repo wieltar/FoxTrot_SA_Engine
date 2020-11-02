@@ -1,5 +1,6 @@
 #pragma once
-#include "SceneManager/SceneManager.h"
+#include "SceneManager/SceneManager.h" //TODO check this
+#include "SceneManager/Scene.h"
 #include "SoundFacade.h"
 #include "Events/Event.h"
 
@@ -7,12 +8,7 @@
 
 /// @brief 
 /// SoundEngine is the Sound SDL2 wrapper
-
-#if(EXPORT)
-class DLLEXPORT SoundEngine
-#else
-class SoundEngine
-#endif
+class API SoundEngine
 {
 public:
 	SoundEngine();

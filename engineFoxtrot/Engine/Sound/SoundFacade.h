@@ -1,9 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include "ISoundFacade.h"
-#undef main
-
-using namespace std;
+#include "SceneManager/Object.h"
 
 #define EXAMPLE_SOUND	"../Assets/Sound/b423b42.wav"
 #define EXAMPLE_SPRITE  "../Assets/Sprites/simple.png"
@@ -22,11 +20,7 @@ typedef struct _Mix_Music Mix_Music;
 
 /// @brief 
 /// SoundFacade is de Sound SDL2 facade
-#if(EXPORT)
-class DLLEXPORT SoundFacade : public ISoundFacade
-#else
 class SoundFacade : public ISoundFacade
-#endif
 {
 public:
 	SoundFacade();

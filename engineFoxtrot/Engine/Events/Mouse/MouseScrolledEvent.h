@@ -22,7 +22,7 @@ public:
 	/// @brief
 	/// MouseScrolledEvent to string
 	/// @return string with the new X and Y coords
-	string ToString() const override
+	std::string ToString() const override
 	{
 		stringstream stream;
 		stream << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();

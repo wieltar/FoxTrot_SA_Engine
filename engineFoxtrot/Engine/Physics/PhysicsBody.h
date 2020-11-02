@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../SceneManager/Object.h"
 
 class PhysicsBody

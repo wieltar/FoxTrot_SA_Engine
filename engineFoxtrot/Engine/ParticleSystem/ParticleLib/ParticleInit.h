@@ -8,7 +8,7 @@ public:
     ParticleInit(){};
     virtual ~ParticleInit() {}
 
-    enum ParticleStyle
+    enum class ParticleStyle
     {
         NONE,
         FIRE,
@@ -24,6 +24,6 @@ public:
         RAIN,
     };
 
-    ParticleStyle style_ = NONE;
-    void setStyle(ParticleStyle style);
+    ParticleStyle style_ = ParticleStyle::NONE;
+    API void setStyle(ParticleStyle style);
 };
