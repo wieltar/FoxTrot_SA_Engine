@@ -198,8 +198,6 @@ void sceneTestSetup()
 	staticGround2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround2);
 
-	engine.insertScene(testScene);
-	engine.setCurrentScene(3);
 	engine.startTickThreads();
 }
 
