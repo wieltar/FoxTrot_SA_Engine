@@ -67,9 +67,9 @@ void sceneTestSetup()
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-	testScene->Start();
-	engine.insertScene((Scene*)testScene);
+	engine.insertScene(testScene);
 	engine.setCurrentScene(100);
+	testScene->Start(); 
 
 	engine.configureInput(KEY_A, new MoveLeft);
 	engine.configureInput(KEY_D, new MoveRight);

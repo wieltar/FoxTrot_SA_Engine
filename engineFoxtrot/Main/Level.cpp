@@ -8,10 +8,11 @@
 
 /// @brief 
 /// @param sceneID 
+/// @param _sounds this contains the sounds for the level with identifier and filepath
 Level::Level(const int id, map<string, string> _sounds = map<string, string>()) : Scene::Scene(id), sounds(_sounds)
 {
-	OnAttach();
 }
+
 void Level::OnAttach() {
 	for (const auto& s : sounds) {
 		std::cout << s.first << " has value " << s.second << std::endl;

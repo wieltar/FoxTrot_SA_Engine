@@ -101,7 +101,3 @@ Object * Scene::getObject(const int objectID)
 	}
 	throw ERROR_CODE_SCENE_NO_OBJECT_FOUND;
 }
-
-void Scene::OnAttach() {}
-void Scene::Start() {}
-void Scene::OnDetach() {}
