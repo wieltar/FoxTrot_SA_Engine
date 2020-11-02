@@ -21,7 +21,7 @@ void ParticleEngine::onUpdate(Event& tickEvent)
 	if ((*pointerToCurrentScene)->getAllObjectsInScene().size() == 0) return;
 	for (Object * particle : (*pointerToCurrentScene)->getAllObjectsInScene()) {
 		if (particle != nullptr && particle->getIsParticle()) {
-			((Particle*)particle)->update();
+			((ParticleInit*)particle)->update();
 		}
 	}
 }
