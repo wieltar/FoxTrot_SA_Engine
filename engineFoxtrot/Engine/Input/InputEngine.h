@@ -25,6 +25,7 @@ public:
 	/// Generic function for creating command externally
 	template <class T>
 	T* makeCommand() {
+		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
 		return new T(this);
 	}
 
