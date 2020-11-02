@@ -72,6 +72,7 @@ public:
 	bool getRotatable() const;
 
 	bool getChanged() const;
+	void setChanged(const bool c);
 
 private:
 	const int objectId = 0;

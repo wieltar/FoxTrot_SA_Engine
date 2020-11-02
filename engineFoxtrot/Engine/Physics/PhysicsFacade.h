@@ -52,15 +52,7 @@ public:
 
 	CollisionStruct getObjectsByFixture(b2Fixture* fixture1, b2Fixture* fixture2);
 	void update() override;
-
-	void cleanMap() 
-	{ 
-		for (auto b : bodies)
-		{
-			world.DestroyBody(b.second);
-		}
-		bodies.clear();
-	}
+	void cleanMap();
 
 private:
 	b2World * world;

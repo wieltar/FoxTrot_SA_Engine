@@ -28,7 +28,7 @@ public:
 		this->setPositionY(80);
 
 		this->setSpeed(50);
-		this->setJumpHeight(40);
+		this->setJumpHeight(400);
 		this->setDensity(100);
 		this->setFriction(0);
 		this->setRestitution(0);
@@ -50,6 +50,8 @@ public:
 		auto collidedDirection = map[this->getObjectId()];
 		if (collidedDirection == Direction::DOWN) {
 			this->canJump = true;
+			this->changeToState("default");
+			this->changed = true;
 		}
 	}
 
@@ -67,14 +69,19 @@ public:
 	}
 
 	void setYAxisVelocity(const float val) override {
-		Object::setYAxisVelocity(val);
 
-		if (this->yAxisVelocity > 0) {
-			this->changeToState("air_fall");
+		if (!canJump) {
+			if (val > 0 && !changed) {
+				this->changeToState("air_fall");
+			}
 		}
-		else if(this->yAxisVelocity == 0) {
-			this->changeToState("default");
+
+		if (val == 0) {
+			changed = false;
 		}
+
+
+		Object::setYAxisVelocity(val);
 	}
 
 	/// @brief 

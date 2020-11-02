@@ -190,3 +190,15 @@ void PhysicsFacade::Jump(const int objectId)
 	vel.y = ob->getJumpHeight() * -1;
 	body->SetLinearVelocity(vel);
 };
+
+
+/// @brief
+/// destroy all the bodies of the world
+void PhysicsFacade::cleanMap()
+{
+	for (auto b : bodies)
+	{
+		world->DestroyBody(b.second);
+	}
+	bodies.clear();
+}
