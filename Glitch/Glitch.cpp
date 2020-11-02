@@ -115,14 +115,14 @@ public:
 
 void sceneTestSetup()
 {
-	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, 300, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
-	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, 300, "../Assets/Sprites/Character/adventure.png");
-	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, 300, "../Assets/Sprites/Character/adventure_air_attack1.png");
-	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, 300, "../Assets/Sprites/Character/adventure_run_right.png");
-	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_slide.png");
-	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_fall.png");
-	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_jump.png");
-	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, 300, "../Assets/Sprites/Character/adventure_run_left.png");
+	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, 300, "Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
+	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, 100, "Assets/Sprites/Character/adventure.png");
+	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, 100, "Assets/Sprites/Character/adventure_air_attack1.png");
+	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, 100, "Assets/Sprites/Character/adventure_run_right.png");
+	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, 100, "Assets/Sprites/Character/adventure_slide.png");
+	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, 100, "Assets/Sprites/Character/adventure_fall.png");
+	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, 100, "Assets/Sprites/Character/adventure_jump.png");
+	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, 100, "Assets/Sprites/Character/adventure_run_left.png");
 
 	engine.loadSprite(*so0);
 	engine.loadSprite(*so1);
@@ -134,7 +134,7 @@ void sceneTestSetup()
 	engine.loadSprite(*so7);
 
 	map<string, string> soundL1 = {
-		{"Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"},
+		{"Level_1_Sound", "Assets/Sound/file_example_WAV_1MG.wav"},
 	};
 
 	Level* testScene = new Level(100, soundL1);

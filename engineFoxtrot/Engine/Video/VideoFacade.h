@@ -3,7 +3,7 @@
 
 #include "ParticleSystem/ParticleLib/ParticleInit.h"
 
-#define FONT_PATH "../Assets/Fonts/Sans.ttf"
+#define FONT_PATH "Assets/Fonts/Sans.ttf"
 #define FONT_POINT_SIZE 24
 
 struct SDL_Renderer;
