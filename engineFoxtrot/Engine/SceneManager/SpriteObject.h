@@ -11,10 +11,10 @@ public:
 	SpriteObject();
 	SpriteObject(const int _textureID, const int _height, const int _width, const int _size, int _animationDelay, const char * _fileName );
 	~SpriteObject();
-	int const getTextureID();
-	int const getAmountOfTextures() ;
-	float const getHeight() ;
-	float const getWidth() ;
+	int getTextureID() const;
+	int  getAmountOfTextures() const;
+	float  getHeight() const;
+	float getWidth() const;
 	const char * getFileName() const;
 	int getLeftPos(uint32_t ticks);
 
