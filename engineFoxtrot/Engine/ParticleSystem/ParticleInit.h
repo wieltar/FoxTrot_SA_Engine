@@ -2,10 +2,10 @@
 #include "Particle.h"
 #include "./SceneManager/Object.h"
 
-class ParticleInit : public Particle, public Object
+class ParticleInit : public Particle
 {
 public:
-    ParticleInit(const int id) : Particle(id), Object(id,true) {};
+    ParticleInit(const int id) : Particle(id){};
     virtual ~ParticleInit() {}
 
     enum PatticleStyle

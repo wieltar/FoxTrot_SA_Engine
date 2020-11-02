@@ -3,7 +3,7 @@
 #include "Fps/FrameData.h"
 #include "Structs/fpsStructs.h"
 #include "SceneManager/Scene.h"
-#include "ParticleSystem/ParticleInit.h"
+#include "ParticleSystem/ParticleAdapter.h"
 
 #define NO_RED 0
 #define NO_BLUE 0
@@ -57,7 +57,7 @@ public:
 	void update(Object* object);
 	void receiveTick(Event& tickEvent);
 
-	void drawParticle(ParticleInit* part);
+	void drawParticle(ParticleAdapter* part);
 
 	Scene** pointerToCurrentScene = nullptr;
 

@@ -204,7 +204,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setGravity(Vec2(0, 0));
 
         // Gravity Mode: speed of particles
-        setSpeed(-60);
+        setSpeedParticle(-60);
         setSpeedVar(10);
 
         // Gravity Mode: radial
@@ -266,7 +266,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setGravity(Vec2(0, 0));
 
         // Gravity Mode: speed of particles
-        setSpeed(-80);
+        setSpeedParticle(-80);
         setSpeedVar(10);
 
         // Gravity Mode: radial
@@ -328,7 +328,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setGravity(Vec2(-200, -200));
 
         // Gravity Mode: speed of particles
-        setSpeed(-15);
+        setSpeedParticle(-15);
         setSpeedVar(5);
 
         // Gravity Mode: radial
@@ -390,7 +390,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setGravity(Vec2(0, 0));
 
         // Gravity Mode: speed of particles
-        setSpeed(-150);
+        setSpeedParticle(-150);
         setSpeedVar(0);
 
         // Gravity Mode: radial
@@ -451,7 +451,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setGravity(Vec2(0, 0));
 
         // Gravity Mode: speed of particles
-        setSpeed(-70);
+        setSpeedParticle(-70);
         setSpeedVar(40);
 
         // Gravity Mode: radial
@@ -517,7 +517,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setRadialAccelVar(0);
 
         // Gravity Mode: speed of particles
-        setSpeed(-25);
+        setSpeedParticle(-25);
         setSpeedVar(10);
 
         // angle
@@ -571,7 +571,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setGravity(Vec2(0, 1));
 
         // Gravity Mode: speed of particles
-        setSpeed(-5);
+        setSpeedParticle(-5);
         setSpeedVar(1);
 
         // Gravity Mode: radial
@@ -640,7 +640,7 @@ void ParticleInit::setStyle(PatticleStyle style)
         setTangentialAccelVar(1);
 
         // Gravity Mode: speed of particles
-        setSpeed(-130);
+        setSpeedParticle(-130);
         setSpeedVar(30);
 
         // angle
