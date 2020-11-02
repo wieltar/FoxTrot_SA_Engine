@@ -1,6 +1,6 @@
 #pragma once
 #include "Events/Codes/KeyCodes.h"
-
+class Command;
 /// @brief 
 /// Interface Inputfacade 
 class IInputFacade

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "InputFacade.h"
 #include <SDL.h>
 
@@ -42,10 +43,10 @@ bool InputFacade::input_mapping()
 void InputFacade::keydown(SDL_Event& event)
 {
     //int SDLInt = (int)(event.key.keysym.scancode);
-    if (state_map[eventToKeyCode(event)] == RELEASED) {
-        action_map[eventToKeyCode(event)] = EXECUTE;
+    if (state_map[eventToKeyCode(event)] == State::RELEASED) {
+        action_map[eventToKeyCode(event)] = Action::EXECUTE;
     }
-    state_map[eventToKeyCode(event)] = PRESSED;
+    state_map[eventToKeyCode(event)] = State::PRESSED;
 }
 
 /// @brief 
@@ -53,24 +54,24 @@ void InputFacade::keydown(SDL_Event& event)
 /// @param event 
 void InputFacade::keyup(SDL_Event& event)
 {
-    state_map[eventToKeyCode(event)] = RELEASED;
+    state_map[eventToKeyCode(event)] = State::RELEASED;
 }
 /// @brief 
 /// Checks if the key is currently pressed down, then the key will be in state_map
 /// @param key 
 /// @return 
-bool InputFacade::is_held(int key)
+State InputFacade::is_held(KeyCode key)
 {
-    return state_map[KeyCode(key)];
+    return state_map[key];
 }
 
 /// @brief 
 /// Checks if a key was pressed, then the key will be in action_map
 /// @param key 
 /// @return 
-bool InputFacade::was_pressed(int key)
+Action InputFacade::was_pressed(KeyCode key)
 {
-    return action_map[KeyCode(key)];
+    return action_map[key];
 }
 
 /// @brief 
@@ -114,9 +115,10 @@ void InputFacade::dispatcher(std::vector<Command*>& command_queue)
 {
     std::map<KeyCode, Command*>::iterator iter;
     for (iter = commands.begin(); iter != commands.end(); iter++) {
-        if (is_held(iter->first) && iter->second->get_input_type() == STATE)
+        // TODO remove the check on iter->second because types are now enforced by enum class?
+        if (is_held(iter->first) == State::PRESSED && iter->second->get_input_type() == InputType::STATE)
             command_queue.push_back(iter->second);
-        else if (was_pressed(iter->first) && iter->second->get_input_type() == ACTION)
+        else if (was_pressed(iter->first) == Action::EXECUTE && iter->second->get_input_type() == InputType::ACTION)
             command_queue.push_back(iter->second);
     }
 }

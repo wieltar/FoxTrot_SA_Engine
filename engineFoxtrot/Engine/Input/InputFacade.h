@@ -1,13 +1,11 @@
 #pragma once
 #include "Commands.h"
-#include "IInputFacade.h"
-
 #include "InputConstants.h"
 #include "Events/Codes/KeyCodes.h"
 
+#include "IInputFacade.h"
+
 typedef union SDL_Event;
-
-
 
 /// @brief Facade for SDL input part
 class InputFacade : public IInputFacade
@@ -26,8 +24,8 @@ private:
 	void keydown(SDL_Event& event);
 	void keyup(SDL_Event& event);
 
-	bool is_held(int key);
-	bool was_pressed(int key);
+	State is_held(KeyCode key);
+	Action was_pressed(KeyCode key);
 
 	map <KeyCode, State> state_map;
 	map <KeyCode, Action> action_map;

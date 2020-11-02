@@ -59,9 +59,9 @@ void sceneTestSetup()
 	engine.insertScene(testScene);
 	engine.insertScene(new Scene(4));
 
-	engine.configureInput(KEY_A, new MoveLeft);
-	engine.configureInput(KEY_D, new MoveRight);
-	engine.configureInput(KEY_SPACE, new Jump);
+	engine.configureInput(KeyCode::KEY_A, new MoveLeft);
+	engine.configureInput(KeyCode::KEY_D, new MoveRight);
+	engine.configureInput(KeyCode::KEY_SPACE, new Jump);
 
 	engine.setCurrentScene(3);
 	engine.startTickThreads();
@@ -79,7 +79,6 @@ int main() {
 		engine.pollInput();
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent60>(appTick);
 		EventSingleton::get_instance().dispatchEvent<AppTickEvent30>(appTick30);
-
 
 		this_thread::sleep_for(chrono::milliseconds(10));
 	}

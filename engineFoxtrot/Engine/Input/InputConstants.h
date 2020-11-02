@@ -2,7 +2,7 @@
 #include "core.h"
 /// @brief 
 /// Type of button input
-enum InputType
+enum class InputType
 {
     ACTION,
     STATE,
@@ -11,7 +11,7 @@ enum InputType
 
 /// @brief 
 /// Type of button action
-enum Action
+enum class Action
 {
     EXECUTE = true,
     STOP = false
@@ -19,7 +19,7 @@ enum Action
 
 /// @brief 
 /// Button state
-enum State
+enum class State
 {
     PRESSED = true,
     RELEASED = false

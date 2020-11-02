@@ -58,7 +58,6 @@ public:
 	bool getChanged() const;
 
 private:
-
 	string name;
 
 	const int spriteID = 0;

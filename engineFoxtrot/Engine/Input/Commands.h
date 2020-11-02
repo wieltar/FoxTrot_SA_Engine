@@ -17,7 +17,7 @@ class MoveLeft : public Command
 {
 public:
 	void execute(InputEngine* inputEngine);
-	InputType get_input_type() { return STATE; }
+	InputType get_input_type() { return InputType::STATE; }
 };
 
 /// @brief 
@@ -25,7 +25,7 @@ class MoveRight : public Command
 {
 public:
 	void execute(InputEngine* inputEngine);
-	InputType get_input_type() { return STATE; }
+	InputType get_input_type() { return	InputType::STATE; }
 };
 
 /// @brief 
@@ -33,7 +33,7 @@ class Jump : public Command
 {
 public:
 	void execute(InputEngine* inputEngine);
-	InputType get_input_type() { return STATE; }
+	InputType get_input_type() { return InputType::STATE; }
 };
 
 
