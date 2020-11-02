@@ -1,6 +1,5 @@
 #pragma once
 #include "JsonFacade.h"
-#include "core.h"
 class API FileParser
 {
 public:

@@ -14,8 +14,6 @@
 #include "./Sound/SoundEngine.h"
 #include "./Input/InputEngine.h"
 #include "./Fps/FrameData.h"
-#include "core.h"
-
 // TODO Weet niet of deze hier moet?!?!??! Is even voor de test
 #include "Events/Codes/KeyCodes.h"
 
@@ -23,17 +21,17 @@
 #define ENGINE_TICK30	 33
 
 /// @brief 
-class API Engine
+class Engine
 {
 public:
-	Engine();
-	~Engine();
+	API Engine();
+	API ~Engine();
 
 //private:
-	void engineTick60();
-	void engineTick30();
-	void startTickThreads();
-	void stopTickThreads();
+	API void engineTick60();
+	API void engineTick30();
+	API void startTickThreads();
+	API void stopTickThreads();
 
 	atomic_bool stopThreadTick60 = false;
 	atomic_bool stopThreadTick30 = false;
@@ -42,14 +40,14 @@ public:
 	thread *engineTick30Thread = nullptr;
 
 	//SceneManager calls
-	void setCurrentScene(const int sceneID);
-	void insertScene(Scene * scene);
+	API void setCurrentScene(const int sceneID);
+	API void insertScene(Scene * scene);
 
 	// Video calls
-	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
+	API void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
 
-	void pollInput();
-	void configureInput(KeyCode key, Command* command);
+	API void pollInput();
+	API void configureInput(KeyCode key, Command* command);
 
 	//TODO make private
 	PhysicsEngine physicsEngine;

@@ -1,17 +1,16 @@
 #pragma once
-#include "core.h"
 #define FRAME_VALUES 100
 #define TIMESTEP 1.f
 
-class API FrameData
+class FrameData
 {
 public:
-	FrameData();
-	~FrameData();
-	double calculateAverageFps();
-	void startTimer();
-	static double gameFps;
-	static double renderFps;
+	API FrameData();
+	API ~FrameData();
+	API double calculateAverageFps();
+	API void startTimer();
+	API static double gameFps;
+	API static double renderFps;
 
 private:
 	list<chrono::duration<double>> frametimes;

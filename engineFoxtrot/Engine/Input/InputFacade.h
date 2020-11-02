@@ -5,7 +5,7 @@
 
 #include "IInputFacade.h"
 
-typedef union SDL_Event;
+union SDL_Event;
 
 /// @brief Facade for SDL input part
 class InputFacade : public IInputFacade

@@ -1,5 +1,4 @@
 #pragma once
-#include "core.h"
 struct FpsMessage
 {
 	FpsMessage(const string& _text, int _r, int _g, int _b)

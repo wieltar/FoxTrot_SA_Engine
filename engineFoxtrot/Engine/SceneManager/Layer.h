@@ -1,7 +1,7 @@
 #pragma once
-#include "./Object.h"
+#include "Object.h"
 
-struct API Layer
+struct Layer
 {
 	bool render = false;
 	vector<Object*> objects;

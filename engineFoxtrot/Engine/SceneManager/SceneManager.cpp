@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "core.h"
 #include "SceneManager.h"
 
 /// @brief Constructor

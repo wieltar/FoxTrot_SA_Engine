@@ -2,8 +2,8 @@
 #include "VideoFacade.h"
 
 #include <SDL.h>
-#include "../../SDL2/include/SDL_image.h"
-#include "../../SDL2/include/SDL_ttf.h"
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #undef main
 

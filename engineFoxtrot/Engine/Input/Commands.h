@@ -3,7 +3,7 @@
 class InputEngine;
 
 /// @brief Virtual class for all commands
-class Command
+class API Command
 {
 public:
 	Command() {};
@@ -13,7 +13,7 @@ public:
 };
 
 /// @brief 
-class MoveLeft : public Command
+class API MoveLeft : public Command
 {
 public:
 	void execute(InputEngine* inputEngine);
@@ -21,7 +21,7 @@ public:
 };
 
 /// @brief 
-class MoveRight : public Command
+class API MoveRight : public Command
 {
 public:
 	void execute(InputEngine* inputEngine);
@@ -29,7 +29,7 @@ public:
 };
 
 /// @brief 
-class Jump : public Command
+class API Jump : public Command
 {
 public:
 	void execute(InputEngine* inputEngine);

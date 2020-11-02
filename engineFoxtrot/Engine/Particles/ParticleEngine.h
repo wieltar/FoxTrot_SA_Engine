@@ -1,7 +1,6 @@
 #pragma once
 #include "ParticleFacade.h"
-#include "core.h"
-class API ParticleEngine
+class ParticleEngine
 {
 public:
 	ParticleEngine();

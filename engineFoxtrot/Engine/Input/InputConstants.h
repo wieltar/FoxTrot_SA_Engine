@@ -1,5 +1,4 @@
 #pragma once
-#include "core.h"
 /// @brief 
 /// Type of button input
 enum class InputType

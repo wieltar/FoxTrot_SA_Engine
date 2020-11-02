@@ -1,24 +1,23 @@
 #pragma once
 #include "InputFacade.h"
-#include "../Events/Action/ActionEvent.h"
-#include "../Events/EventSingleton.h"
-#include "core.h"
+#include "Events/Action/ActionEvent.h"
+#include "Events/EventSingleton.h"
 
 /// @brief 
 /// Input engine for handling input
-class API InputEngine
+class InputEngine
 {
 public:
-	InputEngine();
-	~InputEngine();
+	API InputEngine();
+	API ~InputEngine();
 
-	void moveLeft();
-	void moveRight();
-	void jump();
+	API void moveLeft();
+	API void moveRight();
+	API void jump();
 	
-	bool fill(vector<Command*>& command_queue);
-	void configure(KeyCode key, Command* command);
-	void updateInput();
+	API bool fill(vector<Command*>& command_queue);
+	API void configure(KeyCode key, Command* command);
+	API void updateInput();
 private:
 	IInputFacade *inputFacade = new InputFacade();
 

@@ -1,61 +1,60 @@
 #pragma once
 // TODO find out why removing this breaks everything
 #include "stdafx.h"
-#include "core.h"
 /// @brief 
 /// Object class. Object is linked with a sprite id in SVI. 
-class API Object
+class Object
 {
 public:
-	Object(const int id);
-	Object(const int id, const float xPos, const float yPos, const float height, const float width);
-	~Object();
+	API Object(const int id);
+	API Object(const int id, const float xPos, const float yPos, const float height, const float width);
+	API ~Object();
 
-	void setName(const string val);
-	string getName() const;
+	void API setName(const string val);
+	string API getName() const;
 
-	int getSpriteID() const;
+	int API getSpriteID() const;
 
-	void setPositionX(const float);
-	float getPositionX() const;
+	void API setPositionX(const float);
+	float API getPositionX() const;
 
-	void setPositionY(const float);
-	float getPositionY() const;
+	void API setPositionY(const float);
+	float API getPositionY() const;
 
-	void setRotation(const float);
-	float getRotation() const;
+	void API setRotation(const float);
+	float API getRotation() const;
 
-	void setScale(const float);
-	float getScale() const;
+	void API setScale(const float);
+	float API getScale() const;
 
-	void setDirection(const float);
-	float getDirection() const;
+	void API setDirection(const float);
+	float API getDirection() const;
 
-	void setHeight(const float);
-	float getHeight() const;
+	void API setHeight(const float);
+	float API getHeight() const;
 
-	void setWidth(const float);
-	float getWidth() const;
+	void API setWidth(const float);
+	float API getWidth() const;
 
-	void setStatic(const bool);
-	bool getStatic() const;
+	void API setStatic(const bool);
+	bool API getStatic() const;
 
-	void setRestitution(const float val);
-	float getRestitution() const;
+	void API setRestitution(const float val);
+	float API getRestitution() const;
 
-	void setFriction(const float val);
-	float getFriction() const;
+	void API setFriction(const float val);
+	float API getFriction() const;
 
-	void setDensity(const float val);
-	float getDensity() const;
+	void API setDensity(const float val);
+	float API getDensity() const;
 
-	void setSpeed(const float val);
-	float getSpeed() const;
+	void API setSpeed(const float val);
+	float API getSpeed() const;
 
-	void setJumpHeight(const float val);
-	float getJumpHeight() const;
+	void API setJumpHeight(const float val);
+	float API getJumpHeight() const;
 
-	bool getChanged() const;
+	bool API getChanged() const;
 
 private:
 	string name;
