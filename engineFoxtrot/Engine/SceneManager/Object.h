@@ -58,22 +58,22 @@ public:
 	void API setJumpHeight(const float val);
 	float API getJumpHeight() const;
 
-	virtual void setYAxisVelocity(const float val);
-	float getYAxisVelocity() const;
+	API virtual void setYAxisVelocity(const float val);
+	API float getYAxisVelocity() const;
 
-	void registerSprite(int state, SpriteObject* spriteObject);
-	void changeToState(const int state);
+	API void registerSprite(int state, SpriteObject* spriteObject);
+	API void changeToState(const int state);
 
-	void setScalable(const bool val);
-	bool getScalable() const;
+	API void setScalable(const bool val);
+	API bool getScalable() const;
 
-	void setRotatable(const bool val);
-	bool getRotatable() const;
+	API void setRotatable(const bool val);
+	API bool getRotatable() const;
 
-	bool getChanged() const;
-	void setChanged(const bool c);
+	API bool getChanged() const;
+	API void setChanged(const bool c);
 
-	bool getIsParticle();
+	API bool getIsParticle();
 	
 protected:
 

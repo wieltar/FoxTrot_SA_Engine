@@ -44,13 +44,12 @@ public:
 	API void insertScene(Scene * scene);
 
 	// Video calls
-	API void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
+	API void loadSprite(const SpriteObject& spriteObject);
 
 	API void pollInput();
 	API void configureInput(KeyCode key, Command* command, bool runOnce = false);
-	void loadSprite(const SpriteObject& spriteObject);
 
-	void pollEvents();
+	API void pollEvents();
 
 	/// @brief
 	/// Generic function for creating command externally
@@ -72,6 +71,6 @@ private:
 
 	FrameData* frameData = nullptr;
 
-	void loadSpriteArray(vector<SpriteObject> spriteVector);
+	
 };
 #endif

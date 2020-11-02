@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Glitch.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="SpriteState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Glitch.cpp" />

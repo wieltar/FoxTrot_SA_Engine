@@ -13,7 +13,7 @@ public:
 	string ToString() const override
 	{
 		stringstream stream;
-		stream << "MouseButtonReleased Event: " << button;
+		stream << "MouseButtonReleased Event: " << (int)button;
 		auto string = stream.str();
 		return string;
 	}

@@ -14,7 +14,7 @@ public:
 	string ToString() const override
 	{
 		stringstream stream;
-		stream << "MouseButtonPressedEvent: " << button;
+		stream << "MouseButtonPressedEvent: " << (int)button;
 		auto string = stream.str();
 		return string;
 	}

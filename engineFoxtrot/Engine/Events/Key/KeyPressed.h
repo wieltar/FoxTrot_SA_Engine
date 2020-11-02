@@ -19,7 +19,7 @@ public:
 	string ToString() const override
 	{
 		stringstream stream;
-		stream << "KeyPressedEvent: " << keycode << " (" << repeatCount << " repeats)";
+		stream << "KeyPressedEvent: " << (int)keycode << " (" << repeatCount << " repeats)";
 		return stream.str();
 	}
 

@@ -27,7 +27,7 @@ public:
 
 	void clearScreen();
 	void drawScreen();
-	void loadImage(const int spriteID, const char* filename);
+	void loadImage(const SpriteObject& spriteObject);
 	void renderCopy(Object& object);
 
 	void drawParticle(ParticleData data, int spriteID);

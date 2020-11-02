@@ -1,6 +1,7 @@
 #pragma once
 #include <ostream>
 #include "EventType.h"
+using namespace std;
 
 /// @brief
 	/// Abstract event class. Multiple events have this class as a super class

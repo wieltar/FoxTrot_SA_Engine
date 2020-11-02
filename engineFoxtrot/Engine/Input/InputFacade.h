@@ -37,7 +37,7 @@ private:
 
 	void pollEvents() override;
 
-	map <KeyCode, State> state_map;
+	map <KeyCode, ButtonState> state_map;
 	map <KeyCode, Action> action_map;
 
 	map <KeyCode, Command*> commands;
