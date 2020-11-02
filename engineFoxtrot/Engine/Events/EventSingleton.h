@@ -53,7 +53,7 @@ public:
     }
 
 private:
-    map<string, vector<function<void(Event&)>>> handlers = map<string, vector<function<void(Event&)>>>();
+    map<string, vector<EventCallbackFn>> handlers = map<string, vector<EventCallbackFn>>();
     static EventSingleton instance;
 
     EventSingleton() {}
