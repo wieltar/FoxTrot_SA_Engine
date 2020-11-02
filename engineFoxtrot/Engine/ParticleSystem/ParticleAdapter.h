@@ -5,7 +5,7 @@
 class ParticleAdapter : public Object, public ParticleInit
 {
 public:
-	ParticleAdapter(const int id) : ParticleInit(id), Object(id, true) {};
+	ParticleAdapter(const int id) : Object(id, true) {};
 	~ParticleAdapter() {};
 
 private:

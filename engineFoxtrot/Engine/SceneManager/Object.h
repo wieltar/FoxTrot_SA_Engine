@@ -69,7 +69,6 @@ protected:
 private:
 
 	string name;
-
 	const int spriteID = 0;
 	float positionX = 0;
 	float positionY = 0;

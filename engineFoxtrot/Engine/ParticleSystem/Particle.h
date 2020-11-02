@@ -570,16 +570,8 @@ public:
 
     void update();
 
-    Particle(const int id);
+    Particle();
     virtual ~Particle();
-
-    void setColorParticleData(int start);
-
-    void setLifeParticleData(int start);
-
-    void setSizeParticleData(int start);
-
-    void setRotationParticleData(int start);
 
     /** initializes a ParticleSystem*/
     virtual bool initWithTotalParticles(int numberOfParticles);

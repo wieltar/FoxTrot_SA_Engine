@@ -60,7 +60,7 @@ void sceneTestSetup()
 	staticGround->setStatic(true);
 	testScene->addNewObjectToLayer(3, staticGround);
 
-	auto particle1 = new ParticleInit(11);        // create a new particle system pointer
+	ParticleAdapter * particle1 = new ParticleAdapter(11);        // create a new particle system pointer
 	testScene->addNewObjectToLayer(4, (Object*)particle1);
 
 	particle1->setPosition(800, 384);              // set the position
@@ -70,7 +70,7 @@ void sceneTestSetup()
 	particle1->setEndSpin(90);
 	particle1->setStartSpinVar(90);
 
-	auto particle2 = new ParticleInit(11);        // create a new particle system pointer
+	ParticleAdapter * particle2 = new ParticleAdapter(11);        // create a new particle system pointer
 	testScene->addNewObjectToLayer(2, (Object*)particle2);
 
 	particle2->setPosition(100, 384);              // set the position

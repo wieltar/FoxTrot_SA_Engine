@@ -5,7 +5,7 @@
 class ParticleInit : public Particle
 {
 public:
-    ParticleInit(const int id) : Particle(id){};
+    ParticleInit(){};
     virtual ~ParticleInit() {}
 
     enum PatticleStyle

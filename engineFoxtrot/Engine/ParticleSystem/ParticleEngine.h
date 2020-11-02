@@ -2,6 +2,7 @@
 #include "SceneManager/Scene.h"
 #include "Events/Event.h"
 #include "Events/Action/ActionEvent.h"
+#include "ParticleAdapter.h"
 
 /// @brief Class to update Particle
 #if(EXPORT)
