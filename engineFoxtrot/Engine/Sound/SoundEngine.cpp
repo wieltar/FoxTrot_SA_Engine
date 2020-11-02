@@ -1,8 +1,14 @@
 #include "stdafx.h"
 #include "SoundEngine.h"
+#include "Events\EventSingleton.h"
+
+#include "Events/Sound/OnMusicStartEvent.h"
+#include "Events\Sound\SoundAttachEvent.h"
+#include "Events\Sound\OnMusicStopEvent.h"
 
 SoundEngine::SoundEngine()
 {
+	EventListners();
 }
 
 SoundEngine::~SoundEngine()
@@ -173,4 +179,17 @@ bool SoundEngine::IdentifierExists(const string& identifier)
 bool SoundEngine::IdentifierIsLoaded(const string& identifier)
 {
 	return soundFacade->IdentifierIsLoaded(identifier);
+}
+
+void SoundEngine::EventListners() {
+	EventSingleton::get_instance().setEventCallback<OnMusicStartEvent>(BIND_EVENT_FN(SoundEngine::Event_StartEvent));
+	EventSingleton::get_instance().setEventCallback<SoundAttachEvent>(BIND_EVENT_FN(SoundEngine::Event_AttachEvent));
+}
+void SoundEngine::Event_StartEvent(Event& event) {
+	auto startEvent = static_cast<OnMusicStartEvent&>(event);
+	this->PlayMusic(startEvent.Getidentifier());
+}
+void SoundEngine::Event_AttachEvent(Event& event) {
+	auto attachEvent = static_cast<SoundAttachEvent&>(event);
+	this->AddFile(attachEvent.Getidentifier(), attachEvent.GetFileName());
 }

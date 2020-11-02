@@ -54,10 +54,9 @@ public:
 	void pollInput();
 	void configureInput(KeyCode key, Command* command);
 
-	//TODO make private
+private:
 	PhysicsEngine physicsEngine;
 	VideoEngine videoEngine;
-private:
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
