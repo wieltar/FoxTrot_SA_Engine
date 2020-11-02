@@ -1,5 +1,4 @@
 #pragma once
-
 #include "SceneManager/Scene.h"
 #include "SoundFacade.h"
 

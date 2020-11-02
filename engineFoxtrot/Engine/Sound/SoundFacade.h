@@ -1,6 +1,6 @@
 #pragma once
 #include "ISoundFacade.h"
-#include "../SceneManager/Object.h"
+#include "SceneManager/Object.h"
 
 #define EXAMPLE_SOUND	"../Assets/Sound/b423b42.wav"
 #define EXAMPLE_SPRITE  "../Assets/Sprites/simple.png"
