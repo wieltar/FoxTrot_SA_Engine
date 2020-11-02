@@ -96,11 +96,13 @@ public:
 		{
 		case KeyCode::KEY_A:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
-			this->changeToState(SpriteState::RUN_LEFT);
+			if(canJump)
+				this->changeToState(SpriteState::RUN_LEFT);
 			break;
 		case KeyCode::KEY_D:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
-			this->changeToState(SpriteState::RUN_RIGHT);
+			if (canJump)
+				this->changeToState(SpriteState::RUN_RIGHT);
 			break;
 		case KeyCode::KEY_SPACE:
 			if (canJump) {
