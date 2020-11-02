@@ -23,9 +23,9 @@ inline void normalize_point(float x, float y, Pointf* out)
     out->y = y * n;
 }
 
-Particle::Particle(const int id) : Object(id)
+Particle::Particle(const int id) : Object(id,true)
 {
-    this->isParticle = true;
+
 }
 
 // implementation Particle

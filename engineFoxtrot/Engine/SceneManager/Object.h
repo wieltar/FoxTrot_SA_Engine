@@ -59,7 +59,13 @@ public:
 	float getJumpHeight() const;
 
 	bool getChanged() const;
-	bool isParticle = false;
+	
+	bool getIsParticle();
+	
+protected:
+
+	Object(const int id, const bool particle) : spriteID(id),isParticle(particle) {  }
+	
 private:
 
 	string name;
@@ -79,5 +85,5 @@ private:
 	float restitution = 0;
 	bool staticObject = false;
 	bool changed = false;
-	
+	const bool isParticle = false;
 };
