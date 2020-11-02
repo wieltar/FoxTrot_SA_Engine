@@ -123,6 +123,8 @@ void InputFacade::dispatcher(std::vector<Command*>& command_queue)
     }
 }
 
+/// @brief
+/// Poll the input events and dispatch a KeyPressedEvent
 void InputFacade::pollEvents() {
     SDL_Event sdl_event;
     if (&sdl_event)

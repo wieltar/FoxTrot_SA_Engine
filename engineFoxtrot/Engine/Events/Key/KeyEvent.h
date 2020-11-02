@@ -19,6 +19,8 @@ public:
 	/// Returns the name of the event
 	virtual std::string ToString() const { return GetName(); }
 
+	/// @brief
+	/// Returns type of the event
 	EventType GetEventType() const override { return EventType::KeyPressed; }
 protected:
 	KeyEvent(const KeyCode _keyCode) : keycode{ _keyCode } {};
