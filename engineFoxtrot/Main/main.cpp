@@ -113,7 +113,7 @@ void sceneTestSetup()
 	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, "../Assets/Sprites/Character/adventure_slide.png");
 	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, "../Assets/Sprites/Character/adventure_fall.png");
 	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, "../Assets/Sprites/Character/adventure_jump.png");
-	SpriteObject* so7 = new SpriteObject(102, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_left.png");
+	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_left.png");
 
 
 	engine.loadSprite(so0);
@@ -124,6 +124,7 @@ void sceneTestSetup()
 	engine.loadSprite(so4); 
 	engine.loadSprite(so5);
 	engine.loadSprite(so6);
+	engine.loadSprite(so7);
 
 	Scene* testScene = new Scene(3);
 
