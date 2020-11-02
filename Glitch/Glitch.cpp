@@ -218,6 +218,28 @@ void sceneTestSetup()
 	staticGround2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround2);
 
+	Object* staticGround3 = new Object(119);
+	staticGround3->setScalable(true);
+	staticGround3->setWidth(30); // width
+	staticGround3->setHeight(80);// height
+	staticGround3->setPositionX(360); // x 20 left down
+	staticGround3->setPositionY(290);// y 300 left down
+	staticGround3->setStatic(true);
+	staticGround3->registerSprite(SpriteState::DEFAULT, so0);
+	staticGround3->changeToState(SpriteState::DEFAULT);
+	testScene->addNewObjectToLayer(1, staticGround3);
+
+	Object* staticGround4 = new Object(120);
+	staticGround4->setScalable(true);
+	staticGround4->setWidth(30); // width
+	staticGround4->setHeight(140);// height
+	staticGround4->setPositionX(480); // x 20 left down
+	staticGround4->setPositionY(290);// y 300 left down
+	staticGround4->setStatic(true);
+	staticGround4->registerSprite(SpriteState::DEFAULT, so0);
+	staticGround4->changeToState(SpriteState::DEFAULT);
+	testScene->addNewObjectToLayer(1, staticGround4);
+
 	engine.configureInput(KeyCode::KEY_A, engine.makeCommand<MoveLeft>());
 	engine.configureInput(KeyCode::KEY_D, engine.makeCommand<MoveRight>());
 	engine.configureInput(KeyCode::KEY_SPACE, engine.makeCommand<Jump>());
