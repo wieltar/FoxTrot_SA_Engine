@@ -28,7 +28,8 @@ bool InputFacade::input_mapping()
             if (event.key.keysym.sym == SDLK_ESCAPE) return true;
             if (find(handleOnce.begin(), handleOnce.end(), eventToKeyCode(event)) != handleOnce.end())
                 commands[eventToKeyCode(event)]->execute();
-            keydown(event);
+            else
+                keydown(event);
         }
         else if (event.type == SDL_KEYUP) {
             keyup(event);
