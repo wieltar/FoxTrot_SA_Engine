@@ -1,7 +1,7 @@
 #pragma once
 #include "IVideoFacade.h"
 
-#include "ParticleSystem/ParticleInit.h"
+#include "ParticleSystem/ParticleLib/ParticleInit.h"
 
 #define FONT_PATH "../Assets/Fonts/Sans.ttf"
 #define FONT_POINT_SIZE 24

@@ -164,10 +164,10 @@
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Input\InputFacade.cpp" />
     <ClCompile Include="Engine\Input\InputEngine.cpp" />
-    <ClCompile Include="Engine\ParticleSystem\Particle.cpp" />
+    <ClCompile Include="Engine\ParticleSystem\ParticleLib\Particle.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleAdapter.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleEngine.cpp" />
-    <ClCompile Include="Engine\ParticleSystem\ParticleInit.cpp" />
+    <ClCompile Include="Engine\ParticleSystem\ParticleLib\ParticleInit.cpp" />
     <ClCompile Include="Engine\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -225,10 +225,10 @@
     <ClInclude Include="Engine\Input\InputConstants.h" />
     <ClInclude Include="Engine\Input\InputFacade.h" />
     <ClInclude Include="Engine\Input\InputEngine.h" />
-    <ClInclude Include="Engine\ParticleSystem\Particle.h" />
+    <ClInclude Include="Engine\ParticleSystem\ParticleLib\Particle.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleAdapter.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleEngine.h" />
-    <ClInclude Include="Engine\ParticleSystem\ParticleInit.h" />
+    <ClInclude Include="Engine\ParticleSystem\ParticleLib\ParticleInit.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
     <ClInclude Include="Engine\SceneManager\Layer.h" />
     <ClInclude Include="Engine\stdafx.h" />

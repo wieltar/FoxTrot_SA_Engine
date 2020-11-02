@@ -1,5 +1,5 @@
 #pragma once
-#include "ParticleInit.h"
+#include "ParticleSystem/ParticleLib/ParticleInit.h"
 #include "SceneManager/Object.h"
 
 class ParticleAdapter : public Object, public ParticleInit

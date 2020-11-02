@@ -11,8 +11,6 @@
     <ClCompile Include="Engine\Events\EventSingleton.cpp" />
     <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Engine\SceneManager\Object.cpp" />
-    <ClCompile Include="Engine\Particles\ParticleEngine.cpp" />
-    <ClCompile Include="Engine\Particles\ParticleFacade.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsBody.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsEngine.cpp" />
     <ClCompile Include="Engine\Physics\PhysicsFacade.cpp" />
@@ -25,11 +23,11 @@
     <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
     <ClCompile Include="Main\Level.cpp" />
-    <ClCompile Include="Engine\ParticleSystem\Particle.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleAdapter.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleEngine.cpp" />
-    <ClCompile Include="Engine\ParticleSystem\ParticleInit.cpp" />
     <ClCompile Include="Engine\Structs\fpsStructs.cpp" />
+    <ClCompile Include="Engine\ParticleSystem\ParticleLib\ParticleInit.cpp" />
+    <ClCompile Include="Engine\ParticleSystem\ParticleLib\Particle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -119,13 +117,10 @@
     <ClInclude Include="Engine\Input\IInputFacade.h" />
     <ClInclude Include="Engine\Input\InputFacade.h" />
     <ClInclude Include="Engine\Input\InputEngine.h" />
-    <ClInclude Include="Engine\Particles\IParticleFacade.h" />
     <ClInclude Include="Engine\Physics\IPhysicsFacade.h" />
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />
-    <ClInclude Include="Engine\Particles\ParticleEngine.h" />
-    <ClInclude Include="Engine\Particles\ParticleFacade.h" />
     <ClInclude Include="Engine\Physics\PhysicsBody.h" />
     <ClInclude Include="Engine\Physics\PhysicsEngine.h" />
     <ClInclude Include="Engine\Physics\PhysicsFacade.h" />
@@ -180,11 +175,11 @@
     <ClInclude Include="Engine\Events\Sound\BaseSoundEvent.h" />
     <ClInclude Include="Engine\Events\Sound\OnMusicStopEvent.h" />
     <ClInclude Include="Engine\Events\Sound\SoundAttachEvent.h" />
-    <ClInclude Include="Engine\ParticleSystem\Particle.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleAdapter.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleEngine.h" />
-    <ClInclude Include="Engine\ParticleSystem\ParticleInit.h" />
     <ClInclude Include="Engine\Structs\fpsStructs.h" />
+    <ClInclude Include="Engine\ParticleSystem\ParticleLib\ParticleInit.h" />
+    <ClInclude Include="Engine\ParticleSystem\ParticleLib\Particle.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Documentation\PointerUsage.md" />

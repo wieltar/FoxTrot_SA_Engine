@@ -2,7 +2,7 @@
 #include "SceneManager/Object.h"
 #include "Structs/fpsStructs.h"
 
-#include "ParticleSystem/ParticleInit.h"
+#include "ParticleSystem/ParticleLib/ParticleInit.h"
 
 /// @brief Interface class for Video facade
 #if(EXPORT)
