@@ -43,7 +43,8 @@ public:
 	}
 
 	/// @brief 
-	/// Handles when an collision event begins, when the direction of the collision happend on the bottom side of the player object, set can jump true
+	/// Handles when an collision event begins, when the direction of the collision happend on the bottom side of the player object, 
+	/// set can jump true
 	void onCollisionBeginEvent(Event& event) {
 		auto collisionEvent = static_cast<OnCollisionBeginEvent&>(event);
 		if (collisionEvent.GetObjectOneId() != this->getObjectId() && collisionEvent.GetObjectTwoId() != this->getObjectId()) return;
@@ -124,15 +125,15 @@ void sceneTestSetup()
 	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, "../Assets/Sprites/Character/adventure_jump.png");
 	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, "../Assets/Sprites/Character/adventure_run_left.png");
 
-	engine.loadSprite(so0);
+	engine.loadSprite(*so0);
 
-	engine.loadSprite(so1);
-	engine.loadSprite(so2);
-	engine.loadSprite(so3);
-	engine.loadSprite(so4); 
-	engine.loadSprite(so5);
-	engine.loadSprite(so6);
-	engine.loadSprite(so7);
+	engine.loadSprite(*so1);
+	engine.loadSprite(*so2);
+	engine.loadSprite(*so3);
+	engine.loadSprite(*so4); 
+	engine.loadSprite(*so5);
+	engine.loadSprite(*so6);
+	engine.loadSprite(*so7);
 
 	Scene* testScene = new Scene(3);
 

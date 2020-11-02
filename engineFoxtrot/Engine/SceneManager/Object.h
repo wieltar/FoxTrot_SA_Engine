@@ -14,7 +14,7 @@ public:
 	Object(const int objectId);
 	~Object();
 
-	SpriteObject* GetCurrentSprite();
+	SpriteObject& GetCurrentSprite() const;
 	int getObjectId() const;
 
 	void setName(const std::string);

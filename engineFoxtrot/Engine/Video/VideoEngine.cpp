@@ -44,7 +44,7 @@ void VideoEngine::drawScreen()
 /// @brief Loads the PNG files AKA sprites
 /// @param spriteID 
 /// @param filename
-void VideoEngine::loadImage(SpriteObject * spriteObject)
+void VideoEngine::loadImage(const SpriteObject& spriteObject)
 {
 	try
 	{

@@ -61,7 +61,7 @@ void Object::setChanged(const bool c) { this->changed = c; }
 bool Object::getScalable() const { return this->scalable; }
 void Object::setScalable(const bool val) { this->scalable = val; }
 
-SpriteObject* Object::GetCurrentSprite() { return currentSprite; }
+SpriteObject& Object::GetCurrentSprite() const { return *currentSprite; }
 
 /// @brief
 /// register a new state or overwrite a existing state
