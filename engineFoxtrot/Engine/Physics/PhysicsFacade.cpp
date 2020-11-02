@@ -97,6 +97,7 @@ void PhysicsFacade::addDynamicObject(PhysicsBody* object)
 	fixtureDef.density = object->getDensity();
 	fixtureDef.friction = object->getFriction();
 	fixtureDef.restitution = object->getRestitution();
+	if (!object->getRotatable()) body->SetFixedRotation(true);
 
 	body->CreateFixture(&fixtureDef);
 
@@ -140,7 +141,7 @@ void PhysicsFacade::update() {
 		object->setPositionX(body->GetWorldCenter().x - object->getWidth() / 2);
 		object->setPositionY(body->GetWorldCenter().y + object->getHeight() / 2);
 
-		if(object->getRotatable()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
+		if (object->getRotatable()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
 		object->setYAxisVelocity(body->GetLinearVelocity().y);
 	}	
 }

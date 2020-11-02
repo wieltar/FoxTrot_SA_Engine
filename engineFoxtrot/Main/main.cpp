@@ -34,7 +34,7 @@ public:
 		this->setRestitution(0);
 		this->setStatic(false);
 
-		this->setRotatable(true);
+		this->setRotatable(false);
 
 		EventSingleton::get_instance().setEventCallback<OnCollisionBeginEvent>(BIND_EVENT_FN(Player::onCollisionBeginEvent));
 		EventSingleton::get_instance().setEventCallback<OnCollisionEndEvent>(BIND_EVENT_FN(Player::onCollisionEndEvent));
