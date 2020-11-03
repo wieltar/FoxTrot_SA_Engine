@@ -7,8 +7,8 @@ Player::Player() : Object(2) {
 	this->setPositionX(100);
 	this->setPositionY(80);
 
-	this->setSpeed(50);
-	this->setJumpHeight(400);
+	this->setSpeed(75);
+	this->setJumpHeight(75);
 	this->setDensity(100);
 	this->setFriction(0);
 	this->setRestitution(0);
@@ -73,14 +73,16 @@ void Player::onKeyPressed(Event& event) {
 	switch (keyPressedEvent.GetKeyCode())
 	{
 	case KeyCode::KEY_A:
-		EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
-		if (canJump)
-			this->changeToState(SpriteState::RUN_LEFT);
+			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
+			if (canJump) {
+				this->changeToState(SpriteState::RUN_LEFT);
+			}
 		break;
 	case KeyCode::KEY_D:
-		EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
-		if (canJump)
-			this->changeToState(SpriteState::RUN_RIGHT);
+			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
+			if (canJump) {
+				this->changeToState(SpriteState::RUN_RIGHT);
+			}
 		break;
 	case KeyCode::KEY_SPACE:
 		if (canJump) {
