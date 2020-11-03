@@ -86,6 +86,8 @@ void Object::changeToState(const int state) {
 
 float Object::getYAxisVelocity() const { return this->yAxisVelocity; }
 void Object::setYAxisVelocity(const float val) { this->yAxisVelocity = val; }
+float Object::getXAxisVelocity() const { return this->xAxisVelocity; }
+void Object::setXAxisVelocity(const float val) { this->xAxisVelocity = val; }
 
 bool Object::getRotatable() const { return this->rotatable; }
 void Object::setRotatable(const bool val) { this->rotatable = val; }

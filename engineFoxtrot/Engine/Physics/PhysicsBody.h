@@ -41,6 +41,9 @@ public:
 	void setYAxisVelocity(const float val);
 	float getYAxisVelocity() const;
 
+	void setXAxisVelocity(const float val);
+	float getXAxisVelocity() const;
+
 	void setRotatable(const bool val);
 	bool getRotatable() const;
 protected:
@@ -55,7 +58,8 @@ protected:
 	float density = 0;
 	float rotation = 0;
 	float jumpHeight = 0;
-	Object* object = nullptr; 
+	Object* object = nullptr;
 	float yAxisVelocity = 0;
+	float xAxisVelocity = 0;
 	bool rotatable = false;
 };

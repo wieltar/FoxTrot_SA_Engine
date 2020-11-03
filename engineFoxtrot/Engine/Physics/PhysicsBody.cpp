@@ -43,5 +43,8 @@ float PhysicsBody::getJumpHeight() const { return this->jumpHeight; }
 void PhysicsBody::setYAxisVelocity(const float val) { this->yAxisVelocity = val; this->object->setYAxisVelocity(val); }
 float PhysicsBody::getYAxisVelocity() const { return this->yAxisVelocity; }
 
+void PhysicsBody::setXAxisVelocity(const float val) { this->xAxisVelocity = val; this->object->setXAxisVelocity(val); }
+float PhysicsBody::getXAxisVelocity() const { return this->xAxisVelocity; }
+
 bool PhysicsBody::getRotatable() const { return this->rotatable; }
 void PhysicsBody::setRotatable(const bool val) { this->rotatable = val; }

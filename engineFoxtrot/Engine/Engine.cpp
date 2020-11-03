@@ -109,7 +109,6 @@ void Engine::stopTickThreads()
 /// @brief 
 /// Load a animated sprite (PNG) into the AnimatedTexture map
 /// @param spriteObject 
-/// @param filename
 void Engine::loadSprite(const SpriteObject& spriteObject) {
 	bool exists = std::filesystem::exists(spriteObject.getFileName());
 	if (!exists)

@@ -42,12 +42,6 @@
     <ClCompile Include="Engine\SceneManager\SceneManager.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Particles\ParticleEngine.cpp">
-      <Filter>Header Files\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Particles\ParticleFacade.cpp">
-      <Filter>Header Files\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Physics\PhysicsFacade.cpp">
       <Filter>Header Files\Physics</Filter>
     </ClCompile>
@@ -148,8 +142,6 @@
     <ClInclude Include="Engine\stdafx.h" />
     <ClInclude Include="Engine\FileParser\JsonFacade.h" />
     <ClInclude Include="Engine\SceneManager\Object.h" />
-    <ClInclude Include="Engine\Particles\ParticleEngine.h" />
-    <ClInclude Include="Engine\Particles\ParticleFacade.h" />
     <ClInclude Include="Engine\Physics\PhysicsBody.h" />
     <ClInclude Include="Engine\Physics\PhysicsEngine.h" />
     <ClInclude Include="Engine\Physics\PhysicsFacade.h" />

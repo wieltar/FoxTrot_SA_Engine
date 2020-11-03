@@ -144,6 +144,7 @@ void PhysicsFacade::update() {
 
 		if (object->getRotatable()) object->setRotation(body->GetAngle() * (TOTAL_DEGREES / PI));
 		object->setYAxisVelocity(body->GetLinearVelocity().y);
+		object->setXAxisVelocity(body->GetLinearVelocity().x);
 	}	
 }
 
