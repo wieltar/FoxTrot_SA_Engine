@@ -128,7 +128,11 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)engineFoxtrot\*.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d /c "$(SolutionDir)engineFoxtrot\*.dll" "$(OutDir)"
+
+xcopy /y /d /c "$(SolutionDir)libraries\*.dll" "$(OutDir)"
+
+xcopy /e /h /c /i /y "$(SolutionDir)Glitch\Assets" "$(OutDir)Assets"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
