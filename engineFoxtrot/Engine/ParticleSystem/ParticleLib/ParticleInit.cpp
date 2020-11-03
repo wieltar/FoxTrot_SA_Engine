@@ -8,13 +8,13 @@ void ParticleInit::setStyle(ParticleStyle style)
         return;
     }
     style_ = style;
-    if (style == NONE)
+    if (style == ParticleStyle::NONE)
     {
         stopSystem();
     }
     switch (style)
     {
-    case ParticleInit::FIRE:
+    case ParticleInit::ParticleStyle::FIRE:
     {
         initWithTotalParticles(250);
 
@@ -72,7 +72,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 40.0f, 20.0f };
         break;
     }
-    case ParticleInit::FIRE_WORK:
+    case ParticleInit::ParticleStyle::FIRE_WORK:
     {
         initWithTotalParticles(1500);
 
@@ -130,7 +130,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleInit::SUN:
+    case ParticleInit::ParticleStyle::SUN:
     {
         initWithTotalParticles(350);
 
@@ -191,7 +191,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleInit::GALAXY:
+    case ParticleInit::ParticleStyle::GALAXY:
     {
         initWithTotalParticles(200);
         // duration
@@ -252,7 +252,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleInit::FLOWER:
+    case ParticleInit::ParticleStyle::FLOWER:
     {
         initWithTotalParticles(250);
 
@@ -314,7 +314,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleInit::METEOR:
+    case ParticleInit::ParticleStyle::METEOR:
     {
         initWithTotalParticles(150);
 
@@ -376,7 +376,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleInit::SPIRAL:
+    case ParticleInit::ParticleStyle::SPIRAL:
     {
         initWithTotalParticles(500);
 
@@ -438,7 +438,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleInit::EXPLOSION:
+    case ParticleInit::ParticleStyle::EXPLOSION:
     {
         initWithTotalParticles(700);
 
@@ -499,7 +499,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 0, 0 };
         break;
     }
-    case ParticleInit::SMOKE:
+    case ParticleInit::ParticleStyle::SMOKE:
     {
         initWithTotalParticles(200);
 
@@ -557,7 +557,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 20.0f, 0.0f };
         break;
     }
-    case ParticleInit::SNOW:
+    case ParticleInit::ParticleStyle::SNOW:
     {
         initWithTotalParticles(700);
 
@@ -619,7 +619,7 @@ void ParticleInit::setStyle(ParticleStyle style)
         _posVar = { 1.0f * x_, 0.0f };
         break;
     }
-    case ParticleInit::RAIN:
+    case ParticleInit::ParticleStyle::RAIN:
     {
         initWithTotalParticles(1000);
 

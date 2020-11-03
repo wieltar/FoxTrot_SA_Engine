@@ -4,7 +4,7 @@
 /// @brief 
 InputEngine::InputEngine()
 {
-
+	EventSingleton::get_instance().setEventCallback<KeyPressedEvent>(BIND_EVENT_FN(InputEngine::onKeyPressed));
 }
 
 /// @brief 
@@ -12,64 +12,20 @@ InputEngine::~InputEngine()
 {
 }
 
-/// @brief 
-/// Moveleft function called when a according key is pressed
-void InputEngine::moveLeft()
-{
-	// TODO Get object Id where player
-	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, 2));
-}
+void InputEngine::onKeyPressed(Event& event) {
+	auto keyPressedEvent = static_cast<KeyPressedEvent&>(event);
 
-/// @brief 
-/// Moveright function called when a according key is pressed
-void InputEngine::moveRight()
-{
-	// TODO Get object Id where player
-	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, 2));
-}
-
-/// @brief 
-/// Jump function called when a according key is pressed
-void InputEngine::jump()
-{
-	// TODO Get object Id where player
-	EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, 2));
-}
-
-void InputEngine::toggleFps()
-{
-	EventSingleton::get_instance().dispatchEvent<FpsToggleEvent>((Event&)FpsToggleEvent());
-}
-
-/// @brief 
-/// Executes the events from polling
-void InputEngine::updateInput()
-{
-	this->fill(commandQueue);
-
-	//while (!commandQueue.empty()) {
-	//	commandQueue.back()->execute(this);
-	//	commandQueue.pop_back();
-	//}
+	switch (keyPressedEvent.GetKeyCode())
+	{
+	case KeyCode::KEY_F12:
+		EventSingleton::get_instance().dispatchEvent<FpsToggleEvent>((Event&)FpsToggleEvent());
+		break;
+	default:
+		break;
+	}
 }
 
 void InputEngine::pollEvents() {
 	inputFacade->pollEvents();
-}
-
-/// @brief 
-/// @param command_queue 
-/// @return 
-bool InputEngine::fill(vector<Command*>& command_queue)
-{
-	return inputFacade->fill(command_queue);
-}
-
-/// @brief 
-/// @param key 
-/// @param command 
-void InputEngine::configure(KeyCode key, Command* command, bool runOnce)
-{
-	inputFacade->configure(key, command, runOnce);
 }
 

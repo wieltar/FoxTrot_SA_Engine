@@ -46,20 +46,8 @@ public:
 	// Video calls
 	API void loadSprite(const SpriteObject& spriteObject);
 
-	API void pollInput();
-	API void configureInput(KeyCode key, Command* command, bool runOnce = false);
-
+	// Input calls
 	API void pollEvents();
-
-	/// @brief
-	/// Generic function for creating command externally
-	template <class T>
-	T* makeCommand() {
-		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
-		return inputEngine.makeCommand<T>();
-	}
-
-	//TODO make private
 private:
 	PhysicsEngine physicsEngine;
 	ParticleEngine particleEngine;
@@ -70,7 +58,5 @@ private:
 	VideoEngine videoEngine;
 
 	FrameData* frameData = nullptr;
-
-	
 };
 #endif

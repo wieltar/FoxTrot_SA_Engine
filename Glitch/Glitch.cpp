@@ -1,8 +1,9 @@
 #pragma once
 #include "stdafx.h"
 #include "Glitch.h"
-#include "Level.h"
-#include "SpriteState.h"
+#include "./Game/Level.h"
+#include "./Game/SpriteState.h"
+#include "./Game/Player/Player.h"
 
 // TODO engine.h & engine.cpp
 
@@ -13,105 +14,6 @@
 // https://computingonplains.wordpress.com/doxygen-and-visual-studio/
 
 Engine engine;
-
-class Player : public Object {
-private:
-	bool canJump = false;
-public:
-	Player() : Object(2) {
-		this->setName("person");
-		this->setHeight(80);
-		this->setWidth(80);
-		this->setPositionX(100);
-		this->setPositionY(80);
-
-		this->setSpeed(50);
-		this->setJumpHeight(400);
-		this->setDensity(100);
-		this->setFriction(0);
-		this->setRestitution(0);
-		this->setStatic(false);
-		this->setRotatable(false);
-
-		EventSingleton::get_instance().setEventCallback<OnCollisionBeginEvent>(BIND_EVENT_FN(Player::onCollisionBeginEvent));
-		EventSingleton::get_instance().setEventCallback<OnCollisionEndEvent>(BIND_EVENT_FN(Player::onCollisionEndEvent));
-		EventSingleton::get_instance().setEventCallback<KeyPressedEvent>(BIND_EVENT_FN(Player::onKeyPressed));
-	}
-
-	/// @brief 
-	/// Handles when an collision event begins, when the direction of the collision happend on the bottom side of the player object, 
-	/// set can jump true
-	void onCollisionBeginEvent(Event& event) {
-		auto collisionEvent = static_cast<OnCollisionBeginEvent&>(event);
-		if (collisionEvent.GetObjectOneId() != this->getObjectId() && collisionEvent.GetObjectTwoId() != this->getObjectId()) return;
-
-		auto map = collisionEvent.getDirectionMap();
-		auto collidedDirection = map[this->getObjectId()];
-
-		if (std::find(collidedDirection.begin(), collidedDirection.end(), Direction::DOWN) != collidedDirection.end()) {
-			this->canJump = true;
-			this->changeToState(SpriteState::DEFAULT);
-		}
-	}
-
-	/// @brief 
-	/// Handles when an collision event ends, when the direction of the collision happend on the bottom side of the player object, set can jump false
-	void onCollisionEndEvent(Event& event) {
-		auto collisionEvent = static_cast<OnCollisionEndEvent&>(event);
-		if (collisionEvent.GetObjectOneId() != this->getObjectId() && collisionEvent.GetObjectTwoId() != this->getObjectId()) return;
-
-		auto map = collisionEvent.getDirectionMap();
-		auto collidedDirection = map[this->getObjectId()];
-
-		if (std::find(collidedDirection.begin(), collidedDirection.end(), Direction::DOWN) != collidedDirection.end()) {
-			this->canJump = false;
-		}
-	}
-
-	void setYAxisVelocity(const float val) override {
-
-		if (!canJump) {
-			if (val > 0 && !changed) {
-				this->changeToState(SpriteState::AIR_FALL);
-			}
-		}
-
-		if (val == 0) {
-			changed = false;
-		}
-
-
-		Object::setYAxisVelocity(val);
-	}
-
-	/// @brief 
-	/// Handles when an key pressed event happend, Player can move right, left and jump
-	void onKeyPressed(Event& event) {
-		auto keyPressedEvent = static_cast<KeyPressedEvent&>(event);
-
-		switch (keyPressedEvent.GetKeyCode())
-		{
-		case KeyCode::KEY_A:
-			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::LEFT, this->getObjectId()));
-			if (canJump)
-				this->changeToState(SpriteState::RUN_LEFT);
-			break;
-		case KeyCode::KEY_D:
-			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
-			if (canJump)
-				this->changeToState(SpriteState::RUN_RIGHT);
-			break;
-		case KeyCode::KEY_SPACE:
-			if (canJump) {
-				this->changeToState(SpriteState::AIR_JUMP);
-				EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, this->getObjectId()));
-			}
-			break;
-		default:
-			break;
-		}
-	}
-};
 
 void sceneTestSetup()
 {
@@ -187,7 +89,7 @@ void sceneTestSetup()
 	particle1->registerSprite(SpriteState::DEFAULT, particle1Sprite);
 	particle1->changeToState(SpriteState::DEFAULT);
 	particle1->setPosition(800, 384);              // set the position
-	particle1->setStyle(ParticleInit::FIRE);    // set the example effects
+	particle1->setStyle(ParticleInit::ParticleStyle::FIRE);    // set the example effects
 	particle1->setStartSpin(0);
 	particle1->setStartSpinVar(90);
 	particle1->setEndSpin(90);
@@ -199,7 +101,7 @@ void sceneTestSetup()
 	particle2->registerSprite(SpriteState::DEFAULT, particle1Sprite);
 	particle2->changeToState(SpriteState::DEFAULT);
 	particle2->setPosition(100, 384);              // set the position
-	particle2->setStyle(ParticleInit::EXPLOSION);    // set the example effects
+	particle2->setStyle(ParticleInit::ParticleStyle::EXPLOSION);    // set the example effects
 	particle2->setStartSpin(0);
 	particle2->setStartSpinVar(90);
 	particle2->setEndSpin(90);
@@ -248,9 +150,8 @@ void sceneTestSetup()
 
 	engine.insertScene(testScene);
 	engine.setCurrentScene(100);
-	testScene->Start();
 
-	engine.startTickThreads();
+	testScene->Start();
 }
 
 
@@ -259,6 +160,7 @@ int main() {
 
 	bool gameRunning = true;
 
+	engine.startTickThreads();
 	while (gameRunning)
 	{
 		AppTickEvent60 appTick;

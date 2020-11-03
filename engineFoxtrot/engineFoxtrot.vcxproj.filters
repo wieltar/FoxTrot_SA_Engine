@@ -19,7 +19,6 @@
     <ClCompile Include="Engine\Video\VideoFacade.cpp" />
     <ClCompile Include="Engine\Sound\SoundFacade.cpp" />
     <ClCompile Include="Engine\Sound\SoundEngine.cpp" />
-    <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
     <ClCompile Include="Engine\Physics\ContactListenerAdapter.cpp" />
     <ClCompile Include="Engine\SceneManager\SpriteObject.cpp" />
@@ -141,9 +140,7 @@
     <ClInclude Include="Engine\FileParser\FileParser.h" />
     <ClInclude Include="Engine\General\GeneralDefines.h" />
     <ClInclude Include="Engine\FileParser\IJsonFacade.h" />
-    <ClInclude Include="Engine\Input\Commands.h" />
     <ClInclude Include="Engine\Input\IInputFacade.h" />
-    <ClInclude Include="Engine\Input\InputConstants.h" />
     <ClInclude Include="Engine\Input\InputFacade.h" />
     <ClInclude Include="Engine\Input\InputEngine.h" />
     <ClInclude Include="Engine\Particles\IParticleFacade.h" />

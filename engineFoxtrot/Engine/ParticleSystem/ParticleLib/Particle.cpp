@@ -136,8 +136,8 @@ void Particle::addParticles(int count)
 
     // position
     Vec2 pos;
-    pos.x = x_;
-    pos.y = y_;
+    pos.x = (float)x_;
+    pos.y = (float)y_;
 
     for (int i = start; i < _particleCount; ++i)
     {
@@ -221,7 +221,7 @@ bool Particle::isFull()
 // ParticleSystem - MainLoop
 void Particle::update()
 {
-    float dt = 1.0 / 25;
+    float dt = (float)1.0 / 25;
     if (_isActive && _emissionRate)
     {
         float rate = 1.0f / _emissionRate;

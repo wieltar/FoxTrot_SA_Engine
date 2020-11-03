@@ -162,7 +162,6 @@
     <ClCompile Include="Engine\Fps\FrameData.cpp" />
     <ClCompile Include="Engine\General\GeneralHelperFunctions.cpp" />
     <ClCompile Include="Engine\FileParser\JsonFacade.cpp" />
-    <ClCompile Include="Engine\Input\Commands.cpp" />
     <ClCompile Include="Engine\Input\InputFacade.cpp" />
     <ClCompile Include="Engine\Input\InputEngine.cpp" />
     <ClCompile Include="Engine\ParticleSystem\ParticleLib\Particle.cpp" />
@@ -224,9 +223,7 @@
     <ClInclude Include="Engine\FileParser\FileParser.h" />
     <ClInclude Include="Engine\General\GeneralDefines.h" />
     <ClInclude Include="Engine\FileParser\IJsonFacade.h" />
-    <ClInclude Include="Engine\Input\Commands.h" />
     <ClInclude Include="Engine\Input\IInputFacade.h" />
-    <ClInclude Include="Engine\Input\InputConstants.h" />
     <ClInclude Include="Engine\Input\InputFacade.h" />
     <ClInclude Include="Engine\Input\InputEngine.h" />
     <ClInclude Include="Engine\ParticleSystem\ParticleLib\Particle.h" />

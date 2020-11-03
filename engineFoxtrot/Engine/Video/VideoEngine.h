@@ -2,7 +2,7 @@
 #include "./VideoFacade.h"
 #include "../Fps/FrameData.h"
 #include "./Structs/fpsStructs.h"
-#include "Events/Action/FpsToggleEvent.h";
+#include "Events/Action/FpsToggleEvent.h"
 #include "../SceneManager/Scene.h"
 #include "../ParticleSystem/ParticleAdapter.h"
 
@@ -55,6 +55,6 @@ private:
 	IVideoFacade* videoFacade = new VideoFacade;
 
 	FrameData* frameData = nullptr;
-	bool shouldDrawFps;
+	bool shouldDrawFps = false;
 
 };

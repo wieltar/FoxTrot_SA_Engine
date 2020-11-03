@@ -13,26 +13,9 @@ public:
 	API InputEngine();
 	API ~InputEngine();
 
-	API void moveLeft();
-	API void moveRight();
-	API void jump();
-	
-	API bool fill(vector<Command*>& command_queue);
-	API void configure(KeyCode key, Command* command, bool runOnce);
-	API void updateInput();
 	void pollEvents();
-
-	API void toggleFps();
-	
-	/// @brief
-	/// Generic function for creating command externally
-	template <class T>
-	T* makeCommand() {
-		static_assert(is_base_of<Command, T>::value, "Type parameter for this function must derive from Command");
-		return new T(this);
-	}
 private:
 	IInputFacade *inputFacade = new InputFacade();
 
-	vector<Command*> commandQueue;
+	void onKeyPressed(Event& event);
 };
