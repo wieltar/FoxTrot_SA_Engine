@@ -142,12 +142,6 @@ void sceneTestSetup()
 	staticGround4->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround4);
 
-	engine.configureInput(KeyCode::KEY_A, engine.makeCommand<MoveLeft>());
-	engine.configureInput(KeyCode::KEY_D, engine.makeCommand<MoveRight>());
-	engine.configureInput(KeyCode::KEY_SPACE, engine.makeCommand<Jump>());
-	engine.configureInput(KeyCode::KEY_F1, engine.makeCommand<ToggleFps>(), true);
-	//Engine* command = engine.makeCommand<Engine>();
-
 	engine.insertScene(testScene);
 	engine.setCurrentScene(100);
 
