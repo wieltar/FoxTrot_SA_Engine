@@ -3,8 +3,8 @@
 #include "ISoundFacade.h"
 #include "SceneManager/Object.h"
 
-#define EXAMPLE_SOUND	"../Assets/Sound/b423b42.wav"
-#define EXAMPLE_SPRITE  "../Assets/Sprites/simple.png"
+#define EXAMPLE_SOUND	"Assets/Sound/b423b42.wav"
+#define EXAMPLE_SPRITE  "Assets/Sprites/simple.png"
 
 #define FIRST_AVAILABLE_CHANNEL -1
 #define DONT_LOOP 0

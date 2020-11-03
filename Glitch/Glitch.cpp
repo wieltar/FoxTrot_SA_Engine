@@ -17,14 +17,14 @@ Engine engine;
 
 void sceneTestSetup()
 {
-	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, 300, "../Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
-	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, 300, "../Assets/Sprites/Character/adventure.png");
-	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, 300, "../Assets/Sprites/Character/adventure_air_attack1.png");
-	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, 300, "../Assets/Sprites/Character/adventure_run_right.png");
-	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_slide.png");
-	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_fall.png");
-	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, 300, "../Assets/Sprites/Character/adventure_jump.png");
-	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, 300, "../Assets/Sprites/Character/adventure_run_left.png");
+	SpriteObject* so0 = new SpriteObject(1, 16, 16, 1, 300, "Assets/Sprites/World/LIGHT TILE WITHOUT TOP.png");
+	SpriteObject* so1 = new SpriteObject(100, 37, 50, 1, 100, "Assets/Sprites/Character/adventure.png");
+	SpriteObject* so2 = new SpriteObject(101, 37, 50, 4, 100, "Assets/Sprites/Character/adventure_air_attack1.png");
+	SpriteObject* so3 = new SpriteObject(102, 37, 50, 6, 100, "Assets/Sprites/Character/adventure_run_right.png");
+	SpriteObject* so4 = new SpriteObject(103, 37, 50, 2, 100, "Assets/Sprites/Character/adventure_slide.png");
+	SpriteObject* so5 = new SpriteObject(104, 37, 50, 2, 100, "Assets/Sprites/Character/adventure_fall.png");
+	SpriteObject* so6 = new SpriteObject(105, 37, 50, 2, 100, "Assets/Sprites/Character/adventure_jump.png");
+	SpriteObject* so7 = new SpriteObject(106, 37, 50, 6, 100, "Assets/Sprites/Character/adventure_run_left.png");
 
 	engine.loadSprite(*so0);
 	engine.loadSprite(*so1);
@@ -36,7 +36,7 @@ void sceneTestSetup()
 	engine.loadSprite(*so7);
 
 	map<string, string> soundL1 = {
-		{"Level_1_Sound", "../Assets/Sound/file_example_WAV_1MG.wav"},
+		{"Level_1_Sound", "Assets/Sound/file_example_WAV_1MG.wav"},
 	};
 
 	Level* testScene = new Level(100, soundL1);
@@ -82,7 +82,7 @@ void sceneTestSetup()
 	staticGround->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround);
 
-	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 300, "../engineFoxtrot/Engine/ParticleSystem/fire.png");
+	SpriteObject* particle1Sprite = new SpriteObject(11, 20, 20, 20, 300, "Assets/Particles/fire.png");
 	engine.loadSprite(*particle1Sprite);
 
 	ParticleAdapter* particle1 = new ParticleAdapter(11);        // create a new particle system pointer
@@ -119,6 +119,28 @@ void sceneTestSetup()
 	staticGround2->registerSprite(SpriteState::DEFAULT, so0);
 	staticGround2->changeToState(SpriteState::DEFAULT);
 	testScene->addNewObjectToLayer(1, staticGround2);
+
+	Object* staticGround3 = new Object(119);
+	staticGround3->setScalable(true);
+	staticGround3->setWidth(30); // width
+	staticGround3->setHeight(80);// height
+	staticGround3->setPositionX(360); // x 20 left down
+	staticGround3->setPositionY(290);// y 300 left down
+	staticGround3->setStatic(true);
+	staticGround3->registerSprite(SpriteState::DEFAULT, so0);
+	staticGround3->changeToState(SpriteState::DEFAULT);
+	testScene->addNewObjectToLayer(1, staticGround3);
+
+	Object* staticGround4 = new Object(120);
+	staticGround4->setScalable(true);
+	staticGround4->setWidth(30); // width
+	staticGround4->setHeight(140);// height
+	staticGround4->setPositionX(480); // x 20 left down
+	staticGround4->setPositionY(290);// y 300 left down
+	staticGround4->setStatic(true);
+	staticGround4->registerSprite(SpriteState::DEFAULT, so0);
+	staticGround4->changeToState(SpriteState::DEFAULT);
+	testScene->addNewObjectToLayer(1, staticGround4);
 
 	engine.insertScene(testScene);
 	engine.setCurrentScene(100);
