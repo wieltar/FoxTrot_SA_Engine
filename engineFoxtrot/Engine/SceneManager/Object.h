@@ -64,6 +64,9 @@ public:
 	API void registerSprite(int state, SpriteObject* spriteObject);
 	API void changeToState(const int state);
 
+	API virtual void setXAxisVelocity(const float val);
+	API float getXAxisVelocity() const;
+
 	API void setScalable(const bool val);
 	API bool getScalable() const;
 
@@ -101,4 +104,5 @@ protected:
 	map<const int, SpriteObject*> textures;
 	bool rotatable = false;
 	float yAxisVelocity = 0;
+	float xAxisVelocity = 0;
 };

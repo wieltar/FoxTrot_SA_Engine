@@ -1,13 +1,15 @@
 #pragma once
 enum SpriteState {
 	DEFAULT,
-	AIR_FALL,
-	AIR_JUMP,
+	AIR_FALL_RIGHT,
+	AIR_FALL_LEFT,
+	AIR_JUMP_RIGHT,
+	AIR_JUMP_LEFT,
 
 	AIR_ATTACK,
 
-	RUN_LEFT,
 	RUN_RIGHT,
+	RUN_LEFT,
 
 	SLIDE
 }; 

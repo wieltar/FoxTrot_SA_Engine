@@ -8,7 +8,7 @@ Player::Player() : Object(2) {
 	this->setPositionY(80);
 
 	this->setSpeed(75);
-	this->setJumpHeight(75);
+	this->setJumpHeight(400);
 	this->setDensity(100);
 	this->setFriction(0);
 	this->setRestitution(0);
@@ -54,7 +54,11 @@ void Player::setYAxisVelocity(const float val) {
 
 	if (!canJump) {
 		if (val > 0 && !changed) {
-			this->changeToState(SpriteState::AIR_FALL);
+			int val = this->getXAxisVelocity();
+			if (this->getXAxisVelocity() > 0)
+				this->changeToState(SpriteState::AIR_FALL_RIGHT);
+			else
+				this->changeToState(SpriteState::AIR_FALL_LEFT);
 		}
 	}
 
@@ -77,16 +81,35 @@ void Player::onKeyPressed(Event& event) {
 			if (canJump) {
 				this->changeToState(SpriteState::RUN_LEFT);
 			}
+			else {
+				if (this->getYAxisVelocity() > 0) {
+					this->changeToState(SpriteState::AIR_FALL_LEFT);
+				}
+				else {
+					this->changeToState(SpriteState::AIR_JUMP_LEFT);
+				}
+			}
 		break;
 	case KeyCode::KEY_D:
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::RIGHT, this->getObjectId()));
 			if (canJump) {
 				this->changeToState(SpriteState::RUN_RIGHT);
 			}
+			else {
+				if (this->getYAxisVelocity() > 0) {
+					this->changeToState(SpriteState::AIR_FALL_RIGHT);
+				}
+				else {
+					this->changeToState(SpriteState::AIR_JUMP_RIGHT);
+				}
+			}
 		break;
 	case KeyCode::KEY_SPACE:
 		if (canJump) {
-			this->changeToState(SpriteState::AIR_JUMP);
+			if (this->getXAxisVelocity() > 0)
+				this->changeToState(SpriteState::AIR_JUMP_RIGHT);
+			else
+				this->changeToState(SpriteState::AIR_JUMP_LEFT);
 			EventSingleton::get_instance().dispatchEvent<ActionEvent>((Event&)ActionEvent(Direction::UP, this->getObjectId()));
 		}
 		break;
