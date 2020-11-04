@@ -22,6 +22,12 @@ enum class EventType
 	MouseButtonPressed, 
 	MouseButtonReleased, 
 	MouseMoved, 
+	// -- sounds events -----
+	OnMusicStartEvent,
+	OnMusicStopEvent,
+	AttachSound,
 
-	Action
+	Action,
+	CollisionEnd,
+	CollisionBegin
 };

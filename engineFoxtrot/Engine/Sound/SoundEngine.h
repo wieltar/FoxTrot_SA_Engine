@@ -1,27 +1,18 @@
 #pragma once
+#include "SceneManager/SceneManager.h" //TODO check this
+#include "SceneManager/Scene.h"
 #include "SoundFacade.h"
-
+#include "Events/Event.h"
 
 #define MAX_VOLUME 128
 
 /// @brief 
 /// SoundEngine is the Sound SDL2 wrapper
-
-#if(EXPORT)
-class DLLEXPORT SoundEngine
-#else
-class SoundEngine
-#endif
+class API SoundEngine
 {
 public:
 	SoundEngine();
 	~SoundEngine();
-
-	void receiveTick();
-
-	// Input Functions
-	void input();
-	void update(Object* object);
 
 	void SetFiles(map<string, string> files);
 	void AddFile(const string& identifier, const string& file);
@@ -48,9 +39,11 @@ public:
 	bool IdentifierExists(const string& identifier);
 	bool IdentifierIsLoaded(const string& identifier);
 
-	vector <Object*>* pointerToObjectVector = nullptr;
-private:
+	void EventListners(); 
+	void Event_StartEvent(Event& event);
+	void Event_AttachEvent(Event& event);
 
+private:
 	ISoundFacade* soundFacade = new SoundFacade;
 
 };

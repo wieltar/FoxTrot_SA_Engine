@@ -4,7 +4,7 @@
 /// USB STANDARD SCANCODES
 /// Found on: https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf 
 /// PAG. 53
-enum KeyCode
+enum class KeyCode
 {
 KEY_UNKNOWN = 0,
 KEY_A = 4,

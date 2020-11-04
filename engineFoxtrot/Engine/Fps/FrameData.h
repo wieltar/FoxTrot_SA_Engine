@@ -1,21 +1,16 @@
 #pragma once
-
 #define FRAME_VALUES 100
 #define TIMESTEP 1.f
 
-#if(EXPORT)
-class DLLEXPORT FrameData
-#else
 class FrameData
-#endif
 {
 public:
-	FrameData();
-	~FrameData();
-	double calculateAverageFps();
-	void startTimer();
-	static double gameFps;
-	static double renderFps;
+	API FrameData();
+	API ~FrameData();
+	API double calculateAverageFps();
+	API void startTimer();
+	API static double gameFps;
+	API static double renderFps;
 
 private:
 	list<chrono::duration<double>> frametimes;

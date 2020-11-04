@@ -1,4 +1,5 @@
 #pragma once
+#include "core.h"
 
 #include <vector> 
 #include <iostream>
@@ -15,6 +16,7 @@
 #include <functional>
 #include <type_traits>
 #include <filesystem>
+#include <algorithm>
 
 using namespace std;
 

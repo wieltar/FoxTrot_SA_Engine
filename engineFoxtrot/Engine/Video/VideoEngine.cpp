@@ -7,25 +7,12 @@ VideoEngine::VideoEngine()
 {
 	frameData = new FrameData;
 	EventSingleton::get_instance().setEventCallback<AppTickEvent60>(BIND_EVENT_FN(VideoEngine::receiveTick));
+	EventSingleton::get_instance().setEventCallback<FpsToggleEvent>(BIND_EVENT_FN(VideoEngine::toggleFps));
 }
 
 VideoEngine::~VideoEngine()
 {
 }
-
-///// @brief 
-///// Inits SDL2 and creates the window
-//void VideoEngine::initSDL()
-//{
-//	try
-//	{
-//		videoFacade->initSDL();
-//	}
-//	catch (int e)
-//	{
-//		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-//	}
-//}
 
 /// @brief 
 /// Clears the SDL screen
@@ -58,11 +45,11 @@ void VideoEngine::drawScreen()
 /// @brief Loads the PNG files AKA sprites
 /// @param spriteID 
 /// @param filename
-void VideoEngine::loadImage(int spriteID, const char* filename)
+void VideoEngine::loadImage(const SpriteObject& spriteObject)
 {
 	try
 	{
-		videoFacade->loadImage(spriteID, filename);
+		videoFacade->loadImage(spriteObject);
 	}
 	catch (int e)
 	{
@@ -89,12 +76,19 @@ void VideoEngine::updateScreen()
 {
 	try
 	{
-		if (pointerToObjectVector == nullptr) return;
+		if (pointerToCurrentScene == nullptr) return;
 		//if (pointerToObjectVector->capacity() <= 0) return;
-		if (pointerToObjectVector->size() <= 0) return;
-		for (Object* obj : *pointerToObjectVector) {
+		if ((*pointerToCurrentScene)->getAllObjectsInScene().size() <= 0) return;
+		for (Object* obj : (*pointerToCurrentScene)->getAllObjectsInScene()) {
 			if (obj != nullptr) {
-				videoFacade->renderCopy(*obj);
+				if (obj->getIsParticle())
+				{
+					drawParticle((ParticleAdapter*)obj);
+				}
+				else
+				{
+					renderCopy(*obj);
+				}
 			}
 		}
 	}
@@ -134,7 +128,7 @@ void VideoEngine::drawFps(double fps, int xPos, int yPos, const string& prefix =
 
 /// @brief
 /// Toggles fps visibility
-void VideoEngine::toggleFps() {
+void VideoEngine::toggleFps(Event& fpsEvent) {
 	shouldDrawFps = !shouldDrawFps;
 }
 
@@ -154,7 +148,26 @@ void VideoEngine::receiveTick(Event& tickEvent)
 	frameData->startTimer();
 	clearScreen();
 	updateScreen();
+
 	drawFps();
 	drawScreen();
 	FrameData::renderFps = frameData->calculateAverageFps();
+}
+
+/// @brief Draws the Particles
+/// @param part pointer to the particle
+void VideoEngine::drawParticle(ParticleAdapter* part)
+{
+	vector<ParticleData> particleData = part->getParticleDataVector();
+	for (unsigned int index = 0; index < part->getParticleCount(); index++)
+	{
+		auto& partData = particleData[index];
+
+		if (partData.size <= 0 || partData.colorA <= 0)
+		{
+			continue;
+		}
+		videoFacade->drawParticle(partData, part->getObjectId());
+	}
+
 }
