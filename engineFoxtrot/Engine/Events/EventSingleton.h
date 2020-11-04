@@ -1,20 +1,20 @@
 #pragma once
-#include "Event.h";
+#include "Event.h"
 
-using EventCallbackFn = std::function<void(Event&)>;
+using EventCallbackFn = function<void(Event&)>;
 
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+#define BIND_EVENT_FN(x) bind(&x, this, placeholders::_1)
 
 class EventSingleton
 {
 public:
-    static EventSingleton& get_instance() { return instance; }
+    static API EventSingleton& get_instance() { return instance; }
 
     // prohibit copy & move
-    EventSingleton(const EventSingleton&) = delete;
-    EventSingleton(EventSingleton&&) = delete;
-    EventSingleton& operator=(const EventSingleton&) = delete;
-    EventSingleton& operator=(EventSingleton&&) = delete;
+    API EventSingleton(const EventSingleton&) = delete;
+    API EventSingleton(EventSingleton&&) = delete;
+    API EventSingleton& operator=(const EventSingleton&) = delete;
+    API EventSingleton& operator=(EventSingleton&&) = delete;
 
     /// @brief
     /// OnEvent is triggered when an event is fired, and send message to all registered listiners
@@ -23,7 +23,7 @@ public:
     /// @assert check wheter the type T and the Event fired is the same
     template<typename T>
     void dispatchEvent(Event& event) {
-        static_assert(std::is_base_of<Event, T>::value, "dispatchEvent Assert fail: Make sure the event that is fired and the Template Type is the same");
+        static_assert(is_base_of<Event, T>::value, "dispatchEvent Assert fail: Make sure the event that is fired and the Template Type is the same");
         // Contains element 
         string typeName = typeid(T).name();
         if (handlers.count(typeName) > 0) {
@@ -53,7 +53,7 @@ public:
     }
 
 private:
-    map<string, vector<function<void(Event&)>>> handlers = map<string, vector<function<void(Event&)>>>();
+    map<string, vector<EventCallbackFn>> handlers = map<string, vector<EventCallbackFn>>();
     static EventSingleton instance;
 
     EventSingleton() {}

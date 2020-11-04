@@ -12,10 +12,10 @@ public:
 	/// @brief
 	/// KeyReleasedEvent to string
 	/// @return string with key code released
-	std::string ToString() const override
+	string ToString() const override
 	{
-		std::stringstream stream;
-		stream << "KeyPressedEvent: " << keycode;
+		stringstream stream;
+		stream << "KeyPressedEvent: " << (int)keycode;
 		return stream.str();
 	}
 private:

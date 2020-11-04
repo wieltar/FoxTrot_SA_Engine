@@ -1,9 +1,10 @@
 #pragma once
+#include <unordered_map>
 #include "ISoundFacade.h"
-#include "../SceneManager/Object.h"
+#include "SceneManager/Object.h"
 
-#define EXAMPLE_SOUND	"../Assets/Sound/b423b42.wav"
-#define EXAMPLE_SPRITE  "../Assets/Sprites/simple.png"
+#define EXAMPLE_SOUND	"Assets/Sound/b423b42.wav"
+#define EXAMPLE_SPRITE  "Assets/Sprites/simple.png"
 
 #define FIRST_AVAILABLE_CHANNEL -1
 #define DONT_LOOP 0
@@ -19,11 +20,7 @@ typedef struct _Mix_Music Mix_Music;
 
 /// @brief 
 /// SoundFacade is de Sound SDL2 facade
-#if(EXPORT)
-class DLLEXPORT SoundFacade : public ISoundFacade
-#else
 class SoundFacade : public ISoundFacade
-#endif
 {
 public:
 	SoundFacade();
@@ -56,6 +53,6 @@ private:
 	map<string, string> soundPaths;
 	map<string, int> loopChannels;
 	Mix_Music* music;
-	std::map<std::string, Mix_Chunk*> loadedSoundEffects;
+	map<std::string, Mix_Chunk*> loadedSoundEffects;
 
 };

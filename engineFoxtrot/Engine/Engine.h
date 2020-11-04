@@ -6,7 +6,7 @@
 #include "./SceneManager/SceneManager.h"
 #include "./FileParser/FileParser.h"
 #include "./Physics/PhysicsEngine.h"
-#include "./Particles/ParticleEngine.h"
+#include "./ParticleSystem/ParticleEngine.h"
 #include "./SceneManager/SceneManager.h"
 
 #include "Events/EventSingleton.h"
@@ -14,7 +14,6 @@
 #include "./Sound/SoundEngine.h"
 #include "./Input/InputEngine.h"
 #include "./Fps/FrameData.h"
-
 // TODO Weet niet of deze hier moet?!?!??! Is even voor de test
 #include "Events/Codes/KeyCodes.h"
 
@@ -22,21 +21,17 @@
 #define ENGINE_TICK30	 33
 
 /// @brief 
-#if(EXPORT)
-class DLLEXPORT Engine
-#else
 class Engine
-#endif
 {
 public:
-	Engine();
-	~Engine();
+	API Engine();
+	API ~Engine();
 
 //private:
-	void engineTick60();
-	void engineTick30();
-	void startTickThreads();
-	void stopTickThreads();
+	API void engineTick60();
+	API void engineTick30();
+	API void startTickThreads();
+	API void stopTickThreads();
 
 	atomic_bool stopThreadTick60 = false;
 	atomic_bool stopThreadTick30 = false;
@@ -44,29 +39,24 @@ public:
 	thread *engineTick60Thread = nullptr;
 	thread *engineTick30Thread = nullptr;
 
-	void setCurrentScene(const int sceneID);
-	void createNewSceneWithSceneID(const int sceneID);
+	//SceneManager calls
+	API void setCurrentScene(const int sceneID);
+	API void insertScene(Scene * scene);
 
-	void createObject(const int sceneID, Object* object);
-	void createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat);
-	void createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat, const int speed, const int jumpHeight, const int density, const int friction, const int restitution);
-	void linkSpriteIDWithAssetPath(const int spriteID, const char* assetPath);
+	// Video calls
+	API void loadSprite(const SpriteObject& spriteObject);
 
-	void pollInput();
-	void configureInput(KeyCode key, Command* command);
-
-	//TODO make private
-	PhysicsEngine physicsEngine;
-	VideoEngine videoEngine;
+	// Input calls
+	API void pollEvents();
 private:
+	PhysicsEngine physicsEngine;
+	ParticleEngine particleEngine;
 	SoundEngine soundEngine;
 	InputEngine inputEngine;
 	FileParser fileParser;
-	ParticleEngine particleEngine;
 	SceneManager sceneManager;
+	VideoEngine videoEngine;
 
 	FrameData* frameData = nullptr;
-
-	void loadSpriteArray(vector<Sprite> spriteVector);
 };
 #endif

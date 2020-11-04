@@ -21,9 +21,9 @@ public:
 	/// @brief
 	/// MouseButtonPressed to string
 	/// @return string with the realesed button
-	std::string ToString() const override
+	string ToString() const override
 	{
-		std::stringstream stream;
+		stringstream stream;
 		stream << "MouseMovedEvent: " << xPosition << ", " << yPosition;
 		return stream.str();
 	}
