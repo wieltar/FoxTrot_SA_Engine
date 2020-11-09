@@ -22,7 +22,27 @@ void ParticleEngine::onUpdate(Event& tickEvent)
 	for (Object * particle : (*pointerToCurrentScene)->getAllObjectsInScene()) {
 		if (particle != nullptr && particle->getIsParticle()) {
 			((ParticleAdapter*)particle)->update();
+
+			checkIfObjectValueAndParticleValueMatch((ParticleAdapter*)particle);
 		}
+	}
+}
+
+void ParticleEngine::checkIfObjectValueAndParticleValueMatch(ParticleAdapter* particle)
+{
+	if (!particle)
+	{
+		return;
+	}
+
+	if (((Object*)particle)->getPositionX() != particle->getPositionX())
+	{
+		particle->setPositionX(((Object*)particle)->getPositionX());
+	}
+
+	if (((Object*)particle)->getPositionY() != particle->getPositionY())
+	{
+		particle->setPositionY(((Object*)particle)->getPositionY());
 	}
 }
 
