@@ -1,13 +1,9 @@
 #pragma once
 #include "IVideoFacade.h"
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 400
+#include "ParticleSystem/ParticleLib/ParticleInit.h"
 
-#define MESSAGE_WIDTH 150
-#define MESSAGE_HEIGHT 30
-
-#define FONT_PATH "../Assets/Fonts/Sans.ttf"
+#define FONT_PATH "Assets/Fonts/Sans.ttf"
 #define FONT_POINT_SIZE 24
 
 struct SDL_Renderer;
@@ -31,8 +27,10 @@ public:
 
 	void clearScreen();
 	void drawScreen();
-	void loadImage(const int spriteID, const char* filename);
+	void loadImage(const SpriteObject& spriteObject);
 	void renderCopy(Object& object);
+
+	void drawParticle(ParticleData data, int spriteID);
 
 	void drawMessageAt(const FpsMessage message, const TextPosition pos);
 

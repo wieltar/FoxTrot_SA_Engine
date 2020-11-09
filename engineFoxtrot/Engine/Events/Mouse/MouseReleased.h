@@ -10,10 +10,10 @@ public:
 	/// @brief
 	/// MouseButtonReleasedEvent to string
 	/// @return string with the realesed buton
-	std::string ToString() const override
+	string ToString() const override
 	{
-		std::stringstream stream;
-		stream << "MouseButtonReleased Event: " << button;
+		stringstream stream;
+		stream << "MouseButtonReleased Event: " << (int)button;
 		auto string = stream.str();
 		return string;
 	}

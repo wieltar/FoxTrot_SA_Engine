@@ -2,30 +2,20 @@
 #include "Object.h"
 
 /// @brief 
-Object::Object(int id) : spriteID(id)
+Object::Object(const int _objectId) : objectId(_objectId)
 {
 }
-
-/// @brief 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-Object::Object(const int id, const float xPos, const float yPos, const float _height, const float _width) : spriteID(id), positionX(xPos), positionY(yPos), height(_height), width(_width)
-{
-}
-
 /// @brief 
 Object::~Object()
 {
 }
 
 // Getters and setters
-void Object::setName(const string n) { this->name = n; }
-string Object::getName() const { return name; }
 
-int Object::getSpriteID() const { return spriteID; }
+int Object::getObjectId() const { return objectId; }
+
+void Object::setName(const string _name) { this->name = _name; }
+string Object::getName() const {return name;}
 
 void Object::setPositionX(const float x) { this->positionX = x; }
 float Object::getPositionX() const { return positionX; }
@@ -67,3 +57,37 @@ float Object::getJumpHeight() const {return this->jumpHeight;}
 void Object::setJumpHeight(const float val) {	this->jumpHeight = val;}
 
 bool Object::getChanged() const { return changed; }
+
+bool Object::getIsParticle() { return isParticle; }
+
+void Object::setChanged(const bool c) { this->changed = c; }
+
+bool Object::getScalable() const { return this->scalable; }
+void Object::setScalable(const bool val) { this->scalable = val; }
+
+SpriteObject& Object::GetCurrentSprite() const { return *currentSprite; }
+
+/// @brief
+/// register a new state or overwrite a existing state
+/// register the spriteID
+/// link a state with a sprite
+void Object::registerSprite(int state, SpriteObject* spriteObject) {
+	textures.insert(pair<int, SpriteObject*>(state, spriteObject));
+}
+
+/// @brief
+/// change the state
+/// change the textureID to the current state
+void Object::changeToState(const int state) {
+	SpriteObject* spriteObject = textures[state];
+	if (spriteObject == nullptr) throw ERROR_CODE_SPRITE_DOESNT_EXIST;
+	this->currentSprite = spriteObject;
+}
+
+float Object::getYAxisVelocity() const { return this->yAxisVelocity; }
+void Object::setYAxisVelocity(const float val) { this->yAxisVelocity = val; }
+float Object::getXAxisVelocity() const { return this->xAxisVelocity; }
+void Object::setXAxisVelocity(const float val) { this->xAxisVelocity = val; }
+
+bool Object::getRotatable() const { return this->rotatable; }
+void Object::setRotatable(const bool val) { this->rotatable = val; }

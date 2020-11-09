@@ -2,8 +2,8 @@
 #include "VideoFacade.h"
 
 #include <SDL.h>
-#include "../../SDL2/include/SDL_image.h"
-#include "../../SDL2/include/SDL_ttf.h"
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #undef main
 
@@ -16,7 +16,8 @@ VideoFacade::VideoFacade()
 /// @brief 
 VideoFacade::~VideoFacade()
 {
-
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
 }
 
 // Tips:
@@ -63,7 +64,7 @@ void VideoFacade::initSDL()
 /// Clears SDL screen
 void VideoFacade::clearScreen()
 {
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(renderer, FULL_RED, FULL_GREEN, FULL_BLUE, 0);
 	SDL_RenderClear(renderer);
 }
 
@@ -78,33 +79,82 @@ void VideoFacade::drawScreen()
 		std::cout << "ERR" << std::endl;
 	}
 }
-
 /// @brief 
-/// Loads PNG files and makes them textures to be added to the unordered map
-/// @param spriteID 
-/// @param filename 
-void VideoFacade::loadImage(const int spriteID, const char* filename)
-{
-	if (spriteID == NULL) throw ERROR_CODE_SVIFACADE_LOADIMAGE_SPRITE_ID_IS_NULL;
-	if (filename == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
-	SDL_Surface* surface = IMG_Load(filename);
+/// Load a animated sprite into the texturemap map
+/// @param spriteObject 
+/// @param filename
+void VideoFacade::loadImage(const SpriteObject& spriteObject) {
+	if (spriteObject.getFileName() == NULL) throw ERROR_CODE_SVIFACADE_FILENAME_IS_NULL;
+
+	SDL_Surface* surface = IMG_Load(spriteObject.getFileName());
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-	textureMap[spriteID] = texture;
+
+	int temp = spriteObject.getTextureID();
+	textureMap[temp] = texture;
+	SDL_FreeSurface(surface);
 }
 
-
 /// @brief 
-/// Takes the sprites from the Textuture map and copys them to the screen
-/// @param Object 
+/// Takes the sprites from the Textuture map animated and copys them to the screen
+/// @param object 
 void VideoFacade::renderCopy(Object& object)
-{
-	SDL_Rect destination;
-	destination.w = object.getWidth();
-	destination.h = object.getHeight();
-	destination.x = object.getPositionX();
-	destination.y = object.getPositionY() - object.getHeight();
+{	
+	SpriteObject& sprite = object.GetCurrentSprite();
 
-	SDL_RenderCopyEx(renderer, textureMap[object.getSpriteID()], NULL, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+	if (textureMap[sprite.getTextureID()] == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_SPRITE_ID_IS_NULL;
+	if (object.getPositionX() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_XPOS_IS_NULL;
+	if (object.getPositionY() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_YPOS_IS_NULL;
+	if (object.getHeight() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_HEIGHT_IS_NULL;
+	if (object.getWidth() == NULL) throw ERROR_CODE_SVIFACADE_RENDERCOPY_WIDTH_IS_NULL;
+
+	//generate image 
+	Uint32 ticks = SDL_GetTicks();
+	Uint32 seconds = ticks / sprite.getAnimationDelay();
+	float leftpos = sprite.getLeftPos(seconds);
+	int top = 0;
+
+	//generate rectangele for selecting 1 image of a full sprite
+	//leftpos = amount of pixels from the left side
+	//top = amount of pixels of the top (sprites are renderd of the top to bottom
+	//width = amount of pixels of the with of 1 image
+	//height = amount of pixels of the height of 1 image
+	SDL_Rect rect{ (int)leftpos, top, (int)sprite.getWidth(), (int)sprite.getHeight() };
+
+	//update collision box 
+	if (!object.getScalable()) {
+		object.setWidth(sprite.getWidth());
+		object.setHeight(sprite.getHeight());
+	}
+
+	//generate stratch of image
+	SDL_Rect destination;
+	destination.x = (int)object.getPositionX();
+	destination.y = (int)object.getPositionY() - (int)object.getHeight();
+	destination.w = (int)object.getWidth();
+	destination.h = (int)object.getHeight();
+	SDL_RenderCopyEx(renderer, textureMap[sprite.getTextureID()], &rect, &destination, object.getRotation(), NULL, SDL_FLIP_NONE);
+}
+
+/// @brief Function to draw Particles
+/// @param posX 
+/// @param startPosX 
+/// @param posY 
+/// @param startPosY 
+/// @param size 
+/// @param spriteID 
+/// @param colorR 
+/// @param colorG 
+/// @param colorB 
+/// @param colorA 
+/// @param rotation 
+void VideoFacade::drawParticle(ParticleData data, int spriteID)
+{
+	SDL_Rect r = { int(data.posx + data.startPosX - data.size / 2), int(data.posy + data.startPosY - data.size / 2), int(data.size), int(data.size) };
+	SDL_Color c = { Uint8(data.colorR * 255), Uint8(data.colorG * 255), Uint8(data.colorB * 255), Uint8(data.colorA * 255) };
+	SDL_SetTextureColorMod(textureMap[spriteID], c.r, c.g, c.b);
+	SDL_SetTextureAlphaMod(textureMap[spriteID], c.a);
+	SDL_SetTextureBlendMode(textureMap[spriteID], SDL_BLENDMODE_BLEND);
+	SDL_RenderCopyEx(renderer, textureMap[spriteID], nullptr, &r, data.rotation, nullptr, SDL_FLIP_NONE);
 }
 
 /// @brief

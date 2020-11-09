@@ -1,27 +1,22 @@
 #pragma once
 #include "Scene.h"
 
-
-
 /// @brief 
 /// Contains all scenes. Manages all scenes and objects.
-#if(EXPORT)
-class DLLEXPORT SceneManager
-#else
 class SceneManager
-#endif
 {
 public:
-	SceneManager();
-	~SceneManager();
+	API SceneManager();
+	API ~SceneManager();
 
 	// Scene modifiers
-	void createNewScene(const int sceneID);
-	void setCurrentScene(const int sceneID);
-	Scene* getSceneWithID(const int sceneID);
+	void API setCurrentScene(const int sceneID);
+	API Scene* getSceneWithID(const int sceneID);
+	void API insertScene(Scene* scene);
 
 	// Pointer
-	vector <Object*> pointerToCurrentObjectVector;
+	Scene* currentScene = nullptr;
+
 protected:
 	
 
@@ -30,7 +25,6 @@ private:
 	// Helper Functions
 	bool checkIfSceneExists(const int);
 
-	Scene* currentScene = nullptr;
 	vector<Scene*> scenes;
 
 };

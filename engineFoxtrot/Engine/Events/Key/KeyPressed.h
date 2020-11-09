@@ -6,7 +6,7 @@
 class KeyPressedEvent : public KeyEvent
 {
 public:
-	KeyPressedEvent(KeyCode _keycode, const uint16_t _repeatCount) : KeyEvent(_keycode) {}
+	KeyPressedEvent(KeyCode _keycode, const uint16_t _repeatCount) : KeyEvent(_keycode), repeatCount(_repeatCount) {}
 
 	/// @brief
 	/// RepeatCount
@@ -16,13 +16,13 @@ public:
 	/// @brief
 	/// KeyReleasedEvent to string
 	/// @return string with key code released
-	std::string ToString() const override
+	string ToString() const override
 	{
-		std::stringstream stream;
-		stream << "KeyPressedEvent: " << keycode << " (" << repeatCount << " repeats)";
+		stringstream stream;
+		stream << "KeyPressedEvent: " << (int)keycode << " (" << repeatCount << " repeats)";
 		return stream.str();
 	}
 
 private:
-	uint16_t repeatCount;
+	uint16_t repeatCount = 0;
 };

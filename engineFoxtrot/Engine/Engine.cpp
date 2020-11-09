@@ -6,9 +6,10 @@
 /// @brief 
 Engine::Engine()
 {
+	videoEngine.pointerToCurrentScene =	 &sceneManager.currentScene;
+	physicsEngine.pointerToCurrentScene = &sceneManager.currentScene;
+	particleEngine.pointerToCurrentScene = &sceneManager.currentScene;
 	frameData = new FrameData;
-	videoEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
-	physicsEngine.pointerToObjectVector = &sceneManager.pointerToCurrentObjectVector;
 
 	//this->startTickThreads();
 }
@@ -35,92 +36,18 @@ void Engine::setCurrentScene(const int sceneID)
 }
 
 /// @brief 
-/// Creates a new Scene in the Scene manager given the sceneID
-/// @param sceneID 
-/// int SceneID
-void Engine::createNewSceneWithSceneID(const int sceneID)
+void Engine::pollEvents() 
 {
-	try
-	{
-		sceneManager.createNewScene(sceneID);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
+	this->inputEngine.pollEvents();
 }
 
 /// @brief 
-/// @param sceneID 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-/// @param stat 
-void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat)
-{
-	createNewObjectWithSceneID(sceneID,id,xPos,yPos,height,width,stat,0,0,0,0,0);
-}
-
-/// @brief 
-/// @param sceneID 
-/// @param id 
-/// @param xPos 
-/// @param yPos 
-/// @param height 
-/// @param width 
-void Engine::createNewObjectWithSceneID(const int sceneID, const int id, const int xPos, const int yPos, const int height, const int width, const bool stat, const int speed, const int jumpHeight, const int density, const int friction, const int restitution)
+/// @param scene
+void Engine::insertScene(Scene* scene)
 {
 	try
 	{
-		cout << "creating new obj sceneID: " << sceneID << endl;
-		sceneManager.getSceneWithID(sceneID)->addNewObject(id, xPos, yPos, height, width,speed,jumpHeight, density, friction,restitution, stat);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-
-/// @brief 
-/// @param sceneID 
-/// @param object 
-void Engine::createObject(const int sceneID, Object* object) {
-	try
-	{
-		cout << "creating new obj sceneID: " << sceneID << endl;
-		sceneManager.getSceneWithID(sceneID)->addNewObject(object);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-/// @brief 
-/// @param spriteID 
-/// @param assetPath 
-void Engine::linkSpriteIDWithAssetPath(const int spriteID, const char * assetPath)
- {
-	try
-	{
-		videoEngine.loadImage(spriteID, assetPath);
-	}
-	catch (int e)
-	{
-		cout << "An exception occurred. Exception Nr. " << ERRORCODES[e] << '\n';
-	}
-}
-
-/// @brief 
-/// @param spritesVector 
-void Engine::loadSpriteArray(vector<Sprite> spritesVector)
-{
-	try
-	{
-		for (auto sprite : spritesVector) {
-			videoEngine.loadImage(sprite.spriteID, sprite.filename);
-		}
+		sceneManager.insertScene(scene);
 	}
 	catch (int e)
 	{
@@ -133,7 +60,6 @@ void Engine::loadSpriteArray(vector<Sprite> spritesVector)
 void Engine::engineTick60()
 {
 	cout << "Thread started" << endl;
-	pollInput();
 	while (!stopThreadTick60){
 		frameData->startTimer();
 		this_thread::sleep_for(chrono::milliseconds(ENGINE_TICK60));		
@@ -181,18 +107,11 @@ void Engine::stopTickThreads()
 }
 
 /// @brief 
-/// Polls for input using SDL poll events
-void Engine::pollInput()
-{
-	inputEngine.updateInput();
+/// Load a animated sprite (PNG) into the AnimatedTexture map
+/// @param spriteObject 
+void Engine::loadSprite(const SpriteObject& spriteObject) {
+	bool exists = std::filesystem::exists(spriteObject.getFileName());
+	if (!exists)
+		throw ERROR_CODE_IMAGE_FILE_NOT_FOUND;
+	videoEngine.loadImage(spriteObject);
 }
-
-/// @brief 
-/// Function to bind keys to commands.
-/// @param key KeyCode key
-/// @param command Command to be executed
-void Engine::configureInput(KeyCode key, Command* command)
-{
-	inputEngine.configure(key, command);
-}
-
