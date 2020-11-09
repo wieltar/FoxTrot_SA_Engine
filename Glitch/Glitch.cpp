@@ -102,10 +102,6 @@ void sceneTestSetup()
 	particle1->setPositionX(800);
 	particle1->setPositionY(384);
 	particle1->setStyle(ParticleInit::ParticleStyle::FIRE);    // set the example effects
-	particle1->setStartSpin(0);
-	particle1->setStartSpinVar(90);
-	particle1->setEndSpin(90);
-	particle1->setStartSpinVar(90);
 	testScene->addNewObjectToLayer(4, particle1);
 
 	ParticleAdapter* particle2 = new ParticleAdapter(11);        // create a new particle system pointer
@@ -114,11 +110,6 @@ void sceneTestSetup()
 	particle2->setPositionX(100);
 	particle2->setPositionY(384);
 	particle2->setStyle(ParticleInit::ParticleStyle::EXPLOSION);    // set the example effects
-	particle2->setStartSpin(0);
-	particle2->setStartSpinVar(90);
-	particle2->setEndSpin(90);
-	particle2->setStartSpinVar(90);
-
 	testScene->addNewObjectToLayer(2, particle2);
 
 	Object* staticGround2 = new Object(102);
