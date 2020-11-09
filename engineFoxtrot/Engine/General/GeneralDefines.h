@@ -7,8 +7,8 @@
 #define ZERO				0
 #define ONE					1
 
-#define WINDOW_WIDTH		1024	
-#define WINDOW_HEIGHT		768
+#define WINDOW_WIDTH		1920	
+#define WINDOW_HEIGHT		1080
 
 #define MESSAGE_WIDTH		150
 #define MESSAGE_HEIGHT		30
