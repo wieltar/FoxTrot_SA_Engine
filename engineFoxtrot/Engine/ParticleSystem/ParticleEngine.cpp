@@ -19,30 +19,25 @@ ParticleEngine::~ParticleEngine()
 void ParticleEngine::onUpdate(Event& tickEvent)
 {
 	if ((*pointerToCurrentScene)->getAllObjectsInScene().size() == 0) return;
-	for (Object * particle : (*pointerToCurrentScene)->getAllObjectsInScene()) {
-		if (particle != nullptr && particle->getIsParticle()) {
-			((ParticleAdapter*)particle)->update();
+	for (Object * object : (*pointerToCurrentScene)->getAllObjectsInScene()) {
+		if (object != nullptr && object->getIsParticle()) {
+			((ParticleAdapter*)object)->update();
 
-			checkIfObjectValueAndParticleValueMatch((ParticleAdapter*)particle);
+			checkIfObjectValueAndParticleValueMatch((ParticleAdapter&)object);
 		}
 	}
 }
 
-void ParticleEngine::checkIfObjectValueAndParticleValueMatch(ParticleAdapter* particle)
+void ParticleEngine::checkIfObjectValueAndParticleValueMatch(ParticleAdapter& particle)
 {
-	if (!particle)
+	if (particle.getPositionX() != particle.getPositionX())
 	{
-		return;
+		particle.setPositionX(particle.getPositionX());
 	}
 
-	if (((Object*)particle)->getPositionX() != particle->getPositionX())
+	if (particle.getPositionY() != particle.getPositionY())
 	{
-		particle->setPositionX(((Object*)particle)->getPositionX());
-	}
-
-	if (((Object*)particle)->getPositionY() != particle->getPositionY())
-	{
-		particle->setPositionY(((Object*)particle)->getPositionY());
+		particle.setPositionY(particle.getPositionY());
 	}
 }
 
