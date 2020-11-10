@@ -1,7 +1,6 @@
-/Debug/
+bin
+bin-int
+x64
 .vs
-engineFoxtrot/Debug
-engineFoxtrot/x64/Debug
-x64/Debug/engineFoxtrot.exe
-x64/Debug/engineFoxtrot.ilk
-x64/Debug/engineFoxtrot.pdb
+*.vcxproj.user
+Debug
